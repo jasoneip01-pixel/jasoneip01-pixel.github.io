@@ -196,7 +196,9 @@ body {
 .share-card {
   background: var(--surface); border: 1px solid var(--border); border-radius: 20px;
   padding: 28px 24px; max-width: 380px; width: 100%; text-align: center; position: relative;
+  overflow: hidden;
 }
+.share-card img, .share-card canvas { max-width: 100% !important; height: auto !important; }
 .share-card .close-btn {
   position: absolute; top: 10px; right: 14px; background: none; border: none;
   color: var(--text2); font-size: 1.4rem; cursor: pointer;
@@ -1439,7 +1441,7 @@ function saveShareImage() {
     const content = document.getElementById('shareContent');
     content.innerHTML = '';
     content.appendChild(canvas.cloneNode(true));
-    content.querySelector('canvas').style.cssText = 'max-width:100%;border-radius:16px';
+    content.querySelector('canvas').style.cssText = 'max-width:100%;height:auto;border-radius:16px;display:block;margin:0 auto';
     
     // Update share actions
     const actionsEl = overlay.querySelector('.share-actions');
