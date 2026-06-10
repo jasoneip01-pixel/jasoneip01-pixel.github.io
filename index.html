@@ -190,18 +190,19 @@ body {
 /* Share overlay */
 .share-overlay {
   display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.85);
-  z-index: 100; justify-content: center; align-items: start; padding: 16px;
+  z-index: 100; justify-content: center; align-items: center; padding: 20px;
   overflow-y: auto; -webkit-overflow-scrolling: touch;
 }
 .share-overlay.active { display: flex; }
 
 /* When save image result is shown, use start alignment + padding to prevent button cutoff */
-.share-overlay.has-image { align-items: flex-start; padding: 24px 16px 40px; }
+.share-overlay.has-image { align-items: center; padding: 12px; }
+.share-overlay.has-image .share-card { max-height: 92vh; padding: 16px 12px; background: transparent; border: none; }
 .share-overlay.active { display: flex; }
 .share-card {
   background: var(--surface); border: 1px solid var(--border); border-radius: 20px;
   padding: 28px 24px; max-width: 380px; width: 100%; text-align: center; position: relative;
-  overflow-y: auto; max-height: 90vh;
+  max-height: 85vh; overflow-y: auto; -webkit-overflow-scrolling: touch;
 }
 .share-card img, .share-card canvas { max-width: 100% !important; height: auto !important; }
 .share-card .close-btn {
@@ -1341,15 +1342,17 @@ function showShare() {
   const overlay = document.getElementById('shareOverlay');
   const content = document.getElementById('shareContent');
 
-  content.innerHTML = `
-    <div class="vibe-badge">${p.vibe || 'custom'}</div>
-    <div class="share-card-name">${p.name}</div>
-    <div class="share-card-tagline">"${p.tagline}"</div>
-    <div class="share-card-sig">${p.signature}</div>
-    <div style="font-size:0.8rem;color:var(--text2);margin-top:8px;line-height:1.5">${p.description.slice(0, 80)}...</div>
-    <div class="share-card-url">soul-snapshot.pages.dev</div>
-  `;
+  // Show as HTML DOM - always renders perfectly on any device
+  content.innerHTML = '<div class="share-dom-card">' +
+    '<div class="vibe-badge" style="display:inline-block;padding:3px 10px;border-radius:20px;font-size:0.65rem;text-transform:uppercase;letter-spacing:0.1em;background:rgba(167,139,250,0.1);color:#a78bfa;border:1px solid rgba(167,139,250,0.2);margin-bottom:10px">' + (p.vibe || 'custom') + '</div>' +
+    '<div class="share-card-name" style="font-family:Georgia,serif;font-size:clamp(1rem,5vw,1.5rem);background:linear-gradient(135deg,#a78bfa,#f59e0b);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:4px">' + p.name + '</div>' +
+    '<div class="share-card-tagline" style="color:#9898b0;font-style:italic;font-size:0.85rem;margin-bottom:10px">"' + p.tagline + '"</div>' +
+    '<div class="share-card-sig" style="color:#a78bfa;font-family:Georgia,serif;font-size:0.95rem;margin:10px 0;font-style:italic">' + p.signature + '</div>' +
+    '<div style="font-size:0.8rem;color:#9898b0;margin-top:8px;line-height:1.6;text-align:left;padding:8px 0">' + p.description.slice(0, 100) + '...</div>' +
+    '<div class="share-card-url" style="font-size:0.65rem;color:#6b6b80;margin-top:12px;opacity:0.6">jasoneip01-pixel.github.io</div>' +
+    '</div>';
 
+  overlay.classList.remove('has-image');
   overlay.classList.add('active');
 }
 
@@ -1397,39 +1400,76 @@ document.getElementById('shareOverlay').addEventListener('click', function(e) {
 
 function saveShareImage() {
   const p = state.result.personality;
-  const c = document.getElementById('shareCanvasContainer');
+  const overlay = document.getElementById('shareOverlay');
+  const content = document.getElementById('shareContent');
   
-  // Build share card at mobile-friendly size
-  const card = document.createElement('div');
-  card.style.cssText = 'width:400px;padding:36px 28px;background:linear-gradient(135deg,#14141f 0%,#1c1c2a 50%,#14141f 100%);border-radius:20px;border:2px solid #2a2a3a;text-align:center;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#e4e4ec;position:relative;overflow:hidden;';
-  card.innerHTML = '<div style="position:absolute;top:-40px;right:-40px;width:120px;height:120px;background:radial-gradient(circle,rgba(167,139,250,0.12),transparent 70%);border-radius:50%"></div><div style="position:absolute;bottom:-30px;left:-30px;width:100px;height:100px;background:radial-gradient(circle,rgba(244,63,94,0.08),transparent 70%);border-radius:50%"></div><div style="position:relative;z-index:1"><div style="display:inline-block;padding:4px 12px;border-radius:20px;font-size:11px;text-transform:uppercase;letter-spacing:0.15em;background:rgba(167,139,250,0.12);color:#a78bfa;border:1px solid rgba(167,139,250,0.2);margin-bottom:14px">' + (p.vibe || 'custom') + '</div><div style="font-family:Georgia,serif;font-size:26px;font-weight:700;background:linear-gradient(135deg,#a78bfa,#f59e0b);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:6px;line-height:1.3">' + p.name + '</div><div style="font-size:14px;color:#9898b0;font-style:italic;margin-bottom:14px">"' + p.tagline + '"</div><div style="font-family:Georgia,serif;font-size:17px;color:#a78bfa;margin:14px 0;font-style:italic">' + p.signature + '</div><div style="margin-top:16px;padding-top:16px;border-top:1px solid #2a2a3a"><div style="font-size:18px;font-weight:700;background:linear-gradient(135deg,#a78bfa,#f43f5e,#f59e0b);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:4px">灵魂快照</div><div style="font-size:11px;color:#6b6b80">jasoneip01-pixel.github.io</div></div></div>';
+  // Show loading state
+  content.innerHTML = '<div style="text-align:center;padding:24px;color:#9898b0">⏳ 正在生成分享图片…<br><small>首次加载需下载图片引擎</small></div>';
   
-  c.innerHTML = '';
-  c.appendChild(card);
-  
-  // Render with html2canvas
-  html2canvas(card, { scale: 2, backgroundColor: null, useCORS: true }).then(function(canvas) {
-    const imgData = canvas.toDataURL('image/png');
-    c.innerHTML = '<img src="' + imgData + '" style="max-width:100%;height:auto;border-radius:16px;display:block;margin:0 auto;box-shadow:0 8px 40px rgba(0,0,0,0.5)" alt="灵魂快照 · ' + p.name + '">';
+  function doRender() {
+    const c = document.getElementById('shareCanvasContainer');
     
-    // Show in overlay for long-press save (works in WeChat)
-    const overlay = document.getElementById('shareOverlay');
-    const content = document.getElementById('shareContent');
-    content.innerHTML = '';
-    var img = document.createElement('img');
-    img.src = imgData;
-    img.style.cssText = 'max-width:100%;height:auto;border-radius:16px;display:block;margin:0 auto';
-    img.alt = '灵魂快照 · ' + p.name;
-    content.appendChild(img);
+    // Build mobile-friendly card (smaller = faster render + less overflow)
+    const card = document.createElement('div');
+    card.style.cssText = 'width:320px;padding:28px 24px;background:linear-gradient(135deg,#14141f 0%,#1c1c2a 50%,#14141f 100%);border-radius:16px;border:2px solid #2a2a3a;text-align:center;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#e4e4ec;position:relative;overflow:hidden;';
+    card.innerHTML = '<div style="display:inline-block;padding:3px 10px;border-radius:20px;font-size:10px;text-transform:uppercase;letter-spacing:0.15em;background:rgba(167,139,250,0.12);color:#a78bfa;border:1px solid rgba(167,139,250,0.2);margin-bottom:12px">' + (p.vibe || 'custom') + '</div><div style="font-family:Georgia,serif;font-size:22px;font-weight:700;background:linear-gradient(135deg,#a78bfa,#f59e0b);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:4px;line-height:1.3">' + p.name + '</div><div style="font-size:13px;color:#9898b0;font-style:italic;margin-bottom:12px">"' + p.tagline + '"</div><div style="font-family:Georgia,serif;font-size:15px;color:#a78bfa;margin:12px 0;font-style:italic">' + p.signature + '</div><div style="margin-top:12px;padding-top:12px;border-top:1px solid #2a2a3a"><div style="font-size:15px;font-weight:700;background:linear-gradient(135deg,#a78bfa,#f43f5e,#f59e0b);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:2px">灵魂快照</div><div style="font-size:10px;color:#6b6b80">jasoneip01-pixel.github.io</div></div>';
     
-    overlay.classList.add('has-image');
-    var actionsEl = overlay.querySelector('.share-actions');
-    actionsEl.innerHTML = '<button class="btn btn-secondary" onclick="closeShare()">关闭</button><button class="btn btn-primary" onclick="saveShareImage()">🔄 重新生成</button><div style="width:100%;text-align:center;font-size:0.7rem;color:#9898b0;margin-top:6px">👆 长按图片 → 保存到相册 → 发微信/朋友圈</div>';
-  }).catch(function(e) {
-    var overlay = document.getElementById('shareOverlay');
-    var content = document.getElementById('shareContent');
-    content.innerHTML = '<div style="color:var(--rose);text-align:center;padding:24px">⚠️ 图片生成失败<br><small style="color:var(--text2)">请用「复制文案」分享</small></div>';
-  });
+    c.innerHTML = '';
+    c.appendChild(card);
+    
+    // Render at scale 1 (smaller image = less mobile memory issues)
+    html2canvas(card, { scale: 1.5, backgroundColor: null, useCORS: true, logging: false }).then(function(canvas) {
+      const imgData = canvas.toDataURL('image/png');
+      
+      // Try opening in new tab (works on many mobile browsers incl. WeChat)
+      var newWin = window.open();
+      if (newWin) {
+        newWin.document.write(
+          '<html><head><title>灵魂快照 · ' + p.name + '</title>' +
+          '<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">' +
+          '<style>body{margin:0;display:flex;justify-content:center;align-items:center;min-height:100vh;background:#0a0a0f}img{max-width:100%;height:auto}</style>' +
+          '</head><body><img src="' + imgData + '" alt="Soul Snapshot"></body></html>'
+        );
+        newWin.document.close();
+      }
+      
+      // Also show in overlay with proper sizing
+      content.innerHTML = '<div style="background:#0a0a0f;border-radius:12px;padding:12px;display:flex;justify-content:center">' +
+        '<img src="' + imgData + '" style="max-width:100%;height:auto;border-radius:8px;display:block" alt="灵魂快照 · ' + p.name + '">' +
+        '</div>';
+      
+      overlay.classList.add('has-image');
+      var actionsEl = overlay.querySelector('.share-actions');
+      actionsEl.innerHTML = '<button class="btn btn-secondary" onclick="closeShare()">关闭</button>' +
+        '<button class="btn btn-primary" onclick="saveShareImage()">🔄 重新生成</button>' +
+        '<div style="width:100%;text-align:center;font-size:0.7rem;color:#9898b0;margin-top:6px">📲 已在新标签页打开图片 · 长按/菜单保存到相册</div>';
+      
+    }).catch(function() {
+      // Final fallback: suggest screenshot of the DOM card
+      content.innerHTML = '<div style="text-align:center;padding:16px;color:#9898b0">' +
+        '<div style="font-size:1.2rem;margin-bottom:8px">📸</div>' +
+        '<div>图片生成失败</div>' +
+        '<div style="font-size:0.8rem;margin:8px 0 12px">请截屏保存，或使用「复制文案」分享</div>' +
+        '</div>';
+      overlay.classList.add('has-image');
+      var actionsEl = overlay.querySelector('.share-actions');
+      actionsEl.innerHTML = '<button class="btn btn-secondary" onclick="closeShare()">关闭</button>' +
+        '<button class="btn btn-primary" onclick="showShare()">返回卡片</button>';
+    });
+  }
+  
+  // Load html2canvas dynamically or use cached
+  if (window.html2canvas) {
+    doRender();
+  } else {
+    var script = document.createElement('script');
+    script.src = 'https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js';
+    script.onload = doRender;
+    script.onerror = function() {
+      content.innerHTML = '<div style="text-align:center;padding:24px;color:#f59e0b">⚠️ 图片引擎加载失败<br><small style="color:#9898b0">请截屏保存，或用「复制文案」分享</small></div>';
+    };
+    document.head.appendChild(script);
+  }
 }
 
 
