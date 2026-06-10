@@ -1213,7 +1213,7 @@ function calculateResults() {
 // ── Radar Chart (SVG) ──
 function renderRadar(vector) {
   const labels = ['直觉↔分析', '恐惧↔欲望', '独立↔依附', '冲刺↔巡航'];
-  const cx = 140, cy = 140, r = 100;
+  const cx = 160, cy = 160, r = 100;
   const angles = [0, 90, 180, 270].map(a => (a - 90) * Math.PI / 180);
 
   // Grid circles
@@ -1256,7 +1256,7 @@ function renderRadar(vector) {
   }).join('');
 
   return `
-    <svg class="radar-svg" viewBox="0 0 280 280" xmlns="http://www.w3.org/2000/svg">
+    <svg class="radar-svg" viewBox="0 0 320 320" xmlns="http://www.w3.org/2000/svg">
       ${gridCircles}
       ${axes}
       <polygon points="${points}" class="radar-area"/>
