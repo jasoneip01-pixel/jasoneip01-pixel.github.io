@@ -343,7 +343,7 @@ body {
     "total_questions": 15,
     "seed_count": 50,
     "facets": {
-      "thinking": {"name": "思维", "dim": [0, 1], "icon": "🧠"},
+      "thinking": {"name": "思维", "dim": [0, 1], "icon": "💡"},
       "drive": {"name": "驱动", "dim": [2, 3], "icon": "🔥"},
       "connection": {"name": "关系", "dim": [4, 5], "icon": "🤝"},
       "rhythm": {"name": "节奏", "dim": [6, 7], "icon": "🌊"}
@@ -1065,7 +1065,7 @@ function renderStart() {
       </div>
       <div class="facet-grid">
         <div class="facet-item">
-          <div class="facet-icon">🧠</div>
+          <div class="facet-icon">💡</div>
           <div class="facet-label">思维</div>
           <div class="facet-dim">直觉 ↔ 分析</div>
         </div>
@@ -1126,7 +1126,7 @@ function renderQuiz() {
       </div>
     </div>
     <div class="card entering">
-      <div class="question-num">${isBonus ? '🎲 BONUS' : q.facet === 'thinking' ? '🧠 思维' : q.facet === 'drive' ? '🔥 驱动' : q.facet === 'connection' ? '🤝 关系' : '🌊 节奏'}</div>
+      <div class="question-num">${isBonus ? '🎲 BONUS' : q.facet === 'thinking' ? '💡 思维' : q.facet === 'drive' ? '🔥 驱动' : q.facet === 'connection' ? '🤝 关系' : '🌊 节奏'}</div>
       <div class="question-text">${q.text}</div>
       <div class="options">
         ${q.options.map((opt, i) => `
