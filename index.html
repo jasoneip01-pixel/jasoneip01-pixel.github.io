@@ -1385,13 +1385,8 @@ document.getElementById('shareOverlay').addEventListener('click', function(e) {
   if (e.target === this) closeShare();
 });
 
-// ── Init ──
-render();
-</script>
 
-<div style="position:fixed;left:-9999px;top:-9999px" id="shareCanvasContainer"></div>
-</body>
-</html>function saveShareImage() {
+function saveShareImage() {
   const p = state.result.personality;
   const c = document.getElementById('shareCanvasContainer');
   
@@ -1459,3 +1454,12 @@ render();
 }
 
 
+
+
+// ── Init ──
+render();
+</script>
+
+<div style="position:fixed;left:-9999px;top:-9999px" id="shareCanvasContainer"></div>
+</body>
+</html>
