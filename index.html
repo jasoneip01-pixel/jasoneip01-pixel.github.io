@@ -190,13 +190,18 @@ body {
 /* Share overlay */
 .share-overlay {
   display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.85);
-  z-index: 100; justify-content: center; align-items: center; padding: 16px;
+  z-index: 100; justify-content: center; align-items: start; padding: 16px;
+  overflow-y: auto; -webkit-overflow-scrolling: touch;
 }
+.share-overlay.active { display: flex; }
+
+/* When save image result is shown, use start alignment + padding to prevent button cutoff */
+.share-overlay.has-image { align-items: flex-start; padding: 24px 16px 40px; }
 .share-overlay.active { display: flex; }
 .share-card {
   background: var(--surface); border: 1px solid var(--border); border-radius: 20px;
   padding: 28px 24px; max-width: 380px; width: 100%; text-align: center; position: relative;
-  overflow: hidden;
+  overflow-y: auto; max-height: 90vh;
 }
 .share-card img, .share-card canvas { max-width: 100% !important; height: auto !important; }
 .share-card .close-btn {
@@ -1349,7 +1354,9 @@ function showShare() {
 }
 
 function closeShare() {
-  document.getElementById('shareOverlay').classList.remove('active');
+  var o = document.getElementById('shareOverlay');
+  o.classList.remove('active');
+  o.classList.remove('has-image');
 }
 
 function copyShareCard() {
@@ -1415,6 +1422,7 @@ function saveShareImage() {
     img.alt = '灵魂快照 · ' + p.name;
     content.appendChild(img);
     
+    overlay.classList.add('has-image');
     var actionsEl = overlay.querySelector('.share-actions');
     actionsEl.innerHTML = '<button class="btn btn-secondary" onclick="closeShare()">关闭</button><button class="btn btn-primary" onclick="saveShareImage()">🔄 重新生成</button><div style="width:100%;text-align:center;font-size:0.7rem;color:#9898b0;margin-top:6px">👆 长按图片 → 保存到相册 → 发微信/朋友圈</div>';
   }).catch(function(e) {
