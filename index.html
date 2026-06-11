@@ -619,8 +619,8 @@ body {
   font-size: 0.65rem;
   color: var(--accent);
   opacity: 0.6;
-  margin-left: 2px;
   transition: transform 0.2s;
+  flex-shrink: 0;
 }
 .neighbor-card.expanded .expand-indicator {
   transform: rotate(180deg);
@@ -1696,7 +1696,7 @@ function renderResults() {
             return `
               <div class="neighbor-card" style="border-left:3px solid ${colors[i]};padding-left:12px" onclick="this.classList.toggle('expanded')">
                 <div class="neighbor-card-name">${a.name.split('·')[0]}</div>
-                <div class="tagline-text" style="font-size:0.7rem;color:var(--text2)">"${a.tagline}" <span class="expand-indicator">▾</span></div>
+                <div style="display:flex;align-items:baseline;gap:2px"><div class="tagline-text" style="font-size:0.7rem;color:var(--text2)">"${a.tagline}"</div><span class="expand-indicator">▾</span></div>
               </div>
             `;
           }).join('')}
