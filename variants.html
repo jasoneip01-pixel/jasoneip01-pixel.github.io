@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>灵魂快照 · 三版方案预览</title>
+<style>
+:root {
+  --bg: #0a0a0f; --surface: #14141f; --border: #2a2a3a;
+  --text: #e4e4ec; --text2: #9898b0; --accent: #a78bfa; --gold: #f59e0b; --rose: #f43f5e; --teal: #14b8a6;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:var(--bg); color:var(--text); font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; min-height:100vh; display:flex; flex-direction:column; align-items:center; padding:40px 20px; }
+h1 { font-family:Georgia,'Noto Serif SC',serif; font-size:2.2rem; background:linear-gradient(135deg,var(--accent),var(--rose),var(--gold)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; margin-bottom:8px; }
+.subtitle { color:var(--text2); font-size:0.9rem; margin-bottom:48px; }
+.grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:24px; max-width:1100px; width:100%; }
+.card { background:var(--surface); border:1px solid var(--border); border-radius:16px; padding:32px 28px; transition:all 0.3s ease; text-decoration:none; color:var(--text); display:flex; flex-direction:column; }
+.card:hover { border-color:var(--accent); transform:translateY(-4px); box-shadow:0 8px 32px rgba(167,139,250,0.15); }
+.card-badge { display:inline-block; padding:4px 12px; border-radius:20px; font-size:0.7rem; text-transform:uppercase; letter-spacing:0.1em; margin-bottom:16px; width:fit-content; }
+.badge-a { background:rgba(20,184,166,0.12); color:var(--teal); border:1px solid rgba(20,184,166,0.2); }
+.badge-b { background:rgba(167,139,250,0.12); color:var(--accent); border:1px solid rgba(167,139,250,0.2); }
+.badge-c { background:rgba(245,158,11,0.12); color:var(--gold); border:1px solid rgba(245,158,11,0.2); }
+.card h2 { font-family:Georgia,serif; font-size:1.4rem; margin-bottom:8px; }
+.card .tagline { color:var(--text2); font-size:0.85rem; font-style:italic; margin-bottom:16px; line-height:1.5; }
+.card .desc { font-size:0.85rem; color:var(--text2); line-height:1.7; flex:1; }
+.card .cta { margin-top:20px; padding:12px 20px; border-radius:8px; font-size:0.85rem; font-weight:600; text-align:center; border:1px solid var(--border); color:var(--text); transition:0.2s; }
+.cta-a:hover { background:var(--teal); color:#fff; border-color:var(--teal); }
+.cta-b:hover { background:var(--accent); color:#fff; border-color:var(--accent); }
+.cta-c:hover { background:var(--gold); color:#000; border-color:var(--gold); }
+.original-link { margin-top:48px; color:var(--text2); font-size:0.8rem; }
+.original-link a { color:var(--accent); }
+</style>
+</head>
+<body>
+<h1>灵魂快照</h1>
+<div class="subtitle">Soul Snapshot · 三版设计方案预览</div>
+<div class="grid">
+  <a href="plan-a/" class="card">
+    <div class="card-badge badge-a">Plan A</div>
+    <h2>精准修缮</h2>
+    <div class="tagline">同一款产品，精致感到准产品级</div>
+    <div class="desc">修复呼吸感、增加深度层次、结果揭晓动效、分享卡片重构。不动筋骨，把品质拉到位。</div>
+    <div class="cta cta-a">进入 →</div>
+  </a>
+  <a href="plan-b/" class="card">
+    <div class="card-badge badge-b">Plan B</div>
+    <h2>氛围重塑</h2>
+    <div class="tagline">把"灵魂"从文字变成可感知的场</div>
+    <div class="desc">Canvas粒子背景、题目主题色切换、星座连线图、金色扫光动画。两个"哇"时刻。</div>
+    <div class="cta cta-b">进入 →</div>
+  </a>
+  <a href="plan-c/" class="card">
+    <div class="card-badge badge-c">Plan C</div>
+    <h2>范式跃迁</h2>
+    <div class="tagline">不是问卷——是你走进一个空间</div>
+    <div class="desc">发光入口→对话式塔罗牌→灵魂星座室→星图分享卡。从"做了个测试"到"去了个地方"。</div>
+    <div class="cta cta-c">进入 →</div>
+  </a>
+</div>
+<div class="original-link"><a href="original.html">📄 原始版本</a>（对照参考）</div>
+</body>
+</html>
