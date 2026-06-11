@@ -46,7 +46,7 @@ html,body{
 }
 .scene.hidden{opacity:0;pointer-events:none;transform:scale(1.05)}
 .scene.entering{animation:sceneIn 0.8s cubic-bezier(0.22,0.61,0.36,1)}
-@keyframes sceneIn{from{opacity:0;transform:scale(1.08)}to{opacity:1;transform:scale(1)}}
+@keyframes sceneIn{from{opacity:0;transform:scale(1.08)}to{opacity:1;transform:scale(1)}}@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.03)}}
 
 /* ── ENTRANCE: Glowing Portal ── */
 #entrance{perspective:800px}
@@ -523,6 +523,7 @@ html,body{
       <button class="cosmic-btn ghost" onclick="restart()">🔄 再入一次</button>
       <button class="cosmic-btn glow" onclick="showShare()">📜 生成隐藏款</button>
     </div>
+    <div style="text-align:center;padding:16px 0 8px"><button class="cosmic-btn glow" onclick="showShare()" style="font-size:1rem;padding:14px 28px;animation:pulse 2s ease-in-out infinite">📤 分享我的隐藏款</button></div>
     <div style="font-size:0.68rem;color:var(--text2);opacity:0.5;margin-top:20px">随手拆了下自己，原来我是那个隐藏 · 你的数据仅保存在此设备上</div>
   </div>
 </div>
@@ -1256,7 +1257,15 @@ $('share-overlay').addEventListener('click', function(e) {
 // ── Copy share text ──
 function copyShare() {
   const p = state.result.personality;
-  const text = `🦞 随手拆了下自己，原来我是那个隐藏
+  const url = window.location.href.split('?')[0] +
+    '?n=' + encodeURIComponent(p.name) +
+    '&s=' + encodeURIComponent(p.signature || '') +
+    '&t=' + encodeURIComponent(p.tagline || '');
+  const text = '🦞 我拆出了一个隐藏款——【' + p.name + '】\n\n' +
+    p.signature + '\n' +
+    '\"' + p.tagline + '\"\n\n' +
+    '你也拆开自己看看？测测你是哪个隐藏款 👇\n' +
+    url;
 
 ${p.name}
 「${p.tagline}」
@@ -1362,7 +1371,13 @@ function doRenderShare(card, container) {
 function systemShare() {
   if (!window._shareCanvas || !navigator.share) return;
   const p = state.result.personality;
-  const text = '随手拆了下自己，原来我是那个隐藏 · ' + p.name + '\n\n测测你的隐藏款：https://jasoneip01-pixel.github.io/plan-c';
+  const url = window.location.href.split('?')[0] +
+    '?n=' + encodeURIComponent(p.name) +
+    '&s=' + encodeURIComponent(p.signature || '') +
+    '&t=' + encodeURIComponent(p.tagline || '');
+  const text = '我拆出了一个隐藏款——【' + p.name + '】！' +
+    (p.signature ? p.signature + '…' : '') +
+    '你也拆开自己看看👉 ' + url;
   window._shareCanvas.toBlob(function(blob) {
     const file = new File([blob], p.name + '.png', { type: 'image/png' });
     navigator.share({ title: '我的 AI 人格：' + p.name, text: text, files: [file] }).catch(function() {});
@@ -1383,12 +1398,16 @@ function downloadImage() {
 
 function shareLink() {
   const p = state.result.personality;
-  const url = window.location.href;
-  const title = '随手拆了下自己，原来我是那个隐藏';
-  const text = '我刚测了AI人格测试——「' + p.name + '」！' +
-    '你也来拆一个你的隐藏款👉 ' + url;
+  const url = window.location.href.split('?')[0] +
+    '?n=' + encodeURIComponent(p.name) +
+    '&s=' + encodeURIComponent(p.signature || '') +
+    '&t=' + encodeURIComponent(p.tagline || '') +
+    '&v=' + encodeURIComponent(p.vibe || '');
+  const text = '我拆出了一个隐藏款——【' + p.name + '】！' +
+    (p.signature ? p.signature + '…' : '') +
+    '你也拆开自己看看👉 ' + url;
   if (navigator.share) {
-    navigator.share({ title: title, text: text, url: url }).catch(function() {});
+    navigator.share({ title: '随手拆了下自己，原来我是那个隐藏', text: text, url: url }).catch(function() {});
   } else {
     if (navigator.clipboard) {
       navigator.clipboard.writeText(url).then(function() {
@@ -1416,7 +1435,30 @@ function init() {
   });
 }
 
-init();
+// Query param landing
+const _params = new URLSearchParams(window.location.search);
+const _pn = _params.get('n');
+if (_pn) {
+  const p = {
+    name: decodeURIComponent(_pn),
+    signature: decodeURIComponent(_params.get('s') || ''),
+    tagline: decodeURIComponent(_params.get('t') || ''),
+    vibe: decodeURIComponent(_params.get('v') || '')
+  };
+  // Show landing overlay
+  document.getElementById('entrance').innerHTML = 
+    '<div style="display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:80vh;padding:32px 20px;text-align:center">' +
+    '<div style="font-size:3rem;margin-bottom:8px">🎁</div>' +
+    '<div style="font-size:clamp(0.85rem,2.5vw,1.2rem);color:var(--text2);margin-bottom:12px">你的朋友拆出了一个隐藏款…</div>' +
+    '<div style="font-size:clamp(1.3rem,4vw,1.8rem);font-weight:700;background:linear-gradient(135deg,var(--accent),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:6px">' + p.name + '</div>' +
+    '<div style="color:var(--text2);font-style:italic;margin-bottom:6px">"' + (p.tagline || '') + '"</div>' +
+    '<div style="color:var(--accent);margin-bottom:20px">' + (p.signature || '') + '</div>' +
+    '<button class="cosmic-btn glow" onclick="window.location.search=\'\';init()" style="font-size:1rem;padding:14px 28px">⚡ 拆一个我的隐藏款</button>' +
+    '<div style="margin-top:24px;font-size:0.7rem;color:var(--text2)">随手拆了下自己，原来我是那个隐藏</div></div>';
+  document.getElementById('entrance').classList.remove('hidden');
+} else {
+  init();
+}
 
 /* ──────────────────────────────────────
    AMBIENT SOUND (disabled by default)
