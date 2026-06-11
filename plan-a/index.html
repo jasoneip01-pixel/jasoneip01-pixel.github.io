@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>随手拆了下自己，原来我是那个隐藏 · Unbox Yourself</title>
+<title>🎁 你收到了一份隐藏款 · Unbox Yourself</title>
 <meta name="description" content="测一次，AI 给你你从未见过的自己——不是 27 选 1，是专属于你的那一个。">
 <!-- Open Graph -->
-<meta property="og:title" content="随手拆了下自己，原来我是那个隐藏 · 你的 AI 人格测试">
+<meta property="og:title" content="🎁 你收到了一份隐藏款 · 一份来自朋友的礼物">
 <meta property="og:description" content="15 道题，50 个隐藏款。专属于你的人格，不是 27 选 1 的统计学标签——是 AI 为你生成的那一个。">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://jasoneip01-pixel.github.io/plan-a/">
@@ -1819,6 +1819,7 @@ function shareLink() {
 var _params = new URLSearchParams(window.location.search);
 var _pn = _params.get('n');
 if (_pn) {
+  document.title = '🎁 你收到了一份隐藏款';
   state.result = { personality: {
     name: decodeURIComponent(_pn),
     signature: decodeURIComponent(_params.get('s') || ''),
