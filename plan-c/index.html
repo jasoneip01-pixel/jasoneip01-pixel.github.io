@@ -474,7 +474,18 @@ html,body{
 .share-save-guide .platform-actions { display:flex; gap:8px; margin-top:10px; justify-content:center; flex-wrap:wrap; }
 .footer-title { display: block; font-size: 0.6rem; color: var(--text2); line-height: 1.4; }
 .footer-sub { display: block; font-size: 0.55rem; color: var(--text2); opacity: 0.7; line-height: 1.4; }
-</style>
+
+/* ── Share Toast ── */
+.share-toast {
+  position: fixed; bottom: 120px; left: 50%; transform: translateX(-50%);
+  background: rgba(0,0,0,0.85); color: #fff; font-size: 0.85rem;
+  padding: 12px 24px; border-radius: 12px; z-index: 200;
+  opacity: 0; transition: opacity 0.3s ease;
+  pointer-events: none;
+  border: 1px solid rgba(167,139,250,0.3);
+  backdrop-filter: blur(8px);
+}
+.share-toast.show { opacity: 1; }</style>
 </head>
 <body>
 
@@ -1386,12 +1397,12 @@ function shareLink() {
   const text = '我拆出了一个隐藏款——【' + p.name + '】！' +
     (p.signature ? p.signature + '…' : '') +
     '你也拆开自己看看👉 ' + url;
-  if (navigator.share && !_isWechat) {
+  if (navigator.share) {
     navigator.share({ title: '随手拆了下自己，原来我是那个隐藏', text: text, url: url }).catch(function() {});
   } else {
     if (navigator.clipboard) {
       navigator.clipboard.writeText(url).then(function() {
-        alert('✅ 链接已复制！去微信发送给朋友吧～');
+        showShareToast('✅ 链接已复制');
       });
     } else {
       prompt('复制这个链接发给朋友：', url);

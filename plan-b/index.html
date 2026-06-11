@@ -513,7 +513,18 @@ body {
 .btn-ghost { background: transparent; color: var(--text2); border: 1px solid var(--border); font-size: 0.8rem; padding: 12px 22px; border-radius: 12px; cursor: pointer; font-weight: 500; transition: all 0.2s; }
 .btn-ghost:hover { border-color: var(--accent); color: var(--text); }
 
-</style></head>
+
+/* ── Share Toast ── */
+.share-toast {
+  position: fixed; bottom: 120px; left: 50%; transform: translateX(-50%);
+  background: rgba(0,0,0,0.85); color: #fff; font-size: 0.85rem;
+  padding: 12px 24px; border-radius: 12px; z-index: 200;
+  opacity: 0; transition: opacity 0.3s ease;
+  pointer-events: none;
+  border: 1px solid rgba(167,139,250,0.3);
+  backdrop-filter: blur(8px);
+}
+.share-toast.show { opacity: 1; }</style></head>
 <body>
 
 <canvas id="particleCanvas"></canvas>
@@ -820,6 +831,23 @@ let burstTimer = 0;
 let pAnimId = null;
 
 const particleColors = ['#a78bfa','#a78bfa','#a78bfa','#f59e0b','#f59e0b','#f43f5e'];
+
+
+function showShareToast(msg) {
+  let toast = document.getElementById('shareToast');
+  if (!toast) {
+    toast = document.createElement('div');
+    toast.id = 'shareToast';
+    toast.className = 'share-toast';
+    document.body.appendChild(toast);
+  }
+  toast.textContent = msg;
+  toast.classList.add('show');
+  clearTimeout(toast._hide);
+  toast._hide = setTimeout(function() {
+    toast.classList.remove('show');
+  }, 2000);
+}
 
 function resizeCanvas() {
   particleCanvas.width = window.innerWidth;
@@ -1700,16 +1728,14 @@ function shareLink() {
   const text = '我拆出了一个隐藏款——【' + p.name + '】！' +
     (p.signature ? p.signature + '…' : '') +
     '你也拆开自己看看👉 ' + url;
-  if (navigator.share && !_isWechat) {
+  if (navigator.share) {
     navigator.share({ title: '随手拆了下自己，原来我是那个隐藏', text: text, url: url }).catch(function() {});
+  } else if (navigator.clipboard) {
+    navigator.clipboard.writeText(url).then(function() {
+      showShareToast('✅ 链接已复制');
+    });
   } else {
-    if (navigator.clipboard) {
-      navigator.clipboard.writeText(url).then(function() {
-        alert('✅ 链接已复制！去微信发送给朋友吧～');
-      });
-    } else {
-      prompt('复制这个链接发给朋友：', url);
-    }
+    prompt('复制这个链接发给朋友：', url);
   }
 }
 
