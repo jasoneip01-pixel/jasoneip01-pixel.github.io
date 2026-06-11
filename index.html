@@ -325,8 +325,8 @@ body {
   font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em;
   color: var(--text2); text-align: center; margin-bottom: 8px;
 }
-.constellation-wrap { display: flex; justify-content: center; }
-.constellation-canvas { max-width: 320px; width: 100%; display: block; }
+.constellation-wrap { margin: 0 -20px; display: flex; justify-content: center; }
+.constellation-canvas { width: 100%; max-width: 380px; display: block; }
 
 /* ── Plan B: Floating neighbor cards ── */
 .neighbor-section { margin: 8px 0; }
@@ -491,7 +491,7 @@ body {
   .facet-grid { grid-template-columns: repeat(4, 1fr); gap: 10px; }
   .option { padding: 16px 20px; font-size: 0.95rem; }
   .btn { padding: 14px 20px; font-size: 0.95rem; min-width: 140px; }
-  .constellation-canvas { max-width: 360px; }
+  .constellation-canvas { max-width: 400px; }
   .share-card { max-width: 420px; padding: 36px 32px; }
 }
 
@@ -511,7 +511,7 @@ body {
   .btn { font-size: 1rem; }
   .share-card { max-width: 440px; padding: 40px 36px; }
   .share-card-name { font-size: 1.4rem; }
-  .constellation-canvas { max-width: 380px; }
+  .constellation-canvas { max-width: 420px; }
   .progress-wrap { max-width: 600px; margin: 0 auto 20px; }
 }
 
@@ -527,7 +527,7 @@ body {
   .facet-icon { font-size: 2rem; }
   .facet-label { font-size: 0.9rem; }
   
-  .constellation-canvas { max-width: 400px; }
+  .constellation-canvas { max-width: 440px; }
   .personality-desc { font-size: 1rem; }
   .share-card { max-width: 480px; }
 }
@@ -539,7 +539,7 @@ body {
   .question-text { font-size: 2rem; }
   .option { font-size: 1.1rem; padding: 22px 30px; }
   
-  .constellation-canvas { max-width: 440px; }
+  .constellation-canvas { max-width: 480px; }
   .personality-name { font-size: 2.2rem; }
 }
 
@@ -1175,11 +1175,11 @@ function applyTheme(facet) {
 // Constellation Renderer
 // ═══════════════════════════════════════════════
 function renderConstellation(vector, canvasEl) {
-  const size = 360;
+  const size = 400;
   canvasEl.width = size;
   canvasEl.height = size;
   const ctx = canvasEl.getContext('2d');
-  const cx = size / 2, cy = size / 2, r = 124;
+  const cx = size / 2, cy = size / 2, r = 138;
 
   // Background glow
   const bgGrad = ctx.createRadialGradient(cx, cy, 20, cx, cy, r * 1.4);
@@ -1280,10 +1280,10 @@ function renderConstellation(vector, canvasEl) {
   // Labels
   const labels = ['思维', '驱动', '关系', '节奏'];
   axes.forEach((a, i) => {
-    const lx = cx + Math.cos(a.angle) * (r + 28);
+    const lx = cx + Math.cos(a.angle) * (r + 32);
     const ly = cy + Math.sin(a.angle) * (r + 24);
     ctx.fillStyle = '#c8c8da';
-    ctx.font = '12px -apple-system, sans-serif';
+    ctx.font = '13px -apple-system, sans-serif';
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
     ctx.fillText(labels[i], lx, ly);
