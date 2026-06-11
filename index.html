@@ -303,18 +303,57 @@ body {
 .share-overlay.has-image { align-items: center; padding: 12px; }
 .share-overlay.has-image .share-card { max-height: 92vh; padding: 16px 12px; background: transparent; border: none; }
 .share-card {
-  background: var(--surface); border: 2px solid transparent;
-  border-image: linear-gradient(135deg, var(--accent), var(--rose), var(--gold)) 1;
+  background: linear-gradient(145deg, #16162f 0%, #1a1a30 30%, #14142a 60%, #17172e 100%);
+  border: 1px solid var(--border);
   border-radius: 20px;
-  padding: 28px 24px; max-width: 360px; width: 100%; text-align: center; position: relative;
+  padding: 32px 28px; max-width: 380px; width: 100%; text-align: center; position: relative;
   max-height: 85vh; overflow-y: auto; -webkit-overflow-scrolling: touch;
-  aspect-ratio: 3/4;
-  display: flex; flex-direction: column; justify-content: center;
+  box-shadow: 0 12px 48px rgba(0,0,0,0.5);
 }
-.share-card img, .share-card canvas { max-width: 100% !important; height: auto !important; }
+
+.share-card::before {
+  content: '◆';
+  position: absolute;
+  top: 14px;
+  left: 16px;
+  font-size: 0.6rem;
+  color: var(--accent);
+  opacity: 0.3;
+}
+
+.share-card::after {
+  content: '';
+  position: absolute;
+  bottom: 10px;
+  right: 14px;
+  width: 40px; height: 40px;
+  border: 1px solid rgba(167,139,250,0.1);
+  border-radius: 50%;
+  border-right-color: transparent;
+  border-bottom-color: transparent;
+  transform: rotate(-30deg);
+}
+
+.share-vibe-badge {
+  display: inline-block;
+  padding: 4px 14px;
+  border-radius: 20px;
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-weight: 700;
+  background: linear-gradient(135deg, rgba(167,139,250,0.2), rgba(124,58,237,0.15));
+  color: var(--accent);
+  border: 1px solid rgba(167,139,250,0.25);
+  margin-bottom: 12px;
+}
+
+
+
 .share-card .close-btn {
-  position: absolute; top: 10px; right: 14px; background: none; border: none;
-  color: var(--text2); font-size: 1.4rem; cursor: pointer; z-index: 2;
+  position: absolute; top: 12px; right: 14px; background: none; border: none;
+  color: var(--text2); font-size: 1.4rem; cursor: pointer;
+  z-index: 2;
 }
 .share-card-name {
   font-family: var(--font-display); font-size: 1.2rem;
@@ -322,15 +361,15 @@ body {
   -webkit-background-clip: text; -webkit-text-fill-color: transparent;
   background-clip: text; margin-bottom: 4px;
 }
-.share-card-tagline { color: var(--text2); font-style: italic; font-size: 0.8rem; margin-bottom: 10px; }
-.share-card-sig { color: var(--accent); font-family: var(--font-display); font-size: 0.9rem; margin: 10px 0; }
+.share-card-tagline { color: var(--text2); font-style: italic; font-size: 0.8rem; margin-bottom: 12px; }
+.share-card-sig { color: var(--accent); font-family: var(--font-display); font-size: 0.9rem; margin: 12px 0; }
 .share-poetic {
   font-family: var(--font-display); font-size: 0.75rem; color: var(--text2);
   font-style: italic; margin-top: 8px; opacity: 0.7; line-height: 1.5;
 }
-.share-card-url { color: var(--text2); font-size: 0.65rem; margin-top: 14px; opacity: 0.6; }
-.share-actions { display: flex; gap: 8px; margin-top: 14px; }
-.share-actions .btn { font-size: 0.8rem; padding: 10px 14px; }
+.share-card-url { color: var(--text2); font-size: 0.65rem; margin-top: 16px; opacity: 0.6; }
+.share-actions { display: flex; gap: 10px; margin-top: 18px; flex-wrap: wrap; }
+.share-actions .btn { font-size: 0.8rem; padding: 10px 14px; flex: 1; min-width: 0; border-radius: 10px; }
 
 /* Start screen */
 .start-subtitle { color: var(--text2); font-size: 0.85rem; text-align: center; margin-bottom: 22px; line-height: 1.65; }
@@ -376,7 +415,7 @@ body {
   .option { padding: 16px 20px; font-size: 0.95rem; }
   .btn { padding: 14px 20px; font-size: 0.95rem; min-width: 140px; }
   .constellation-canvas { max-width: 320px; }
-  .share-card { max-width: 400px; padding: 32px 28px; }
+  .share-card { max-width: 420px; padding: 36px 32px; }
 }
 
 /* ── Responsive: Desktop (768-1024px) ── */
@@ -404,7 +443,7 @@ body {
   .personality-desc { font-size: 0.95rem; line-height: 1.85; }
   .btn-row { gap: 12px; }
   .btn { font-size: 1rem; }
-  .share-card { max-width: 420px; }
+  .share-card { max-width: 440px; padding: 40px 36px; }
   .share-card-name { font-size: 1.4rem; }
   .constellation-canvas { max-width: 340px; }
   .progress-wrap { max-width: 600px; margin: 0 auto 20px; }
@@ -424,7 +463,7 @@ body {
   .results-grid { gap: 20px; }
   .constellation-canvas { max-width: 360px; }
   .personality-desc { font-size: 1rem; }
-  .share-card { max-width: 460px; }
+  .share-card { max-width: 480px; }
 }
 
 /* ── Responsive: X-Large (1400px+) ── */
@@ -445,7 +484,7 @@ body {
   .card { padding: 18px 14px; }
   .option { padding: 13px 14px; font-size: 0.85rem; }
   .btn { font-size: 0.85rem; padding: 12px 14px; }
-  .share-card { padding: 20px 16px; }
+  .share-card { padding: 24px 18px; }
   .facet-grid { gap: 6px; }
   .facet-item { padding: 12px 6px; }
   .facet-icon { font-size: 1.3rem; }
