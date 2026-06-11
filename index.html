@@ -293,6 +293,21 @@ body {
 .personality-tagline { font-size: 0.95rem; color: var(--text2); font-style: italic; }
 .personality-desc { font-size: 0.9rem; line-height: 1.8; color: var(--text); margin: 18px 0; }
 .personality-desc p { margin-bottom: 12px; opacity: 0; animation: fadeSlide 0.6s ease forwards; }
+.personality-desc p.lead { font-size: 1.05rem; font-weight: 500; color: var(--text); letter-spacing: 0.01em; }
+.personality-desc p:not(.lead) { font-size: 0.85rem; color: var(--text2); }
+.personality-desc .quote-intro {
+  font-size: 0.85rem; font-style: italic; color: var(--accent);
+  padding: 0 0 8px 0; margin-bottom: 10px;
+  border-bottom: 1px solid rgba(167,139,250,0.15);
+  opacity: 0; animation: fadeSlide 0.5s ease 0.1s forwards;
+}
+.personality-desc .signature-closing {
+  font-size: 0.8rem; color: var(--accent); opacity: 0.7;
+  margin-top: 14px; padding-top: 10px;
+  border-top: 1px solid rgba(167,139,250,0.1);
+  text-align: right; font-style: italic;
+  opacity: 0; animation: fadeSlide 0.5s ease 1.2s forwards;
+}
 .personality-desc p:nth-child(1) { animation-delay: 0.3s; }
 .personality-desc p:nth-child(2) { animation-delay: 0.6s; }
 .personality-desc p:nth-child(3) { animation-delay: 0.9s; }
@@ -591,6 +606,7 @@ body {
 .neighbor-card:nth-child(1) { animation-delay: 1.5s; }
 .neighbor-card:nth-child(2) { animation-delay: 1.7s; }
 .neighbor-card:nth-child(3) { animation-delay: 1.9s; }
+.neighbor-card-name { font-weight: 600; margin-bottom: 2px; color: var(--text); }
 
 .btn-ghost { background: transparent; color: var(--text2); border: 1px solid var(--border); font-size: 0.8rem; padding: 12px 22px; border-radius: 12px; cursor: pointer; font-weight: 500; transition: all 0.2s; }
 .btn-ghost:hover { border-color: var(--accent); color: var(--text); }
@@ -1284,7 +1300,7 @@ function renderConstellation(vector, canvasEl) {
   });
 
   // Labels
-  const labels = ['直觉⟷分析', '恐惧⟷欲望', '独立⟷依附', '冲刺⟷巡航'];
+  const labels = ['思维', '驱动', '关系', '节奏'];
   axes.forEach((a, i) => {
     const lx = cx + Math.cos(a.angle) * (r + 24);
     const ly = cy + Math.sin(a.angle) * (r + 24);
@@ -1645,8 +1661,6 @@ function renderResults() {
       <div class="card entering" style="text-align:center">
         <div class="vibe-badge">${p.vibe || 'custom'}</div>
         <div class="personality-name">${p.name}</div>
-        <div class="personality-tagline">"${p.tagline}"</div>
-        <div class="signature">${p.signature}</div>
         <div class="constellation-section">
           <div class="constellation-title">你的隐藏印记</div>
           <div id="constellationTarget"></div>
@@ -1660,7 +1674,9 @@ function renderResults() {
       </div>
       <div class="card entering">
         <div class="personality-desc">
-          ${paragraphs.map(para => `<p>${para}</p>`).join('')}
+          <p class="quote-intro">"${p.tagline}"</p>
+          ${paragraphs.map((para, i) => `<p${i === 0 ? ' class="lead"' : ''}>${para}</p>`).join('')}
+          <p class="signature-closing">${p.signature}</p>
         </div>
         ${p.celebrities ? `<div class="celebrities">🎭 ${p.celebrities}</div>` : ''}
       </div>
@@ -1675,14 +1691,16 @@ function renderResults() {
       </div>
 
       <div class="neighbor-section">
-        <div class="neighbor-title">同类隐藏款</div>
         <div class="neighbor-cards">
-          ${alt.map(a => `
-            <div class="neighbor-card">
-              <div style="color:var(--text);font-weight:600;margin-bottom:2px">${a.name.split('·')[0]}</div>
-              <div style="font-size:0.7rem">"${a.tagline}"</div>
-            </div>
-          `).join('')}
+          ${alt.map((a, i) => {
+            const colors = ['#a78bfa', '#14b8a6', '#f59e0b'];
+            return `
+              <div class="neighbor-card" style="border-left:3px solid ${colors[i]};padding-left:12px">
+                <div class="neighbor-card-name">${a.name.split('·')[0]}</div>
+                <div style="font-size:0.7rem;color:var(--text2)">"${a.tagline}"</div>
+              </div>
+            `;
+          }).join('')}
         </div>
       </div>
     </div>
