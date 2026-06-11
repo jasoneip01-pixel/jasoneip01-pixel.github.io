@@ -3,28 +3,28 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>灵魂快照 · Soul Snapshot</title>
+<title>随手拆了下自己，原来我是那个隐藏 · Unbox Yourself</title>
 <meta name="description" content="测一次，AI 给你你从未见过的自己——不是 27 选 1，是专属于你的那一个。">
 <!-- Open Graph -->
-<meta property="og:title" content="灵魂快照 · 你的 AI 人格测试">
-<meta property="og:description" content="15 道题，50 个灵魂种子。专属于你的人格，不是 27 选 1 的统计学标签——是 AI 为你生成的那一个。">
+<meta property="og:title" content="随手拆了下自己，原来我是那个隐藏 · 你的 AI 人格测试">
+<meta property="og:description" content="15 道题，50 个隐藏款。测一次，AI 给你你从未见过的自己。">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://jasoneip01-pixel.github.io/">
 <meta property="og:image" content="https://jasoneip01-pixel.github.io/share-preview.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:site_name" content="灵魂快照 · Soul Snapshot">
+<meta property="og:site_name" content="随手拆了下自己，原来我是那个隐藏 · Unbox Yourself">
 <meta property="og:locale" content="zh_CN">
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="灵魂快照 · 你的 AI 人格测试">
-<meta name="twitter:description" content="15 道题，50 个灵魂种子。AI 给你你从未见过的自己。">
+<meta name="twitter:title" content="随手拆了下自己，原来我是那个隐藏 · 你的 AI 人格测试">
+<meta name="twitter:description" content="15 道题，50 个隐藏款。AI 给你你从未见过的自己。">
 <meta name="twitter:image" content="https://jasoneip01-pixel.github.io/share-preview.png">
 <!-- WeChat -->
-<meta itemprop="name" content="灵魂快照 · Soul Snapshot">
+<meta itemprop="name" content="随手拆了下自己，原来我是那个隐藏 · Unbox Yourself">
 <meta itemprop="description" content="AI-native 人格测试。不是标签，是镜子。15 道题，专属于你的那一个。">
 <meta itemprop="image" content="https://jasoneip01-pixel.github.io/share-preview.png">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Quiz","name":"灵魂快照","description":"AI-native 人格测试，15道趣味选择题，AI 生成专属于你的人格解读。","numberOfQuestions":15,"isAccessibleForFree":true}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Quiz","name":"随手拆了下自己，原来我是那个隐藏","description":"AI-native 人格测试，15道趣味选择题，AI 生成专属于你的人格解读。","numberOfQuestions":15,"isAccessibleForFree":true}</script>
 <style>
 :root {
   --bg: #0a0a0f;
@@ -527,7 +527,7 @@ body::before {
 <script id="questions-data" type="application/json">
 {
   "meta": {
-    "name": "灵魂快照 (Soul Snapshot)",
+    "name": "随手拆了下自己，原来我是那个隐藏 (Unbox Yourself)",
     "version": "1.0",
     "description": "AI-native personality test — 4 facets, 50 seed personalities, infinite AI variations",
     "total_questions": 15,
@@ -1245,12 +1245,12 @@ function render() {
 function renderStart() {
   app.innerHTML = `
     <div class="header">
-      <div class="logo">灵魂快照</div>
-      <div class="subtitle">Soul Snapshot</div>
+      <div class="logo">随手拆了下自己</div>
+      <div class="subtitle">Unbox Yourself</div>
     </div>
     <div class="card entering">
       <div class="start-subtitle">
-        15 道题，4 个切面，50 个灵魂种子。<br>
+        15 道题，4 个切面，50 个隐藏款。<br>
         AI 当场给你起名字——不是 27 选 1，是专属于你的那一个。
       </div>
       <div class="facet-grid">
@@ -1309,7 +1309,7 @@ function renderQuiz() {
 
   app.innerHTML = `
     <div class="header" style="padding:28px 0 18px">
-      <div class="logo" style="font-size:1.6rem">灵魂快照</div>
+      <div class="logo" style="font-size:1.6rem">随手拆了下自己</div>
     </div>
     <div class="progress-wrap">
       <div class="progress-bar shimmer-active">
@@ -1528,11 +1528,12 @@ function renderResults() {
 
   app.innerHTML = `
     <div class="header" style="padding:24px 0 8px">
-      <div class="logo" style="font-size:1.6rem">灵魂快照</div>
+      <div class="logo" style="font-size:1.6rem">随手拆了下自己，原来我是那个隐藏</div>
     </div>
 
     <div class="card entering" style="text-align:center">
       <div class="vibe-badge">${p.vibe || 'custom'}</div>
+      <div style="font-size:0.8rem;color:var(--accent);opacity:0.7;margin-bottom:4px">👇 你的隐藏款</div>
       <div class="personality-name">${p.name}</div>
       <div class="personality-tagline">"${p.tagline}"</div>
       <div class="personality-divider"></div>
@@ -1553,8 +1554,8 @@ function renderResults() {
     </div>
 
     <div class="adjacent-souls">
-      你相邻的灵魂：<span class="alt-names">${state.result.alternatives.slice(0,2).join(' · ')}</span><br>
-      <span style="opacity:0.6">灵魂快照 v1.0 · 你的数据仅保存在此设备上</span>
+      同类隐藏款：<span class="alt-names">${state.result.alternatives.slice(0,2).join(' · ')}</span><br>
+      <span style="opacity:0.6">随手拆了下自己，原来我是那个隐藏 v1.0 · 你的数据仅保存在此设备上</span>
     </div>
   `;
 }
@@ -1598,7 +1599,7 @@ function closeShare() {
 
 function copyShareCard() {
   const p = state.result.personality;
-  const text = `🦞 灵魂快照 · 我的 AI 人格
+  const text = `🦞 随手拆了下自己，原来我是那个隐藏 · 我的 AI 人格
 
 ${p.name}
 "${p.tagline}"
@@ -1655,7 +1656,7 @@ function saveShareImage() {
       '<div style="font-size:13px;color:#9898b0;font-style:italic;margin-bottom:14px">"' + p.tagline + '"</div>' +
       '<div style="font-family:Georgia,serif;font-size:15px;color:#a78bfa;margin:14px 0;font-style:italic">' + p.signature + '</div>' +
       '<div style="margin-top:14px;padding-top:14px;border-top:1px solid #2a2a3a">' +
-        '<div style="font-size:15px;font-weight:700;background:linear-gradient(135deg,#a78bfa,#f43f5e,#f59e0b);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:2px">灵魂快照</div>' +
+        '<div style="font-size:15px;font-weight:700;background:linear-gradient(135deg,#a78bfa,#f43f5e,#f59e0b);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:2px">随手拆了下自己，原来我是那个隐藏</div>' +
         '<div style="font-size:10px;color:#6b6b80">jasoneip01-pixel.github.io</div>' +
       '</div>';
     
@@ -1668,16 +1669,16 @@ function saveShareImage() {
       var newWin = window.open();
       if (newWin) {
         newWin.document.write(
-          '<html><head><title>灵魂快照 · ' + p.name + '</title>' +
+          '<html><head><title>随手拆了下自己，原来我是那个隐藏 · ' + p.name + '</title>' +
           '<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">' +
           '<style>body{margin:0;display:flex;justify-content:center;align-items:center;min-height:100vh;background:#0a0a0f}img{max-width:100%;height:auto}</style>' +
-          '</head><body><img src="' + imgData + '" alt="Soul Snapshot"></body></html>'
+          '</head><body><img src="' + imgData + '" alt="Unbox Yourself"></body></html>'
         );
         newWin.document.close();
       }
       
       content.innerHTML = '<div style="background:#0a0a0f;border-radius:12px;padding:12px;display:flex;justify-content:center">' +
-        '<img src="' + imgData + '" style="max-width:100%;height:auto;border-radius:8px;display:block" alt="灵魂快照 · ' + p.name + '">' +
+        '<img src="' + imgData + '" style="max-width:100%;height:auto;border-radius:8px;display:block" alt="随手拆了下自己，原来我是那个隐藏 · ' + p.name + '">' +
         '</div>';
       
       overlay.classList.add('has-image');

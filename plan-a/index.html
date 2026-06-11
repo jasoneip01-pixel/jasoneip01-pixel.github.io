@@ -1245,7 +1245,7 @@ function render() {
 function renderStart() {
   app.innerHTML = `
     <div class="header">
-      <div class="logo">随手拆了下自己<br>原来我是那个隐藏</div>
+      <div class="logo">随手拆了下自己</div>
     </div>
     <div class="card entering">
       <div class="start-subtitle">
@@ -1308,7 +1308,7 @@ function renderQuiz() {
 
   app.innerHTML = `
     <div class="header" style="padding:28px 0 18px">
-      <div class="logo" style="font-size:clamp(1rem,3.5vw,1.6rem);line-height:1.4">随手拆了下自己<br>原来我是那个隐藏</div>
+      <div class="logo" style="font-size:clamp(1rem,3.5vw,1.6rem);line-height:1.4">随手拆了下自己</div>
     </div>
     <div class="progress-wrap">
       <div class="progress-bar shimmer-active">
@@ -1527,11 +1527,12 @@ function renderResults() {
 
   app.innerHTML = `
     <div class="header" style="padding:24px 0 8px">
-      <div class="logo" style="font-size:clamp(1rem,3.5vw,1.6rem);line-height:1.4">随手拆了下自己<br>原来我是那个隐藏</div>
+      <div class="logo" style="font-size:clamp(1rem,3.5vw,1.6rem);line-height:1.4">随手拆了下自己，原来我是那个隐藏</div>
     </div>
 
     <div class="card entering" style="text-align:center">
       <div class="vibe-badge">${p.vibe || 'custom'}</div>
+      <div style="font-size:0.8rem;color:var(--accent);opacity:0.7;margin-bottom:4px">👇 你的隐藏款</div>
       <div class="personality-name">${p.name}</div>
       <div class="personality-tagline">"${p.tagline}"</div>
       <div class="personality-divider"></div>
