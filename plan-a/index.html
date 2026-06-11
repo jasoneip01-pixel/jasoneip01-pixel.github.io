@@ -157,11 +157,13 @@ body::before {
   position: relative;
   border-left: 3px solid transparent;
 }
+@media (hover: hover) {
 .option:hover {
   border-color: var(--accent);
   background: #1e1e30;
   border-left-color: var(--accent);
   box-shadow: 0 0 20px rgba(167,139,250,0.08);
+}
 }
 .option.selected {
   border-color: var(--accent);
@@ -170,6 +172,7 @@ body::before {
   box-shadow: 0 0 24px rgba(167,139,250,0.12);
 }
 .option:active { transform: scale(0.985); }
+.option:focus-visible { outline: none; }
 
 /* Results — decorative gradient divider */
 .personality-name {
@@ -1340,8 +1343,14 @@ function selectAnswer(idx) {
   state.answers.push(idx);
 
   if (state.currentQ < questions.questions.length - 1) {
-    state.currentQ++;
-    render();
+    // Highlight clicked option + disable interactions during transition
+    const opts = document.querySelectorAll('.option');
+    if (opts[idx]) opts[idx].classList.add('selected');
+    opts.forEach(o => o.style.pointerEvents = 'none');
+    setTimeout(() => {
+      state.currentQ++;
+      render();
+    }, 280);
   } else {
     calculateResults();
   }

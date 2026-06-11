@@ -170,15 +170,19 @@ body {
   text-align: left; line-height: 1.55; user-select: none;
   -webkit-tap-highlight-color: transparent;
 }
+@media (hover: hover) {
 .option:hover { border-color: var(--theme-color); background: #1e1e30; }
+}
 .option.selected {
   border-color: var(--theme-color);
   background: color-mix(in srgb, var(--theme-color) 8%, var(--surface2));
   box-shadow: 0 0 12px var(--theme-glow);
 }
 .option:active { transform: scale(0.985); }
+.option:focus-visible { outline: none; }
 
 /* ── Plan B: Rainbow option shimmer for bonus ── */
+@media (hover: hover) {
 .bonus-theme .option:hover {
   border-color: transparent;
   background: linear-gradient(var(--surface2), var(--surface2)) padding-box,
@@ -1255,6 +1259,10 @@ function selectAnswer(idx) {
   state.answers.push(idx);
 
   if (state.currentQ < questions.questions.length - 1) {
+    // Highlight clicked option + disable interactions during transition
+    const opts = document.querySelectorAll('.option');
+    if (opts[idx]) opts[idx].classList.add('selected');
+    opts.forEach(o => o.style.pointerEvents = 'none');
     // Zoom-blur transition
     const card = document.querySelector('.card');
     if (card) {
