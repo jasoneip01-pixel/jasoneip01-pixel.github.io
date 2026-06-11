@@ -248,16 +248,10 @@ body {
 .neighbor-section { margin: 8px 0; overflow: hidden; }
 .neighbor-title { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text2); text-align: center; margin-bottom: 10px; }
 
-.neighbor-card {
-  background: var(--surface2); border: 1px solid var(--border);
-  border-radius: var(--radius-sm); padding: 10px 14px;
-  font-size: 0.75rem; color: var(--text2);
-  animation: driftIn 0.7s ease forwards;
-  opacity: 0;
-}
-.neighbor-card:nth-child(1) { animation-delay: 1.5s; }
-.neighbor-card:nth-child(2) { animation-delay: 1.7s; }
-.neighbor-card:nth-child(3) { animation-delay: 1.9s; }
+
+
+
+
 @keyframes driftIn {
   from { opacity: 0; transform: translateX(-20px); }
   to { opacity: 1; transform: translateX(0); }
@@ -503,18 +497,21 @@ body {
   color: var(--text2); text-align: center; margin-bottom: 8px;
   opacity: 0.7;
 }
+
+.neighbor-cards { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
+.neighbor-card {
+  background: var(--surface2); border: 1px solid var(--border);
+  border-radius: var(--radius-sm); padding: 10px 14px;
+  font-size: 0.75rem; color: var(--text2);
+  animation: driftIn 0.7s ease forwards;
+  opacity: 0;
+}
+.neighbor-card:nth-child(1) { animation-delay: 1.5s; }
+.neighbor-card:nth-child(2) { animation-delay: 1.7s; }
+.neighbor-card:nth-child(3) { animation-delay: 1.9s; }
 </style>
 </head>
-
-.neighbor-section.compact .neighbor-card {
-  background: none; border: none; border-radius: 0;
-  padding: 4px 14px; font-size: 0.75rem; color: var(--text2);
-  animation: driftIn 0.7s ease forwards; opacity: 0;
-  display: inline-block;
-}
-.neighbor-section.compact .neighbor-card:nth-child(1) { animation-delay: 1.5s; }
-.neighbor-section.compact .neighbor-card:nth-child(2) { animation-delay: 1.7s; }
-.neighbor-section.compact .neighbor-card:nth-child(3) { animation-delay: 1.9s; }.btn-ghost { background: transparent; color: var(--text2); border: 1px solid var(--border); font-size: 0.8rem; padding: 12px 22px; border-radius: 12px; cursor: pointer; font-weight: 500; transition: all 0.2s; }
+.btn-ghost { background: transparent; color: var(--text2); border: 1px solid var(--border); font-size: 0.8rem; padding: 12px 22px; border-radius: 12px; cursor: pointer; font-weight: 500; transition: all 0.2s; }
 .btn-ghost:hover { border-color: var(--accent); color: var(--text); }
 <body>
 
@@ -1477,10 +1474,16 @@ function renderResults() {
       <button class="btn btn-ghost" onclick="restart()">🔄 再测一次</button>
     </div>
 
-    <div class="neighbor-section compact">
-      ${alt.map(a => `
-        <div class="neighbor-card">${a.name.split('·')[0]} · "${a.tagline}"</div>
-      `).join('')}
+    <div class="neighbor-section">
+      <div class="neighbor-title">同类隐藏款</div>
+      <div class="neighbor-cards">
+        ${alt.map(a => `
+          <div class="neighbor-card">
+            <div style="color:var(--text);font-weight:600;margin-bottom:2px">${a.name.split('·')[0]}</div>
+            <div style="font-size:0.7rem">"${a.tagline}"</div>
+          </div>
+        `).join('')}
+      </div>
     </div>
 <div style="text-align:center;padding:24px;color:var(--text2);font-size:0.75rem;line-height:1.8">
       <span style="opacity:0.6;word-break:break-word;line-height:1.6"><span class="footer-title">随手拆了下自己，原来我是那个隐藏</span>
