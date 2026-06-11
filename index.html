@@ -29,7 +29,7 @@
   --surface2: #1c1c2a;
   --border: #2a2a3a;
   --text: #e4e4ec;
-  --text2: #9898b0;
+  --text2: #c8c8da;
   --accent: #a78bfa;
   --accent2: #7c3aed;
   --gold: #f59e0b;
@@ -118,7 +118,7 @@ body {
   font-family: var(--font-display);
   font-size: clamp(1.3rem, 4vw, 1.8rem);
   color: var(--theme-color);
-  margin-bottom: 6px;
+  margin-bottom: 10px;
   transition: color 0.6s ease;
 }
 .act-transition .act-hint {
@@ -283,14 +283,13 @@ body {
   background: linear-gradient(90deg, var(--accent) 0%, var(--gold) 25%, var(--accent) 50%, var(--gold) 75%, var(--accent) 100%);
   background-size: 200% 100%;
   -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-  background-clip: text; margin-bottom: 6px;
+  background-clip: text; margin-bottom: 10px;
   animation: goldSweep 2.2s ease-in-out forwards;
 }
 @keyframes goldSweep {
   0% { background-position: 200% center; }
   100% { background-position: 0% center; }
 }
-.personality-tagline { font-size: 0.95rem; color: var(--text2); font-style: italic; }
 .personality-desc { font-size: 0.9rem; line-height: 1.8; color: var(--text); margin: 18px 0; }
 .personality-desc p { margin-bottom: 12px; opacity: 0; animation: fadeSlide 0.6s ease forwards; }
 .personality-desc p.lead { font-size: 1.05rem; font-weight: 500; color: var(--text); letter-spacing: 0.01em; }
@@ -318,19 +317,6 @@ body {
 @keyframes pulse {
   0%, 100% { transform: scale(1); }
   50% { transform: scale(1.03); }
-}
-.signature {
-  font-family: var(--font-display); font-size: 0.95rem;
-  color: var(--accent); font-style: italic; padding: 10px 0 10px 16px;
-  margin: 14px 0; position: relative;
-  border-left: 2px solid rgba(167,139,250,0.3);
-  animation: sigGlow 2s ease 1.2s forwards;
-}
-@keyframes sigGlow {
-  0% { text-shadow: 0 0 0px transparent; }
-  50% { text-shadow: 0 0 16px rgba(167,139,250,0.6); }
-  100% { text-shadow: 0 0 4px rgba(167,139,250,0.2); }
-}
 
 /* ── Plan B: Constellation Chart ── */
 .constellation-section { margin: 10px 0 16px; }
@@ -343,7 +329,6 @@ body {
 
 /* ── Plan B: Floating neighbor cards ── */
 .neighbor-section { margin: 8px 0; overflow: hidden; }
-.neighbor-title { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text2); text-align: center; margin-bottom: 10px; }
 
 
 
@@ -1216,7 +1201,7 @@ function renderConstellation(vector, canvasEl) {
     const rr = r * i / 3;
     ctx.beginPath();
     ctx.arc(cx, cy, rr, 0, Math.PI * 2);
-    ctx.strokeStyle = 'rgba(42,42,58,0.4)';
+    ctx.strokeStyle = 'rgba(42,42,58,0.6)';
     ctx.lineWidth = 0.5;
     ctx.stroke();
   }
@@ -1232,7 +1217,7 @@ function renderConstellation(vector, canvasEl) {
     ctx.beginPath();
     ctx.moveTo(cx, cy);
     ctx.lineTo(cx + Math.cos(a.angle) * r, cy + Math.sin(a.angle) * r);
-    ctx.strokeStyle = 'rgba(42,42,58,0.5)';
+    ctx.strokeStyle = 'rgba(42,42,58,0.7)';
     ctx.lineWidth = 0.5;
     ctx.stroke();
   });
@@ -1262,21 +1247,7 @@ function renderConstellation(vector, canvasEl) {
     ctx.globalAlpha = 1;
   }
 
-  // Cross lines (for extra constellation feel)
-  ctx.beginPath();
-  ctx.moveTo(points[0].x, points[0].y);
-  ctx.lineTo(points[2].x, points[2].y);
-  ctx.strokeStyle = 'rgba(255,255,255,0.08)';
-  ctx.lineWidth = 0.5;
-  ctx.stroke();
-  ctx.beginPath();
-  ctx.moveTo(points[1].x, points[1].y);
-  ctx.lineTo(points[3].x, points[3].y);
-  ctx.strokeStyle = 'rgba(255,255,255,0.08)';
-  ctx.lineWidth = 0.5;
-  ctx.stroke();
 
-  // Glowing star points
   points.forEach((p, i) => {
     // Outer glow
     const glow = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, 14);
@@ -1304,8 +1275,8 @@ function renderConstellation(vector, canvasEl) {
   axes.forEach((a, i) => {
     const lx = cx + Math.cos(a.angle) * (r + 24);
     const ly = cy + Math.sin(a.angle) * (r + 24);
-    ctx.fillStyle = '#9898b0';
-    ctx.font = '10px -apple-system, sans-serif';
+    ctx.fillStyle = '#c8c8da';
+    ctx.font = '11px -apple-system, sans-serif';
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
     ctx.fillText(labels[i], lx, ly);
@@ -1331,7 +1302,7 @@ function renderStart() {
       <div class="logo" style="font-size:clamp(1.2rem,4.5vw,1.8rem);line-height:1.3">你有一个隐藏款</div>
     </div>
     <div class="value-prop">
-      <div class="value-line">不是MBTI，不贴标签<br>只给你一张值得分享的灵魂快照</div>
+      <div class="value-line">不是MBTI，不贴标签<br>只给你一张值得分享的个性快照</div>
     </div>
     <div class="card entering">
       <div class="start-subtitle">
@@ -1749,9 +1720,9 @@ function showShare() {
     '<div style="text-align:center">' +
     '<div class="share-vibe-badge">' + (p.vibe || 'custom') + '</div>' +
     '<div class="share-card-name" style="font-family:Georgia,\'Noto Serif SC\',serif;font-size:clamp(1rem,5vw,1.5rem);background:linear-gradient(135deg,#a78bfa,#f59e0b);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:4px">' + p.name + '</div>' +
-    '<div style="color:#9898b0;font-style:italic;font-size:0.85rem;margin-bottom:12px">"' + p.tagline + '"</div>' +
+    '<div style="color:#c8c8da;font-style:italic;font-size:0.85rem;margin-bottom:12px">"' + p.tagline + '"</div>' +
     '<div style="color:#a78bfa;font-family:Georgia,\'Noto Serif SC\',serif;font-size:0.95rem;margin:12px 0;font-style:italic">' + p.signature + '</div>' +
-    '<div style="font-size:0.8rem;color:#9898b0;margin-top:10px;line-height:1.7;text-align:left;padding:8px 0;border-top:1px solid #2a2a3a">' + p.description.slice(0, 180) + '...</div>' +
+    '<div style="font-size:0.8rem;color:#c8c8da;margin-top:10px;line-height:1.7;text-align:left;padding:8px 0;border-top:1px solid #2a2a3a">' + p.description.slice(0, 180) + '...</div>' +
     '<div style="font-size:0.65rem;color:#6b6b80;margin-top:14px;opacity:0.6">jasoneip01-pixel.github.io</div>' +
     '</div>';
 
@@ -1806,7 +1777,7 @@ function saveShareImage() {
   const overlay = document.getElementById('shareOverlay');
   const content = document.getElementById('shareContent');
   
-  content.innerHTML = '<div style="text-align:center;padding:24px;color:#9898b0">⏳ 正在生成分享图片…<br><small>首次加载需下载图片引擎</small></div>';
+  content.innerHTML = '<div style="text-align:center;padding:24px;color:#c8c8da">⏳ 正在生成分享图片…<br><small>首次加载需下载图片引擎</small></div>';
   
   function doRender() {
     const c = document.getElementById('shareCanvasContainer');
@@ -1817,7 +1788,7 @@ function saveShareImage() {
       '<div style="position:absolute;bottom:8px;right:12px;width:32px;height:32px;border:1px solid rgba(167,139,250,0.1);border-radius:50%;border-right-color:transparent;border-bottom-color:transparent;transform:rotate(-30deg)"></div>' +
       '<div style="display:inline-block;padding:4px 14px;border-radius:20px;font-size:10px;text-transform:uppercase;letter-spacing:0.15em;font-weight:700;background:linear-gradient(135deg,rgba(167,139,250,0.2),rgba(124,58,237,0.12));color:#a78bfa;border:1px solid rgba(167,139,250,0.2);margin-bottom:14px">' + (p.vibe || 'custom') + '</div>' +
       '<div style="font-family:Georgia,serif;font-size:22px;font-weight:700;background:linear-gradient(135deg,#a78bfa,#f59e0b);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:4px;line-height:1.35">' + p.name + '</div>' +
-      '<div style="font-size:13px;color:#9898b0;font-style:italic;margin-bottom:14px">"' + p.tagline + '"</div>' +
+      '<div style="font-size:13px;color:#c8c8da;font-style:italic;margin-bottom:14px">"' + p.tagline + '"</div>' +
       '<div style="font-family:Georgia,serif;font-size:15px;color:#a78bfa;margin:14px 0;font-style:italic">' + p.signature + '</div>' +
       '<div style="margin-top:14px;padding-top:14px;border-top:1px solid #2a2a3a">' +
         '<div style="font-size:15px;font-weight:700;background:linear-gradient(135deg,#a78bfa,#f43f5e,#f59e0b);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:2px">随手拆了下自己，原来我是那个隐藏</div>' +
@@ -1870,7 +1841,7 @@ function saveShareImage() {
         '<button class="btn btn-primary" onclick="saveShareImage()">🔄 重新生成</button>' +
         '<button class="btn btn-primary" onclick="shareLink()" style="background:linear-gradient(135deg,var(--accent2),var(--gold))">🔗 分享链接</button>';
     }).catch(function() {
-      content.innerHTML = '<div style="text-align:center;padding:16px;color:#9898b0">' +
+      content.innerHTML = '<div style="text-align:center;padding:16px;color:#c8c8da">' +
         '<div style="font-size:1.2rem;margin-bottom:8px">📸</div><div>图片生成失败</div>' +
         '<div style="font-size:0.8rem;margin:8px 0 12px">请截屏保存，或使用「复制分享文案」分享</div></div>';
       overlay.classList.add('has-image');
@@ -1887,7 +1858,7 @@ function saveShareImage() {
     script.src = 'https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js';
     script.onload = doRender;
     script.onerror = function() {
-      content.innerHTML = '<div style="text-align:center;padding:24px;color:#f59e0b">⚠️ 图片引擎加载失败<br><small style="color:#9898b0">请截屏保存，或用「复制分享文案」分享</small></div>';
+      content.innerHTML = '<div style="text-align:center;padding:24px;color:#f59e0b">⚠️ 图片引擎加载失败<br><small style="color:#c8c8da">请截屏保存，或用「复制分享文案」分享</small></div>';
     };
     document.head.appendChild(script);
   }
@@ -1944,7 +1915,7 @@ function renderShareLanding() {
       <div style="font-size:3rem;margin-bottom:8px">🎁</div>
       <div style="display:inline-block;padding:3px 12px;border-radius:20px;font-size:10px;text-transform:uppercase;letter-spacing:0.15em;background:rgba(167,139,250,0.12);color:#a78bfa;border:1px solid rgba(167,139,250,0.2);margin-bottom:12px">${p.vibe || 'custom'}</div>
       <div style="font-family:Georgia,'Noto Serif SC',serif;font-size:clamp(1.4rem,5vw,2rem);font-weight:700;background:linear-gradient(135deg,#a78bfa,#f59e0b);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:6px">${p.name}</div>
-      <div style="font-size:0.9rem;color:#9898b0;font-style:italic;margin-bottom:10px">"${p.tagline || ''}"</div>
+      <div style="font-size:0.9rem;color:#c8c8da;font-style:italic;margin-bottom:10px">"${p.tagline || ''}"</div>
       <div style="font-family:Georgia,serif;font-size:1rem;color:#a78bfa;margin:8px 0;font-style:italic">${p.signature || ''}</div>
       <div style="margin-top:20px;padding-top:16px;border-top:1px solid var(--border)">
         <div style="font-size:0.85rem;color:var(--text2);margin-bottom:16px">你也想拆开自己？<br>看看AI说你是什么隐藏款</div>
