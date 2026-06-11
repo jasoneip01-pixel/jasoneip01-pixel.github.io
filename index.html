@@ -326,10 +326,10 @@ body {
   color: var(--text2); text-align: center; margin-bottom: 8px;
 }
 .constellation-wrap { display: flex; justify-content: center; }
-.constellation-canvas { max-width: 280px; width: 100%; display: block; }
+.constellation-canvas { max-width: 300px; width: 100%; display: block; }
 
 /* ── Plan B: Floating neighbor cards ── */
-.neighbor-section { margin: 8px 0; overflow: hidden; }
+.neighbor-section { margin: 8px 0; }
 
 
 
@@ -491,7 +491,7 @@ body {
   .facet-grid { grid-template-columns: repeat(4, 1fr); gap: 10px; }
   .option { padding: 16px 20px; font-size: 0.95rem; }
   .btn { padding: 14px 20px; font-size: 0.95rem; min-width: 140px; }
-  .constellation-canvas { max-width: 320px; }
+  .constellation-canvas { max-width: 380px; }
   .share-card { max-width: 420px; padding: 36px 32px; }
 }
 
@@ -511,7 +511,7 @@ body {
   .btn { font-size: 1rem; }
   .share-card { max-width: 440px; padding: 40px 36px; }
   .share-card-name { font-size: 1.4rem; }
-  .constellation-canvas { max-width: 340px; }
+  .constellation-canvas { max-width: 380px; }
   .progress-wrap { max-width: 600px; margin: 0 auto 20px; }
 }
 
@@ -527,7 +527,7 @@ body {
   .facet-icon { font-size: 2rem; }
   .facet-label { font-size: 0.9rem; }
   
-  .constellation-canvas { max-width: 360px; }
+  .constellation-canvas { max-width: 380px; }
   .personality-desc { font-size: 1rem; }
   .share-card { max-width: 480px; }
 }
@@ -539,7 +539,7 @@ body {
   .question-text { font-size: 2rem; }
   .option { font-size: 1.1rem; padding: 22px 30px; }
   
-  .constellation-canvas { max-width: 400px; }
+  .constellation-canvas { max-width: 420px; }
   .personality-name { font-size: 2.2rem; }
 }
 
@@ -581,14 +581,20 @@ body {
   opacity: 0.7;
 }
 
-.neighbor-cards { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
+.neighbor-cards { display: flex; gap: 10px; overflow-x: auto; flex-wrap: nowrap; padding-bottom: 6px; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; }
 .neighbor-card {
   background: var(--surface2); border: 1px solid var(--border);
   border-radius: var(--radius-sm); padding: 10px 14px;
   font-size: 0.75rem; color: var(--text2);
   animation: driftIn 0.7s ease forwards;
   opacity: 0;
+  min-width: 140px; max-width: 200px; flex-shrink: 0;
+  scroll-snap-align: start;
+  cursor: pointer;
+  transition: border-color 0.2s;
 }
+.neighbor-card:hover { border-color: var(--accent); }
+.neighbor-card.expanded { }
 .neighbor-card:nth-child(1) { animation-delay: 1.5s; }
 .neighbor-card:nth-child(2) { animation-delay: 1.7s; }
 .neighbor-card:nth-child(3) { animation-delay: 1.9s; }
@@ -597,6 +603,28 @@ body {
 .btn-ghost { background: transparent; color: var(--text2); border: 1px solid var(--border); font-size: 0.8rem; padding: 12px 22px; border-radius: 12px; cursor: pointer; font-weight: 500; transition: all 0.2s; }
 .btn-ghost:hover { border-color: var(--accent); color: var(--text); }
 
+
+/* ── Collapsible neighbor card ── */
+.neighbor-card .tagline-text {
+  max-height: 1.4em;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+  line-height: 1.4;
+}
+.neighbor-card.expanded .tagline-text {
+  max-height: 4em;
+}
+.neighbor-card .expand-indicator {
+  display: inline-block;
+  font-size: 0.65rem;
+  color: var(--accent);
+  opacity: 0.6;
+  margin-left: 2px;
+  transition: transform 0.2s;
+}
+.neighbor-card.expanded .expand-indicator {
+  transform: rotate(180deg);
+}
 
 /* ── Share Toast ── */
 .share-toast {
@@ -1169,11 +1197,11 @@ function applyTheme(facet) {
 // Constellation Renderer
 // ═══════════════════════════════════════════════
 function renderConstellation(vector, canvasEl) {
-  const size = 320;
+  const size = 340;
   canvasEl.width = size;
   canvasEl.height = size;
   const ctx = canvasEl.getContext('2d');
-  const cx = size / 2, cy = size / 2, r = 110;
+  const cx = size / 2, cy = size / 2, r = 117;
 
   // Background glow
   const bgGrad = ctx.createRadialGradient(cx, cy, 20, cx, cy, r * 1.4);
@@ -1274,7 +1302,7 @@ function renderConstellation(vector, canvasEl) {
   // Labels
   const labels = ['思维', '驱动', '关系', '节奏'];
   axes.forEach((a, i) => {
-    const lx = cx + Math.cos(a.angle) * (r + 24);
+    const lx = cx + Math.cos(a.angle) * (r + 26);
     const ly = cy + Math.sin(a.angle) * (r + 24);
     ctx.fillStyle = '#c8c8da';
     ctx.font = '11px -apple-system, sans-serif';
@@ -1666,9 +1694,9 @@ function renderResults() {
           ${alt.map((a, i) => {
             const colors = ['#a78bfa', '#14b8a6', '#f59e0b'];
             return `
-              <div class="neighbor-card" style="border-left:3px solid ${colors[i]};padding-left:12px">
+              <div class="neighbor-card" style="border-left:3px solid ${colors[i]};padding-left:12px" onclick="this.classList.toggle('expanded')">
                 <div class="neighbor-card-name">${a.name.split('·')[0]}</div>
-                <div style="font-size:0.7rem;color:var(--text2)">"${a.tagline}"</div>
+                <div class="tagline-text" style="font-size:0.7rem;color:var(--text2)">"${a.tagline}" <span class="expand-indicator">▾</span></div>
               </div>
             `;
           }).join('')}
