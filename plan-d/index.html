@@ -116,19 +116,20 @@ body {
   top: var(--space-4);
   right: var(--space-4);
   z-index: 50;
-  width: 40px; height: 40px;
+  width: 34px; height: 34px;
   border-radius: var(--radius-full);
-  border: 1px solid var(--color-border);
-  background: var(--color-surface);
+  border: none;
+  background: transparent;
   color: var(--color-muted-fg);
-  font-size: 1.1rem;
+  opacity: 0.35;
   cursor: pointer;
   display: flex; align-items: center; justify-content: center;
-  transition: all 0.2s ease;
+  transition: opacity 0.25s ease, color 0.25s ease, background 0.25s ease;
   -webkit-tap-highlight-color: transparent;
 }
-.theme-toggle:hover { border-color: var(--color-primary); color: var(--color-primary); }
-.theme-toggle:focus-visible { outline: 2px solid var(--color-ring); outline-offset: 2px; }
+.theme-toggle:hover { opacity: 0.85; color: var(--color-accent); background: var(--color-surface); }
+.theme-toggle:focus-visible { opacity: 0.85; outline: 2px solid var(--color-ring); outline-offset: 2px; }
+.theme-toggle svg { width: 16px; height: 16px; }
 
 /* ── Header ── */
 .header { text-align: center; padding: var(--space-8) 0 var(--space-6); }
@@ -430,7 +431,7 @@ body {
 <body>
 
 <button class="theme-toggle" onclick="toggleTheme()" aria-label="切换亮暗模式" title="切换亮暗模式">
-  <svg id="themeIcon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <svg id="themeIcon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
     <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
   </svg>
 </button>
