@@ -1607,18 +1607,17 @@ function renderResults() {
 
   const dimBars = dimLabels.map(d => {
     const pct = Math.round(d.value * 100);
-    const lean = pct > 55 ? d.high : pct < 45 ? d.low : '平衡';
     return `
-      <div style="margin-bottom:12px">
-        <div style="display:flex;justify-content:space-between;font-size:0.75rem;color:var(--text2);margin-bottom:4px">
-          <span>${d.name}</span>
-          <span>${lean} (${pct}%)</span>
+      <div style="margin-bottom:14px">
+        <div style="font-size:0.72rem;color:var(--text2);margin-bottom:3px">${d.name}</div>
+        <div style="display:flex;align-items:center;gap:6px">
+          <span style="font-size:0.68rem;color:#c8c8da;white-space:nowrap;text-align:right;min-width:52px">${d.low} ${pct}%</span>
+          <div style="flex:1;height:5px;background:var(--border);border-radius:3px;overflow:hidden;position:relative">
+            <div style="height:100%;width:${pct}%;background:linear-gradient(90deg,var(--teal),var(--accent));border-radius:3px;transition:width 0.8s ease"></div>
+          </div>
+          <span style="font-size:0.68rem;color:var(--text2);white-space:nowrap;text-align:left;min-width:52px">${d.high} ${100-pct}%</span>
         </div>
-        <div style="height:5px;background:var(--border);border-radius:3px;overflow:hidden">
-          <div style="height:100%;width:${pct}%;background:linear-gradient(90deg,var(--teal),var(--accent));border-radius:3px;transition:width 0.8s ease"></div>
-        </div>
-      </div>
-    `;
+      </div>`;
   }).join('');
 
   // Build result HTML — 方案C: three-layer layout
