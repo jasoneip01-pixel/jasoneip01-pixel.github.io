@@ -1395,7 +1395,8 @@ function renderQuiz() {
   setParticleTarget(isBonus ? targetCount + 5 : targetCount);
 
   app.innerHTML = `
-      <span style="font-size:0.65rem;margin-right:4px;opacity:0.5">拆盒</span>
+      <div class="act-indicator">
+        <span style="font-size:0.65rem;margin-right:4px;opacity:0.5">拆盒</span>
       <div class="act-dot${currentAct >= 1 ? ' active' : ''}${currentAct > 1 ? ' done' : ''}"></div>
       <div class="act-dash${currentAct > 1 ? ' done' : ''}"></div>
       <div class="act-dot${currentAct >= 2 ? ' active' : ''}${currentAct > 2 ? ' done' : ''}"></div>
@@ -1505,7 +1506,8 @@ function renderActTransition(act) {
     : { label: '形状开始显现', hint: '最后一层，拆到本质', theme: '#f59e0b' };
 
   app.innerHTML = `
-      <span style="font-size:0.65rem;margin-right:4px;opacity:0.5">拆盒</span>
+      <div class="act-indicator">
+        <span style="font-size:0.65rem;margin-right:4px;opacity:0.5">拆盒</span>
       <div class="act-dot done"></div>
       <div class="act-dash done"></div>
       <div class="act-dot${act === 2 ? ' active' : ' done'}"></div>
