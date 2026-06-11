@@ -464,6 +464,14 @@ html,body{
   .cosmic-btn{padding:10px 14px;font-size:0.78rem}
   .results-name{font-size:1.3rem}
 }
+
+/* ── Share: inline image overlay ── */
+#share-scene .share-img-wrap { position:relative; display:flex; flex-direction:column; align-items:center; width:100%; }
+#share-scene .share-img-wrap img { max-width:100%; max-height:50vh; border-radius:12px; box-shadow:0 8px 32px rgba(0,0,0,0.4); display:block; }
+.share-save-guide { margin-top:14px; text-align:center; line-height:1.7; }
+.share-save-guide .primary-hint { font-size:0.85rem; color:var(--text); font-weight:600; }
+.share-save-guide .secondary-hint { font-size:0.7rem; color:var(--text2); margin-top:2px; }
+.share-save-guide .platform-actions { display:flex; gap:8px; margin-top:10px; justify-content:center; flex-wrap:wrap; }
 </style>
 </head>
 <body>
@@ -1275,11 +1283,16 @@ ${p.description.slice(0, 100)}…
 }
 
 // ── Save share image (html2canvas) ──
+// Platform helpers
+var _isWechat = /MicroMessenger/i.test(navigator.userAgent);
+var _isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+var _isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+var _canShare = !!navigator.share;
+
 function saveShareImage() {
   const p = state.result.personality;
   const container = $('shareCanvasContainer');
 
-  // Build share card DOM for html2canvas
   const card = document.createElement('div');
   card.style.cssText = 'width:300px;padding:24px 20px;background:linear-gradient(180deg,#141420 0%,#1a1a30 40%,#121220 100%);text-align:center;font-family:-apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;color:#e8e4f0;position:relative;border-radius:6px;overflow:hidden;';
   card.innerHTML =
@@ -1295,7 +1308,6 @@ function saveShareImage() {
   container.appendChild(card);
 
   if (!window.html2canvas) {
-    // Load dynamically
     const script = document.createElement('script');
     script.src = 'https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js';
     script.onload = () => doRenderShare(card, container);
@@ -1307,37 +1319,63 @@ function saveShareImage() {
 }
 
 function doRenderShare(card, container) {
-  html2canvas(card, { scale: 2, backgroundColor: null, useCORS: true, logging: false }).then(canvas => {
+  const scale = Math.min(window.devicePixelRatio || 2, 3);
+  html2canvas(card, { scale: scale, backgroundColor: null, useCORS: true, logging: false }).then(canvas => {
+    window._shareCanvas = canvas;
     const imgData = canvas.toDataURL('image/png');
+    window._shareImgData = imgData;
 
-    // Open in new tab
-    const newWin = window.open();
-    if (newWin) {
-      newWin.document.write(
-        '<html><head><title>随手拆了下自己，原来我是那个隐藏 · 隐藏款</title>' +
-        '<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">' +
-        '<style>body{margin:0;display:flex;justify-content:center;align-items:center;min-height:100vh;background:#050510}img{max-width:100%;height:auto}</style>' +
-        '</head><body><img src="' + imgData + '" alt="Unbox Yourself Star Chart"></body></html>'
-      );
-      newWin.document.close();
-    }
-
-    // Show in overlay
+    // Inline overlay — no new window
     const shareCard = $('shareScroll');
-    const origContent = shareCard.innerHTML;
     shareCard.innerHTML =
       '<button class="close-btn" onclick="closeShare()">✕</button>' +
-      '<div style="display:flex;justify-content:center;padding:8px 0">' +
-      '<img src="' + imgData + '" style="max-width:100%;height:auto;border-radius:6px" alt="隐藏款">' +
-      '</div>' +
-      '<div style="text-align:center;font-size:0.7rem;color:#8a85b0;margin-top:8px">📲 已在新窗口打开 · 长按保存到相册</div>' +
+      '<div class="share-img-wrap">' +
+      '<img src="' + imgData + '" alt="隐藏款">' +
+      '<div class="share-save-guide">' +
+        (_isWechat
+          ? '<div class="primary-hint">👆 长按图片 → 保存到相册</div><div class="secondary-hint">或点击下方「复制文案」分享</div>'
+          : _isIOS && _canShare
+            ? '<div class="primary-hint">👆 长按保存 · 或点下方分享</div><div class="secondary-hint">支持 AirDrop / 微信 / 相册</div>'
+            : _isMobile
+              ? '<div class="primary-hint">👆 长按图片保存到相册</div><div class="secondary-hint">或点击下方按钮</div>'
+              : '<div class="primary-hint">右键保存 · 或点击下载</div><div class="secondary-hint">发给朋友一起来测</div>') +
+        '<div class="platform-actions">' +
+          (_canShare && !_isWechat
+            ? '<button class="cosmic-btn glow" onclick="systemShare()">📤 分享给朋友</button>'
+            : '') +
+          (!_isWechat && !_isIOS
+            ? '<button class="cosmic-btn ghost" onclick="downloadImage()">💾 下载图片</button>'
+            : '') +
+        '</div>' +
+      '</div></div>' +
       '<div class="share-actions">' +
       '<button class="cosmic-btn ghost" onclick="closeShare()">关闭</button>' +
       '<button class="cosmic-btn ghost" onclick="showShare()">返回卡片</button>' +
       '</div>';
-
   }).catch(() => {
     alert('⚠️ 图片生成失败，请截屏保存或使用「复制文案」');
+  });
+}
+
+function systemShare() {
+  if (!window._shareCanvas || !navigator.share) return;
+  const p = state.result.personality;
+  const text = '随手拆了下自己，原来我是那个隐藏 · ' + p.name + '\n\n测测你的隐藏款：https://jasoneip01-pixel.github.io/plan-c';
+  window._shareCanvas.toBlob(function(blob) {
+    const file = new File([blob], p.name + '.png', { type: 'image/png' });
+    navigator.share({ title: '我的 AI 人格：' + p.name, text: text, files: [file] }).catch(function() {});
+  }, 'image/png');
+}
+
+function downloadImage() {
+  if (!window._shareImgData) return;
+  const a = document.createElement('a');
+  a.href = window._shareImgData;
+  a.download = (state.result.personality.name || 'hidden-figure') + '.png';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+}
   });
 }
 

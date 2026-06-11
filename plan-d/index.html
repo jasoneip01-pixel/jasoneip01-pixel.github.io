@@ -506,6 +506,14 @@ body::before {
   .facet-label { font-size: 0.72rem; }
   .facet-dim { font-size: 0.62rem; }
 }
+
+/* ── Share: inline image overlay ── */
+.share-img-wrap { position:relative; display:flex; flex-direction:column; align-items:center; width:100%; }
+.share-img-wrap img { max-width:100%; max-height:55vh; border-radius:12px; box-shadow:0 8px 32px rgba(0,0,0,0.4); display:block; }
+.share-save-guide { margin-top:16px; text-align:center; line-height:1.7; }
+.share-save-guide .primary-hint { font-size:0.9rem; color:var(--text); font-weight:600; }
+.share-save-guide .secondary-hint { font-size:0.72rem; color:var(--text2); margin-top:2px; }
+.share-save-guide .platform-actions { display:flex; gap:8px; margin-top:10px; justify-content:center; flex-wrap:wrap; }
 </style>
 </head>
 <body>
@@ -1608,7 +1616,7 @@ ${p.signature}
 
 ${p.description.slice(0, 100)}...
 
-测测你的：jasoneip01-pixel.github.io/plan-a`;
+测测你的：jasoneip01-pixel.github.io/plan-d`;
 
   if (navigator.clipboard) {
     navigator.clipboard.writeText(text).then(() => {
@@ -1632,22 +1640,23 @@ document.getElementById('shareOverlay').addEventListener('click', function(e) {
 });
 
 
+// ── Platform helpers ──
+var _isWechat = /MicroMessenger/i.test(navigator.userAgent);
+var _isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+var _isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+var _canShare = !!navigator.share;
+
 function saveShareImage() {
   const p = state.result.personality;
   const overlay = document.getElementById('shareOverlay');
   const content = document.getElementById('shareContent');
   
-  // Show loading state
   content.innerHTML = '<div style="text-align:center;padding:24px;color:#9898b0">⏳ 正在生成分享图片…<br><small>首次加载需下载图片引擎</small></div>';
   
   function doRender() {
     const c = document.getElementById('shareCanvasContainer');
-    
-    // Build redesigned mobile-friendly card with gradient + decorations
     const card = document.createElement('div');
     card.style.cssText = 'width:320px;padding:32px 24px;background:linear-gradient(155deg,#16162f 0%,#1b1b33 25%,#14142a 55%,#181830 80%,#131328 100%);border-radius:18px;border:2px solid #2a2a3a;text-align:center;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#e4e4ec;position:relative;overflow:hidden;box-shadow:0 8px 40px rgba(0,0,0,0.4);';
-    
-    // Decorative diamond and arc via inner elements
     card.innerHTML = 
       '<div style="position:absolute;top:12px;left:14px;font-size:12px;color:#a78bfa;opacity:0.25">◆</div>' +
       '<div style="position:absolute;bottom:8px;right:12px;width:32px;height:32px;border:1px solid rgba(167,139,250,0.1);border-radius:50%;border-right-color:transparent;border-bottom-color:transparent;transform:rotate(-30deg)"></div>' +
@@ -1657,53 +1666,54 @@ function saveShareImage() {
       '<div style="font-family:Georgia,serif;font-size:15px;color:#a78bfa;margin:14px 0;font-style:italic">' + p.signature + '</div>' +
       '<div style="margin-top:14px;padding-top:14px;border-top:1px solid #2a2a3a">' +
         '<div style="font-size:15px;font-weight:700;background:linear-gradient(135deg,#a78bfa,#f43f5e,#f59e0b);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:2px">随手拆了下自己，原来我是那个隐藏</div>' +
-        '<div style="font-size:10px;color:#6b6b80">jasoneip01-pixel.github.io</div>' +
+        '<div style="font-size:10px;color:#6b6b80">jasoneip01-pixel.github.io/plan-d</div>' +
       '</div>';
-    
     c.innerHTML = '';
     c.appendChild(card);
     
-    html2canvas(card, { scale: 1.5, backgroundColor: null, useCORS: true, logging: false }).then(function(canvas) {
-      const imgData = canvas.toDataURL('image/png');
+    const scale = Math.min(window.devicePixelRatio || 2, 3);
+    html2canvas(card, { scale: scale, backgroundColor: null, useCORS: true, logging: false }).then(function(canvas) {
+      window._shareCanvas = canvas;
+      window._shareImgData = canvas.toDataURL('image/png');
       
-      var newWin = window.open();
-      if (newWin) {
-        newWin.document.write(
-          '<html><head><title>随手拆了下自己，原来我是那个隐藏 · ' + p.name + '</title>' +
-          '<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">' +
-          '<style>body{margin:0;display:flex;justify-content:center;align-items:center;min-height:100vh;background:#0a0a0f}img{max-width:100%;height:auto}</style>' +
-          '</head><body><img src="' + imgData + '" alt="Unbox Yourself"></body></html>'
-        );
-        newWin.document.close();
-      }
-      
-      content.innerHTML = '<div style="background:#0a0a0f;border-radius:12px;padding:12px;display:flex;justify-content:center">' +
-        '<img src="' + imgData + '" style="max-width:100%;height:auto;border-radius:8px;display:block" alt="随手拆了下自己，原来我是那个隐藏 · ' + p.name + '">' +
-        '</div>';
-      
+      content.innerHTML = '<div class="share-img-wrap">' +
+        '<img src="' + window._shareImgData + '" alt="随手拆了下自己，原来我是那个隐藏 · ' + p.name + '">' +
+        '<div class="share-save-guide">' +
+          (_isWechat
+            ? '<div class="primary-hint">👆 长按上方图片 → 保存到相册</div><div class="secondary-hint">或点击下方「复制文案」分享</div>'
+            : _isIOS && _canShare
+              ? '<div class="primary-hint">👆 长按图片保存 · 或点击下方分享</div><div class="secondary-hint">支持 AirDrop / 微信 / 相册</div>'
+              : _isMobile
+                ? '<div class="primary-hint">👆 长按图片保存到相册</div><div class="secondary-hint">或点击下方按钮分享</div>'
+                : '<div class="primary-hint">右键图片保存 · 或点击下载</div><div class="secondary-hint">扫码或截图发给朋友</div>') +
+          '<div class="platform-actions">' +
+            (_canShare && !_isWechat
+              ? '<button class="btn btn-primary" onclick="systemShare()">📤 分享给朋友</button>'
+              : '') +
+            (!_isWechat && !_isIOS
+              ? '<button class="btn btn-secondary" onclick="downloadImage()">💾 下载图片</button>'
+              : '') +
+          '</div>' +
+        '</div>' +
+      '</div>';
       overlay.classList.add('has-image');
-      var actionsEl = overlay.querySelector('.share-actions');
-      actionsEl.innerHTML = 
+      overlay.querySelector('.share-actions').innerHTML =
         '<button class="btn btn-secondary" onclick="closeShare()">关闭</button>' +
-        '<button class="btn btn-primary" onclick="saveShareImage()">🔄 重新生成</button>' +
-        '<div class="share-save-hint">📲 已在新标签页打开图片 · 长按或菜单保存到相册</div>';
-      
+        '<button class="btn btn-primary" onclick="copyShareCard()">📋 复制文案</button>' +
+        '<button class="btn btn-primary" onclick="saveShareImage()">🔄 重新生成</button>';
     }).catch(function() {
       content.innerHTML = '<div style="text-align:center;padding:16px;color:#9898b0">' +
-        '<div style="font-size:1.2rem;margin-bottom:8px">📸</div>' +
-        '<div>图片生成失败</div>' +
-        '<div style="font-size:0.8rem;margin:8px 0 12px">请截屏保存，或使用「复制文案」分享</div>' +
-        '</div>';
+        '<div style="font-size:1.2rem;margin-bottom:8px">📸</div><div>图片生成失败</div>' +
+        '<div style="font-size:0.8rem;margin:8px 0 12px">请截屏保存，或使用「复制文案」分享</div></div>';
       overlay.classList.add('has-image');
-      var actionsEl = overlay.querySelector('.share-actions');
-      actionsEl.innerHTML = '<button class="btn btn-secondary" onclick="closeShare()">关闭</button>' +
+      overlay.querySelector('.share-actions').innerHTML =
+        '<button class="btn btn-secondary" onclick="closeShare()">关闭</button>' +
         '<button class="btn btn-primary" onclick="showShare()">返回卡片</button>';
     });
   }
   
-  if (window.html2canvas) {
-    doRender();
-  } else {
+  if (window.html2canvas) { doRender(); }
+  else {
     var script = document.createElement('script');
     script.src = 'https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js';
     script.onload = doRender;
@@ -1712,6 +1722,26 @@ function saveShareImage() {
     };
     document.head.appendChild(script);
   }
+}
+
+function systemShare() {
+  if (!window._shareCanvas || !navigator.share) return;
+  const p = state.result.personality;
+  const text = '随手拆了下自己，原来我是那个隐藏 · ' + p.name + '\n\n测测你的隐藏款：https://jasoneip01-pixel.github.io/plan-d';
+  window._shareCanvas.toBlob(function(blob) {
+    const file = new File([blob], p.name + '.png', { type: 'image/png' });
+    navigator.share({ title: '我的 AI 人格：' + p.name, text: text, files: [file] }).catch(function() {});
+  }, 'image/png');
+}
+
+function downloadImage() {
+  if (!window._shareImgData) return;
+  const a = document.createElement('a');
+  a.href = window._shareImgData;
+  a.download = (state.result.personality.name || 'hidden-figure') + '.png';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
 }
 
 

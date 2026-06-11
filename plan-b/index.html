@@ -448,6 +448,14 @@ body {
   .facet-label { font-size: 0.72rem; }
   .facet-dim { font-size: 0.62rem; }
 }
+
+/* ── Share: inline image overlay ── */
+.share-img-wrap { position:relative; display:flex; flex-direction:column; align-items:center; width:100%; }
+.share-img-wrap img { max-width:100%; max-height:55vh; border-radius:12px; box-shadow:0 8px 32px rgba(0,0,0,0.4); display:block; }
+.share-save-guide { margin-top:16px; text-align:center; line-height:1.7; }
+.share-save-guide .primary-hint { font-size:0.9rem; color:var(--text); font-weight:600; }
+.share-save-guide .secondary-hint { font-size:0.72rem; color:var(--text2); margin-top:2px; }
+.share-save-guide .platform-actions { display:flex; gap:8px; margin-top:10px; justify-content:center; flex-wrap:wrap; }
 </style>
 </head>
 <body>
@@ -1540,6 +1548,12 @@ document.getElementById('shareOverlay').addEventListener('click', function(e) {
   if (e.target === this) closeShare();
 });
 
+// ── Platform helpers ──
+var _isWechat = /MicroMessenger/i.test(navigator.userAgent);
+var _isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+var _isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+var _canShare = !!navigator.share;
+
 function saveShareImage() {
   const p = state.result.personality;
   const v = state.result.vector;
@@ -1551,8 +1565,6 @@ function saveShareImage() {
 
   function doRender() {
     const c = document.getElementById('shareCanvasContainer');
-
-    // Render mini constellation
     const miniC = document.createElement('canvas');
     miniC.width = 260; miniC.height = 260;
     renderConstellation(v, miniC);
@@ -1571,52 +1583,55 @@ function saveShareImage() {
       <div style="font-family:Georgia,serif;font-size:10px;color:#9898b0;font-style:italic;margin-top:10px;opacity:0.7;line-height:1.5;position:relative;z-index:1">${poetic}</div>
       <div style="margin-top:16px;padding-top:12px;border-top:1px solid rgba(167,139,250,0.15);position:relative;z-index:1">
         <div style="font-size:14px;font-weight:700;background:linear-gradient(135deg,#a78bfa,#f43f5e,#f59e0b);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:2px">随手拆了下自己，原来我是那个隐藏</div>
-        <div style="font-size:9px;color:#6b6b80">jasoneip01-pixel.github.io</div>
+        <div style="font-size:9px;color:#6b6b80">jasoneip01-pixel.github.io/plan-b</div>
       </div>
     `;
-
     c.innerHTML = '';
     c.appendChild(card);
 
-    html2canvas(card, { scale: 1.8, backgroundColor: null, useCORS: true, logging: false }).then(function(canvas) {
-      const imgData = canvas.toDataURL('image/png');
-
-      var newWin = window.open();
-      if (newWin) {
-        newWin.document.write(
-          '<html><head><title>随手拆了下自己，原来我是那个隐藏 · ' + p.name + '</title>' +
-          '<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">' +
-          '<style>body{margin:0;display:flex;justify-content:center;align-items:center;min-height:100vh;background:#0a0a0f}img{max-width:100%;height:auto}</style>' +
-          '</head><body><img src="' + imgData + '" alt="Unbox Yourself"></body></html>'
-        );
-        newWin.document.close();
-      }
-
-      content.innerHTML = '<div style="background:#0a0a0f;border-radius:12px;padding:12px;display:flex;justify-content:center">' +
-        '<img src="' + imgData + '" style="max-width:100%;height:auto;border-radius:8px;display:block" alt="随手拆了下自己，原来我是那个隐藏 · ' + p.name + '">' +
-        '</div>';
-
+    const scale = Math.min(window.devicePixelRatio || 2, 3);
+    html2canvas(card, { scale: scale, backgroundColor: null, useCORS: true, logging: false }).then(function(canvas) {
+      window._shareCanvas = canvas;
+      window._shareImgData = canvas.toDataURL('image/png');
+      
+      content.innerHTML = '<div class="share-img-wrap">' +
+        '<img src="' + window._shareImgData + '" alt="随手拆了下自己，原来我是那个隐藏 · ' + p.name + '">' +
+        '<div class="share-save-guide">' +
+          (_isWechat
+            ? '<div class="primary-hint">👆 长按上方图片 → 保存到相册</div><div class="secondary-hint">或点击下方「复制文案」分享</div>'
+            : _isIOS && _canShare
+              ? '<div class="primary-hint">👆 长按图片保存 · 或点击下方分享</div><div class="secondary-hint">支持 AirDrop / 微信 / 相册</div>'
+              : _isMobile
+                ? '<div class="primary-hint">👆 长按图片保存到相册</div><div class="secondary-hint">或点击下方按钮分享</div>'
+                : '<div class="primary-hint">右键图片保存 · 或点击下载</div><div class="secondary-hint">扫码或截图发给朋友</div>') +
+          '<div class="platform-actions">' +
+            (_canShare && !_isWechat
+              ? '<button class="btn btn-primary" onclick="systemShare()">📤 分享给朋友</button>'
+              : '') +
+            (!_isWechat && !_isIOS
+              ? '<button class="btn btn-secondary" onclick="downloadImage()">💾 下载图片</button>'
+              : '') +
+          '</div>' +
+        '</div>' +
+      '</div>';
       overlay.classList.add('has-image');
-      var actionsEl = overlay.querySelector('.share-actions');
-      actionsEl.innerHTML = '<button class="btn btn-secondary" onclick="closeShare()">关闭</button>' +
-        '<button class="btn btn-primary" onclick="saveShareImage()">🔄 重新生成</button>' +
-        '<div style="width:100%;text-align:center;font-size:0.7rem;color:#9898b0;margin-top:6px">📲 已在新标签页打开图片 · 长按/菜单保存到相册</div>';
+      overlay.querySelector('.share-actions').innerHTML =
+        '<button class="btn btn-secondary" onclick="closeShare()">关闭</button>' +
+        '<button class="btn btn-primary" onclick="copyShareCard()">📋 复制文案</button>' +
+        '<button class="btn btn-primary" onclick="saveShareImage()">🔄 重新生成</button>';
     }).catch(function() {
       content.innerHTML = '<div style="text-align:center;padding:16px;color:#9898b0">' +
-        '<div style="font-size:1.2rem;margin-bottom:8px">📸</div>' +
-        '<div>图片生成失败</div>' +
-        '<div style="font-size:0.8rem;margin:8px 0 12px">请截屏保存，或使用「复制文案」分享</div>' +
-        '</div>';
+        '<div style="font-size:1.2rem;margin-bottom:8px">📸</div><div>图片生成失败</div>' +
+        '<div style="font-size:0.8rem;margin:8px 0 12px">请截屏保存，或使用「复制文案」分享</div></div>';
       overlay.classList.add('has-image');
-      var actionsEl = overlay.querySelector('.share-actions');
-      actionsEl.innerHTML = '<button class="btn btn-secondary" onclick="closeShare()">关闭</button>' +
+      overlay.querySelector('.share-actions').innerHTML =
+        '<button class="btn btn-secondary" onclick="closeShare()">关闭</button>' +
         '<button class="btn btn-primary" onclick="showShare()">返回卡片</button>';
     });
   }
 
-  if (window.html2canvas) {
-    doRender();
-  } else {
+  if (window.html2canvas) { doRender(); }
+  else {
     var script = document.createElement('script');
     script.src = 'https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js';
     script.onload = doRender;
@@ -1625,6 +1640,26 @@ function saveShareImage() {
     };
     document.head.appendChild(script);
   }
+}
+
+function systemShare() {
+  if (!window._shareCanvas || !navigator.share) return;
+  const p = state.result.personality;
+  const text = '随手拆了下自己，原来我是那个隐藏 · ' + p.name + '\n\n测测你的隐藏款：https://jasoneip01-pixel.github.io/plan-b';
+  window._shareCanvas.toBlob(function(blob) {
+    const file = new File([blob], p.name + '.png', { type: 'image/png' });
+    navigator.share({ title: '我的 AI 人格：' + p.name, text: text, files: [file] }).catch(function() {});
+  }, 'image/png');
+}
+
+function downloadImage() {
+  if (!window._shareImgData) return;
+  const a = document.createElement('a');
+  a.href = window._shareImgData;
+  a.download = (state.result.personality.name || 'hidden-figure') + '.png';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
 }
 
 // ═══════════════════════════════════════════════
