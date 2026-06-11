@@ -460,6 +460,8 @@ body {
 .share-save-guide .primary-hint { font-size:0.9rem; color:var(--text); font-weight:600; }
 .share-save-guide .secondary-hint { font-size:0.72rem; color:var(--text2); margin-top:2px; }
 .share-save-guide .platform-actions { display:flex; gap:8px; margin-top:10px; justify-content:center; flex-wrap:wrap; }
+.footer-title { display: block; font-size: 0.6rem; color: var(--text2); line-height: 1.4; }
+.footer-sub { display: block; font-size: 0.55rem; color: var(--text2); opacity: 0.7; line-height: 1.4; }
 </style>
 </head>
 <body>
@@ -1440,7 +1442,8 @@ function renderResults() {
     </div>
 
     <div style="text-align:center;padding:24px;color:var(--text2);font-size:0.75rem;line-height:1.8">
-      <span style="opacity:0.6;word-break:break-word;line-height:1.6">随手拆了下自己，原来我是那个隐藏 v1.0 · 你的数据仅保存在此设备上</span>
+      <span style="opacity:0.6;word-break:break-word;line-height:1.6"><span class="footer-title">随手拆了下自己，原来我是那个隐藏</span>
+  <span class="footer-sub">v1.0 · 你的数据仅保存在此设备上</span></span>
     </div>
   `;
 
