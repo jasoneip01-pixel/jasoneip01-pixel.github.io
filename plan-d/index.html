@@ -9,7 +9,7 @@
 <meta property="og:title" content="随手拆了下自己，原来我是那个隐藏 · 你的 AI 人格测试">
 <meta property="og:description" content="15 道题，50 个隐藏款。测一次，AI 给你你从未见过的自己。">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://jasoneip01-pixel.github.io/">
+<meta property="og:url" content="https://jasoneip01-pixel.github.io/plan-d/">
 <meta property="og:image" content="https://jasoneip01-pixel.github.io/share-preview.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -528,6 +528,7 @@ body::before {
       <button class="btn btn-secondary" onclick="closeShare()">关闭</button>
       <button class="btn btn-primary" onclick="copyShareCard()">📋 复制文案</button>
       <button class="btn btn-primary" onclick="saveShareImage()" style="background:linear-gradient(135deg,var(--accent2),var(--teal))">📸 保存图片</button>
+      <button class="btn btn-primary" onclick="shareLink()" style="background:linear-gradient(135deg,var(--accent2),var(--gold))">🔗 分享链接</button>
     </div>
   </div>
 </div>
@@ -1700,7 +1701,8 @@ function saveShareImage() {
       overlay.querySelector('.share-actions').innerHTML =
         '<button class="btn btn-secondary" onclick="closeShare()">关闭</button>' +
         '<button class="btn btn-primary" onclick="copyShareCard()">📋 复制文案</button>' +
-        '<button class="btn btn-primary" onclick="saveShareImage()">🔄 重新生成</button>';
+        '<button class="btn btn-primary" onclick="saveShareImage()">🔄 重新生成</button>' +
+        '<button class="btn btn-primary" onclick="shareLink()" style="background:linear-gradient(135deg,var(--accent2),var(--gold))">🔗 分享链接</button>';
     }).catch(function() {
       content.innerHTML = '<div style="text-align:center;padding:16px;color:#9898b0">' +
         '<div style="font-size:1.2rem;margin-bottom:8px">📸</div><div>图片生成失败</div>' +
@@ -1742,6 +1744,25 @@ function downloadImage() {
   document.body.appendChild(a);
   a.click();
   document.body.removeChild(a);
+}
+
+function shareLink() {
+  const p = state.result.personality;
+  const url = window.location.href;
+  const title = '随手拆了下自己，原来我是那个隐藏';
+  const text = '我刚测了AI人格测试——「' + p.name + '」！' +
+    '你也来拆一个你的隐藏款👉 ' + url;
+  if (navigator.share) {
+    navigator.share({ title: title, text: text, url: url }).catch(function() {});
+  } else {
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(url).then(function() {
+        alert('✅ 链接已复制！去微信发送给朋友吧～');
+      });
+    } else {
+      prompt('复制这个链接发给朋友：', url);
+    }
+  }
 }
 
 
