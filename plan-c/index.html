@@ -1146,7 +1146,7 @@ function renderResults() {
   $('resultsTagline').textContent = '「' + p.tagline + '」';
   $('resultsDesc').textContent = p.description;
   $('resultsSig').textContent = p.signature;
-  $('resultsAdjacent').innerHTML = '相邻的灵魂：' + state.result.alternatives.slice(0, 2).join(' · ');
+  $('resultsAdjacent').innerHTML = '同类隐藏款：' + state.result.alternatives.slice(0, 2).join(' · ');
 
   // Start constellation animation
   if (constellationAnimFrame) cancelAnimationFrame(constellationAnimFrame);
