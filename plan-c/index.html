@@ -399,23 +399,67 @@ html,body{
 .white-flash.active{opacity:1;transition:opacity 0.05s}
 
 /* ── Responsive ── */
+@media(min-width:480px){
+  .portal-logo{font-size:2.8rem}
+  .portal-ring{width:200px;height:200px}
+  .portal-sub{font-size:1rem}
+  .tarot-card{height:60px}
+  .share-scroll{max-width:360px;padding:24px 20px}
+}
 @media(min-width:600px){
-  .tarot-card{height:64px}
+  .portal-logo{font-size:3.2rem}
+  .portal-ring{width:240px;height:240px}
+  .tarot-card{height:66px;font-size:0.95rem}
   .share-scroll{max-width:400px;padding:28px 24px}
   .results-inner{max-width:600px}
   .cosmic-actions{max-width:480px}
+  .guide-bubble{max-width:520px}
+}
+@media(min-width:768px){
+  .portal-logo{font-size:3.8rem}
+  .portal-ring{width:280px;height:280px}
+  .portal-sub{font-size:1.1rem}
+  .tarot-card{height:72px;font-size:1rem}
+  .results-inner{max-width:680px}
+  #constellation-canvas{max-width:340px}
+  .results-name{font-size:2.2rem}
 }
 @media(min-width:900px){
+  .portal-logo{font-size:4.2rem}
   .results-inner{max-width:700px}
-  #constellation-canvas{max-width:360px}
+  #constellation-canvas{max-width:380px}
   .guide-bubble{max-width:600px}
   .tarot-area{max-width:600px}
   .results-desc{max-width:560px;font-size:1rem}
 }
+@media(min-width:1024px){
+  .portal-logo{font-size:4.8rem}
+  .portal-ring{width:320px;height:320px}
+  .tarot-card{height:78px;font-size:1.05rem}
+  .results-inner{max-width:860px}
+  #constellation-canvas{max-width:440px}
+  .results-name{font-size:2.8rem}
+  .guide-bubble{max-width:680px}
+  .tarot-area{max-width:680px}
+}
+@media(min-width:1400px){
+  .portal-logo{font-size:5.5rem}
+  .portal-ring{width:360px;height:360px}
+  .tarot-card{height:84px;font-size:1.1rem}
+  .results-inner{max-width:960px}
+  #constellation-canvas{max-width:500px}
+  .results-name{font-size:3.2rem}
+  .guide-bubble{max-width:760px}
+  .tarot-area{max-width:760px}
+}
 @media(max-width:360px){
-  .tarot-card{height:50px}
+  .portal-logo{font-size:2rem}
+  .portal-ring{width:160px;height:160px}
+  .portal-sub{font-size:0.85rem}
+  .tarot-card{height:50px;font-size:0.8rem}
   .share-scroll{padding:16px 12px}
   .cosmic-btn{padding:10px 14px;font-size:0.78rem}
+  .results-name{font-size:1.3rem}
 }
 </style>
 </head>
