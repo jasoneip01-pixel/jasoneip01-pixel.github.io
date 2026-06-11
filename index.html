@@ -73,10 +73,10 @@ body {
 }
 
 /* Header */
-.header { text-align: center; padding: 32px 0 24px; position: relative; z-index: 1; }
+.header { text-align: center; padding: 16px 0 12px; position: relative; z-index: 1; }
 .header .logo {
   font-family: var(--font-display);
-  font-size: clamp(1.6rem, 5vw, 3rem);
+  font-size: clamp(0.95rem, 3.5vw, 1.6rem);
   background: linear-gradient(135deg, var(--accent), var(--rose), var(--gold));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -223,10 +223,10 @@ body {
   50% { transform: scale(1.03); }
 }
 .signature {
-  text-align: center; font-family: var(--font-display); font-size: 1rem;
-  color: var(--accent); font-style: italic; padding: 14px;
-  border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
-  margin: 18px 0;
+  font-family: var(--font-display); font-size: 0.95rem;
+  color: var(--accent); font-style: italic; padding: 10px 0 10px 16px;
+  margin: 14px 0; position: relative;
+  border-left: 2px solid rgba(167,139,250,0.3);
   animation: sigGlow 2s ease 1.2s forwards;
 }
 @keyframes sigGlow {
@@ -245,9 +245,9 @@ body {
 .constellation-canvas { max-width: 280px; width: 100%; display: block; }
 
 /* ── Plan B: Floating neighbor cards ── */
-.neighbor-section { margin: 12px 0; overflow: hidden; }
+.neighbor-section { margin: 8px 0; overflow: hidden; }
 .neighbor-title { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text2); text-align: center; margin-bottom: 10px; }
-.neighbor-cards { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
+
 .neighbor-card {
   background: var(--surface2); border: 1px solid var(--border);
   border-radius: var(--radius-sm); padding: 10px 14px;
@@ -275,7 +275,7 @@ body {
 }
 
 /* Buttons */
-.btn-row { display: flex; gap: 10px; margin-top: 20px; flex-wrap: wrap; }
+.btn-row { display: flex; gap: 12px; margin-top: 24px; flex-wrap: wrap; }
 .btn {
   flex: 1; min-width: 120px; padding: 13px 18px; border-radius: var(--radius-sm);
   font-size: 0.9rem; font-weight: 600; border: none; cursor: pointer;
@@ -409,7 +409,7 @@ body {
 /* ── Responsive: Tablet (480-768px) ── */
 @media (min-width: 480px) {
   .container { max-width: 640px; padding: 28px 24px 70px; }
-  .header { padding: 40px 0 28px; }
+  .header { padding: 20px 0 14px; }
   .card { padding: 28px 28px; }
   .facet-grid { grid-template-columns: repeat(4, 1fr); gap: 10px; }
   .option { padding: 16px 20px; font-size: 0.95rem; }
@@ -421,25 +421,14 @@ body {
 /* ── Responsive: Desktop (768-1024px) ── */
 @media (min-width: 768px) {
   .container { max-width: 780px; padding: 36px 32px 80px; }
-  .header { padding: 48px 0 32px; }
+  .header { padding: 12px 0 8px; }
   .card { padding: 32px 32px; margin-bottom: 16px; border-radius: 20px; }
   .question-text { font-size: 1.6rem; margin-bottom: 28px; }
   .option { padding: 18px 24px; font-size: 1rem; }
   .options { gap: 10px; }
-  .results-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-    align-items: start;
-  }
-  .results-grid .card:first-child {
-    grid-column: 2;
-    grid-row: 1 / 3;
-  }
-  .results-grid .card:nth-child(2) {
-    grid-column: 1;
-    grid-row: 1;
-  }
+  
+  
+  
   .personality-desc { font-size: 0.95rem; line-height: 1.85; }
   .btn-row { gap: 12px; }
   .btn { font-size: 1rem; }
@@ -452,7 +441,7 @@ body {
 /* ── Responsive: Large (1024px+) ── */
 @media (min-width: 1024px) {
   .container { max-width: 960px; padding: 40px 40px 100px; }
-  .header { padding: 56px 0 36px; }
+  .header { padding: 28px 0 18px; }
   .card { padding: 36px 36px; border-radius: 24px; }
   .question-text { font-size: 1.8rem; }
   .option { padding: 20px 28px; font-size: 1.05rem; }
@@ -460,7 +449,7 @@ body {
   .facet-item { padding: 22px 14px; }
   .facet-icon { font-size: 2rem; }
   .facet-label { font-size: 0.9rem; }
-  .results-grid { gap: 20px; }
+  
   .constellation-canvas { max-width: 360px; }
   .personality-desc { font-size: 1rem; }
   .share-card { max-width: 480px; }
@@ -472,7 +461,7 @@ body {
   .card { padding: 40px 44px; }
   .question-text { font-size: 2rem; }
   .option { font-size: 1.1rem; padding: 22px 30px; }
-  .results-grid { gap: 24px; }
+  
   .constellation-canvas { max-width: 400px; }
   .personality-name { font-size: 2.2rem; }
 }
@@ -480,7 +469,7 @@ body {
 /* ── Tiny phones (<380px) tighten spacing ── */
 @media (max-width: 380px) {
   .container { padding: 12px 10px 50px; }
-  .header { padding: 24px 0 16px; }
+  .header { padding: 12px 0 8px; }
   .card { padding: 18px 14px; }
   .option { padding: 13px 14px; font-size: 0.85rem; }
   .btn { font-size: 0.85rem; padding: 12px 14px; }
@@ -501,8 +490,32 @@ body {
 .share-save-guide .platform-actions { display:flex; gap:8px; margin-top:10px; justify-content:center; flex-wrap:wrap; }
 .footer-title { display: block; font-size: 0.6rem; color: var(--text2); line-height: 1.4; }
 .footer-sub { display: block; font-size: 0.55rem; color: var(--text2); opacity: 0.7; line-height: 1.4; }
+
+.results-section .card { margin-bottom: 20px; }
+.results-section .card:last-child { margin-bottom: 0; }
+
+.dim-bars { padding: 0 4px; }
+.dim-bars .bar-item { margin-bottom: 10px; }
+.dim-bars .bar-item:last-child { margin-bottom: 0; }
+
+.section-label {
+  font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em;
+  color: var(--text2); text-align: center; margin-bottom: 8px;
+  opacity: 0.7;
+}
 </style>
 </head>
+
+.neighbor-section.compact .neighbor-card {
+  background: none; border: none; border-radius: 0;
+  padding: 4px 14px; font-size: 0.75rem; color: var(--text2);
+  animation: driftIn 0.7s ease forwards; opacity: 0;
+  display: inline-block;
+}
+.neighbor-section.compact .neighbor-card:nth-child(1) { animation-delay: 1.5s; }
+.neighbor-section.compact .neighbor-card:nth-child(2) { animation-delay: 1.7s; }
+.neighbor-section.compact .neighbor-card:nth-child(3) { animation-delay: 1.9s; }.btn-ghost { background: transparent; color: var(--text2); border: 1px solid var(--border); font-size: 0.8rem; padding: 12px 22px; border-radius: 12px; cursor: pointer; font-weight: 500; transition: all 0.2s; }
+.btn-ghost:hover { border-color: var(--accent); color: var(--text); }
 <body>
 
 <canvas id="particleCanvas"></canvas>
@@ -1437,7 +1450,7 @@ function renderResults() {
       <div class="logo" style="font-size:clamp(1rem,3.5vw,1.6rem);line-height:1.4">随手拆了下自己，原来我是那个隐藏</div>
     </div>
 
-    <div class="results-grid">
+    <div class="results-section">
       <div class="card entering" style="text-align:center">
         <div class="vibe-badge">${p.vibe || 'custom'}</div>
         <div style="font-size:0.8rem;color:var(--accent);opacity:0.7;margin-bottom:4px">👇 你的隐藏款</div>
@@ -1455,32 +1468,21 @@ function renderResults() {
           <div class="constellation-title">你的隐藏印记</div>
           <div id="constellationTarget"></div>
         </div>
-        ${dimBars}
+        <div class="dim-bars">${dimBars}</div>
       </div>
     </div>
 
-    <div class="btn-row">
-      <button class="btn btn-secondary" onclick="restart()">🔄 再测一次</button>
-      
+        <div class="btn-row">
+      <button class="btn btn-share" onclick="showShare()">📤 分享我的隐藏款</button>
+      <button class="btn btn-ghost" onclick="restart()">🔄 再测一次</button>
     </div>
 
-    <div class="neighbor-section">
-      <div class="neighbor-title">同类隐藏款</div>
-      <div class="neighbor-cards">
-        ${alt.map(a => `
-          <div class="neighbor-card">
-            <div style="color:var(--text);font-weight:600;margin-bottom:2px">${a.name.split('·')[0]}</div>
-            <div style="font-size:0.7rem">"${a.tagline}"</div>
-          </div>
-        `).join('')}
-      </div>
+    <div class="neighbor-section compact">
+      ${alt.map(a => `
+        <div class="neighbor-card">${a.name.split('·')[0]} · "${a.tagline}"</div>
+      `).join('')}
     </div>
-
-    <div style="text-align:center;padding:20px 0 8px">
-      <button class="btn btn-share" onclick="showShare()" style="background:linear-gradient(135deg,var(--accent2),var(--rose));color:#fff;font-size:0.95rem;padding:14px 28px;border-radius:24px;box-shadow:0 4px 20px rgba(124,58,237,0.35);animation:pulse 2s ease-in-out infinite;border:none;font-weight:600">📤 分享我的隐藏款</button>
-    </div>
-
-    <div style="text-align:center;padding:24px;color:var(--text2);font-size:0.75rem;line-height:1.8">
+<div style="text-align:center;padding:24px;color:var(--text2);font-size:0.75rem;line-height:1.8">
       <span style="opacity:0.6;word-break:break-word;line-height:1.6"><span class="footer-title">随手拆了下自己，原来我是那个隐藏</span>
   <span class="footer-sub">v1.0 · 你的数据仅保存在此设备上</span></span>
     </div>
