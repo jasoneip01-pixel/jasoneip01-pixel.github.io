@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>🎁 你收到了一份隐藏款</title>
-<meta name="description" content="测一次，AI 给你你从未见过的自己——不是 27 选 1，是专属于你的那一个。">
+<meta name="description" content="测一次，AI 给你从未见过的自己——不是 27 选 1，是专属于你的那一个。">
 <meta property="og:title" content="🎁 你收到了一份隐藏款 · 一份来自朋友的礼物">
 <meta property="og:description" content="15 道题，50 个隐藏款。专属于你的人格，不是 27 选 1 的统计学标签——是 AI 为你生成的那一个。">
 <meta property="og:type" content="website">
@@ -16,7 +16,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="随手拆了下自己，原来我是那个隐藏 · 你的 AI 人格测试">
-<meta name="twitter:description" content="15 道题，50 个隐藏款。AI 给你你从未见过的自己。">
+<meta name="twitter:description" content="15 道题，50 个隐藏款。AI 给你从未见过的自己。">
 <meta name="twitter:image" content="https://jasoneip01-pixel.github.io/share-preview.png">
 <meta itemprop="name" content="随手拆了下自己，原来我是那个隐藏 · Unbox Yourself">
 <meta itemprop="description" content="AI-native 人格测试。不是标签，是镜子。15 道题，专属于你的那一个。">
@@ -39,7 +39,7 @@
   --radius: 16px;
   --radius-sm: 10px;
   --font-display: 'Georgia', 'Noto Serif SC', serif;
-  --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', 'Hiragino Sans GB', sans-serif;
   /* Plan B dynamic */
   --theme-color: #a78bfa;
   --theme-color2: #7c3aed;
@@ -458,7 +458,7 @@ body {
 }
 .facet-item:hover { border-color: var(--accent); }
 .facet-icon { font-size: 1.6rem; margin-bottom: 4px; }
-.facet-label { font-size: 0.8rem; color: var(--text2); }
+.facet-label { font-size: 0.8rem; color: #c8c8da; }
 .facet-dim { font-size: 0.68rem; color: var(--text); margin-top: 2px; }
 
 /* Hidden bonus */
@@ -614,7 +614,7 @@ body {
 
 <div class="share-overlay" id="shareOverlay">
   <div class="share-card" id="shareCard">
-    <button class="close-btn" onclick="closeShare()">✕</button>
+    <button class="close-btn" onclick="closeShare()" aria-label="关闭">✕</button>
     <div id="shareContent"></div>
     <div class="share-actions">
       <button class="btn btn-primary" onclick="copyShareCard()">📋 复制人格签名</button>
@@ -1312,7 +1312,7 @@ function renderStart() {
       <div class="logo" style="font-size:clamp(1rem,3.8vw,1.6rem);line-height:1.4">随手拆了下自己，原来我是那个隐藏</div>
     </div>
     <div class="value-prop">
-      <div class="value-line">不是MBTI，不贴标签<br>只给你一张可以分享给自己的快照</div>
+      <div class="value-line">不是MBTI，不贴标签<br>只给你一张值得分享的灵魂快照</div>
     </div>
     <div class="card entering">
       <div class="start-subtitle">
@@ -1483,8 +1483,8 @@ function selectAnswer(idx) {
 // ═══════════════════════════════════════════════
 function renderActTransition(act) {
   const actData = act === 2
-    ? { label: '第一层拆开了', hint: '有些形状开始浮现…', theme: '#a78bfa' }
-    : { label: '形状开始显现', hint: '最后几个问题，拆开核心', theme: '#f59e0b' };
+    ? { label: '第一层拆开', hint: '轮廓开始浮现…', theme: '#a78bfa' }
+    : { label: '形状开始显现', hint: '最后一层，拆到本质', theme: '#f59e0b' };
 
   app.innerHTML = `
     <div class="header" style="padding:24px 0 12px">
@@ -1638,7 +1638,7 @@ function renderResults() {
 
       <!-- Layer 2: Depth — description + celebrity -->
       <div class="result-divider">
-        <div class="divider-label">拆开看看</div>
+        <div class="divider-label">里面是什么</div>
       </div>
       <div class="card entering">
         <div class="personality-desc">
