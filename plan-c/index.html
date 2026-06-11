@@ -1447,7 +1447,29 @@ if (_pn) {
     '<div style="margin-top:24px;font-size:0.7rem;color:var(--text2)">随手拆了下自己，原来我是那个隐藏</div></div>';
   document.getElementById('entrance').classList.remove('hidden');
 } else {
+  // Query param landing
+const _params = new URLSearchParams(window.location.search);
+const _pn = _params.get('n');
+if (_pn) {
+  const p = {
+    name: decodeURIComponent(_pn),
+    signature: decodeURIComponent(_params.get('s') || ''),
+    tagline: decodeURIComponent(_params.get('t') || ''),
+    vibe: decodeURIComponent(_params.get('v') || '')
+  };
+  document.getElementById('entrance').innerHTML = 
+    '<div style="display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:80vh;padding:32px 20px;text-align:center">' +
+    '<div style="font-size:3rem;margin-bottom:8px">🎁</div>' +
+    '<div style="font-size:clamp(0.85rem,2.5vw,1.2rem);color:var(--text2);margin-bottom:12px">你的朋友拆出了一个隐藏款…</div>' +
+    '<div style="font-size:clamp(1.3rem,4vw,1.8rem);font-weight:700;background:linear-gradient(135deg,var(--accent),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:6px">' + p.name + '</div>' +
+    '<div style="color:var(--text2);font-style:italic;margin-bottom:6px">"' + (p.tagline || '') + '"</div>' +
+    '<div style="color:var(--accent);margin-bottom:20px">' + (p.signature || '') + '</div>' +
+    '<button class="cosmic-btn glow" onclick="window.location.search=\'\';init()" style="font-size:1rem;padding:14px 28px">⚡ 拆一个我的隐藏款</button>' +
+    '<div style="margin-top:24px;font-size:0.7rem;color:var(--text2)">随手拆了下自己，原来我是那个隐藏</div></div>';
+  document.getElementById('entrance').classList.remove('hidden');
+} else {
   init();
+}
 }
 
 /* ──────────────────────────────────────
