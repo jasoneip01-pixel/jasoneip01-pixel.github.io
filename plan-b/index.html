@@ -472,7 +472,6 @@ body {
     <button class="close-btn" onclick="closeShare()">✕</button>
     <div id="shareContent"></div>
     <div class="share-actions">
-      <button class="btn btn-secondary" onclick="closeShare()">关闭</button>
       <button class="btn btn-primary" onclick="copyShareCard()">📋 复制文案</button>
       <button class="btn btn-primary" onclick="shareLink()" style="background:linear-gradient(135deg,var(--accent2),var(--gold))">🔗 分享链接</button>
     </div>
@@ -1599,7 +1598,7 @@ function saveShareImage() {
       '</div>';
       overlay.classList.add('has-image');
       overlay.querySelector('.share-actions').innerHTML =
-        '<button class="btn btn-secondary" onclick="closeShare()">关闭</button>' +
+        '' +
         '<button class="btn btn-primary" onclick="copyShareCard()">📋 复制文案</button>' +
         '<button class="btn btn-primary" onclick="saveShareImage()">🔄 重新生成</button>' +
         '<button class="btn btn-primary" onclick="shareLink()" style="background:linear-gradient(135deg,var(--accent2),var(--gold))">🔗 分享链接</button>';
@@ -1609,7 +1608,7 @@ function saveShareImage() {
         '<div style="font-size:0.8rem;margin:8px 0 12px">请截屏保存，或使用「复制文案」分享</div></div>';
       overlay.classList.add('has-image');
       overlay.querySelector('.share-actions').innerHTML =
-        '<button class="btn btn-secondary" onclick="closeShare()">关闭</button>' +
+        '' +
         '<button class="btn btn-primary" onclick="showShare()">返回卡片</button>';
     });
     }
