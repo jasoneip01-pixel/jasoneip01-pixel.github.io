@@ -430,7 +430,7 @@ body {
 <body>
 
 <button class="theme-toggle" onclick="toggleTheme()" aria-label="切换亮暗模式" title="切换亮暗模式">
-  <span id="themeIcon">☀️</span>
+  <span id="themeIcon">🌙</span>
 </button>
 
 <div class="container" id="app">
@@ -702,10 +702,10 @@ function toggleTheme() {
   const icon = document.getElementById('themeIcon');
   if (html.getAttribute('data-theme') === 'dark') {
     html.setAttribute('data-theme', 'light');
-    icon.textContent = '🌙';
+    icon.textContent = '☀️';
   } else {
     html.setAttribute('data-theme', 'dark');
-    icon.textContent = '☀️';
+    icon.textContent = '🌙';
   }
 }
 
