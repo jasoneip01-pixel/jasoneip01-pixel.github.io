@@ -1386,7 +1386,7 @@ function shareLink() {
   const text = '我拆出了一个隐藏款——【' + p.name + '】！' +
     (p.signature ? p.signature + '…' : '') +
     '你也拆开自己看看👉 ' + url;
-  if (navigator.share) {
+  if (navigator.share && !_isWechat) {
     navigator.share({ title: '随手拆了下自己，原来我是那个隐藏', text: text, url: url }).catch(function() {});
   } else {
     if (navigator.clipboard) {
