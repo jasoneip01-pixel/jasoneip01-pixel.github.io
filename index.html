@@ -176,8 +176,8 @@ body {
 .value-prop .value-line {
   font-family: var(--font-display);
   font-size: clamp(0.82rem, 2.8vw, 0.95rem);
-  color: var(--accent); opacity: 0.75;
-  line-height: 1.6; font-style: italic;
+  color: #d4bfff;
+  line-height: 1.6;
   letter-spacing: 0.03em;
 }
 
@@ -617,7 +617,7 @@ body {
     <button class="close-btn" onclick="closeShare()" aria-label="关闭">✕</button>
     <div id="shareContent"></div>
     <div class="share-actions">
-      <button class="btn btn-primary" onclick="copyShareCard()">📋 复制人格签名</button>
+      <button class="btn btn-primary" onclick="copyShareCard()">📋 复制分享文案</button>
       <button class="btn btn-primary" onclick="shareLink()" style="background:linear-gradient(135deg,var(--accent2),var(--gold))">🔗 分享链接</button>
     </div>
   </div>
@@ -895,7 +895,10 @@ let state = {
   currentQ: 0,
   scores: new Array(9).fill(0),
   answers: [],
-  result: null
+  result: null,
+  pendingAnswer: null,
+  transitionTimer: null,
+  pulseTimer: null
 };
 
 const app = document.getElementById('app');
@@ -1393,7 +1396,7 @@ function renderQuiz() {
 
   app.innerHTML = `
     <div class="header" style="padding:24px 0 12px">
-      <div class="logo" style="font-size:clamp(0.9rem,3vw,1.3rem);line-height:1.4;opacity:0.75">随手拆了下自己，原来我是那个隐藏</div>
+      <div class="logo" style="font-size:clamp(0.9rem,3vw,1.3rem);line-height:1.4;opacity:0.9">随手拆了下自己，原来我是那个隐藏</div>
     </div>
     <div class="act-indicator">
       <span style="font-size:0.65rem;margin-right:4px;opacity:0.5">拆盒</span>
@@ -1432,50 +1435,69 @@ function selectAnswer(idx) {
   const q = questions.questions[state.currentQ];
   const weights = q.options[idx].weights;
 
-  // Accumulate scores
+  // Allow re-selection within 1.5s grace period
+  if (state.pendingAnswer !== null && state.pendingAnswer >= 0) {
+    // Undo previous selection
+    const prevWeights = q.options[state.pendingAnswer].weights;
+    for (let i = 0; i < prevWeights.length; i++) {
+      state.scores[i] -= prevWeights[i];
+    }
+    state.answers.pop();
+    if (state.transitionTimer) {
+      clearTimeout(state.transitionTimer);
+      state.transitionTimer = null;
+    }
+  }
+
+  // Accumulate new scores
   for (let i = 0; i < weights.length; i++) {
     state.scores[i] += weights[i];
   }
   state.answers.push(idx);
+  state.pendingAnswer = idx;
 
-  if (state.currentQ < questions.questions.length - 1) {
-    // Highlight clicked option + disable interactions during transition
-    const opts = document.querySelectorAll('.option');
-    if (opts[idx]) opts[idx].classList.add('selected');
+  // Highlight selection, keep options active for re-selection
+  const opts = document.querySelectorAll('.option');
+  opts.forEach(o => { o.classList.remove('selected'); o.style.pointerEvents = ''; });
+  if (opts[idx]) opts[idx].classList.add('selected');
+
+  // Start 1.5s grace period before committing transition
+  const graceMs = 1500;
+  state.transitionTimer = setTimeout(() => {
+    state.pendingAnswer = null;
+    state.transitionTimer = null;
     opts.forEach(o => o.style.pointerEvents = 'none');
-    // Zoom-blur transition
-    const card = document.querySelector('.card');
-    
-    // 方案C: Act transition between Q5→Q6 and Q10→Q11
-    const nextQ = state.currentQ + 1;
-    if (nextQ === 5 || nextQ === 10) {
-      // Show act transition
-      if (card) card.classList.add('exiting');
-      setTimeout(() => {
-        renderActTransition(nextQ === 5 ? 2 : 3);
-      }, 320);
-    } else {
-      // Normal transition
-      if (card) {
-        card.classList.add('exiting');
+
+    if (state.currentQ < questions.questions.length - 1) {
+      const card = document.querySelector('.card');
+      const nextQ = state.currentQ + 1;
+      if (nextQ === 5 || nextQ === 10) {
+        if (card) card.classList.add('exiting');
         setTimeout(() => {
-          state.currentQ++;
-          render();
-          window.scrollTo({ top: 0, behavior: 'smooth' });
+          renderActTransition(nextQ === 5 ? 2 : 3);
         }, 320);
       } else {
-        state.currentQ++;
-        render();
+        if (card) {
+          card.classList.add('exiting');
+          setTimeout(() => {
+            state.currentQ++;
+            render();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          }, 320);
+        } else {
+          state.currentQ++;
+          render();
+        }
       }
+    } else {
+      // Last question: transition to results
+      setParticleTarget(baseParticleCount + 30);
+      burstParticles();
+      setTimeout(() => {
+        calculateResults();
+      }, 600);
     }
-  } else {
-    // Transition to results with burst
-    setParticleTarget(baseParticleCount + 30);
-    burstParticles();
-    setTimeout(() => {
-      calculateResults();
-    }, 600);
-  }
+  }, graceMs);
 }
 
 // ═══════════════════════════════════════════════
@@ -1488,7 +1510,7 @@ function renderActTransition(act) {
 
   app.innerHTML = `
     <div class="header" style="padding:24px 0 12px">
-      <div class="logo" style="font-size:clamp(0.9rem,3vw,1.3rem);line-height:1.4;opacity:0.75">随手拆了下自己，原来我是那个隐藏</div>
+      <div class="logo" style="font-size:clamp(0.9rem,3vw,1.3rem);line-height:1.4;opacity:0.9">随手拆了下自己，原来我是那个隐藏</div>
     </div>
     <div class="act-indicator">
       <span style="font-size:0.65rem;margin-right:4px;opacity:0.5">拆盒</span>
@@ -1575,10 +1597,12 @@ function renderConstellationChart(vector) {
       phase += 0.02;
       renderConstellation(vector, canvas);
       if (state.screen === 'results') {
-        requestAnimationFrame(() => setTimeout(pulse, 2000));
+        requestAnimationFrame(() => {
+          state.pulseTimer = setTimeout(pulse, 2000);
+        });
       }
     }
-    setTimeout(pulse, 2000);
+    state.pulseTimer = setTimeout(pulse, 2000);
   });
 
   return container;
@@ -1688,8 +1712,11 @@ function restart() {
   particleMode = 'ambient';
   setParticleTarget(baseParticleCount);
   initParticles(baseParticleCount);
+  if (state.pulseTimer) { clearTimeout(state.pulseTimer); state.pulseTimer = null; }
+  if (state.transitionTimer) { clearTimeout(state.transitionTimer); state.transitionTimer = null; }
   state.screen = 'start';
   state.currentQ = 0;
+  state.pendingAnswer = null;
   state.scores = new Array(9).fill(0);
   state.answers = [];
   state.result = null;
@@ -1712,7 +1739,7 @@ function showShare() {
     '<div class="share-card-name" style="font-family:Georgia,\'Noto Serif SC\',serif;font-size:clamp(1rem,5vw,1.5rem);background:linear-gradient(135deg,#a78bfa,#f59e0b);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:4px">' + p.name + '</div>' +
     '<div style="color:#9898b0;font-style:italic;font-size:0.85rem;margin-bottom:12px">"' + p.tagline + '"</div>' +
     '<div style="color:#a78bfa;font-family:Georgia,\'Noto Serif SC\',serif;font-size:0.95rem;margin:12px 0;font-style:italic">' + p.signature + '</div>' +
-    '<div style="font-size:0.8rem;color:#9898b0;margin-top:10px;line-height:1.7;text-align:left;padding:8px 0;border-top:1px solid #2a2a3a">' + p.description.slice(0, 120) + '...</div>' +
+    '<div style="font-size:0.8rem;color:#9898b0;margin-top:10px;line-height:1.7;text-align:left;padding:8px 0;border-top:1px solid #2a2a3a">' + p.description.slice(0, 180) + '...</div>' +
     '<div style="font-size:0.65rem;color:#6b6b80;margin-top:14px;opacity:0.6">jasoneip01-pixel.github.io</div>' +
     '</div>';
 
@@ -1808,7 +1835,7 @@ function saveShareImage() {
         '<img src="' + window._shareImgData + '" alt="随手拆了下自己，原来我是那个隐藏 · ' + p.name + '">' +
         '<div class="share-save-guide">' +
           (_isWechat
-            ? '<div class="primary-hint">👆 长按上方图片 → 保存到相册</div><div class="secondary-hint">或点击下方「复制人格签名」分享</div>'
+            ? '<div class="primary-hint">👆 长按上方图片 → 保存到相册</div><div class="secondary-hint">或点击下方「复制分享文案」分享</div>'
             : _isIOS && _canShare
               ? '<div class="primary-hint">👆 长按图片保存 · 或点击下方分享</div><div class="secondary-hint">支持 AirDrop / 微信 / 相册</div>'
               : _isMobile
@@ -1827,13 +1854,13 @@ function saveShareImage() {
       overlay.classList.add('has-image');
       overlay.querySelector('.share-actions').innerHTML =
         '' +
-        '<button class="btn btn-primary" onclick="copyShareCard()">📋 复制人格签名</button>' +
+        '<button class="btn btn-primary" onclick="copyShareCard()">📋 复制分享文案</button>' +
         '<button class="btn btn-primary" onclick="saveShareImage()">🔄 重新生成</button>' +
         '<button class="btn btn-primary" onclick="shareLink()" style="background:linear-gradient(135deg,var(--accent2),var(--gold))">🔗 分享链接</button>';
     }).catch(function() {
       content.innerHTML = '<div style="text-align:center;padding:16px;color:#9898b0">' +
         '<div style="font-size:1.2rem;margin-bottom:8px">📸</div><div>图片生成失败</div>' +
-        '<div style="font-size:0.8rem;margin:8px 0 12px">请截屏保存，或使用「复制人格签名」分享</div></div>';
+        '<div style="font-size:0.8rem;margin:8px 0 12px">请截屏保存，或使用「复制分享文案」分享</div></div>';
       overlay.classList.add('has-image');
       overlay.querySelector('.share-actions').innerHTML =
         '' +
@@ -1848,7 +1875,7 @@ function saveShareImage() {
     script.src = 'https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js';
     script.onload = doRender;
     script.onerror = function() {
-      content.innerHTML = '<div style="text-align:center;padding:24px;color:#f59e0b">⚠️ 图片引擎加载失败<br><small style="color:#9898b0">请截屏保存，或用「复制人格签名」分享</small></div>';
+      content.innerHTML = '<div style="text-align:center;padding:24px;color:#f59e0b">⚠️ 图片引擎加载失败<br><small style="color:#9898b0">请截屏保存，或用「复制分享文案」分享</small></div>';
     };
     document.head.appendChild(script);
   }
