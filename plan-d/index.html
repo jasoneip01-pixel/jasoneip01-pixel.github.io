@@ -1617,16 +1617,8 @@ function copyShareCard() {
     p.signature + '\n' +
     '\"' + p.tagline + '\"\n\n' +
     '你也拆开自己看看？测测你是哪个隐藏款 👇\n' +
+
     url;
-
-${p.name}
-"${p.tagline}"
-
-${p.signature}
-
-${p.description.slice(0, 100)}...
-
-测测你的：jasoneip01-pixel.github.io/plan-d`;
 
   if (navigator.clipboard) {
     navigator.clipboard.writeText(text).then(() => {
@@ -1733,8 +1725,9 @@ function saveShareImage() {
         '<button class="btn btn-secondary" onclick="closeShare()">关闭</button>' +
         '<button class="btn btn-primary" onclick="showShare()">返回卡片</button>';
     });
+    }
   }
-  
+
   if (window.html2canvas) { doRender(); }
   else {
     var script = document.createElement('script');

@@ -1265,16 +1265,8 @@ function copyShare() {
     p.signature + '\n' +
     '\"' + p.tagline + '\"\n\n' +
     '你也拆开自己看看？测测你是哪个隐藏款 👇\n' +
+
     url;
-
-${p.name}
-「${p.tagline}」
-
-${p.signature}
-
-${p.description.slice(0, 100)}…
-
-来拆一个自己：jasoneip01-pixel.github.io/plan-c`;
 
   if (navigator.clipboard) {
     navigator.clipboard.writeText(text).then(() => {
@@ -1392,8 +1384,6 @@ function downloadImage() {
   document.body.appendChild(a);
   a.click();
   document.body.removeChild(a);
-}
-  });
 }
 
 function shareLink() {
