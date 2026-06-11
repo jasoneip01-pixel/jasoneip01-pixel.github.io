@@ -108,7 +108,89 @@ body {
   to { opacity: 0; transform: scale(0.94); filter: blur(4px); }
 }
 
-/* ── Plan B: Color-theme aware card border ── */
+/* ── 方案C: Act Transition ── */
+.act-transition {
+  text-align: center; padding: 32px 20px; margin-bottom: 14px;
+  animation: actReveal 1.4s ease forwards;
+  position: relative; z-index: 1;
+}
+.act-transition .act-label {
+  font-family: var(--font-display);
+  font-size: clamp(1.3rem, 4vw, 1.8rem);
+  color: var(--theme-color);
+  margin-bottom: 6px;
+  transition: color 0.6s ease;
+}
+.act-transition .act-hint {
+  font-size: 0.78rem; color: var(--text2); opacity: 0.7;
+  line-height: 1.6;
+}
+@keyframes actReveal {
+  0% { opacity: 0; transform: translateY(20px); }
+  25% { opacity: 1; transform: translateY(0); }
+  85% { opacity: 1; }
+  100% { opacity: 0; transform: translateY(-8px); pointer-events: none; }
+}
+
+/* ── 方案C: Quiz act progress indicator ── */
+.act-indicator {
+  display: flex; align-items: center; justify-content: center; gap: 6px;
+  margin-bottom: 16px; font-size: 0.7rem; color: var(--text2);
+  letter-spacing: 0.08em;
+}
+.act-indicator .act-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--border); transition: background 0.6s ease, box-shadow 0.6s ease;
+}
+.act-indicator .act-dot.active {
+  background: var(--theme-color);
+  box-shadow: 0 0 10px var(--theme-glow);
+}
+.act-indicator .act-dot.done {
+  background: var(--accent);
+}
+.act-indicator .act-dash {
+  width: 20px; height: 1px; background: var(--border);
+  transition: background 0.6s ease;
+}
+.act-indicator .act-dash.done { background: var(--accent); }
+
+/* ── 方案C: Result layer dividers ── */
+.result-divider {
+  text-align: center; padding: 16px 0 8px; position: relative; z-index: 1;
+}
+.result-divider::before {
+  content: ''; display: block; width: 40px; height: 2px;
+  background: linear-gradient(90deg, transparent, var(--theme-color), transparent);
+  margin: 0 auto 10px; opacity: 0.5;
+}
+.result-divider .divider-label {
+  font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.12em;
+  color: var(--theme-color); opacity: 0.6;
+}
+
+/* ── 方案C: Entry value statement ── */
+.value-prop {
+  text-align: center; padding: 8px 16px 18px; position: relative; z-index: 1;
+}
+.value-prop .value-line {
+  font-family: var(--font-display);
+  font-size: clamp(0.82rem, 2.8vw, 0.95rem);
+  color: var(--accent); opacity: 0.75;
+  line-height: 1.6; font-style: italic;
+  letter-spacing: 0.03em;
+}
+
+/* Mobile: close button must be ≥44px touch target */
+.share-card .close-btn {
+  width: 44px; height: 44px; display: flex; align-items: center; justify-content: center;
+  font-size: 1.6rem;
+}
+
+/* Bottom safe area for mobile browser toolbars */
+.container { padding-bottom: max(60px, calc(env(safe-area-inset-bottom, 20px) + 40px)); }
+
+/* ── Plan B: Color-theme aware card border (方案C保留) ── */
 .card.themed {
   border-color: var(--theme-color);
   box-shadow: 0 0 24px var(--theme-glow);
@@ -535,7 +617,7 @@ body {
     <button class="close-btn" onclick="closeShare()">✕</button>
     <div id="shareContent"></div>
     <div class="share-actions">
-      <button class="btn btn-primary" onclick="copyShareCard()">📋 复制文案</button>
+      <button class="btn btn-primary" onclick="copyShareCard()">📋 复制人格签名</button>
       <button class="btn btn-primary" onclick="shareLink()" style="background:linear-gradient(135deg,var(--accent2),var(--gold))">🔗 分享链接</button>
     </div>
   </div>
@@ -1227,7 +1309,10 @@ function render() {
 function renderStart() {
   app.innerHTML = `
     <div class="header">
-      <div class="logo">随手拆了下自己</div>
+      <div class="logo" style="font-size:clamp(1rem,3.8vw,1.6rem);line-height:1.4">随手拆了下自己，原来我是那个隐藏</div>
+    </div>
+    <div class="value-prop">
+      <div class="value-line">不是MBTI，不贴标签<br>只给你一张可以分享给自己的快照</div>
     </div>
     <div class="card entering">
       <div class="start-subtitle">
@@ -1256,7 +1341,7 @@ function renderStart() {
           <div class="facet-dim">冲刺 ↔ 巡航</div>
         </div>
       </div>
-      <button class="btn btn-primary" onclick="startQuiz()" style="width:100%">⚡ 开始测试</button>
+      <button class="btn btn-primary" onclick="startQuiz()" style="width:100%;padding:16px;font-size:1.05rem;border-radius:14px;letter-spacing:0.04em">⚡ 开拆</button>
     </div>
     <div style="text-align:center;padding:16px;color:var(--text2);font-size:0.75rem">
       免费 · 无需注册 · 2 分钟完成 · 结果仅保存在你的设备上
@@ -1290,6 +1375,11 @@ function renderQuiz() {
   const progress = ((state.currentQ + 1) / total) * 100;
   const isBonus = q.facet === 'bonus';
 
+  // 方案C: Determine current act
+  let currentAct = 1;
+  if (state.currentQ >= 5) currentAct = 2;
+  if (state.currentQ >= 10) currentAct = 3;
+
   // Apply color theme
   applyTheme(q.facet);
 
@@ -1302,8 +1392,17 @@ function renderQuiz() {
   setParticleTarget(isBonus ? targetCount + 5 : targetCount);
 
   app.innerHTML = `
-    <div class="header" style="padding:24px 0 16px">
-      <div class="logo" style="font-size:clamp(1rem,3.5vw,1.6rem);line-height:1.4">随手拆了下自己</div>
+    <div class="header" style="padding:24px 0 12px">
+      <div class="logo" style="font-size:clamp(0.9rem,3vw,1.3rem);line-height:1.4;opacity:0.75">随手拆了下自己，原来我是那个隐藏</div>
+    </div>
+    <div class="act-indicator">
+      <span style="font-size:0.65rem;margin-right:4px;opacity:0.5">拆盒</span>
+      <div class="act-dot${currentAct >= 1 ? ' active' : ''}${currentAct > 1 ? ' done' : ''}"></div>
+      <div class="act-dash${currentAct > 1 ? ' done' : ''}"></div>
+      <div class="act-dot${currentAct >= 2 ? ' active' : ''}${currentAct > 2 ? ' done' : ''}"></div>
+      <div class="act-dash${currentAct > 2 ? ' done' : ''}"></div>
+      <div class="act-dot${currentAct >= 3 ? ' active' : ''}"></div>
+      <span style="font-size:0.65rem;margin-left:4px;opacity:0.5">定型</span>
     </div>
     <div class="progress-wrap">
       <div class="progress-bar">
@@ -1346,17 +1445,28 @@ function selectAnswer(idx) {
     opts.forEach(o => o.style.pointerEvents = 'none');
     // Zoom-blur transition
     const card = document.querySelector('.card');
-    if (card) {
-      card.classList.add('exiting');
+    
+    // 方案C: Act transition between Q5→Q6 and Q10→Q11
+    const nextQ = state.currentQ + 1;
+    if (nextQ === 5 || nextQ === 10) {
+      // Show act transition
+      if (card) card.classList.add('exiting');
       setTimeout(() => {
-        state.currentQ++;
-        render();
-        // Scroll to top
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        renderActTransition(nextQ === 5 ? 2 : 3);
       }, 320);
     } else {
-      state.currentQ++;
-      render();
+      // Normal transition
+      if (card) {
+        card.classList.add('exiting');
+        setTimeout(() => {
+          state.currentQ++;
+          render();
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }, 320);
+      } else {
+        state.currentQ++;
+        render();
+      }
     }
   } else {
     // Transition to results with burst
@@ -1366,6 +1476,41 @@ function selectAnswer(idx) {
       calculateResults();
     }, 600);
   }
+}
+
+// ═══════════════════════════════════════════════
+// 方案C: Act Transition Screen
+// ═══════════════════════════════════════════════
+function renderActTransition(act) {
+  const actData = act === 2
+    ? { label: '第一层拆开了', hint: '有些形状开始浮现…', theme: '#a78bfa' }
+    : { label: '形状开始显现', hint: '最后几个问题，拆开核心', theme: '#f59e0b' };
+
+  app.innerHTML = `
+    <div class="header" style="padding:24px 0 12px">
+      <div class="logo" style="font-size:clamp(0.9rem,3vw,1.3rem);line-height:1.4;opacity:0.75">随手拆了下自己，原来我是那个隐藏</div>
+    </div>
+    <div class="act-indicator">
+      <span style="font-size:0.65rem;margin-right:4px;opacity:0.5">拆盒</span>
+      <div class="act-dot done"></div>
+      <div class="act-dash done"></div>
+      <div class="act-dot${act === 2 ? ' active' : ' done'}"></div>
+      <div class="act-dash${act === 2 ? '' : ' done'}"></div>
+      <div class="act-dot${act === 3 ? ' active' : ''}"></div>
+      <span style="font-size:0.65rem;margin-left:4px;opacity:0.5">定型</span>
+    </div>
+    <div class="act-transition" style="--theme-color:${actData.theme}">
+      <div class="act-label">${actData.label}</div>
+      <div class="act-hint">${actData.hint}</div>
+    </div>
+  `;
+
+  // Advance to next question after transition animation
+  setTimeout(() => {
+    state.currentQ++;
+    render();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, 1400);
 }
 
 // ═══════════════════════════════════════════════
@@ -1470,50 +1615,60 @@ function renderResults() {
     `;
   }).join('');
 
-  // Build result HTML
+  // Build result HTML — 方案C: three-layer layout
   app.innerHTML = `
     <div class="header" style="padding:24px 0 8px">
       <div class="logo" style="font-size:clamp(1rem,3.5vw,1.6rem);line-height:1.4">随手拆了下自己，原来我是那个隐藏</div>
+      <div class="subtitle" style="margin-top:4px;font-size:0.78rem">${p.name.split('·')[0]}是你的隐藏款</div>
     </div>
 
     <div class="results-section">
+      <!-- Layer 1: First impression — name, signature, visual -->
       <div class="card entering" style="text-align:center">
         <div class="vibe-badge">${p.vibe || 'custom'}</div>
-        <div style="font-size:0.8rem;color:var(--accent);opacity:0.7;margin-bottom:4px">👇 你的隐藏款</div>
         <div class="personality-name">${p.name}</div>
         <div class="personality-tagline">"${p.tagline}"</div>
-        <div class="personality-desc">
-          ${paragraphs.map(para => `<p>${para}</p>`).join('')}
-        </div>
         <div class="signature">${p.signature}</div>
-        ${p.celebrities ? `<div class="celebrities">🎭 ${p.celebrities}</div>` : ''}
-      </div>
-
-      <div class="card entering">
         <div class="constellation-section">
           <div class="constellation-title">你的隐藏印记</div>
           <div id="constellationTarget"></div>
         </div>
         <div class="dim-bars">${dimBars}</div>
       </div>
-    </div>
 
-        <div class="btn-row">
-      <button class="btn btn-share" onclick="showShare()">📤 分享我的隐藏款</button>
-      <button class="btn btn-ghost" onclick="restart()">🔄 再测一次</button>
-    </div>
+      <!-- Layer 2: Depth — description + celebrity -->
+      <div class="result-divider">
+        <div class="divider-label">拆开看看</div>
+      </div>
+      <div class="card entering">
+        <div class="personality-desc">
+          ${paragraphs.map(para => `<p>${para}</p>`).join('')}
+        </div>
+        ${p.celebrities ? `<div class="celebrities">🎭 ${p.celebrities}</div>` : ''}
+      </div>
 
-    <div class="neighbor-section">
-      <div class="neighbor-title">同类隐藏款</div>
-      <div class="neighbor-cards">
-        ${alt.map(a => `
-          <div class="neighbor-card">
-            <div style="color:var(--text);font-weight:600;margin-bottom:2px">${a.name.split('·')[0]}</div>
-            <div style="font-size:0.7rem">"${a.tagline}"</div>
-          </div>
-        `).join('')}
+      <!-- Layer 3: Action — share + neighbor cards + retry -->
+      <div class="result-divider">
+        <div class="divider-label">分享 & 发现</div>
+      </div>
+      <div class="btn-row" style="justify-content:center">
+        <button class="btn btn-share" onclick="showShare()">📤 分享我的隐藏款</button>
+        <button class="btn btn-ghost" onclick="restart()">🔄 再拆一次</button>
+      </div>
+
+      <div class="neighbor-section">
+        <div class="neighbor-title">同类隐藏款</div>
+        <div class="neighbor-cards">
+          ${alt.map(a => `
+            <div class="neighbor-card">
+              <div style="color:var(--text);font-weight:600;margin-bottom:2px">${a.name.split('·')[0]}</div>
+              <div style="font-size:0.7rem">"${a.tagline}"</div>
+            </div>
+          `).join('')}
+        </div>
       </div>
     </div>
+
 <div style="text-align:center;padding:24px;color:var(--text2);font-size:0.75rem;line-height:1.8">
       <span style="opacity:0.6;word-break:break-word;line-height:1.6"><span class="footer-title">随手拆了下自己，原来我是那个隐藏</span>
   <span class="footer-sub">v1.0 · 你的数据仅保存在此设备上</span></span>
@@ -1653,7 +1808,7 @@ function saveShareImage() {
         '<img src="' + window._shareImgData + '" alt="随手拆了下自己，原来我是那个隐藏 · ' + p.name + '">' +
         '<div class="share-save-guide">' +
           (_isWechat
-            ? '<div class="primary-hint">👆 长按上方图片 → 保存到相册</div><div class="secondary-hint">或点击下方「复制文案」分享</div>'
+            ? '<div class="primary-hint">👆 长按上方图片 → 保存到相册</div><div class="secondary-hint">或点击下方「复制人格签名」分享</div>'
             : _isIOS && _canShare
               ? '<div class="primary-hint">👆 长按图片保存 · 或点击下方分享</div><div class="secondary-hint">支持 AirDrop / 微信 / 相册</div>'
               : _isMobile
@@ -1672,13 +1827,13 @@ function saveShareImage() {
       overlay.classList.add('has-image');
       overlay.querySelector('.share-actions').innerHTML =
         '' +
-        '<button class="btn btn-primary" onclick="copyShareCard()">📋 复制文案</button>' +
+        '<button class="btn btn-primary" onclick="copyShareCard()">📋 复制人格签名</button>' +
         '<button class="btn btn-primary" onclick="saveShareImage()">🔄 重新生成</button>' +
         '<button class="btn btn-primary" onclick="shareLink()" style="background:linear-gradient(135deg,var(--accent2),var(--gold))">🔗 分享链接</button>';
     }).catch(function() {
       content.innerHTML = '<div style="text-align:center;padding:16px;color:#9898b0">' +
         '<div style="font-size:1.2rem;margin-bottom:8px">📸</div><div>图片生成失败</div>' +
-        '<div style="font-size:0.8rem;margin:8px 0 12px">请截屏保存，或使用「复制文案」分享</div></div>';
+        '<div style="font-size:0.8rem;margin:8px 0 12px">请截屏保存，或使用「复制人格签名」分享</div></div>';
       overlay.classList.add('has-image');
       overlay.querySelector('.share-actions').innerHTML =
         '' +
@@ -1693,7 +1848,7 @@ function saveShareImage() {
     script.src = 'https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js';
     script.onload = doRender;
     script.onerror = function() {
-      content.innerHTML = '<div style="text-align:center;padding:24px;color:#f59e0b">⚠️ 图片引擎加载失败<br><small style="color:#9898b0">请截屏保存，或用「复制文案」分享</small></div>';
+      content.innerHTML = '<div style="text-align:center;padding:24px;color:#f59e0b">⚠️ 图片引擎加载失败<br><small style="color:#9898b0">请截屏保存，或用「复制人格签名」分享</small></div>';
     };
     document.head.appendChild(script);
   }
@@ -1722,34 +1877,13 @@ function downloadImage() {
   document.body.removeChild(a);
 }
 
-function showWechatShare(url) {
-  const p = state.result.personality;
-  const content = document.getElementById('shareContent');
-  const url_display = url.replace("https://","");
-  content.innerHTML =
-    '<div style="text-align:center">' +
-    '<div style="color:#a78bfa;font-size:0.9rem;margin-bottom:8px;font-weight:500">\u{1F4F1} 分享给微信好友</div>' +
-    '<div style="color:rgba(255,255,255,0.6);font-size:0.85rem;margin:16px 0;line-height:1.7">' +
-    '点击右上角 <span style="background:rgba(167,139,250,0.2);padding:2px 8px;border-radius:6px;font-weight:500;color:#a78bfa">\u00B7\u00B7\u00B7</span><br>\u2192 <span style="font-weight:500;color:#f59e0b">发送给朋友</span> 或 <span style="font-weight:500;color:#f59e0b">分享到朋友圈</span>' +
-    '</div>' +
-    '<div style="margin:16px auto 8px;opacity:0.7">' +
-    '<svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#a78bfa" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17l9.2-9.2M17 17V7H7"/></svg>' +
-    '</div>' +
-    '<div style="color:rgba(255,255,255,0.35);font-size:0.7rem;margin-top:12px;opacity:0.5">' +
-    url_display +
-    '</div>' +
-    '</div>';
-}
-
 function shareLink() {
   const p = state.result.personality;
   const url = window.location.href.split('?')[0];
   const text = '我拆出了一个隐藏款——【' + p.name + '】！' +
     (p.signature ? p.signature + '…' : '') +
     '你也拆开自己看看👉 ' + url;
-  if (_isWechat) {
-    showWechatShare(url);
-  } else if (navigator.share) {
+  if (navigator.share) {
     navigator.share({ title: '随手拆了下自己，原来我是那个隐藏', text: text, url: url }).catch(function() {});
   } else if (navigator.clipboard) {
     navigator.clipboard.writeText(url).then(function() {
