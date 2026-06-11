@@ -1254,10 +1254,7 @@ $('share-overlay').addEventListener('click', function(e) {
 // ── Copy share text ──
 function copyShare() {
   const p = state.result.personality;
-  const url = window.location.href.split('?')[0] +
-    '?n=' + encodeURIComponent(p.name) +
-    '&s=' + encodeURIComponent(p.signature || '') +
-    '&t=' + encodeURIComponent(p.tagline || '');
+  const url = window.location.href.split('?')[0];
   const text = '🦞 我拆出了一个隐藏款——【' + p.name + '】\n\n' +
     p.signature + '\n' +
     '\"' + p.tagline + '\"\n\n' +
@@ -1360,10 +1357,7 @@ function doRenderShare(card, container) {
 function systemShare() {
   if (!window._shareCanvas || !navigator.share) return;
   const p = state.result.personality;
-  const url = window.location.href.split('?')[0] +
-    '?n=' + encodeURIComponent(p.name) +
-    '&s=' + encodeURIComponent(p.signature || '') +
-    '&t=' + encodeURIComponent(p.tagline || '');
+  const url = window.location.href.split('?')[0];
   const text = '我拆出了一个隐藏款——【' + p.name + '】！' +
     (p.signature ? p.signature + '…' : '') +
     '你也拆开自己看看👉 ' + url;
@@ -1385,11 +1379,7 @@ function downloadImage() {
 
 function shareLink() {
   const p = state.result.personality;
-  const url = window.location.href.split('?')[0] +
-    '?n=' + encodeURIComponent(p.name) +
-    '&s=' + encodeURIComponent(p.signature || '') +
-    '&t=' + encodeURIComponent(p.tagline || '') +
-    '&v=' + encodeURIComponent(p.vibe || '');
+  const url = window.location.href.split('?')[0];
   const text = '我拆出了一个隐藏款——【' + p.name + '】！' +
     (p.signature ? p.signature + '…' : '') +
     '你也拆开自己看看👉 ' + url;

@@ -1607,10 +1607,7 @@ function closeShare() {
 
 function copyShareCard() {
   const p = state.result.personality;
-  const url = window.location.href.split('?')[0] +
-    '?n=' + encodeURIComponent(p.name) +
-    '&s=' + encodeURIComponent(p.signature || '') +
-    '&t=' + encodeURIComponent(p.tagline || '');
+  const url = window.location.href.split('?')[0];
   const text = '🦞 我拆出了一个隐藏款——【' + p.name + '】\n\n' +
     p.signature + '\n' +
     '\"' + p.tagline + '\"\n\n' +
@@ -1676,11 +1673,7 @@ function downloadImage() {
 // Share link (Web Share API or clipboard fallback)
 function shareLink() {
   const p = state.result.personality;
-  const url = window.location.href.split('?')[0] +
-    '?n=' + encodeURIComponent(p.name) +
-    '&s=' + encodeURIComponent(p.signature || '') +
-    '&t=' + encodeURIComponent(p.tagline || '') +
-    '&v=' + encodeURIComponent(p.vibe || '');
+  const url = window.location.href.split('?')[0];
   const text = '我拆出了一个隐藏款——【' + p.name + '】！' +
     (p.signature ? p.signature + '…' : '') +
     '你也拆开自己看看👉 ' + url;
