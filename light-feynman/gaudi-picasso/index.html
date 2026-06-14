@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
 <title>高迪×毕加索 · 四只猫的午后</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -198,17 +198,80 @@ body {
 }
 @keyframes spin { to { transform:rotate(360deg); } }
 
-/* ── Mobile ── */
-@media (max-width: 768px) {
+/* ── Responsive ── */
+
+/* Desktop Large: ≥1440px */
+@media (min-width: 1440px) {
+  .book-wrapper { max-width:1300px; padding:40px; }
+  .book { max-width:1200px; }
+  .scene-content { padding:56px 52px; }
+  .scene-title { font-size:1.9rem; }
+  .scene-title-ca { font-size:1.25rem; }
+  .dialogue-block .zh { font-size:1.15rem; }
+  .dialogue-block .ca { font-size:0.95rem; }
+  .top-bar { padding:0 40px; }
+}
+
+/* Laptop: 1024-1439px */
+@media (min-width: 1024px) and (max-width: 1439px) {
+  .book-wrapper { max-width:1100px; }
+  .book { max-width:1000px; }
+  .scene-content { padding:48px 40px; }
+}
+
+/* Tablet: 640-1023px */
+@media (min-width: 640px) and (max-width: 1023px) {
   .scene-inner { flex-direction:column; }
-  .scene-image { flex:0 0 auto; min-height:260px; max-height:340px; }
-  .scene-content { padding:32px 24px; }
-  .scene-title { font-size:1.3rem; }
-  .top-bar { padding:0 16px; }
+  .scene-image { flex:0 0 auto; min-height:320px; max-height:420px; }
+  .scene-content { padding:40px 36px; }
+  .scene-title { font-size:1.45rem; }
+  .book-wrapper { padding:16px; }
+  .top-bar { padding:0 20px; }
+  .top-bar .subtitle { font-size:0.75rem; }
+  .nav-area { padding:14px 32px 28px; }
+  .book { border-radius:4px 10px 10px 4px; max-width:700px; }
+}
+
+/* Mobile: < 640px */
+@media (max-width: 639px) {
+  .scene-inner { flex-direction:column; }
+  .scene-image { flex:0 0 auto; min-height:220px; max-height:300px; }
+  .scene-content { padding:28px 20px; }
+  .scene-title { font-size:1.25rem; }
+  .scene-title-ca { font-size:0.95rem; margin-bottom:16px; }
+  .dialogue-block .zh { font-size:0.95rem; line-height:1.7; }
+  .dialogue-block .ca { font-size:0.82rem; }
+  .dialogue-block .speaker { font-size:0.82rem; }
+  .stage-direction { font-size:0.82rem; }
+  .historical-note { font-size:0.76rem; padding-top:16px; }
+  .book-wrapper { padding:8px 8px 0; margin-top:52px; }
+  .book { border-radius:4px 8px 8px 4px; max-width:100%; min-height:auto; }
+  .book::before { width:4px; }
+  .top-bar { padding:0 12px; height:48px; }
+  .top-bar h1 { font-size:0.9rem; }
   .top-bar .subtitle { display:none; }
-  .top-bar h1 { font-size:0.95rem; }
-  .nav-area { padding:12px 24px 24px; }
-  .book { border-radius:4px 8px 8px 4px; }
+  .top-bar .controls { gap:8px; }
+  .lang-toggle button { padding:4px 8px; font-size:0.72rem; }
+  .music-btn { padding:4px 10px; font-size:0.78rem; }
+  .nav-area { padding:10px 16px 20px; gap:14px; }
+  .nav-btn { width:36px; height:36px; font-size:1rem; }
+  .page-dots { gap:6px; }
+  .page-dot { width:6px; height:6px; }
+  .page-dot.active { width:18px; }
+  .page-label { font-size:0.72rem; min-width:48px; }
+  .scene-number { font-size:0.75rem; }
+  .footer { font-size:0.7rem; padding:16px; }
+}
+
+/* Mobile Small: < 375px */
+@media (max-width: 374px) {
+  .scene-content { padding:24px 16px; }
+  .scene-title { font-size:1.15rem; }
+  .dialogue-block .zh { font-size:0.9rem; }
+  .top-bar h1 { font-size:0.82rem; }
+  .lang-toggle button { padding:3px 6px; font-size:0.68rem; }
+  .music-btn { padding:3px 8px; font-size:0.72rem; }
+  .nav-btn { width:32px; height:32px; }
 }
 
 /* Fade transition */
