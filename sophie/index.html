@@ -427,30 +427,113 @@ document.addEventListener('click', () => {
 
 el.sendBtn.onclick = () => { handleInput(el.input.value); el.input.value = ''; };
 el.input.onkeydown = e => { if(e.key === 'Enter') { handleInput(el.input.value); el.input.value = ''; } };
-// Speech API detection
-function showSpeechUnavailable() {
-  document.getElementById('speechNa').classList.add('visible');
-}
-function showListenBtn(text) {
-  const btn = document.getElementById('listenBtn');
-  btn.classList.add('visible');
-  btn.dataset.text = text;
+// ═══════════════════════════════════════════════════
+// Speech autoplay system — works in iOS/Android WebView
+// ═══════════════════════════════════════════════════
+
+// Step 1: Activate audio session via AudioContext + silent audio
+let audioCtx = null;
+try { audioCtx = new (window.AudioContext || window.webkitAudioContext)(); } catch(e) {}
+(function warmupSilent() {
+  // Play a silent MP3 (196 bytes) to activate audio session on mobile
+  const s = document.createElement('audio');
+  s.setAttribute('autoplay', '');
+  s.setAttribute('playsinline', '');
+  s.setAttribute('muted', '');
+  // Minimal silent aac frame
+  const b64 = '//uQxAAAAAAAAAAAAAAAAAAAAAAAWGluZwAAAA8AAAACAAABGQCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCg//8kAAP4AAAADAQAAAAAAAAAAAAEAAAAUAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA//sQxAADwAABQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA//sQxAADwAABQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA//sQxAADwAABQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA//sQxAADwAABQAAAAAAAAAAAAAA';
+  try { s.src = 'data:audio/mp4;base64,' + b64; s.play(); } catch(e) {}
+})();
+
+// Step 2: Resume AudioContext (iOS requirement)
+function resumeAudioCtx() {
+  if (audioCtx && audioCtx.state === 'suspended') {
+    audioCtx.resume().then(() => {
+      // Play silent buffer to activate audio output
+      const b = audioCtx.createBuffer(1, 220, 22050);
+      const src = audioCtx.createBufferSource();
+      src.buffer = b; src.connect(audioCtx.destination); src.start(0);
+    }).catch(() => {});
+  }
 }
 
-// User gesture unlocks speech
-document.addEventListener('click', function unlock() {
+// Step 3: Warmup SpeechSynthesis with silent utterance
+let speechWarmed = false;
+function warmupSpeech() {
+  if (speechWarmed || !window.speechSynthesis) return;
+  try {
+    window.speechSynthesis.cancel();
+    const w = new SpeechSynthesisUtterance('');
+    w.volume = 0; w.text = ' ';
+    window.speechSynthesis.speak(w);
+    speechWarmed = true;
+  } catch(e) {}
+}
+
+// Step 4: Main speak function with retry
+function doSpeak(text, retries) {
+  if (!window.speechSynthesis) return;
+  retries = retries || 0;
+  window.speechSynthesis.cancel();
+  resumeAudioCtx();
+  warmupSpeech();
+  
+  const u = new SpeechSynthesisUtterance(text.replace(/[—–：；，。！？、…·
+]/g, ' '));
+  u.lang = 'zh-CN'; u.rate = 0.72; u.pitch = 0.95; u.volume = 0.85;
+  try {
+    const voices = window.speechSynthesis.getVoices();
+    const zh = voices.find(v => v.lang && v.lang.startsWith('zh'));
+    if (zh) u.voice = zh;
+  } catch(e) {}
+  
+  let succeeded = false;
+  u.onstart = () => { succeeded = true; };
+  u.onerror = () => { succeeded = false; };
+  
+  window.speechSynthesis.speak(u);
+  
+  // If no onstart, retry with exponential backoff (Chrome bug)
+  setTimeout(() => {
+    if (!succeeded && retries < 3) {
+      warmupSpeech();
+      doSpeak(text, retries + 1);
+    }
+  }, 300 * (retries + 1));
+}
+
+// Step 5: Auto-speak on response (should work after warmup)
+let lastSpokenText = '';
+function speak(text) {
+  lastSpokenText = text;
+  document.getElementById('listenBtn').dataset.text = text;
+  if (!window.speechSynthesis) return;
+  doSpeak(text);
+}
+
+// Step 6: Wake on ANY user interaction
+function wakeSpeech() {
+  resumeAudioCtx();
+  warmupSpeech();
   document.body.dataset.speechReady = '1';
-  document.removeEventListener('click', unlock);
-  if (window.speechSynthesis) window.speechSynthesis.getVoices();
-}, { once: true });
+  // Auto-speak any pending message
+  if (lastSpokenText) doSpeak(lastSpokenText);
+}
+document.addEventListener('touchstart', wakeSpeech, { once: true });
+document.addEventListener('click', wakeSpeech, { once: true });
 
-// Listen button: speak on tap (guaranteed user gesture)
+// Listen button (redundant with autoplay but kept as fallback)
 document.getElementById('listenBtn').addEventListener('click', function() {
-  const text = this.dataset.text || lastSpokenText;
-  if (text) { doSpeak(text); this.classList.remove('visible'); }
+  const t = this.dataset.text || lastSpokenText;
+  if (t) { doSpeak(t); this.classList.remove('visible'); }
 });
 
-el.voiceBtn.onclick = () => { voiceOn = !voiceOn; el.voiceBtn.classList.toggle('active', voiceOn); if(!voiceOn) window.speechSynthesis.cancel(); };
+el.voiceBtn.onclick = () => {
+  voiceOn = !voiceOn;
+  el.voiceBtn.classList.toggle('active', voiceOn);
+  if (!voiceOn) { window.speechSynthesis.cancel(); }
+};
+document.getElementById('speechNa').classList.remove('visible'); // hide error by default
 
 // Keyboard appear: adjust bottom padding so input stays visible
 if (window.visualViewport) {
