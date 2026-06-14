@@ -630,12 +630,32 @@ function setLang(lang) {
 function initAudio() {
   if (audioCtx) return;
   audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  // Master volume
   musicGain = audioCtx.createGain();
-  musicGain.gain.value = 0.04;
-  musicGain.connect(audioCtx.destination);
+  musicGain.gain.value = 0.10;
+  // Warm lowpass to soften harmonics
+  const lpFilter = audioCtx.createBiquadFilter();
+  lpFilter.type = 'lowpass';
+  lpFilter.frequency.value = 2200;
+  lpFilter.Q.value = 0.7;
+  // Simple reverb: delay line
+  const delay = audioCtx.createDelay(0.3);
+  delay.delayTime.value = 0.15;
+  const feedback = audioCtx.createGain();
+  feedback.gain.value = 0.25;
+  const wetGain = audioCtx.createGain();
+  wetGain.gain.value = 0.4;
+  // Routing: gain → lpFilter → destination (dry) + delay → feedback → wet → destination (wet)
+  musicGain.connect(lpFilter);
+  lpFilter.connect(audioCtx.destination);
+  lpFilter.connect(delay);
+  delay.connect(feedback);
+  feedback.connect(delay);
+  feedback.connect(wetGain);
+  wetGain.connect(audioCtx.destination);
 }
 
-// Spanish guitar chord voicings (frequencies in Hz)
+// Spanish guitar chord voicings (frequencies in Hz) — drop tuning for warmth
 const chords = [
   [110.00, 164.81, 220.00, 329.63, 440.00],  // Am
   [98.00,  146.83, 196.00, 293.66, 392.00],  // G
@@ -643,17 +663,43 @@ const chords = [
   [82.41,  123.47, 164.81, 329.63, 415.30],  // E
 ];
 
-function pluckString(freq, startTime, gainNode) {
+function pluckString(freq, startTime, gainNode, panVal) {
+  // Noise burst for pluck attack
+  const bufferSize = Math.floor(audioCtx.sampleRate * 0.02);
+  const noiseBuf = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
+  const data = noiseBuf.getChannelData(0);
+  for (let i = 0; i < bufferSize; i++) data[i] = (Math.random() * 2 - 1) * Math.exp(-i / (bufferSize * 0.15));
+  const noise = audioCtx.createBufferSource();
+  noise.buffer = noiseBuf;
+  const noiseG = audioCtx.createGain();
+  noiseG.gain.setValueAtTime(0.12, startTime);
+  noiseG.gain.exponentialRampToValueAtTime(0.001, startTime + 0.03);
+  noise.connect(noiseG);
+  noiseG.connect(gainNode);
+  noise.start(startTime);
+  noise.stop(startTime + 0.03);
+
+  // Tone: sawtooth with fast decay + slight detune
   const osc = audioCtx.createOscillator();
+  osc.type = 'sawtooth';
+  osc.frequency.value = freq * (1 + (Math.random() - 0.5) * 0.004);
   const g = audioCtx.createGain();
-  osc.type = 'triangle';
-  osc.frequency.value = freq;
-  g.gain.setValueAtTime(0.25, startTime);
-  g.gain.exponentialRampToValueAtTime(0.001, startTime + 2.5);
-  osc.connect(g);
-  g.connect(gainNode);
+  g.gain.setValueAtTime(0.22, startTime);
+  g.gain.exponentialRampToValueAtTime(0.001, startTime + 3.0);
+  // Stereo pan
+  let panner;
+  if (panVal !== undefined) {
+    panner = audioCtx.createStereoPanner();
+    panner.pan.value = panVal;
+    osc.connect(g);
+    g.connect(panner);
+    panner.connect(gainNode);
+  } else {
+    osc.connect(g);
+    g.connect(gainNode);
+  }
   osc.start(startTime);
-  osc.stop(startTime + 2.5);
+  osc.stop(startTime + 3.0);
 }
 
 function playChord(chordIndex) {
@@ -661,7 +707,8 @@ function playChord(chordIndex) {
   const now = audioCtx.currentTime;
   const chord = chords[chordIndex];
   chord.forEach((freq, i) => {
-    pluckString(freq, now + i * 0.06, musicGain);
+    const pan = (i / (chord.length - 1)) * 1.4 - 0.7; // -0.7 to +0.7 stereo spread
+    pluckString(freq, now + i * 0.07, musicGain, pan);
   });
 }
 
@@ -672,7 +719,7 @@ function musicLoop() {
     if (!musicPlaying) return;
     playChord(chordIdx);
     chordIdx = (chordIdx + 1) % chords.length;
-    musicTimeout = setTimeout(step, 3200);
+    musicTimeout = setTimeout(step, 3400);
   }
   step();
 }
