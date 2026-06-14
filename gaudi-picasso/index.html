@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="ca">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
@@ -57,13 +57,6 @@ body {
 }
 .music-btn.playing { color:var(--music-on); border-color:var(--accent); }
 .music-btn:hover { border-color:var(--accent); }
-
-.lang-toggle { display:flex; border:1px solid var(--divider); border-radius:20px; overflow:hidden; }
-.lang-toggle button {
-  background:none; border:none; padding:5px 12px; cursor:pointer;
-  font-size:0.8rem; font-family:inherit; color:var(--text-light); transition:all 0.2s;
-}
-.lang-toggle button.active { background:var(--accent); color:#fff; }
 
 /* ── Book Container ── */
 .book-wrapper {
@@ -281,7 +274,6 @@ body {
   .top-bar h1 { font-size:0.95rem; }
   .top-bar .subtitle { font-size:0.72rem; }
   .top-bar .controls { gap:10px; }
-  .lang-toggle button { padding:5px 10px; font-size:0.75rem; }
   .music-btn { padding:5px 12px; font-size:0.8rem; }
   .nav-area { padding:12px 24px 24px; gap:18px; }
   .nav-btn { width:40px; height:40px; font-size:1.1rem; }
@@ -318,7 +310,6 @@ body {
   .top-bar h1 { font-size:0.88rem; }
   .top-bar .subtitle { display:none; }
   .top-bar .controls { gap:6px; }
-  .lang-toggle button { padding:4px 8px; font-size:0.7rem; }
   .music-btn { padding:5px 10px; font-size:0.75rem; }
   .nav-area { padding:12px 14px 20px; gap:12px; }
   .nav-btn { width:44px; height:44px; font-size:1.1rem; }
@@ -339,7 +330,6 @@ body {
   .dialogue-block .ca { font-size:0.78rem; }
   .top-bar { padding:0 8px; height:44px; }
   .top-bar h1 { font-size:0.78rem; }
-  .lang-toggle button { padding:3px 6px; font-size:0.65rem; }
   .music-btn { padding:4px 8px; font-size:0.7rem; }
   .nav-btn { width:42px; height:42px; }
   .page-dots { gap:4px; }
@@ -564,10 +554,7 @@ html { scroll-behavior: smooth; scroll-padding-top: 56px; overscroll-behavior: n
     <span class="subtitle">Una Tarda als Quatre Gats</span>
   </div>
   <div class="controls">
-    <div class="lang-toggle">
-      <button id="langZh" class="active" onclick="setLang('zh')">中文</button>
-      <button id="langCa" onclick="setLang('ca')">中文+Català</button>
-    </div>
+    
     <button class="music-btn" id="musicBtn" onclick="toggleMusic()" title="背景音乐">
       <span id="musicIcon">♪</span> <span id="musicLabel">音乐</span>
     </button>
@@ -587,22 +574,18 @@ html { scroll-behavior: smooth; scroll-padding-top: 56px; overscroll-behavior: n
     </div>
     <div class="scene-content">
       <div class="scene-number">ESCENA 1</div>
-      <div class="scene-title">初遇</div>
       <div class="scene-title-ca">La Trobada</div>
       <div class="stage-direction">四只猫咖啡馆的午后。阳光从彩色玻璃窗斜斜洒入。角落里，黑发青年对着速写本疯狂地画着什么。门铃响了——灰白胡子的男人走进来。</div>
       <div class="dialogue-block">
         <div class="speaker">毕加索</div>
-        <div class="zh">又来一个。他们都想学巴黎人的样子，端着咖啡聊两个小时的艺术——以为艺术是聊出来的。</div>
         <div class="ca">Un altre. Tots volen fer com els parisencs, dues hores amb un cafè parlant d'art — com si l'art es fes parlant.</div>
       </div>
       <div class="dialogue-block">
         <div class="speaker">高迪</div>
-        <div class="zh">你在画什么？</div>
         <div class="ca">Què dibuixes?</div>
       </div>
       <div class="dialogue-block">
         <div class="speaker">毕加索</div>
-        <div class="zh">画我能看到的东西——不是他们看到的那些。……线条。不是物体的线条——是空间自己的线条。一个瓶子和它旁边的空气，谁规定线条只能属于瓶子？</div>
         <div class="ca">El que jo veig. No el que veuen ells. ...Línies. No les línies dels objectes — les línies de l'espai. Una ampolla i l'aire que l'envolta... qui ha decidit que les línies només pertanyen a l'ampolla?</div>
       </div>
       <div class="historical-note">
@@ -621,27 +604,22 @@ html { scroll-behavior: smooth; scroll-padding-top: 56px; overscroll-behavior: n
     </div>
     <div class="scene-content">
       <div class="scene-number">ESCENA 2</div>
-      <div class="scene-title">石头与画布</div>
       <div class="scene-title-ca">Pedra i Tela</div>
       <div class="stage-direction">咖啡续过一轮。高迪用餐巾纸折出一个曲面。两人之间的空间越来越小。</div>
       <div class="dialogue-block">
         <div class="speaker">毕加索</div>
-        <div class="zh">你刚才说——你不画直线。什么意思？</div>
         <div class="ca">Has dit que no dibuixes línies rectes. Què vols dir?</div>
       </div>
       <div class="dialogue-block">
         <div class="speaker">高迪</div>
-        <div class="zh">不是我说的。是树说的。你见过笔直的树干吗？……直线是人的发明，曲线是上帝的签名。你看——（掏出圣家堂柱子草图）这棵树会撑起一座教堂。一百年，两百年——它不需要直线来站立。</div>
         <div class="ca">No ho dic jo. Ho diuen els arbres. Has vist mai un tronc perfectament recte? ...La línia recta és un invent de l'home. La corba és la signatura de Déu. Mira — aquest arbre sostindrà una catedral. Cent anys, dos-cents anys — no necessita rectes per mantenir-se dret.</div>
       </div>
       <div class="dialogue-block">
         <div class="speaker">毕加索</div>
-        <div class="zh">……你在用石头画一棵树？</div>
         <div class="ca">...Estàs dibuixant un arbre amb pedres?</div>
       </div>
       <div class="dialogue-block">
         <div class="speaker">高迪</div>
-        <div class="zh">你在用颜料割开空间？</div>
         <div class="ca">I tu, estàs tallant l'espai amb pintura?</div>
       </div>
       <div class="stage-direction">两人同时沉默。然后，几乎同时——笑了。</div>
@@ -661,27 +639,22 @@ html { scroll-behavior: smooth; scroll-padding-top: 56px; overscroll-behavior: n
     </div>
     <div class="scene-content">
       <div class="scene-number">ESCENA 3</div>
-      <div class="scene-title">上帝住在曲线里</div>
       <div class="scene-title-ca">Déu Viu a les Corbes</div>
       <div class="stage-direction">煤气灯点亮。餐巾纸上画满了抛物线、双曲面、扭曲的人脸。</div>
       <div class="dialogue-block">
         <div class="speaker">毕加索</div>
-        <div class="zh">你说上帝住在曲线里。那为什么人要造方块？</div>
         <div class="ca">Dius que Déu viu a les corbes. Per què els homes construïm quadrats?</div>
       </div>
       <div class="dialogue-block">
         <div class="speaker">高迪</div>
-        <div class="zh">因为方块容易。方块不需要思考。但你看——云的轮廓、山脊的走向、浪打在石头上的形状——哪一个是方的？</div>
         <div class="ca">Perquè els quadrats són fàcils. No cal pensar per fer un quadrat. Però mira — el perfil d'un núvol, la carena d'una muntanya, la forma d'una onada contra la pedra — quin d'ells és quadrat?</div>
       </div>
       <div class="dialogue-block">
         <div class="speaker">毕加索</div>
-        <div class="zh">那我呢？我在跟谁学——跟谁抢？</div>
         <div class="ca">I jo? De qui aprenc — amb qui competeixo?</div>
       </div>
       <div class="dialogue-block">
         <div class="speaker">高迪</div>
-        <div class="zh">你在跟眼睛抢。你想抢在眼睛看清之前，先把东西画出来。不是画它长什么样——是画它<em>是</em>什么样。</div>
         <div class="ca">Tu competeixes amb l'ull. Vols dibuixar una cosa abans que l'ull l'hagi vista. No dibuixes com és — dibuixes què és.</div>
       </div>
       <div class="historical-note">
@@ -700,37 +673,30 @@ html { scroll-behavior: smooth; scroll-padding-top: 56px; overscroll-behavior: n
     </div>
     <div class="scene-content">
       <div class="scene-number">ESCENA 4</div>
-      <div class="scene-title">火与耐心</div>
       <div class="scene-title-ca">Foc i Paciència</div>
       <div class="stage-direction">入夜。咖啡馆越来越空。两人罕见地沉默了，各自沉在各自的思绪里。</div>
       <div class="dialogue-block">
         <div class="speaker">毕加索</div>
-        <div class="zh">你的教堂——要建多久？</div>
         <div class="ca">La teva catedral — quant trigarà?</div>
       </div>
       <div class="dialogue-block">
         <div class="speaker">高迪</div>
-        <div class="zh">我不知道。<br>我的客户不急。</div>
         <div class="ca">No ho sé.<br>El meu client no té pressa.</div>
       </div>
       <div class="dialogue-block">
         <div class="speaker">毕加索</div>
-        <div class="zh">你等不到完工的那天。</div>
         <div class="ca">No viuràs per veure-la acabada.</div>
       </div>
       <div class="dialogue-block">
         <div class="speaker">高迪</div>
-        <div class="zh">我知道。所以每一块石头我都要亲手看过。不是为我自己——是为那个两百年后走进来，抬头看的人。</div>
         <div class="ca">Ho sé. Per això miro cada pedra. No per mi — per la persona que hi entrarà d'aquí a dos-cents anys i aixecarà el cap.</div>
       </div>
       <div class="dialogue-block">
         <div class="speaker">毕加索</div>
-        <div class="zh">（猛地画了一道弧线——野兽一样，饥饿的，不知道要去哪里的弧线）<br>那这一瞬间，值你多少块石头？</div>
         <div class="ca">Quant val aquest instant, en pedres teves?</div>
       </div>
       <div class="dialogue-block">
         <div class="speaker">高迪</div>
-        <div class="zh">全部。</div>
         <div class="ca">Totes.</div>
       </div>
       <div class="historical-note">
@@ -749,33 +715,27 @@ html { scroll-behavior: smooth; scroll-padding-top: 56px; overscroll-behavior: n
     </div>
     <div class="scene-content">
       <div class="scene-number">ESCENA 5</div>
-      <div class="scene-title">告别</div>
       <div class="scene-title-ca">El Comiat</div>
       <div class="stage-direction">夜深了。服务员开始把椅子翻到桌上。高迪站起身。</div>
       <div class="dialogue-block">
         <div class="speaker">毕加索</div>
-        <div class="zh">Antoni。……我在想去巴黎。</div>
         <div class="ca">Antoni. ...Penso anar a París.</div>
       </div>
       <div class="dialogue-block">
         <div class="speaker">高迪</div>
-        <div class="zh">那就去。但走之前——（指指速写本里的餐巾纸）别把我给你的这些直线丢了。</div>
         <div class="ca">Doncs vés. Però abans de marxar — no perdis aquestes línies rectes que t'he donat.</div>
       </div>
       <div class="dialogue-block">
         <div class="speaker">毕加索</div>
-        <div class="zh">直线？你一晚上都在说曲线。</div>
         <div class="ca">Rectes? Portes tota la nit parlant de corbes.</div>
       </div>
       <div class="dialogue-block">
         <div class="speaker">高迪</div>
-        <div class="zh">对——我给你的，是我画不出的那些。<br>（走向门口，停住，没回头）<br>等你到了巴黎——记得一件事。他们看不懂你的时候，不是因为你是错的。是因为他们是方的。</div>
         <div class="ca">Exacte. Les que t'he donat, són les que jo no sé dibuixar.<br>Quan siguis a París — recorda una cosa. Quan no t'entenguin, no és perquè tu t'equivoquis. És perquè ells són quadrats.</div>
       </div>
       <div class="stage-direction">门铃响了。高迪消失在巴塞罗那的夜色里。毕加索在空空荡荡的咖啡馆里坐了很久。拿起铅笔，在速写纸最上方写下四个字。</div>
       <div class="dialogue-block">
         <div class="speaker">毕加索</div>
-        <div class="zh">Déu viu a les corbes.<br>上帝住在曲线里。</div>
         <div class="ca">Déu viu a les corbes.</div>
       </div>
       <div class="historical-note">
@@ -1030,13 +990,7 @@ document.addEventListener('touchend', e => {
   }
 }, {passive:true});
 
-// ── Language toggle ──
-function setLang(lang) {
-  showCatalan = lang === 'ca';
-  document.getElementById('langZh').classList.toggle('active', !showCatalan);
-  document.getElementById('langCa').classList.toggle('active', showCatalan);
-  document.querySelector('.book').classList.toggle('show-catalan', showCatalan);
-}
+
 
 // ── Music ──
 function toggleMusic() {
