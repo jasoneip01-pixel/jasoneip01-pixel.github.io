@@ -154,19 +154,18 @@ body::after {
 
 /* ── Voice toggle ── */
 .voice-toggle {
-  position:fixed; bottom:62px; right:20px;
-  width:30px; height:30px;
+  position:fixed; bottom:64px; right:24px;
+  width:32px; height:32px;
   border-radius:50%;
-  border:1px solid var(--text-faint);
-  background:rgba(244,239,230,0.8);
-  backdrop-filter:blur(4px);
+  border:1.5px solid var(--text-faint);
+  background:var(--bg);
   cursor:pointer;
   display:flex; align-items:center; justify-content:center;
-  font-size:0.7rem; color:var(--ink-light);
-  transition:all 0.3s; z-index:10;
+  font-size:0.72rem; color:var(--ink-light);
+  transition:all 0.3s; z-index:10; box-shadow:0 1px 4px rgba(0,0,0,0.04);
 }
 .voice-toggle:hover,.voice-toggle.active {
-  border-color:var(--gold); color:var(--gold);
+  border-color:var(--gold); color:var(--gold); background:var(--bg);
 }
 
 /* ═══════════════════ DESKTOP ≥1024 ═══════════════════ */
@@ -177,14 +176,14 @@ body::after {
   .sophie-speech .words { font-size:0.95rem; }
   .input-bar { padding:10px 32px 20px; }
   .input-bar input { font-size:0.9rem; }
-  .voice-toggle { bottom:66px; right:28px; }
+  .voice-toggle { bottom:64px; right:28px; }
 }
 
 /* ═══════════════════ TABLET 768-1023 ═══════════════════ */
 @media (min-width:768px) and (max-width:1023px) {
   .page { padding:0 28px 68px; }
   .visual-zone img { max-width:360px; }
-  .voice-toggle { bottom:62px; right:24px; }
+  .voice-toggle { bottom:60px; right:24px; }
 }
 
 /* ═══════════════════ MOBILE <480 ═══════════════════ */
@@ -196,7 +195,7 @@ body::after {
   .sophie-speech .name { font-size:0.7rem; min-width:38px; }
   .input-bar { padding:8px 16px 12px; }
   .input-bar input { font-size:0.82rem; }
-  .voice-toggle { bottom:52px; right:16px; width:28px; height:28px; }
+  .voice-toggle { bottom:56px; right:16px; width:28px; height:28px; }
 }
 
 /* ═══════════════════ SMALL MOBILE <375 ═══════════════════ */
