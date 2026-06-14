@@ -346,6 +346,153 @@ body {
 @keyframes fadeOut { from { opacity:1; } to { opacity:0; } }
 @keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
 
+/* ── Visual Notes ── */
+.visual-notes {
+  border-top: 1px solid var(--divider);
+  margin-top: 0;
+}
+.visual-notes .vn-header {
+  display:flex; align-items:center; justify-content:space-between;
+  padding: 16px 40px;
+  cursor:pointer; user-select:none;
+  background: linear-gradient(180deg, rgba(250,246,239,0.5), transparent);
+  transition: background 0.2s;
+}
+.visual-notes .vn-header:hover { background: rgba(200,168,78,0.06); }
+.vn-title-group { display:flex; align-items:center; gap:10px; }
+.vn-icon { font-size:1.3rem; }
+.vn-header h2 { font-size:1.1rem; font-weight:600; color:var(--text); }
+.vn-title-ca {
+  font-family:'Playfair Display',Georgia,serif;
+  font-size:0.9rem; font-style:italic; color:var(--catalan);
+  margin-left:8px; font-weight:400;
+}
+.vn-arrow { font-size:0.8rem; color:var(--text-light); transition: transform 0.3s; }
+.visual-notes.expanded .vn-arrow { transform: rotate(180deg); }
+
+.vn-content {
+  display:none;
+  padding: 0 40px 32px;
+}
+.visual-notes.expanded .vn-content { display:block; }
+
+.vn-section {
+  margin-bottom: 36px;
+}
+.vn-section h3 {
+  font-size:1.05rem; font-weight:600; color:var(--accent-dim);
+  margin-bottom:2px;
+}
+.vn-sub-ca {
+  font-family:'Playfair Display',Georgia,serif;
+  font-size:0.85rem; font-style:italic; color:var(--catalan);
+  margin-bottom:12px; font-weight:400;
+}
+.vn-desc {
+  font-size:0.9rem; color:var(--text-light); line-height:1.7;
+  margin-bottom:16px;
+}
+.vn-desc-center { text-align:center; font-style:italic; margin-top:24px; }
+
+.vn-image-frame {
+  text-align:center;
+  background: #f0ebe0;
+  border-radius:6px; overflow:hidden;
+  padding: 12px 12px 4px;
+}
+.vn-img {
+  width:100%; height:auto; display:block;
+  border-radius:3px; opacity:0; transition: opacity 0.5s;
+}
+.vn-img.loaded { opacity:1; }
+.vn-placeholder {
+  padding:48px 20px; text-align:center; color:var(--text-light);
+  font-size:0.9rem; line-height:1.6;
+}
+.vn-caption {
+  font-size:0.78rem; color:var(--text-light);
+  text-align:center; padding:8px 4px 4px; line-height:1.5;
+}
+
+/* Gallery */
+.vn-gallery {
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap:16px;
+}
+.vn-card {
+  background: #faf6ef;
+  border:1px solid var(--divider);
+  border-radius:6px; overflow:hidden;
+  transition: box-shadow 0.2s;
+}
+.vn-card:hover { box-shadow: 0 2px 12px var(--shadow); }
+.vn-card .vn-img {
+  width:100%; aspect-ratio:4/3; object-fit:cover;
+}
+.vn-card-text { padding:14px 16px; }
+.vn-card-title {
+  font-size:0.9rem; font-weight:600; color:var(--text);
+  margin-bottom:2px;
+}
+.vn-card-ca {
+  font-family:'Playfair Display',Georgia,serif;
+  font-size:0.8rem; color:var(--catalan);
+  margin-bottom:6px;
+}
+.vn-card-note {
+  font-size:0.8rem; color:var(--text-light); line-height:1.55;
+}
+
+/* Parallel columns */
+.vn-parallel {
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap:24px;
+  margin-bottom:16px;
+}
+.vn-col { }
+.vn-quote-block {
+  border-left:3px solid var(--accent);
+  padding:8px 16px; margin-bottom:12px;
+  background: rgba(200,168,78,0.06);
+  border-radius:0 4px 4px 0;
+}
+.vn-quote {
+  font-size:0.95rem; font-weight:600; color:var(--text);
+  line-height:1.5; margin-bottom:4px;
+}
+.vn-quote-ca {
+  font-family:'Playfair Display',Georgia,serif;
+  font-size:0.82rem; color:var(--catalan); line-height:1.4;
+}
+.vn-attr { font-size:0.78rem; color:var(--accent-dim); text-align:right; }
+.vn-note { font-size:0.82rem; color:var(--text-light); line-height:1.6; }
+
+.vn-footer-note {
+  text-align:center; padding-top:20px;
+  border-top:1px solid var(--divider);
+}
+.vn-footer-note small { color:var(--text-light); opacity:0.7; }
+
+/* ── Responsive: Visual Notes ── */
+@media (max-width: 767px) {
+  .vn-gallery { grid-template-columns:1fr; }
+  .vn-parallel { grid-template-columns:1fr; gap:16px; }
+  .visual-notes .vn-header { padding:14px 20px; }
+  .vn-content { padding:0 20px 24px; }
+  .vn-header h2 { font-size:1rem; }
+  .vn-title-ca { font-size:0.8rem; }
+  .vn-section h3 { font-size:0.95rem; }
+  .vn-quote { font-size:0.88rem; }
+}
+@media (min-width: 768px) and (max-width: 1023px) {
+  .vn-gallery { grid-template-columns:repeat(2,1fr); }
+  .vn-card:last-child { grid-column:1/-1; max-width:400px; justify-self:center; }
+  .visual-notes .vn-header { padding:16px 36px; }
+  .vn-content { padding:0 36px 28px; }
+}
+
 /* ── Footer ── */
 .footer {
   padding:24px; text-align:center; font-size:0.78rem; color:var(--text-light);
@@ -584,6 +731,98 @@ body {
   </div>
 </div>
 
+<!-- ═══ Visual Notes ═══ -->
+<div class="visual-notes" id="visualNotes">
+  <div class="vn-header" onclick="document.getElementById('visualNotes').classList.toggle('expanded')">
+    <div class="vn-title-group">
+      <span class="vn-icon">🎨</span>
+      <h2>视觉笔记 <span class="vn-title-ca">Notes Visuals</span></h2>
+    </div>
+    <span class="vn-arrow">▼</span>
+  </div>
+  <div class="vn-content">
+
+    <!-- Section 1: Bull Series -->
+    <div class="vn-section">
+      <h3>① 一头牛的十一张脸</h3>
+      <h3 class="vn-sub-ca">Onze Cares d'un Brau</h3>
+      <p class="vn-desc">1945年圣诞节，毕加索用同一块石版画了一头牛——然后反复擦掉、重画。十一次。从肌肉、阴影、皮毛，到只剩三根线。这不是简化，是<em>抵达</em>。就像高迪在咖啡馆说的：\"你在跟眼睛抢。\"</p>
+      <div class="vn-image-frame">
+        <img data-src="images/art/bull-series.jpg" alt="毕加索公牛系列" class="vn-img vn-lazy" loading="lazy" onload="this.classList.add('loaded')" onerror="this.parentElement.innerHTML='<div class=vn-placeholder>🖼 公牛系列 · 11幅石版画 · 1945-46<br><small>© Succession Picasso</small></div>'">
+        <p class="vn-caption">
+          <em>Le Taureau</em> · 石版画 · 1945年12月–1946年1月
+          <br><small>从左至右：Plate 1 → 4 → 7 → 10 → 11。颜料一层层减去，公牛的本质一层层显露。</small>
+        </p>
+      </div>
+    </div>
+
+    <!-- Section 2: Key Paintings -->
+    <div class="vn-section">
+      <h3>② 三幅画，一生</h3>
+      <h3 class="vn-sub-ca">Tres Quadres, Una Vida</h3>
+      <div class="vn-gallery">
+        <div class="vn-card">
+          <img data-src="images/art/first-communion.jpg" alt="第一次圣餐" class="vn-img vn-lazy" loading="lazy" onload="this.classList.add('loaded')" onerror="this.style.display='none'">
+          <div class="vn-card-text">
+            <p class="vn-card-title">《第一次圣餐》1896</p>
+            <p class="vn-card-ca"><em>La Primera Comunió</em></p>
+            <p class="vn-card-note">十五岁。四只猫咖啡馆还没在他的生命里打开那扇门，但画笔已经比大多数成年人更诚实。</p>
+          </div>
+        </div>
+        <div class="vn-card">
+          <img data-src="images/art/demoiselles.jpg" alt="亚威农少女" class="vn-img vn-lazy" loading="lazy" onload="this.classList.add('loaded')" onerror="this.style.display='none'">
+          <div class="vn-card-text">
+            <p class="vn-card-title">《亚威农少女》1907</p>
+            <p class="vn-card-ca"><em>Les Demoiselles d'Avignon</em></p>
+            <p class="vn-card-note">高迪在咖啡馆说「你用颜料割开空间」。这张画就是那一刀——五个女人的身体被切成几何切面，西方艺术从此不再一样。</p>
+          </div>
+        </div>
+        <div class="vn-card">
+          <img data-src="images/art/guernica.jpg" alt="格尔尼卡" class="vn-img vn-lazy" loading="lazy" onload="this.classList.add('loaded')" onerror="this.style.display='none'">
+          <div class="vn-card-text">
+            <p class="vn-card-title">《格尔尼卡》1937</p>
+            <p class="vn-card-ca"><em>Guernica</em></p>
+            <p class="vn-card-note">高迪没能活着看见这幅画——它证明了抽象不是逃离现实，是直抵现实最锋利的方式。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section 3: Parallel Lines -->
+    <div class="vn-section">
+      <h3>③ 一根线</h3>
+      <h3 class="vn-sub-ca">Una Línia</h3>
+      <div class="vn-parallel">
+        <div class="vn-col">
+          <div class="vn-quote-block">
+            <p class="vn-quote">「直线属于人类，曲线属于上帝。」</p>
+            <p class="vn-quote-ca"><em>La línia recta pertany a l'home. La corba, a Déu.</em></p>
+            <p class="vn-attr">— Antoni Gaudí</p>
+          </div>
+          <p class="vn-note">高迪的柱子是树——树干分叉、枝条承重、没有一根直线。圣家堂不是"建"起来的，是"长"出来的。</p>
+        </div>
+        <div class="vn-col">
+          <div class="vn-quote-block">
+            <p class="vn-quote">「我在画我能看到的东西——不是他们看到的那些。」</p>
+            <p class="vn-quote-ca"><em>Dibuixo el que jo veig. No el que veuen ells.</em></p>
+            <p class="vn-attr">— Pablo Picasso</p>
+          </div>
+          <p class="vn-note">公牛系列的最后一幅：一根线就是整头牛。和上帝签名的曲线不同，这是人类意志的直线——但同样到达了真实。</p>
+        </div>
+      </div>
+      <p class="vn-desc vn-desc-center">
+        一棵树撑起教堂的穹顶。一根线画出公牛的全部。<br>
+        两者都不需要方块。
+      </p>
+    </div>
+
+    <div class="vn-footer-note">
+      <small>🎨 画作图像来自 WikiArt · 教育用途 · 版权归毕加索遗产所有</small>
+    </div>
+
+  </div><!-- /vn-content -->
+</div><!-- /visual-notes -->
+
 <!-- Navigation -->
 <div class="nav-area">
   <button class="nav-btn" id="prevBtn" onclick="goTo(currentScene-1)" disabled>←</button>
@@ -617,6 +856,17 @@ function loadImg(sceneNum) {
 function preloadAdjacent(n) {
   if (n > 1) loadImg(n - 1);
   if (n < totalScenes) loadImg(n + 1);
+}
+// Lazy load visual notes images on expand
+const vnEl = document.getElementById('visualNotes');
+if (vnEl) {
+  new MutationObserver(() => {
+    if (vnEl.classList.contains('expanded')) {
+      document.querySelectorAll('.vn-lazy').forEach(img => {
+        if (img.dataset.src && !img.src) img.src = img.dataset.src;
+      });
+    }
+  }).observe(vnEl, {attributes:true, attributeFilter:['class']});
 }
 function goTo(n) {
   if (n < 1 || n > totalScenes || n === currentScene) return;
