@@ -475,6 +475,32 @@ body {
 }
 .vn-footer-note small { color:var(--text-light); opacity:0.7; }
 
+/* Bull grid gallery */
+.bull-grid {
+  display:grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap:12px;
+  margin-bottom:12px;
+}
+.bull-item {
+  position:relative;
+  background:#f0ebe0;
+  border-radius:4px;
+  overflow:hidden;
+  aspect-ratio:1;
+}
+.bull-item .vn-img {
+  width:100%; height:100%; object-fit:contain;
+  display:block;
+}
+.bull-label {
+  position:absolute;
+  bottom:0; left:0; right:0;
+  background:linear-gradient(transparent, rgba(0,0,0,0.5));
+  color:#fff; font-size:0.68rem; padding:20px 6px 4px;
+  text-align:center;
+}
+
 /* ── Responsive: Visual Notes ── */
 @media (max-width: 767px) {
   .vn-gallery { grid-template-columns:1fr; }
@@ -485,12 +511,14 @@ body {
   .vn-title-ca { font-size:0.8rem; }
   .vn-section h3 { font-size:0.95rem; }
   .vn-quote { font-size:0.88rem; }
+  .bull-grid { grid-template-columns:repeat(2,1fr); gap:8px; }
 }
 @media (min-width: 768px) and (max-width: 1023px) {
   .vn-gallery { grid-template-columns:repeat(2,1fr); }
   .vn-card:last-child { grid-column:1/-1; max-width:400px; justify-self:center; }
   .visual-notes .vn-header { padding:16px 36px; }
   .vn-content { padding:0 36px 28px; }
+  .bull-grid { grid-template-columns:repeat(4,1fr); gap:10px; }
 }
 
 /* ── Footer ── */
@@ -748,10 +776,44 @@ body {
       <h3 class="vn-sub-ca">Onze Cares d'un Brau</h3>
       <p class="vn-desc">1945年圣诞节，毕加索用同一块石版画了一头牛——然后反复擦掉、重画。十一次。从肌肉、阴影、皮毛，到只剩三根线。这不是简化，是<em>抵达</em>。就像高迪在咖啡馆说的：\"你在跟眼睛抢。\"</p>
       <div class="vn-image-frame">
-        <img data-src="images/art/bull-series.jpg" alt="毕加索公牛系列" class="vn-img vn-lazy" loading="lazy" onload="this.classList.add('loaded')" onerror="this.parentElement.innerHTML='<div class=vn-placeholder>🖼 公牛系列 · 11幅石版画 · 1945-46<br><small>© Succession Picasso</small></div>'">
+        <p class="vn-desc">十一次覆盖重画，从写实到只剩三根线条。以下为关键阶段：</p>
+        <div class="bull-grid">
+          <div class="bull-item">
+            <img data-src="images/art/bull-plate1.jpg" alt="Plate 1" class="vn-img vn-lazy" loading="lazy" onload="this.classList.add('loaded')" onerror="this.style.display='none'">
+            <span class="bull-label">1 · 写实</span>
+          </div>
+          <div class="bull-item">
+            <img data-src="images/art/bull-plateiv.jpg" alt="Plate 4" class="vn-img vn-lazy" loading="lazy" onload="this.classList.add('loaded')" onerror="this.style.display='none'">
+            <span class="bull-label">4 · 解构开始</span>
+          </div>
+          <div class="bull-item">
+            <img data-src="images/art/bull-platev.jpg" alt="Plate 5" class="vn-img vn-lazy" loading="lazy" onload="this.classList.add('loaded')" onerror="this.style.display='none'">
+            <span class="bull-label">5 · 剥离</span>
+          </div>
+          <div class="bull-item">
+            <img data-src="images/art/bull-platevi.jpg" alt="Plate 6" class="vn-img vn-lazy" loading="lazy" onload="this.classList.add('loaded')" onerror="this.style.display='none'">
+            <span class="bull-label">6 · 线条浮现</span>
+          </div>
+          <div class="bull-item">
+            <img data-src="images/art/bull-platevii.jpg" alt="Plate 7" class="vn-img vn-lazy" loading="lazy" onload="this.classList.add('loaded')" onerror="this.style.display='none'">
+            <span class="bull-label">7 · 继续剥离</span>
+          </div>
+          <div class="bull-item">
+            <img data-src="images/art/bull-plateviii.jpg" alt="Plate 8" class="vn-img vn-lazy" loading="lazy" onload="this.classList.add('loaded')" onerror="this.style.display='none'">
+            <span class="bull-label">8 · 化繁为简</span>
+          </div>
+          <div class="bull-item">
+            <img data-src="images/art/bull-plateix.jpg" alt="Plate 9" class="vn-img vn-lazy" loading="lazy" onload="this.classList.add('loaded')" onerror="this.style.display='none'">
+            <span class="bull-label">9 · 逼近本质</span>
+          </div>
+          <div class="bull-item">
+            <img data-src="images/art/bull-platexi.jpg" alt="Plate 11" class="vn-img vn-lazy" loading="lazy" onload="this.classList.add('loaded')" onerror="this.style.display='none'">
+            <span class="bull-label">11 · 抵达</span>
+          </div>
+        </div>
         <p class="vn-caption">
-          <em>Le Taureau</em> · 石版画 · 1945年12月–1946年1月
-          <br><small>从左至右：Plate 1 → 4 → 7 → 10 → 11。颜料一层层减去，公牛的本质一层层显露。</small>
+          <em>Le Taureau</em> · 石版画 · 1945年12月–1946年1月<br>
+          <small>十一个版本，从 Plate 1 到 Plate 11。颜料一层层减去，公牛的本质一层层显露。</small>
         </p>
       </div>
     </div>
