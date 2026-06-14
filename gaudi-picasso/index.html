@@ -130,18 +130,14 @@ body {
   margin-bottom:2px; letter-spacing:0.05em;
 }
 .dialogue-block .zh { font-size:1.05rem; line-height:1.75; color:var(--text); }
-.dialogue-block .ca.hidden-style {
-  display:none;
-}
-.dialogue-block .zh { font-size:1.05rem; line-height:1.75; color:var(--text); }
+
 .dialogue-block .ca {
   font-family:'Playfair Display',Georgia,serif;
   font-size:0.9rem; font-style:italic; color:var(--catalan);
   line-height:1.6; margin-top:4px;
-  display:none;
 }
-.show-catalan .dialogue-block .ca { display:block; }
-.show-catalan .dialogue-block .ca { display:block; }
+
+
 
 .stage-direction {
   font-size:0.9rem; color:var(--text-light); font-style:italic;
@@ -318,7 +314,6 @@ body {
   .music-btn { padding:5px 10px; font-size:0.75rem; }
   .nav-area { padding:12px 14px 20px; gap:12px; }
   .nav-btn { width:44px; height:44px; font-size:1.1rem; }
-  .lang-toggle button { padding:5px 10px; font-size:0.75rem; }
   .page-dots { gap:6px; }
   .page-dot { width:8px; height:8px; padding:10px; }
   .page-dot.active { width:9px; height:9px; box-shadow:0 0 3px var(--accent); }
@@ -343,14 +338,6 @@ body {
   .page-dot.active { width:9px; height:9px; }
   .nav-area { gap:8px; }
 }
-
-/* ── Language toggle ── */
-.lang-toggle { display:flex; border:1px solid var(--divider); border-radius:20px; overflow:hidden; }
-.lang-toggle button {
-  background:none; border:none; padding:6px 12px; cursor:pointer;
-  font-size:0.8rem; font-family:inherit; color:var(--text-light); transition:all 0.2s;
-}
-.lang-toggle button.active { background:var(--accent); color:#fff; }
 
 /* ── Scene transitions: smooth page turn ── */
 .scene.slide-left-out { display:flex; animation: slideLeftOut 0.45s cubic-bezier(.4,0,.2,1) forwards; }
@@ -566,10 +553,6 @@ html { scroll-behavior: smooth; scroll-padding-top: 56px; overscroll-behavior: n
   <div class="title-group">
     <h1>四只猫的午后</h1>
     <span class="subtitle">Una Tarda als Quatre Gats</span>
-  </div>
-  <div class="lang-toggle">
-    <button id="langZh" class="active" onclick="setLang('zh')">中文</button>
-    <button id="langCat" onclick="setLang('ca')">Català</button>
   </div>
   <div class="controls">
     
@@ -938,7 +921,6 @@ html { scroll-behavior: smooth; scroll-padding-top: 56px; overscroll-behavior: n
 let currentScene = 1;
 const totalScenes = 5;
 let musicPlaying = false;
-let showCatalan = false;
 
 // ── Scene navigation ──
 function loadImg(sceneNum) {
@@ -1034,17 +1016,10 @@ document.addEventListener('touchend', e => {
 
 
 
-function setLang(lang) {
-  showCatalan = lang === 'ca';
-  document.getElementById('langZh').classList.toggle('active', !showCatalan);
-  document.getElementById('langCat').classList.toggle('active', showCatalan);
-  document.querySelectorAll('.dialogue-block').forEach(b => {
-    b.classList.toggle('show-catalan', showCatalan);
-  });
-}
+
 
 // Initialize
-setLang('zh');
+
 
 // ── Music ──
 function toggleMusic() {
