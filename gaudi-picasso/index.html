@@ -89,16 +89,16 @@ body {
 
 .scene-inner {
   display:flex; width:100%; min-height:500px;
+  align-items:flex-start;
 }
 
 .scene-image {
-  flex:0 0 48%; position:relative; overflow:hidden;
+  flex:0 0 50%; position:relative; overflow:hidden;
   background: #e8e0d5;
-  min-height:400px;
+  display:flex; align-items:center; justify-content:center;
 }
 .scene-image img {
-  width:100%; height:100%; object-fit:cover;
-  display:block;
+  width:100%; height:auto; display:block;
   transition: opacity 0.6s ease;
   opacity:0;
 }
@@ -233,7 +233,7 @@ body {
 
 /* ══ Tablet Landscape: 768–1023px ══ */
 @media (min-width: 768px) and (max-width: 1023px) {
-  .scene-inner { flex-direction:column; }
+  .scene-inner { flex-direction:column; align-items:stretch; }
   .scene-image { flex:0 0 auto; min-height:340px; max-height:440px; }
   .scene-content { padding:44px 40px; }
   .scene-title { font-size:1.55rem; }
@@ -257,7 +257,7 @@ body {
   @keyframes slideRightOut { 0% { transform:translate3d(0,0,0); opacity:1; } 100% { transform:translate3d(40px,0,0); opacity:0; } }
   @keyframes slideLeftIn { 0% { transform:translate3d(40px,0,0); opacity:0; } 100% { transform:translate3d(0,0,0); opacity:1; } }
   @keyframes slideRightIn { 0% { transform:translate3d(-40px,0,0); opacity:0; } 100% { transform:translate3d(0,0,0); opacity:1; } }
-  .scene-inner { flex-direction:column; }
+  .scene-inner { flex-direction:column; align-items:stretch; }
   .scene-image { flex:0 0 auto; aspect-ratio:16/10; min-height:240px; max-height:320px; }
   .scene-image img { position:absolute; inset:0; }
   .scene-content { padding:36px 28px; }
@@ -292,7 +292,7 @@ body {
   @keyframes slideRightOut { 0% { transform:translate3d(0,0,0); opacity:1; } 100% { transform:translate3d(35px,0,0); opacity:0; } }
   @keyframes slideLeftIn { 0% { transform:translate3d(35px,0,0); opacity:0; } 100% { transform:translate3d(0,0,0); opacity:1; } }
   @keyframes slideRightIn { 0% { transform:translate3d(-35px,0,0); opacity:0; } 100% { transform:translate3d(0,0,0); opacity:1; } }
-  .scene-inner { flex-direction:column; }
+  .scene-inner { flex-direction:column; align-items:stretch; }
   .scene-image { flex:0 0 auto; aspect-ratio:16/10; min-height:200px; max-height:280px; }
   .scene-image img { position:absolute; inset:0; }
   .scene-content { padding:28px 18px; }
@@ -1043,6 +1043,6 @@ function toggleMusic() {
   }
 }
 </script>
-<audio id="bgMusic" src="images/guitar.mp3" loop preload="auto"></audio>
+<audio id="bgMusic" src="images/guitar.mp3?v=2" loop preload="auto"></audio>
 </body>
 </html>
