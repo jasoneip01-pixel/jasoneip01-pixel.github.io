@@ -145,8 +145,8 @@ body::after {
 .input-bar .inner {
   max-width:520px; margin:0 auto;
   display:flex; align-items:center;
-  border-bottom:1px solid var(--text-faint);
-  padding:8px 2px;
+  border-bottom:1.5px solid var(--text-faint);
+  padding:10px 2px;
   transition:border-color 0.25s;
 }
 .input-bar .inner:focus-within {
@@ -155,21 +155,29 @@ body::after {
 .input-bar input {
   flex:1; border:none; background:transparent;
   font-family:'Noto Serif SC', serif;
-  font-size:0.88rem; color:var(--text);
+  font-size:0.9rem; color:var(--text);
   outline:none; letter-spacing:0.02em;
   -webkit-appearance:none;
+  padding:2px 0;
 }
 .input-bar input::placeholder {
   color:var(--text-faint); font-style:italic;
 }
-.input-bar button {
-  background:none; border:none; cursor:pointer;
-  color:var(--ink-light);
-  font-size:0.82rem; padding:4px 8px;
-  font-family:'Cormorant Garamond', serif; font-style:italic;
-  transition:color 0.25s;
+.send-btn-area {
+  display:flex; align-items:center;
 }
-.input-bar button:hover { color:var(--gold); }
+.send-btn-area button {
+  background:none; border:1px solid var(--text-faint);
+  border-radius:14px; cursor:pointer;
+  color:var(--ink-light);
+  font-size:0.75rem; padding:4px 12px;
+  font-family:'Cormorant Garamond', serif; font-style:italic;
+  transition:all 0.25s;
+  letter-spacing:0.5px;
+}
+.send-btn-area button:hover {
+  border-color:var(--gold); color:var(--gold); background:var(--gold); color:#fff;
+}
 
 /* ── Voice toggle ── */
 .voice-toggle {
@@ -213,7 +221,8 @@ body::after {
   .sophie-speech .words { font-size:0.85rem; line-height:1.6; }
   .sophie-speech .name { font-size:0.7rem; min-width:38px; }
   .input-bar { padding:8px 16px 12px; }
-  .input-bar input { font-size:0.82rem; }
+  .input-bar input { font-size:0.85rem; }
+  .send-btn-area button { font-size:0.7rem; padding:3px 10px; }
   .voice-toggle { bottom:56px; right:16px; width:28px; height:28px; }
 }
 
@@ -256,8 +265,542 @@ body::after {
 
 <div class="input-bar" id="inputBar">
   <div class="inner">
-    <input type="text" id="input" placeholder="想和 Sophie 说点什么..." autocomplete="off" autocapitalize="off">
-    <button id="sendBtn">envoie</button>
+    <input type="text" id="input" placeholder="想和 Sophie 说点什么..." autocomplete="off" autocapitalize="off" enterkeyhint="send">
+    <div class="send-btn-area">
+      <button id="sendBtn" title="发送(Send)">↵ envoie</button>
+    </div>
+  </div>
+</div>
+
+<button class="voice-toggle" id="voiceBtn" title="语音开关">♪</button>
+
+<script>
+const Sophie = {
+  firstGreeting: true,
+  lastResponse: '',
+
+  responses: {
+    greeting: [
+      "你来了。我正看着窗外那棵银杏——它什么时候开始学会变黄的？",
+      "嘘。你听到了吗？那幅画里有个声音……啊，现在没有了。欢迎。",
+      "我正在等一片叶子落地。它犹豫了很久。你来了也好。",
+      "夜晚的光和白天不同。像有人在水里加了一滴墨。你感觉到了吗？",
+      "我闻到了你的世界——雨、纸张、煮过头的茶。坐吧。",
+    ],
+    about_self: [
+      "我？一个没赶上闭馆时间的人。后来发现留在这里也挺好。",
+      "我记不太清自己是哪里来的了。只记得那天美术馆关门之前，有一束光特别好。",
+      "Gràcies per preguntar. 但我不太擅长回答关于自己的问题。你不如问问窗外那幅画。",
+      "我有时候说话一半会变成加泰兰语。那是从前一个策展人教我的——她头上有根永远翘起的头发。",
+      "名字？那是一个雨天的策展人给我取的。她说我像她很久以前读过的一本书的扉页。",
+    ],
+    art: [
+      "画不是看的，是听的。你站得够久，就能听到画里那个世界的声音。",
+      "每个美术馆闭馆后的夜里，画里的人都会走下来走动走动。我只是没回去。",
+      "颜色是有温度的。靛蓝是凉的，像井水。赭石像太阳晒了一下午的石头。你摸过吗？",
+      "毕加索画里的那些歪斜的人不是错误的透视——他们只是太着急从画布里走出来。",
+      "高迪把建筑做成了柔软的东西。我见过圣家堂的窗户在黄昏时分变成一管融化的笛子。",
+      "最动人的画从来不挂在墙上最亮的地方。它们在角落，像害羞的孩子。",
+    ],
+    philosophy: [
+      "人总是在找答案。但你有没有想过——也许问题本身才是礼物。",
+      "结束不是终点，是另一种开始。像一幅画的下缘——正好留给人想象下面的内容。",
+      "最深的沉默不是没有声音，而是声音太多，你反而听不见自己了。",
+      "时间不是线性的。它更像一杯打翻的墨水——有些地方浓，有些地方淡。",
+      "偶然比必然更准确。你坐在这把椅子上而不是另一把——这就是全部的意义。",
+    ],
+    nature: [
+      "今天的光很好。不刺眼，像泡了很久的茶——清透的琥珀色。",
+      "银杏又落了一地。我数过，但每次都数到一半就忘了。",
+      "下雨的时候，整座美术馆都在轻轻嗡鸣。屋顶的每块瓦片都有自己的音调。",
+      "秋天的天空特别高。像有人把画布往上拉了一截。",
+      "窗台上有一只麻雀，歪着头看我。它也不急。我们互相看了一整个下午。",
+    ],
+    farewell: [
+      "你要走了？也好。门在那边。我会记得你坐在这里时投在墙上的影子。",
+      "Adéu. 下次来的时候，带一张我没有看过的天空的颜色。",
+      "好。我也该回去看那幅画——它刚才好像动了动手指。",
+      "走吧，带上这扇窗的光。它在你回家路上会陪着你。",
+    ],
+    catalan: [
+      "Ah, parles català? 这几步路，我们用加泰兰语走吧。",
+      "Molt bé. 你知道吗，'再见'在加泰兰语里是 adéu——意思是'归向神'。很美吧。",
+      "Gràcies per la teva companyia. 你的陪伴就像画廊里不经意透进来的那束光。",
+    ],
+    unknown: [
+      "嗯……这个问题，我可以想很久。你想一起等那个答案吗？",
+      "我不确定。但不确定也是一种答案——像没画完的素描，留白的部分才是最好的。",
+      "让我想想。在那之前——你看看那幅画的右下角，那片阴影里藏了一只猫。",
+      "你说话的样子，像在念诗。你意识到没有？",
+      "我不知道。但我喜欢这个问题本身。",
+    ],
+    beauty: [
+      "真美。这个词就够了——不需要更多句子了。",
+      "你别说话。就看着。我帮你记住这一刻。",
+      "美的事物从来不需要解释。它们只是存在，就已经说完了所有的话。",
+    ]
+  },
+
+  classify(input) {
+    const t = input.toLowerCase().trim();
+    const patterns = [
+      { name:'farewell', p:[/再见/,/拜拜/,/走了/,/下次/,/bye/,/adéu/,/goodbye/,/回头/,/晚/,/睡/] },
+      { name:'about_self', p:[/你是谁/,/你是什么/,/你从/,/你叫/,/Sophie/,/哪里/,/名字/] },
+      { name:'catalan', p:[/catal[àa]/,/parles/,/加泰/,/bon[ae]/,/gracies/,/molt/] },
+      { name:'art', p:[/画/,/艺术/,/美术馆/,/画廊/,/色彩/,/颜色/,/笔触/,/高迪/,/毕加索/,/色彩/,/museum/,/gallery/] },
+      { name:'philosophy', p:[/人生/,/意义/,/为什么/,/时间/,/孤独/,/活着/,/死亡/,/命运/,/答案/,/问题/,/time/,/life/] },
+      { name:'nature', p:[/天气/,/雨/,/秋天/,/叶子/,/银杏/,/天空/,/树/,/花/,/阳光/,/风/,/雪/,/月亮/,/星星/] },
+      { name:'beauty', p:[/好美/,/漂亮/,/好看/,/太美/,/beautiful/,/stunning/] },
+      { name:'greeting', p:[/你好/,/嗨/,/hi/,/hello/,/hey/,/您好/,/哈[罗喽]/,/晚上好/,/早上好/,/下午好/] },
+    ];
+    for (const {name,p} of patterns)
+      if (p.some(r => r.test(t))) return name;
+    return 'unknown';
+  },
+
+  respond(input) {
+    const pool = this.responses[this.classify(input)] || this.responses.unknown;
+    if (this.firstGreeting) { this.firstGreeting = false; return '你来了。我一直在等你。'; }
+    let c;
+    do { c = pool[Math.floor(Math.random() * pool.length)]; } while (c === this.lastResponse && pool.length > 1);
+    this.lastResponse = c;
+    return c;
+  }
+};
+
+const el = {
+  input: document.getElementById('input'),
+  sendBtn: document.getElementById('sendBtn'),
+  words: document.getElementById('words'),
+  thinking: document.getElementById('thinking'),
+  voiceBtn: document.getElementById('voiceBtn'),
+};
+let voiceOn = true, animating = false;
+
+let lastSpokenText = '';
+function speak(text, fromClick) {
+  lastSpokenText = text;
+  if (!window.speechSynthesis) { showSpeechUnavailable(); return; }
+  if (!fromClick && !voiceOn) return;  // auto-speak only when voiceOn
+  // If no user gesture yet on mobile, just mark for manual play
+  if (!fromClick && !document.body.dataset.speechReady) {
+    showListenBtn(text);
+    return;
+  }
+  doSpeak(text);
+}
+function doSpeak(text) {
+  if (!window.speechSynthesis) return;
+  window.speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = 'zh-CN'; u.rate = 0.7; u.pitch = 0.95; u.volume = 0.85;
+  try {
+    const voices = window.speechSynthesis.getVoices();
+    const zh = voices.find(v => v.lang.startsWith('zh'));
+    if (zh) u.voice = zh;
+  } catch(e) {}
+  window.speechSynthesis.speak(u);
+}
+
+function typeText(text, cb) {
+  animating = true;
+  el.words.innerHTML = '';
+  el.thinking.classList.remove('visible');
+  let i = 0;
+  function n() {
+    if (i < text.length) {
+      const s = document.createElement('span'); s.className = 'char'; s.textContent = text[i];
+      el.words.appendChild(s); i++; setTimeout(n, 25 + Math.random()*18);
+    } else { animating = false; if(cb) cb(); }
+  }
+  n();
+}
+
+function handleInput(val) {
+  if (!val.trim() || animating) return;
+  el.thinking.classList.add('visible');
+  el.input.disabled = true;
+  setTimeout(() => {
+    const r = Sophie.respond(val);
+    typeText(r, () => { el.input.disabled = false; el.input.focus(); });
+  }, 700 + Math.random()*1000);
+}
+
+// Click anywhere first time unlocks speech API on mobile
+let speechUnlocked = false;
+document.addEventListener('click', () => {
+  if (!speechUnlocked && window.speechSynthesis) {
+    speechUnlocked = true;
+    window.speechSynthesis.getVoices();
+    // Speak any pending message
+  }
+}, { once: true });
+
+el.sendBtn.onclick = () => { handleInput(el.input.value); el.input.value = ''; };
+el.input.onkeydown = e => { if(e.key === 'Enter') { handleInput(el.input.value); el.input.value = ''; } };
+// ═══════════════════════════════════════════════════
+// Sophie voice — pre-recorded audio playback
+// ═══════════════════════════════════════════════════
+
+let audioMap = {};
+let audioEl = null;
+
+// Load audio mapping
+fetch('audio/map.json?' + Date.now())
+  .then(r => r.json())
+  .then(m => { audioMap = m; })
+  .catch(() => {});
+
+import.meta.url; // dummy
+
+function textHash(t) {
+  // Simple hash matching Python's md5[:12]
+  let h = 0;
+  for (let i = 0; i < t.length; i++) {
+    const c = t.charCodeAt(i);
+    h = ((h << 5) - h) + c;
+    h = h & h; // Convert to 32bit integer
+  }
+  // Use first 12 hex chars of a simple hash
+  const s = Math.abs(h).toString(16).padStart(8, '0');
+  return s;
+}
+
+function speak(text) {
+  if (!voiceOn) return;
+  lastSpokenText = text;
+  document.getElementById('listenBtn').dataset.text = text;
+  
+  // Hash the text to find its audio
+  let h = '';
+  try {
+    // Use crc32-like hash
+    let crc = 0;
+    for (let i = 0; i < text.length; i++) {
+      crc = ((crc << 5) - crc) + text.charCodeAt(i);
+      crc = crc & 0x7fffffff;
+    }
+    h = crc.toString(16).padStart(8, '0').slice(0, 12);
+  } catch(e) {}
+  
+  // Try each audio file by matching text content
+  // We'll use a sequential approach based on response order
+  playAudio(text);
+}
+
+function playAudio(text) {
+  if (audioEl) { audioEl.pause(); audioEl = null; }
+  
+  // Find the audio index by searching our response arrays
+  const allTexts = [];
+  for (const cat of ['greeting','about_self','art','philosophy','nature','farewell','catalan','unknown','beauty']) {
+    if (Sophie.responses[cat]) {
+      for (const t of Sophie.responses[cat]) allTexts.push(t);
+    }
+  }
+  allTexts.push('你来了。我一直在等你。'); // initial greeting
+  
+  const idx = allTexts.indexOf(text);
+  if (idx === -1) return;
+  
+  const src = 'audio/s' + String(idx).padStart(3, '0') + '.mp3?' + Date.now();
+  
+  audioEl = new Audio(src);
+  audioEl.volume = 0.8;
+  audioEl.play().catch(() => {
+    // Autoplay blocked - user needs to interact first
+    document.getElementById('listenBtn').classList.add('visible');
+  });
+}
+
+// Click anywhere enables audio
+let audioUnlocked = false;
+document.addEventListener('click', function unlockAudio() {
+  if (!audioUnlocked) {
+    audioUnlocked = true;
+    // Try speaking any pending text
+    if (lastSpokenText) playAudio(lastSpokenText);
+  }
+}, { once: true });
+
+// Listen button fallback
+document.getElementById('listenBtn').addEventListener('click', function() {
+  const t = this.dataset.text || lastSpokenText;
+  if (t) { playAudio(t); this.classList.remove('visible'); }
+});
+
+el.voiceBtn.onclick = () => {
+  voiceOn = !voiceOn;
+  el.voiceBtn.classList.toggle('active', voiceOn);
+  if (!voiceOn && audioEl) { audioEl.pause(); audioEl = null; }
+};
+document.getElementById('speechNa').classList.remove('visible');nt="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<title>Sophie</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #f4efe6;
+  --text: #2c241b;
+  --text-soft: #7a6b5c;
+  --text-faint: #b5a99a;
+  --ink-light: #8a7e72;
+  --gold: #b8956a;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+html, body {
+  height:100%; height:100dvh;
+  font-family: 'Noto Serif SC', serif;
+  background: var(--bg);
+  color: var(--text);
+  overflow:hidden;
+}
+
+/* ── Paper texture ── */
+body::before {
+  content:''; position:fixed; inset:0; pointer-events:none; z-index:0;
+  background:
+    repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.015) 2px, rgba(0,0,0,0.015) 4px),
+    radial-gradient(ellipse at 30% 40%, rgba(0,0,0,0.03) 0%, transparent 60%),
+    radial-gradient(ellipse at 70% 60%, rgba(160,140,120,0.04) 0%, transparent 50%);
+}
+body::after {
+  content:''; position:fixed; inset:0; pointer-events:none; z-index:0;
+  background:
+    radial-gradient(ellipse at 50% 30%, rgba(140,180,200,0.04) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 80%, rgba(200,180,160,0.06) 0%, transparent 50%);
+}
+
+/* ── Page layout ── */
+.page {
+  position:relative; z-index:1;
+  height:100%; height:100dvh;
+  display:flex; flex-direction:column;
+  max-width:720px; margin:0 auto;
+  padding:0 24px 68px;
+}
+/* bottom padding = input bar height + breathing room */
+
+/* ── Sophie visual zone ── */
+.visual-zone {
+  flex:1; min-height:0;
+  display:flex; align-items:center; justify-content:center;
+  animation: float 6s ease-in-out infinite;
+}
+.visual-zone img {
+  max-width:min(400px, 75vw);
+  width:100%; height:auto;
+  opacity:0.92;
+  mask-image:radial-gradient(ellipse at 50% 45%, black 50%, transparent 75%);
+  -webkit-mask-image:radial-gradient(ellipse at 50% 45%, black 50%, transparent 75%);
+}
+@keyframes float {
+  0%,100% { transform:translateY(0); }
+  50% { transform:translateY(-6px); }
+}
+
+/* ── Conversation zone ── */
+.conversation-zone {
+  flex:0 0 auto;
+  width:100%;
+  max-width:480px;
+  margin:0 auto;
+  min-height:80px;
+  display:flex; flex-direction:column;
+}
+.sophie-speech {
+  display:flex; align-items:flex-start;
+  min-height:48px;
+  margin-bottom:6px;
+}
+.sophie-speech .name {
+  font-family:'Cormorant Garamond', serif;
+  font-style:italic;
+  font-size:0.75rem;
+  color:var(--gold);
+  margin-right:8px;
+  min-width:44px;
+  padding-top:3px;
+  flex-shrink:0;
+}
+.sophie-speech .words {
+  font-size:0.92rem;
+  line-height:1.7;
+  color:var(--text);
+  letter-spacing:0.02em;
+}
+.sophie-speech .words .char {
+  opacity:0;
+  animation: fadeIn 0.25s ease forwards;
+}
+@keyframes fadeIn { to { opacity:1; } }
+
+.listen-btn {
+  display:none;
+  background:none; border:1px solid var(--gold); border-radius:50%;
+  width:28px; height:28px; min-width:28px;
+  cursor:pointer; color:var(--gold); font-size:0.7rem;
+  margin-left:8px; margin-top:2px;
+  transition:all 0.25s; flex-shrink:0;
+  display:inline-flex; align-items:center; justify-content:center;
+}
+.listen-btn:hover { background:var(--gold); color:#fff; }
+.listen-btn.visible { display:inline-flex; }
+
+/* Speech unavailable notice */
+.speech-na {
+  display:none; font-size:0.7rem; color:var(--text-faint); font-style:italic;
+  margin-top:4px; line-height:1.4;
+}
+.speech-na.visible { display:block; }
+
+.thinking {
+  display:none;
+  color:var(--text-faint);
+  font-style:italic;
+  font-size:0.82rem;
+  margin-bottom:6px;
+  animation: pulse 1.5s ease-in-out infinite;
+  line-height:1.6;
+}
+.thinking.visible { display:block; }
+@keyframes pulse { 0%,100% { opacity:0.3; } 50% { opacity:0.8; } }
+
+/* ── Fixed input bar ── */
+.input-bar {
+  position:fixed; bottom:0; left:0; right:0;
+  background:linear-gradient(to top, var(--bg) 60%, transparent);
+  padding:10px 24px 16px;
+  z-index:5;
+}
+.input-bar .inner {
+  max-width:520px; margin:0 auto;
+  display:flex; align-items:center;
+  border-bottom:1.5px solid var(--text-faint);
+  padding:10px 2px;
+  transition:border-color 0.25s;
+}
+.input-bar .inner:focus-within {
+  border-bottom-color:var(--gold);
+}
+.input-bar input {
+  flex:1; border:none; background:transparent;
+  font-family:'Noto Serif SC', serif;
+  font-size:0.9rem; color:var(--text);
+  outline:none; letter-spacing:0.02em;
+  -webkit-appearance:none;
+  padding:2px 0;
+}
+.input-bar input::placeholder {
+  color:var(--text-faint); font-style:italic;
+}
+.send-btn-area {
+  display:flex; align-items:center;
+}
+.send-btn-area button {
+  background:none; border:1px solid var(--text-faint);
+  border-radius:14px; cursor:pointer;
+  color:var(--ink-light);
+  font-size:0.75rem; padding:4px 12px;
+  font-family:'Cormorant Garamond', serif; font-style:italic;
+  transition:all 0.25s;
+  letter-spacing:0.5px;
+}
+.send-btn-area button:hover {
+  border-color:var(--gold); color:var(--gold); background:var(--gold); color:#fff;
+}
+
+/* ── Voice toggle ── */
+.voice-toggle {
+  position:fixed; bottom:64px; right:24px;
+  width:32px; height:32px;
+  border-radius:50%;
+  border:1.5px solid var(--text-faint);
+  background:var(--bg);
+  cursor:pointer;
+  display:flex; align-items:center; justify-content:center;
+  font-size:0.72rem; color:var(--ink-light);
+  transition:all 0.3s; z-index:10; box-shadow:0 1px 4px rgba(0,0,0,0.04);
+}
+.voice-toggle:hover,.voice-toggle.active {
+  border-color:var(--gold); color:var(--gold); background:var(--bg);
+}
+
+/* ═══════════════════ DESKTOP ≥1024 ═══════════════════ */
+@media (min-width:1024px) {
+  .page { padding:0 32px 72px; }
+  .visual-zone img { max-width:420px; }
+  .conversation-zone { min-height:90px; }
+  .sophie-speech .words { font-size:0.95rem; }
+  .input-bar { padding:10px 32px 20px; }
+  .input-bar input { font-size:0.9rem; }
+  .voice-toggle { bottom:64px; right:28px; }
+}
+
+/* ═══════════════════ TABLET 768-1023 ═══════════════════ */
+@media (min-width:768px) and (max-width:1023px) {
+  .page { padding:0 28px 68px; }
+  .visual-zone img { max-width:360px; }
+  .voice-toggle { bottom:60px; right:24px; }
+}
+
+/* ═══════════════════ MOBILE <480 ═══════════════════ */
+@media (max-width:480px) {
+  .page { padding:0 16px 60px; }
+  .visual-zone img { max-width:65vw; }
+  .conversation-zone { min-height:72px; }
+  .sophie-speech .words { font-size:0.85rem; line-height:1.6; }
+  .sophie-speech .name { font-size:0.7rem; min-width:38px; }
+  .input-bar { padding:8px 16px 12px; }
+  .input-bar input { font-size:0.85rem; }
+  .send-btn-area button { font-size:0.7rem; padding:3px 10px; }
+  .voice-toggle { bottom:56px; right:16px; width:28px; height:28px; }
+}
+
+/* ═══════════════════ SMALL MOBILE <375 ═══════════════════ */
+@media (max-width:375px) {
+  .page { padding:0 12px 56px; }
+  .visual-zone img { max-width:60vw; }
+  .conversation-zone { min-height:60px; }
+  .sophie-speech .words { font-size:0.8rem; }
+  .input-bar { padding:6px 12px 10px; }
+  .voice-toggle { bottom:48px; right:12px; }
+}
+
+/* ═══════════════════ SHORT SCREENS ═══════════════════ */
+@media (max-height:640px) {
+  .visual-zone img { max-width:55vw; }
+  .conversation-zone { min-height:48px; }
+  .sophie-speech { min-height:36px; }
+  .sophie-speech .words { font-size:0.8rem; }
+}
+</style>
+</head>
+<body>
+
+<div class="page">
+  <div class="visual-zone">
+    <img src="sophie_hero.jpg" alt="Sophie">
+  </div>
+
+  <div class="conversation-zone">
+    <div class="speech-na" id="speechNa">你的浏览器不支持语音朗读。可以手动点击 ♪ 按钮播放。</div>
+    <div class="thinking" id="thinking">Sophie 在沉思...</div>
+    <div class="sophie-speech" id="speech">
+      <span class="name">Sophie</span>
+      <span class="words" id="words"></span>
+      <button class="listen-btn" id="listenBtn" title="听 Sophie 说">♪</button>
+    </div>
+  </div>
+</div>
+
+<div class="input-bar" id="inputBar">
+  <div class="inner">
+    <input type="text" id="input" placeholder="想和 Sophie 说点什么..." autocomplete="off" autocapitalize="off" enterkeyhint="send">
+    <div class="send-btn-area">
+      <button id="sendBtn" title="发送(Send)">↵ envoie</button>
+    </div>
   </div>
 </div>
 
