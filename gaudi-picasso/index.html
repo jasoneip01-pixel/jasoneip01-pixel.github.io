@@ -91,7 +91,7 @@ body {
 }
 
 /* ── Scene ── */
-.scene { display:none; }
+.scene { display:none; will-change:transform,opacity; }
 .scene.active { display:flex; }
 
 .scene-inner {
@@ -341,10 +341,10 @@ body {
 }
 
 /* Fade transition */
-.scene.fade-out { display:flex; animation: fadeOut 0.35s ease forwards; }
-.scene.fade-in { display:flex; animation: fadeIn 0.35s ease forwards; }
-@keyframes fadeOut { from { opacity:1; } to { opacity:0; } }
-@keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+.scene.slide-left-out { display:flex; animation: slideLeftOut 0.38s cubic-bezier(.55,.055,.675,.19) forwards; } .scene.slide-right-out { display:flex; animation: slideRightOut 0.38s cubic-bezier(.55,.055,.675,.19) forwards; } .scene.slide-left-in { display:flex; animation: slideLeftIn 0.38s cubic-bezier(.215,.61,.355,1) forwards; } .scene.slide-right-in { display:flex; animation: slideRightIn 0.38s cubic-bezier(.215,.61,.355,1) forwards; }
+
+@keyframes slideLeftOut { 0% { transform:translateX(0); opacity:1; } 100% { transform:translateX(-80px); opacity:0; } } @keyframes slideRightOut { 0% { transform:translateX(0); opacity:1; } 100% { transform:translateX(80px); opacity:0; } }
+@keyframes slideLeftIn { 0% { transform:translateX(80px); opacity:0; } 100% { transform:translateX(0); opacity:1; } } @keyframes slideRightIn { 0% { transform:translateX(-80px); opacity:0; } 100% { transform:translateX(0); opacity:1; } }
 
 /* ── Visual Notes ── */
 .visual-notes {
@@ -539,6 +539,7 @@ body {
   border-top:1px solid var(--divider); width:100%; max-width:1100px;
 }
 .footer a { color:var(--accent-dim); text-decoration:none; }
+html { scroll-behavior: smooth; scroll-padding-top: 56px; overscroll-behavior: none; }
 </style>
 </head>
 <body>
@@ -957,14 +958,19 @@ function goTo(n) {
   loadImg(n);
   preloadAdjacent(n);
 
-  old.classList.add('fade-out');
+  // Direction: forward (n > current) = slide left, backward = slide right
+  const dir = n > currentScene ? 'left' : 'right';
+  const outClass = dir === 'left' ? 'slide-left-out' : 'slide-right-out';
+  const inClass = dir === 'left' ? 'slide-right-in' : 'slide-left-in';
+
+  old.classList.add(outClass);
   old.classList.remove('active');
-  next.classList.add('fade-in', 'active');
+  next.classList.add(inClass, 'active');
 
   setTimeout(() => {
-    old.classList.remove('fade-out');
-    next.classList.remove('fade-in');
-  }, 360);
+    old.classList.remove(outClass);
+    next.classList.remove(inClass);
+  }, 390);
 
   currentScene = n;
   updateNav();
