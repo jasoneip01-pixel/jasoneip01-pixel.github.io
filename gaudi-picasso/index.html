@@ -178,7 +178,7 @@ body {
   width:8px; height:8px; border-radius:50%; background:var(--divider);
   cursor:pointer; transition:all 0.3s;
 }
-.page-dot.active { background:var(--accent); width:10px; height:10px; }
+.page-dot.active { background:var(--accent); width:9px; height:9px; }
 .page-dot:hover { background:var(--accent-dim); }
 
 .page-label {
@@ -287,7 +287,7 @@ body {
   .nav-btn { width:40px; height:40px; font-size:1.1rem; }
   .page-dots { gap:8px; }
   .page-dot { width:8px; height:8px; cursor:pointer; min-width:44px; min-height:44px; padding:18px; margin:-18px; background-clip:content-box; }
-  .page-dot.active { width:10px; height:10px; }
+  .page-dot.active { width:9px; height:9px; }
   .page-label { font-size:0.78rem; min-width:52px; }
   .scene-number { font-size:0.8rem; }
   .footer { font-size:0.74rem; padding:18px 20px; }
@@ -324,7 +324,7 @@ body {
   .nav-btn { width:44px; height:44px; font-size:1.1rem; }
   .page-dots { gap:6px; display:flex; align-items:center; }
   .page-dot { width:8px; height:8px; min-width:44px; min-height:44px; padding:18px; margin:-18px; background-clip:content-box; border-radius:50%; }
-  .page-dot.active { width:10px; height:10px; box-shadow:0 0 4px var(--accent); }
+  .page-dot.active { width:9px; height:9px; box-shadow:0 0 3px var(--accent); }
   .page-label { font-size:0.7rem; min-width:44px; }
   .scene-number { font-size:0.72rem; margin-bottom:6px; }
   .footer { font-size:0.68rem; padding:16px 14px; line-height:1.5; }
@@ -578,7 +578,7 @@ html { scroll-behavior: smooth; scroll-padding-top: 56px; overscroll-behavior: n
   <div class="scene-inner">
     <div class="scene-image">
       <div class="loading-placeholder"><div class="spinner"></div></div>
-      <img src="images/scene1.jpg" alt="四只猫咖啡馆" onload="this.classList.add('loaded');this.previousElementSibling.remove()" onerror="this.parentElement.innerHTML='<div class=loading-placeholder style=color:var(--text-light)>🖼 图像生成中…</div>'">
+      <img src="images/scene1.jpg" fetchpriority="high" alt="四只猫咖啡馆" onload="this.classList.add('loaded');this.previousElementSibling.remove()" onerror="this.parentElement.innerHTML='<div class=loading-placeholder style=color:var(--text-light)>🖼 图像生成中…</div>'">
     </div>
     <div class="scene-content">
       <div class="scene-number">ESCENA 1</div>
@@ -795,7 +795,7 @@ html { scroll-behavior: smooth; scroll-padding-top: 56px; overscroll-behavior: n
     <div class="vn-section">
       <h3>① 一头牛的十一张脸</h3>
       <h3 class="vn-sub-ca">Onze Cares d'un Brau</h3>
-      <p class="vn-desc">1945年圣诞节，毕加索用同一块石版画了一头牛——然后反复擦掉、重画。十一次。从肌肉、阴影、皮毛，到只剩三根线。这不是简化，是<em>抵达</em>。就像高迪在咖啡馆说的：\"你在跟眼睛抢。\"</p>
+      <p class="vn-desc">1945年圣诞节，毕加索用同一块石版画了一头牛——然后反复擦掉、重画。十一次。从肌肉、阴影、皮毛，到只剩三根线。这不是简化，是<em>抵达</em>。就像高迪在咖啡馆说的：「你在跟眼睛抢。」</p>
       <div class="vn-image-frame">
         <p class="vn-desc">十一次覆盖重画，从写实到只剩三根线条。以下为关键阶段：</p>
         <div class="bull-grid">
