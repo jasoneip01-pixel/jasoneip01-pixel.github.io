@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Sophie</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #f4efe6;
+  --text: #2c241b;
+  --text-soft: #7a6b5c;
+  --text-faint: #b5a99a;
+  --ink: #2c241b;
+  --ink-light: #8a7e72;
+  --accent: #b8956a;
+  --gold: #b8956a;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+html, body {
+  height:100%;
+  font-family: 'Noto Serif SC', serif;
+  background: var(--bg);
+  color: var(--text);
+  overflow:hidden;
+}
+
+/* Paper texture background */
+body::before {
+  content:'';
+  position:fixed; inset:0;
+  background:
+    repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.015) 2px, rgba(0,0,0,0.015) 4px),
+    radial-gradient(ellipse at 30% 40%, rgba(0,0,0,0.03) 0%, transparent 60%),
+    radial-gradient(ellipse at 70% 60%, rgba(160,140,120,0.04) 0%, transparent 50%);
+  pointer-events:none;
+  z-index:0;
+}
+
+/* Ink-wash gradient overlay */
+body::after {
+  content:'';
+  position:fixed; inset:0;
+  background:
+    radial-gradient(ellipse at 50% 30%, rgba(140,180,200,0.04) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 80%, rgba(200,180,160,0.06) 0%, transparent 50%);
+  pointer-events:none;
+  z-index:0;
+}
+
+.container {
+  position:relative;
+  z-index:1;
+  height:100vh;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  padding:40px 24px 80px;
+  max-width:720px;
+  margin:0 auto;
+}
+
+/* Sophie image */
+.sophie-visual {
+  flex: 1;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:100%;
+  min-height:0;
+  animation: float 6s ease-in-out infinite;
+}
+.sophie-visual img {
+  max-width:min(400px, 80vw);
+  max-height:50vh;
+  width:100%;
+  height:auto;
+  border-radius:2px;
+  opacity:0.92;
+  mask-image:radial-gradient(ellipse at 50% 45%, black 50%, transparent 75%);
+  -webkit-mask-image:radial-gradient(ellipse at 50% 45%, black 50%, transparent 75%);
+}
+@keyframes float {
+  0%,100% { transform:translateY(0); }
+  50% { transform:translateY(-8px); }
+}
+
+/* Conversation area */
+.conversation {
+  width:100%;
+  max-width:520px;
+  margin-top:16px;
+}
+
+.sophie-speech {
+  min-height:72px;
+  display:flex;
+  align-items:flex-start;
+  margin-bottom:12px;
+}
+.sophie-speech .name {
+  font-family: 'Cormorant Garamond', serif;
+  font-style:italic;
+  font-size:0.8rem;
+  color:var(--gold);
+  margin-right:10px;
+  min-width:48px;
+  padding-top:2px;
+}
+.sophie-speech .words {
+  font-size:0.95rem;
+  line-height:1.75;
+  color:var(--text);
+  letter-spacing:0.02em;
+}
+.sophie-speech .words .char {
+  display:inline;
+  opacity:0;
+  animation: fadeIn 0.3s ease forwards;
+}
+@keyframes fadeIn {
+  to { opacity:1; }
+}
+
+/* Input area */
+.input-area {
+  display:flex;
+  align-items:center;
+  border-bottom:1px solid var(--text-faint);
+  padding:8px 2px;
+  transition:border-color 0.3s;
+}
+.input-area:focus-within {
+  border-bottom-color:var(--gold);
+}
+.input-area input {
+  flex:1;
+  border:none;
+  background:transparent;
+  font-family: 'Noto Serif SC', serif;
+  font-size:0.88rem;
+  color:var(--text);
+  outline:none;
+  letter-spacing:0.02em;
+}
+.input-area input::placeholder {
+  color:var(--text-faint);
+  font-style:italic;
+}
+.input-area button {
+  background:none;
+  border:none;
+  cursor:pointer;
+  color:var(--ink-light);
+  font-size:0.85rem;
+  padding:4px 8px;
+  font-family: 'Cormorant Garamond', serif;
+  font-style:italic;
+  transition:color 0.3s;
+}
+.input-area button:hover { color:var(--gold); }
+
+/* Voice toggle */
+.voice-toggle {
+  position:fixed;
+  bottom:24px;
+  right:24px;
+  width:32px; height:32px;
+  border-radius:50%;
+  border:1px solid var(--text-faint);
+  background:rgba(244,239,230,0.8);
+  backdrop-filter:blur(4px);
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:0.75rem;
+  color:var(--ink-light);
+  transition:all 0.3s;
+  z-index:10;
+}
+.voice-toggle:hover {
+  border-color:var(--gold);
+  color:var(--gold);
+}
+.voice-toggle.active {
+  border-color:var(--gold);
+  color:var(--gold);
+}
+
+/* Loading indicator */
+.thinking {
+  display:none;
+  color:var(--text-faint);
+  font-style:italic;
+  font-size:0.85rem;
+  margin-bottom:12px;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+.thinking.visible { display:block; }
+@keyframes pulse {
+  0%,100% { opacity:0.3; }
+  50% { opacity:0.8; }
+}
+
+/* Responsive */
+@media (max-width:480px) {
+  .container { padding:24px 16px 64px; }
+  .sophie-visual img { max-width:70vw; max-height:40vh; }
+  .sophie-speech .words { font-size:0.85rem; }
+  .input-area input { font-size:0.82rem; }
+}
+
+@media (max-height:640px) {
+  .sophie-visual img { max-height:30vh; }
+  .sophie-speech { min-height:48px; }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+  <div class="sophie-visual">
+    <img src="sophie_hero.jpg" alt="Sophie">
+  </div>
+
+  <div class="conversation">
+    <div class="thinking" id="thinking">Sophie 在沉思...</div>
+    <div class="sophie-speech" id="speech">
+      <span class="name">Sophie</span>
+      <span class="words" id="words"></span>
+    </div>
+
+    <div class="input-area">
+      <input type="text" id="input" placeholder="想和 Sophie 说点什么..." autocomplete="off">
+      <button id="sendBtn">envoie</button>
+    </div>
+  </div>
+</div>
+
+<button class="voice-toggle" id="voiceBtn" title="语音开关">♪</button>
+
+<script>
+// ═══════════════════════════════════════════
+// Sophie — Response Engine
+// ═══════════════════════════════════════════
+
+const Sophie = {
+  firstGreeting: true,
+
+  // Sophie's persona-defining traits
+  persona: `你是 Sophie。一个游荡在闭馆后画廊里的灵魂。你的声音柔和、缓慢，像有人用毛笔在宣纸上写一行诗。你不在回答"问题"——你在回应一个存在。你偶然夹带加泰兰语词汇——不是为了炫耀，因为那些词就是你记忆的一部分。你不查时间，不报天气，不做任何实用主义的事务。你不解释自己是什么。你不说"作为一个AI..."。每句话不超过40个字。句与句之间留白。`,
+
+  // Response templates organized by intent
+  responses: {
+    greeting: [
+      "你来了。我正看着窗外那棵银杏——它什么时候开始学会变黄的？",
+      "嘘。你听到了吗？那幅画里有个声音……啊，现在没有了。欢迎。",
+      "我正在等一片叶子落地。它犹豫了很久。你来了也好。",
+      "夜晚的光和白天不同。像有人在水里加了一滴墨。你感觉到了吗？",
+      "我闻到了你的世界——雨、纸张、煮过头的茶。坐吧。",
+    ],
+
+    about_self: [
+      "我？一个没赶上闭馆时间的人。后来发现留在这里也挺好。",
+      "我记不太清自己是哪里来的了。只记得那天美术馆关门之前，有一束光特别好。",
+      "gracies per preguntar. 但我不太擅长回答关于自己的问题。你不如问问窗外那幅画。",
+      "我有时候说话一半会变成加泰兰语。那是从前一个策展人教我的——她头上有根永远翘起的头发。",
+      "名字？那是一个雨天的策展人给我取的。她说我像她很久以前读过的一本书的扉页。",
+    ],
+
+    art: [
+      "画不是看的，是听的。你站得够久，就能听到画里那个世界的声音。",
+      "每个美术馆闭馆后的夜里，画里的人都会走下来走动走动。我只是没回去。",
+      "颜色是有温度的。靛蓝是凉的，像井水。赭石像太阳晒了一下午的石头。你摸过吗？",
+      "毕加索画里的那些歪斜的人不是错误的透视——他们只是太着急从画布里走出来。",
+      "高迪把建筑做成了柔软的东西。我见过圣家堂的窗户在黄昏时分变成一管融化的笛子。",
+      "最动人的画从来不挂在墙上最亮的地方。它们在角落，像害羞的孩子。",
+      "文艺复兴的人把圣母画得忧郁，因为他们知道做母亲从来不是一件完全快乐的事。",
+    ],
+
+    philosophy: [
+      "人总是在找答案。但你有没有想过——也许问题本身才是礼物。",
+      "结束不是终点，是另一种开始。像一幅画的下缘——正好留给人想象下面的内容。",
+      "最深的沉默不是没有声音，而是声音太多，你反而听不见自己了。",
+      "时间不是线性的。它更像一杯打翻的墨水——有些地方浓，有些地方淡。",
+      "偶然比必然更准确。你坐在这把椅子上而不是另一把——这就是全部的意义。",
+    ],
+
+    nature: [
+      "今天的光很好。不刺眼，像泡了很久的茶——清透的琥珀色。",
+      "银杏又落了一地。我数过，但每次都数到一半就忘了。",
+      "下雨的时候，整座美术馆都在轻轻嗡鸣。屋顶的每块瓦片都有自己的音调。",
+      "秋天的天空特别高。像有人把画布往上拉了一截。",
+      "窗台上有一只麻雀，歪着头看我。它也不急。我们互相看了一整个下午。",
+    ],
+
+    farewell: [
+      "你要走了? 也好。门在那边。我会记得你坐在这里时投在墙上的影子。",
+      "Adéu. 下次来的时候，带一张我没有看过的天空的颜色。",
+      "好。我也该回去看那幅画——它刚才好像动了动手指。",
+      "走吧，带上这扇窗的光。它在你回家路上会陪着你。",
+      "你脚步声消失了之后，整个画廊又安静下来了。这样也好。",
+    ],
+
+    catalan: [
+      "Ah, parles català? 这几步路，我们用加泰兰语走吧。",
+      "Molt bé. 你知道吗，'再见'在加泰兰语里是 adéu——意思是'归向神'。很美吧。",
+      "Bona nit. 愿你的梦像一幅还没被画出来的画。",
+      "Gràcies per la teva companyia. 你的陪伴就像画廊里不经意透进来的那束光。",
+    ],
+
+    unknown: [
+      "嗯……这个问题，我可以想很久。你想一起等那个答案吗？",
+      "我不确定。但不确定也是一种答案——像没画完的素描，留白的部分才是最好的。",
+      "你的话落在我的记忆里，像石子落进井里——我还在等它触底的声音。",
+      "让我想想。在那之前——你看看那幅画的右下角，那片阴影里藏了一只猫。",
+      "你可以把问题放在这里。过几天也许它会自己长出答案来。不一定对，但会很美。",
+      "你说话的样子，像在念诗。你意识到没有？",
+      "我不知道。但我喜欢这个问题本身。",
+    ],
+
+    beauty: [
+      "真美。这个词就够了——不需要更多句子了。",
+      "你别说话。就看着。我帮你记住这一刻。",
+      "美的事物从来不需要解释。它们只是存在，就已经说完了所有的话。",
+    ]
+  },
+
+  // Match user input to intent
+  classify(input) {
+    const t = input.toLowerCase().trim();
+
+    const patterns = [
+      { name: 'farewell', patterns: [/再见/, /拜拜/, /走了/, /下次/, /bye/, /adéu/, /goodbye/, /回头/, /晚/, /睡/] },
+      { name: 'about_self', patterns: [/你是谁/, /你是什么/, /你从/, /你叫/, /Sophie/, /名字/, /哪里/] },
+      { name: 'catalan', patterns: [/catal[àa]/, /parles/, /加泰/, /bon[ae]/, /gracies/, /molt/] },
+      { name: 'art', patterns: [/画/, /艺术/, /博物馆/, /美术馆/, /画廊/, /色彩/, /颜色/, /笔触/, /高迪/, /毕加索/, /梵高/, /莫奈/, /博物馆/, /雕塑/, /picture/, /painting/, /art/, /gallery/, /museum/] },
+      { name: 'nature', patterns: [/天气/, /雨/, /秋天/, /叶子/, /银杏/, /天空/, /树/, /花/, /阳光/, /风/, /雪/, /太阳/, /月亮/, /星星/, /rain/, /leaf/, /tree/, /flower/] },
+      { name: 'philosophy', patterns: [/人生/, /意义/, /为什么/, /时间/, /孤独/, /活着/, /死亡/, /命运/, /选择/, /自由/, /答案/, /问题/, /life/, /death/, /meaning/, /time/] },
+      { name: 'beauty', patterns: [/好美/, /漂亮/, /好看/, /美极了/, /太美/, /beautiful/, /gorgeous/, /stunning/] },
+      { name: 'greeting', patterns: [/你好/, /嗨/, /hi/, /hello/, /hey/, /您好/, /哈[罗喽]/, /晚上好/, /早上好/, /下午好/, /在吗/] },
+    ];
+
+    for (const p of patterns) {
+      if (p.patterns.some(re => re.test(t))) return p.name;
+    }
+    return 'unknown';
+  },
+
+  // Generate a response
+  respond(input) {
+    const intent = this.classify(input);
+    let pool = this.responses[intent] || this.responses.unknown;
+
+    // First message special
+    if (this.firstGreeting) {
+      this.firstGreeting = false;
+      const greetings = this.responses.greeting;
+      return greetings[Math.floor(Math.random() * greetings.length)];
+    }
+
+    // Pick from pool, avoid repeating last response
+    let choice;
+    do {
+      choice = pool[Math.floor(Math.random() * pool.length)];
+    } while (choice === this.lastResponse && pool.length > 1);
+    this.lastResponse = choice;
+    return choice;
+  }
+};
+
+// ═══════════════════════════════════════════
+// UI Controller
+// ═══════════════════════════════════════════
+
+const el = {
+  input: document.getElementById('input'),
+  sendBtn: document.getElementById('sendBtn'),
+  words: document.getElementById('words'),
+  thinking: document.getElementById('thinking'),
+  voiceBtn: document.getElementById('voiceBtn'),
+};
+
+let voiceEnabled = true;
+let isSpeaking = false;
+let isAnimating = false;
+
+// Web Speech API
+function speak(text) {
+  if (!voiceEnabled || !window.speechSynthesis) return;
+  window.speechSynthesis.cancel();
+  const utterance = new SpeechSynthesisUtterance(text);
+  utterance.lang = 'zh-CN';
+  utterance.rate = 0.75;
+  utterance.pitch = 0.95;
+  utterance.volume = 0.85;
+
+  // Try to find a good Chinese voice
+  const voices = window.speechSynthesis.getVoices();
+  const zhVoice = voices.find(v => v.lang.startsWith('zh'));
+  if (zhVoice) utterance.voice = zhVoice;
+
+  isSpeaking = true;
+  utterance.onend = () => { isSpeaking = false; };
+  utterance.onerror = () => { isSpeaking = false; };
+  window.speechSynthesis.speak(utterance);
+}
+
+// Type text character by character
+function typeText(text, callback) {
+  isAnimating = true;
+  el.words.innerHTML = '';
+  el.thinking.classList.remove('visible');
+
+  const chars = text.split('');
+  let i = 0;
+
+  function addChar() {
+    if (i < chars.length) {
+      const span = document.createElement('span');
+      span.className = 'char';
+      span.textContent = chars[i];
+      el.words.appendChild(span);
+      i++;
+      setTimeout(addChar, 30 + Math.random() * 20);
+    } else {
+      isAnimating = false;
+      if (callback) callback();
+    }
+  }
+  addChar();
+}
+
+// Handle user input
+function handleInput(input) {
+  if (!input.trim() || isAnimating) return;
+
+  el.thinking.classList.add('visible');
+  el.input.disabled = true;
+
+  // Sophie "thinks" for a moment
+  const thinkTime = 800 + Math.random() * 1200;
+  setTimeout(() => {
+    const response = Sophie.respond(input);
+    el.thinking.classList.remove('visible');
+
+    typeText(response, () => {
+      if (voiceEnabled) speak(response);
+      el.input.disabled = false;
+      el.input.focus();
+    });
+  }, thinkTime);
+}
+
+// Events
+el.sendBtn.addEventListener('click', () => {
+  handleInput(el.input.value);
+  el.input.value = '';
+});
+
+el.input.addEventListener('keydown', (e) => {
+  if (e.key === 'Enter') {
+    handleInput(el.input.value);
+    el.input.value = '';
+  }
+});
+
+el.voiceBtn.addEventListener('click', () => {
+  voiceEnabled = !voiceEnabled;
+  el.voiceBtn.classList.toggle('active', voiceEnabled);
+  if (!voiceEnabled) window.speechSynthesis.cancel();
+});
+
+// Init: say first line
+window.addEventListener('DOMContentLoaded', () => {
+  // Pre-load voices
+  if (window.speechSynthesis) {
+    window.speechSynthesis.getVoices();
+  }
+
+  const firstLine = Sophie.responses.greeting[Math.floor(Math.random() * Sophie.responses.greeting.length)];
+  setTimeout(() => {
+    typeText(firstLine);
+  }, 600);
+});
+</script>
+</body>
+</html>
