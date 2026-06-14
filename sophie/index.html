@@ -350,8 +350,22 @@ function speak(text) {
   window.speechSynthesis.cancel();
   const u = new SpeechSynthesisUtterance(text);
   u.lang = 'zh-CN'; u.rate = 0.7; u.pitch = 0.95; u.volume = 0.85;
-  try { const v = window.speechSynthesis.getVoices().find(v => v.lang.startsWith('zh')); if(v) u.voice = v; } catch(e) {}
+  try {
+    const voices = window.speechSynthesis.getVoices();
+    const zh = voices.find(v => v.lang.startsWith('zh'));
+    if (zh) u.voice = zh;
+  } catch(e) {}
+  // Chrome workaround: re-speak if first utterance drops
+  u.onend = () => {};
   window.speechSynthesis.speak(u);
+  // Chrome bug: first utterance sometimes silent, trigger with short pause
+  if (window.speechSynthesis.pending) {
+    setTimeout(() => {
+      if (!window.speechSynthesis.speaking) {
+        window.speechSynthesis.speak(u);
+      }
+    }, 50);
+  }
 }
 
 function typeText(text, cb) {
@@ -378,6 +392,16 @@ function handleInput(val) {
   }, 700 + Math.random()*1000);
 }
 
+// Click anywhere first time unlocks speech API on mobile
+let speechUnlocked = false;
+document.addEventListener('click', () => {
+  if (!speechUnlocked && window.speechSynthesis) {
+    speechUnlocked = true;
+    window.speechSynthesis.getVoices();
+    // Speak any pending message
+  }
+}, { once: true });
+
 el.sendBtn.onclick = () => { handleInput(el.input.value); el.input.value = ''; };
 el.input.onkeydown = e => { if(e.key === 'Enter') { handleInput(el.input.value); el.input.value = ''; } };
 el.voiceBtn.onclick = () => { voiceOn = !voiceOn; el.voiceBtn.classList.toggle('active', voiceOn); if(!voiceOn) window.speechSynthesis.cancel(); };
@@ -391,8 +415,20 @@ if (window.visualViewport) {
 }
 
 window.addEventListener('DOMContentLoaded', () => {
-  if (window.speechSynthesis) window.speechSynthesis.getVoices();
-  setTimeout(() => typeText('你来了。我一直在等你。'), 600);
+  // Async voice loading
+  if (window.speechSynthesis) {
+    window.speechSynthesis.getVoices();
+    window.speechSynthesis.onvoiceschanged = () => { window.speechSynthesis.getVoices(); };
+  }
+  setTimeout(() => {
+    const msg = '你来了。我一直在等你。';
+    typeText(msg, () => {
+      if (voiceOn && window.speechSynthesis) {
+        // Delay ensures voices are loaded
+        setTimeout(() => { speak(msg); }, 100);
+      }
+    });
+  }, 600);
 });
 </script>
 </body>
