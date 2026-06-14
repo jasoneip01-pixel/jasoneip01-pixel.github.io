@@ -104,6 +104,25 @@ body::after {
 }
 @keyframes fadeIn { to { opacity:1; } }
 
+.listen-btn {
+  display:none;
+  background:none; border:1px solid var(--gold); border-radius:50%;
+  width:28px; height:28px; min-width:28px;
+  cursor:pointer; color:var(--gold); font-size:0.7rem;
+  margin-left:8px; margin-top:2px;
+  transition:all 0.25s; flex-shrink:0;
+  display:inline-flex; align-items:center; justify-content:center;
+}
+.listen-btn:hover { background:var(--gold); color:#fff; }
+.listen-btn.visible { display:inline-flex; }
+
+/* Speech unavailable notice */
+.speech-na {
+  display:none; font-size:0.7rem; color:var(--text-faint); font-style:italic;
+  margin-top:4px; line-height:1.4;
+}
+.speech-na.visible { display:block; }
+
 .thinking {
   display:none;
   color:var(--text-faint);
@@ -225,10 +244,12 @@ body::after {
   </div>
 
   <div class="conversation-zone">
+    <div class="speech-na" id="speechNa">你的浏览器不支持语音朗读。可以手动点击 ♪ 按钮播放。</div>
     <div class="thinking" id="thinking">Sophie 在沉思...</div>
     <div class="sophie-speech" id="speech">
       <span class="name">Sophie</span>
       <span class="words" id="words"></span>
+      <button class="listen-btn" id="listenBtn" title="听 Sophie 说">♪</button>
     </div>
   </div>
 </div>
@@ -345,8 +366,20 @@ const el = {
 };
 let voiceOn = true, animating = false;
 
-function speak(text) {
-  if (!voiceOn || !window.speechSynthesis) return;
+let lastSpokenText = '';
+function speak(text, fromClick) {
+  lastSpokenText = text;
+  if (!window.speechSynthesis) { showSpeechUnavailable(); return; }
+  if (!fromClick && !voiceOn) return;  // auto-speak only when voiceOn
+  // If no user gesture yet on mobile, just mark for manual play
+  if (!fromClick && !document.body.dataset.speechReady) {
+    showListenBtn(text);
+    return;
+  }
+  doSpeak(text);
+}
+function doSpeak(text) {
+  if (!window.speechSynthesis) return;
   window.speechSynthesis.cancel();
   const u = new SpeechSynthesisUtterance(text);
   u.lang = 'zh-CN'; u.rate = 0.7; u.pitch = 0.95; u.volume = 0.85;
@@ -355,17 +388,7 @@ function speak(text) {
     const zh = voices.find(v => v.lang.startsWith('zh'));
     if (zh) u.voice = zh;
   } catch(e) {}
-  // Chrome workaround: re-speak if first utterance drops
-  u.onend = () => {};
   window.speechSynthesis.speak(u);
-  // Chrome bug: first utterance sometimes silent, trigger with short pause
-  if (window.speechSynthesis.pending) {
-    setTimeout(() => {
-      if (!window.speechSynthesis.speaking) {
-        window.speechSynthesis.speak(u);
-      }
-    }, 50);
-  }
 }
 
 function typeText(text, cb) {
@@ -388,7 +411,7 @@ function handleInput(val) {
   el.input.disabled = true;
   setTimeout(() => {
     const r = Sophie.respond(val);
-    typeText(r, () => { if(voiceOn) speak(r); el.input.disabled = false; el.input.focus(); });
+    typeText(r, () => { el.input.disabled = false; el.input.focus(); });
   }, 700 + Math.random()*1000);
 }
 
@@ -404,6 +427,29 @@ document.addEventListener('click', () => {
 
 el.sendBtn.onclick = () => { handleInput(el.input.value); el.input.value = ''; };
 el.input.onkeydown = e => { if(e.key === 'Enter') { handleInput(el.input.value); el.input.value = ''; } };
+// Speech API detection
+function showSpeechUnavailable() {
+  document.getElementById('speechNa').classList.add('visible');
+}
+function showListenBtn(text) {
+  const btn = document.getElementById('listenBtn');
+  btn.classList.add('visible');
+  btn.dataset.text = text;
+}
+
+// User gesture unlocks speech
+document.addEventListener('click', function unlock() {
+  document.body.dataset.speechReady = '1';
+  document.removeEventListener('click', unlock);
+  if (window.speechSynthesis) window.speechSynthesis.getVoices();
+}, { once: true });
+
+// Listen button: speak on tap (guaranteed user gesture)
+document.getElementById('listenBtn').addEventListener('click', function() {
+  const text = this.dataset.text || lastSpokenText;
+  if (text) { doSpeak(text); this.classList.remove('visible'); }
+});
+
 el.voiceBtn.onclick = () => { voiceOn = !voiceOn; el.voiceBtn.classList.toggle('active', voiceOn); if(!voiceOn) window.speechSynthesis.cancel(); };
 
 // Keyboard appear: adjust bottom padding so input stays visible
@@ -422,12 +468,7 @@ window.addEventListener('DOMContentLoaded', () => {
   }
   setTimeout(() => {
     const msg = '你来了。我一直在等你。';
-    typeText(msg, () => {
-      if (voiceOn && window.speechSynthesis) {
-        // Delay ensures voices are loaded
-        setTimeout(() => { speak(msg); }, 100);
-      }
-    });
+    typeText(msg);
   }, 600);
 });
 </script>
