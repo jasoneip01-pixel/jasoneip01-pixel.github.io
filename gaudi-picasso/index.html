@@ -469,6 +469,18 @@ body {
 .vn-attr { font-size:0.78rem; color:var(--accent-dim); text-align:right; }
 .vn-note { font-size:0.82rem; color:var(--text-light); line-height:1.6; }
 
+.vn-image-compact {
+  background:#f0ebe0;
+  border-radius:4px; overflow:hidden;
+  margin-bottom:12px;
+  max-height:200px;
+  min-height:120px;
+  display:flex; align-items:center;
+}
+.vn-image-compact .vn-img {
+  width:100%; height:auto;
+}
+
 .vn-footer-note {
   text-align:center; padding-top:20px;
   border-top:1px solid var(--divider);
@@ -856,6 +868,9 @@ body {
       <h3 class="vn-sub-ca">Una Línia</h3>
       <div class="vn-parallel">
         <div class="vn-col">
+          <div class="vn-image-compact">
+            <img data-src="images/art/gaudi-columns.jpg" alt="高迪圣家堂树形柱子" class="vn-img vn-lazy" loading="lazy" onload="this.classList.add('loaded')" onerror="this.style.display='none'">
+          </div>
           <div class="vn-quote-block">
             <p class="vn-quote">「直线属于人类，曲线属于上帝。」</p>
             <p class="vn-quote-ca"><em>La línia recta pertany a l'home. La corba, a Déu.</em></p>
@@ -864,6 +879,9 @@ body {
           <p class="vn-note">高迪的柱子是树——树干分叉、枝条承重、没有一根直线。圣家堂不是"建"起来的，是"长"出来的。</p>
         </div>
         <div class="vn-col">
+          <div class="vn-image-compact">
+            <img data-src="images/art/bull-platexi.jpg" alt="毕加索公牛系列 Plate 11" class="vn-img vn-lazy" loading="lazy" onload="this.classList.add('loaded')" onerror="this.style.display='none'">
+          </div>
           <div class="vn-quote-block">
             <p class="vn-quote">「我在画我能看到的东西——不是他们看到的那些。」</p>
             <p class="vn-quote-ca"><em>Dibuixo el que jo veig. No el que veuen ells.</em></p>
