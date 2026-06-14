@@ -316,7 +316,7 @@ body {
   <div class="scene-inner">
     <div class="scene-image">
       <div class="loading-placeholder"><div class="spinner"></div></div>
-      <img src="images/scene1.png" alt="四只猫咖啡馆" onload="this.classList.add('loaded');this.previousElementSibling.remove()" onerror="this.parentElement.innerHTML='<div class=loading-placeholder style=color:var(--text-light)>🖼 图像生成中…</div>'">
+      <img src="images/scene1.jpg" alt="四只猫咖啡馆" onload="this.classList.add('loaded');this.previousElementSibling.remove()" onerror="this.parentElement.innerHTML='<div class=loading-placeholder style=color:var(--text-light)>🖼 图像生成中…</div>'">
     </div>
     <div class="scene-content">
       <div class="scene-number">ESCENA 1</div>
@@ -350,7 +350,7 @@ body {
   <div class="scene-inner">
     <div class="scene-image">
       <div class="loading-placeholder"><div class="spinner"></div></div>
-      <img src="images/scene2.png" alt="石头与画布" onload="this.classList.add('loaded');this.previousElementSibling.remove()" onerror="this.parentElement.innerHTML='<div class=loading-placeholder style=color:var(--text-light)>🖼 图像生成中…</div>'">
+      <img data-src="images/scene2.jpg" alt="石头与画布" onload="this.classList.add('loaded');this.previousElementSibling.remove()" onerror="this.parentElement.innerHTML='<div class=loading-placeholder style=color:var(--text-light)>🖼 图像生成中…</div>'">
     </div>
     <div class="scene-content">
       <div class="scene-number">ESCENA 2</div>
@@ -390,7 +390,7 @@ body {
   <div class="scene-inner">
     <div class="scene-image">
       <div class="loading-placeholder"><div class="spinner"></div></div>
-      <img src="images/scene3.png" alt="上帝住在曲线里" onload="this.classList.add('loaded');this.previousElementSibling.remove()" onerror="this.parentElement.innerHTML='<div class=loading-placeholder style=color:var(--text-light)>🖼 图像生成中…</div>'">
+      <img data-src="images/scene3.jpg" alt="上帝住在曲线里" onload="this.classList.add('loaded');this.previousElementSibling.remove()" onerror="this.parentElement.innerHTML='<div class=loading-placeholder style=color:var(--text-light)>🖼 图像生成中…</div>'">
     </div>
     <div class="scene-content">
       <div class="scene-number">ESCENA 3</div>
@@ -429,7 +429,7 @@ body {
   <div class="scene-inner">
     <div class="scene-image">
       <div class="loading-placeholder"><div class="spinner"></div></div>
-      <img src="images/scene4.png" alt="火与耐心" onload="this.classList.add('loaded');this.previousElementSibling.remove()" onerror="this.parentElement.innerHTML='<div class=loading-placeholder style=color:var(--text-light)>🖼 图像生成中…</div>'">
+      <img data-src="images/scene4.jpg" alt="火与耐心" onload="this.classList.add('loaded');this.previousElementSibling.remove()" onerror="this.parentElement.innerHTML='<div class=loading-placeholder style=color:var(--text-light)>🖼 图像生成中…</div>'">
     </div>
     <div class="scene-content">
       <div class="scene-number">ESCENA 4</div>
@@ -478,7 +478,7 @@ body {
   <div class="scene-inner">
     <div class="scene-image">
       <div class="loading-placeholder"><div class="spinner"></div></div>
-      <img src="images/scene5.png" alt="告别" onload="this.classList.add('loaded');this.previousElementSibling.remove()" onerror="this.parentElement.innerHTML='<div class=loading-placeholder style=color:var(--text-light)>🖼 图像生成中…</div>'">
+      <img data-src="images/scene5.jpg" alt="告别" onload="this.classList.add('loaded');this.previousElementSibling.remove()" onerror="this.parentElement.innerHTML='<div class=loading-placeholder style=color:var(--text-light)>🖼 图像生成中…</div>'">
     </div>
     <div class="scene-content">
       <div class="scene-number">ESCENA 5</div>
@@ -545,11 +545,24 @@ let musicTimeout = null;
 let showCatalan = false;
 
 // ── Scene navigation ──
+function loadImg(sceneNum) {
+  const img = document.querySelector(`.scene[data-scene="${sceneNum}"] img`);
+  if (img && img.dataset.src && !img.src) {
+    img.src = img.dataset.src;
+  }
+}
+function preloadAdjacent(n) {
+  if (n > 1) loadImg(n - 1);
+  if (n < totalScenes) loadImg(n + 1);
+}
 function goTo(n) {
   if (n < 1 || n > totalScenes || n === currentScene) return;
   const old = document.querySelector(`.scene[data-scene="${currentScene}"]`);
   const next = document.querySelector(`.scene[data-scene="${n}"]`);
   if (!old || !next) return;
+
+  loadImg(n);
+  preloadAdjacent(n);
 
   old.classList.add('fade-out');
   old.classList.remove('active');
@@ -572,6 +585,9 @@ function updateNav() {
     d.classList.toggle('active', i+1 === currentScene);
   });
 }
+
+// Preload scene 2 image (next after active scene)
+preloadAdjacent(1);
 
 // Build dots
 const dotsContainer = document.getElementById('pageDots');
