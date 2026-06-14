@@ -234,8 +234,8 @@ body {
 /* ══ Tablet Landscape: 768–1023px ══ */
 @media (min-width: 768px) and (max-width: 1023px) {
   .scene-inner { flex-direction:column; align-items:stretch; }
-  .scene-image { flex:0 0 auto; max-height:360px; align-self:stretch; }
-  .scene-image img { position:absolute; inset:0; object-fit:contain; }
+  .scene-image { flex:0 0 auto; aspect-ratio:1/1; max-width:520px; align-self:stretch; }
+  .scene-image img { position:absolute; inset:0; object-fit:cover; }
   .scene-content { padding:44px 40px 56px; justify-content:flex-start; }
   .scene-title { font-size:1.55rem; }
   .scene-title-ca { font-size:1.05rem; margin-bottom:20px; }
@@ -259,8 +259,8 @@ body {
   @keyframes slideLeftIn { 0% { transform:translate3d(40px,0,0); opacity:0; } 100% { transform:translate3d(0,0,0); opacity:1; } }
   @keyframes slideRightIn { 0% { transform:translate3d(-40px,0,0); opacity:0; } 100% { transform:translate3d(0,0,0); opacity:1; } }
   .scene-inner { flex-direction:column; align-items:stretch; }
-  .scene-image { flex:0 0 auto; aspect-ratio:16/10; max-height:260px; align-self:stretch; }
-  .scene-image img { position:absolute; inset:0; object-fit:contain; }
+  .scene-image { flex:0 0 auto; aspect-ratio:1/1; max-height:380px; align-self:stretch; }
+  .scene-image img { position:absolute; inset:0; object-fit:cover; }
   .scene-content { padding:36px 28px 44px; justify-content:flex-start; }
   .scene-title { font-size:1.4rem; }
   .scene-title-ca { font-size:1rem; margin-bottom:18px; }
@@ -294,8 +294,8 @@ body {
   @keyframes slideLeftIn { 0% { transform:translate3d(35px,0,0); opacity:0; } 100% { transform:translate3d(0,0,0); opacity:1; } }
   @keyframes slideRightIn { 0% { transform:translate3d(-35px,0,0); opacity:0; } 100% { transform:translate3d(0,0,0); opacity:1; } }
   .scene-inner { flex-direction:column; align-items:stretch; }
-  .scene-image { flex:0 0 auto; aspect-ratio:16/10; max-height:220px; align-self:stretch; }
-  .scene-image img { position:absolute; inset:0; object-fit:contain; }
+  .scene-image { flex:0 0 auto; aspect-ratio:1/1; max-height:340px; align-self:stretch; }
+  .scene-image img { position:absolute; inset:0; object-fit:cover; }
   .scene-content { padding:28px 20px 40px; justify-content:flex-start; }
   .scene-title { font-size:1.25rem; }
   .scene-title-ca { font-size:0.92rem; margin-bottom:14px; }
