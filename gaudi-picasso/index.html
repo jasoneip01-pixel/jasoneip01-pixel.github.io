@@ -624,9 +624,9 @@ function setLang(lang) {
 }
 
 // ── Music ──
-const bgMusic = document.getElementById('bgMusic');
-
 function toggleMusic() {
+  const bgMusic = document.getElementById('bgMusic');
+  if (!bgMusic) { alert('音频组件未就绪，请刷新页面'); return; }
   if (!musicPlaying) {
     bgMusic.play().then(() => {
       musicPlaying = true;
