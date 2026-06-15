@@ -1,0 +1,2 @@
+This directory stores news-relay output files.
+Run the GitHub Action .github/workflows/news-relay.yml to populate.
