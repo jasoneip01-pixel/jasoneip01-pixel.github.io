@@ -498,7 +498,7 @@ function handleUserInput(text){
     .then(data => {
       clearTimeout(tid);
       setThinking(false);
-      addMessage(data.speaker||'Picasso', data.ca||'', data.zh||'', data.action||'');
+      addMessage(data.speaker||'Picasso', data.ca||'', data.zh||'', data.action||'', data.audio||'');
       startFallbackTimer();
       busy = false;
       input.disabled = false;
@@ -572,30 +572,32 @@ function toggleVoice(){
   document.getElementById('voiceBtn').classList.toggle('on', voiceOn);
 }
 
-function speakLine(text, speaker){
+function speakLine(text, speaker, b64audio){
   if(!voiceOn) return;
-  // Primary: pre-recorded audio (works on ALL platforms incl WeChat, Feishu WebView)
-  const idx = AUDIO_TEXTS.indexOf(text);
-  if(idx >= 0){
-    const a = new Audio(`audio/s${String(idx).padStart(3,'0')}.mp3`);
+  // Priority 1: Vercel API provided base64 audio (Edge TTS, works everywhere)
+  if(b64audio){
+    const a = new Audio('data:audio/mpeg;base64,' + b64audio);
     a.volume = 1.0;
     a.play().catch(() => {});
     return;
   }
-  // Fallback: speechSynthesis (for Vercel API dynamic responses)
+  // Priority 2: Pre-recorded MP3 (for local dialogue pool)
+  const idx = AUDIO_TEXTS.indexOf(text);
+  if(idx >= 0){
+    const a = new Audio('audio/s' + String(idx).padStart(3,'0') + '.mp3');
+    a.volume = 1.0;
+    a.play().catch(() => {});
+    return;
+  }
+  // Fallback: speechSynthesis
   if(!speechSynth) return;
   speechSynth.cancel();
   speechSynth.cancel();
   const u = new SpeechSynthesisUtterance(text);
   u.volume = 1.0;
   u.rate = 1.0;
-  if(speaker === 'Gaudí'){
-    u.pitch = 0.6;
-    u.lang = 'ca-ES';
-  } else {
-    u.pitch = 1.0;
-    u.lang = 'es-ES';
-  }
+  if(speaker === 'Gaudí'){ u.pitch = 0.6; u.lang = 'ca-ES'; }
+  else { u.pitch = 1.0; u.lang = 'es-ES'; }
   if(speechSynth.getVoices().length === 0){
     speechSynth.onvoiceschanged = () => {
       speechSynth.onvoiceschanged = null;
@@ -608,10 +610,10 @@ function speakLine(text, speaker){
 
 // Speak dialogue messages when they appear (if voice on)
 const origAddMessage = addMessage;
-addMessage = function(speaker, ca, zh, ac){
+addMessage = function(speaker, ca, zh, ac, b64audio){
   try {
     origAddMessage(speaker, ca, zh, ac);
-    if(voiceOn && ca) speakLine(ca, speaker);
+    if(voiceOn && ca) speakLine(ca, speaker, b64audio);
   } catch(e) {}
 };
 
