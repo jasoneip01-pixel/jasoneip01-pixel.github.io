@@ -230,6 +230,8 @@ html,body{height:100%;height:100dvh;overflow:hidden;font-family:'Noto Serif SC',
   </div>
 </div>
 
+<audio id="bgMusic" loop preload="auto" src="audio/ambient.mp3" style="display:none"></audio>
+
 <div class="center-stage" id="centerStage">
   <div class="curtain-text" id="curtainText">
     <div class="ca">Els Quatre Gats. Barcelona, any 1902. Una tarda qualsevol.</div>
@@ -243,7 +245,7 @@ html,body{height:100%;height:100dvh;overflow:hidden;font-family:'Noto Serif SC',
 <div class="input-area" id="inputArea">
   <div class="input-row">
     <input type="text" id="input" placeholder="说点什么…" autocomplete="off">
-    <button id="sendBtn">envoyer</button>
+    <button id="sendBtn">→</button>
   </div>
 </div>
 
@@ -324,8 +326,6 @@ let autoTimer = null;
 let crossIdx = 0;
 let musicOn = true;
 let audioCtx = null;
-let audioSource = null;
-let audioGain = null;
 let isPlaying = false;
 let preloadedAudioBuf = null;
 
@@ -354,7 +354,9 @@ async function initAudio(){
 function toggleMusic(){
   musicOn = !musicOn;
   document.getElementById('musicBtn').classList.toggle('on', musicOn);
-  if(audioGain) audioGain.gain.value = musicOn ? 0.4 : 0;
+  const audio = document.getElementById('bgMusic');
+  if(musicOn) audio.play().catch(() => {});
+  else { audio.pause(); audio.currentTime = 0; }
 }
 
 // ── UI ──
@@ -582,7 +584,7 @@ const origAddMessage = addMessage;
 addMessage = function(speaker, ca, zh, ac){
   origAddMessage(speaker, ca, zh, ac);
   if(voiceOn && ca){
-    setTimeout(() => speakLine(ca, speaker), 300);
+    speakLine(ca, speaker);
   }
 };
 
@@ -590,18 +592,16 @@ document.getElementById('voiceBtn').onclick = toggleVoice;
 
 // ── Audio init on first user interaction ──
 function firstInteraction(){
-  // Create AudioContext synchronously in gesture (required by iOS/mobile)
-  if(!audioCtx){
-    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-    // Start a silent buffer immediately to unlock audio for async loads
-    try{
-      const oneShot = audioCtx.createBufferSource();
-      oneShot.buffer = audioCtx.createBuffer(1, 1, audioCtx.sampleRate);
-      oneShot.connect(audioCtx.destination);
-      oneShot.start(0);
-    }catch(e){}
-  }
-  if(!isPlaying) initAudio();
+  // Play background music via <audio> element (works on all mobile browsers)
+  const audio = document.getElementById('bgMusic');
+  audio.volume = 0.4;
+  audio.play().catch(() => {});
+  isPlaying = true;
+  // Trigger first dialogue line immediately (no setTimeout — gesture context is live)
+  setThinking(false);
+  addMessage('Gaudí', G.gut[0].ca, G.gut[0].zh, G.gut[0].ac);
+  // Start fallback timer
+  autoTimer = setTimeout(autoDialogue, 4000);
   document.removeEventListener('click', firstInteraction);
   document.removeEventListener('touchstart', firstInteraction);
   document.removeEventListener('keydown', firstInteraction);
@@ -631,8 +631,8 @@ if(window.visualViewport){
 }
 
 // ── Init ──
-stageEntrance();
-// Audio starts on first user interaction (autoplay policy)
+// Set initial curtain text, first message will trigger on first interaction
+setThinking(true);
 
 // Stop auto when tab is hidden
 document.addEventListener('visibilitychange', () => {
