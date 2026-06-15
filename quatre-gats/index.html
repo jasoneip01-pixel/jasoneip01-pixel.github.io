@@ -14,7 +14,7 @@ html,body{height:100%;height:100dvh;overflow:hidden;font-family:'Noto Serif SC',
 
 /* ── Stage: Cafe Background ── */
 .stage{position:fixed;inset:0;z-index:0}
-.stage-bg{position:absolute;inset:0;background:url('images/cafe.jpg') center/cover no-repeat;filter:saturate(0.75) brightness(0.82) contrast(0.95)}
+.stage-bg{position:absolute;inset:0;background:url('images/cafe.jpg') center/cover no-repeat;filter:saturate(0.75) brightness(0.92) contrast(0.95)}
 .stage-bg::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 50%,transparent 20%,rgba(10,5,2,0.3) 100%)}
 .stage-overlay{position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,0.03)2px,rgba(0,0,0,0.03)4px);pointer-events:none}
 
@@ -121,7 +121,7 @@ html,body{height:100%;height:100dvh;overflow:hidden;font-family:'Noto Serif SC',
   .portrait{bottom:120px;width:20vw;max-width:300px}
   .dialogue-stage{max-height:50vh;max-height:50dvh}
   .input-row{max-width:620px}
-  .stage-bg{filter:saturate(0.8) brightness(0.75) contrast(0.95)}
+  .stage-bg{filter:saturate(0.8) brightness(0.88) contrast(0.95)}
 }
 
 /* ── Ultrawide (1920px+) ── */
@@ -340,7 +340,7 @@ async function initAudio(){
     audioSource.buffer = decoded;
     audioSource.loop = true;
     audioGain = audioCtx.createGain();
-    audioGain.gain.value = 0.25;
+    audioGain.gain.value = 0.4;
     audioSource.connect(audioGain);
     audioGain.connect(audioCtx.destination);
     isPlaying = true;
@@ -351,7 +351,7 @@ async function initAudio(){
 function toggleMusic(){
   musicOn = !musicOn;
   document.getElementById('musicBtn').classList.toggle('on', musicOn);
-  if(audioGain) audioGain.gain.value = musicOn ? 0.25 : 0;
+  if(audioGain) audioGain.gain.value = musicOn ? 0.4 : 0;
 }
 
 // ── UI ──
@@ -561,26 +561,44 @@ function speakLine(text, speaker){
   if(!voiceOn || !speechSynth) return;
   speechSynth.cancel();
   const u = new SpeechSynthesisUtterance(text);
+
+  // Ensure voices list is loaded
+  if(speechSynth.getVoices().length === 0){
+    speechSynth.onvoiceschanged = undefined; // avoid infinite loop
+  }
+  const voices = speechSynth.getVoices();
+  let gaudiVoice = null, picassoVoice = null;
+
+  if(voices.length > 0){
+    // Pick two DIFFERENT male voices
+    const maleVoices = voices.filter(v => /male/i.test(v.name));
+    const deepMale = maleVoices.filter(v => /ca|es|fr|it|pt|de/i.test(v.lang));
+    const regularMale = maleVoices.filter(v => /en|es|fr|it/i.test(v.lang));
+
+    // Gaudí: deep male (prefer Catalan, then Spanish, then any deep male)
+    gaudiVoice = deepMale.find(v => /ca/i.test(v.lang))
+      || maleVoices.find(v => /es/i.test(v.lang) && /male/i.test(v.name))
+      || maleVoices[0];
+
+    // Picasso: different male voice (not the same as Gaudí)
+    picassoVoice = maleVoices.find(v => /es/i.test(v.lang) && v.name !== (gaudiVoice && gaudiVoice.name)
+      || maleVoices.find(v => /en|fr|it/i.test(v.lang) && v.name !== (gaudiVoice && gaudiVoice.name))
+      || maleVoices[maleVoices.indexOf(gaudiVoice) + 1] || maleVoices[0];
+  }
+
   if(speaker === 'Gaudí'){
     u.lang = 'ca-ES';
     u.rate = 0.7;
-    u.pitch = 0.6;
+    u.pitch = 0.5;  // deeper
+    if(gaudiVoice) u.voice = gaudiVoice;
   } else {
     u.lang = 'es-ES';
     u.rate = 0.85;
     u.pitch = 1.0;
+    if(picassoVoice && picassoVoice !== gaudiVoice) u.voice = picassoVoice;
+    else if(picassoVoice) u.voice = picassoVoice;
   }
   u.volume = 1.0;
-  // Try to find matching male voice
-  if(speechSynth.getVoices().length > 0){
-    const voices = speechSynth.getVoices();
-    const preferred = speaker === 'Gaudí'
-      ? voices.find(v => /catalan|ca/i.test(v.lang) && v.name.includes('Male'))
-        || voices.find(v => /ca/i.test(v.lang))
-      : voices.find(v => /spanish.*male|es.*male/i.test(v.lang))
-        || voices.find(v => /es/i.test(v.lang));
-    if(preferred) u.voice = preferred;
-  }
   speechSynth.speak(u);
 }
 
