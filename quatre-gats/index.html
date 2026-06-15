@@ -36,7 +36,7 @@ html,body{height:100%;height:100dvh;overflow:hidden;font-family:'Noto Serif SC',
 /* ── Portrait CSS removed ── characters shown in scene background */
 
 /* ── Center Stage (Dialogue) — positioned above the table ── */
-.center-stage{position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);z-index:10;width:min(50vw,560px);max-width:600px;opacity:1;transition:opacity 1.2s ease}
+.center-stage{position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);z-index:10;width:min(50vw,560px);max-width:600px;max-height:70vh;overflow:hidden;opacity:1;transition:opacity 1.2s ease}
 
 /* ── Curtain ── */
 .curtain-text{text-align:center;margin-bottom:18px;opacity:1}
@@ -58,7 +58,7 @@ html,body{height:100%;height:100dvh;overflow:hidden;font-family:'Noto Serif SC',
 .portrait.right .figure img{transform:scaleX(-1)}  /* Gaudí faces left toward Picasso */
 
 /* ── Dialogue Stage ── */
-.dialogue-stage{background:rgba(20,14,10,0.5);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-radius:8px;border:1px solid rgba(200,168,78,0.12);padding:18px 20px;min-height:80px;max-height:35vh;max-height:35dvh;overflow-y:auto;scrollbar-width:thin;scrollbar-color:rgba(200,168,78,0.15) transparent;position:relative;-webkit-overflow-scrolling:touch}
+.dialogue-stage{background:rgba(20,14,10,0.5);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-radius:8px;border:1px solid rgba(200,168,78,0.12);padding:18px 20px;min-height:80px;max-height:35vh;max-height:35dvh;overflow-y:auto;touch-action:pan-y;scrollbar-width:thin;scrollbar-color:rgba(200,168,78,0.15) transparent;position:relative;-webkit-overflow-scrolling:touch}
 .dialogue-stage::-webkit-scrollbar{width:3px}
 .dialogue-stage::-webkit-scrollbar-track{background:transparent}
 .dialogue-stage::-webkit-scrollbar-thumb{background:rgba(200,168,78,0.15);border-radius:99px}
