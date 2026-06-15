@@ -10,7 +10,7 @@
 <style>
 /* ── Reset & Base ── */
 *{margin:0;padding:0;box-sizing:border-box}
-html,body{height:100%;height:100dvh;overflow:hidden;font-family:'Noto Serif SC','Songti SC',serif;color:#f5f0e8;background:#1a1410;-webkit-tap-highlight-color:transparent;-webkit-font-smoothing:antialiased}
+html,body{height:100%;height:100dvh;overflow:hidden;font-family:'Noto Serif SC','Songti SC',serif;color:#f5f0e8;background:#1a141;cursor:pointer0;-webkit-tap-highlight-color:transparent;-webkit-font-smoothing:antialiased}
 
 /* ── Stage: Cafe Background ── */
 .stage{position:fixed;inset:0;z-index:0}
@@ -42,6 +42,9 @@ html,body{height:100%;height:100dvh;overflow:hidden;font-family:'Noto Serif SC',
 .curtain-text{text-align:center;margin-bottom:18px;opacity:1}
 .curtain-text .ca{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:0.85rem;color:rgba(200,168,78,0.6);letter-spacing:0.06em;margin-bottom:3px}
 .curtain-text .zh{font-size:0.75rem;color:rgba(245,240,232,0.4);letter-spacing:0.08em}
+.tap-hint{margin-top:24px;font-size:0.7rem;color:rgba(200,168,78,0.35);letter-spacing:0.15em;animation:pulseHint 2.5s ease-in-out infinite;cursor:default}
+.tap-hint span{color:rgba(200,168,78,0.2);margin:0 6px}
+@keyframes pulseHint{0%,100%{opacity:0.3}50%{opacity:0.7}}
 @keyframes fadeUp{0%{opacity:0;transform:translateY(8px)}100%{opacity:1;transform:translateY(0)}}
 
 /* ── Dialogue Stage ── */
@@ -147,6 +150,7 @@ html,body{height:100%;height:100dvh;overflow:hidden;font-family:'Noto Serif SC',
   .msg .speaker{font-size:0.75rem}
   .curtain-text .ca{font-size:0.82rem}
   .curtain-text .zh{font-size:0.75rem}
+  .tap-hint{font-size:0.65rem}
   .top{padding:8px 12px;padding-top:calc(8px + env(safe-area-inset-top,0px))}
   .top .location{font-size:0.68rem;max-width:60%}
   .music-btn{padding:3px 10px;font-size:0.68rem;min-height:30px}
@@ -236,6 +240,7 @@ html,body{height:100%;height:100dvh;overflow:hidden;font-family:'Noto Serif SC',
   <div class="curtain-text" id="curtainText">
     <div class="ca">Els Quatre Gats. Barcelona, any 1902. Una tarda qualsevol.</div>
     <div class="zh">四只猫咖啡馆。巴塞罗那，1902年。一个普通的午后。</div>
+    <div class="tap-hint"><span>✦</span> 点击任意位置开始 <span>✦</span></div>
   </div>
   <div class="dialogue-stage" id="dialogueStage">
     <div class="thinking-indicator" id="thinkIndicator">pensant…</div>
@@ -614,14 +619,19 @@ document.getElementById('voiceBtn').onclick = toggleVoice;
 
 // ── Audio init on first user interaction ──
 function firstInteraction(){
-  // Play background music via <audio> element (works on all mobile browsers)
+  // Fade out curtain text gracefully
+  const ct = document.getElementById('curtainText');
+  if(ct) ct.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+  if(ct) ct.style.transform = 'translateY(-20px)';
+  if(ct) ct.style.opacity = '0';
+  // Play background music via <audio> element
   const audio = document.getElementById('bgMusic');
   audio.volume = 0.4;
   audio.play().catch(() => {});
   isPlaying = true;
-  // Trigger first dialogue with TTS (gesture context is live)
+  // Gaudí welcomes the visitor with pre-recorded audio
   setThinking(false);
-  addMessage('Picasso', P.gut[0].ca, P.gut[0].zh, P.gut[0].ac);
+  addMessage('Gaudí', G.gut[0].ca, G.gut[0].zh, G.gut[0].ac);
   // Start fallback timer
   autoTimer = setTimeout(autoDialogue, 2000);
   document.removeEventListener('click', firstInteraction);
@@ -666,13 +676,8 @@ if(window.visualViewport){
 }
 
 // ── Init ──
-// Preload initial dialogue so page isn't blank
-setThinking(true);
-setTimeout(() => {
-  setThinking(false);
-  // Use origAddMessage to avoid TTS (no gesture context yet)
-  origAddMessage('Gaudí', G.gut[0].ca, G.gut[0].zh, G.gut[0].ac);
-}, 800);
+// Page is silent until first tap - adds mystery
+// First interaction triggers audio with pre-recorded voice
 
 // Stop auto when tab is hidden
 document.addEventListener('visibilitychange', () => {
