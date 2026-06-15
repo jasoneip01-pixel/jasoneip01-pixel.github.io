@@ -1,12 +1,40 @@
 {
   "source": "WSJ.com US Business RSS",
-  "ts": "Mon, 15 Jun 2026 12:22:01 GMT",
+  "ts": "Mon, 15 Jun 2026 20:51:26 GMT",
   "items": [
     {
-      "title": "Fox to Buy Roku Streaming Service in $22 Billion Deal",
+      "title": "Judge Dismisses Elon Musk’s xAI Trade-Secret Lawsuit Against OpenAI",
+      "desc": "The suit alleged OpenAI poached an xAI engineer who worked on a company chatbot.",
+      "link": "https://www.wsj.com/tech/judge-dismisses-elon-musks-xai-trade-secret-lawsuit-against-openai-f637c52e?mod=pls_whats_news_us_business_f",
+      "pubDate": "Mon, 15 Jun 2026 20:47:00 GMT",
+      "creator": "Alyssa Lukpat"
+    },
+    {
+      "title": "Justice Department Decision to Allow Paramount Deal Surprised Staff Investigators",
+      "desc": "Department staffers investigating the Warner acquisition were leaning toward recommending a challenge to the merger, people familiar with the matter say.",
+      "link": "https://www.wsj.com/business/media/justice-department-decision-to-allow-paramount-deal-surprised-staff-investigators-a18f70da?mod=pls_whats_news_us_business_f",
+      "pubDate": "Mon, 15 Jun 2026 20:12:00 GMT",
+      "creator": "Dana Mattioli"
+    },
+    {
+      "title": "How Quickly Can the Strait of Hormuz Get Back Up and Running?",
+      "desc": "It could take several weeks for traffic through the thoroughfare to return to even half of prewar levels, with knock-on effects continuing for months.",
+      "link": "https://www.wsj.com/business/energy-oil/how-quickly-can-the-strait-of-hormuz-get-back-up-and-running-a5380c70?mod=pls_whats_news_us_business_f",
+      "pubDate": "Mon, 15 Jun 2026 17:58:00 GMT",
+      "creator": "Georgi Kantchev"
+    },
+    {
+      "title": "The FTC Cracked Down on ‘Hidden’ Car Dealer Fees. They’re Still Happening Anyway.",
+      "desc": "Car shoppers can face thousands of dollars in opaque fees, but the industry is working to adapt.",
+      "link": "https://www.wsj.com/business/autos/the-ftc-cracked-down-on-hidden-car-dealer-fees-theyre-still-happening-anyway-5e5c53a4?mod=pls_whats_news_us_business_f",
+      "pubDate": "Mon, 15 Jun 2026 15:45:00 GMT",
+      "creator": "Christopher Otts"
+    },
+    {
+      "title": "Fox to Buy Roku Streaming Service in $25 Billion Deal",
       "desc": "Competition for streaming audiences has been heating up, and the deal provides significant scale for both Fox and Roku.",
       "link": "https://www.wsj.com/business/deals/fox-roku-deal-f6e564f9?mod=pls_whats_news_us_business_f",
-      "pubDate": "Mon, 15 Jun 2026 11:48:00 GMT",
+      "pubDate": "Mon, 15 Jun 2026 13:41:00 GMT",
       "creator": "Jessica Toonkel"
     },
     {
@@ -15,34 +43,6 @@
       "link": "https://www.wsj.com/business/deals/new-fund-backed-by-lvmh-and-top-pro-athletes-invests-in-activewear-brand-173c764c?mod=pls_whats_news_us_business_f",
       "pubDate": "Mon, 15 Jun 2026 11:00:00 GMT",
       "creator": "Lauren Thomas"
-    },
-    {
-      "title": "Is the Luxury Handbag’s Heyday Ending?",
-      "desc": "An $8 billion slide in sales shows attitudes toward designer bags are changing.",
-      "link": "https://www.wsj.com/business/retail/is-the-luxury-handbags-heyday-ending-ed1a589e?mod=pls_whats_news_us_business_f",
-      "pubDate": "Mon, 15 Jun 2026 09:30:00 GMT",
-      "creator": "Carol Ryan"
-    },
-    {
-      "title": "Emboldened by SpaceX, Investors Are Piling Into All Things Space",
-      "desc": "Two-ton satellites, laser communications, in-space mobility ships and more are drawing attention and new funding.",
-      "link": "https://www.wsj.com/finance/investing/spacex-ipo-space-companies-investments-3b71287f?mod=pls_whats_news_us_business_f",
-      "pubDate": "Mon, 15 Jun 2026 02:00:00 GMT",
-      "creator": "Micah Maidenberg"
-    },
-    {
-      "title": "How the Pentagon Plans to Fix Its Pricey Missile Problem",
-      "desc": "The U.S. military is asking defense contractors to cut years off production time and slice hundreds of millions of dollars in costs.",
-      "link": "https://www.wsj.com/politics/national-security/how-the-pentagon-plans-to-fix-its-pricey-missile-problem-30243eb6?mod=pls_whats_news_us_business_f",
-      "pubDate": "Mon, 15 Jun 2026 01:00:00 GMT",
-      "creator": "Drew FitzGerald"
-    },
-    {
-      "title": "Oil Executives Are Sounding the Alarm Over Dwindling Stockpiles",
-      "desc": "The world is guzzling so much oil from commercial and strategic inventories that they risk falling below their minimum operating levels.",
-      "link": "https://www.wsj.com/business/energy-oil/oil-executives-are-sounding-the-alarm-over-dwindling-stockpiles-ad0f6928?mod=pls_whats_news_us_business_f",
-      "pubDate": "Mon, 15 Jun 2026 00:00:00 GMT",
-      "creator": "Benoît Morenne"
     },
     {
       "title": "Saint-Gobain Shares Rise on $1.76 Billion Sale of Majority of Dahl Operations",
@@ -80,6 +80,27 @@
       "creator": "P.R. Venkat"
     },
     {
+      "title": "Kohl’s Names Former Foot Locker Exec as Chief Operating Officer",
+      "desc": "Elliott Rodgers will assume the role on Sept. 9, taking on responsibility for Kohl’s enterprise operations including its stores, global supply chain and distribution centers, procurement and loss prevention, the retailer said.",
+      "link": "https://www.wsj.com/business/retail/kohls-names-former-foot-locker-exec-as-chief-operating-officer-1d5082d4?mod=pls_whats_news_us_business_f",
+      "pubDate": "Mon, 15 Jun 2026 20:26:00 GMT",
+      "creator": "Kelly Cloonan"
+    },
+    {
+      "title": "Labor Board Rejects Whole Foods Challenge to Philadelphia Union Election",
+      "desc": "The National Labor Relations Board wrote that the company had raised “no substantial issues warranting review” of the election certification.",
+      "link": "https://www.wsj.com/business/retail/labor-board-rejects-whole-foods-challenge-to-philadelphia-union-election-bcd1e4a3?mod=pls_whats_news_us_business_f",
+      "pubDate": "Mon, 15 Jun 2026 18:15:00 GMT",
+      "creator": "Elias Schisgall"
+    },
+    {
+      "title": "Is the Luxury Handbag’s Heyday Ending?",
+      "desc": "An $8 billion slide in sales shows attitudes toward designer bags are changing.",
+      "link": "https://www.wsj.com/business/retail/is-the-luxury-handbags-heyday-ending-ed1a589e?mod=pls_whats_news_us_business_f",
+      "pubDate": "Mon, 15 Jun 2026 09:30:00 GMT",
+      "creator": "Carol Ryan"
+    },
+    {
       "title": "Bath & Body Works’ Strategy to Win More Younger Consumers",
       "desc": "The company’s CEO Daniel Heaf says he wants to improve products, hire more influencers, update stores and revamp digital sales.",
       "link": "https://www.wsj.com/business/retail/bath-body-works-younger-consumers-aab0fa17?mod=pls_whats_news_us_business_f",
@@ -94,25 +115,11 @@
       "creator": "David Wainer"
     },
     {
-      "title": "Lovesac Tempers Outlook as Loss Widens",
-      "desc": "The new outlook came as the furniture company continued to navigate industry headwinds during its fiscal first quarter, Chief Executive Shawn David Nelson said.",
-      "link": "https://www.wsj.com/business/earnings/lovesac-tempers-outlook-as-loss-widens-974f4d38?mod=pls_whats_news_us_business_f",
-      "pubDate": "Thu, 11 Jun 2026 11:49:00 GMT",
-      "creator": "Connor Hart"
-    },
-    {
-      "title": "Hugo Boss Targeted for Takeover, Boosting Shares",
-      "desc": "U.K.’s Frasers Group said it would launch a cash offer of around €1.98 billion to take full control of the premium-apparel company.",
-      "link": "https://www.wsj.com/business/deals/hugo-boss-shares-jump-after-frasers-group-takeover-proposal-a22eebbb?mod=pls_whats_news_us_business_f",
-      "pubDate": "Thu, 11 Jun 2026 07:26:00 GMT",
-      "creator": "Andrea Figueras"
-    },
-    {
-      "title": "South Korea Fines Coupang $410 Million Over Data-Law Breaches",
-      "desc": "The fine on the e-commerce company is the largest ever imposed on a single company in South Korea.",
-      "link": "https://www.wsj.com/business/retail/south-korea-fines-coupang-410-million-over-data-breach-0e3e400c?mod=pls_whats_news_us_business_f",
-      "pubDate": "Thu, 11 Jun 2026 05:53:00 GMT",
-      "creator": "Kwanwoo Jun"
+      "title": "Dave & Buster’s Reports Lower First-Quarter Profit, Revenue as Comparable Sales Fall",
+      "desc": "The company reported a profit of $5.7 million as comparable store sales fell 5.4%.",
+      "link": "https://www.wsj.com/business/earnings/dave-busters-reports-lower-first-quarter-profit-revenue-as-comparable-sales-fall-879f5b96?mod=pls_whats_news_us_business_f",
+      "pubDate": "Mon, 15 Jun 2026 20:47:00 GMT",
+      "creator": "Elias Schisgall"
     },
     {
       "title": "Adobe to Focus on ‘Freemium’ User Growth Over Short-Term Revenue Gains as CFO Exits",
@@ -141,13 +148,6 @@
       "link": "https://www.wsj.com/business/earnings/rh-bumps-up-outlook-expects-boost-from-luxury-offerings-99094127?mod=pls_whats_news_us_business_f",
       "pubDate": "Thu, 11 Jun 2026 20:55:00 GMT",
       "creator": "Kelly Cloonan"
-    },
-    {
-      "title": "Oracle Shares Tumble Amid Pricey Data-Center Build-Out",
-      "desc": "The software giant reported higher spending associated with its massive infrastructure expansion, despite rising profit and revenue.",
-      "link": "https://www.wsj.com/business/earnings/oracle-reports-higher-profit-on-surging-cloud-revenue-5f7d25eb?mod=pls_whats_news_us_business_f",
-      "pubDate": "Thu, 11 Jun 2026 13:38:00 GMT",
-      "creator": "Elias Schisgall"
     },
     {
       "title": "Renault, Thales Team Up for Tactical-Vehicle Prototype for Armed Forces",
@@ -185,6 +185,13 @@
       "creator": "John Keilman"
     },
     {
+      "title": "Opinion | On Energy, Democrats Can Learn From Texas",
+      "desc": "The Lone Star State leads the way in making the grid cleaner, more resilient and more cost-efficient.",
+      "link": "https://www.wsj.com/opinion/on-energy-democrats-can-learn-from-texas-4f017d04?mod=pls_whats_news_us_business_f",
+      "pubDate": "Mon, 15 Jun 2026 19:33:00 GMT",
+      "creator": "Rahm Emanuel"
+    },
+    {
       "title": "Opinion | Who Wants to Be a Trillionaire?",
       "desc": "The SpaceX IPO is a credit to Elon Musk and American capitalism.",
       "link": "https://www.wsj.com/opinion/elon-musk-trillionaire-spacex-152eb280?mod=pls_whats_news_us_business_f",
@@ -220,25 +227,11 @@
       "creator": "Karl Rove"
     },
     {
-      "title": "Opinion | A ‘Millionaire’s Tax’ Is a Tax on Main Street",
-      "desc": "Wealth taxes like Hawaii’s disproportionately fall on small-business owners.",
-      "link": "https://www.wsj.com/opinion/a-millionaires-tax-is-a-tax-on-main-street-8a63d103?mod=pls_whats_news_us_business_f",
-      "pubDate": "Wed, 10 Jun 2026 16:34:00 GMT",
-      "creator": ""
-    },
-    {
       "title": "Energy & Utilities Roundup: Market Talk",
-      "desc": "Find insight on oil prices, European energy stocks and more in the latest Market Talks covering Energy and Utilities.",
+      "desc": "Find insight on Canadian energy stocks, the reopening of the Strait of Hormuz, oil futures and more in the latest Market Talks covering Energy and Utilities.",
       "link": "https://www.wsj.com/business/energy-utilities-roundup-market-talk-c4d3067b?mod=pls_whats_news_us_business_f",
-      "pubDate": "Mon, 15 Jun 2026 11:27:00 GMT",
+      "pubDate": "Mon, 15 Jun 2026 16:26:00 GMT",
       "creator": ""
-    },
-    {
-      "title": "Stock Futures Rally, Oil Drops After U.S.-Iran Deal",
-      "desc": "U.S. stock futures and global markets rose after the U.S. and Iran agreed on an interim peace deal that would reopen the Strait of Hormuz.",
-      "link": "https://www.wsj.com/finance/u-s-futures-global-stocks-rise-oil-prices-tumble-on-iran-peace-deal-bc4e0000?mod=pls_whats_news_us_business_f",
-      "pubDate": "Mon, 15 Jun 2026 10:46:00 GMT",
-      "creator": "Caitlin McCabe"
     },
     {
       "title": "Oil Plunges as U.S., Iran Reach Deal to Reopen Hormuz But Outlook Remains Uncertain",
@@ -246,6 +239,13 @@
       "link": "https://www.wsj.com/business/energy-oil/oil-slides-as-u-s-iran-reach-deal-to-reopen-hormuz-04fd7e87?mod=pls_whats_news_us_business_f",
       "pubDate": "Mon, 15 Jun 2026 09:16:00 GMT",
       "creator": "Giulia Petroni"
+    },
+    {
+      "title": "Oil Executives Are Sounding the Alarm Over Dwindling Stockpiles",
+      "desc": "The world is guzzling so much oil from commercial and strategic inventories that they risk falling below their minimum operating levels.",
+      "link": "https://www.wsj.com/business/energy-oil/oil-executives-are-sounding-the-alarm-over-dwindling-stockpiles-ad0f6928?mod=pls_whats_news_us_business_f",
+      "pubDate": "Mon, 15 Jun 2026 00:00:00 GMT",
+      "creator": "Benoît Morenne"
     },
     {
       "title": "Why Oil Prices Haven’t Shot Through the Roof—Yet",
@@ -297,6 +297,13 @@
       "creator": "Clara Hudson"
     },
     {
+      "title": "Truist Names New CEO as Regional Bank Pushes to Boost Performance",
+      "desc": "Michael Lyons, previously Fiserv’s CEO, will take the helm at the North Carolina-based lender in September.",
+      "link": "https://www.wsj.com/business/c-suite/truist-financial-names-fiservs-michael-lyons-president-ceo-7fafa1f0?mod=pls_whats_news_us_business_f",
+      "pubDate": "Mon, 15 Jun 2026 15:13:00 GMT",
+      "creator": "Ben Glickman"
+    },
+    {
       "title": "Perrigo CEO Ousted Over Personal Conduct",
       "desc": "Perrigo Chief Executive Patrick Lockwood-Taylor has resigned after the board found his personal conduct had violated company code.",
       "link": "https://www.wsj.com/business/perrigo-ceo-ousted-over-personal-conduct-71b432a3?mod=pls_whats_news_us_business_f",
@@ -323,13 +330,6 @@
       "link": "https://www.wsj.com/business/c-suite/tyson-foods-names-jeff-schomburger-to-succeed-donnie-king-as-president-ceo-da26d13a?mod=pls_whats_news_us_business_f",
       "pubDate": "Thu, 28 May 2026 14:45:00 GMT",
       "creator": "Colin Kellaher"
-    },
-    {
-      "title": "Dropbox Co-founder Houston to Step Down as CEO After 19 Years",
-      "desc": "Dropbox Chief Executive Andrew Houston will step down from his role after 19 years at the head of the company and become executive chairman.",
-      "link": "https://www.wsj.com/business/c-suite/dropbox-ceo-to-step-down-after-19-years-3b482d07?mod=pls_whats_news_us_business_f",
-      "pubDate": "Tue, 26 May 2026 21:05:00 GMT",
-      "creator": "Nicholas G. Miller"
     },
     {
       "title": "The 70-Year Marriage Between McDonald’s and Coke Has Some Issues",
@@ -444,6 +444,13 @@
       "creator": ""
     },
     {
+      "title": "South Korea Fines Coupang $410 Million Over Data-Law Breaches",
+      "desc": "The fine on the e-commerce company is the largest ever imposed on a single company in South Korea.",
+      "link": "https://www.wsj.com/business/retail/south-korea-fines-coupang-410-million-over-data-breach-0e3e400c?mod=pls_whats_news_us_business_f",
+      "pubDate": "Thu, 11 Jun 2026 05:53:00 GMT",
+      "creator": "Kwanwoo Jun"
+    },
+    {
       "title": "The Debate-Loving German Telecom Exec Plotting a Blockbuster Merger",
       "desc": "Timotheus Höttges transformed Deutsche Telekom by doubling down on America’s maverick brand, T-Mobile. His final test is a $300 billion-plus deal.",
       "link": "https://www.wsj.com/business/telecom/t-mobile-deutsche-telekom-merger-4fdc8eba?mod=pls_whats_news_us_business_f",
@@ -465,11 +472,11 @@
       "creator": ""
     },
     {
-      "title": "Samsung Workers Approve Pay Deal Promising Bonuses That Could Top $400,000",
-      "desc": "The company’s unionized workers have approved a tentative bonus-pay deal reached last week with the company, averting a strike at the world’s largest memory-chip maker.",
-      "link": "https://www.wsj.com/business/samsung-electronics-union-approves-bonus-pay-deal-d0f7d9ca?mod=pls_whats_news_us_business_f",
-      "pubDate": "Wed, 27 May 2026 21:18:00 GMT",
-      "creator": "Kwanwoo Jun"
+      "title": "Emboldened by SpaceX, Investors Are Piling Into All Things Space",
+      "desc": "Two-ton satellites, laser communications, in-space mobility ships and more are drawing attention and new funding.",
+      "link": "https://www.wsj.com/finance/investing/spacex-ipo-space-companies-investments-3b71287f?mod=pls_whats_news_us_business_f",
+      "pubDate": "Mon, 15 Jun 2026 02:00:00 GMT",
+      "creator": "Micah Maidenberg"
     },
     {
       "title": "What to Know About Drone-Boat Maker Behind Iran Helicopter Crew Rescue",
@@ -500,11 +507,11 @@
       "creator": "Jessica Coacci"
     },
     {
-      "title": "Startup Beacon Software Raises $225 Million to Expand Venture Roll-Up Strategy",
-      "desc": "The holding company will use the capital for more acquisitions and to bolster the AI operating system it provides its portfolio companies.",
-      "link": "https://www.wsj.com/pro/venture-capital/startup-beacon-software-raises-225-million-to-expand-venture-roll-up-strategy-d456c1bf?mod=pls_whats_news_us_business_f",
-      "pubDate": "Tue, 09 Jun 2026 09:30:00 GMT",
-      "creator": "Sarah Klearman"
+      "title": "How the Pentagon Plans to Fix Its Pricey Missile Problem",
+      "desc": "The U.S. military is asking defense contractors to cut years off production time and slice hundreds of millions of dollars in costs.",
+      "link": "https://www.wsj.com/politics/national-security/how-the-pentagon-plans-to-fix-its-pricey-missile-problem-30243eb6?mod=pls_whats_news_us_business_f",
+      "pubDate": "Mon, 15 Jun 2026 01:00:00 GMT",
+      "creator": "Drew FitzGerald"
     },
     {
       "title": "The Lebanon Conflict Stands in the Way of an Iran Peace Deal",
@@ -535,18 +542,18 @@
       "creator": "Micah Maidenberg"
     },
     {
-      "title": "SpaceX, Now Worth $2.1 Trillion, Pulls Off Goldilocks Debut",
-      "desc": "Elon Musk became the world’s first trillionaire as investors bought into the moonshot AI vision in a remarkably smooth IPO.",
-      "link": "https://www.wsj.com/business/spacex-now-worth-2-1-trillion-pulls-off-goldilocks-debut-bcc59ace?mod=pls_whats_news_us_business_f",
-      "pubDate": "Fri, 12 Jun 2026 22:26:00 GMT",
-      "creator": "Becky Peterson"
-    },
-    {
       "title": "Mining Tycoon Gina Rinehart Buys Over $1 Billion SpaceX Stake",
       "desc": "Australia’s richest person has bought a more-than $1 billion stake in SpaceX.",
       "link": "https://www.wsj.com/business/mining-tycoon-gina-rinehart-buys-over-1-billion-spacex-stake-d79ec3ba?mod=pls_whats_news_us_business_f",
       "pubDate": "Mon, 15 Jun 2026 09:02:00 GMT",
       "creator": "Rhiannon Hoyle"
+    },
+    {
+      "title": "Fox to Buy Roku Streaming Service in $25 Billion Deal",
+      "desc": "Competition for streaming audiences has been heating up, and the deal provides significant scale for both Fox and Roku.",
+      "link": "https://www.wsj.com/business/deals/fox-roku-deal-f6e564f9?mod=pls_whats_news_us_business_f",
+      "pubDate": "Mon, 15 Jun 2026 13:41:00 GMT",
+      "creator": "Jessica Toonkel"
     },
     {
       "title": "The 70-Year Marriage Between McDonald’s and Coke Has Some Issues",
@@ -556,18 +563,11 @@
       "creator": "Heather Haddon"
     },
     {
-      "title": "A Struggling Motorcycle Brand Wants to Start a Culture War With Harley-Davidson",
-      "desc": "Indian Motorcycle says its anti-DEI marketing isn’t political, but some of its own riders reject the campaign",
-      "link": "https://www.wsj.com/business/a-struggling-motorcycle-brand-wants-to-start-a-culture-war-with-harley-davidson-83f2c8cd?mod=pls_whats_news_us_business_f",
-      "pubDate": "Fri, 12 Jun 2026 15:30:00 GMT",
-      "creator": "John Keilman"
-    },
-    {
-      "title": "The Former GOP Operative Running a News Site for the ‘Politically Homeless’",
-      "desc": "Sarah Longwell’s buzzy startup, the Bulwark, is attracting investors including James and Kathryn Murdoch and Melinda French Gates",
-      "link": "https://www.wsj.com/business/media/the-bulwark-sarah-longwell-77bc9475?mod=pls_whats_news_us_business_f",
-      "pubDate": "Sat, 13 Jun 2026 02:00:00 GMT",
-      "creator": "Jessica Toonkel"
+      "title": "The FTC Cracked Down on ‘Hidden’ Car Dealer Fees. They’re Still Happening Anyway.",
+      "desc": "Car shoppers can face thousands of dollars in opaque fees, but the industry is working to adapt.",
+      "link": "https://www.wsj.com/business/autos/the-ftc-cracked-down-on-hidden-car-dealer-fees-theyre-still-happening-anyway-5e5c53a4?mod=pls_whats_news_us_business_f",
+      "pubDate": "Mon, 15 Jun 2026 15:45:00 GMT",
+      "creator": "Christopher Otts"
     },
     {
       "title": "Vedanta Chair Confident About Dividends, Focused on Growth as Indian Conglomerate Splits Up",
