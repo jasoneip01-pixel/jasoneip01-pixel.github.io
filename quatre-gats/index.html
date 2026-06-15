@@ -581,9 +581,10 @@ function speakLine(text, speaker){
       || maleVoices[0];
 
     // Picasso: different male voice (not the same as Gaudí)
-    picassoVoice = maleVoices.find(v => /es/i.test(v.lang) && v.name !== (gaudiVoice && gaudiVoice.name)
-      || maleVoices.find(v => /en|fr|it/i.test(v.lang) && v.name !== (gaudiVoice && gaudiVoice.name))
-      || maleVoices[maleVoices.indexOf(gaudiVoice) + 1] || maleVoices[0];
+    const otherMale = maleVoices.filter(v => v.name !== (gaudiVoice && gaudiVoice.name));
+    picassoVoice = otherMale.find(v => /es/i.test(v.lang))
+      || otherMale.find(v => /en|fr|it/i.test(v.lang))
+      || otherMale[0] || maleVoices[0];
   }
 
   if(speaker === 'Gaudí'){
