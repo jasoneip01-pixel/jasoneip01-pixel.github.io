@@ -561,43 +561,14 @@ function speakLine(text, speaker){
   if(!voiceOn || !speechSynth) return;
   speechSynth.cancel();
   const u = new SpeechSynthesisUtterance(text);
-
-  // Ensure voices list is loaded
-  if(speechSynth.getVoices().length === 0){
-    speechSynth.onvoiceschanged = undefined; // avoid infinite loop
-  }
-  const voices = speechSynth.getVoices();
-  let gaudiVoice = null, picassoVoice = null;
-
-  if(voices.length > 0){
-    // Pick two DIFFERENT male voices
-    const maleVoices = voices.filter(v => /male/i.test(v.name));
-    const deepMale = maleVoices.filter(v => /ca|es|fr|it|pt|de/i.test(v.lang));
-    const regularMale = maleVoices.filter(v => /en|es|fr|it/i.test(v.lang));
-
-    // Gaudí: deep male (prefer Catalan, then Spanish, then any deep male)
-    gaudiVoice = deepMale.find(v => /ca/i.test(v.lang))
-      || maleVoices.find(v => /es/i.test(v.lang) && /male/i.test(v.name))
-      || maleVoices[0];
-
-    // Picasso: different male voice (not the same as Gaudí)
-    const otherMale = maleVoices.filter(v => v.name !== (gaudiVoice && gaudiVoice.name));
-    picassoVoice = otherMale.find(v => /es/i.test(v.lang))
-      || otherMale.find(v => /en|fr|it/i.test(v.lang))
-      || otherMale[0] || maleVoices[0];
-  }
-
   if(speaker === 'Gaudí'){
     u.lang = 'ca-ES';
     u.rate = 0.7;
-    u.pitch = 0.5;  // deeper
-    if(gaudiVoice) u.voice = gaudiVoice;
+    u.pitch = 0.5;
   } else {
     u.lang = 'es-ES';
     u.rate = 0.85;
     u.pitch = 1.0;
-    if(picassoVoice && picassoVoice !== gaudiVoice) u.voice = picassoVoice;
-    else if(picassoVoice) u.voice = picassoVoice;
   }
   u.volume = 1.0;
   speechSynth.speak(u);
