@@ -52,7 +52,7 @@ html,body{height:100%;height:100dvh;overflow:hidden;font-family:'Noto Serif SC',
 .portrait .figure{position:relative;width:85%;overflow:hidden}
 .portrait .figure img{width:100%;height:auto;display:block;transition:transform 8s ease}
 .portrait .table-mist{position:absolute;bottom:0;left:-10%;right:-10%;height:45%;background:linear-gradient(transparent,rgba(10,5,2,0.55));pointer-events:none}
-.portrait.right .figure img{transform:scaleX(-1)}
+.portrait.right .figure img{transform:scaleX(-1)}  /* Gaudí faces left toward Picasso */
 
 /* ── Dialogue Stage ── */
 .dialogue-stage{background:rgba(20,14,10,0.5);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-radius:8px;border:1px solid rgba(200,168,78,0.12);padding:18px 20px;min-height:120px;max-height:50vh;max-height:50dvh;overflow-y:auto;scrollbar-width:thin;scrollbar-color:rgba(200,168,78,0.15) transparent;position:relative;-webkit-overflow-scrolling:touch}
@@ -218,14 +218,14 @@ html,body{height:100%;height:100dvh;overflow:hidden;font-family:'Noto Serif SC',
 
 <div class="portrait left" id="portraitLeft">
   <div class="figure">
-    <img src="images/gaudi.jpg" alt="Antoni Gaudí">
+    <img src="images/picasso.jpg" alt="Pablo Picasso">
     <div class="table-mist"></div>
   </div>
 </div>
 
 <div class="portrait right" id="portraitRight">
   <div class="figure">
-    <img src="images/picasso.jpg" alt="Pablo Picasso">
+    <img src="images/gaudi.jpg" alt="Antoni Gaudí">
     <div class="table-mist"></div>
   </div>
 </div>
