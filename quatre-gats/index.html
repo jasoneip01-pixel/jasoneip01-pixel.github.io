@@ -611,9 +611,9 @@ function firstInteraction(){
   audio.volume = 0.4;
   audio.play().catch(() => {});
   isPlaying = true;
-  // Trigger first dialogue line immediately (no setTimeout — gesture context is live)
+  // Trigger first dialogue with TTS (gesture context is live)
   setThinking(false);
-  addMessage('Gaudí', G.gut[0].ca, G.gut[0].zh, G.gut[0].ac);
+  addMessage('Picasso', P.gut[0].ca, P.gut[0].zh, P.gut[0].ac);
   // Start fallback timer
   autoTimer = setTimeout(autoDialogue, 2000);
   document.removeEventListener('click', firstInteraction);
@@ -645,8 +645,13 @@ if(window.visualViewport){
 }
 
 // ── Init ──
-// Set initial curtain text, first message will trigger on first interaction
+// Preload initial dialogue so page isn't blank
 setThinking(true);
+setTimeout(() => {
+  setThinking(false);
+  // Use origAddMessage to avoid TTS (no gesture context yet)
+  origAddMessage('Gaudí', G.gut[0].ca, G.gut[0].zh, G.gut[0].ac);
+}, 800);
 
 // Stop auto when tab is hidden
 document.addEventListener('visibilitychange', () => {
