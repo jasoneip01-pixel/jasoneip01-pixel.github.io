@@ -531,14 +531,30 @@ function toggleVoice(){
   document.getElementById('voiceBtn').classList.toggle('on', voiceOn);
 }
 
-function speakLine(text, lang){
+function speakLine(text, speaker){
   if(!voiceOn || !speechSynth) return;
   speechSynth.cancel();
   const u = new SpeechSynthesisUtterance(text);
-  u.lang = lang || 'ca-ES';
-  u.rate = 0.85;
-  u.pitch = 1.0;
+  if(speaker === 'Gaudí'){
+    u.lang = 'ca-ES';
+    u.rate = 0.7;
+    u.pitch = 0.6;
+  } else {
+    u.lang = 'es-ES';
+    u.rate = 0.85;
+    u.pitch = 1.0;
+  }
   u.volume = 1.0;
+  // Try to find matching male voice
+  if(speechSynth.getVoices().length > 0){
+    const voices = speechSynth.getVoices();
+    const preferred = speaker === 'Gaudí'
+      ? voices.find(v => /catalan|ca/i.test(v.lang) && v.name.includes('Male'))
+        || voices.find(v => /ca/i.test(v.lang))
+      : voices.find(v => /spanish.*male|es.*male/i.test(v.lang))
+        || voices.find(v => /es/i.test(v.lang));
+    if(preferred) u.voice = preferred;
+  }
   speechSynth.speak(u);
 }
 
@@ -547,9 +563,7 @@ const origAddMessage = addMessage;
 addMessage = function(speaker, ca, zh, ac){
   origAddMessage(speaker, ca, zh, ac);
   if(voiceOn && ca){
-    // Speak Catalan for Gaudí, mixed for Picasso
-    const lang = speaker === 'Gaudí' ? 'ca-ES' : 'es-ES';
-    setTimeout(() => speakLine(ca, lang), 300);
+    setTimeout(() => speakLine(ca, speaker), 300);
   }
 };
 
