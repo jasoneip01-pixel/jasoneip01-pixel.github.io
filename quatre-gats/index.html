@@ -304,6 +304,8 @@ let isPlaying = false;
 // ── Audio ──
 async function initAudio(){
   try{
+    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    audioCtx.resume();
     const resp = await fetch('audio/ambient.mp3');
     const buf = await resp.arrayBuffer();
     const decoded = await audioCtx.decodeAudioData(buf);
