@@ -466,43 +466,13 @@ function scheduleNext(immediate){
 // ── User Response Logic ──
 function handleUserInput(text){
   if(busy || !text.trim()) return;
-  const t = text.toLowerCase().trim();
   busy = true;
   setThinking(true);
   input.disabled = true;
   send.disabled = true;
   addUserMessage(text);
-
-  // Use LLM backend if configured
-  if(API_URL){
-    const controller = new AbortController();
-    const timeout = setTimeout(() => controller.abort(), 5000);
-    fetch(API_URL, {
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({
-        characters:['Gaudí','Picasso'],
-        history:dialogueHistory,
-        userInput:t,
-        lastSpeaker:lastSpeaker || 'Picasso'
-      }),
-      signal: controller.signal
-    })
-    .then(r => r.json())
-    .then(data => {
-      setThinking(false);
-      const sp = data.speaker || 'Picasso';
-      addMessage(sp, data.ca || '', data.zh || '', data.action || '');
-      startFallbackTimer(); // resume after user interaction
-      busy = false;
-      input.disabled = false;
-      send.disabled = false;
-      input.focus();
-    })
-    .catch(() => fallbackUserResponse(t));
-  } else {
-    fallbackUserResponse(t);
-  }
+  // Use local dialogue pool (reliable, no async Vercel dependency)
+  fallbackUserResponse(text);
 }
 
 function fallbackUserResponse(text){
