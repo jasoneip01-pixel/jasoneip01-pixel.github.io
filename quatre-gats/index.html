@@ -211,8 +211,8 @@ html,body{height:100%;height:100dvh;overflow:hidden;font-family:'Noto Serif SC',
 <div class="top" id="topBar">
   <div class="location"><span>Els Quatre Gats · Barcelona · MCMII</span></div>
   <div class="controls">
-    <button class="music-btn" id="musicBtn">♫ ambient</button>
-    <button class="music-btn" id="voiceBtn">♪ voice</button>
+    <button class="music-btn on" id="musicBtn">♫ ambient</button>
+    <button class="music-btn on" id="voiceBtn">♪ voice</button>
   </div>
 </div>
 
@@ -322,7 +322,7 @@ let lastSpeaker = null;
 let busy = false;
 let autoTimer = null;
 let crossIdx = 0;
-let musicOn = false;
+let musicOn = true;
 let audioCtx = null;
 let audioSource = null;
 let audioGain = null;
@@ -351,11 +351,7 @@ async function initAudio(){
 function toggleMusic(){
   musicOn = !musicOn;
   document.getElementById('musicBtn').classList.toggle('on', musicOn);
-  if(musicOn && !isPlaying){
-    initAudio();
-  } else if(audioGain){
-    audioGain.gain.value = musicOn ? 0.25 : 0;
-  }
+  if(audioGain) audioGain.gain.value = musicOn ? 0.25 : 0;
 }
 
 // ── UI ──
@@ -553,7 +549,7 @@ input.onkeydown = e => { if(e.key === 'Enter') send.click(); };
 document.getElementById('musicBtn').onclick = toggleMusic;
 
 // ── Voice (TTS) toggle ──
-let voiceOn = false;
+let voiceOn = true;
 let speechSynth = window.speechSynthesis;
 
 function toggleVoice(){
@@ -601,8 +597,7 @@ document.getElementById('voiceBtn').onclick = toggleVoice;
 
 // ── Audio init on first user interaction ──
 function firstInteraction(){
-  // Just resume AudioContext (required by autoplay policy), don't start playback
-  if(audioCtx && audioCtx.state === 'suspended') audioCtx.resume();
+  if(!isPlaying) initAudio();
   document.removeEventListener('click', firstInteraction);
   document.removeEventListener('touchstart', firstInteraction);
   document.removeEventListener('keydown', firstInteraction);
