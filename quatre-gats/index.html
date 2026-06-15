@@ -556,6 +556,10 @@ document.getElementById('musicBtn').onclick = toggleMusic;
 // ── Voice (TTS) toggle ──
 let voiceOn = true;
 let speechSynth = window.speechSynthesis;
+// Force voice list initialization on iOS (triggers onvoiceschanged)
+if(speechSynth && speechSynth.getVoices().length === 0){
+  speechSynth.getVoices(); // Kick iOS to load voices
+}
 
 function toggleVoice(){
   voiceOn = !voiceOn;
@@ -564,18 +568,28 @@ function toggleVoice(){
 
 function speakLine(text, speaker){
   if(!voiceOn || !speechSynth) return;
+  // iOS requirement: cancel() + create fresh utterance
   speechSynth.cancel();
+  speechSynth.cancel(); // double cancel for iOS
   const u = new SpeechSynthesisUtterance(text);
-  if(speaker === 'Gaudí'){
-    u.lang = 'ca-ES';
-    u.rate = 0.7;
-    u.pitch = 0.5;
-  } else {
-    u.lang = 'es-ES';
-    u.rate = 0.85;
-    u.pitch = 1.0;
-  }
+  // On mobile, minimal settings are most reliable
   u.volume = 1.0;
+  u.rate = 1.0;
+  if(speaker === 'Gaudí'){
+    u.pitch = 0.6;
+    u.lang = 'ca-ES';
+  } else {
+    u.pitch = 1.0;
+    u.lang = 'es-ES';
+  }
+  // Retry if voices not loaded
+  if(speechSynth.getVoices().length === 0){
+    speechSynth.onvoiceschanged = () => {
+      speechSynth.onvoiceschanged = null;
+      speechSynth.speak(u);
+    };
+    return;
+  }
   speechSynth.speak(u);
 }
 
