@@ -249,6 +249,8 @@ html,body{height:100%;height:100dvh;overflow:hidden;font-family:'Noto Serif SC',
   </div>
 </div>
 
+
+<script src="audio/audio_map.js"></script>
 <script>
 // ═══════════════════════════════════════════
 //  Sophie's Café — Gaudí × Picasso Engine
@@ -566,12 +568,20 @@ function toggleVoice(){
 }
 
 function speakLine(text, speaker){
-  if(!voiceOn || !speechSynth) return;
-  // iOS requirement: cancel() + create fresh utterance
+  if(!voiceOn) return;
+  // Primary: pre-recorded audio (works on ALL platforms incl WeChat, Feishu WebView)
+  const idx = AUDIO_TEXTS.indexOf(text);
+  if(idx >= 0){
+    const a = new Audio(`audio/s${String(idx).padStart(3,'0')}.mp3`);
+    a.volume = 1.0;
+    a.play().catch(() => {});
+    return;
+  }
+  // Fallback: speechSynthesis (for Vercel API dynamic responses)
+  if(!speechSynth) return;
   speechSynth.cancel();
-  speechSynth.cancel(); // double cancel for iOS
+  speechSynth.cancel();
   const u = new SpeechSynthesisUtterance(text);
-  // On mobile, minimal settings are most reliable
   u.volume = 1.0;
   u.rate = 1.0;
   if(speaker === 'Gaudí'){
@@ -581,7 +591,6 @@ function speakLine(text, speaker){
     u.pitch = 1.0;
     u.lang = 'es-ES';
   }
-  // Retry if voices not loaded
   if(speechSynth.getVoices().length === 0){
     speechSynth.onvoiceschanged = () => {
       speechSynth.onvoiceschanged = null;
@@ -622,6 +631,19 @@ function firstInteraction(){
 document.addEventListener('click', firstInteraction, { once: true });
 document.addEventListener('touchstart', firstInteraction, { once: true });
 document.addEventListener('keydown', firstInteraction, { once: true });
+
+// ── WeChat Autoplay ──
+if(/micromessenger/i.test(navigator.userAgent)){
+  function wechatReady(){
+    document.removeEventListener('WeixinJSBridgeReady', wechatReady);
+    firstInteraction();
+  }
+  if(window.WeixinJSBridge){
+    wechatReady();
+  } else {
+    document.addEventListener('WeixinJSBridgeReady', wechatReady);
+  }
+}
 
 // ── Mobile Keyboard Handling (visualViewport API) ──
 if(window.visualViewport){
