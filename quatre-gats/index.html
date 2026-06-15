@@ -385,6 +385,7 @@ function addMessage(speaker, ca, zh, ac){
   // Fade in
   requestAnimationFrame(() => d.classList.add('show'));
   dialogueHistory.push({speaker, ca, zh, ac});
+  lastSpeaker = speaker;
   return d;
 }
 
@@ -482,7 +483,7 @@ function handleUserInput(text){
   // Try LLM backend
   if(API_URL){
     const controller = new AbortController();
-    const tid = setTimeout(() => controller.abort(), 8000);
+    const tid = setTimeout(() => controller.abort(), 15000);
     fetch(API_URL, {
       method:'POST',
       headers:{'Content-Type':'application/json'},
