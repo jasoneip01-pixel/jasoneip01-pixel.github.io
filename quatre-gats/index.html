@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<title>高迪×毕加索 · 四只猫的午后</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+/* ── Reset & Base ── */
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{height:100%;overflow:hidden;font-family:'Noto Serif SC','Songti SC',serif;color:#f5f0e8;background:#1a1410}
+
+/* ── Stage: Cafe Background ── */
+.stage{position:fixed;inset:0;z-index:0}
+.stage-bg{position:absolute;inset:0;background:url('images/cafe.jpg') center/cover no-repeat;filter:saturate(0.85) brightness(0.55) contrast(1.05);transition:transform 8s ease}
+.stage-bg::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 50%,transparent 30%,rgba(10,5,2,0.7) 100%)}
+.stage-overlay{position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,0.03)2px,rgba(0,0,0,0.03)4px);pointer-events:none}
+
+/* ── Paper Texture ── */
+.paper{position:fixed;inset:0;z-index:1;background:url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/></filter><rect width="200" height="200" filter="url(%23n)" opacity="0.08"/></svg>') repeat;pointer-events:none;opacity:0.3;transition:opacity 2s}
+.paper.visible{opacity:0.3}
+
+/* ── Top Bar ── */
+.top{position:fixed;top:0;left:0;right:0;z-index:20;padding:12px 20px;display:flex;align-items:center;justify-content:space-between;opacity:1;transition:opacity 1.5s ease}
+.top .location{font-family:'Playfair Display',Georgia,serif;font-style:italic;font-size:0.85rem;color:rgba(200,168,78,0.7);letter-spacing:0.12em}
+.top .location span{display:inline-block}
+.top .controls{display:flex;align-items:center;gap:12px}
+.music-btn{background:none;border:1px solid rgba(200,168,78,0.25);color:rgba(200,168,78,0.5);padding:4px 12px;border-radius:14px;cursor:pointer;font-size:0.72rem;font-family:inherit;transition:all 0.4s;display:flex;align-items:center;gap:5px}
+.music-btn.on{color:rgba(200,168,78,0.85);border-color:rgba(200,168,78,0.5)}
+.music-btn:hover{border-color:rgba(200,168,78,0.6)}
+
+/* ── Portraits ── */
+.portrait{position:fixed;top:0;bottom:75px;z-index:5;width:30vw;max-width:320px;display:flex;align-items:center;justify-content:center;pointer-events:none;transition:opacity 1.5s ease}
+.portrait.left{left:0;transform:translateX(0);opacity:1;transition:transform 1.2s cubic-bezier(0.16,1,0.3,1),opacity 0.8s ease}
+.portrait.right{right:0;transform:translateX(0);opacity:1;transition:transform 1.2s cubic-bezier(0.16,1,0.3,1),opacity 0.8s ease}
+.portrait.enter{animation:none}
+.portrait .frame{position:relative;width:75%;max-width:240px;border-radius:4px;overflow:hidden;box-shadow:0 4px 30px rgba(0,0,0,0.5),inset 0 0 60px rgba(200,168,78,0.06)}
+.portrait.left .frame{border:1px solid rgba(200,168,78,0.15)}
+.portrait.right .frame{border:1px solid rgba(100,140,180,0.2)}
+.portrait .frame img{width:100%;height:auto;display:block;transition:transform 6s ease}
+.portrait .frame:hover img{transform:scale(1.02)}
+.portrait .label{position:absolute;bottom:0;left:0;right:0;padding:8px 10px 7px;background:linear-gradient(transparent,rgba(0,0,0,0.7) 60%);font-family:'Cormorant Garamond',serif;font-style:italic;font-size:0.7rem;letter-spacing:0.08em}
+.portrait.left .label{color:rgba(200,168,78,0.8);text-align:left}
+.portrait.right .label{color:rgba(160,180,210,0.8);text-align:right}
+
+/* ── Center Stage (Dialogue) ── */
+.center-stage{position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);z-index:10;width:42vw;max-width:520px;min-width:280px;opacity:1;transition:opacity 1.2s ease}
+
+/* ── Curtain ── */
+.curtain-text{text-align:center;margin-bottom:18px;opacity:1}
+.curtain-text .ca{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:0.85rem;color:rgba(200,168,78,0.6);letter-spacing:0.06em;margin-bottom:3px}
+.curtain-text .zh{font-size:0.75rem;color:rgba(245,240,232,0.4);letter-spacing:0.08em}
+@keyframes fadeUp{0%{opacity:0;transform:translateY(8px)}100%{opacity:1;transform:translateY(0)}}
+
+/* ── Dialogue Stage ── */
+.dialogue-stage{background:rgba(20,14,10,0.65);backdrop-filter:blur(6px);border-radius:8px;border:1px solid rgba(200,168,78,0.1);padding:18px 20px;min-height:160px;max-height:50vh;overflow-y:auto;scrollbar-width:thin;scrollbar-color:rgba(200,168,78,0.15) transparent;position:relative}
+.dialogue-stage::-webkit-scrollbar{width:3px}
+.dialogue-stage::-webkit-scrollbar-track{background:transparent}
+.dialogue-stage::-webkit-scrollbar-thumb{background:rgba(200,168,78,0.15);border-radius:99px}
+
+/* ── Dialogue Bubbles ── */
+.msg{opacity:0;transition:opacity 0.6s ease,transform 0.4s ease;margin-bottom:12px}
+.msg.show{opacity:1}
+.msg:last-child{margin-bottom:0}
+.msg .speaker{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:0.75rem;margin-bottom:2px}
+.msg .speaker.gaudi{color:rgba(200,168,78,0.8)}
+.msg .speaker.picasso{color:rgba(130,170,210,0.8)}
+.msg .speaker.user{color:rgba(180,200,160,0.8)}
+.msg .text-ca{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:0.9rem;line-height:1.5;color:rgba(245,240,232,0.85);letter-spacing:0.02em}
+.msg .text-zh{font-size:0.85rem;line-height:1.55;color:rgba(245,240,232,0.6);margin-top:2px}
+.msg .action{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:0.78rem;color:rgba(200,168,78,0.4);margin-top:3px;letter-spacing:0.02em}
+
+/* ── Thinking state ── */
+.thinking-indicator{display:none;padding:6px 0;color:rgba(200,168,78,0.35);font-family:'Cormorant Garamond',serif;font-style:italic;font-size:0.75rem;animation:pulse 1.8s ease-in-out infinite}
+.thinking-indicator.show{display:block}
+@keyframes pulse{0%,100%{opacity:0.3}50%{opacity:0.8}}
+
+/* ── Input Bar ── */
+.input-area{position:fixed;left:0;right:0;bottom:0;z-index:20;padding:10px 20px 16px;background:linear-gradient(transparent,rgba(10,5,2,0.6) 40%);opacity:1;transition:opacity 1.5s ease}
+.input-row{display:flex;align-items:center;gap:8px;max-width:600px;margin:0 auto}
+.input-row input{flex:1;border:0;border-bottom:1px solid rgba(200,168,78,0.15);background:rgba(245,240,232,0.04);padding:7px 10px;font-family:'Noto Serif SC',serif;font-size:0.85rem;color:rgba(245,240,232,0.7);outline:none;transition:border-color 0.3s;border-radius:3px 3px 0 0}
+.input-row input:focus{border-bottom-color:rgba(200,168,78,0.4);color:rgba(245,240,232,0.9);background:rgba(245,240,232,0.07)}
+.input-row input::placeholder{color:rgba(245,240,232,0.25)}
+.input-row button{border:1px solid rgba(200,168,78,0.25);border-radius:14px;background:transparent;padding:5px 14px;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:0.72rem;color:rgba(200,168,78,0.5);cursor:pointer;transition:all 0.3s;white-space:nowrap;flex-shrink:0}
+.input-row button:hover{border-color:rgba(200,168,78,0.5);background:rgba(200,168,78,0.08);color:rgba(200,168,78,0.8)}
+.input-row input:disabled,.input-row button:disabled{opacity:0.4;cursor:not-allowed}
+
+/* ── Responsive ── */
+@media(max-width:768px){
+  .portrait{width:22vw;top:40px;bottom:auto;height:auto}
+  .portrait.left{left:8px}
+  .portrait.right{right:8px}
+  .portrait .frame{width:90%;max-width:120px}
+  .portrait .label{font-size:0.6rem;padding:5px 7px}
+  .center-stage{width:50vw;min-width:200px;max-width:none}
+  .dialogue-stage{padding:12px 14px;min-height:120px;max-height:45vh}
+  .msg .text-ca{font-size:0.82rem}
+  .msg .text-zh{font-size:0.78rem}
+  .top .location{font-size:0.72rem}
+  .input-area{padding:8px 12px 12px}
+  .input-row input{font-size:0.8rem;padding:6px 8px}
+}
+
+@media(max-width:480px){
+  .portrait{width:20vw;top:36px}
+  .portrait .frame{width:95%;max-width:100px}
+  .portrait .label{font-size:0.55rem;padding:4px 5px}
+  .center-stage{width:64vw;min-width:180px}
+  .dialogue-stage{padding:10px 12px;min-height:100px;max-height:50vh}
+  .msg .text-ca{font-size:0.78rem}
+  .msg .text-zh{font-size:0.75rem}
+  .msg .action{font-size:0.7rem}
+  .top{padding:8px 12px}
+  .top .location{font-size:0.62rem}
+  .curtain-text .ca{font-size:0.72rem}
+  .curtain-text .zh{font-size:0.65rem}
+}
+
+@media(max-height:600px){
+  .portrait{top:20px}
+  .portrait .frame{width:80%;max-width:80px}
+  .dialogue-stage{min-height:80px;max-height:55vh;padding:8px 10px}
+  .msg{margin-bottom:6px}
+  .msg .text-ca{font-size:0.75rem}
+  .msg .text-zh{font-size:0.72rem}
+}
+</style>
+</head>
+<body>
+
+<div class="stage" id="stage">
+  <div class="stage-bg" id="stageBg"></div>
+  <div class="stage-overlay"></div>
+</div>
+<div class="paper" id="paper"></div>
+
+<div class="top" id="topBar">
+  <div class="location"><span>Els Quatre Gats · Barcelona · MCMII</span></div>
+  <div class="controls">
+    <button class="music-btn on" id="musicBtn">♫ ambient</button>
+  </div>
+</div>
+
+<div class="portrait left" id="portraitLeft">
+  <div class="frame">
+    <img src="images/gaudi.jpg" alt="Antoni Gaudí">
+    <div class="label">Antoni Gaudí</div>
+  </div>
+</div>
+
+<div class="portrait right" id="portraitRight">
+  <div class="frame">
+    <img src="images/picasso.jpg" alt="Pablo Picasso">
+    <div class="label">Pablo Picasso</div>
+  </div>
+</div>
+
+<div class="center-stage" id="centerStage">
+  <div class="curtain-text" id="curtainText">
+    <div class="ca">Els Quatre Gats. Barcelona, any 1902. Una tarda qualsevol.</div>
+    <div class="zh">四只猫咖啡馆。巴塞罗那，1902年。一个普通的午后。</div>
+  </div>
+  <div class="dialogue-stage" id="dialogueStage">
+    <div class="thinking-indicator" id="thinkIndicator">pensant…</div>
+  </div>
+</div>
+
+<div class="input-area" id="inputArea">
+  <div class="input-row">
+    <input type="text" id="input" placeholder="说点什么…" autocomplete="off">
+    <button id="sendBtn">envoyer</button>
+  </div>
+</div>
+
+<script>
+// ═══════════════════════════════════════════
+//  Sophie's Café — Gaudí × Picasso Engine
+// ═══════════════════════════════════════════
+
+// ── LLM Backend (Vercel, optional) ──
+const API_URL = ''; // Set to Vercel URL when deployed: 'https://your-app.vercel.app/api/chat'
+
+// ── Character Dialogue Pool (fallback when no LLM backend) ──
+const G = {
+  gut:[
+    {ca:"La natura no coneix línies rectes.",zh:"自然不知道直线。",ac:"他缓缓转动面前的酒杯，目光没有离开窗外的银杏。"},
+    {ca:"Déu va crear la llum. Jo només intento construir un lloc on pugui habitar.",zh:"上帝创造了光。而我只是试着建造一个能让光住进来的地方。"},
+    {ca:"L'arquitectura no és només pedra. És pregària.",zh:"建筑不只是石头。是祈祷。"},
+    {ca:"He après de l'arbre. Ell no construeix branques rectes.",zh:"我从树那里学来的。它不造直的树枝。",ac:"他指了指窗外的梧桐。"},
+    {ca:"El temps és l'únic material que no es pot comprar.",zh:"时间才是唯一买不到的材料。"},
+    {ca:"Mira aquesta columna. S'inclina lleugerament cap al sol. Com un gira-sol.",zh:"看这根柱子。它微微倾向太阳。像向日葵。"},
+    {ca:"No tinc pressa. La Sagrada Família m'ensenyarà a esperar.",zh:"我不急。圣家堂会教我等待。"},
+    {ca:"Cada pedra que col·loco és una lletra en un poema que mai acabaré.",zh:"我放下的每一块石头，都是永远不会写完的诗的一个字母。"},
+    {ca:"El gòtic és de l'home. El modernisme és de la natura.",zh:"哥特属于人类。现代主义属于自然。"}
+  ],
+  picasso:[
+    {zh:"对不起。说西班牙语还是加泰兰语？",
+     ca:"Perdó. Parles castellà o català?",
+     ac:"他放下铅笔，笑了笑。"}
+  ]
+};
+const P = {
+  gut:[
+    {ca:"No pinto el que veig. Pinto el que sé.",zh:"我不画我看到的。我画我知道的。"},
+    {ca:"L'art és la mentida que ens permet conèixer la veritat.",zh:"艺术是让我们得以认识真理的谎言。"},
+    {ca:"Quan era petit, la meva mare em va dir: 'Si ets soldat, seràs general. Si ets monjo, seràs Papa.' Vaig decidir ser pintor. I seré Picasso.",zh:"小时候，母亲说：'当兵你将成将军，当修士你将成教皇。'我决定做画家。我会成为毕加索。",ac:"他说这话时没笑。眼神像在挑战什么。"},
+    {ca:"Mira aquest blau. No és trist. És honest.",zh:"看这个蓝色。它不是悲伤。是诚实。"},
+    {ca:"Cada nen és un artista. El problema és com seguir sent artista quan creixes.",zh:"每个孩子都是艺术家。问题是如何在长大后仍然是艺术家。"},
+    {ca:"No espero. Pinto.",zh:"我不等。我画。"},
+    {ca:"Antoni, tu construeixes per a Déu. Jo pinto per a mi. Potser al final és el mateix.",zh:"Antoni，你为上帝建造。我为自己画。也许到头来是一样的。"},
+    {ca:"Però què fas quan el blau ja no és suficient?",zh:"但当蓝色已经不够的时候，你怎么办？",ac:"他盯着手指上的颜料渍。"},
+    {ca:"L'èxit arriba tard. Però arribarà. Ho sé.",zh:"成功会晚到。但它会来。我知道。"}
+  ],
+  gaudi_response:[
+    {ca:"El blau sempre és suficient, Pablo. La qüestió és si tu ets suficient per al blau.",zh:"蓝色永远足够，Pablo。问题是你是否足以配得上蓝色。"},
+    {ca:"I si la veritat no necessita mentides? Cada pedra que tallo diu exactament el que vol dir.",zh:"如果真理不需要谎言呢？我切割的每一块石头都精确地说着它想说的话。"},
+    {ca:"No tot el que es fa de pressa es fa bé.",zh:"不是所有赶出来的东西都做得好。"}
+  ]
+};
+
+// ── Cross-talk: dialogues between them ──
+const CROSS = [
+  {sp:"Gaudí",ca:"Veig que dibuixes sense mirar el paper.",zh:"我看你画的时候没看纸。",ac:"高迪放下酒杯。"},
+  {sp:"Picasso",ca:"Miro el que vull pintar. La mà ja sap el que ha de fer.",zh:"我看的是我想画的东西。手已经知道该怎么做。"},
+  {sp:"Gaudí",ca:"I per què aquell blau? És el color de la tristesa.",zh:"为什么用那个蓝色？那是悲伤的颜色。"},
+  {sp:"Picasso",ca:"No. És el color de l'honestedat.",zh:"不。是诚实。"},
+  {sp:"Gaudí",ca:"De vegades, callar també és honest.",zh:"有时候，沉默也是诚实。",ac:"他微微笑了。"},
+  {sp:"Picasso",ca:"Tu pots callar perquè construeixes. Jo callo només quan pinto. La resta del temps, el món té dret a saber què penso.",zh:"你可以沉默因为你建造。我只能在画画时沉默。其他时候，世界有权知道我在想什么。"},
+  {sp:"Gaudí",ca:"El gòtic és de l'home. El modernisme és de la natura.",zh:"哥特属于人类。现代主义属于自然。"},
+  {sp:"Picasso",ca:"I jo? A què pertanyo?",zh:"那我呢？我属于什么？"},
+  {sp:"Gaudí",ca:"Encara no ho has decidit? Tens vint anys. Temps per a equivocar-te.",zh:"还没决定吗？你才二十岁。还有时间犯错。"},
+  {sp:"Picasso",ca:"No vull equivocar-me. Vull avançar-me.",zh:"我不想犯错。我想领先。"},
+  {sp:"Gaudí",ca:"Són la mateixa cosa.",zh:"那是一回事。"},
+  {sp:"Picasso",ca:"Escolta, Antoni. Hi ha una cosa que no t'he preguntat.",zh:"听着，Antoni。有件事我没问过你。"},
+  {sp:"Gaudí",ca:"Digues.",zh:"说吧。"},
+  {sp:"Picasso",ca:"Per què continues? Quan saps que no ho veuràs acabat.",zh:"你为什么还要继续？当你知道自己看不到它完工的那天。"},
+  {sp:"Gaudí",ca:"Perquè el que fas per a després de tu és l'única cosa que val la pena.",zh:"因为——为身后而做的事情，才是唯一值得做的。",ac:"他低头看着自己的手。很久没说话。"}
+];
+
+// ── Helper ──
+function pick(arr){return arr[Math.floor(Math.random()*arr.length)]}
+function shuffle(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+
+// ── State ──
+let dialogueHistory = [];
+let lastSpeaker = null;
+let busy = false;
+let autoTimer = null;
+let crossIdx = 0;
+let musicOn = true;
+let audioCtx = null;
+let audioSource = null;
+let audioGain = null;
+let isPlaying = false;
+
+// ── Audio ──
+async function initAudio(){
+  try{
+    const resp = await fetch('audio/ambient.mp3');
+    const buf = await resp.arrayBuffer();
+    const decoded = await audioCtx.decodeAudioData(buf);
+    audioSource = audioCtx.createBufferSource();
+    audioSource.buffer = decoded;
+    audioSource.loop = true;
+    audioGain = audioCtx.createGain();
+    audioGain.gain.value = 0.08;
+    audioSource.connect(audioGain);
+    audioGain.connect(audioCtx.destination);
+    isPlaying = true;
+    audioSource.start(0);
+  }catch(e){console.log('audio init:', e.message)}
+}
+
+function toggleMusic(){
+  musicOn = !musicOn;
+  document.getElementById('musicBtn').classList.toggle('on', musicOn);
+  if(audioGain) audioGain.gain.value = musicOn ? 0.08 : 0;
+}
+
+// ── UI ──
+const $ = s => document.querySelector(s);
+const stage = $('#dialogueStage');
+const think = $('#thinkIndicator');
+const input = $('#input');
+const send = $('#sendBtn');
+
+function addMessage(speaker, ca, zh, ac){
+  const d = document.createElement('div');
+  d.className = 'msg';
+  d.innerHTML = `<div class="speaker ${speaker.toLowerCase()}">${speaker}</div>` +
+    (ca ? `<div class="text-ca">${ca}</div>` : '') +
+    (zh ? `<div class="text-zh">${zh}</div>` : '') +
+    (ac ? `<div class="action">${ac}</div>` : '');
+  stage.appendChild(d);
+  stage.scrollTop = stage.scrollHeight;
+  // Fade in
+  requestAnimationFrame(() => d.classList.add('show'));
+  dialogueHistory.push({speaker, ca, zh, ac});
+  return d;
+}
+
+function addUserMessage(text){
+  const d = document.createElement('div');
+  d.className = 'msg';
+  d.innerHTML = `<div class="speaker user">Tu</div><div class="text-zh">${text}</div>`;
+  stage.appendChild(d);
+  stage.scrollTop = stage.scrollHeight;
+  requestAnimationFrame(() => d.classList.add('show'));
+  dialogueHistory.push({speaker:'user', text});
+}
+
+function setThinking(v){
+  think.classList.toggle('show', v);
+}
+
+// ── Typewriter effect ──
+// Reuse the char-by-char approach from Sophie
+function typeText(element, text, cb){
+  element.innerHTML = '';
+  let i = 0;
+  (function n(){
+    if(i < text.length){
+      const s = document.createElement('span');
+      s.style.cssText = 'opacity:0;animation:fadeIn 0.15s ease forwards';
+      s.textContent = text[i];
+      element.appendChild(s); i++; setTimeout(n, 20 + Math.random() * 15);
+    } else { if(cb) cb(); }
+  })();
+}
+
+// ── Dialogue Utilities ──
+function charReply(speaker, pool){
+  let item = pick(pool);
+  // Skip if it's too similar to last message
+  if(dialogueHistory.length > 0){
+    let last = dialogueHistory[dialogueHistory.length-1];
+    if(last.ca === item.ca && pool.length > 1){
+      let tries = 0;
+      while(last.ca === item.ca && tries < 5){ item = pick(pool); tries++; }
+    }
+  }
+  return item;
+}
+
+function nextCrossTalk(){
+  if(crossIdx >= CROSS.length){
+    // Shuffle and restart
+    shuffle(CROSS);
+    crossIdx = 0;
+  }
+  const c = CROSS[crossIdx];
+  crossIdx++;
+  return c;
+}
+
+// ── Auto Dialogue Loop ──
+function autoDialogue(){
+  if(busy) return;
+  busy = true;
+  setThinking(true);
+
+  setTimeout(() => {
+    setThinking(false);
+    let ct = nextCrossTalk();
+    let speaker = ct.sp;
+    let ca = ct.ca;
+    let zh = ct.zh;
+    let ac = ct.ac || '';
+
+    addMessage(speaker, ca, zh, ac);
+    busy = false;
+    scheduleNext(true);
+  }, 1800 + Math.random() * 1200);
+}
+
+function scheduleNext(immediate){
+  if(autoTimer) clearTimeout(autoTimer);
+  if(!immediate) return;
+  autoTimer = setTimeout(() => {
+    if(!busy && document.hidden === false) autoDialogue();
+  }, 12000 + Math.random() * 15000);
+}
+
+// ── User Response Logic ──
+function handleUserInput(text){
+  if(busy || !text.trim()) return;
+  const t = text.toLowerCase().trim();
+  busy = true;
+  setThinking(true);
+  input.disabled = true;
+  send.disabled = true;
+
+  // Use LLM backend if configured
+  if(API_URL){
+    fetch(API_URL, {
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({
+        characters:['Gaudí','Picasso'],
+        history:dialogueHistory,
+        userInput:t,
+        lastSpeaker:lastSpeaker || 'Picasso'
+      })
+    })
+    .then(r => r.json())
+    .then(data => {
+      setThinking(false);
+      const sp = data.speaker || 'Picasso';
+      addMessage(sp, data.ca || '', data.zh || '', data.action || '');
+      startFallbackTimer(); // resume after user interaction
+      busy = false;
+      input.disabled = false;
+      send.disabled = false;
+      input.focus();
+    })
+    .catch(() => fallbackUserResponse(t));
+  } else {
+    fallbackUserResponse(t);
+  }
+}
+
+function fallbackUserResponse(text){
+  const t = text.toLowerCase();
+  // Check who should respond based on content keywords
+  let responder = 'Picasso'; // default
+  if(/自然|石头|建筑|光|上帝|树|曲线|时间|耐心|祈祷|高迪/i.test(t)) responder = 'Gaudí';
+  else if(/蓝|颜色|画|艺术|谎言|孩子|痛苦|毕加索/i.test(t)) responder = 'Picasso';
+
+  // Get response from character's pool
+  let reply = responder === 'Gaudí'
+    ? charReply('Gaudí', [...P.gaudi_response, ...G.gut])
+    : charReply('Picasso', [...P.gut]);
+
+  // Add user message to display
+  addUserMessage(text);
+
+  // Respond after delay
+  setTimeout(() => {
+    setThinking(false);
+    addMessage(responder, reply.ca || '', reply.zh || '', reply.ac || '');
+    startFallbackTimer();
+    busy = false;
+    input.disabled = false;
+    send.disabled = false;
+    input.focus();
+  }, 1400 + Math.random() * 800);
+}
+
+function startFallbackTimer(){
+  if(autoTimer) clearTimeout(autoTimer);
+  autoTimer = setTimeout(() => {
+    if(!busy && document.hidden === false) autoDialogue();
+  }, 20000 + Math.random() * 10000);
+}
+
+// ── Entrance ──
+function stageEntrance(){
+  setThinking(true);
+  setTimeout(() => {
+    setThinking(false);
+    addMessage('Gaudí', G.gut[0].ca, G.gut[0].zh, G.gut[0].ac);
+    setTimeout(() => {
+      autoTimer = setTimeout(autoDialogue, 4000);
+    }, 500);
+  }, 1200);
+}
+
+// ── Events ──
+send.onclick = () => { handleUserInput(input.value); input.value = ''; };
+input.onkeydown = e => { if(e.key === 'Enter') send.click(); };
+document.getElementById('musicBtn').onclick = toggleMusic;
+
+// Autoplay unlock on any click
+document.addEventListener('click', () => {
+  if(!isPlaying) initAudio();
+}, { once: true });
+
+// ── Init ──
+stageEntrance();
+initAudio();
+
+// Stop auto when tab is hidden
+document.addEventListener('visibilitychange', () => {
+  if(document.hidden && autoTimer) clearTimeout(autoTimer);
+});
+</script>
+</body>
+</html>
