@@ -6,7 +6,9 @@ on:
     - cron: '0 6,18 * * *'
   push:
     branches: [main]
-    paths: ['.github/workflows/news_relay.py']
+    paths:
+      - '.github/workflows/news_relay.py'
+      - 'data/news/TRIGGER'
   workflow_dispatch:  # manual trigger
 
 jobs:
