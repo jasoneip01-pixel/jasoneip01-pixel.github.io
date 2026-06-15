@@ -475,6 +475,8 @@ function handleUserInput(text){
 
   // Use LLM backend if configured
   if(API_URL){
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 5000);
     fetch(API_URL, {
       method:'POST',
       headers:{'Content-Type':'application/json'},
@@ -483,7 +485,8 @@ function handleUserInput(text){
         history:dialogueHistory,
         userInput:t,
         lastSpeaker:lastSpeaker || 'Picasso'
-      })
+      }),
+      signal: controller.signal
     })
     .then(r => r.json())
     .then(data => {
@@ -513,9 +516,6 @@ function fallbackUserResponse(text){
   let reply = responder === 'Gaudí'
     ? charReply('Gaudí', [...P.gaudi_response, ...G.gut])
     : charReply('Picasso', [...P.gut]);
-
-  // Add user message to display
-  addUserMessage(text);
 
   // Respond after delay
   setTimeout(() => {
@@ -596,10 +596,10 @@ function speakLine(text, speaker){
 // Speak dialogue messages when they appear (if voice on)
 const origAddMessage = addMessage;
 addMessage = function(speaker, ca, zh, ac){
-  origAddMessage(speaker, ca, zh, ac);
-  if(voiceOn && ca){
-    speakLine(ca, speaker);
-  }
+  try {
+    origAddMessage(speaker, ca, zh, ac);
+    if(voiceOn && ca) speakLine(ca, speaker);
+  } catch(e) {}
 };
 
 document.getElementById('voiceBtn').onclick = toggleVoice;
@@ -615,7 +615,7 @@ function firstInteraction(){
   setThinking(false);
   addMessage('Gaudí', G.gut[0].ca, G.gut[0].zh, G.gut[0].ac);
   // Start fallback timer
-  autoTimer = setTimeout(autoDialogue, 4000);
+  autoTimer = setTimeout(autoDialogue, 2000);
   document.removeEventListener('click', firstInteraction);
   document.removeEventListener('touchstart', firstInteraction);
   document.removeEventListener('keydown', firstInteraction);
