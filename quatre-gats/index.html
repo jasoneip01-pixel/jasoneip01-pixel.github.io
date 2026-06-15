@@ -36,7 +36,7 @@ html,body{height:100%;height:100dvh;overflow:hidden;font-family:'Noto Serif SC',
 /* ── Portrait CSS removed ── characters shown in scene background */
 
 /* ── Center Stage (Dialogue) — positioned above the table ── */
-.center-stage{position:fixed;left:50%;top:14%;transform:translate(-50%,-50%);z-index:10;width:min(50vw,560px);max-width:600px;opacity:1;transition:opacity 1.2s ease}
+.center-stage{position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);z-index:10;width:min(50vw,560px);max-width:600px;opacity:1;transition:opacity 1.2s ease}
 
 /* ── Curtain ── */
 .curtain-text{text-align:center;margin-bottom:18px;opacity:1}
@@ -55,7 +55,7 @@ html,body{height:100%;height:100dvh;overflow:hidden;font-family:'Noto Serif SC',
 .portrait.right .figure img{transform:scaleX(-1)}  /* Gaudí faces left toward Picasso */
 
 /* ── Dialogue Stage ── */
-.dialogue-stage{background:rgba(20,14,10,0.5);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-radius:8px;border:1px solid rgba(200,168,78,0.12);padding:18px 20px;min-height:80px;max-height:44vh;max-height:44dvh;overflow-y:auto;scrollbar-width:thin;scrollbar-color:rgba(200,168,78,0.15) transparent;position:relative;-webkit-overflow-scrolling:touch}
+.dialogue-stage{background:rgba(20,14,10,0.5);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-radius:8px;border:1px solid rgba(200,168,78,0.12);padding:18px 20px;min-height:80px;max-height:35vh;max-height:35dvh;overflow-y:auto;scrollbar-width:thin;scrollbar-color:rgba(200,168,78,0.15) transparent;position:relative;-webkit-overflow-scrolling:touch}
 .dialogue-stage::-webkit-scrollbar{width:3px}
 .dialogue-stage::-webkit-scrollbar-track{background:transparent}
 .dialogue-stage::-webkit-scrollbar-thumb{background:rgba(200,168,78,0.15);border-radius:99px}
@@ -95,19 +95,19 @@ html,body{height:100%;height:100dvh;overflow:hidden;font-family:'Noto Serif SC',
 
 /* ── Tablet (640px+) ── */
 @media(min-width:640px){
-  .center-stage{top:12%;width:min(48vw,520px)}
-  .dialogue-stage{padding:16px 18px;min-height:130px;max-height:48vh;max-height:48dvh}
-  .portrait{bottom:80px;width:20vw;max-width:220px}
+  .center-stage{top:50%;width:min(48vw,520px)}
+  .dialogue-stage{padding:16px 18px;min-height:100px;max-height:30vh;max-height:30dvh}
+  .portrait{width:18vw;max-width:180px}
   .input-area{padding:10px 18px calc(10px + env(safe-area-inset-bottom,0px))}
   .input-row{max-width:560px}
 }
 
 /* ── Desktop (1024px+) ── */
 @media(min-width:1024px){
-  .center-stage{top:10%;width:min(40vw,520px)}
-  .portrait{bottom:100px;width:22vw;max-width:280px}
-  .portrait .figure{width:80%;max-width:240px}
-  .dialogue-stage{padding:18px 20px;min-height:140px;max-height:48vh;max-height:48dvh}
+  .center-stage{top:50%;width:min(38vw,480px)}
+  .portrait{width:18vw;max-width:200px}
+  .portrait .figure{max-width:200px}
+  .dialogue-stage{padding:18px 20px;min-height:120px;max-height:32vh;max-height:32dvh}
   .msg .text-ca{font-size:0.9rem}
   .msg .text-zh{font-size:0.85rem}
   .top .location{font-size:0.85rem}
@@ -117,17 +117,17 @@ html,body{height:100%;height:100dvh;overflow:hidden;font-family:'Noto Serif SC',
 
 /* ── Wide Desktop (1440px+) ── */
 @media(min-width:1440px){
-  .center-stage{top:8%;width:min(36vw,540px)}
-  .portrait{bottom:120px;width:20vw;max-width:300px}
-  .dialogue-stage{max-height:50vh;max-height:50dvh}
+  .center-stage{top:50%;width:min(34vw,500px)}
+  .portrait{width:16vw;max-width:220px}
+  .dialogue-stage{max-height:30vh;max-height:30dvh}
   .input-row{max-width:620px}
   .stage-bg{filter:saturate(0.8) brightness(0.88) contrast(0.95)}
 }
 
 /* ── Ultrawide (1920px+) ── */
 @media(min-width:1920px){
-  .center-stage{width:min(30vw,580px)}
-  .portrait{max-width:320px}
+  .center-stage{width:min(28vw,500px)}
+  .portrait{max-width:240px}
 }
 
 /* ── Mobile (<640px) — compact portrait thumbnails ── */
@@ -190,10 +190,10 @@ html,body{height:100%;height:100dvh;overflow:hidden;font-family:'Noto Serif SC',
 
 /* ── Short desktop windows ── */
 @media(min-width:1024px) and (max-height:700px){
-  .portrait .figure{width:60%;max-width:140px}
-  .portrait{bottom:60px}
-  .center-stage{top:6%}
-  .dialogue-stage{min-height:90px;max-height:44vh;max-height:44dvh;padding:12px 16px}
+  .portrait .figure{max-width:120px}
+  .portrait{width:14vw}
+  .center-stage{top:50%}
+  .dialogue-stage{min-height:80px;max-height:28vh;max-height:28dvh;padding:12px 16px}
   .msg .text-ca{font-size:0.82rem}
   .msg .text-zh{font-size:0.78rem}
   .curtain-text{margin-bottom:10px}
