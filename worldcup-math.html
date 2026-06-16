@@ -123,10 +123,21 @@
   }
 
   .scroll-hint {
+    display: inline-block;
     font-size: 0.8rem;
     opacity: 0.5;
-    animation: bounce 2s infinite;
+    cursor: pointer;
     margin-top: 3rem;
+    padding: 0.6rem 2rem;
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 999px;
+    transition: all 0.3s ease;
+    animation: bounce 2s infinite;
+  }
+  .scroll-hint:hover {
+    opacity: 0.9;
+    background: rgba(255,255,255,0.08);
+    border-color: rgba(255,255,255,0.4);
   }
 
   @keyframes bounce {
@@ -724,12 +735,12 @@
     <div class="hero-eyebrow">⚽ 2026 世界杯 · 数学探险</div>
     <h1>足球场上<br>藏着<span class="accent">数学</span>的秘密</h1>
     <p class="subtitle">从小组赛的排列组合到点球大战的概率，每一脚射门都是一道数学题。让我们一起在绿茵场上发现数学的魔法。</p>
-    <div class="scroll-hint">↓ 开始探索 ↓</div>
+    <a class="scroll-hint" href="#formation">⚽ 开始探索</a>
   </div>
 </section>
 
 <!-- ═══ Section 1: Math Formation ═══ -->
-<div class="section-header reveal">
+<div class="section-header reveal" id="formation">
   <h2><span class="num">4-3-3</span> 数学阵型</h2>
   <p>就像足球队有阵型，世界杯的数学秘密也排成了 4-3-3 —— 四条后卫线打基础，三个中场串联核心，三个前锋发起进攻！</p>
 </div>
