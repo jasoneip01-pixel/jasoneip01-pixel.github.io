@@ -444,6 +444,149 @@
     font-size: 0.85rem;
   }
 
+  /* ═══ ANIMATIONS ═══ */
+
+  /* Hero entrance */
+  @keyframes heroSlideUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes badgePop {
+    0%   { opacity: 0; transform: scale(0.3) rotate(-10deg); }
+    60%  { transform: scale(1.15) rotate(3deg); }
+    100% { opacity: 1; transform: scale(1) rotate(0deg); }
+  }
+
+  @keyframes pitchDraw {
+    from { opacity: 0; transform: scaleX(0.8); }
+    to   { opacity: 1; transform: scaleX(1); }
+  }
+
+  @keyframes floatBall {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    25%      { transform: translateY(-12px) rotate(90deg); }
+    50%      { transform: translateY(-6px) rotate(180deg); }
+    75%      { transform: translateY(-18px) rotate(270deg); }
+  }
+
+  @keyframes formulaPulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(245,197,24,0.4); }
+    50%      { box-shadow: 0 0 12px 4px rgba(245,197,24,0.15); }
+  }
+
+  @keyframes confettiFall {
+    0%   { opacity: 1; transform: translateY(-10px) rotate(0deg) scale(1); }
+    100% { opacity: 0; transform: translateY(120px) rotate(720deg) scale(0.3); }
+  }
+
+  @keyframes numberCountUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes arrowPulse {
+    0%, 100% { opacity: 0.25; transform: scale(1); }
+    50%      { opacity: 0.6; transform: scale(1.2); }
+  }
+
+  /* Entrance sequence */
+  .hero-content > * {
+    opacity: 0;
+    animation: heroSlideUp 0.7s cubic-bezier(0.16,1,0.3,1) forwards;
+  }
+  .hero-eyebrow     { animation-delay: 0.1s; }
+  .hero h1          { animation-delay: 0.25s; }
+  .hero .for-badge  { animation-name: badgePop; animation-duration: 0.6s; animation-delay: 0.5s; }
+  .hero .subtitle   { animation-delay: 0.7s; }
+  .hero .scroll-hint{ animation-delay: 1s; }
+
+  .hero::before { animation: pitchDraw 0.8s 0.3s cubic-bezier(0.16,1,0.3,1) both; }
+  .hero::after  { animation: pitchDraw 0.8s 0.35s cubic-bezier(0.16,1,0.3,1) both; }
+  .center-circle { animation: pitchDraw 0.6s 0.4s cubic-bezier(0.16,1,0.3,1) both; }
+  .center-dot    { animation: heroSlideUp 0.5s 0.5s cubic-bezier(0.16,1,0.3,1) both; }
+
+  /* Floating football in hero */
+  .floating-football {
+    position: absolute;
+    font-size: 3rem;
+    animation: floatBall 6s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.5;
+  }
+  .floating-football:nth-child(1) { top: 8%; left: 10%; animation-delay: 0s; font-size: 2.5rem; }
+  .floating-football:nth-child(2) { top: 62%; right: 8%; animation-delay: 2s; font-size: 3.5rem; }
+  .floating-football:nth-child(3) { bottom: 15%; left: 15%; animation-delay: 4s; font-size: 2rem; }
+
+  /* Scroll reveal */
+  .reveal {
+    opacity: 0;
+    transform: translateY(48px);
+    transition: opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1);
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Staggered card reveals — 4-3-3 rhythm */
+  .formation-row:nth-child(1) .math-card:nth-child(1) { transition-delay: 0s; }
+  .formation-row:nth-child(1) .math-card:nth-child(2) { transition-delay: 0.08s; }
+  .formation-row:nth-child(1) .math-card:nth-child(3) { transition-delay: 0.16s; }
+  .formation-row:nth-child(1) .math-card:nth-child(4) { transition-delay: 0.24s; }
+  .formation-row:nth-child(2) .math-card:nth-child(1) { transition-delay: 0.32s; }
+  .formation-row:nth-child(2) .math-card:nth-child(2) { transition-delay: 0.40s; }
+  .formation-row:nth-child(2) .math-card:nth-child(3) { transition-delay: 0.48s; }
+  .formation-row:nth-child(3) .math-card:nth-child(1) { transition-delay: 0.56s; }
+  .formation-row:nth-child(3) .math-card:nth-child(2) { transition-delay: 0.64s; }
+  .formation-row:nth-child(3) .math-card:nth-child(3) { transition-delay: 0.72s; }
+
+  /* Formula pulse on hover */
+  .math-card:hover .formula {
+    animation: formulaPulse 1.5s ease-in-out infinite;
+  }
+
+  /* Goal celebration */
+  .confetti-container {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    pointer-events: none;
+    overflow: hidden;
+  }
+
+  .confetti {
+    position: absolute;
+    width: 8px; height: 8px;
+    border-radius: 2px;
+    animation: confettiFall 0.9s ease-out forwards;
+  }
+
+  /* Tournament count-up */
+  .count-up {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+  }
+  .count-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Arrow pulse between rounds */
+  .arrow-between {
+    animation: none;
+  }
+  .rounds.visible .arrow-between {
+    animation: arrowPulse 2s ease-in-out infinite;
+  }
+  .rounds.visible .arrow-between:nth-child(2)  { animation-delay: 0s; }
+  .rounds.visible .arrow-between:nth-child(4)  { animation-delay: 0.3s; }
+  .rounds.visible .arrow-between:nth-child(6)  { animation-delay: 0.6s; }
+  .rounds.visible .arrow-between:nth-child(8)  { animation-delay: 0.9s; }
+  .rounds.visible .arrow-between:nth-child(10) { animation-delay: 1.2s; }
+
   /* ── Tablet: 641px - 1024px ── */
   @media (min-width: 641px) and (max-width: 1024px) {
     .hero { min-height: 70vh; padding: 3rem 1.5rem; }
@@ -556,10 +699,16 @@
     .closing { padding: 2.5rem 1rem; font-size: 0.75rem; }
 
     /* Performance: reduce animations */
-    @media (prefers-reduced-motion: reduce) {
+      @media (prefers-reduced-motion: reduce) {
       .ball-spot.kick { animation: none; }
       .scroll-hint { animation: none; }
       .math-card { transition: none; }
+      .hero-content > * { animation: none; opacity: 1; }
+      .hero::before, .hero::after, .center-circle, .center-dot { animation: none; opacity: 1; }
+      .floating-football { animation: none; }
+      .reveal { opacity: 1; transform: none; transition: none; }
+      .confetti { animation: none; }
+      .arrow-between { animation: none; }
     }
   }
 
@@ -580,6 +729,9 @@
 <section class="hero">
   <div class="center-circle"></div>
   <div class="center-dot"></div>
+  <span class="floating-football">⚽</span>
+  <span class="floating-football">⚽</span>
+  <span class="floating-football">⚽</span>
 
   <div class="hero-content">
     <div class="hero-eyebrow">⚽ 2026 世界杯 · 数学探险</div>
@@ -591,7 +743,7 @@
 </section>
 
 <!-- ═══ Section 1: Math Formation ═══ -->
-<div class="section-header">
+<div class="section-header reveal">
   <h2><span class="num">4-3-3</span> 数学阵型</h2>
   <p>就像足球队有阵型，世界杯的数学秘密也排成了 4-3-3 —— 四条后卫线打基础，三个中场串联核心，三个前锋发起进攻！</p>
 </div>
@@ -600,7 +752,7 @@
 
   <!-- Back 4: Foundational concepts -->
   <div class="formation-row">
-    <div class="math-card">
+    <div class="math-card reveal">
       <div class="position">2</div>
       <span class="emoji">🔢</span>
       <h3>小组赛有多少场？</h3>
@@ -609,7 +761,7 @@
       <div class="example">12 个小组 × 6 场 = 小组赛共 72 场比赛！</div>
     </div>
 
-    <div class="math-card">
+    <div class="math-card reveal">
       <div class="position">3</div>
       <span class="emoji">📊</span>
       <h3>积分榜的数学</h3>
@@ -618,7 +770,7 @@
       <div class="example">全胜 = 9 分，两胜一平 = 7 分，一胜两平 = 5 分...</div>
     </div>
 
-    <div class="math-card">
+    <div class="math-card reveal">
       <div class="position">4</div>
       <span class="emoji">📐</span>
       <h3>香蕉球的秘密</h3>
@@ -627,7 +779,7 @@
       <div class="example">贝克汉姆的任意球就是这个原理！</div>
     </div>
 
-    <div class="math-card">
+    <div class="math-card reveal">
       <div class="position">5</div>
       <span class="emoji">🏟️</span>
       <h3>球场有多大？</h3>
@@ -639,7 +791,7 @@
 
   <!-- Midfield 3: Core concepts -->
   <div class="formation-row">
-    <div class="math-card">
+    <div class="math-card reveal">
       <div class="position">8</div>
       <span class="emoji">🌳</span>
       <h3>淘汰赛二叉树</h3>
@@ -648,7 +800,7 @@
       <div class="example">如果变成 64 支球队呢？那就是 2⁶，需要 6 轮比赛。</div>
     </div>
 
-    <div class="math-card">
+    <div class="math-card reveal">
       <div class="position">6</div>
       <span class="emoji">🎲</span>
       <h3>点球大战的概率</h3>
@@ -657,7 +809,7 @@
       <div class="example">这就是为什么点球大战总是充满悬念。</div>
     </div>
 
-    <div class="math-card">
+    <div class="math-card reveal">
       <div class="position">10</div>
       <span class="emoji">⚡</span>
       <h3>进球的泊松分布</h3>
@@ -669,7 +821,7 @@
 
   <!-- Forward 3: Fun applications -->
   <div class="formation-row">
-    <div class="math-card">
+    <div class="math-card reveal">
       <div class="position">7</div>
       <span class="emoji">🏆</span>
       <h3>谁是冠军？</h3>
@@ -678,7 +830,7 @@
       <div class="example">巴西夺冠赔率通常排在前三，数学上也说得通。</div>
     </div>
 
-    <div class="math-card">
+    <div class="math-card reveal">
       <div class="position">9</div>
       <span class="emoji">🧮</span>
       <h3>比分有多少种可能？</h3>
@@ -687,7 +839,7 @@
       <div class="example">真实比赛 90% 的比分落在 0:0 到 3:3 之间。</div>
     </div>
 
-    <div class="math-card">
+    <div class="math-card reveal">
       <div class="position">11</div>
       <span class="emoji">🕐</span>
       <h3>补时怎么算？</h3>
@@ -699,45 +851,45 @@
 </div>
 
 <!-- ═══ Section 2: Tournament Tree ═══ -->
-<div class="section-header">
+<div class="section-header reveal">
   <h2>从 <span class="num">32</span> 到 <span class="num">1</span></h2>
   <p>淘汰赛的每一轮都是一次"除以 2"，这正是计算机科学里二分查找的数学原理。</p>
 </div>
 
-<div class="rounds">
-  <div class="round-block">
+<div class="rounds reveal">
+  <div class="round-block reveal">
     <div class="round-name">小组赛</div>
-    <div class="team-count">32</div>
+    <div class="team-count count-up" data-target="32">0</div>
     <div class="power">2⁵</div>
   </div>
   <div class="arrow-between">→</div>
-  <div class="round-block">
+  <div class="round-block reveal">
     <div class="round-name">16 强</div>
-    <div class="team-count">16</div>
+    <div class="team-count count-up" data-target="16">0</div>
     <div class="power">2⁴</div>
   </div>
   <div class="arrow-between">→</div>
-  <div class="round-block">
+  <div class="round-block reveal">
     <div class="round-name">8 强</div>
-    <div class="team-count">8</div>
+    <div class="team-count count-up" data-target="8">0</div>
     <div class="power">2³</div>
   </div>
   <div class="arrow-between">→</div>
-  <div class="round-block">
+  <div class="round-block reveal">
     <div class="round-name">4 强</div>
-    <div class="team-count">4</div>
+    <div class="team-count count-up" data-target="4">0</div>
     <div class="power">2²</div>
   </div>
   <div class="arrow-between">→</div>
-  <div class="round-block">
+  <div class="round-block reveal">
     <div class="round-name">决赛</div>
-    <div class="team-count">2</div>
+    <div class="team-count count-up" data-target="2">0</div>
     <div class="power">2¹</div>
   </div>
   <div class="arrow-between">→</div>
   <div class="round-block" style="border-color: rgba(232,97,26,0.4); background: rgba(232,97,26,0.08);">
     <div class="round-name">🏆 冠军</div>
-    <div class="team-count" style="font-size: 2.5rem;">1</div>
+    <div class="team-count count-up" data-target="1" style="font-size: 2.5rem;">0</div>
     <div class="power">2⁰</div>
   </div>
 </div>
@@ -748,9 +900,10 @@
     <h3>🎯 来罚一个点球！</h3>
     <p style="opacity:0.7; margin-bottom:1.5rem; font-size:0.9rem;">你有 75% 的概率进球。试试手气，看看连续罚几个才能进？</p>
 
-    <div class="goal-visual" id="goal">
+    <div class="goal-visual" id="goal" style="position:relative;">
       <div class="net"></div>
       <div class="ball-spot" id="ball" style="left:10%; top:50%;"></div>
+      <div class="confetti-container" id="confettiBox"></div>
     </div>
 
     <div class="result-text" id="result"></div>
@@ -765,25 +918,25 @@
 </div>
 
 <!-- ═══ Section 4: Fun Facts ═══ -->
-<div class="section-header">
+<div class="section-header reveal">
   <h2>世界杯的 <span class="num">惊人</span> 数字</h2>
 </div>
 
 <div class="fun-facts">
-  <div class="fact-banner">
-    <span class="fact-num">64</span>
+  <div class="fact-banner reveal">
+    <span class="fact-num count-up" data-target="64">0</span>
     <p>一届世界杯总共进行 <strong>64 场比赛</strong>：48 场小组赛 + 16 场淘汰赛。如果每场 90 分钟，总共需要 <strong>5,760 分钟</strong>——连续不停地踢 4 天！</p>
   </div>
-  <div class="fact-banner">
-    <span class="fact-num">48</span>
+  <div class="fact-banner reveal">
+    <span class="fact-num count-up" data-target="48">0</span>
     <p>2026 年世界杯首次扩军到 <strong>48 支球队</strong>。小组赛变成每组 3 队，每组只踢 2 场——和 32 队时代完全不同！<strong>变化就是新的数学题</strong>。</p>
   </div>
-  <div class="fact-banner">
-    <span class="fact-num">3.5B</span>
+  <div class="fact-banner reveal">
+    <span class="fact-num count-up" data-target="3.5">0</span>
     <p>全球约 <strong>35 亿人</strong>收看世界杯，接近世界人口的一半。如果把这 35 亿人手拉手排成一条线，可以绕地球 <strong>130 圈</strong>。</p>
   </div>
-  <div class="fact-banner">
-    <span class="fact-num">5</span>
+  <div class="fact-banner reveal">
+    <span class="fact-num count-up" data-target="5">0</span>
     <p>巴西队夺得 <strong>5 次</strong>世界杯冠军，是历史上最多的。5 次是什么概念？世界杯举办了 22 届，巴西赢了将近 <strong>四分之一</strong> 的冠军！</p>
   </div>
 </div>
@@ -794,23 +947,80 @@
 </div>
 
 <script>
+  // ═══ Scroll Reveal (IntersectionObserver) ═══
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15, rootMargin: '-40px 0px' });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // ═══ Count-Up Animation ═══
+  const countObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const el = entry.target;
+        const target = parseFloat(el.dataset.target);
+        const isInt = Number.isInteger(target);
+        const duration = 800;
+        const start = performance.now();
+
+        function update(now) {
+          const elapsed = now - start;
+          const progress = Math.min(elapsed / duration, 1);
+          const eased = 1 - Math.pow(1 - progress, 3);
+          const current = target * eased;
+          el.textContent = isInt ? Math.round(current) : current.toFixed(1) + 'B';
+          if (progress < 1) requestAnimationFrame(update);
+        }
+
+        el.classList.add('visible');
+        requestAnimationFrame(update);
+        countObserver.unobserve(el);
+      }
+    });
+  }, { threshold: 0.5 });
+
+  document.querySelectorAll('.count-up').forEach(el => countObserver.observe(el));
+
+  // ═══ Penalty Simulator with Confetti ═══
   let goals = 0, shots = 0;
+
+  function spawnConfetti(container) {
+    const colors = ['#e8611a','#f5c518','#fafaf5','#4ade80','#2d8a4e','#87ceeb','#dc2626'];
+    for (let i = 0; i < 30; i++) {
+      const confetti = document.createElement('div');
+      confetti.className = 'confetti';
+      confetti.style.left = (10 + Math.random() * 80) + '%';
+      confetti.style.top = (Math.random() * 40) + '%';
+      confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+      confetti.style.width = (4 + Math.random() * 8) + 'px';
+      confetti.style.height = (4 + Math.random() * 10) + 'px';
+      confetti.style.animationDelay = Math.random() * 0.3 + 's';
+      confetti.style.animationDuration = (0.6 + Math.random() * 0.8) + 's';
+      container.appendChild(confetti);
+      setTimeout(() => confetti.remove(), 1200);
+    }
+  }
 
   function takePenalty() {
     const ball = document.getElementById('ball');
     const result = document.getElementById('result');
+    const confettiBox = document.getElementById('confettiBox');
     const hitRate = 0.75;
     const isGoal = Math.random() < hitRate;
 
     shots++;
 
-    // Reset ball
     ball.classList.remove('kick');
     ball.style.left = '10%';
     ball.style.top = '50%';
     void ball.offsetWidth;
 
-    // Random target in goal area
     const targetX = (60 + Math.random() * 35) + '%';
     const targetY = (15 + Math.random() * 70) + '%';
 
@@ -819,8 +1029,9 @@
 
     if (isGoal) {
       goals++;
-      result.textContent = '⚽ 进球啦！球飞进了球门的' + (targetX < '75' ? '左边' : targetX > '85' ? '右边' : '中间') + '！';
+      result.textContent = '⚽ 进球啦！球飞进了球门的' + (parseFloat(targetX) < 75 ? '左边' : parseFloat(targetX) > 85 ? '右边' : '中间') + '！';
       result.className = 'result-text goal';
+      spawnConfetti(confettiBox);
     } else {
       result.textContent = '😱 打飞了！射门偏出了球门——这就是概率，75% 不总是站在你这边。';
       result.className = 'result-text miss';
@@ -828,11 +1039,27 @@
 
     ball.classList.add('kick');
 
-    // Update stats
     document.getElementById('goals').textContent = goals;
     document.getElementById('shots').textContent = shots;
     document.getElementById('rate').textContent = (goals/shots*100).toFixed(0) + '%';
   }
+
+  // ═══ Tournament Rounds Arrow Animation ═══
+  const roundsObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        roundsObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.3 });
+  document.querySelectorAll('.rounds').forEach(el => roundsObserver.observe(el));
+
+  // ═══ Hero Floating Footballs randomize positions ═══
+  document.querySelectorAll('.floating-football').forEach((ball, i) => {
+    const randomDelay = Math.random() * 6;
+    ball.style.animationDelay = randomDelay + 's';
+  });
 </script>
 
 </body>
