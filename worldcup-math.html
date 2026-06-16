@@ -127,17 +127,17 @@
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     font-weight: 600;
-    opacity: 0.75;
+    opacity: 0.9;
     cursor: pointer;
-    margin-top: 1.8rem;
     padding: 0.8rem 2.4rem;
-    background: rgba(255,255,255,0.06);
-    border: 2px solid rgba(255,255,255,0.25);
+    background: rgba(255,255,255,0.08);
+    border: 2px solid rgba(255,255,255,0.3);
     border-radius: 999px;
     color: var(--chalk);
     text-decoration: none;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.3);
     transition: all 0.3s ease;
     animation: scrollPulse 2.4s ease-in-out infinite;
   }
@@ -163,6 +163,21 @@
   .scroll-hint:focus-visible {
     outline: 2px solid var(--goal-net);
     outline-offset: 3px;
+  }
+
+  /* ── Hero-to-content bridge ── */
+  .hero-bridge {
+    text-align: center;
+    padding: 3rem 2rem 2rem;
+    background: var(--pitch);
+    position: relative;
+  }
+  .hero-bridge::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1) 20%, rgba(255,255,255,0.15) 50%, rgba(255,255,255,0.1) 80%, transparent);
   }
 
   /* Focus ring for interactive elements */
@@ -521,7 +536,6 @@
   .hero h1          { animation-delay: 0.25s; }
 
   .hero .subtitle   { animation-delay: 0.5s; }
-  .hero .scroll-hint{ animation-delay: 0.8s; }
 
   .hero::before { animation: pitchDraw 0.8s 0.3s cubic-bezier(0.16,1,0.3,1) both; }
   .hero::after  { animation: pitchDraw 0.8s 0.35s cubic-bezier(0.16,1,0.3,1) both; }
@@ -614,6 +628,7 @@
     .hero { min-height: 70vh; padding: 3rem 1.5rem; }
     .hero h1 { font-size: clamp(2rem, 5vw, 3.5rem); }
     .hero .subtitle { font-size: 1rem; max-width: 440px; }
+    .hero-bridge { padding: 2.5rem 1.5rem 2rem; }
 
     .formation-row { gap: 1rem; }
     .math-card { flex: 1 1 200px; max-width: 240px; padding: 1.5rem 1.2rem; }
@@ -645,13 +660,14 @@
       padding: 3rem 1rem;
       background: linear-gradient(180deg, var(--sky) 0%, var(--sky) 12%, var(--pitch) 12%, var(--pitch) 100%);
     }
+    .hero-bridge { padding: 2rem 1rem 1.5rem; }
+    .scroll-hint { font-size: 0.85rem; padding: 0.7rem 1.8rem; }
     .hero::before { top: 12vh; left: 3%; right: 3%; bottom: 8%; }
     .hero::after { top: calc(12vh + 2px); bottom: calc(8% + 2px); }
     .center-circle { width: 120px; height: 120px; }
     .hero h1 { font-size: 1.8rem; line-height: 1.25; }
     .hero .subtitle { font-size: 0.9rem; max-width: 100%; padding: 0 0.5rem; }
     .hero-eyebrow { font-size: 0.7rem; }
-    .scroll-hint { margin-top: 2rem; font-size: 0.7rem; }
 
     .section-header { padding: 2.5rem 1rem 1rem; }
     .section-header h2 { font-size: 1.5rem; }
@@ -758,9 +774,12 @@
     <div class="hero-eyebrow">⚽ 2026 世界杯 · 数学探险</div>
     <h1>足球场上<br>藏着<span class="accent">数学</span>的秘密</h1>
     <p class="subtitle">从小组赛的排列组合到点球大战的概率，每一脚射门都是一道数学题。让我们一起在绿茵场上发现数学的魔法。</p>
-    <a class="scroll-hint" href="#formation">开始探索</a>
   </div>
 </section>
+
+<div class="hero-bridge">
+  <a class="scroll-hint" href="#formation">开始探索 ↓</a>
+</div>
 
 <!-- ═══ Section 1: Math Formation ═══ -->
 <div class="section-header reveal" id="formation">
