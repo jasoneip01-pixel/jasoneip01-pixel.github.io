@@ -55,7 +55,7 @@
   }
   .panel-grid {
     display: grid;
-    gap: 2.2rem;
+    gap: 1.2rem;
   }
   @media (min-width: 769px) { .panel-grid { grid-template-columns: 1fr 1fr; } }
   @media (max-width: 768px) { .panel-grid { grid-template-columns: 1fr; max-width: 520px; margin: 0 auto; } }
@@ -101,46 +101,46 @@
     0% { background-position: 200% 0; }
     100% { background-position: -200% 0; }
   }
-  .panel-body { padding: 1.5rem 1.6rem 1.8rem; }
+  .panel-body { padding: 0.8rem 1rem 1rem; }
   .panel-label {
     display: inline-block;
     background: #6b422a;
     color: #dcc8a8;
-    font-size: 0.72rem;
-    padding: 0.2rem 0.65rem;
-    border-radius: 4px;
-    margin-bottom: 0.65rem;
-    letter-spacing: 0.12em;
+    font-size: 0.68rem;
+    padding: 0.15rem 0.5rem;
+    border-radius: 3px;
+    margin-bottom: 0.35rem;
+    letter-spacing: 0.1em;
     font-weight: 500;
   }
   .panel-text {
     color: #d0bea0;
-    font-size: 0.95rem;
-    line-height: 1.85;
-    letter-spacing: 0.02em;
+    font-size: 0.88rem;
+    line-height: 1.55;
+    letter-spacing: 0.01em;
   }
   .panel-text strong { color: #f2e4c8; font-weight: 600; }
   @media (min-width: 481px) and (max-width: 768px) and (orientation: landscape) {
-    .panel-grid { max-width: 100%; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
+    .panel-grid { max-width: 100%; grid-template-columns: 1fr 1fr; gap: 0.8rem; }
     .comic-container { padding: 1.5rem; }
     .panel figure { aspect-ratio: 3 / 2; }
-    .panel-body { padding: 1rem 1.2rem 1.3rem; }
-    .panel-text { font-size: 0.85rem; }
+    .panel-body { padding: 0.7rem 0.8rem 0.9rem; }
+    .panel-text { font-size: 0.8rem; line-height: 1.45; }
   }
   @media (max-width: 480px) {
     body { padding: 0.6rem 0.4rem; }
     .comic-container { padding: 0.8rem; border-radius: 12px; }
-    h1 { font-size: 1.1rem; letter-spacing: 0.15em; margin-bottom: 1.2rem; }
-    .panel-grid { gap: 1rem; }
-    .panel-body { padding: 0.9rem 0.9rem 1.2rem; }
-    .panel-text { font-size: 0.82rem; line-height: 1.7; }
+    h1 { font-size: 1.1rem; letter-spacing: 0.15em; margin-bottom: 0.8rem; }
+    .panel-grid { gap: 0.75rem; }
+    .panel-body { padding: 0.6rem 0.7rem 0.8rem; }
+    .panel-text { font-size: 0.8rem; line-height: 1.45; }
     .lang-btn { top: 0.5rem; right: 0.5rem; font-size: 0.65rem; padding: 0.15rem 0.45rem; }
   }
   @media (min-width: 1200px) {
     .comic-container { max-width: 1140px; padding: 3.2rem; }
-    .panel-grid { gap: 2.5rem; }
-    .panel-body { padding: 1.8rem 2rem 2rem; }
-    .panel-text { font-size: 1rem; line-height: 1.9; letter-spacing: 0.03em; }
+    .panel-grid { gap: 1.5rem; }
+    .panel-body { padding: 1rem 1.2rem 1.2rem; }
+    .panel-text { font-size: 0.9rem; line-height: 1.6; }
   }
   .panel figure img { opacity: 0; }
   .panel figure img.loaded { opacity: 1; }
