@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>歌尔得蒙的觉醒 — 角色卡AI漫画</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #2c1810;
+    font-family: 'Noto Serif SC', 'STSong', serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 1rem;
+  }
+  .comic-container {
+    max-width: 960px;
+    width: 100%;
+    background: #3d2317;
+    border-radius: 24px;
+    padding: 2rem;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+  }
+  h1 {
+    text-align: center;
+    color: #e8d5b0;
+    font-size: 1.8rem;
+    letter-spacing: 0.3em;
+    margin-bottom: 0.3rem;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+  }
+  .subtitle {
+    text-align: center;
+    color: #b8957a;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+    letter-spacing: 0.1em;
+  }
+  .subtitle em { color: #d4a574; }
+  .panel-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+  .panel {
+    background: #4a2c1e;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    transition: transform 0.2s;
+  }
+  .panel:hover { transform: translateY(-4px); }
+  .panel img { display: block; width: 100%; height: auto; }
+  .panel-body {
+    padding: 0.9rem 1.2rem 1.1rem;
+  }
+  .panel-label {
+    display: inline-block;
+    background: #6b422a;
+    color: #e8d5b0;
+    font-size: 0.75rem;
+    padding: 0.2rem 0.6rem;
+    border-radius: 4px;
+    margin-bottom: 0.4rem;
+    letter-spacing: 0.1em;
+  }
+  .panel-text {
+    color: #d4c4a8;
+    font-size: 0.88rem;
+    line-height: 1.7;
+  }
+  .panel-text strong { color: #f0e0c0; }
+  @media (max-width: 640px) {
+    .panel-grid { grid-template-columns: 1fr; }
+    .comic-container { padding: 1rem; }
+    h1 { font-size: 1.3rem; }
+  }
+  footer {
+    margin-top: 1.5rem;
+    text-align: center;
+    color: #8b6b50;
+    font-size: 0.8rem;
+    letter-spacing: 0.05em;
+  }
+  .badge {
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+  .badge span {
+    display: inline-block;
+    background: #5a3a28;
+    color: #b8957a;
+    font-size: 0.7rem;
+    padding: 0.15rem 0.5rem;
+    border-radius: 3px;
+  }
+</style>
+</head>
+<body>
+<div class="comic-container">
+  <h1>歌尔得蒙的觉醒</h1>
+
+
+  <div class="panel-grid">
+
+    <div class="panel">
+      <img src="goldmund_panel1.png" alt="林中沉思" loading="lazy">
+      <div class="panel-body">
+        <div class="panel-label">第1格 · 林中沉思</div>
+        <div class="panel-text">
+          <strong>歌尔得蒙</strong>赤脚立于林中溪畔，手捧一枚螺旋海螺壳，凝视其纹路。阳光穿过树冠洒下金色光柱，他陷入对生命与造化的沉思——时间的无常、万物的螺旋。
+        </div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <img src="goldmund_panel2.png" alt="相遇" loading="lazy">
+      <div class="panel-body">
+        <div class="panel-label">第2格 · 相遇</div>
+        <div class="panel-text">
+          歌尔得蒙在森林草地上沉睡。穿天蓝裙、裹红头巾的 <strong>莉赛</strong> 从林间小路走来，发现了这个睡梦中的少年。她好奇地俯身端详他，心中升起一种温柔的悸动。
+        </div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <img src="goldmund_panel3.png" alt="觉醒" loading="lazy">
+      <div class="panel-body">
+        <div class="panel-label">第3格 · 觉醒</div>
+        <div class="panel-text">
+          金色的黄昏中，莉赛将歌尔得蒙拥入怀中。"你是我的小宝贝？"她轻声说。他在她怀中醒来，世界从此不同——"<strong>她教我知道一个女人意味着什么</strong>。" 爱唤醒了沉睡的一切。
+        </div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <img src="goldmund_panel4.png" alt="决定" loading="lazy">
+      <div class="panel-body">
+        <div class="panel-label">第4格 · 决定</div>
+        <div class="panel-text">
+          歌尔得蒙回到修道院石室，向挚友 <strong>纳尔齐斯</strong> 倾诉。「我不能再在这儿待下去了，一天也不能再待。」烛光下，旧日学友变成了告别的见证——歌尔得蒙即将踏上寻找自我的漫漫长路。
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+</div>
+</body>
+</html>
