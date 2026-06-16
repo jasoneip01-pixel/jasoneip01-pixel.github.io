@@ -15,7 +15,6 @@
     align-items: center;
     padding: 2.5rem 1rem;
     -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
   }
   .comic-container {
     max-width: 1000px;
@@ -24,13 +23,29 @@
     border-radius: 20px;
     padding: 2.8rem;
     box-shadow: 0 16px 48px rgba(0,0,0,0.5);
+    position: relative;
   }
+  .lang-btn {
+    position: absolute;
+    top: 1.2rem;
+    right: 1.2rem;
+    color: #b8957a;
+    text-decoration: none;
+    font-size: 0.78rem;
+    padding: 0.25rem 0.65rem;
+    border: 1px solid #6b422a;
+    border-radius: 6px;
+    transition: all 0.2s;
+    z-index: 10;
+    background: #3d2317;
+  }
+  .lang-btn:hover { background: #6b422a; color: #e8d5b0; }
   h1 {
     text-align: center;
     color: #e8d5b0;
     font-size: clamp(1.4rem, 3.5vw, 2.2rem);
     letter-spacing: 0.2em;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.4rem;
     text-shadow: 0 2px 4px rgba(0,0,0,0.3);
     font-weight: 500;
   }
@@ -40,34 +55,10 @@
     font-size: clamp(0.75rem, 1.8vw, 0.9rem);
     margin-bottom: 2.5rem;
     font-style: italic;
-    letter-spacing: 0.05em;
   }
-  .lang-switch {
-    text-align: center;
-    margin-bottom: 2rem;
-  }
-  .lang-switch a {
-    display: inline-block;
-    color: #b8957a;
-    text-decoration: none;
-    font-size: 0.78rem;
-    padding: 0.3rem 0.8rem;
-    border: 1px solid #6b422a;
-    border-radius: 6px;
-    transition: all 0.2s;
-  }
-  .lang-switch a:hover {
-    background: #6b422a;
-    color: #e8d5b0;
-  }
-
-  .panel-grid {
-    display: grid;
-    gap: 2.2rem;
-  }
+  .panel-grid { display: grid; gap: 2.2rem; }
   @media (min-width: 769px) { .panel-grid { grid-template-columns: 1fr 1fr; } }
   @media (max-width: 768px) { .panel-grid { grid-template-columns: 1fr; max-width: 520px; margin: 0 auto; } }
-
   .panel {
     background: #4a2c1e;
     border-radius: 14px;
@@ -75,10 +66,7 @@
     box-shadow: 0 4px 20px rgba(0,0,0,0.25);
     transition: transform 0.25s ease, box-shadow 0.25s ease;
   }
-  @media (hover: hover) {
-    .panel:hover { transform: translateY(-6px); box-shadow: 0 10px 32px rgba(0,0,0,0.35); }
-  }
-
+  @media (hover: hover) { .panel:hover { transform: translateY(-6px); box-shadow: 0 10px 32px rgba(0,0,0,0.35); } }
   .panel figure {
     margin: 0;
     position: relative;
@@ -111,10 +99,7 @@
     0% { background-position: 200% 0; }
     100% { background-position: -200% 0; }
   }
-
-  .panel-body {
-    padding: 1.5rem 1.6rem 1.8rem;
-  }
+  .panel-body { padding: 1.5rem 1.6rem 1.8rem; }
   .panel-label {
     display: inline-block;
     background: #6b422a;
@@ -126,14 +111,8 @@
     letter-spacing: 0.08em;
     font-weight: 500;
   }
-  .panel-text {
-    color: #d0bea0;
-    font-size: 0.92rem;
-    line-height: 1.85;
-    letter-spacing: 0.02em;
-  }
+  .panel-text { color: #d0bea0; font-size: 0.92rem; line-height: 1.85; letter-spacing: 0.02em; }
   .panel-text strong { color: #f2e4c8; font-weight: 600; }
-
   @media (min-width: 481px) and (max-width: 768px) and (orientation: landscape) {
     .panel-grid { max-width: 100%; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
     .comic-container { padding: 1.5rem; }
@@ -144,22 +123,18 @@
   @media (max-width: 480px) {
     body { padding: 0.6rem 0.4rem; }
     .comic-container { padding: 0.8rem; border-radius: 12px; }
-    h1 { font-size: 1.1rem; letter-spacing: 0.1em; margin-bottom: 0.3rem; }
+    h1 { font-size: 1.1rem; letter-spacing: 0.1em; margin-bottom: 0.2rem; }
     .h-sub { font-size: 0.7rem; margin-bottom: 1.2rem; }
     .panel-grid { gap: 1rem; }
-    .panel figure { aspect-ratio: 4 / 3; }
     .panel-body { padding: 0.9rem 0.9rem 1.2rem; }
-    .panel-text { font-size: 0.82rem; line-height: 1.7; letter-spacing: 0.01em; }
-    .panel-label { font-size: 0.65rem; margin-bottom: 0.5rem; }
-    .lang-switch a { font-size: 0.7rem; padding: 0.2rem 0.6rem; }
-    .lang-switch { margin-bottom: 1rem; }
+    .panel-text { font-size: 0.82rem; line-height: 1.7; }
+    .lang-btn { top: 0.5rem; right: 0.5rem; font-size: 0.65rem; padding: 0.15rem 0.45rem; }
   }
   @media (min-width: 1200px) {
     .comic-container { max-width: 1140px; padding: 3.2rem; }
     .panel-grid { gap: 2.5rem; }
     .panel-body { padding: 1.8rem 2rem 2rem; }
     .panel-text { font-size: 0.98rem; line-height: 1.9; letter-spacing: 0.03em; }
-    .panel-label { font-size: 0.78rem; margin-bottom: 0.75rem; }
   }
   .panel figure img { opacity: 0; }
   .panel figure img.loaded { opacity: 1; }
@@ -169,56 +144,41 @@
 </head>
 <body>
 <div class="comic-container">
+  <a class="lang-btn" href="index.html">🇨🇳 中文版</a>
   <h1>Goldmunds Erwachen</h1>
   <p class="h-sub">— aus Hermann Hesses <em>Narziß und Goldmund</em></p>
 
-  <div class="lang-switch"><a href="index.html">🇨🇳 中文版</a></div>
-
   <div class="panel-grid">
-
     <div class="panel">
-      <figure><img src="goldmund_panel1.png" alt="Goldmund im Wald, eine Muschel betrachtend" loading="lazy"></figure>
+      <figure><img src="goldmund_panel1.png" alt="Goldmund im Wald" loading="lazy"></figure>
       <div class="panel-body">
         <div class="panel-label">Ⅰ · Waldbetrachtung</div>
-        <div class="panel-text">
-          <strong>Goldmund</strong> steht barfuß am Waldbach, eine spiralige Muschel in den Händen haltend, und betrachtet ihre Wirbel. Goldenes Sonnenlicht fällt in Strahlen durch das Blätterdach. Er versinkt in Gedanken über Leben und Schöpfung – die Vergänglichkeit der Zeit, die Spiralen aller Dinge.
-        </div>
+        <div class="panel-text"><strong>Goldmund</strong> steht barfuß am Waldbach, eine spiralige Muschel in den Händen haltend, und betrachtet ihre Wirbel. Goldenes Sonnenlicht fällt in Strahlen durch das Blätterdach. Er versinkt in Gedanken über Leben und Schöpfung – die Vergänglichkeit der Zeit, die Spiralen aller Dinge.</div>
       </div>
     </div>
-
     <div class="panel">
-      <figure><img src="goldmund_panel2.png" alt="Liese entdeckt Goldmund schlafend im Wald" loading="lazy"></figure>
+      <figure><img src="goldmund_panel2.png" alt="Liese entdeckt Goldmund" loading="lazy"></figure>
       <div class="panel-body">
         <div class="panel-label">Ⅱ · Begegnung</div>
-        <div class="panel-text">
-          Goldmund schläft tief im Moos des Waldes. <strong>Liese</strong>, in himmelblauem Kleid und rotem Kopftuch, kommt den Waldweg entlang und entdeckt den schlafenden Jüngling. Neugierig beugt sie sich über ihn; eine sanfte Bewegung regt sich in ihrem Herzen.
-        </div>
+        <div class="panel-text">Goldmund schläft tief im Moos des Waldes. <strong>Liese</strong>, in himmelblauem Kleid und rotem Kopftuch, kommt den Waldweg entlang und entdeckt den schlafenden Jüngling. Neugierig beugt sie sich über ihn; eine sanfte Bewegung regt sich in ihrem Herzen.</div>
       </div>
     </div>
-
     <div class="panel">
-      <figure><img src="goldmund_panel3.png" alt="Liese umarmt Goldmund im goldenen Abendlicht" loading="lazy"></figure>
+      <figure><img src="goldmund_panel3.png" alt="Liese umarmt Goldmund" loading="lazy"></figure>
       <div class="panel-body">
         <div class="panel-label">Ⅲ · Erwachen</div>
-        <div class="panel-text">
-          Im goldenen Abendlicht nimmt Liese Goldmund in ihre Arme. „Bist du mein Schätzchen?" flüstert sie. Er erwacht in ihrer Umarmung – die Welt ist von Grund auf verwandelt. „<strong>Sie lehrte mich, was eine Frau bedeutet.</strong>" Die Liebe weckt alles, was in ihm schlief.
-        </div>
+        <div class="panel-text">Im goldenen Abendlicht nimmt Liese Goldmund in ihre Arme. „Bist du mein Schätzchen?" flüstert sie. Er erwacht in ihrer Umarmung – die Welt ist von Grund auf verwandelt. „<strong>Sie lehrte mich, was eine Frau bedeutet.</strong>" Die Liebe weckt alles, was in ihm schlief.</div>
       </div>
     </div>
-
     <div class="panel">
-      <figure><img src="goldmund_panel4.png" alt="Goldmund spricht mit Narziß im Kerzenlicht" loading="lazy"></figure>
+      <figure><img src="goldmund_panel4.png" alt="Goldmund und Narziß" loading="lazy"></figure>
       <div class="panel-body">
         <div class="panel-label">Ⅳ · Entscheidung</div>
-        <div class="panel-text">
-          Goldmund kehrt in die steinerne Klosterzelle zurück und öffnet sich seinem Freund <strong>Narziß</strong>. „Ich kann hier nicht länger bleiben, keinen Tag länger." Im Kerzenlicht wird der alte Gefährte zum Zeugen des Abschieds – Goldmund bricht auf zu einer langen Reise, um sich selbst zu finden.
-        </div>
+        <div class="panel-text">Goldmund kehrt in die steinerne Klosterzelle zurück und öffnet sich seinem Freund <strong>Narziß</strong>. „Ich kann hier nicht länger bleiben, keinen Tag länger." Im Kerzenlicht wird der alte Gefährte zum Zeugen des Abschieds – Goldmund bricht auf zu einer langen Reise, um sich selbst zu finden.</div>
       </div>
     </div>
-
   </div>
 </div>
-
 <script>
 document.querySelectorAll('.panel figure img').forEach(img => {
   if (img.complete) { img.classList.add('loaded'); img.closest('figure').classList.add('loaded'); }

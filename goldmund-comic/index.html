@@ -15,7 +15,6 @@
     align-items: center;
     padding: 2.5rem 1rem;
     -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
   }
   .comic-container {
     max-width: 1000px;
@@ -24,6 +23,26 @@
     border-radius: 20px;
     padding: 2.8rem;
     box-shadow: 0 16px 48px rgba(0,0,0,0.5);
+    position: relative;
+  }
+  /* ═══ Language switcher — top right ═══ */
+  .lang-btn {
+    position: absolute;
+    top: 1.2rem;
+    right: 1.2rem;
+    color: #b8957a;
+    text-decoration: none;
+    font-size: 0.78rem;
+    padding: 0.25rem 0.65rem;
+    border: 1px solid #6b422a;
+    border-radius: 6px;
+    transition: all 0.2s;
+    z-index: 10;
+    background: #3d2317;
+  }
+  .lang-btn:hover {
+    background: #6b422a;
+    color: #e8d5b0;
   }
   h1 {
     text-align: center;
@@ -34,26 +53,12 @@
     text-shadow: 0 2px 4px rgba(0,0,0,0.3);
     font-weight: 500;
   }
-
   .panel-grid {
     display: grid;
     gap: 2.2rem;
   }
-
-  @media (min-width: 769px) {
-    .panel-grid {
-      grid-template-columns: 1fr 1fr;
-    }
-  }
-
-  @media (max-width: 768px) {
-    .panel-grid {
-      grid-template-columns: 1fr;
-      max-width: 520px;
-      margin: 0 auto;
-    }
-  }
-
+  @media (min-width: 769px) { .panel-grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 768px) { .panel-grid { grid-template-columns: 1fr; max-width: 520px; margin: 0 auto; } }
   .panel {
     background: #4a2c1e;
     border-radius: 14px;
@@ -62,12 +67,8 @@
     transition: transform 0.25s ease, box-shadow 0.25s ease;
   }
   @media (hover: hover) {
-    .panel:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 10px 32px rgba(0,0,0,0.35);
-    }
+    .panel:hover { transform: translateY(-6px); box-shadow: 0 10px 32px rgba(0,0,0,0.35); }
   }
-
   .panel figure {
     margin: 0;
     position: relative;
@@ -84,9 +85,9 @@
     height: 100%;
     object-fit: cover;
     transition: opacity 0.5s ease;
+    position: relative;
+    z-index: 1;
   }
-
-  /* Loading shimmer */
   .panel figure::before {
     content: '';
     position: absolute;
@@ -96,15 +97,11 @@
     animation: shimmer 1.5s infinite;
     z-index: 0;
   }
-  .panel figure img { position: relative; z-index: 1; }
   @keyframes shimmer {
     0% { background-position: 200% 0; }
     100% { background-position: -200% 0; }
   }
-
-  .panel-body {
-    padding: 1.5rem 1.6rem 1.8rem;
-  }
+  .panel-body { padding: 1.5rem 1.6rem 1.8rem; }
   .panel-label {
     display: inline-block;
     background: #6b422a;
@@ -122,12 +119,7 @@
     line-height: 1.85;
     letter-spacing: 0.02em;
   }
-  .panel-text strong {
-    color: #f2e4c8;
-    font-weight: 600;
-  }
-
-  /* Tablet landscape: 2-col grid */
+  .panel-text strong { color: #f2e4c8; font-weight: 600; }
   @media (min-width: 481px) and (max-width: 768px) and (orientation: landscape) {
     .panel-grid { max-width: 100%; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
     .comic-container { padding: 1.5rem; }
@@ -135,29 +127,21 @@
     .panel-body { padding: 1rem 1.2rem 1.3rem; }
     .panel-text { font-size: 0.85rem; }
   }
-
-  /* Mobile portrait */
   @media (max-width: 480px) {
     body { padding: 0.6rem 0.4rem; }
     .comic-container { padding: 0.8rem; border-radius: 12px; }
     h1 { font-size: 1.1rem; letter-spacing: 0.15em; margin-bottom: 1.2rem; }
     .panel-grid { gap: 1rem; }
-    .panel figure { aspect-ratio: 4 / 3; }
     .panel-body { padding: 0.9rem 0.9rem 1.2rem; }
-    .panel-text { font-size: 0.82rem; line-height: 1.7; letter-spacing: 0.01em; }
-    .panel-label { font-size: 0.65rem; margin-bottom: 0.5rem; }
+    .panel-text { font-size: 0.82rem; line-height: 1.7; }
+    .lang-btn { top: 0.5rem; right: 0.5rem; font-size: 0.65rem; padding: 0.15rem 0.45rem; }
   }
-
-  /* Large desktop */
   @media (min-width: 1200px) {
     .comic-container { max-width: 1140px; padding: 3.2rem; }
     .panel-grid { gap: 2.5rem; }
     .panel-body { padding: 1.8rem 2rem 2rem; }
     .panel-text { font-size: 1rem; line-height: 1.9; letter-spacing: 0.03em; }
-    .panel-label { font-size: 0.78rem; margin-bottom: 0.75rem; }
   }
-
-  /* Image fade-in */
   .panel figure img { opacity: 0; }
   .panel figure img.loaded { opacity: 1; }
   .panel figure::before { opacity: 1; transition: opacity 0.3s; }
@@ -166,55 +150,40 @@
 </head>
 <body>
 <div class="comic-container">
+  <a class="lang-btn" href="de.html">🇩🇪 Deutsch</a>
   <h1>歌尔得蒙的觉醒</h1>
 
-  <div class="lang-switch"><a href="de.html">🇩🇪 Deutsche Version</a></div>
-
   <div class="panel-grid">
-
     <div class="panel">
-      <figure><img src="goldmund_panel1.png" alt="林中沉思 — 歌尔得蒙独坐森林中端详海螺壳" loading="lazy"></figure>
+      <figure><img src="goldmund_panel1.png" alt="林中沉思" loading="lazy"></figure>
       <div class="panel-body">
         <div class="panel-label">第1格 · 林中沉思</div>
-        <div class="panel-text">
-          <strong>歌尔得蒙</strong>赤脚立于林中溪畔，手捧一枚螺旋海螺壳，凝视其纹路。阳光穿过树冠洒下金色光柱，他陷入对生命与造化的沉思——时间的无常、万物的螺旋。
-        </div>
+        <div class="panel-text"><strong>歌尔得蒙</strong>赤脚立于林中溪畔，手捧一枚螺旋海螺壳，凝视其纹路。阳光穿过树冠洒下金色光柱，他陷入对生命与造化的沉思——时间的无常、万物的螺旋。</div>
       </div>
     </div>
-
     <div class="panel">
-      <figure><img src="goldmund_panel2.png" alt="相遇 — 莉赛在森林中发现沉睡的歌尔得蒙" loading="lazy"></figure>
+      <figure><img src="goldmund_panel2.png" alt="相遇" loading="lazy"></figure>
       <div class="panel-body">
         <div class="panel-label">第2格 · 相遇</div>
-        <div class="panel-text">
-          歌尔得蒙在森林草地上沉睡。穿天蓝裙、裹红头巾的 <strong>莉赛</strong> 从林间小路走来，发现了这个睡梦中的少年。她好奇地俯身端详他，心中升起一种温柔的悸动。
-        </div>
+        <div class="panel-text">歌尔得蒙在森林草地上沉睡。穿天蓝裙、裹红头巾的 <strong>莉赛</strong> 从林间小路走来，发现了这个睡梦中的少年。她好奇地俯身端详他，心中升起一种温柔的悸动。</div>
       </div>
     </div>
-
     <div class="panel">
-      <figure><img src="goldmund_panel3.png" alt="觉醒 — 金色黄昏中莉赛拥抱歌尔得蒙" loading="lazy"></figure>
+      <figure><img src="goldmund_panel3.png" alt="觉醒" loading="lazy"></figure>
       <div class="panel-body">
         <div class="panel-label">第3格 · 觉醒</div>
-        <div class="panel-text">
-          金色的黄昏中，莉赛将歌尔得蒙拥入怀中。"你是我的小宝贝？"她轻声说。他在她怀中醒来，世界从此不同——"<strong>她教我知道一个女人意味着什么</strong>。" 爱唤醒了沉睡的一切。
-        </div>
+        <div class="panel-text">金色的黄昏中，莉赛将歌尔得蒙拥入怀中。"你是我的小宝贝？"她轻声说。他在她怀中醒来，世界从此不同——"<strong>她教我知道一个女人意味着什么</strong>。" 爱唤醒了沉睡的一切。</div>
       </div>
     </div>
-
     <div class="panel">
-      <figure><img src="goldmund_panel4.png" alt="决定 — 烛光下歌尔得蒙向纳尔齐斯告别" loading="lazy"></figure>
+      <figure><img src="goldmund_panel4.png" alt="决定" loading="lazy"></figure>
       <div class="panel-body">
         <div class="panel-label">第4格 · 决定</div>
-        <div class="panel-text">
-          歌尔得蒙回到修道院石室，向挚友 <strong>纳尔齐斯</strong> 倾诉。「我不能再在这儿待下去了，一天也不能再待。」烛光下，旧日学友变成了告别的见证——歌尔得蒙即将踏上寻找自我的漫漫长路。
-        </div>
+        <div class="panel-text">歌尔得蒙回到修道院石室，向挚友 <strong>纳尔齐斯</strong> 倾诉。「我不能再在这儿待下去了，一天也不能再待。」烛光下，旧日学友变成了告别的见证——歌尔得蒙即将踏上寻找自我的漫漫长路。</div>
       </div>
     </div>
-
   </div>
 </div>
-
 <script>
 document.querySelectorAll('.panel figure img').forEach(img => {
   if (img.complete) { img.classList.add('loaded'); img.closest('figure').classList.add('loaded'); }
