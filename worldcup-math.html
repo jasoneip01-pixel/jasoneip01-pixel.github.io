@@ -10,6 +10,7 @@
 <meta property="og:description" content="足球场上藏着数学的秘密：4-3-3阵型排列10个数学概念，还有互动点球模拟器！">
 <meta property="og:type" content="website">
 <link rel="canonical" href="https://jasoneip01-pixel.github.io/worldcup-math.html">
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Noto+Sans+SC:wght@400;500;700&display=swap" as="style">
 <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -38,7 +39,7 @@
   /* ── Hero: the pitch is the canvas ── */
   .hero {
     background: linear-gradient(180deg, var(--sky) 0%, var(--sky) 18%, var(--pitch) 18%, var(--pitch) 100%);
-    min-height: 92vh;
+    min-height: 85vh;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -210,6 +211,16 @@
     font-size: 1.05rem;
   }
 
+  .formation-row-label {
+    text-align: center;
+    font-size: 0.75rem;
+    opacity: 0.35;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 0.8rem;
+    margin-top: 1rem;
+  }
+
   /* ── Math cards in 4-3-3 formation ── */
   .formation-grid {
     max-width: 960px;
@@ -273,7 +284,7 @@
     background: rgba(250,250,245,0.1);
     padding: 0.3rem 0.8rem;
     border-radius: 6px;
-    font-family: 'Courier New', monospace;
+    font-family: 'JetBrains Mono', 'Cascadia Code', 'Fira Code', 'Courier New', monospace;
     font-size: 0.95rem;
     color: var(--card-yellow);
     margin: 0.6rem 0;
@@ -284,6 +295,17 @@
     font-size: 0.9rem;
     opacity: 0.75;
     line-height: 1.6;
+  }
+
+  .math-card .level {
+    display: inline-block;
+    font-size: 0.6rem;
+    opacity: 0.4;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-left: 0.3rem;
+    vertical-align: middle;
+    font-family: 'Noto Sans SC', sans-serif;
   }
 
   .math-card .example {
@@ -688,6 +710,7 @@
     }
     .math-card .emoji { font-size: 1.6rem; }
     .math-card h3 { font-size: 1.05rem; }
+    .math-card h3 .level { font-size: 0.55rem; }
     .math-card p { font-size: 0.82rem; }
     .math-card .formula { font-size: 0.82rem; }
     .math-card .position { font-size: 2rem; top: -5px; right: 0.8rem; }
@@ -790,11 +813,12 @@
 <div class="formation-grid">
 
   <!-- Back 4: Foundational concepts -->
+  <div class="formation-row-label">🔙 后卫线 · 基础概念</div>
   <div class="formation-row">
     <div class="math-card reveal">
       <div class="position">2</div>
       <span class="emoji">🔢</span>
-      <h3>小组赛有多少场？</h3>
+      <h3>小组赛有多少场？<span class="level">基础</span></h3>
       <div class="formula">C(4,2) = 6</div>
       <p>每组 4 支球队，每两队之间踢一场。从 4 支选 2 支的组合数：4×3÷2 = <strong>6 场</strong>。</p>
       <div class="example">12 个小组 × 6 场 = 小组赛共 72 场比赛！</div>
@@ -803,7 +827,7 @@
     <div class="math-card reveal">
       <div class="position">3</div>
       <span class="emoji">📊</span>
-      <h3>积分榜的数学</h3>
+      <h3>积分榜的数学<span class="level">基础</span></h3>
       <div class="formula">3W + 1D + 0L</div>
       <p>赢一场得 3 分，平一场得 1 分，输一场得 0 分。3 场比赛后积分最高的两队晋级——这是不是和你的考试成绩排名很像？</p>
       <div class="example">全胜 = 9 分，两胜一平 = 7 分，一胜两平 = 5 分...</div>
@@ -812,7 +836,7 @@
     <div class="math-card reveal">
       <div class="position">4</div>
       <span class="emoji">📐</span>
-      <h3>香蕉球的秘密</h3>
+      <h3>香蕉球的秘密<span class="level">中级</span></h3>
       <div class="formula">y = ax² + bx</div>
       <p>足球在空中划出的弧线是一条<strong>抛物线</strong>！球员踢球时给球一个旋转，空气从两侧流过速度不同，球就会拐弯——这叫马格努斯效应。</p>
       <div class="example">贝克汉姆的任意球就是这个原理！</div>
@@ -821,7 +845,7 @@
     <div class="math-card reveal">
       <div class="position">5</div>
       <span class="emoji">🏟️</span>
-      <h3>球场有多大？</h3>
+      <h3>球场有多大？<span class="level">基础</span></h3>
       <div class="formula">105m × 68m</div>
       <p>标准足球场面积约 7,140 平方米——差不多是一个标准足球场的面积。</p>
       <div class="example">球员一场跑 10 公里 ≈ 从球场这头跑到那头 95 次！</div>
@@ -829,11 +853,12 @@
   </div>
 
   <!-- Midfield 3: Core concepts -->
+  <div class="formation-row-label">⚡ 中场 · 核心概念</div>
   <div class="formation-row">
     <div class="math-card reveal">
       <div class="position">8</div>
       <span class="emoji">🌳</span>
-      <h3>淘汰赛二叉树</h3>
+      <h3>淘汰赛二叉树<span class="level">中级</span></h3>
       <div class="formula">2⁵ = 32</div>
       <p>32 强 → 16 强 → 8 强 → 4 强 → 决赛，每轮淘汰一半。从 32 到冠军正好需要 5 轮，因为 <strong>2⁵ = 32</strong>！</p>
       <div class="example">如果变成 64 支球队呢？那就是 2⁶，需要 6 轮比赛。</div>
@@ -842,7 +867,7 @@
     <div class="math-card reveal">
       <div class="position">6</div>
       <span class="emoji">🎲</span>
-      <h3>点球大战的概率</h3>
+      <h3>点球大战的概率<span class="level">中级</span></h3>
       <div class="formula">P(全进) = 0.75⁵</div>
       <p>职业球员点球命中率约 75%。连续罚 5 个点球全部命中的概率只有 <strong>0.75⁵ ≈ 24%</strong>——比扔硬币猜对三次还难！</p>
       <div class="example">这就是为什么点球大战总是充满悬念。</div>
@@ -851,7 +876,7 @@
     <div class="math-card reveal">
       <div class="position">10</div>
       <span class="emoji">⚡</span>
-      <h3>进球的泊松分布</h3>
+      <h3>进球的泊松分布<span class="level">进阶</span></h3>
       <div class="formula">P(k) = λᵏe⁻λ / k!</div>
       <p>世界杯场均进球约 2.6 个。数学家用<strong>泊松分布</strong>预测比分——一场比赛进 0 球、1 球、2 球的概率各是多少？</p>
       <div class="example">λ=2.6 时，进 2 球概率最高 ≈ 25%！</div>
@@ -859,11 +884,12 @@
   </div>
 
   <!-- Forward 3: Fun applications -->
+  <div class="formation-row-label">⚽ 前锋 · 趣味应用</div>
   <div class="formation-row">
     <div class="math-card reveal">
       <div class="position">7</div>
       <span class="emoji">🏆</span>
-      <h3>谁是冠军？</h3>
+      <h3>谁是冠军？<span class="level">中级</span></h3>
       <div class="formula">1/32 → 冠军</div>
       <p>开赛前每支球队夺冠概率约 <strong>1/32 = 3.1%</strong>。但巴西队历史上 5 次夺冠，强队的实际概率远高于平均——这就是<strong>条件概率</strong>！</p>
       <div class="example">巴西夺冠赔率通常排在前三，数学上也说得通。</div>
@@ -872,7 +898,7 @@
     <div class="math-card reveal">
       <div class="position">9</div>
       <span class="emoji">🧮</span>
-      <h3>比分有多少种可能？</h3>
+      <h3>比分有多少种可能？<span class="level">中级</span></h3>
       <div class="formula">(n+1)(n+2)/2</div>
       <p>如果最多进 n 球，两队比分的排列方式有 (n+1)(n+2)/2 种。n=5 时就是 21 种可能比分！</p>
       <div class="example">真实比赛 90% 的比分落在 0:0 到 3:3 之间。</div>
@@ -881,7 +907,7 @@
     <div class="math-card reveal">
       <div class="position">11</div>
       <span class="emoji">🕐</span>
-      <h3>补时怎么算？</h3>
+      <h3>补时怎么算？<span class="level">基础</span></h3>
       <div class="formula">伤停 ≈ 进球×45s + 换人×30s</div>
       <p>每进一球大约浪费 45 秒庆祝，每次换人约 30 秒。裁判用<strong>估算和加法</strong>算出补时时间——这就是生活中的数学！</p>
       <div class="example">一场 3 进球 + 5 换人的比赛 ≈ 3×45+5×30 = 285秒 ≈ 5分钟补时。</div>
