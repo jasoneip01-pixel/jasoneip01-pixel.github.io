@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+<title>世界杯里的数学 — 给牧童</title>
+<meta name="description" content="用足球发现数学的魔法——从小组赛排列组合到点球大战概率，10个数学概念藏在绿茵场上。给牧童的世界杯数学探险。">
+<meta name="theme-color" content="#1a6b3c">
+<meta property="og:title" content="⚽ 世界杯里的数学 — 给牧童">
+<meta property="og:description" content="足球场上藏着数学的秘密：4-3-3阵型排列10个数学概念，还有互动点球模拟器！">
+<meta property="og:type" content="website">
+<link rel="canonical" href="https://jasoneip01-pixel.github.io/worldcup-math.html">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --pitch: #1a6b3c;
+    --pitch-light: #2d8a4e;
+    --chalk: #fafaf5;
+    --ball: #1a1a1a;
+    --goal-net: #e8611a;
+    --card-yellow: #f5c518;
+    --card-red: #dc2626;
+    --sky: #c8e6f5;
+    --line: rgba(250,250,245,0.25);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Noto Sans SC', -apple-system, sans-serif;
+    background: #0d3320;
+    color: var(--chalk);
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ── Hero: the pitch is the canvas ── */
+  .hero {
+    background: linear-gradient(180deg, var(--sky) 0%, var(--sky) 18%, var(--pitch) 18%, var(--pitch) 100%);
+    min-height: 92vh;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 2rem;
+    text-align: center;
+  }
+
+  /* Pitch markings */
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 18vh; left: 5%; right: 5%; bottom: 5%;
+    border: 2px solid var(--line);
+    border-radius: 4px;
+    pointer-events: none;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    top: calc(18vh + 2px); left: 50%; bottom: calc(5% + 2px);
+    width: 2px;
+    background: var(--line);
+    transform: translateX(-50%);
+    pointer-events: none;
+  }
+
+  .center-circle {
+    position: absolute;
+    top: 50%; left: 50%;
+    width: 180px; height: 180px;
+    border: 2px solid var(--line);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+  }
+
+  .center-dot {
+    position: absolute;
+    top: 50%; left: 50%;
+    width: 12px; height: 12px;
+    background: var(--chalk);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero-eyebrow {
+    font-size: 0.85rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--chalk);
+    opacity: 0.6;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero h1 {
+    font-family: 'Fredoka One', cursive;
+    font-size: clamp(2.5rem, 7vw, 5rem);
+    line-height: 1.1;
+    margin-bottom: 1rem;
+    color: var(--chalk);
+    text-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  }
+
+  .hero h1 .accent {
+    color: var(--goal-net);
+  }
+
+  .hero .subtitle {
+    font-size: 1.2rem;
+    opacity: 0.85;
+    max-width: 520px;
+    margin: 0 auto 2.5rem;
+    color: var(--chalk);
+  }
+
+  .hero .for-badge {
+    display: inline-block;
+    background: var(--goal-net);
+    color: white;
+    padding: 0.4rem 1.4rem;
+    border-radius: 999px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    letter-spacing: 0.05em;
+  }
+
+  .scroll-hint {
+    font-size: 0.8rem;
+    opacity: 0.5;
+    animation: bounce 2s infinite;
+    margin-top: 3rem;
+  }
+
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+
+  /* ── Section dividers ── */
+  .section-header {
+    text-align: center;
+    padding: 4rem 2rem 1.5rem;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .section-header h2 {
+    font-family: 'Fredoka One', cursive;
+    font-size: 2.2rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .section-header h2 .num {
+    color: var(--goal-net);
+  }
+
+  .section-header p {
+    opacity: 0.7;
+    font-size: 1.05rem;
+  }
+
+  /* ── Math cards in 4-3-3 formation ── */
+  .formation-grid {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 1rem 2rem 4rem;
+    position: relative;
+  }
+
+  .formation-row {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .math-card {
+    background: rgba(250,250,245,0.06);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(250,250,245,0.12);
+    border-radius: 16px;
+    padding: 2rem 1.5rem;
+    flex: 1 1 240px;
+    max-width: 300px;
+    transition: transform 0.25s, border-color 0.25s, background 0.25s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .math-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(232,97,26,0.4);
+    background: rgba(250,250,245,0.09);
+  }
+
+  .math-card .position {
+    position: absolute;
+    top: -8px; right: 1rem;
+    font-family: 'Fredoka One', cursive;
+    font-size: 3.5rem;
+    opacity: 0.06;
+    color: var(--chalk);
+    pointer-events: none;
+  }
+
+  .math-card .emoji {
+    font-size: 2.2rem;
+    margin-bottom: 0.8rem;
+    display: block;
+  }
+
+  .math-card h3 {
+    font-family: 'Fredoka One', cursive;
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+    color: var(--chalk);
+  }
+
+  .math-card .formula {
+    display: inline-block;
+    background: rgba(250,250,245,0.1);
+    padding: 0.3rem 0.8rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.95rem;
+    color: var(--card-yellow);
+    margin: 0.6rem 0;
+    letter-spacing: 0.05em;
+  }
+
+  .math-card p {
+    font-size: 0.9rem;
+    opacity: 0.75;
+    line-height: 1.6;
+  }
+
+  .math-card .example {
+    margin-top: 0.7rem;
+    font-size: 0.85rem;
+    opacity: 0.55;
+    font-style: italic;
+  }
+
+  /* ── Interactive: penalty simulator ── */
+  .interactive-section {
+    background: linear-gradient(180deg, #0d3320, #092818);
+    padding: 4rem 2rem;
+    text-align: center;
+  }
+
+  .penalty-sim {
+    max-width: 500px;
+    margin: 0 auto;
+    background: rgba(250,250,245,0.04);
+    border: 1px solid rgba(250,250,245,0.1);
+    border-radius: 20px;
+    padding: 2.5rem 2rem;
+  }
+
+  .penalty-sim h3 {
+    font-family: 'Fredoka One', cursive;
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .goal-visual {
+    width: 100%;
+    height: 160px;
+    background: rgba(250,250,245,0.03);
+    border: 2px solid var(--line);
+    border-radius: 8px;
+    position: relative;
+    margin-bottom: 1.5rem;
+    overflow: hidden;
+  }
+
+  .goal-visual .net {
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(0deg, transparent, transparent 8px, rgba(250,250,245,0.04) 8px, rgba(250,250,245,0.04) 9px),
+                repeating-linear-gradient(90deg, transparent, transparent 8px, rgba(250,250,245,0.04) 8px, rgba(250,250,245,0.04) 9px);
+  }
+
+  .ball-spot {
+    position: absolute;
+    width: 18px; height: 18px;
+    background: radial-gradient(circle at 35% 35%, #fff, var(--ball));
+    border-radius: 50%;
+    animation: none;
+    transition: all 0.2s;
+  }
+
+  .ball-spot.kick {
+    animation: flyToGoal 0.6s ease-out forwards;
+  }
+
+  @keyframes flyToGoal {
+    0% { left: 10%; top: 50%; opacity: 1; }
+    100% { left: var(--target-x); top: var(--target-y); opacity: 0; }
+  }
+
+  .result-text {
+    font-size: 1rem;
+    min-height: 2rem;
+    margin-bottom: 1rem;
+    font-weight: 500;
+  }
+
+  .result-text.goal { color: #4ade80; }
+  .result-text.miss { color: var(--card-red); }
+
+  .kick-btn {
+    background: var(--goal-net);
+    color: white;
+    border: none;
+    padding: 0.8rem 2.5rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+    border-radius: 999px;
+    cursor: pointer;
+    font-family: 'Noto Sans SC', sans-serif;
+    transition: transform 0.15s, box-shadow 0.15s;
+    letter-spacing: 0.05em;
+  }
+
+  .kick-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 20px rgba(232,97,26,0.4);
+  }
+
+  .kick-btn:active {
+    transform: scale(0.97);
+  }
+
+  .stats-row {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 1.5rem;
+    font-size: 0.85rem;
+    opacity: 0.6;
+  }
+
+  .stats-row span {
+    color: var(--card-yellow);
+    font-weight: 700;
+  }
+
+  /* ── Tournament tree ── */
+  .tree-section {
+    padding: 2rem 2rem 5rem;
+    max-width: 960px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .rounds {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+  }
+
+  .round-block {
+    background: rgba(250,250,245,0.05);
+    border: 1px solid rgba(250,250,245,0.08);
+    border-radius: 12px;
+    padding: 1rem 1.2rem;
+    text-align: center;
+    min-width: 100px;
+  }
+
+  .round-block .round-name {
+    font-size: 0.75rem;
+    opacity: 0.5;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.4rem;
+  }
+
+  .round-block .team-count {
+    font-family: 'Fredoka One', cursive;
+    font-size: 2rem;
+    color: var(--goal-net);
+  }
+
+  .round-block .power {
+    font-size: 0.75rem;
+    opacity: 0.4;
+  }
+
+  .arrow-between {
+    display: flex;
+    align-items: center;
+    font-size: 1.5rem;
+    opacity: 0.3;
+    padding: 0 0.2rem;
+  }
+
+  /* ── Fun facts footer ── */
+  .fun-facts {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 2rem 5rem;
+  }
+
+  .fact-banner {
+    background: linear-gradient(135deg, rgba(245,197,24,0.08), rgba(232,97,26,0.06));
+    border-left: 4px solid var(--card-yellow);
+    border-radius: 0 12px 12px 0;
+    padding: 1.5rem 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .fact-banner .fact-num {
+    font-family: 'Fredoka One', cursive;
+    font-size: 2rem;
+    color: var(--goal-net);
+    display: block;
+    margin-bottom: 0.3rem;
+  }
+
+  .fact-banner p {
+    font-size: 0.95rem;
+    opacity: 0.8;
+  }
+
+  .closing {
+    text-align: center;
+    padding: 4rem 2rem;
+    opacity: 0.5;
+    font-size: 0.85rem;
+  }
+
+  /* ── Tablet: 641px - 1024px ── */
+  @media (min-width: 641px) and (max-width: 1024px) {
+    .hero { min-height: 70vh; padding: 3rem 1.5rem; }
+    .hero h1 { font-size: clamp(2rem, 5vw, 3.5rem); }
+    .hero .subtitle { font-size: 1rem; max-width: 440px; }
+
+    .formation-row { gap: 1rem; }
+    .math-card { flex: 1 1 200px; max-width: 240px; padding: 1.5rem 1.2rem; }
+    .math-card .emoji { font-size: 1.8rem; }
+    .math-card h3 { font-size: 1.1rem; }
+    .math-card p { font-size: 0.82rem; }
+    .math-card .formula { font-size: 0.85rem; padding: 0.25rem 0.6rem; }
+    .math-card .position { font-size: 2.5rem; }
+
+    .rounds { gap: 0.4rem; }
+    .round-block { min-width: 85px; padding: 0.8rem 1rem; }
+    .round-block .team-count { font-size: 1.6rem; }
+
+    .penalty-sim { max-width: 420px; padding: 2rem 1.5rem; }
+    .goal-visual { height: 140px; }
+    .kick-btn { padding: 0.7rem 2rem; font-size: 1rem; }
+
+    .section-header { padding: 3rem 1.5rem 1rem; }
+    .section-header h2 { font-size: 1.8rem; }
+    .fun-facts { padding: 0 1.5rem 4rem; }
+    .fact-banner { padding: 1.2rem 1.5rem; }
+    .fact-banner .fact-num { font-size: 1.6rem; }
+  }
+
+  /* ── Mobile: ≤ 640px ── */
+  @media (max-width: 640px) {
+    .hero {
+      min-height: 80vh;
+      padding: 3rem 1rem;
+      background: linear-gradient(180deg, var(--sky) 0%, var(--sky) 12%, var(--pitch) 12%, var(--pitch) 100%);
+    }
+    .hero::before { top: 12vh; left: 3%; right: 3%; bottom: 8%; }
+    .hero::after { top: calc(12vh + 2px); bottom: calc(8% + 2px); }
+    .center-circle { width: 120px; height: 120px; }
+    .hero h1 { font-size: 1.8rem; line-height: 1.25; }
+    .hero .subtitle { font-size: 0.9rem; max-width: 100%; padding: 0 0.5rem; }
+    .hero .for-badge { font-size: 0.85rem; padding: 0.35rem 1.2rem; }
+    .hero-eyebrow { font-size: 0.7rem; }
+    .scroll-hint { margin-top: 2rem; font-size: 0.7rem; }
+
+    .section-header { padding: 2.5rem 1rem 1rem; }
+    .section-header h2 { font-size: 1.5rem; }
+    .section-header p { font-size: 0.9rem; }
+
+    .formation-grid { padding: 0.5rem 0.8rem 3rem; }
+    .formation-row {
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+    .math-card {
+      max-width: 100%;
+      width: 100%;
+      padding: 1.3rem 1.2rem;
+      flex: none;
+    }
+    .math-card .emoji { font-size: 1.6rem; }
+    .math-card h3 { font-size: 1.05rem; }
+    .math-card p { font-size: 0.82rem; }
+    .math-card .formula { font-size: 0.82rem; }
+    .math-card .position { font-size: 2rem; top: -5px; right: 0.8rem; }
+    .math-card:hover { transform: none; }
+
+    .rounds {
+      gap: 0.25rem;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      padding-bottom: 1rem;
+      -webkit-overflow-scrolling: touch;
+      justify-content: flex-start;
+      scroll-snap-type: x mandatory;
+    }
+    .round-block {
+      min-width: 60px;
+      padding: 0.6rem 0.5rem;
+      flex-shrink: 0;
+      scroll-snap-align: center;
+    }
+    .round-block .team-count { font-size: 1.3rem; }
+    .round-block .round-name { font-size: 0.6rem; }
+    .round-block .power { font-size: 0.65rem; }
+    .arrow-between { font-size: 1rem; padding: 0 0.1rem; }
+
+    .interactive-section { padding: 2.5rem 1rem; }
+    .penalty-sim { max-width: 100%; padding: 1.5rem 1.2rem; }
+    .penalty-sim h3 { font-size: 1.2rem; }
+    .goal-visual { height: 120px; }
+    .kick-btn {
+      padding: 0.8rem 2rem;
+      font-size: 1rem;
+      width: 100%;
+      max-width: 280px;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .stats-row { gap: 1rem; font-size: 0.78rem; flex-wrap: wrap; }
+
+    .tree-section { padding: 1.5rem 0.5rem 3rem; }
+
+    .fun-facts { padding: 0 0.8rem 3rem; }
+    .fact-banner { padding: 1rem 1.2rem; }
+    .fact-banner .fact-num { font-size: 1.4rem; }
+    .fact-banner p { font-size: 0.85rem; }
+
+    .closing { padding: 2.5rem 1rem; font-size: 0.75rem; }
+
+    /* Performance: reduce animations */
+    @media (prefers-reduced-motion: reduce) {
+      .ball-spot.kick { animation: none; }
+      .scroll-hint { animation: none; }
+      .math-card { transition: none; }
+    }
+  }
+
+  /* ── Large Desktop: > 1400px ── */
+  @media (min-width: 1400px) {
+    .hero h1 { font-size: 5.5rem; }
+    .formation-grid { max-width: 1200px; }
+    .math-card { max-width: 340px; }
+    .fun-facts { max-width: 960px; }
+    .round-block { min-width: 130px; padding: 1.5rem 2rem; }
+    .round-block .team-count { font-size: 2.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══ HERO: The Pitch ═══ -->
+<section class="hero">
+  <div class="center-circle"></div>
+  <div class="center-dot"></div>
+
+  <div class="hero-content">
+    <div class="hero-eyebrow">⚽ 2026 世界杯 · 数学探险</div>
+    <h1>足球场上<br>藏着<span class="accent">数学</span>的秘密</h1>
+    <div class="for-badge">🎁 给牧童</div>
+    <p class="subtitle">从小组赛的排列组合到点球大战的概率，每一脚射门都是一道数学题。让我们一起在绿茵场上发现数学的魔法。</p>
+    <div class="scroll-hint">↓ 开始探索 ↓</div>
+  </div>
+</section>
+
+<!-- ═══ Section 1: Math Formation ═══ -->
+<div class="section-header">
+  <h2><span class="num">4-3-3</span> 数学阵型</h2>
+  <p>就像足球队有阵型，世界杯的数学秘密也排成了 4-3-3 —— 四条后卫线打基础，三个中场串联核心，三个前锋发起进攻！</p>
+</div>
+
+<div class="formation-grid">
+
+  <!-- Back 4: Foundational concepts -->
+  <div class="formation-row">
+    <div class="math-card">
+      <div class="position">2</div>
+      <span class="emoji">🔢</span>
+      <h3>小组赛有多少场？</h3>
+      <div class="formula">C(4,2) = 6</div>
+      <p>每组 4 支球队，每两队之间踢一场。从 4 支选 2 支的组合数：4×3÷2 = <strong>6 场</strong>。</p>
+      <div class="example">12 个小组 × 6 场 = 小组赛共 72 场比赛！</div>
+    </div>
+
+    <div class="math-card">
+      <div class="position">3</div>
+      <span class="emoji">📊</span>
+      <h3>积分榜的数学</h3>
+      <div class="formula">3W + 1D + 0L</div>
+      <p>赢一场得 3 分，平一场得 1 分，输一场得 0 分。3 场比赛后积分最高的两队晋级——这是不是和你的考试成绩排名很像？</p>
+      <div class="example">全胜 = 9 分，两胜一平 = 7 分，一胜两平 = 5 分...</div>
+    </div>
+
+    <div class="math-card">
+      <div class="position">4</div>
+      <span class="emoji">📐</span>
+      <h3>香蕉球的秘密</h3>
+      <div class="formula">y = ax² + bx</div>
+      <p>足球在空中划出的弧线是一条<strong>抛物线</strong>！球员踢球时给球一个旋转，空气从两侧流过速度不同，球就会拐弯——这叫马格努斯效应。</p>
+      <div class="example">贝克汉姆的任意球就是这个原理！</div>
+    </div>
+
+    <div class="math-card">
+      <div class="position">5</div>
+      <span class="emoji">🏟️</span>
+      <h3>球场有多大？</h3>
+      <div class="formula">105m × 68m</div>
+      <p>标准足球场面积约 7,140 平方米。一个足球场 ≈ <strong>1.5 个</strong>标准足球场那么大——牧童的学校操场有几个足球场大？</p>
+      <div class="example">球员一场跑 10 公里 ≈ 从球场这头跑到那头 95 次！</div>
+    </div>
+  </div>
+
+  <!-- Midfield 3: Core concepts -->
+  <div class="formation-row">
+    <div class="math-card">
+      <div class="position">8</div>
+      <span class="emoji">🌳</span>
+      <h3>淘汰赛二叉树</h3>
+      <div class="formula">2⁵ = 32</div>
+      <p>32 强 → 16 强 → 8 强 → 4 强 → 决赛，每轮淘汰一半。从 32 到冠军正好需要 5 轮，因为 <strong>2⁵ = 32</strong>！</p>
+      <div class="example">如果变成 64 支球队呢？那就是 2⁶，需要 6 轮比赛。</div>
+    </div>
+
+    <div class="math-card">
+      <div class="position">6</div>
+      <span class="emoji">🎲</span>
+      <h3>点球大战的概率</h3>
+      <div class="formula">P(全进) = 0.75⁵</div>
+      <p>职业球员点球命中率约 75%。连续罚 5 个点球全部命中的概率只有 <strong>0.75⁵ ≈ 24%</strong>——比扔硬币猜对三次还难！</p>
+      <div class="example">这就是为什么点球大战总是充满悬念。</div>
+    </div>
+
+    <div class="math-card">
+      <div class="position">10</div>
+      <span class="emoji">⚡</span>
+      <h3>进球的泊松分布</h3>
+      <div class="formula">P(k) = λᵏe⁻λ / k!</div>
+      <p>世界杯场均进球约 2.6 个。数学家用<strong>泊松分布</strong>预测比分——一场比赛进 0 球、1 球、2 球的概率各是多少？</p>
+      <div class="example">λ=2.6 时，进 2 球概率最高 ≈ 25%！</div>
+    </div>
+  </div>
+
+  <!-- Forward 3: Fun applications -->
+  <div class="formation-row">
+    <div class="math-card">
+      <div class="position">7</div>
+      <span class="emoji">🏆</span>
+      <h3>谁是冠军？</h3>
+      <div class="formula">1/32 → 冠军</div>
+      <p>开赛前每支球队夺冠概率约 <strong>1/32 = 3.1%</strong>。但巴西队历史上 5 次夺冠，强队的实际概率远高于平均——这就是<strong>条件概率</strong>！</p>
+      <div class="example">巴西夺冠赔率通常排在前三，数学上也说得通。</div>
+    </div>
+
+    <div class="math-card">
+      <div class="position">9</div>
+      <span class="emoji">🧮</span>
+      <h3>比分有多少种可能？</h3>
+      <div class="formula">(n+1)(n+2)/2</div>
+      <p>如果最多进 n 球，两队比分的排列方式有 (n+1)(n+2)/2 种。n=5 时就是 21 种可能比分！</p>
+      <div class="example">真实比赛 90% 的比分落在 0:0 到 3:3 之间。</div>
+    </div>
+
+    <div class="math-card">
+      <div class="position">11</div>
+      <span class="emoji">🕐</span>
+      <h3>补时怎么算？</h3>
+      <div class="formula">伤停 ≈ 进球×45s + 换人×30s</div>
+      <p>每进一球大约浪费 45 秒庆祝，每次换人约 30 秒。裁判用<strong>估算和加法</strong>算出补时时间——这就是生活中的数学！</p>
+      <div class="example">一场 3 进球 + 5 换人的比赛 ≈ 3×45+5×30 = 285秒 ≈ 5分钟补时。</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ Section 2: Tournament Tree ═══ -->
+<div class="section-header">
+  <h2>从 <span class="num">32</span> 到 <span class="num">1</span></h2>
+  <p>淘汰赛的每一轮都是一次"除以 2"，这正是计算机科学里二分查找的数学原理。</p>
+</div>
+
+<div class="rounds">
+  <div class="round-block">
+    <div class="round-name">小组赛</div>
+    <div class="team-count">32</div>
+    <div class="power">2⁵</div>
+  </div>
+  <div class="arrow-between">→</div>
+  <div class="round-block">
+    <div class="round-name">16 强</div>
+    <div class="team-count">16</div>
+    <div class="power">2⁴</div>
+  </div>
+  <div class="arrow-between">→</div>
+  <div class="round-block">
+    <div class="round-name">8 强</div>
+    <div class="team-count">8</div>
+    <div class="power">2³</div>
+  </div>
+  <div class="arrow-between">→</div>
+  <div class="round-block">
+    <div class="round-name">4 强</div>
+    <div class="team-count">4</div>
+    <div class="power">2²</div>
+  </div>
+  <div class="arrow-between">→</div>
+  <div class="round-block">
+    <div class="round-name">决赛</div>
+    <div class="team-count">2</div>
+    <div class="power">2¹</div>
+  </div>
+  <div class="arrow-between">→</div>
+  <div class="round-block" style="border-color: rgba(232,97,26,0.4); background: rgba(232,97,26,0.08);">
+    <div class="round-name">🏆 冠军</div>
+    <div class="team-count" style="font-size: 2.5rem;">1</div>
+    <div class="power">2⁰</div>
+  </div>
+</div>
+
+<!-- ═══ Section 3: Penalty Simulator ═══ -->
+<div class="interactive-section">
+  <div class="penalty-sim">
+    <h3>🎯 来罚一个点球！</h3>
+    <p style="opacity:0.7; margin-bottom:1.5rem; font-size:0.9rem;">你有 75% 的概率进球。试试手气，看看连续罚几个才能进？</p>
+
+    <div class="goal-visual" id="goal">
+      <div class="net"></div>
+      <div class="ball-spot" id="ball" style="left:10%; top:50%;"></div>
+    </div>
+
+    <div class="result-text" id="result"></div>
+    <button class="kick-btn" onclick="takePenalty()">⚽ 射门！</button>
+
+    <div class="stats-row">
+      <div>进球: <span id="goals">0</span></div>
+      <div>射门: <span id="shots">0</span></div>
+      <div>命中率: <span id="rate">—</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ Section 4: Fun Facts ═══ -->
+<div class="section-header">
+  <h2>世界杯的 <span class="num">惊人</span> 数字</h2>
+</div>
+
+<div class="fun-facts">
+  <div class="fact-banner">
+    <span class="fact-num">64</span>
+    <p>一届世界杯总共进行 <strong>64 场比赛</strong>：48 场小组赛 + 16 场淘汰赛。如果每场 90 分钟，总共需要 <strong>5,760 分钟</strong>——连续不停地踢 4 天！</p>
+  </div>
+  <div class="fact-banner">
+    <span class="fact-num">48</span>
+    <p>2026 年世界杯首次扩军到 <strong>48 支球队</strong>。小组赛变成每组 3 队，每组只踢 2 场——和 32 队时代完全不同！<strong>变化就是新的数学题</strong>。</p>
+  </div>
+  <div class="fact-banner">
+    <span class="fact-num">3.5B</span>
+    <p>全球约 <strong>35 亿人</strong>收看世界杯，接近世界人口的一半。如果把这 35 亿人手拉手排成一条线，可以绕地球 <strong>130 圈</strong>。</p>
+  </div>
+  <div class="fact-banner">
+    <span class="fact-num">5</span>
+    <p>巴西队夺得 <strong>5 次</strong>世界杯冠军，是历史上最多的。5 次是什么概念？世界杯举办了 22 届，巴西赢了将近 <strong>四分之一</strong> 的冠军！</p>
+  </div>
+</div>
+
+<div class="closing">
+  <p>⚽ 数学不在课本里，数学在你热爱的每一个角落里。下次看球时，试试做一道数学题吧！</p>
+  <p style="margin-top:1rem;">— 2026 世界杯 · 给牧童的数学礼物 🎁</p>
+</div>
+
+<script>
+  let goals = 0, shots = 0;
+
+  function takePenalty() {
+    const ball = document.getElementById('ball');
+    const result = document.getElementById('result');
+    const hitRate = 0.75;
+    const isGoal = Math.random() < hitRate;
+
+    shots++;
+
+    // Reset ball
+    ball.classList.remove('kick');
+    ball.style.left = '10%';
+    ball.style.top = '50%';
+    void ball.offsetWidth;
+
+    // Random target in goal area
+    const targetX = (60 + Math.random() * 35) + '%';
+    const targetY = (15 + Math.random() * 70) + '%';
+
+    ball.style.setProperty('--target-x', targetX);
+    ball.style.setProperty('--target-y', targetY);
+
+    if (isGoal) {
+      goals++;
+      result.textContent = '⚽ 进球啦！球飞进了球门的' + (targetX < '75' ? '左边' : targetX > '85' ? '右边' : '中间') + '！';
+      result.className = 'result-text goal';
+    } else {
+      result.textContent = '😱 打飞了！射门偏出了球门——这就是概率，75% 不总是站在你这边。';
+      result.className = 'result-text miss';
+    }
+
+    ball.classList.add('kick');
+
+    // Update stats
+    document.getElementById('goals').textContent = goals;
+    document.getElementById('shots').textContent = shots;
+    document.getElementById('rate').textContent = (goals/shots*100).toFixed(0) + '%';
+  }
+</script>
+
+</body>
+</html>
