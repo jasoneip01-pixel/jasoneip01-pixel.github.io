@@ -1,7 +1,14 @@
 {
   "source": "WSJ.com US Business RSS",
-  "ts": "Wed, 17 Jun 2026 10:49:25 GMT",
+  "ts": "Wed, 17 Jun 2026 20:07:17 GMT",
   "items": [
+    {
+      "title": "Car ‘Playgrounds,’ Smartphone Shopping: Inside Carvana’s New-Car Sales Playbook",
+      "desc": "The online used-car company presented a radical plan for its stores.",
+      "link": "https://www.wsj.com/business/autos/carvana-new-car-sales-ddbd12d8?mod=pls_whats_news_us_business_f",
+      "pubDate": "Wed, 17 Jun 2026 12:00:00 GMT",
+      "creator": "Christopher Otts"
+    },
     {
       "title": "Europe’s Biggest Banking Deal in Years Is Getting Closer",
       "desc": "Italian bank UniCredit is edging closer to its goal of taking over German rival Commerzbank, a landmark deal that would create a pan-European financial giant.",
@@ -36,13 +43,6 @@
       "link": "https://www.wsj.com/business/autos/ev-startup-rivian-lays-off-hundreds-of-workers-40033fc8?mod=pls_whats_news_us_business_f",
       "pubDate": "Tue, 16 Jun 2026 16:33:00 GMT",
       "creator": "Becky Peterson"
-    },
-    {
-      "title": "The Former Drug Dealer Whose Shows Make Millions Without Hollywood",
-      "desc": "Silk White’s D.I.Y. movies and TV shows are profiting from growing audiences on free streaming services like Tubi and Roku.",
-      "link": "https://www.wsj.com/business/media/the-former-drug-dealer-whose-shows-make-millions-without-hollywood-38ad87a9?mod=pls_whats_news_us_business_f",
-      "pubDate": "Tue, 16 Jun 2026 16:03:00 GMT",
-      "creator": "Ben Fritz"
     },
     {
       "title": "Diners Aren’t as Into Pizza, but Private Equity Is",
@@ -80,11 +80,18 @@
       "creator": "Lauren Thomas"
     },
     {
-      "title": "CarMax Profit Falls Despite Higher Sales",
-      "desc": "CarMax said its fiscal first-quarter profit was  hurt by price cuts the company had implemented to help spur sales.",
+      "title": "CarMax’s Turnaround Is Taking Shape, Still Has Long Way to Go",
+      "desc": "Chief Executive Keith Barr, who stepped into the top role in March, said that the company’s core operations aren’t fast and efficient enough, and that its costs remain too high.",
       "link": "https://www.wsj.com/business/earnings/carmax-profit-falls-despite-higher-sales-68d87ac6?mod=pls_whats_news_us_business_f",
-      "pubDate": "Wed, 17 Jun 2026 10:38:00 GMT",
+      "pubDate": "Wed, 17 Jun 2026 14:17:00 GMT",
       "creator": "Connor Hart"
+    },
+    {
+      "title": "U.S. Retailers’ Sales Growth Accelerated Last Month",
+      "desc": "Sales growth rose more than expected for U.S. retailers in May, as consumers continued to make purchases even as gasoline prices remained elevated.",
+      "link": "https://www.wsj.com/economy/consumers/u-s-retailers-sales-growth-accelerated-last-month-90969438?mod=pls_whats_news_us_business_f",
+      "pubDate": "Wed, 17 Jun 2026 13:05:00 GMT",
+      "creator": "Jessica Coacci"
     },
     {
       "title": "Straumann Shares Climb After Lower-Than-Expected Tariffs Boost Outlook",
@@ -106,13 +113,6 @@
       "link": "https://www.wsj.com/business/earnings/bmw-cuts-outlook-as-middle-east-war-china-woes-weigh-7aaf928f?mod=pls_whats_news_us_business_f",
       "pubDate": "Tue, 16 Jun 2026 17:01:00 GMT",
       "creator": "Joshua Kirby"
-    },
-    {
-      "title": "The ‘One Size Fits Most’ Retailer Is Shutting Its Changing Rooms",
-      "desc": "Brandy Melville’s young customers are up in arms over the new policy—but still shopping.",
-      "link": "https://www.wsj.com/business/retail/the-one-size-fits-most-retailer-is-shutting-its-changing-rooms-9d00beb9?mod=pls_whats_news_us_business_f",
-      "pubDate": "Tue, 16 Jun 2026 15:45:00 GMT",
-      "creator": "Celia Bernhardt"
     },
     {
       "title": "European Auto Shares Fall After BMW Cuts Guidance",
@@ -185,6 +185,27 @@
       "creator": "Tim Higgins"
     },
     {
+      "title": "Opinion | Don’t Let Private Planes Avoid Paying Fees",
+      "desc": "Airports should be able to identify aircraft and charge them landing fees, an important source of revenue.",
+      "link": "https://www.wsj.com/opinion/dont-let-private-planes-avoid-paying-fees-ebc3f952?mod=pls_whats_news_us_business_f",
+      "pubDate": "Wed, 17 Jun 2026 18:07:00 GMT",
+      "creator": ""
+    },
+    {
+      "title": "Opinion | Driverless Trucks Take Good Jobs Away From Americans",
+      "desc": "Autonomous vehicles threaten to disrupt industries that rely on human judgment and experience.",
+      "link": "https://www.wsj.com/opinion/driverless-trucks-take-good-jobs-away-from-americans-7eba14be?mod=pls_whats_news_us_business_f",
+      "pubDate": "Wed, 17 Jun 2026 18:04:00 GMT",
+      "creator": ""
+    },
+    {
+      "title": "Opinion | Mamdani vs. Bodegas",
+      "desc": "His socialist supermarkets could put New York’s little grocers out of business.",
+      "link": "https://www.wsj.com/opinion/mamdani-vs-bodegas-ae845509?mod=pls_whats_news_us_business_f",
+      "pubDate": "Wed, 17 Jun 2026 17:25:00 GMT",
+      "creator": "Faith Bottum"
+    },
+    {
       "title": "Opinion | On Energy, Democrats Can Learn From Texas",
       "desc": "The Lone Star State leads the way in making the grid cleaner, more resilient and more cost-efficient.",
       "link": "https://www.wsj.com/opinion/on-energy-democrats-can-learn-from-texas-4f017d04?mod=pls_whats_news_us_business_f",
@@ -206,25 +227,18 @@
       "creator": ""
     },
     {
-      "title": "Opinion | Big Brother Is Watching the Sky",
-      "desc": "Congress has a chance to stop tax collectors from exploiting a safety technology.",
-      "link": "https://www.wsj.com/opinion/big-brother-is-watching-the-sky-f18eb0b4?mod=pls_whats_news_us_business_f",
-      "pubDate": "Thu, 11 Jun 2026 21:23:00 GMT",
-      "creator": "Kimberley A. Strassel"
-    },
-    {
-      "title": "Opinion | We Train Boys for Entertainment, Not Work",
-      "desc": "Young men raised on video games lack a work ethic and preparation for the job market.",
-      "link": "https://www.wsj.com/opinion/we-train-boys-for-entertainment-not-work-76264f70?mod=pls_whats_news_us_business_f",
-      "pubDate": "Thu, 11 Jun 2026 18:31:00 GMT",
+      "title": "Energy & Utilities Roundup: Market Talk",
+      "desc": "Find insight on higher gasoline prices, oil futures, Equinor and more in the latest Market Talks covering Energy and Utilities.",
+      "link": "https://www.wsj.com/business/energy-utilities-roundup-market-talk-382d736e?mod=pls_whats_news_us_business_f",
+      "pubDate": "Wed, 17 Jun 2026 16:25:00 GMT",
       "creator": ""
     },
     {
-      "title": "Opinion | Scott Pelley’s Idea of Journalism",
-      "desc": "Why would anyone think ‘60 Minutes’ is biased? Consider what happened to me.",
-      "link": "https://www.wsj.com/opinion/scott-pelleys-idea-of-journalism-4f10d8f5?mod=pls_whats_news_us_business_f",
-      "pubDate": "Wed, 10 Jun 2026 20:59:00 GMT",
-      "creator": "Karl Rove"
+      "title": "U.S. Crude Oil Stockpiles Fall More Than Expected",
+      "desc": "Commercial crude oil stocks were down by 8.3 million barrels as net imports decreased and refineries ran near full capacity.",
+      "link": "https://www.wsj.com/business/energy-oil/u-s-crude-oil-stockpiles-fall-more-than-expected-5138da65?mod=pls_whats_news_us_business_f",
+      "pubDate": "Wed, 17 Jun 2026 15:42:00 GMT",
+      "creator": "Anthony Harrup"
     },
     {
       "title": "Auto & Transport Roundup: Market Talk",
@@ -246,20 +260,6 @@
       "link": "https://www.wsj.com/business/energy-oil/equinor-doubles-share-buyback-to-3-billion-under-new-plan-targeting-fossil-fuel-growth-1577b179?mod=pls_whats_news_us_business_f",
       "pubDate": "Tue, 16 Jun 2026 11:59:00 GMT",
       "creator": "Adam Whittaker"
-    },
-    {
-      "title": "Major Wall Street Banks Cut Oil-Price Forecasts on Faster Gulf Supply Recovery",
-      "desc": "Goldman Sachs and Morgan Stanley cut their oil-price forecasts, with Persian Gulf flows expected to recover to prewar levels sooner than anticipated.",
-      "link": "https://www.wsj.com/business/energy-oil/goldman-sachs-cuts-oil-price-forecasts-faster-gulf-supply-recovery-c37d2a92?mod=pls_whats_news_us_business_f",
-      "pubDate": "Tue, 16 Jun 2026 10:09:00 GMT",
-      "creator": "Giulia Petroni"
-    },
-    {
-      "title": "Energy & Utilities Roundup: Market Talk",
-      "desc": "Find insight on Canadian energy stocks, the reopening of the Strait of Hormuz, oil futures and more in the latest Market Talks covering Energy and Utilities.",
-      "link": "https://www.wsj.com/business/energy-utilities-roundup-market-talk-c4d3067b?mod=pls_whats_news_us_business_f",
-      "pubDate": "Mon, 15 Jun 2026 20:59:00 GMT",
-      "creator": ""
     },
     {
       "title": "Wizz Air Withholds Guidance Due to Middle East Conflict",
@@ -297,6 +297,13 @@
       "creator": "Clara Hudson"
     },
     {
+      "title": "CME Group’s Terry Duffy to Step Down as CEO, Ceding Role to Finance Chief",
+      "desc": "The succession will mark the end of an era for the derivatives exchange, which transformed under Duffy’s long run.",
+      "link": "https://www.wsj.com/business/cme-groups-terry-duffy-to-step-down-as-ceo-lynne-fitzpatrick-to-take-helm-79f5310d?mod=pls_whats_news_us_business_f",
+      "pubDate": "Wed, 17 Jun 2026 19:23:00 GMT",
+      "creator": "Alexander Osipovich"
+    },
+    {
       "title": "Ericsson CEO Ekholm to Step Down, Company Veteran Narvinger Named Successor",
       "desc": "The telecommunications-equipment manufacturer said Borje Ekholm had decided to step down after more than nine years at the helm.",
       "link": "https://www.wsj.com/business/c-suite/ericsson-ceo-ekholm-to-step-down-company-veteran-narvinger-named-successor-5607a49a?mod=pls_whats_news_us_business_f",
@@ -323,13 +330,6 @@
       "link": "https://www.wsj.com/cfo-journal/the-metric-cfos-struggle-to-track-ai-usage-3b30c10c?mod=pls_whats_news_us_business_f",
       "pubDate": "Fri, 05 Jun 2026 16:36:00 GMT",
       "creator": "Jennifer Williams"
-    },
-    {
-      "title": "Cyber Threats Top CEO Business Fears",
-      "desc": "For the first time since late 2024, leaders of large-cap companies are more worried about cyberattacks than geopolitical tensions and economic uncertainties.",
-      "link": "https://www.wsj.com/pro/cybersecurity/cyber-threats-top-ceo-business-fears-7141c6c9?mod=pls_whats_news_us_business_f",
-      "pubDate": "Thu, 28 May 2026 21:41:00 GMT",
-      "creator": "Angus Loten"
     },
     {
       "title": "Hotel Owners Are Rebelling Against Marriott’s Loyalty Program",
@@ -367,6 +367,20 @@
       "creator": "Elias Schisgall"
     },
     {
+      "title": "Procter & Gamble Scripted Dramas Are Coming to a Supermarket Near You",
+      "desc": "Albertsons collaborated with the packaged-goods giant to produce ‘Rico’s Tacos,’ a short-form series designed to help move products.",
+      "link": "https://www.wsj.com/cmo-today/procter-gamble-scripted-dramas-are-coming-to-a-supermarket-near-you-875cb366?mod=pls_whats_news_us_business_f",
+      "pubDate": "Wed, 17 Jun 2026 11:00:00 GMT",
+      "creator": "Patrick Coffee"
+    },
+    {
+      "title": "The Former Drug Dealer Whose Shows Make Millions Without Hollywood",
+      "desc": "Silk White’s D.I.Y. movies and TV shows are profiting from growing audiences on free streaming services like Tubi and Roku.",
+      "link": "https://www.wsj.com/business/media/the-former-drug-dealer-whose-shows-make-millions-without-hollywood-38ad87a9?mod=pls_whats_news_us_business_f",
+      "pubDate": "Tue, 16 Jun 2026 16:03:00 GMT",
+      "creator": "Ben Fritz"
+    },
+    {
       "title": "Why Oatly’s Marketing Went From Wordy Billboards to Beverage Events",
       "desc": "The oat milk company is working with restaurants and cafes to consult on their beverage programs instead of just acting as a supplier.",
       "link": "https://www.wsj.com/cmo-today/why-oatlys-marketing-went-from-wordy-billboards-to-beverage-events-14537cb1?mod=pls_whats_news_us_business_f",
@@ -386,20 +400,6 @@
       "link": "https://www.wsj.com/cmo-today/big-brands-venture-capital-and-mrbeast-put-money-behind-short-video-clipping-1e6ad58e?mod=pls_whats_news_us_business_f",
       "pubDate": "Mon, 15 Jun 2026 10:00:00 GMT",
       "creator": "Patrick Coffee"
-    },
-    {
-      "title": "How the Iconic Cast-Iron Tourist Binoculars Are Fighting to Survive a Cashless World",
-      "desc": "New owners are retrofitting the scenic viewers with tap-to-pay technology now that fewer people have quarters in their pockets.",
-      "link": "https://www.wsj.com/business/entrepreneurship/tourist-binoculars-tap-to-pay-42856c01?mod=pls_whats_news_us_business_f",
-      "pubDate": "Sun, 14 Jun 2026 13:00:00 GMT",
-      "creator": "Mark Robichaux"
-    },
-    {
-      "title": "News Quiz for June 13, 2026",
-      "desc": "",
-      "link": "https://www.wsj.com/business/media/news-quiz-for-june-13-2026-60dcc2bf?mod=pls_whats_news_us_business_f",
-      "pubDate": "Sat, 13 Jun 2026 10:00:00 GMT",
-      "creator": "Daniel Akst"
     },
     {
       "title": "U.S. Companies Stop Waiting for Supply Chains to Return to Normal",
@@ -493,18 +493,18 @@
       "creator": "Micah Maidenberg"
     },
     {
+      "title": "How the Iconic Cast-Iron Tourist Binoculars Are Fighting to Survive a Cashless World",
+      "desc": "New owners are retrofitting the scenic viewers with tap-to-pay technology now that fewer people have quarters in their pockets.",
+      "link": "https://www.wsj.com/business/entrepreneurship/tourist-binoculars-tap-to-pay-42856c01?mod=pls_whats_news_us_business_f",
+      "pubDate": "Sun, 14 Jun 2026 13:00:00 GMT",
+      "creator": "Mark Robichaux"
+    },
+    {
       "title": "Crypto-Data Provider Blockworks Acquires Messari at a Discount",
       "desc": "The buyer paid more than $10 million for a company valued at around $300 million in 2022.",
       "link": "https://www.wsj.com/business/deals/crypto-data-provider-blockworks-acquires-messari-at-a-discount-c265af54?mod=pls_whats_news_us_business_f",
       "pubDate": "Fri, 12 Jun 2026 16:00:00 GMT",
       "creator": "Vicky Ge Huang"
-    },
-    {
-      "title": "What to Know About Drone-Boat Maker Behind Iran Helicopter Crew Rescue",
-      "desc": "Saronic’s unmanned Corsair plucked two aviators from the Strait of Hormuz; startup is worth $9.3 billion.",
-      "link": "https://www.wsj.com/tech/what-to-know-about-drone-boat-maker-behind-iran-helicopter-crew-rescue-aa55d445?mod=pls_whats_news_us_business_f",
-      "pubDate": "Thu, 11 Jun 2026 00:22:00 GMT",
-      "creator": "Tina Li"
     },
     {
       "title": "SpaceX Now Has Higher Market Cap Than Amazon",
@@ -521,6 +521,13 @@
       "creator": "Becky Peterson"
     },
     {
+      "title": "The ‘One Size Fits Most’ Retailer Is Shutting Its Changing Rooms",
+      "desc": "Brandy Melville’s young customers are up in arms over the new policy—but still shopping.",
+      "link": "https://www.wsj.com/business/retail/the-one-size-fits-most-retailer-is-shutting-its-changing-rooms-9d00beb9?mod=pls_whats_news_us_business_f",
+      "pubDate": "Tue, 16 Jun 2026 15:45:00 GMT",
+      "creator": "Celia Bernhardt"
+    },
+    {
       "title": "Strait of Hormuz to Fully Open by Friday, Trump Says",
       "desc": "Plus, oil prices fall, and Silicon Valley’s elite pretend to kill each other.",
       "link": "https://www.wsj.com/tech/strait-of-hormuz-to-fully-open-by-friday-trump-says-f785bdb1?mod=pls_whats_news_us_business_f",
@@ -535,11 +542,11 @@
       "creator": "Alyssa Lukpat"
     },
     {
-      "title": "How Quickly Can the Strait of Hormuz Get Back Up and Running?",
-      "desc": "It could take several weeks for traffic through the thoroughfare to return to even half of prewar levels, with knock-on effects continuing for months.",
-      "link": "https://www.wsj.com/business/energy-oil/how-quickly-can-the-strait-of-hormuz-get-back-up-and-running-a5380c70?mod=pls_whats_news_us_business_f",
-      "pubDate": "Mon, 15 Jun 2026 17:58:00 GMT",
-      "creator": "Georgi Kantchev"
+      "title": "State Farm’s AI Plan for Sales Agents Sparks Uproar. ‘A Real Slap in the Face.’",
+      "desc": "AI tools and changes to contracts for 19,000 sales agents appear to be a response to the insurer’s eroding status in the industry.",
+      "link": "https://www.wsj.com/finance/state-farms-ai-plan-for-sales-agents-sparks-uproar-a-real-slap-in-the-face-6453e2cb?mod=pls_whats_news_us_business_f",
+      "pubDate": "Wed, 17 Jun 2026 09:30:00 GMT",
+      "creator": "Jean Eaglesham"
     },
     {
       "title": "Rivian’s Make-or-Break SUV Is Here. Fans Are Already Balking at the Lease Price.",
@@ -549,13 +556,6 @@
       "creator": "Ellie Davis"
     },
     {
-      "title": "SpaceX’s $60 Billion Deal to Buy Cursor Gives It More AI Coding Power",
-      "desc": "The deal for the AI coding agent comes days after a historic IPO that made Space X one of America’s most valuable companies.",
-      "link": "https://www.wsj.com/business/spacex-agrees-to-buy-ai-coding-agent-cursor-for-60-billion-7a473340?mod=pls_whats_news_us_business_f",
-      "pubDate": "Tue, 16 Jun 2026 16:02:00 GMT",
-      "creator": "Becky Peterson"
-    },
-    {
       "title": "EV Startup Rivian Lays Off Hundreds of Workers",
       "desc": "The job cuts affect employees in Rivian’s service and customer organization, which handles sales and marketing.",
       "link": "https://www.wsj.com/business/autos/ev-startup-rivian-lays-off-hundreds-of-workers-40033fc8?mod=pls_whats_news_us_business_f",
@@ -563,18 +563,18 @@
       "creator": "Becky Peterson"
     },
     {
-      "title": "The ‘One Size Fits Most’ Retailer Is Shutting Its Changing Rooms",
-      "desc": "Brandy Melville’s young customers are up in arms over the new policy—but still shopping.",
-      "link": "https://www.wsj.com/business/retail/the-one-size-fits-most-retailer-is-shutting-its-changing-rooms-9d00beb9?mod=pls_whats_news_us_business_f",
-      "pubDate": "Tue, 16 Jun 2026 15:45:00 GMT",
-      "creator": "Celia Bernhardt"
+      "title": "The Former Drug Dealer Whose Shows Make Millions Without Hollywood",
+      "desc": "Silk White’s D.I.Y. movies and TV shows are profiting from growing audiences on free streaming services like Tubi and Roku.",
+      "link": "https://www.wsj.com/business/media/the-former-drug-dealer-whose-shows-make-millions-without-hollywood-38ad87a9?mod=pls_whats_news_us_business_f",
+      "pubDate": "Tue, 16 Jun 2026 16:03:00 GMT",
+      "creator": "Ben Fritz"
     },
     {
-      "title": "Diners Aren’t as Into Pizza, but Private Equity Is",
-      "desc": "PE firm LongRange Capital will buy Pizza Hut’s operations outside mainland China for about $1.5 billion as part of a broader deal.",
-      "link": "https://www.wsj.com/business/deals/yum-brands-to-sell-pizza-hut-for-2-7-billion-e7c5565e?mod=pls_whats_news_us_business_f",
-      "pubDate": "Tue, 16 Jun 2026 19:40:00 GMT",
-      "creator": "Heather Haddon"
+      "title": "Car ‘Playgrounds,’ Smartphone Shopping: Inside Carvana’s New-Car Sales Playbook",
+      "desc": "The online used-car company presented a radical plan for its stores.",
+      "link": "https://www.wsj.com/business/autos/carvana-new-car-sales-ddbd12d8?mod=pls_whats_news_us_business_f",
+      "pubDate": "Wed, 17 Jun 2026 12:00:00 GMT",
+      "creator": "Christopher Otts"
     },
     {
       "title": "Best Small-Business Loans in June 2026",
