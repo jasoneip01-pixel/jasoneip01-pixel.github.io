@@ -1,7 +1,42 @@
 {
   "source": "WSJ.com US Business RSS",
-  "ts": "Thu, 18 Jun 2026 10:16:51 GMT",
+  "ts": "Thu, 18 Jun 2026 20:21:44 GMT",
   "items": [
+    {
+      "title": "The Woman Who Cracked China’s Grip on Rare Earths",
+      "desc": "Amanda Lacaze risked her career to fix Australian mining company Lynas. Now she’s supplying the Pentagon.",
+      "link": "https://www.wsj.com/business/amanda-lacaze-lynas-rare-earths-australia-91e8ad30?mod=pls_whats_news_us_business_f",
+      "pubDate": "Thu, 18 Jun 2026 19:52:00 GMT",
+      "creator": "Jon Emont"
+    },
+    {
+      "title": "Accenture Takes a Hit on Worsening Outlook and Cloudy AI Future",
+      "desc": "Shares are down 18% as its CEO says the IT consulting firm will bring in less revenue than expected in coming months.",
+      "link": "https://www.wsj.com/business/accenture-takes-a-hit-on-worsening-outlook-and-cloudy-ai-future-73eb8bfb?mod=pls_whats_news_us_business_f",
+      "pubDate": "Thu, 18 Jun 2026 17:52:00 GMT",
+      "creator": "Allison Pohle"
+    },
+    {
+      "title": "Mars Is Spending Millions to Give M&M’s a MAHA Makeover",
+      "desc": "The candy maker is trying to re-create M&M’s without artificial colors, but blue’s natural algae substitute is complex and costly.",
+      "link": "https://www.wsj.com/business/mars-is-spending-millions-to-give-m-ms-a-maha-makeover-2fa1bb88?mod=pls_whats_news_us_business_f",
+      "pubDate": "Thu, 18 Jun 2026 17:25:00 GMT",
+      "creator": "Jesse Newman"
+    },
+    {
+      "title": "How Quickly Can the Strait of Hormuz Get Back Up and Running?",
+      "desc": "It could take weeks for traffic through the route to return to even half of prewar levels, with knock-on effects continuing for months.",
+      "link": "https://www.wsj.com/business/energy-oil/how-quickly-can-the-strait-of-hormuz-get-back-up-and-running-a5380c70?mod=pls_whats_news_us_business_f",
+      "pubDate": "Thu, 18 Jun 2026 16:31:00 GMT",
+      "creator": "Georgi Kantchev"
+    },
+    {
+      "title": "Can We Build a New Industry to Remove Carbon From the Air?",
+      "desc": "Plus, Iran’s chance to boost oil revenues, a recycling giant bets on automation and the DOJ defends xAI in a data-center pollution lawsuit.",
+      "link": "https://www.wsj.com/business/energy-oil/can-we-build-a-new-industry-to-remove-carbon-from-the-air-eacef8f2?mod=pls_whats_news_us_business_f",
+      "pubDate": "Thu, 18 Jun 2026 13:25:00 GMT",
+      "creator": "Ed Ballard"
+    },
     {
       "title": "BE Semiconductor Raises Long-Term Revenue, Profitability Targets on AI Boost",
       "desc": "BE Semiconductor Industries raised its long-term revenue and profitability targets, citing increased demand for AI-related products.",
@@ -10,45 +45,10 @@
       "creator": "Adrià Calatayud"
     },
     {
-      "title": "DOJ Defends Musk’s xAI in Data-Center Pollution Lawsuit",
-      "desc": "The Mississippi facility is supporting the training and development of new AI models that the government is relying on for national-security purposes, the department says.",
-      "link": "https://www.wsj.com/pro/sustainable-business/doj-defends-musks-xai-in-data-center-pollution-lawsuit-25df5258?mod=pls_whats_news_us_business_f",
-      "pubDate": "Wed, 17 Jun 2026 16:35:00 GMT",
-      "creator": "Clara Hudson"
-    },
-    {
-      "title": "Car ‘Playgrounds,’ Smartphone Shopping: Inside Carvana’s New-Car Sales Playbook",
-      "desc": "The online used-car company presented a radical plan for its stores.",
-      "link": "https://www.wsj.com/business/autos/carvana-new-car-sales-ddbd12d8?mod=pls_whats_news_us_business_f",
-      "pubDate": "Wed, 17 Jun 2026 12:00:00 GMT",
-      "creator": "Christopher Otts"
-    },
-    {
-      "title": "Europe’s Biggest Banking Deal in Years Is Getting Closer",
-      "desc": "Italian bank UniCredit is edging closer to its goal of taking over German rival Commerzbank, a landmark deal that would create a pan-European financial giant.",
-      "link": "https://www.wsj.com/finance/banking/europes-biggest-banking-deal-in-years-is-getting-closer-a10ec4bc?mod=pls_whats_news_us_business_f",
-      "pubDate": "Wed, 17 Jun 2026 10:33:00 GMT",
-      "creator": "Ben Dummett"
-    },
-    {
-      "title": "State Farm’s AI Plan for Sales Agents Sparks Uproar. ‘A Real Slap in the Face.’",
-      "desc": "AI tools and changes to contracts for 19,000 sales agents appear to be a response to the insurer’s eroding status in the industry.",
-      "link": "https://www.wsj.com/finance/state-farms-ai-plan-for-sales-agents-sparks-uproar-a-real-slap-in-the-face-6453e2cb?mod=pls_whats_news_us_business_f",
-      "pubDate": "Wed, 17 Jun 2026 09:30:00 GMT",
-      "creator": "Jean Eaglesham"
-    },
-    {
-      "title": "Oil Supply Could Far Outstrip Demand Growth if Middle East Peace Deal Holds, IEA Says",
-      "desc": "Oil consumption is set to fall sharply lower before flows through Hormuz gradually normalize, setting the stage for a supply surge that could far outstrip demand growth .",
-      "link": "https://www.wsj.com/business/energy-oil/oil-supply-to-rebound-strongly-after-gulf-shock-but-recovery-will-take-months-iea-says-a0ccae8b?mod=pls_whats_news_us_business_f",
-      "pubDate": "Wed, 17 Jun 2026 09:21:00 GMT",
-      "creator": "Giulia Petroni"
-    },
-    {
       "title": "The Company That Created the Checkbook Is Buying a Payment Processor",
       "desc": "Deluxe is purchasing private-equity-backed Celero Commerce, which services small and midsize businesses, for $625 million.",
       "link": "https://www.wsj.com/finance/the-company-that-created-the-checkbook-is-buying-a-payment-processor-445aaabb?mod=pls_whats_news_us_business_f",
-      "pubDate": "Thu, 18 Jun 2026 10:00:00 GMT",
+      "pubDate": "Thu, 18 Jun 2026 13:25:00 GMT",
       "creator": "Ben Glickman"
     },
     {
@@ -57,6 +57,13 @@
       "link": "https://www.wsj.com/finance/investing/eqt-agrees-to-buy-intertek-group-for-12-36-billion-7094d7f3?mod=pls_whats_news_us_business_f",
       "pubDate": "Thu, 18 Jun 2026 09:21:00 GMT",
       "creator": "Ian Walker"
+    },
+    {
+      "title": "Europe’s Biggest Banking Deal in Years Is Getting Closer",
+      "desc": "Italian bank UniCredit is edging closer to its goal of taking over German rival Commerzbank, a landmark deal that would create a pan-European financial giant.",
+      "link": "https://www.wsj.com/finance/banking/europes-biggest-banking-deal-in-years-is-getting-closer-a10ec4bc?mod=pls_whats_news_us_business_f",
+      "pubDate": "Wed, 17 Jun 2026 10:33:00 GMT",
+      "creator": "Ben Dummett"
     },
     {
       "title": "Diners Aren’t as Into Pizza, but Private Equity Is",
@@ -73,11 +80,11 @@
       "creator": "Colin Kellaher"
     },
     {
-      "title": "Norwegian Air Shuttle to Buy Package Holiday Group Nordic Leisure Travel for $833 Million",
-      "desc": "The low-cost carrier is seeking to boost revenue by integrating its flights with a network of hotels and experiences in the $833 million deal.",
-      "link": "https://www.wsj.com/business/earnings/norwegian-air-shuttle-buys-package-holiday-group-nordic-leisure-travel-for-833-million-d016df00?mod=pls_whats_news_us_business_f",
-      "pubDate": "Tue, 16 Jun 2026 08:07:00 GMT",
-      "creator": "Dominic Chopping"
+      "title": "Kroger Seeing Costs Outrun Sales Growth",
+      "desc": "The grocery chain said costs are climbing as the company spends more to increase store hours, improve employee training and outfit workers with new uniforms.",
+      "link": "https://www.wsj.com/business/retail/kroger-profit-rises-with-higher-sales-b6f2b90c?mod=pls_whats_news_us_business_f",
+      "pubDate": "Thu, 18 Jun 2026 14:26:00 GMT",
+      "creator": "Dean Seal"
     },
     {
       "title": "L’Oreal to Buy Majority Stake in Innovist to Expand Footprint in India",
@@ -108,17 +115,10 @@
       "creator": "Jessica Coacci"
     },
     {
-      "title": "Straumann Shares Climb After Lower-Than-Expected Tariffs Boost Outlook",
-      "desc": "The dental-implant company’s stock was up 9.7%  after it raised its profitability outlook for the year, citing lower-than-anticipated tariffs and cost savings.",
-      "link": "https://www.wsj.com/business/retail/straumann-shares-climb-after-lower-than-expected-tariffs-boost-outlook-9fe7ccc3?mod=pls_whats_news_us_business_f",
-      "pubDate": "Wed, 17 Jun 2026 08:01:00 GMT",
-      "creator": "Adrià Calatayud"
-    },
-    {
-      "title": "BHP Raises Potash Project Costs, Flags $2.3 Billion Write-Down",
-      "desc": "The miner said an expansion of its potash project in Canada will cost $2 billion more than expected.",
+      "title": "BHP Flags $2.3 Billion Potash Write-Down as Costs Rise",
+      "desc": "The miner expects another cost overrun on a Canadian mine that is set to become one of the biggest sources of the fertilizer ingredient globally.",
       "link": "https://www.wsj.com/business/bhp-raises-potash-project-costs-flags-2-3-billion-write-down-0d049b9b?mod=pls_whats_news_us_business_f",
-      "pubDate": "Thu, 18 Jun 2026 08:41:00 GMT",
+      "pubDate": "Thu, 18 Jun 2026 10:28:00 GMT",
       "creator": "Rhiannon Hoyle"
     },
     {
@@ -127,6 +127,13 @@
       "link": "https://www.wsj.com/business/earnings/smith-wesson-posts-higher-profit-on-strong-handgun-sales-00e71835?mod=pls_whats_news_us_business_f",
       "pubDate": "Wed, 17 Jun 2026 22:13:00 GMT",
       "creator": "Elias Schisgall"
+    },
+    {
+      "title": "Straumann Shares Climb After Lower-Than-Expected Tariffs Boost Outlook",
+      "desc": "The dental-implant company’s stock was up 9.7%  after it raised its profitability outlook for the year, citing lower-than-anticipated tariffs and cost savings.",
+      "link": "https://www.wsj.com/business/retail/straumann-shares-climb-after-lower-than-expected-tariffs-boost-outlook-9fe7ccc3?mod=pls_whats_news_us_business_f",
+      "pubDate": "Wed, 17 Jun 2026 08:01:00 GMT",
+      "creator": "Adrià Calatayud"
     },
     {
       "title": "European Auto Shares Fall After BMW Cuts Guidance",
@@ -143,18 +150,18 @@
       "creator": "Kelly Cloonan"
     },
     {
-      "title": "BMW Cuts Outlook as Middle East War, China Woes Weigh",
-      "desc": "The German carmaker said that it now expects a slight fall in automotive sales over the course of 2026 compared with a year earlier, having previously guided for flat growth.",
-      "link": "https://www.wsj.com/business/earnings/bmw-cuts-outlook-as-middle-east-war-china-woes-weigh-7aaf928f?mod=pls_whats_news_us_business_f",
-      "pubDate": "Tue, 16 Jun 2026 17:01:00 GMT",
-      "creator": "Joshua Kirby"
+      "title": "Volkswagen Pushes Ahead With Restructuring as Pressures Mount",
+      "desc": "The automaker is moving forward with plans to restructure amid rising geopolitical tensions, intense competitive pressure and growing trade barriers.",
+      "link": "https://www.wsj.com/business/volkswagen-says-next-few-years-will-be-critical-ce88075a?mod=pls_whats_news_us_business_f",
+      "pubDate": "Thu, 18 Jun 2026 13:57:00 GMT",
+      "creator": "Dominic Chopping"
     },
     {
-      "title": "Volkswagen Says Next Few Years Will Be Critical",
-      "desc": "The automaker is pushing ahead with plans to restructure amid rising geopolitical tensions, intense competitive pressure and growing trade barriers.",
-      "link": "https://www.wsj.com/business/volkswagen-says-next-few-years-will-be-critical-ce88075a?mod=pls_whats_news_us_business_f",
-      "pubDate": "Thu, 18 Jun 2026 09:49:00 GMT",
-      "creator": "Dominic Chopping"
+      "title": "Waymo Recalling More Than 3,800 Robotaxis Over Risk of Entering Construction Zones",
+      "desc": "The self-driving car company, is recalling certain fifth-generation automated driving systems after a number of events in which its cars didn’t recognize and drove past ramp-closure signs into pre-planned freeway construction zones.",
+      "link": "https://www.wsj.com/business/autos/waymo-recalling-more-than-3-800-robotaxis-over-risk-of-entering-construction-zones-6829e040?mod=pls_whats_news_us_business_f",
+      "pubDate": "Thu, 18 Jun 2026 13:20:00 GMT",
+      "creator": "Robb M. Stewart"
     },
     {
       "title": "Auto & Transport Roundup: Market Talk",
@@ -164,25 +171,18 @@
       "creator": ""
     },
     {
+      "title": "Car ‘Playgrounds,’ Smartphone Shopping: Inside Carvana’s New-Car Sales Playbook",
+      "desc": "The online used-car company presented a radical plan for its stores.",
+      "link": "https://www.wsj.com/business/autos/carvana-new-car-sales-ddbd12d8?mod=pls_whats_news_us_business_f",
+      "pubDate": "Wed, 17 Jun 2026 12:00:00 GMT",
+      "creator": "Christopher Otts"
+    },
+    {
       "title": "GM in Talks to Supply Weapons Parts to Lockheed Martin",
       "desc": "The automaker seeks to grow its defense subsidiary as the U.S. aims to replenish munitions supplies.",
       "link": "https://www.wsj.com/business/autos/gm-in-talks-to-supply-weapons-parts-to-lockheed-martin-61c32cf5?mod=pls_whats_news_us_business_f",
       "pubDate": "Tue, 16 Jun 2026 17:27:00 GMT",
       "creator": "Drew FitzGerald"
-    },
-    {
-      "title": "EV Startup Rivian Lays Off Hundreds of Workers",
-      "desc": "The job cuts affect employees in Rivian’s service and customer organization, which handles sales and marketing.",
-      "link": "https://www.wsj.com/business/autos/ev-startup-rivian-lays-off-hundreds-of-workers-40033fc8?mod=pls_whats_news_us_business_f",
-      "pubDate": "Tue, 16 Jun 2026 16:33:00 GMT",
-      "creator": "Becky Peterson"
-    },
-    {
-      "title": "Rivian’s Make-or-Break SUV Is Here. Fans Are Already Balking at the Lease Price.",
-      "desc": "The automaker’s fans love the startup’s new R2, but high lease costs show the challenges in the changing electric-vehicle market.",
-      "link": "https://www.wsj.com/business/autos/rivian-r2-price-leasing-6261c8c8?mod=pls_whats_news_us_business_f",
-      "pubDate": "Tue, 16 Jun 2026 09:30:00 GMT",
-      "creator": "Ellie Davis"
     },
     {
       "title": "Opinion | Don’t Let Private Planes Avoid Paying Fees",
@@ -227,6 +227,20 @@
       "creator": ""
     },
     {
+      "title": "U.S. Stocks Poised to Close Week on Strong Note",
+      "desc": "U.S. stocks rebounded and gasoline prices continued to fall after the U.S. and Iran signed their interim pact to wind down the war.",
+      "link": "https://www.wsj.com/finance/stocks/treasurys-stock-futures-rebound-on-u-s-iran-agreement-fed-reaction-512ef8ce?mod=pls_whats_news_us_business_f",
+      "pubDate": "Thu, 18 Jun 2026 19:06:00 GMT",
+      "creator": "Caitlin McCabe"
+    },
+    {
+      "title": "No Oil Demand Peak in Sight, OPEC Says",
+      "desc": "The cartel forecast demand to grow by 19 million barrels a day to around 124 million barrels a day in 2050, driven by road transportation, aviation and petrochemicals.",
+      "link": "https://www.wsj.com/business/energy-oil/opec-sees-oil-demand-growing-with-no-peak-in-sight-ee9d7f61?mod=pls_whats_news_us_business_f",
+      "pubDate": "Thu, 18 Jun 2026 14:54:00 GMT",
+      "creator": "Giulia Petroni"
+    },
+    {
       "title": "Saudi Aramco Weighs Expanding Storage Capacity After Iran War",
       "desc": "Aramco is considering expanding its global oil-storage network after the Iran war exposed the importance of strategic reserves in keeping crude flowing to customers.",
       "link": "https://www.wsj.com/business/energy-oil/saudi-aramco-weighs-expanding-storage-capacity-after-iran-war-fbd3a1c1?mod=pls_whats_news_us_business_f",
@@ -248,18 +262,11 @@
       "creator": ""
     },
     {
-      "title": "U.S. Crude Oil Stockpiles Fall More Than Expected",
-      "desc": "Commercial crude oil stocks were down by 8.3 million barrels as net imports decreased and refineries ran near full capacity.",
-      "link": "https://www.wsj.com/business/energy-oil/u-s-crude-oil-stockpiles-fall-more-than-expected-5138da65?mod=pls_whats_news_us_business_f",
-      "pubDate": "Wed, 17 Jun 2026 15:42:00 GMT",
-      "creator": "Anthony Harrup"
-    },
-    {
-      "title": "Auto & Transport Roundup: Market Talk",
-      "desc": "Find insight on United Airlines, U.S. airline ticket prices, the reopening of Hormuz and more in the latest Market Talks covering the auto and transport sector.",
-      "link": "https://www.wsj.com/business/auto-transport-roundup-market-talk-a7bd5ad9?mod=pls_whats_news_us_business_f",
-      "pubDate": "Tue, 16 Jun 2026 20:54:00 GMT",
-      "creator": ""
+      "title": "Norwegian Air Shuttle to Buy Package Holiday Group Nordic Leisure Travel for $833 Million",
+      "desc": "The low-cost carrier is seeking to boost revenue by integrating its flights with a network of hotels and experiences in the $833 million deal.",
+      "link": "https://www.wsj.com/business/earnings/norwegian-air-shuttle-buys-package-holiday-group-nordic-leisure-travel-for-833-million-d016df00?mod=pls_whats_news_us_business_f",
+      "pubDate": "Tue, 16 Jun 2026 08:07:00 GMT",
+      "creator": "Dominic Chopping"
     },
     {
       "title": "Wizz Air Withholds Guidance Due to Middle East Conflict",
@@ -288,13 +295,6 @@
       "link": "https://www.wsj.com/lifestyle/travel/the-grand-british-tradition-of-getting-sloshed-before-takeoff-is-under-threat-68654c17?mod=pls_whats_news_us_business_f",
       "pubDate": "Fri, 05 Jun 2026 09:00:00 GMT",
       "creator": "David Luhnow"
-    },
-    {
-      "title": "Airlines Called Sustainable Fuel the Future. When an Energy Crisis Broke Out, Barely Any Was Around.",
-      "desc": "While soaring kerosene prices are pushing carriers to their limits, a sustainable option makes up just a fraction of the fuel used for flights",
-      "link": "https://www.wsj.com/pro/sustainable-business/airlines-called-sustainable-fuel-the-future-when-an-energy-crisis-broke-out-barely-any-was-around-f84a200a?mod=pls_whats_news_us_business_f",
-      "pubDate": "Tue, 02 Jun 2026 09:30:00 GMT",
-      "creator": "Clara Hudson"
     },
     {
       "title": "CME Group’s Terry Duffy to Step Down as CEO, Ceding Role to Finance Chief",
@@ -367,6 +367,20 @@
       "creator": "Elias Schisgall"
     },
     {
+      "title": "‘Toy Story 5’ Director on Pixar’s Secret to Making Adults Cry",
+      "desc": "Watch Pixar legend Andrew Stanton relive some of the iconic moments from the 10 animated movies he has written or directed.",
+      "link": "https://www.wsj.com/arts-culture/film/toy-story-5-director-on-pixars-secret-to-making-adults-cry-8bdd398b?mod=pls_whats_news_us_business_f",
+      "pubDate": "Thu, 18 Jun 2026 16:01:00 GMT",
+      "creator": "Ben Fritz"
+    },
+    {
+      "title": "Grand Theft Auto VI Preorders to Begin June 25",
+      "desc": "Take-Two Interactive Software said preorders for its hotly anticipated Grand Theft Auto VI begin June 25 on digital storefronts and at select retailers.",
+      "link": "https://www.wsj.com/business/media/grand-theft-auto-vi-preorders-to-begin-june-25-fbbe9cf0?mod=pls_whats_news_us_business_f",
+      "pubDate": "Thu, 18 Jun 2026 14:43:00 GMT",
+      "creator": "Connor Hart"
+    },
+    {
       "title": "How Hackers Found a Back Door Into the American Living Room",
       "desc": "Nation-state cyberattackers are increasingly using residential proxy networks to mask their traffic, turning everyday electronics into a massive global threat.",
       "link": "https://www.wsj.com/tech/cybersecurity/how-hackers-found-a-back-door-into-the-american-living-room-c117cb9f?mod=pls_whats_news_us_business_f",
@@ -386,20 +400,6 @@
       "link": "https://www.wsj.com/business/media/the-former-drug-dealer-whose-shows-make-millions-without-hollywood-38ad87a9?mod=pls_whats_news_us_business_f",
       "pubDate": "Tue, 16 Jun 2026 16:03:00 GMT",
       "creator": "Ben Fritz"
-    },
-    {
-      "title": "Why Oatly’s Marketing Went From Wordy Billboards to Beverage Events",
-      "desc": "The oat milk company is working with restaurants and cafes to consult on their beverage programs instead of just acting as a supplier.",
-      "link": "https://www.wsj.com/cmo-today/why-oatlys-marketing-went-from-wordy-billboards-to-beverage-events-14537cb1?mod=pls_whats_news_us_business_f",
-      "pubDate": "Tue, 16 Jun 2026 10:00:00 GMT",
-      "creator": "Megan Graham"
-    },
-    {
-      "title": "Justice Department Decision to Allow Paramount Deal Surprised Staff Investigators",
-      "desc": "Department staffers investigating the Warner acquisition were leaning toward recommending a challenge to the merger, people familiar with the matter say.",
-      "link": "https://www.wsj.com/business/media/justice-department-decision-to-allow-paramount-deal-surprised-staff-investigators-a18f70da?mod=pls_whats_news_us_business_f",
-      "pubDate": "Mon, 15 Jun 2026 20:12:00 GMT",
-      "creator": "Dana Mattioli"
     },
     {
       "title": "U.S. Companies Stop Waiting for Supply Chains to Return to Normal",
@@ -507,39 +507,11 @@
       "creator": "Mark Robichaux"
     },
     {
-      "title": "SpaceX Now Has Higher Market Cap Than Amazon",
-      "desc": "Plus, the U.S.-Iran deal lets Tehran sell oil immediately, and a former drug dealer’s shows make millions without Hollywood.",
-      "link": "https://www.wsj.com/politics/policy/spacex-now-has-higher-market-cap-than-amazon-9618ed04?mod=pls_whats_news_us_business_f",
-      "pubDate": "Tue, 16 Jun 2026 21:46:00 GMT",
-      "creator": "Zlati Meyer"
-    },
-    {
-      "title": "SpaceX’s $60 Billion Deal to Buy Cursor Gives It More AI Coding Power",
-      "desc": "The deal for the AI coding agent comes days after a historic IPO that made Space X one of America’s most valuable companies.",
-      "link": "https://www.wsj.com/business/spacex-agrees-to-buy-ai-coding-agent-cursor-for-60-billion-7a473340?mod=pls_whats_news_us_business_f",
-      "pubDate": "Tue, 16 Jun 2026 16:02:00 GMT",
-      "creator": "Becky Peterson"
-    },
-    {
-      "title": "The ‘One Size Fits Most’ Retailer Is Shutting Its Changing Rooms",
-      "desc": "Brandy Melville’s young customers are up in arms over the new policy—but still shopping.",
-      "link": "https://www.wsj.com/business/retail/the-one-size-fits-most-retailer-is-shutting-its-changing-rooms-9d00beb9?mod=pls_whats_news_us_business_f",
-      "pubDate": "Tue, 16 Jun 2026 15:45:00 GMT",
-      "creator": "Celia Bernhardt"
-    },
-    {
-      "title": "Strait of Hormuz to Fully Open by Friday, Trump Says",
-      "desc": "Plus, oil prices fall, and Silicon Valley’s elite pretend to kill each other.",
-      "link": "https://www.wsj.com/tech/strait-of-hormuz-to-fully-open-by-friday-trump-says-f785bdb1?mod=pls_whats_news_us_business_f",
-      "pubDate": "Mon, 15 Jun 2026 21:35:00 GMT",
-      "creator": "Zlati Meyer"
-    },
-    {
-      "title": "Judge Dismisses Elon Musk’s xAI Trade-Secret Lawsuit Against OpenAI",
-      "desc": "The suit alleged OpenAI poached an xAI engineer who worked on a company chatbot.",
-      "link": "https://www.wsj.com/tech/judge-dismisses-elon-musks-xai-trade-secret-lawsuit-against-openai-f637c52e?mod=pls_whats_news_us_business_f",
-      "pubDate": "Mon, 15 Jun 2026 20:47:00 GMT",
-      "creator": "Alyssa Lukpat"
+      "title": "DOJ Defends Musk’s xAI in Data-Center Pollution Lawsuit",
+      "desc": "The Mississippi facility is supporting the training and development of new AI models that the government is relying on for national-security purposes, the department says.",
+      "link": "https://www.wsj.com/pro/sustainable-business/doj-defends-musks-xai-in-data-center-pollution-lawsuit-25df5258?mod=pls_whats_news_us_business_f",
+      "pubDate": "Wed, 17 Jun 2026 16:35:00 GMT",
+      "creator": "Clara Hudson"
     },
     {
       "title": "State Farm’s AI Plan for Sales Agents Sparks Uproar. ‘A Real Slap in the Face.’",
@@ -549,11 +521,18 @@
       "creator": "Jean Eaglesham"
     },
     {
-      "title": "Car ‘Playgrounds,’ Smartphone Shopping: Inside Carvana’s New-Car Sales Playbook",
-      "desc": "The online used-car company presented a radical plan for its stores.",
-      "link": "https://www.wsj.com/business/autos/carvana-new-car-sales-ddbd12d8?mod=pls_whats_news_us_business_f",
-      "pubDate": "Wed, 17 Jun 2026 12:00:00 GMT",
-      "creator": "Christopher Otts"
+      "title": "Oil Supply Could Far Outstrip Demand Growth if Middle East Peace Deal Holds, IEA Says",
+      "desc": "Oil consumption is set to fall sharply lower before flows through Hormuz gradually normalize, setting the stage for a supply surge that could far outstrip demand growth .",
+      "link": "https://www.wsj.com/business/energy-oil/oil-supply-to-rebound-strongly-after-gulf-shock-but-recovery-will-take-months-iea-says-a0ccae8b?mod=pls_whats_news_us_business_f",
+      "pubDate": "Wed, 17 Jun 2026 09:21:00 GMT",
+      "creator": "Giulia Petroni"
+    },
+    {
+      "title": "SpaceX Now Has Higher Market Cap Than Amazon",
+      "desc": "Plus, the U.S.-Iran deal lets Tehran sell oil immediately, and a former drug dealer’s shows make millions without Hollywood.",
+      "link": "https://www.wsj.com/politics/policy/spacex-now-has-higher-market-cap-than-amazon-9618ed04?mod=pls_whats_news_us_business_f",
+      "pubDate": "Tue, 16 Jun 2026 21:46:00 GMT",
+      "creator": "Zlati Meyer"
     },
     {
       "title": "EV Startup Rivian Lays Off Hundreds of Workers",
@@ -563,11 +542,25 @@
       "creator": "Becky Peterson"
     },
     {
-      "title": "The Former Drug Dealer Whose Shows Make Millions Without Hollywood",
-      "desc": "Silk White’s D.I.Y. movies and TV shows are profiting from growing audiences on free streaming services like Tubi and Roku.",
-      "link": "https://www.wsj.com/business/media/the-former-drug-dealer-whose-shows-make-millions-without-hollywood-38ad87a9?mod=pls_whats_news_us_business_f",
-      "pubDate": "Tue, 16 Jun 2026 16:03:00 GMT",
-      "creator": "Ben Fritz"
+      "title": "State Farm’s AI Plan for Sales Agents Sparks Uproar. ‘A Real Slap in the Face.’",
+      "desc": "AI tools and changes to contracts for 19,000 sales agents appear to be a response to the insurer’s eroding status in the industry.",
+      "link": "https://www.wsj.com/finance/state-farms-ai-plan-for-sales-agents-sparks-uproar-a-real-slap-in-the-face-6453e2cb?mod=pls_whats_news_us_business_f",
+      "pubDate": "Wed, 17 Jun 2026 09:30:00 GMT",
+      "creator": "Jean Eaglesham"
+    },
+    {
+      "title": "Mars Is Spending Millions to Give M&M’s a MAHA Makeover",
+      "desc": "The candy maker is trying to re-create M&M’s without artificial colors, but blue’s natural algae substitute is complex and costly.",
+      "link": "https://www.wsj.com/business/mars-is-spending-millions-to-give-m-ms-a-maha-makeover-2fa1bb88?mod=pls_whats_news_us_business_f",
+      "pubDate": "Thu, 18 Jun 2026 17:25:00 GMT",
+      "creator": "Jesse Newman"
+    },
+    {
+      "title": "EV Startup Rivian Lays Off Hundreds of Workers",
+      "desc": "The job cuts affect employees in Rivian’s service and customer organization, which handles sales and marketing.",
+      "link": "https://www.wsj.com/business/autos/ev-startup-rivian-lays-off-hundreds-of-workers-40033fc8?mod=pls_whats_news_us_business_f",
+      "pubDate": "Tue, 16 Jun 2026 16:33:00 GMT",
+      "creator": "Becky Peterson"
     },
     {
       "title": "Allbirds Names New CEO and Changes Name Again",
@@ -575,6 +568,13 @@
       "link": "https://www.wsj.com/tech/allbirds-names-new-ceo-and-changes-name-again-ae98246a?mod=pls_whats_news_us_business_f",
       "pubDate": "Wed, 17 Jun 2026 13:02:00 GMT",
       "creator": "Katherine Hamilton"
+    },
+    {
+      "title": "How Quickly Can the Strait of Hormuz Get Back Up and Running?",
+      "desc": "It could take weeks for traffic through the route to return to even half of prewar levels, with knock-on effects continuing for months.",
+      "link": "https://www.wsj.com/business/energy-oil/how-quickly-can-the-strait-of-hormuz-get-back-up-and-running-a5380c70?mod=pls_whats_news_us_business_f",
+      "pubDate": "Thu, 18 Jun 2026 16:31:00 GMT",
+      "creator": "Georgi Kantchev"
     },
     {
       "title": "Best Small-Business Loans in June 2026",
