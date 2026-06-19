@@ -1,7 +1,42 @@
 {
   "source": "WSJ.com US Business RSS",
-  "ts": "Fri, 19 Jun 2026 10:19:37 GMT",
+  "ts": "Fri, 19 Jun 2026 19:45:41 GMT",
   "items": [
+    {
+      "title": "Basic Materials Roundup: Market Talk",
+      "desc": "Find insight on BHP’s Jansen project, Alamos Gold and more in the latest Market Talks covering basic materials.",
+      "link": "https://www.wsj.com/business/basic-materials-roundup-market-talk-93acff2a?mod=pls_whats_news_us_business_f",
+      "pubDate": "Fri, 19 Jun 2026 17:04:00 GMT",
+      "creator": ""
+    },
+    {
+      "title": "Serious Chemical Accidents Are Rising in the U.S.—and Getting More Dangerous",
+      "desc": "Aging infrastructure is making more plants susceptible to accidents. Many are repeat offenders.",
+      "link": "https://www.wsj.com/us-news/serious-chemical-accidents-are-rising-in-the-u-s-and-getting-more-dangerous-e94fab53?mod=pls_whats_news_us_business_f",
+      "pubDate": "Fri, 19 Jun 2026 15:00:00 GMT",
+      "creator": "Jaclyn Jeffrey-Wilensky"
+    },
+    {
+      "title": "What’s the State of Play in the Strait of Hormuz?",
+      "desc": "It could take weeks for traffic through the route to return to even half of prewar levels, with knock-on effects continuing for months.",
+      "link": "https://www.wsj.com/business/energy-oil/how-quickly-can-the-strait-of-hormuz-get-back-up-and-running-a5380c70?mod=pls_whats_news_us_business_f",
+      "pubDate": "Fri, 19 Jun 2026 14:12:00 GMT",
+      "creator": "Georgi Kantchev"
+    },
+    {
+      "title": "Gerald Shreiber, Who Turned the Soft Pretzel Into a Ubiquitous Stadium Snack, Dies at 84",
+      "desc": "He built a snack-food empire with such products as the SuperPretzel, ICEE drinks and Dippin’ Dots ice cream.",
+      "link": "https://www.wsj.com/business/gerald-shreiber-who-turned-the-soft-pretzel-into-a-ubiquitous-stadium-snack-dies-at-84-4b0639d0?mod=pls_whats_news_us_business_f",
+      "pubDate": "Fri, 19 Jun 2026 14:00:00 GMT",
+      "creator": "Chris Kornelis"
+    },
+    {
+      "title": "The Core Disney Strategy Behind Its Empire, According to the Hosts of ‘Acquired’",
+      "desc": "The ‘Acquired’ podcast traces Walt Disney’s formula to generate reliable profits in a hits-based industry, or basically why we now buy Elsa everything",
+      "link": "https://www.wsj.com/business/media/disney-flywheel-strategy-acquired-podcast-hosts-b08023da?mod=pls_whats_news_us_business_f",
+      "pubDate": "Fri, 19 Jun 2026 14:00:00 GMT",
+      "creator": "Ben Gilbert"
+    },
     {
       "title": "Local Burger Chains Are Winning the Fast-Food Wars",
       "desc": "In-N-Out, Culver’s and Whataburger drive sales and location growth with fresh food and friendly service.",
@@ -10,32 +45,11 @@
       "creator": "Heather Haddon"
     },
     {
-      "title": "Vegas Was Once America’s Bargain Vacation. Now It’s a Luxury Destination.",
-      "desc": "Like the U.S. economy broadly, Las Vegas increasingly relies on a smaller group of well-off people.",
-      "link": "https://www.wsj.com/business/hospitality/las-vegas-vacation-wealthy-e77c0e63?mod=pls_whats_news_us_business_f",
-      "pubDate": "Fri, 19 Jun 2026 01:00:00 GMT",
-      "creator": "Rachel Louise Ensign"
-    },
-    {
-      "title": "Iran Deal Skirts Why Trump Went to War",
-      "desc": "Plus, the Supreme Court ruled the government can’t ban all drug users from owning guns, and a business deal tore apart Earth, Wind & Fire.",
-      "link": "https://www.wsj.com/business/iran-deal-skirts-why-trump-went-to-war-ad98c3ad?mod=pls_whats_news_us_business_f",
-      "pubDate": "Thu, 18 Jun 2026 21:14:00 GMT",
-      "creator": "Zlati Meyer"
-    },
-    {
-      "title": "Stocks Rally, Gas Prices Fall as U.S., Iran Move Ahead on Peace Deal",
-      "desc": "Nasdaq gains nearly 2% in a reversal from Wednesday’s decline.",
-      "link": "https://www.wsj.com/business/energy-oil/stocks-rally-gas-prices-fall-as-u-s-iran-move-ahead-on-peace-deal-e1b8d56a?mod=pls_whats_news_us_business_f",
-      "pubDate": "Thu, 18 Jun 2026 21:09:00 GMT",
-      "creator": "Vicky Ge Huang"
-    },
-    {
-      "title": "How Charlamagne Tha God Mastered the Modern Media Era",
-      "desc": "His long-running morning show “The Breakfast Club” makes headlines and is a Netflix hit. His media empire is growing.",
-      "link": "https://www.wsj.com/business/media/how-charlamagne-tha-god-mastered-the-modern-media-era-b0582068?mod=pls_whats_news_us_business_f",
-      "pubDate": "Thu, 18 Jun 2026 20:48:00 GMT",
-      "creator": "Anne Steele"
+      "title": "UniCredit to Lift Commerzbank Stake to 42.5% After Initial Offer Period",
+      "desc": "The Italian lender plans to reopen its offer to Commerzbank shareholders for another two weeks.",
+      "link": "https://www.wsj.com/business/deals/unicredit-to-lift-commerzbank-stake-to-42-5-after-initial-offer-period-eab1cff0?mod=pls_whats_news_us_business_f",
+      "pubDate": "Fri, 19 Jun 2026 15:25:00 GMT",
+      "creator": "Aimee Look"
     },
     {
       "title": "Celebrity-Favorite Retailer Reformation Prepares for Summer IPO",
@@ -64,20 +78,6 @@
       "link": "https://www.wsj.com/finance/banking/europes-biggest-banking-deal-in-years-is-getting-closer-a10ec4bc?mod=pls_whats_news_us_business_f",
       "pubDate": "Wed, 17 Jun 2026 10:33:00 GMT",
       "creator": "Ben Dummett"
-    },
-    {
-      "title": "Diners Aren’t as Into Pizza, but Private Equity Is",
-      "desc": "PE firm LongRange Capital will buy Pizza Hut’s operations outside mainland China for about $1.5 billion as part of a broader deal.",
-      "link": "https://www.wsj.com/business/deals/yum-brands-to-sell-pizza-hut-for-2-7-billion-e7c5565e?mod=pls_whats_news_us_business_f",
-      "pubDate": "Tue, 16 Jun 2026 19:40:00 GMT",
-      "creator": "Heather Haddon"
-    },
-    {
-      "title": "Olin, Huntsman to Combine in Stock Swap",
-      "desc": "Olin and Huntsman have agreed to combine in all-stock deal that creates a North American chemicals company that generated combined revenue of about $12.5 billion last year.",
-      "link": "https://www.wsj.com/business/deals/olin-huntsman-to-combine-in-stock-swap-061c44eb?mod=pls_whats_news_us_business_f",
-      "pubDate": "Tue, 16 Jun 2026 11:24:00 GMT",
-      "creator": "Colin Kellaher"
     },
     {
       "title": "Mars Is Spending Millions to Give M&M’s a MAHA Makeover",
@@ -115,10 +115,17 @@
       "creator": "Connor Hart"
     },
     {
-      "title": "Tech Investor Prosus’ Revenue Rises on Growth Across Businesses, Tencent",
-      "desc": "Core headline earnings are expected to increase between 19% to 28% reflecting strong revenue growth and profitability across its businesses, most notably Tencent.",
+      "title": "Auto & Transport Roundup: Market Talk",
+      "desc": "Find insight on Qantas Airways’ rollout of ultra-long-haul services, shipping disruption through the Strait of Hormuz and more in the latest Market Talks covering the auto and transport sector.",
+      "link": "https://www.wsj.com/business/auto-transport-roundup-market-talk-6c686de0?mod=pls_whats_news_us_business_f",
+      "pubDate": "Fri, 19 Jun 2026 16:58:00 GMT",
+      "creator": ""
+    },
+    {
+      "title": "Tech Investor Prosus Posts Core Earnings Rise on Growth Across Units, Tencent",
+      "desc": "Tencent’s largest shareholder expects core earnings for fiscal 2026 to get a boost from revenue growth across its own operations as well as its investment in the tech giant.",
       "link": "https://www.wsj.com/business/earnings/prosus-revenue-rises-on-growth-across-businesses-tencent-31e24051?mod=pls_whats_news_us_business_f",
-      "pubDate": "Fri, 19 Jun 2026 09:32:00 GMT",
+      "pubDate": "Fri, 19 Jun 2026 13:02:00 GMT",
       "creator": "Najat Kantouar"
     },
     {
@@ -143,17 +150,17 @@
       "creator": "Elias Schisgall"
     },
     {
-      "title": "Straumann Shares Climb After Lower-Than-Expected Tariffs Boost Outlook",
-      "desc": "The dental-implant company’s stock was up 9.7%  after it raised its profitability outlook for the year, citing lower-than-anticipated tariffs and cost savings.",
-      "link": "https://www.wsj.com/business/retail/straumann-shares-climb-after-lower-than-expected-tariffs-boost-outlook-9fe7ccc3?mod=pls_whats_news_us_business_f",
-      "pubDate": "Wed, 17 Jun 2026 08:01:00 GMT",
-      "creator": "Adrià Calatayud"
+      "title": "The Secret Revolution in Battery Technology: 3-D Printing",
+      "desc": "Startups are attempting to put energy storage anywhere and everywhere.",
+      "link": "https://www.wsj.com/tech/battery-technology-3d-printing-c319ca9a?mod=pls_whats_news_us_business_f",
+      "pubDate": "Fri, 19 Jun 2026 12:00:00 GMT",
+      "creator": "Christopher Mims"
     },
     {
       "title": "Chinese Autonomous-Driving Unicorn Targets $1 Billion Hong Kong IPO",
-      "desc": "Chinese autonomous-driving company Momenta’s valuation has reached around $9 billion as it gears up to list in Hong Kong, people familiar with the matter said.",
+      "desc": "Momenta’s valuation has reached around $9 billion as it gears up to list in Hong Kong, people familiar with the matter said.",
       "link": "https://www.wsj.com/business/autos/chinese-autonomous-driving-unicorn-targets-1-billion-hong-kong-ipo-a8e2401f?mod=pls_whats_news_us_business_f",
-      "pubDate": "Fri, 19 Jun 2026 04:33:00 GMT",
+      "pubDate": "Fri, 19 Jun 2026 10:26:00 GMT",
       "creator": "Jiahui Huang"
     },
     {
@@ -176,13 +183,6 @@
       "link": "https://www.wsj.com/business/auto-transport-roundup-market-talk-ff48ffd8?mod=pls_whats_news_us_business_f",
       "pubDate": "Wed, 17 Jun 2026 20:55:00 GMT",
       "creator": ""
-    },
-    {
-      "title": "Car ‘Playgrounds,’ Smartphone Shopping: Inside Carvana’s New-Car Sales Playbook",
-      "desc": "The online used-car company presented a radical plan for its stores.",
-      "link": "https://www.wsj.com/business/autos/carvana-new-car-sales-ddbd12d8?mod=pls_whats_news_us_business_f",
-      "pubDate": "Wed, 17 Jun 2026 12:00:00 GMT",
-      "creator": "Christopher Otts"
     },
     {
       "title": "Opinion | Trump Explains Why He Cut a Deal With Iran",
@@ -227,18 +227,25 @@
       "creator": "The Editorial Board"
     },
     {
+      "title": "Hormuz Reopening Shifts Focus to Gulf Oil Storage and Shipping",
+      "desc": "Recovery hinges both on whether tankers can freely transit the strait, and if the region’s oil producers can load enough crude once these vessels are ready to sail, according to Rystad Energy.",
+      "link": "https://www.wsj.com/business/energy-oil/hormuz-reopening-shifts-focus-to-gulf-oil-storage-and-shipping-53430fa8?mod=pls_whats_news_us_business_f",
+      "pubDate": "Fri, 19 Jun 2026 11:27:00 GMT",
+      "creator": "Farhan Rafid"
+    },
+    {
+      "title": "Stocks Rally, Gas Prices Fall as U.S., Iran Move Ahead on Peace Deal",
+      "desc": "Nasdaq gains nearly 2% in a reversal from Wednesday’s decline.",
+      "link": "https://www.wsj.com/business/energy-oil/stocks-rally-gas-prices-fall-as-u-s-iran-move-ahead-on-peace-deal-e1b8d56a?mod=pls_whats_news_us_business_f",
+      "pubDate": "Thu, 18 Jun 2026 21:09:00 GMT",
+      "creator": "Vicky Ge Huang"
+    },
+    {
       "title": "U.S. Stocks Poised to Close Week on Strong Note",
       "desc": "U.S. stocks rebounded and gasoline prices continued to fall after the U.S. and Iran signed their interim pact to wind down the war.",
       "link": "https://www.wsj.com/finance/stocks/treasurys-stock-futures-rebound-on-u-s-iran-agreement-fed-reaction-512ef8ce?mod=pls_whats_news_us_business_f",
       "pubDate": "Thu, 18 Jun 2026 19:06:00 GMT",
       "creator": "Caitlin McCabe"
-    },
-    {
-      "title": "How Quickly Can the Strait of Hormuz Get Back Up and Running?",
-      "desc": "It could take weeks for traffic through the route to return to even half of prewar levels, with knock-on effects continuing for months.",
-      "link": "https://www.wsj.com/business/energy-oil/how-quickly-can-the-strait-of-hormuz-get-back-up-and-running-a5380c70?mod=pls_whats_news_us_business_f",
-      "pubDate": "Thu, 18 Jun 2026 16:31:00 GMT",
-      "creator": "Georgi Kantchev"
     },
     {
       "title": "No Oil Demand Peak in Sight, OPEC Says",
@@ -253,13 +260,6 @@
       "link": "https://www.wsj.com/business/energy-oil/can-we-build-a-new-industry-to-remove-carbon-from-the-air-eacef8f2?mod=pls_whats_news_us_business_f",
       "pubDate": "Thu, 18 Jun 2026 13:25:00 GMT",
       "creator": "Ed Ballard"
-    },
-    {
-      "title": "Saudi Aramco Weighs Expanding Storage Capacity After Iran War",
-      "desc": "Aramco is considering expanding its global oil-storage network after the Iran war exposed the importance of strategic reserves in keeping crude flowing to customers.",
-      "link": "https://www.wsj.com/business/energy-oil/saudi-aramco-weighs-expanding-storage-capacity-after-iran-war-fbd3a1c1?mod=pls_whats_news_us_business_f",
-      "pubDate": "Thu, 18 Jun 2026 09:58:00 GMT",
-      "creator": "Giulia Petroni"
     },
     {
       "title": "Norwegian Air Shuttle to Buy Package Holiday Group Nordic Leisure Travel for $833 Million",
@@ -332,6 +332,20 @@
       "creator": "Dean Seal"
     },
     {
+      "title": "Vegas Was Once America’s Bargain Vacation. Now It’s a Luxury Destination.",
+      "desc": "Like the U.S. economy broadly, Las Vegas increasingly relies on a smaller group of well-off people.",
+      "link": "https://www.wsj.com/business/hospitality/las-vegas-vacation-wealthy-e77c0e63?mod=pls_whats_news_us_business_f",
+      "pubDate": "Fri, 19 Jun 2026 01:00:00 GMT",
+      "creator": "Rachel Louise Ensign"
+    },
+    {
+      "title": "Diners Aren’t as Into Pizza, but Private Equity Is",
+      "desc": "PE firm LongRange Capital will buy Pizza Hut’s operations outside mainland China for about $1.5 billion as part of a broader deal.",
+      "link": "https://www.wsj.com/business/deals/yum-brands-to-sell-pizza-hut-for-2-7-billion-e7c5565e?mod=pls_whats_news_us_business_f",
+      "pubDate": "Tue, 16 Jun 2026 19:40:00 GMT",
+      "creator": "Heather Haddon"
+    },
+    {
       "title": "Hotel Owners Are Rebelling Against Marriott’s Loyalty Program",
       "desc": "Owners representing nearly 1,000 hotels demand Marriott revise the rules of its popular Bonvoy program.",
       "link": "https://www.wsj.com/business/hospitality/hotel-owners-are-rebelling-against-marriotts-loyalty-program-7625a5d5?mod=pls_whats_news_us_business_f",
@@ -353,18 +367,11 @@
       "creator": "Heather Haddon"
     },
     {
-      "title": "Jared Kushner’s $5 Billion Albanian Reality Check",
-      "desc": "Kushner is proposing to build luxury beach hotels and resorts in a corner of Eastern Europe often overlooked by U.S. investors—but things aren’t going well.",
-      "link": "https://www.wsj.com/real-estate/jared-kushner-albania-fb5dbcc0?mod=pls_whats_news_us_business_f",
-      "pubDate": "Thu, 11 Jun 2026 01:00:00 GMT",
-      "creator": "Eliot Brown"
-    },
-    {
-      "title": "Cracker Barrel Posts Surprise Profit, Lifts Outlook for Year",
-      "desc": "The upbeat results come after the restaurant chain struggled with customer complaints and backlash from its short-lived logo change.",
-      "link": "https://www.wsj.com/business/hospitality/cracker-barrel-posts-surprise-profit-lifts-outlook-for-year-4b359ecd?mod=pls_whats_news_us_business_f",
-      "pubDate": "Tue, 09 Jun 2026 22:33:00 GMT",
-      "creator": "Elias Schisgall"
+      "title": "How Charlamagne Tha God Mastered the Modern Media Era",
+      "desc": "His long-running morning show “The Breakfast Club” makes headlines and is a Netflix hit. His media empire is growing.",
+      "link": "https://www.wsj.com/business/media/how-charlamagne-tha-god-mastered-the-modern-media-era-b0582068?mod=pls_whats_news_us_business_f",
+      "pubDate": "Thu, 18 Jun 2026 20:48:00 GMT",
+      "creator": "Anne Steele"
     },
     {
       "title": "‘Toy Story 5’ Director on Pixar’s Secret to Making Adults Cry",
@@ -393,13 +400,6 @@
       "link": "https://www.wsj.com/cmo-today/procter-gamble-scripted-dramas-are-coming-to-a-supermarket-near-you-875cb366?mod=pls_whats_news_us_business_f",
       "pubDate": "Wed, 17 Jun 2026 11:00:00 GMT",
       "creator": "Patrick Coffee"
-    },
-    {
-      "title": "The Former Drug Dealer Whose Shows Make Millions Without Hollywood",
-      "desc": "Silk White’s D.I.Y. movies and TV shows are profiting from growing audiences on free streaming services like Tubi and Roku.",
-      "link": "https://www.wsj.com/business/media/the-former-drug-dealer-whose-shows-make-millions-without-hollywood-38ad87a9?mod=pls_whats_news_us_business_f",
-      "pubDate": "Tue, 16 Jun 2026 16:03:00 GMT",
-      "creator": "Ben Fritz"
     },
     {
       "title": "U.S. Companies Stop Waiting for Supply Chains to Return to Normal",
@@ -507,6 +507,13 @@
       "creator": "Mark Robichaux"
     },
     {
+      "title": "Iran Deal Skirts Why Trump Went to War",
+      "desc": "Plus, the Supreme Court ruled the government can’t ban all drug users from owning guns, and a business deal tore apart Earth, Wind & Fire.",
+      "link": "https://www.wsj.com/business/iran-deal-skirts-why-trump-went-to-war-ad98c3ad?mod=pls_whats_news_us_business_f",
+      "pubDate": "Thu, 18 Jun 2026 21:14:00 GMT",
+      "creator": "Zlati Meyer"
+    },
+    {
       "title": "The Woman Who Cracked China’s Grip on Rare Earths",
       "desc": "Amanda Lacaze risked her career to fix Australian mining company Lynas. Now she’s supplying the Pentagon.",
       "link": "https://www.wsj.com/business/amanda-lacaze-lynas-rare-earths-australia-91e8ad30?mod=pls_whats_news_us_business_f",
@@ -521,6 +528,13 @@
       "creator": "Clara Hudson"
     },
     {
+      "title": "Car ‘Playgrounds,’ Smartphone Shopping: Inside Carvana’s New-Car Sales Playbook",
+      "desc": "The online used-car company presented a radical plan for its stores.",
+      "link": "https://www.wsj.com/business/autos/carvana-new-car-sales-ddbd12d8?mod=pls_whats_news_us_business_f",
+      "pubDate": "Wed, 17 Jun 2026 12:00:00 GMT",
+      "creator": "Christopher Otts"
+    },
+    {
       "title": "State Farm’s AI Plan for Sales Agents Sparks Uproar. ‘A Real Slap in the Face.’",
       "desc": "AI tools and changes to contracts for 19,000 sales agents appear to be a response to the insurer’s eroding status in the industry.",
       "link": "https://www.wsj.com/finance/state-farms-ai-plan-for-sales-agents-sparks-uproar-a-real-slap-in-the-face-6453e2cb?mod=pls_whats_news_us_business_f",
@@ -528,18 +542,11 @@
       "creator": "Jean Eaglesham"
     },
     {
-      "title": "Oil Supply Could Far Outstrip Demand Growth if Middle East Peace Deal Holds, IEA Says",
-      "desc": "Oil consumption is set to fall sharply lower before flows through Hormuz gradually normalize, setting the stage for a supply surge that could far outstrip demand growth .",
-      "link": "https://www.wsj.com/business/energy-oil/oil-supply-to-rebound-strongly-after-gulf-shock-but-recovery-will-take-months-iea-says-a0ccae8b?mod=pls_whats_news_us_business_f",
-      "pubDate": "Wed, 17 Jun 2026 09:21:00 GMT",
-      "creator": "Giulia Petroni"
-    },
-    {
-      "title": "SpaceX Now Has Higher Market Cap Than Amazon",
-      "desc": "Plus, the U.S.-Iran deal lets Tehran sell oil immediately, and a former drug dealer’s shows make millions without Hollywood.",
-      "link": "https://www.wsj.com/politics/policy/spacex-now-has-higher-market-cap-than-amazon-9618ed04?mod=pls_whats_news_us_business_f",
-      "pubDate": "Tue, 16 Jun 2026 21:46:00 GMT",
-      "creator": "Zlati Meyer"
+      "title": "Vegas Was Once America’s Bargain Vacation. Now It’s a Luxury Destination.",
+      "desc": "Like the U.S. economy broadly, Las Vegas increasingly relies on a smaller group of well-off people.",
+      "link": "https://www.wsj.com/business/hospitality/las-vegas-vacation-wealthy-e77c0e63?mod=pls_whats_news_us_business_f",
+      "pubDate": "Fri, 19 Jun 2026 01:00:00 GMT",
+      "creator": "Rachel Louise Ensign"
     },
     {
       "title": "Mars Is Spending Millions to Give M&M’s a MAHA Makeover",
@@ -563,18 +570,11 @@
       "creator": "Allison Pohle"
     },
     {
-      "title": "The Woman Who Cracked China’s Grip on Rare Earths",
-      "desc": "Amanda Lacaze risked her career to fix Australian mining company Lynas. Now she’s supplying the Pentagon.",
-      "link": "https://www.wsj.com/business/amanda-lacaze-lynas-rare-earths-australia-91e8ad30?mod=pls_whats_news_us_business_f",
-      "pubDate": "Thu, 18 Jun 2026 19:52:00 GMT",
-      "creator": "Jon Emont"
-    },
-    {
-      "title": "The Unsung MVP of World Cup Fun? She’s Running 39 Days of Events at the Mega Mall",
-      "desc": "We followed the American Dream mall’s events director as she takes multitasking to the next level during the soccer extravaganza",
-      "link": "https://www.wsj.com/sports/soccer/the-unsung-mvp-of-world-cup-fun-shes-running-39-days-of-events-at-the-mega-mall-4da26c3d?mod=pls_whats_news_us_business_f",
-      "pubDate": "Thu, 18 Jun 2026 15:45:00 GMT",
-      "creator": "Allison Pohle"
+      "title": "Local Burger Chains Are Winning the Fast-Food Wars",
+      "desc": "In-N-Out, Culver’s and Whataburger drive sales and location growth with fresh food and friendly service.",
+      "link": "https://www.wsj.com/business/hospitality/fast-food-regional-chains-ad7d97c3?mod=pls_whats_news_us_business_f",
+      "pubDate": "Fri, 19 Jun 2026 09:30:00 GMT",
+      "creator": "Heather Haddon"
     },
     {
       "title": "Best Small-Business Loans in June 2026",
