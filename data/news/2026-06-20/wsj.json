@@ -1,48 +1,48 @@
 {
   "source": "WSJ.com US Business RSS",
-  "ts": "Sat, 20 Jun 2026 08:49:48 GMT",
+  "ts": "Sat, 20 Jun 2026 19:20:16 GMT",
   "items": [
+    {
+      "title": "Immigration Crackdown Lifts Private-Prison Stocks",
+      "desc": "So far this year, prison operators Geo Group and CoreCivic are outperforming tech and energy giants alike.",
+      "link": "https://www.wsj.com/business/immigration-crackdown-lifts-private-prison-stocks-cc5e4442?mod=pls_whats_news_us_business_f",
+      "pubDate": "Sat, 20 Jun 2026 17:00:00 GMT",
+      "creator": "Heather Gillers"
+    },
+    {
+      "title": "Pizza Hut Lost in the U.S. Now It’s Selling for $2.7 Billion.",
+      "desc": "Watch how Pizza Hut lost its grasp on the U.S. pizza market to Domino’s, leading to its sale in two separate deals.",
+      "link": "https://www.wsj.com/business/hospitality/pizza-hut-lost-in-the-u-s-now-its-selling-for-2-7-billion-a09f37f7?mod=pls_whats_news_us_business_f",
+      "pubDate": "Sat, 20 Jun 2026 16:00:00 GMT",
+      "creator": "Ava Anderson"
+    },
+    {
+      "title": "Protein-in-Everything Craze Has a Problem: Not Enough Whey Protein",
+      "desc": "Food companies are packing whey into more of their products to meet demand from protein-obsessed consumers—and depleting supplies.",
+      "link": "https://www.wsj.com/business/protein-demand-whey-prices-3717aa3a?mod=pls_whats_news_us_business_f",
+      "pubDate": "Sat, 20 Jun 2026 15:27:00 GMT",
+      "creator": "Amira McKee"
+    },
+    {
+      "title": "Iran Can Now Sell Oil. How Fast Can It Ramp Up?",
+      "desc": "The Washington-Tehran deal allows Iranian oil shipments on the open market for the first time since 2018.",
+      "link": "https://www.wsj.com/business/energy-oil/iran-can-now-sell-oil-how-fast-can-it-ramp-up-ccb6e58d?mod=pls_whats_news_us_business_f",
+      "pubDate": "Sat, 20 Jun 2026 15:12:00 GMT",
+      "creator": "Benoit Faucon"
+    },
+    {
+      "title": "News Quiz for June 20, 2026",
+      "desc": "",
+      "link": "https://www.wsj.com/business/media/news-quiz-for-june-20-2026-ba5503b2?mod=pls_whats_news_us_business_f",
+      "pubDate": "Sat, 20 Jun 2026 10:00:00 GMT",
+      "creator": "Daniel Akst"
+    },
     {
       "title": "The Classic Movie That Was Nearly Destroyed by a Single Line of Code",
       "desc": "A beloved film was accidentally deleted—and miraculously saved. The real story behind the ‘Toy Story’ franchise is even better than the movies.",
       "link": "https://www.wsj.com/business/media/toy-story-5-saved-pixar-78e29161?mod=pls_whats_news_us_business_f",
       "pubDate": "Sat, 20 Jun 2026 01:00:00 GMT",
       "creator": "Ben Cohen"
-    },
-    {
-      "title": "Serious Chemical Accidents Are Rising in the U.S.—and Getting More Dangerous",
-      "desc": "Aging infrastructure is making more plants susceptible to accidents. Many are repeat offenders.",
-      "link": "https://www.wsj.com/us-news/serious-chemical-accidents-are-rising-in-the-u-s-and-getting-more-dangerous-e94fab53?mod=pls_whats_news_us_business_f",
-      "pubDate": "Fri, 19 Jun 2026 15:00:00 GMT",
-      "creator": "Jaclyn Jeffrey-Wilensky"
-    },
-    {
-      "title": "What’s the State of Play in the Strait of Hormuz?",
-      "desc": "It could take weeks for traffic through the route to return to even half of prewar levels, with knock-on effects continuing for months.",
-      "link": "https://www.wsj.com/business/energy-oil/how-quickly-can-the-strait-of-hormuz-get-back-up-and-running-a5380c70?mod=pls_whats_news_us_business_f",
-      "pubDate": "Fri, 19 Jun 2026 14:12:00 GMT",
-      "creator": "Georgi Kantchev"
-    },
-    {
-      "title": "Gerald Shreiber, Who Turned the Soft Pretzel Into a Ubiquitous Stadium Snack, Dies at 84",
-      "desc": "He built a snack-food empire with such products as the SuperPretzel, ICEE drinks and Dippin’ Dots ice cream.",
-      "link": "https://www.wsj.com/business/gerald-shreiber-who-turned-the-soft-pretzel-into-a-ubiquitous-stadium-snack-dies-at-84-4b0639d0?mod=pls_whats_news_us_business_f",
-      "pubDate": "Fri, 19 Jun 2026 14:00:00 GMT",
-      "creator": "Chris Kornelis"
-    },
-    {
-      "title": "The Core Disney Strategy Behind Its Empire, According to the Hosts of ‘Acquired’",
-      "desc": "The ‘Acquired’ podcast traces Walt Disney’s formula to generate reliable profits in a hits-based industry, or basically why we now buy Elsa everything",
-      "link": "https://www.wsj.com/business/media/disney-flywheel-strategy-acquired-podcast-hosts-b08023da?mod=pls_whats_news_us_business_f",
-      "pubDate": "Fri, 19 Jun 2026 14:00:00 GMT",
-      "creator": "Ben Gilbert"
-    },
-    {
-      "title": "Local Burger Chains Are Winning the Fast-Food Wars",
-      "desc": "In-N-Out, Culver’s and Whataburger drive sales and location growth with fresh food and friendly service.",
-      "link": "https://www.wsj.com/business/hospitality/fast-food-regional-chains-ad7d97c3?mod=pls_whats_news_us_business_f",
-      "pubDate": "Fri, 19 Jun 2026 09:30:00 GMT",
-      "creator": "Heather Haddon"
     },
     {
       "title": "UniCredit to Lift Commerzbank Stake to 42.5% After Initial Offer Period",
@@ -227,6 +227,13 @@
       "creator": "Rahm Emanuel"
     },
     {
+      "title": "What’s the State of Play in the Strait of Hormuz?",
+      "desc": "It could take weeks for traffic through the route to return to even half of prewar levels, with knock-on effects continuing for months.",
+      "link": "https://www.wsj.com/business/energy-oil/how-quickly-can-the-strait-of-hormuz-get-back-up-and-running-a5380c70?mod=pls_whats_news_us_business_f",
+      "pubDate": "Fri, 19 Jun 2026 14:12:00 GMT",
+      "creator": "Georgi Kantchev"
+    },
+    {
       "title": "Hormuz Reopening Shifts Focus to Gulf Oil Storage and Shipping",
       "desc": "Recovery hinges both on whether tankers can freely transit the strait, and if the region’s oil producers can load enough crude once these vessels are ready to sail, according to Rystad Energy.",
       "link": "https://www.wsj.com/business/energy-oil/hormuz-reopening-shifts-focus-to-gulf-oil-storage-and-shipping-53430fa8?mod=pls_whats_news_us_business_f",
@@ -253,13 +260,6 @@
       "link": "https://www.wsj.com/business/energy-oil/opec-sees-oil-demand-growing-with-no-peak-in-sight-ee9d7f61?mod=pls_whats_news_us_business_f",
       "pubDate": "Thu, 18 Jun 2026 14:54:00 GMT",
       "creator": "Giulia Petroni"
-    },
-    {
-      "title": "Can We Build a New Industry to Remove Carbon From the Air?",
-      "desc": "Plus, Iran’s chance to boost oil revenues, a recycling giant bets on automation and the DOJ defends xAI in a data-center pollution lawsuit.",
-      "link": "https://www.wsj.com/business/energy-oil/can-we-build-a-new-industry-to-remove-carbon-from-the-air-eacef8f2?mod=pls_whats_news_us_business_f",
-      "pubDate": "Thu, 18 Jun 2026 13:25:00 GMT",
-      "creator": "Ed Ballard"
     },
     {
       "title": "Auto & Transport Roundup: Market Talk",
@@ -332,6 +332,13 @@
       "creator": "Dean Seal"
     },
     {
+      "title": "Local Burger Chains Are Winning the Fast-Food Wars",
+      "desc": "In-N-Out, Culver’s and Whataburger drive sales and location growth with fresh food and friendly service.",
+      "link": "https://www.wsj.com/business/hospitality/fast-food-regional-chains-ad7d97c3?mod=pls_whats_news_us_business_f",
+      "pubDate": "Fri, 19 Jun 2026 09:30:00 GMT",
+      "creator": "Heather Haddon"
+    },
+    {
       "title": "Vegas Was Once America’s Bargain Vacation. Now It’s a Luxury Destination.",
       "desc": "Like the U.S. economy broadly, Las Vegas increasingly relies on a smaller group of well-off people.",
       "link": "https://www.wsj.com/business/hospitality/las-vegas-vacation-wealthy-e77c0e63?mod=pls_whats_news_us_business_f",
@@ -360,11 +367,11 @@
       "creator": "Heather Haddon"
     },
     {
-      "title": "How Cracker Barrel’s CEO Saved Her Job by Abandoning Her Own Strategy",
-      "desc": "The restaurant chain’s shares shot up Tuesday after Julie Felss Masino unveiled a more profitable outlook and said diners were returning.",
-      "link": "https://www.wsj.com/business/hospitality/how-cracker-barrels-ceo-saved-her-job-by-abandoning-her-own-strategy-8ce653a4?mod=pls_whats_news_us_business_f",
-      "pubDate": "Thu, 11 Jun 2026 01:03:00 GMT",
-      "creator": "Heather Haddon"
+      "title": "The Core Disney Strategy Behind Its Empire, According to the Hosts of ‘Acquired’",
+      "desc": "The ‘Acquired’ podcast traces Walt Disney’s formula to generate reliable profits in a hits-based industry, or basically why we now buy Elsa everything",
+      "link": "https://www.wsj.com/business/media/disney-flywheel-strategy-acquired-podcast-hosts-b08023da?mod=pls_whats_news_us_business_f",
+      "pubDate": "Fri, 19 Jun 2026 14:00:00 GMT",
+      "creator": "Ben Gilbert"
     },
     {
       "title": "How Charlamagne Tha God Mastered the Modern Media Era",
@@ -393,13 +400,6 @@
       "link": "https://www.wsj.com/tech/cybersecurity/how-hackers-found-a-back-door-into-the-american-living-room-c117cb9f?mod=pls_whats_news_us_business_f",
       "pubDate": "Thu, 18 Jun 2026 02:00:00 GMT",
       "creator": "Robert McMillan"
-    },
-    {
-      "title": "Procter & Gamble Scripted Dramas Are Coming to a Supermarket Near You",
-      "desc": "Albertsons collaborated with the packaged-goods giant to produce ‘Rico’s Tacos,’ a short-form series designed to help move products.",
-      "link": "https://www.wsj.com/cmo-today/procter-gamble-scripted-dramas-are-coming-to-a-supermarket-near-you-875cb366?mod=pls_whats_news_us_business_f",
-      "pubDate": "Wed, 17 Jun 2026 11:00:00 GMT",
-      "creator": "Patrick Coffee"
     },
     {
       "title": "U.S. Companies Stop Waiting for Supply Chains to Return to Normal",
@@ -437,6 +437,13 @@
       "creator": "Liz Young"
     },
     {
+      "title": "Why Apple Enjoys Peerless iPhone Pricing Power",
+      "desc": "With plans to boost prices, Apple is counting on an affluent user base able to shell out $1,000 or more for a device.",
+      "link": "https://www.wsj.com/tech/why-apple-enjoys-peerless-iphone-pricing-power-9f942dfa?mod=pls_whats_news_us_business_f",
+      "pubDate": "Sat, 20 Jun 2026 09:30:00 GMT",
+      "creator": "Andrew Barnett"
+    },
+    {
       "title": "SpaceX’s Strength in Space, Connectivity Supports Initial Credit Ratings, Firms Say",
       "desc": "S&P Global Ratings, Moody’s Ratings and Fitch Ratings also noted risks tied to the company’s capital needs and nascent AI business, and gave it a stable outlook.",
       "link": "https://www.wsj.com/business/spacexs-strength-in-space-connectivity-supports-initial-credit-ratings-firms-say-f0f1f264?mod=pls_whats_news_us_business_f",
@@ -463,13 +470,6 @@
       "link": "https://www.wsj.com/business/retail/south-korea-fines-coupang-410-million-over-data-breach-0e3e400c?mod=pls_whats_news_us_business_f",
       "pubDate": "Thu, 11 Jun 2026 05:53:00 GMT",
       "creator": "Kwanwoo Jun"
-    },
-    {
-      "title": "The Debate-Loving German Telecom Exec Plotting a Blockbuster Merger",
-      "desc": "Timotheus Höttges transformed Deutsche Telekom by doubling down on America’s maverick brand, T-Mobile. His final test is a $300 billion-plus deal.",
-      "link": "https://www.wsj.com/business/telecom/t-mobile-deutsche-telekom-merger-4fdc8eba?mod=pls_whats_news_us_business_f",
-      "pubDate": "Wed, 10 Jun 2026 19:00:00 GMT",
-      "creator": "Patience Haggin"
     },
     {
       "title": "Anthropic, Google, Other Tech Companies Commit $915 Million to Pull Carbon Out of the Sky",
@@ -514,6 +514,20 @@
       "creator": ""
     },
     {
+      "title": "Serious Chemical Accidents Are Rising in the U.S.—and Getting More Dangerous",
+      "desc": "Aging infrastructure is making more plants susceptible to accidents. Many are repeat offenders.",
+      "link": "https://www.wsj.com/us-news/serious-chemical-accidents-are-rising-in-the-u-s-and-getting-more-dangerous-e94fab53?mod=pls_whats_news_us_business_f",
+      "pubDate": "Fri, 19 Jun 2026 15:00:00 GMT",
+      "creator": "Jaclyn Jeffrey-Wilensky"
+    },
+    {
+      "title": "Gerald Shreiber, Who Turned the Soft Pretzel Into a Ubiquitous Stadium Snack, Dies at 84",
+      "desc": "He built a snack-food empire with such products as the SuperPretzel, ICEE drinks and Dippin’ Dots ice cream.",
+      "link": "https://www.wsj.com/business/gerald-shreiber-who-turned-the-soft-pretzel-into-a-ubiquitous-stadium-snack-dies-at-84-4b0639d0?mod=pls_whats_news_us_business_f",
+      "pubDate": "Fri, 19 Jun 2026 14:00:00 GMT",
+      "creator": "Chris Kornelis"
+    },
+    {
       "title": "Iran Deal Skirts Why Trump Went to War",
       "desc": "Plus, the Supreme Court ruled the government can’t ban all drug users from owning guns, and a business deal tore apart Earth, Wind & Fire.",
       "link": "https://www.wsj.com/business/iran-deal-skirts-why-trump-went-to-war-ad98c3ad?mod=pls_whats_news_us_business_f",
@@ -528,25 +542,11 @@
       "creator": "Jon Emont"
     },
     {
-      "title": "DOJ Defends Musk’s xAI in Data-Center Pollution Lawsuit",
-      "desc": "The Mississippi facility is supporting the training and development of new AI models that the government is relying on for national-security purposes, the department says.",
-      "link": "https://www.wsj.com/pro/sustainable-business/doj-defends-musks-xai-in-data-center-pollution-lawsuit-25df5258?mod=pls_whats_news_us_business_f",
-      "pubDate": "Wed, 17 Jun 2026 16:35:00 GMT",
-      "creator": "Clara Hudson"
-    },
-    {
-      "title": "Car ‘Playgrounds,’ Smartphone Shopping: Inside Carvana’s New-Car Sales Playbook",
-      "desc": "The online used-car company presented a radical plan for its stores.",
-      "link": "https://www.wsj.com/business/autos/carvana-new-car-sales-ddbd12d8?mod=pls_whats_news_us_business_f",
-      "pubDate": "Wed, 17 Jun 2026 12:00:00 GMT",
-      "creator": "Christopher Otts"
-    },
-    {
-      "title": "Vegas Was Once America’s Bargain Vacation. Now It’s a Luxury Destination.",
-      "desc": "Like the U.S. economy broadly, Las Vegas increasingly relies on a smaller group of well-off people.",
-      "link": "https://www.wsj.com/business/hospitality/las-vegas-vacation-wealthy-e77c0e63?mod=pls_whats_news_us_business_f",
-      "pubDate": "Fri, 19 Jun 2026 01:00:00 GMT",
-      "creator": "Rachel Louise Ensign"
+      "title": "The Classic Movie That Was Nearly Destroyed by a Single Line of Code",
+      "desc": "A beloved film was accidentally deleted—and miraculously saved. The real story behind the ‘Toy Story’ franchise is even better than the movies.",
+      "link": "https://www.wsj.com/business/media/toy-story-5-saved-pixar-78e29161?mod=pls_whats_news_us_business_f",
+      "pubDate": "Sat, 20 Jun 2026 01:00:00 GMT",
+      "creator": "Ben Cohen"
     },
     {
       "title": "State Farm’s AI Plan for Sales Agents Sparks Uproar. ‘A Real Slap in the Face.’",
@@ -556,11 +556,11 @@
       "creator": "Jean Eaglesham"
     },
     {
-      "title": "Local Burger Chains Are Winning the Fast-Food Wars",
-      "desc": "In-N-Out, Culver’s and Whataburger drive sales and location growth with fresh food and friendly service.",
-      "link": "https://www.wsj.com/business/hospitality/fast-food-regional-chains-ad7d97c3?mod=pls_whats_news_us_business_f",
-      "pubDate": "Fri, 19 Jun 2026 09:30:00 GMT",
-      "creator": "Heather Haddon"
+      "title": "Vegas Was Once America’s Bargain Vacation. Now It’s a Luxury Destination.",
+      "desc": "Like the U.S. economy broadly, Las Vegas increasingly relies on a smaller group of well-off people.",
+      "link": "https://www.wsj.com/business/hospitality/las-vegas-vacation-wealthy-e77c0e63?mod=pls_whats_news_us_business_f",
+      "pubDate": "Fri, 19 Jun 2026 01:00:00 GMT",
+      "creator": "Rachel Louise Ensign"
     },
     {
       "title": "Mars Is Spending Millions to Give M&M’s a MAHA Makeover",
@@ -570,11 +570,11 @@
       "creator": "Jesse Newman"
     },
     {
-      "title": "The Classic Movie That Was Nearly Destroyed by a Single Line of Code",
-      "desc": "A beloved film was accidentally deleted—and miraculously saved. The real story behind the ‘Toy Story’ franchise is even better than the movies.",
-      "link": "https://www.wsj.com/business/media/toy-story-5-saved-pixar-78e29161?mod=pls_whats_news_us_business_f",
-      "pubDate": "Sat, 20 Jun 2026 01:00:00 GMT",
-      "creator": "Ben Cohen"
+      "title": "Protein-in-Everything Craze Has a Problem: Not Enough Whey Protein",
+      "desc": "Food companies are packing whey into more of their products to meet demand from protein-obsessed consumers—and depleting supplies.",
+      "link": "https://www.wsj.com/business/protein-demand-whey-prices-3717aa3a?mod=pls_whats_news_us_business_f",
+      "pubDate": "Sat, 20 Jun 2026 15:27:00 GMT",
+      "creator": "Amira McKee"
     },
     {
       "title": "Best Small-Business Loans in June 2026",
