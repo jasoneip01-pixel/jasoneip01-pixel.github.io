@@ -5,12 +5,21 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=5.0">
 <meta name="theme-color" content="#2c2416">
 <meta name="description" content="苏东坡 · 人生如逆旅。北宋文豪、艺术家、生活家的完整传奇。">
+<meta property="og:title" content="苏东坡 · 人生如逆旅">
+<meta property="og:description" content="苏轼（1037—1101），千古一人。诗词文赋书画美食，三度被贬而始终豁达。读苏东坡，学如何把最坏的命运过成最好的诗。">
+<meta property="og:image" content="https://jasoneip01-pixel.github.io/su-dongpo/img/hero.png">
+<meta property="og:image:width" content="2048">
+<meta property="og:image:height" content="2048">
+<meta property="og:url" content="https://jasoneip01-pixel.github.io/su-dongpo/">
+<meta property="og:type" content="website">
+<meta name="wechat:card" content="summary_large_image">
 <title>苏东坡 · 人生如逆旅</title>
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth;-webkit-tap-highlight-color:transparent;scroll-padding-top:3.2rem}
-body{font-family:-apple-system,"Noto Serif CJK SC","Source Han Serif SC","Songti SC","Hiragino Mincho ProN",Georgia,"Times New Roman",serif;background:#f6f2eb;color:#2c2416;line-height:1.8;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+body{font-family:-apple-system,"Noto Serif CJK SC","Source Han Serif SC","Songti SC","Hiragino Mincho ProN",Georgia,"Times New Roman",serif;background:#f6f2eb;color:#2c2416;line-height:1.8;overflow-x:hidden;-webkit-font-smoothing:antialiased;padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left)}
 img{max-width:100%;height:auto;display:block}
+.section-inner{max-width:min(800px,100%-2rem);margin:0 auto}body{text-rendering:optimizeLegibility;-webkit-text-size-adjust:100%}
 
 /* Hero */
 .hero{position:relative;height:100svh;min-height:500px;display:flex;align-items:center;justify-content:center;overflow:hidden}
@@ -144,6 +153,19 @@ footer{text-align:center;padding:clamp(2rem,4vw,4rem) clamp(1.25rem,3vw,2rem);co
 @media(max-width:480px){.poetry-grid{grid-template-columns:1fr}.attributes{grid-template-columns:1fr 1fr}.grid-3{grid-template-columns:1fr}}
 @media(min-width:481px){.poetry-grid{grid-template-columns:repeat(2,1fr)}}
 @media(pointer:coarse){nav a{padding:.7rem .55rem}}
+
+/* Tablet landscape & mid-size */
+@media(min-width:769px){.hero{min-height:600px}.section-inner{padding-left:2rem;padding-right:2rem}.lives-grid{grid-template-columns:repeat(2,1fr)}.grid-3{grid-template-columns:repeat(3,1fr)}}
+@media(min-width:900px){.lives-grid{grid-template-columns:repeat(3,1fr)}.section-header{height:clamp(280px,33vw,480px)}}
+
+/* Large desktop */
+@media(min-width:1280px){.section-inner{max-width:860px}.hero{min-height:700px}.poetry-grid{grid-template-columns:repeat(3,1fr)}.hero-content .sub{font-size:1rem}.hero-content .poem{font-size:1.3rem}}
+@media(min-width:1800px){.section-inner{max-width:960px}body{font-size:1.05rem}p{font-size:1.1rem}}
+
+/* Print */
+@media print{nav{display:none}.hero{min-height:auto;height:auto;padding:4rem 2rem}.hero img{position:relative;filter:none;max-height:300px}.hero-overlay{display:none}.hero-content h1{color:#2c2416;text-shadow:none}.hero-content .poem{color:#5a4e3e}.section{page-break-inside:avoid}.img-card,.inline-img{break-inside:avoid}}
+
+/* Dark mode */
 @media(prefers-color-scheme:dark){body{background:#1a1612;color:#e8e0d4}p{color:#c8c0b4}.quote{color:#c8c0b4}.quote cite{color:#8a7a6a}footer{border-top-color:#2c2416;color:#6a5a4a}nav{background:rgba(26,22,18,.96);border-bottom-color:#2c2416}nav a{color:#a8a094}.inline-img{box-shadow:0 2px 12px rgba(0,0,0,.3)}}
 </style>
 </head>
