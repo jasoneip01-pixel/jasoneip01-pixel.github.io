@@ -25,7 +25,7 @@ img{max-width:100%;height:auto;display:block}
 
 /* Hero */
 .hero{position:relative;height:100svh;min-height:500px;display:flex;align-items:center;justify-content:center;overflow:hidden}
-.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.4) saturate(.8)}
+.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.55) saturate(.85)}
 .hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(44,36,22,.3)0%,rgba(44,36,22,.7)100%)}
 .hero-content{position:relative;z-index:1;text-align:center;padding:2rem;width:100%}
 .hero-content .sub{font-size:clamp(.7rem,1.4vw,1.1rem);color:rgba(246,242,235,.55);letter-spacing:.5em;margin-bottom:1.2rem;line-height:2}
@@ -49,7 +49,7 @@ nav a:hover,nav a.active{color:#c8412b}
 
 /* Section header with image */
 .section-header{position:relative;height:clamp(200px,35vw,400px);overflow:hidden;display:flex;align-items:center;justify-content:center}
-.section-header img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.35) saturate(.9)}
+.section-header img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.48) saturate(.9)}
 .section-header h2{position:relative;z-index:1;font-size:clamp(1.5rem,4vw,2.5rem);font-weight:400;color:#f6f2eb;letter-spacing:.3em;text-shadow:0 2px 20px rgba(0,0,0,.5);text-align:center;padding:0 1rem}
 .section-header h2 span{font-size:clamp(.75rem,1.2vw,1rem);display:block;margin-top:.5rem;letter-spacing:.2em;color:rgba(246,242,235,.5);font-weight:300}
 
@@ -169,7 +169,7 @@ footer{text-align:center;padding:clamp(2rem,4vw,4rem) clamp(1.25rem,3vw,2rem);co
 @media print{nav{display:none}.hero{min-height:auto;height:auto;padding:4rem 2rem}.hero img{position:relative;filter:none;max-height:300px}.hero-overlay{display:none}.hero-content h1{color:#2c2416;text-shadow:none}.hero-content .poem{color:#5a4e3e}.section{page-break-inside:avoid}.img-card,.inline-img{break-inside:avoid}}
 
 /* Dark mode */
-@media(prefers-color-scheme:dark){body{background:#1a1612;color:#e8e0d4}p{color:#c8c0b4}.quote{color:#c8c0b4}.quote cite{color:#8a7a6a}footer{border-top-color:#2c2416;color:#6a5a4a}nav{background:rgba(26,22,18,.96);border-bottom-color:#2c2416}nav a{color:#a8a094}nav a.active{color:#d46a5a}.inline-img{box-shadow:0 2px 12px rgba(0,0,0,.3)}.section-header img,.hero img{filter:brightness(.3) saturate(.8)}.inline-img img,.img-card img{filter:brightness(.75)}}
+@media(prefers-color-scheme:dark){body{background:#1a1612;color:#e8e0d4}p{color:#c8c0b4}.quote{color:#c8c0b4}.quote cite{color:#8a7a6a}footer{border-top-color:#2c2416;color:#6a5a4a}nav{background:rgba(26,22,18,.96);border-bottom-color:#2c2416}nav a{color:#a8a094}nav a.active{color:#d46a5a}.inline-img{box-shadow:0 2px 12px rgba(0,0,0,.3)}.section-header img,.hero img{filter:brightness(.42) saturate(.8)}.inline-img img,.img-card img{filter:brightness(.85)}}
 
 /* Back to top */
 .back-top{position:fixed;bottom:2rem;right:1.5rem;z-index:90;width:44px;height:44px;border-radius:50%;border:1px solid #c8412b40;background:rgba(246,242,235,.9);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);color:#c8412b;font-size:1.2rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:opacity .3s,transform .3s;opacity:0;pointer-events:none;box-shadow:0 2px 8px rgba(44,36,22,.15);line-height:1}
@@ -293,7 +293,7 @@ footer{text-align:center;padding:clamp(2rem,4vw,4rem) clamp(1.25rem,3vw,2rem);co
     <div class="timeline-item">
       <div class="timeline-year">1101</div>
       <div class="timeline-dot"></div>
-      <div class="timeline-text"><h3>北归 · 常州病逝</h3><p>徽宗大赦，北归途中病逝于常州，享年64。临终：「吾生无恶，死必不坠。」百姓罢市悼念。</p></div>
+      <div class="timeline-text"><h3>北归 · 常州病逝</h3><p>徽宗大赦，北归途中病逝于常州，享年64。临终对三个儿子说：「吾生无恶，死必不坠。」好友维琳方丈在旁大声说：「端明宜勿忘西方。」东坡回曰：「西方不无，但个里着力不得。」——即使面对死亡，依然清醒而通透。</p><p>消息传开，「吴越之民，相与哭于市」。杭州、湖州百姓自发罢市悼念。苏辙遵兄遗嘱，将他安葬于汝州郏城县。</p></div>
     </div>
   </div>
 </div></div>
@@ -500,6 +500,32 @@ footer{text-align:center;padding:clamp(2rem,4vw,4rem) clamp(1.25rem,3vw,2rem);co
 
 <div class="section"><div class="section-inner">
   <p style="text-align:center;font-style:italic;color:#5a4e3e;margin-bottom:1.5rem;font-size:.95rem">「人生到处知何似，应似飞鸿踏雪泥。泥上偶然留指爪，鸿飞那复计东西。」</p>
+
+  <h2>真面目</h2>
+
+  <div class="anecdote-card">
+    <div class="tag">性情</div>
+    <h3>「眼前见天下无一个不好人」</h3>
+    <p>有人问苏轼，你一生朋友遍天下，怎么能和所有人都相处得来？他说：「吾上可陪玉皇大帝，下可陪卑田院乞儿，眼前见天下无一个不好人。」这句话不是天真——是他主动选择用善意看待世界。所以王安石与他政见不合却救他性命，佛印是僧人却与他斗嘴半生，连狱卒都偷偷给他送饭。</p>
+  </div>
+
+  <div class="anecdote-card">
+    <div class="tag">性情</div>
+    <h3>大肚皮里装什么</h3>
+    <p>苏轼晚年肚子很大。一天晚饭后，他拍着肚子问身边人：「你们猜这里面是什么？」一个侍女说「是文章」，他摇头。另一个说「是见识」，他依然摇头。最后朝云说：「是一肚皮的不合时宜。」苏轼大笑：「知我者，朝云也。」——这不是自嘲，是自知：他知道自己的才华不讨好，知道自己总是说真话得罪人，但他不打算改。</p>
+  </div>
+
+  <div class="anecdote-card">
+    <div class="tag">性情</div>
+    <h3>他也怕死</h3>
+    <p>乌台诗案被捕时，苏轼也害怕。在押解赴京的路上，他曾想投江自尽，怕牵连朋友。在狱中，他与儿子约定：平日只送菜和肉，如果判了死刑就送鱼。儿子有事托人送饭，忘了叮嘱，结果那人送了鱼。苏轼看到鱼以为必死，写了两首绝命诗。后来发现是虚惊，哭笑不得。他把这段经历写给了苏辙——「百年不易满，寸寸弯强弓。」他不是天生无畏的英雄，他是一个也会害怕、却最终克服了恐惧的普通人。</p>
+  </div>
+
+  <div class="anecdote-card">
+    <div class="tag">性情</div>
+    <h3>自嘲：我被聪明误一生</h3>
+    <p>苏轼晚年写了一首《洗儿诗》：「人皆养子望聪明，我被聪明误一生。惟愿孩儿愚且鲁，无灾无难到公卿。」——天下父母都希望孩子聪明，他说聪明害了我一辈子，只希望孩子傻一点，平安做到大官。诗句表面自嘲，实则刻薄地讽刺了官场的荒唐：聪明人倒霉，愚鲁者升迁。这便是苏轼最独特的魅力——他不是苦大仇深的受难者，他是那个能在监牢里写诗、在流放地大笑、对着自己的大肚子调侃「装了一肚子不合时宜」的人。</p>
+  </div>
 
   <div class="anecdote-card">
     <div class="tag">趣事</div>
