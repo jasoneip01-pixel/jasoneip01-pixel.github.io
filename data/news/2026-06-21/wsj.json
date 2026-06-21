@@ -1,10 +1,24 @@
 {
   "source": "WSJ.com US Business RSS",
-  "ts": "Sun, 21 Jun 2026 09:44:07 GMT",
+  "ts": "Sun, 21 Jun 2026 19:25:20 GMT",
   "items": [
     {
-      "title": "Coke Stares Down IRS in Latest Cola War",
-      "desc": "In a tax fight over foreign profits, the multinational giant and the U.S. head to court with more than $20 billion on the line.",
+      "title": "Hollywood Is Having Its Best Box Office Since Before the Pandemic",
+      "desc": "A boom year was accelerated by a franchise-best opening weekend for Disney’s “Toy Story 5.”",
+      "link": "https://www.wsj.com/business/media/box-office-summer-2026-890603ff?mod=pls_whats_news_us_business_f",
+      "pubDate": "Sun, 21 Jun 2026 17:27:00 GMT",
+      "creator": "Ben Fritz"
+    },
+    {
+      "title": "Baiju Bhatt Left Robinhood as a Billionaire. His Next Bet Is His Boldest Yet.",
+      "desc": "Watch as the billionaire entrepreneur reveals the grueling series of “nos” he got while building Robinhood, what he bought to celebrate its IPO, and why his next big bet is on space.",
+      "link": "https://www.wsj.com/business/aetherflux-baiju-bhatt-wsj-money-interview-b6008f68?mod=pls_whats_news_us_business_f",
+      "pubDate": "Sun, 21 Jun 2026 11:01:00 GMT",
+      "creator": "Gunjan Banerji"
+    },
+    {
+      "title": "Coke Takes on IRS With $20 Billion at Stake",
+      "desc": "In a tax fight over foreign profits, the multinational giant and the U.S. head to court this week.",
       "link": "https://www.wsj.com/us-news/law/coca-cola-irs-legal-fight-f1ec40e8?mod=pls_whats_news_us_business_f",
       "pubDate": "Sun, 21 Jun 2026 09:30:00 GMT",
       "creator": "Richard Rubin"
@@ -17,7 +31,7 @@
       "creator": "Audrey Valbuena"
     },
     {
-      "title": "Back-to-School Shopping Starts…Now!",
+      "title": "Why Back-to-School Deals Are Already Here",
       "desc": "As shoppers spread out spending to manage their budgets, more retailers are promoting deals with summer sales, such as Amazon’s Prime Day.",
       "link": "https://www.wsj.com/business/retail/back-to-school-shopping-startsnow-c5298017?mod=pls_whats_news_us_business_f",
       "pubDate": "Sun, 21 Jun 2026 00:00:00 GMT",
@@ -29,20 +43,6 @@
       "link": "https://www.wsj.com/business/immigration-crackdown-lifts-private-prison-stocks-cc5e4442?mod=pls_whats_news_us_business_f",
       "pubDate": "Sat, 20 Jun 2026 17:00:00 GMT",
       "creator": "Heather Gillers"
-    },
-    {
-      "title": "Pizza Hut Lost in the U.S. Now It’s Selling for $2.7 Billion.",
-      "desc": "Watch how Pizza Hut lost its grasp on the U.S. pizza market to Domino’s, leading to its sale in two separate deals.",
-      "link": "https://www.wsj.com/business/hospitality/pizza-hut-lost-in-the-u-s-now-its-selling-for-2-7-billion-a09f37f7?mod=pls_whats_news_us_business_f",
-      "pubDate": "Sat, 20 Jun 2026 16:00:00 GMT",
-      "creator": "Ava Anderson"
-    },
-    {
-      "title": "Protein-in-Everything Craze Has a Problem: Not Enough Whey Protein",
-      "desc": "Food companies are packing whey into more of their products to meet demand from protein-obsessed consumers—and depleting supplies.",
-      "link": "https://www.wsj.com/business/protein-demand-whey-prices-3717aa3a?mod=pls_whats_news_us_business_f",
-      "pubDate": "Sat, 20 Jun 2026 15:27:00 GMT",
-      "creator": "Amira McKee"
     },
     {
       "title": "UniCredit to Lift Commerzbank Stake to 42.5% After Initial Offer Period",
@@ -80,6 +80,13 @@
       "creator": "Ben Dummett"
     },
     {
+      "title": "Protein-in-Everything Craze Has a Problem: Not Enough Whey Protein",
+      "desc": "Food companies are packing whey into more of their products to meet demand from protein-obsessed consumers—and depleting supplies.",
+      "link": "https://www.wsj.com/business/protein-demand-whey-prices-3717aa3a?mod=pls_whats_news_us_business_f",
+      "pubDate": "Sat, 20 Jun 2026 15:27:00 GMT",
+      "creator": "Amira McKee"
+    },
+    {
       "title": "Mars Is Spending Millions to Give M&M’s a MAHA Makeover",
       "desc": "The candy maker is trying to re-create M&M’s without artificial colors, but blue’s natural algae substitute is complex and costly.",
       "link": "https://www.wsj.com/business/mars-is-spending-millions-to-give-m-ms-a-maha-makeover-2fa1bb88?mod=pls_whats_news_us_business_f",
@@ -106,13 +113,6 @@
       "link": "https://www.wsj.com/business/retail/tesco-sales-bolstered-by-online-growth-f3026366?mod=pls_whats_news_us_business_f",
       "pubDate": "Thu, 18 Jun 2026 06:34:00 GMT",
       "creator": "Aimee Look"
-    },
-    {
-      "title": "CarMax’s Turnaround Is Taking Shape, Still Has Long Way to Go",
-      "desc": "Chief Executive Keith Barr, who stepped into the top role in March, said that the company’s core operations aren’t fast and efficient enough, and that its costs remain too high.",
-      "link": "https://www.wsj.com/business/earnings/carmax-profit-falls-despite-higher-sales-68d87ac6?mod=pls_whats_news_us_business_f",
-      "pubDate": "Wed, 17 Jun 2026 14:17:00 GMT",
-      "creator": "Connor Hart"
     },
     {
       "title": "Tech Investor Prosus Posts Core Earnings Rise on Growth Across Units, Tencent",
@@ -143,11 +143,11 @@
       "creator": "Elias Schisgall"
     },
     {
-      "title": "Straumann Shares Climb After Lower-Than-Expected Tariffs Boost Outlook",
-      "desc": "The dental-implant company’s stock was up 9.7%  after it raised its profitability outlook for the year, citing lower-than-anticipated tariffs and cost savings.",
-      "link": "https://www.wsj.com/business/retail/straumann-shares-climb-after-lower-than-expected-tariffs-boost-outlook-9fe7ccc3?mod=pls_whats_news_us_business_f",
-      "pubDate": "Wed, 17 Jun 2026 08:01:00 GMT",
-      "creator": "Adrià Calatayud"
+      "title": "CarMax’s Turnaround Is Taking Shape, Still Has Long Way to Go",
+      "desc": "Chief Executive Keith Barr, who stepped into the top role in March, said that the company’s core operations aren’t fast and efficient enough, and that its costs remain too high.",
+      "link": "https://www.wsj.com/business/earnings/carmax-profit-falls-despite-higher-sales-68d87ac6?mod=pls_whats_news_us_business_f",
+      "pubDate": "Wed, 17 Jun 2026 14:17:00 GMT",
+      "creator": "Connor Hart"
     },
     {
       "title": "You Were Right to Hate EV Pickups. Automakers Want a Second Chance.",
@@ -185,6 +185,27 @@
       "creator": "Robb M. Stewart"
     },
     {
+      "title": "Opinion | The Texas Electric Grid Needs Reliable Power",
+      "desc": "Rahm Emanuel presents a revisionist history of the Obama administration’s energy policies.",
+      "link": "https://www.wsj.com/opinion/the-texas-electric-grid-needs-reliable-power-c26a4871?mod=pls_whats_news_us_business_f",
+      "pubDate": "Sun, 21 Jun 2026 18:51:00 GMT",
+      "creator": ""
+    },
+    {
+      "title": "Opinion | Unions Place Culture Wars Front and Center",
+      "desc": "A U.S. House bill would make it even easier for them to push a political agenda.",
+      "link": "https://www.wsj.com/opinion/unions-place-culture-wars-front-and-center-fae9eb94?mod=pls_whats_news_us_business_f",
+      "pubDate": "Sun, 21 Jun 2026 18:50:00 GMT",
+      "creator": ""
+    },
+    {
+      "title": "Opinion | Why Americans Are Holding On to Old Cars",
+      "desc": "Complex newer models are expensive, and regulations add even more costs.",
+      "link": "https://www.wsj.com/opinion/why-americans-are-holding-on-to-old-cars-9627e28d?mod=pls_whats_news_us_business_f",
+      "pubDate": "Sun, 21 Jun 2026 18:47:00 GMT",
+      "creator": ""
+    },
+    {
       "title": "Opinion | Scott Pelley Delivers for the Ellisons, Trump and CBS",
       "desc": "Now that the merger and Trump groveling are out of the way, does ‘60 Minutes’ have a future after all?",
       "link": "https://www.wsj.com/opinion/scott-pelley-delivers-for-the-ellisons-trump-and-cbs-b7d5c80c?mod=pls_whats_news_us_business_f",
@@ -204,27 +225,6 @@
       "link": "https://www.wsj.com/opinion/dont-let-private-planes-avoid-paying-fees-ebc3f952?mod=pls_whats_news_us_business_f",
       "pubDate": "Wed, 17 Jun 2026 18:07:00 GMT",
       "creator": ""
-    },
-    {
-      "title": "Opinion | Driverless Trucks Take Good Jobs Away From Americans",
-      "desc": "Autonomous vehicles threaten to disrupt industries that rely on human judgment and experience.",
-      "link": "https://www.wsj.com/opinion/driverless-trucks-take-good-jobs-away-from-americans-7eba14be?mod=pls_whats_news_us_business_f",
-      "pubDate": "Wed, 17 Jun 2026 18:04:00 GMT",
-      "creator": ""
-    },
-    {
-      "title": "Opinion | Mamdani vs. Bodegas",
-      "desc": "His socialist supermarkets could put New York’s little grocers out of business.",
-      "link": "https://www.wsj.com/opinion/mamdani-vs-bodegas-ae845509?mod=pls_whats_news_us_business_f",
-      "pubDate": "Wed, 17 Jun 2026 17:25:00 GMT",
-      "creator": "Faith Bottum"
-    },
-    {
-      "title": "Opinion | On Energy, Democrats Can Learn From Texas",
-      "desc": "The Lone Star State leads the way in making the grid cleaner, more resilient and more cost-efficient.",
-      "link": "https://www.wsj.com/opinion/on-energy-democrats-can-learn-from-texas-4f017d04?mod=pls_whats_news_us_business_f",
-      "pubDate": "Mon, 15 Jun 2026 19:33:00 GMT",
-      "creator": "Rahm Emanuel"
     },
     {
       "title": "Iran Can Now Sell Oil. How Fast Can It Ramp Up?",
@@ -332,6 +332,13 @@
       "creator": "Dean Seal"
     },
     {
+      "title": "Pizza Hut Lost in the U.S. Now It’s Selling for $2.7 Billion.",
+      "desc": "Watch how Pizza Hut lost its grasp on the U.S. pizza market to Domino’s, leading to its sale in two separate deals.",
+      "link": "https://www.wsj.com/business/hospitality/pizza-hut-lost-in-the-u-s-now-its-selling-for-2-7-billion-a09f37f7?mod=pls_whats_news_us_business_f",
+      "pubDate": "Sat, 20 Jun 2026 16:00:00 GMT",
+      "creator": "Ava Anderson"
+    },
+    {
       "title": "Local Burger Chains Are Winning the Fast-Food Wars",
       "desc": "In-N-Out, Culver’s and Whataburger drive sales and location growth with fresh food and friendly service.",
       "link": "https://www.wsj.com/business/hospitality/fast-food-regional-chains-ad7d97c3?mod=pls_whats_news_us_business_f",
@@ -358,13 +365,6 @@
       "link": "https://www.wsj.com/business/hospitality/hotel-owners-are-rebelling-against-marriotts-loyalty-program-7625a5d5?mod=pls_whats_news_us_business_f",
       "pubDate": "Tue, 16 Jun 2026 09:30:00 GMT",
       "creator": "Kate King"
-    },
-    {
-      "title": "The 70-Year Marriage Between McDonald’s and Coke Has Some Issues",
-      "desc": "Changing consumer tastes and increasing competition challenge one of the most successful and oldest corporate partnerships",
-      "link": "https://www.wsj.com/business/hospitality/mcdonalds-beverage-choices-coca-cola-da2c0963?mod=pls_whats_news_us_business_f",
-      "pubDate": "Sat, 13 Jun 2026 02:00:00 GMT",
-      "creator": "Heather Haddon"
     },
     {
       "title": "News Quiz for June 20, 2026",
@@ -402,6 +402,13 @@
       "creator": "Ben Fritz"
     },
     {
+      "title": "See the Global Chokepoints That Carry Much of the World’s Trade",
+      "desc": "The Iran war highlights how vulnerable major trade corridors are to geopolitical tensions.",
+      "link": "https://www.wsj.com/world/see-the-global-chokepoints-that-carry-much-of-the-worlds-trade-9683adf2?mod=pls_whats_news_us_business_f",
+      "pubDate": "Sun, 21 Jun 2026 18:00:00 GMT",
+      "creator": "Ashley Cai"
+    },
+    {
       "title": "U.S. Companies Stop Waiting for Supply Chains to Return to Normal",
       "desc": "Shipping and inventory expenses fell to 7.8% of GDP in 2025, though executives say complexity continues.",
       "link": "https://www.wsj.com/logistics-report/u-s-companies-stop-waiting-for-supply-chains-to-return-to-normal-c949fac1?mod=pls_whats_news_us_business_f",
@@ -428,13 +435,6 @@
       "link": "https://www.wsj.com/world/americas/opening-of-u-s-canada-bridge-delayed-due-to-trade-tensions-e162b656?mod=pls_whats_news_us_business_f",
       "pubDate": "Thu, 11 Jun 2026 22:21:00 GMT",
       "creator": "Paul Vieira"
-    },
-    {
-      "title": "America’s Four-Year Trucking Slump Is Finally Over",
-      "desc": "Freight rates are climbing after hundreds of thousands of carriers were driven out of the industry by low earnings, new regulations.",
-      "link": "https://www.wsj.com/logistics-report/americas-four-year-trucking-slump-is-finally-over-c0f13c17?mod=pls_whats_news_us_business_f",
-      "pubDate": "Wed, 10 Jun 2026 09:30:00 GMT",
-      "creator": "Liz Young"
     },
     {
       "title": "Why Apple Enjoys Peerless iPhone Pricing Power",
@@ -556,18 +556,11 @@
       "creator": "Amira McKee"
     },
     {
-      "title": "State Farm’s AI Plan for Sales Agents Sparks Uproar. ‘A Real Slap in the Face.’",
-      "desc": "AI tools and changes to contracts for 19,000 sales agents appear to be a response to the insurer’s eroding status in the industry.",
-      "link": "https://www.wsj.com/finance/state-farms-ai-plan-for-sales-agents-sparks-uproar-a-real-slap-in-the-face-6453e2cb?mod=pls_whats_news_us_business_f",
-      "pubDate": "Wed, 17 Jun 2026 09:30:00 GMT",
-      "creator": "Jean Eaglesham"
-    },
-    {
-      "title": "The Market’s AI Fanfare Is Running Into a Harsh Political Reality",
-      "desc": "Anthropic’s hopes for a blockbuster IPO could depend as much on the ballot box as on investors.",
-      "link": "https://www.wsj.com/tech/ai/the-markets-ai-fanfare-is-running-into-a-harsh-political-reality-b919829b?mod=pls_whats_news_us_business_f",
-      "pubDate": "Sat, 20 Jun 2026 09:30:00 GMT",
-      "creator": "Tim Higgins"
+      "title": "Baiju Bhatt Left Robinhood as a Billionaire. His Next Bet Is His Boldest Yet.",
+      "desc": "Watch as the billionaire entrepreneur reveals the grueling series of “nos” he got while building Robinhood, what he bought to celebrate its IPO, and why his next big bet is on space.",
+      "link": "https://www.wsj.com/business/aetherflux-baiju-bhatt-wsj-money-interview-b6008f68?mod=pls_whats_news_us_business_f",
+      "pubDate": "Sun, 21 Jun 2026 11:01:00 GMT",
+      "creator": "Gunjan Banerji"
     },
     {
       "title": "Pizza Hut Lost in the U.S. Now It’s Selling for $2.7 Billion.",
@@ -575,6 +568,13 @@
       "link": "https://www.wsj.com/business/hospitality/pizza-hut-lost-in-the-u-s-now-its-selling-for-2-7-billion-a09f37f7?mod=pls_whats_news_us_business_f",
       "pubDate": "Sat, 20 Jun 2026 16:00:00 GMT",
       "creator": "Ava Anderson"
+    },
+    {
+      "title": "Coke Takes on IRS With $20 Billion at Stake",
+      "desc": "In a tax fight over foreign profits, the multinational giant and the U.S. head to court this week.",
+      "link": "https://www.wsj.com/us-news/law/coca-cola-irs-legal-fight-f1ec40e8?mod=pls_whats_news_us_business_f",
+      "pubDate": "Sun, 21 Jun 2026 09:30:00 GMT",
+      "creator": "Richard Rubin"
     },
     {
       "title": "Best Small-Business Loans in June 2026",
