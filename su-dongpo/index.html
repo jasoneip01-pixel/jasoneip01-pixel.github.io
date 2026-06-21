@@ -4,31 +4,32 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=5.0">
 <meta name="theme-color" content="#2c2416">
-<meta name="description" content="苏东坡 · 人生如逆旅。北宋文豪、艺术家、生活家的完整传奇。诗词文赋、书画、美食、友情、兄弟情、逸闻——跨越千年的全面展现。">
+<meta name="description" content="苏东坡 · 人生如逆旅。北宋文豪、艺术家、生活家的完整传奇。">
 <title>苏东坡 · 人生如逆旅</title>
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth;-webkit-tap-highlight-color:transparent;scroll-padding-top:2rem}
+html{scroll-behavior:smooth;-webkit-tap-highlight-color:transparent;scroll-padding-top:3.2rem}
 body{font-family:-apple-system,"Noto Serif CJK SC","Source Han Serif SC","Songti SC","Hiragino Mincho ProN",Georgia,"Times New Roman",serif;background:#f6f2eb;color:#2c2416;line-height:1.8;overflow-x:hidden;-webkit-font-smoothing:antialiased}
 img{max-width:100%;height:auto;display:block}
 
 /* Hero */
 .hero{position:relative;height:100svh;min-height:500px;display:flex;align-items:center;justify-content:center;overflow:hidden}
-.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(0.4) saturate(0.8)}
-.hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(44,36,22,0.3) 0%,rgba(44,36,22,0.7) 100%)}
+.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.4) saturate(.8)}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(44,36,22,.3)0%,rgba(44,36,22,.7)100%)}
 .hero-content{position:relative;z-index:1;text-align:center;padding:2rem;width:100%}
-.hero-content .sub{font-size:clamp(.75rem,1.5vw,1.2rem);color:rgba(246,242,235,0.6);letter-spacing:.5em;margin-bottom:1.5rem}
+.hero-content .sub{font-size:clamp(.7rem,1.4vw,1.1rem);color:rgba(246,242,235,.55);letter-spacing:.5em;margin-bottom:1.2rem;line-height:2}
 .hero-content h1{font-size:clamp(2.5rem,10vw,7rem);font-weight:400;color:#f6f2eb;letter-spacing:.3em;text-shadow:0 2px 30px rgba(0,0,0,.5);margin-bottom:.5rem;word-break:keep-all}
-.hero-content .poem{font-size:clamp(.9rem,2vw,1.4rem);color:rgba(246,242,235,0.65);margin-top:clamp(1.5rem,3vw,2rem);letter-spacing:.2em;font-style:italic}
+.hero-content .poem{font-size:clamp(.9rem,2vw,1.4rem);color:rgba(246,242,235,.65);margin-top:clamp(1.5rem,3vw,2rem);letter-spacing:.2em;font-style:italic}
 
 /* Nav */
-nav{position:sticky;top:0;z-index:100;background:rgba(246,242,235,0.95);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid #ede8df;overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch}
-nav .inner{max-width:900px;margin:0 auto;padding:0 1rem;display:flex;gap:.25rem;overflow:visible}
-nav a{display:inline-block;padding:.6rem .7rem;font-size:.78rem;color:#5a4e3e;text-decoration:none;transition:color .2s;letter-spacing:.03em;flex-shrink:0}
-nav a:hover{color:#c8412b}
-@media(max-width:480px){nav a{padding:.5rem .5rem;font-size:.72rem}}
+nav{position:sticky;top:0;z-index:100;background:rgba(246,242,235,.96);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid #ede8df;overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch}
+nav .inner{max-width:900px;margin:0 auto;padding:0 .5rem;display:flex;gap:0;overflow:visible}
+nav a{display:inline-block;padding:.7rem .65rem;font-size:.8rem;color:#5a4e3e;text-decoration:none;transition:color .2s;letter-spacing:.04em;flex-shrink:0;line-height:1.2}
+nav a:hover,nav a.active{color:#c8412b}
+@media(max-width:600px){nav a{padding:.55rem .45rem;font-size:.72rem}nav .inner{gap:0}}
+@media(max-width:400px){nav a{padding:.5rem .3rem;font-size:.65rem}}
 
-/* Sections */
+/* Section */
 .section{padding:clamp(3rem,5vw,5rem) clamp(1.25rem,4vw,2rem)}
 .section-inner{max-width:800px;margin:0 auto}
 .section-dark{background:#2c2416;color:#e8e0d4}
@@ -37,23 +38,24 @@ nav a:hover{color:#c8412b}
 
 /* Section header with image */
 .section-header{position:relative;height:clamp(200px,35vw,400px);overflow:hidden;display:flex;align-items:center;justify-content:center}
-.section-header img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(0.35) saturate(0.9)}
-.section-header h2{position:relative;z-index:1;font-size:clamp(1.5rem,4vw,2.5rem);font-weight:400;color:#f6f2eb;letter-spacing:.3em;text-shadow:0 2px 20px rgba(0,0,0,.5)}
+.section-header img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.35) saturate(.9)}
+.section-header h2{position:relative;z-index:1;font-size:clamp(1.5rem,4vw,2.5rem);font-weight:400;color:#f6f2eb;letter-spacing:.3em;text-shadow:0 2px 20px rgba(0,0,0,.5);text-align:center;padding:0 1rem}
+.section-header h2 span{font-size:clamp(.75rem,1.2vw,1rem);display:block;margin-top:.5rem;letter-spacing:.2em;color:rgba(246,242,235,.5);font-weight:300}
 
-/* Section headings (text) */
+/* Headings */
 h2{font-size:clamp(1.25rem,2.5vw,1.8rem);font-weight:400;color:#c8412b;margin-bottom:1.5rem;letter-spacing:.12em;position:relative;padding-bottom:.75rem}
 h2::after{content:'';position:absolute;bottom:0;left:0;width:clamp(2rem,3vw,3rem);height:2px;background:#c8412b}
-.section-dark h2{color:#d46a5a}
-.section-dark h2::after{background:#d46a5a}
-h3{font-size:1.1rem;font-weight:600;color:#2c2416;margin:1.5rem 0 .5rem}
-p{font-size:clamp(.95rem,1.3vw,1.05rem);margin-bottom:1.25rem;color:#3a3228;max-width:72ch}
+.section-dark h2{color:#d46a5a}.section-dark h2::after{background:#d46a5a}
+h3{font-size:1.05rem;font-weight:600;color:#2c2416;margin:1.5rem 0 .4rem;letter-spacing:.03em}
+.section-dark h3{color:#e8e0d4}
+p{font-size:clamp(.93rem,1.3vw,1.05rem);margin-bottom:1.25rem;color:#3a3228;max-width:72ch}
 .section-dark p{color:#c8c0b4}
 
 /* Divider */
 .divider{text-align:center;color:#c8412b;font-size:1rem;letter-spacing:1em;opacity:.3;padding:clamp(1rem,2vw,2rem) 0}
 .section-dark .divider{color:#d46a5a;opacity:.5}
 
-/* Timeline (expanded) */
+/* Timeline */
 .timeline{max-width:800px;margin:0 auto}
 .timeline-item{display:flex;gap:clamp(.75rem,2vw,2rem);margin-bottom:clamp(1.5rem,3vw,2.5rem);position:relative}
 .timeline-item::before{content:'';position:absolute;left:clamp(3rem,5.5vw,5.5rem);top:2.5rem;bottom:-2.5rem;width:1px;background:linear-gradient(to bottom,#c8412b80,transparent)}
@@ -64,13 +66,16 @@ p{font-size:clamp(.95rem,1.3vw,1.05rem);margin-bottom:1.25rem;color:#3a3228;max-
 .timeline-text{flex:1;min-width:0;padding-top:.1rem}
 .timeline-text h3{font-size:clamp(.9rem,1.1vw,1rem);font-weight:600;color:#2c2416;margin-bottom:.2rem}
 .timeline-text p{font-size:clamp(.82rem,1vw,.9rem);color:#5a4e3e;line-height:1.7;max-width:none}
+.section-dark .timeline-text p{color:#a8a094}
+.section-dark .timeline-text h3{color:#e8e0d4}
 
 /* Image cards */
 .img-card{border-radius:6px;overflow:hidden;margin:2rem 0;box-shadow:0 2px 12px rgba(44,36,22,.1)}
 .img-card img{width:100%;height:clamp(200px,40vw,450px);object-fit:cover}
 .img-card .caption{padding:.75rem 1rem;font-size:.85rem;color:#6a5a4a;background:#f0ece4;text-align:center;letter-spacing:.05em}
+.section-dark .img-card .caption{background:#2c2416;color:#9a8a7a}
 
-/* Poetry */
+/* Poetry Grid */
 .poetry-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(280px,100%),1fr));gap:clamp(1rem,2vw,1.5rem);margin:1.5rem 0}
 .poem-card{background:#ede8df;padding:clamp(1.25rem,2.5vw,2rem);border-radius:4px;border-left:3px solid #c8412b;transition:transform .2s}
 @media(hover:hover){.poem-card:hover{transform:translateY(-2px);box-shadow:0 4px 20px rgba(44,36,22,.08)}}
@@ -78,50 +83,68 @@ p{font-size:clamp(.95rem,1.3vw,1.05rem);margin-bottom:1.25rem;color:#3a3228;max-
 .poem-card .badge{display:inline-block;font-size:.7rem;color:#c8412b;background:rgba(200,65,43,.08);padding:.15rem .5rem;border-radius:3px;margin-bottom:.5rem;letter-spacing:.05em}
 .poem-card .title{font-size:.82rem;color:#8a7a6a;letter-spacing:.05em}
 .poem-card .translation{font-size:clamp(.78rem,1vw,.82rem);color:#6a5a4a;margin-top:.6rem;font-style:italic;padding-left:.75rem;border-left:1px solid #c8412b40}
+.section-dark .poem-card{background:#2c2416}
+.section-dark .poem-card .verses{color:#e8e0d4}
+.section-dark .poem-card .title{color:#9a8a7a}
+.section-dark .poem-card .translation{color:#8a7a6a;border-left-color:#c8412b60}
 
-/* Fu section */
-.fu-section{margin:2rem 0;background:#ede8df;border-radius:4px;padding:clamp(1.5rem,3vw,2.5rem);border-left:3px solid #c8412b}
-.fu-section .excerpt{font-size:.95rem;line-height:2.2;color:#2c2416;margin-bottom:.8rem}
+/* Fu block */
+.fu-section{margin:1.5rem 0;background:#ede8df;border-radius:4px;padding:clamp(1.25rem,2.5vw,2rem);border-left:3px solid #c8412b}
+.fu-section .excerpt{font-size:.93rem;line-height:2.2;color:#2c2416;margin-bottom:.6rem}
 .fu-section .title{font-size:.85rem;color:#8a7a6a}
+.section-dark .fu-section{background:#2c2416}
+.section-dark .fu-section .excerpt{color:#e8e0d4}
 
-/* Three-column grid */
+/* Grid-3 */
 .grid-3{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(200px,100%),1fr));gap:1rem;margin:1.5rem 0}
 .profile-card{background:#ede8df;border-radius:4px;padding:1.25rem;text-align:center}
-.profile-card h3{font-size:1rem;margin:.3rem 0}
-.profile-card .subtitle{font-size:.8rem;color:#6a5a4a;margin-bottom:.5rem}
+.profile-card h3{font-size:1rem;margin:.3rem 0 0}
+.profile-card .sub{font-size:.8rem;color:#6a5a4a;margin-bottom:.5rem}
 .profile-card p{font-size:.82rem;color:#5a4e3e;text-align:left;margin-bottom:0}
+.section-dark .profile-card{background:#2c2416}
+.section-dark .profile-card p{color:#a8a094}
 
-/* Attribute grid */
-.attributes{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(140px,50%),1fr));gap:clamp(.75rem,1.5vw,1rem);margin:1.5rem 0}
+/* Stats */
+.attributes{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(130px,40%),1fr));gap:clamp(.75rem,1.5vw,1rem);margin:1.5rem 0}
 .attribute{background:#ede8df;padding:clamp(1rem,2vw,1.5rem);text-align:center;border-radius:4px}
 .attribute .num{font-size:clamp(1.3rem,2.5vw,1.8rem);color:#c8412b;font-weight:300;display:block;margin-bottom:.2rem}
 .attribute .label{font-size:clamp(.8rem,1vw,.85rem);color:#5a4e3e}
 .section-dark .attribute{background:rgba(237,232,223,.08)}
 .section-dark .attribute .label{color:#a8a094}
 
-/* Anecdote cards */
+/* Lives */
+.lives-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(220px,100%),1fr));gap:1rem;margin:1.5rem 0}
+.life-card{background:#ede8df;border-radius:4px;padding:1.25rem;border-left:3px solid #c8412b}
+.life-card h3{font-size:.95rem;margin:0 0 .2rem}
+.life-card p{font-size:.85rem;margin-bottom:0;max-width:none;color:#5a4e3e}
+.section-dark .life-card{background:#2c2416}
+.section-dark .life-card p{color:#a8a094}
+
+/* Anecdotes */
 .anecdote-card{background:#ede8df;border-radius:4px;padding:1.5rem;margin:1rem 0;border-left:3px solid #c8412b}
 .anecdote-card h3{margin:0 0 .3rem;font-size:.95rem}
 .anecdote-card .tag{display:inline-block;font-size:.7rem;color:#c8412b;margin-bottom:.4rem}
-.anecdote-card p{font-size:.88rem;margin-bottom:0}
+.anecdote-card p{font-size:.88rem;margin-bottom:0;max-width:none}
 .section-dark .anecdote-card{background:rgba(237,232,223,.08)}
 .section-dark .anecdote-card p{color:#c8c0b4}
 
 /* Quote */
 .quote{font-size:clamp(1.1rem,2.5vw,1.6rem);text-align:center;color:#5a4e3e;font-style:italic;line-height:2;padding:clamp(2rem,4vw,3rem) clamp(1rem,3vw,2rem);max-width:700px;margin:0 auto}
 .quote cite{display:block;font-size:clamp(.78rem,1vw,.85rem);color:#8a7a6a;margin-top:.6rem;font-style:normal}
-.section-dark .quote{color:#c8c0b4}
-.section-dark .quote cite{color:#8a7a6a}
+.section-dark .quote{color:#c8c0b4}.section-dark .quote cite{color:#8a7a6a}
 
 /* Footer */
 footer{text-align:center;padding:clamp(2rem,4vw,4rem) clamp(1.25rem,3vw,2rem);color:#8a7a6a;font-size:clamp(.75rem,1vw,.8rem);letter-spacing:.1em;border-top:1px solid #ede8df}
 
+/* Inline image */
+.inline-img{margin:2rem 0;border-radius:6px;overflow:hidden;box-shadow:0 2px 12px rgba(44,36,22,.1)}
+.inline-img img{width:100%;height:clamp(180px,35vw,380px);object-fit:cover}
+
 /* Responsive */
-@media(max-width:480px){.grid-3{grid-template-columns:1fr}.poetry-grid{grid-template-columns:1fr}.attributes{grid-template-columns:1fr 1fr}}
-@media(min-width:481px)and (max-width:768px){.poetry-grid{grid-template-columns:repeat(2,1fr)}}
-@media(min-width:769px){.poetry-grid{grid-template-columns:repeat(2,1fr)}}
-@media(pointer:coarse){nav a{padding:.7rem .6rem}}
-@media(prefers-color-scheme:dark){body{background:#1a1612;color:#e8e0d4}p{color:#c8c0b4}.poem-card{background:#2c2416}.poem-card .verses{color:#e8e0d4}.poem-card .title{color:#9a8a7a}.poem-card .translation{color:#8a7a6a;border-left-color:#c8412b60}.attribute{background:#2c2416}.attribute .label{color:#9a8a7a}.profile-card{background:#2c2416}.profile-card p{color:#a8a094}.anecdote-card{background:#2c2416}.anecdote-card p{color:#c8c0b4}.fu-section{background:#2c2416}.fu-section .excerpt{color:#e8e0d4}.img-card .caption{background:#2c2416;color:#9a8a7a}.quote{color:#c8c0b4}.quote cite{color:#8a7a6a}footer{border-top-color:#2c2416;color:#6a5a4a}.timeline-text p{color:#a8a094}.timeline-text h3{color:#e8e0d4}nav{background:rgba(26,22,18,.95);border-bottom-color:#2c2416}nav a{color:#a8a094}}
+@media(max-width:480px){.poetry-grid{grid-template-columns:1fr}.attributes{grid-template-columns:1fr 1fr}.grid-3{grid-template-columns:1fr}}
+@media(min-width:481px){.poetry-grid{grid-template-columns:repeat(2,1fr)}}
+@media(pointer:coarse){nav a{padding:.7rem .55rem}}
+@media(prefers-color-scheme:dark){body{background:#1a1612;color:#e8e0d4}p{color:#c8c0b4}.quote{color:#c8c0b4}.quote cite{color:#8a7a6a}footer{border-top-color:#2c2416;color:#6a5a4a}nav{background:rgba(26,22,18,.96);border-bottom-color:#2c2416}nav a{color:#a8a094}.inline-img{box-shadow:0 2px 12px rgba(0,0,0,.3)}}
 </style>
 </head>
 <body>
@@ -140,201 +163,127 @@ footer{text-align:center;padding:clamp(2rem,4vw,4rem) clamp(1.25rem,3vw,2rem);co
 <!-- ====== NAV ====== -->
 <nav><div class="inner">
   <a href="#intro">千古一人</a>
-  <a href="#era">时代背景</a>
-  <a href="#three-su">三苏</a>
-  <a href="#timeline">生平轨迹</a>
-  <a href="#journey">心路历程</a>
-  <a href="#poetry">诗词文赋</a>
-  <a href="#art">书画</a>
-  <a href="#food">美食</a>
-  <a href="#friendship">友情</a>
-  <a href="#brothers">兄弟情</a>
-  <a href="#love">爱情</a>
-  <a href="#anecdotes">逸闻</a>
-  <a href="#legacy">一生留下的</a>
+  <a href="#trail">平生踪迹</a>
+  <a href="#wenxin">文心</a>
+  <a href="#life">人间清欢</a>
+  <a href="#traces">雪泥鸿爪</a>
+  <a href="#legacy">遗泽千古</a>
 </div></nav>
 
-<!-- ====== 1. 千古一人 ====== -->
+<!-- ====== 千古一人 ====== -->
 <div class="section" id="intro"><div class="section-inner">
   <h2>千古一人</h2>
-  <p>苏东坡（1037—1101），名轼，字子瞻，号东坡居士。眉州眉山（今四川眉山）人。</p>
-  <p>他是中国历史上罕见的全才——诗词文赋无一不精，书法绘画自成一家，水利工程惠及民生，美食创造流传千年。更难得的是，他一生三度被贬，最远流放海南，却始终保持着对生活的热爱与豁达。他留下的不仅仅是文学遗产，更是一种面对逆境的生活态度。</p>
-  <p>林语堂说他是「无可救药的乐天派」。王国维说：「三代以下诗人，无过屈子、渊明、子美、子瞻者。此四子者，若无文学之天才，其人格亦自足千古。」</p>
+  <p>苏轼（1037—1101），字子瞻，号东坡居士。眉州眉山（今四川眉山）人。</p>
+  <p>中国历史上罕见的全才——诗词文赋无一不精，书法绘画自成一家，水利工程惠及民生，美食创造流传千年。三度被贬始终豁达——他留下的不只是文学遗产，更是一种面对逆境的生活态度。</p>
+  <p>林语堂说他是「无可救药的乐天派」。王国维说：「三代以下诗人，无过屈子、渊明、子美、子瞻者。」</p>
 </div></div>
 
 <div class="divider">◆</div>
 
-<!-- ====== 2. 时代背景 ====== -->
-<div class="section-header" id="era">
-  <img src="img/era.png" alt="北宋汴京" loading="lazy">
-  <h2>时代背景</h2>
+<!-- ====== 平生踪迹 ====== -->
+<div class="section-header">
+  <img src="img/era.png" alt="北宋风烟" loading="lazy">
+  <h2>平生踪迹<span>Trail of a Lifetime</span></h2>
 </div>
-<div class="section"><div class="section-inner">
-  <p>苏轼生于北宋中期仁宗景祐四年（1037年）。他所处的时代，恰是北宋文化最灿烂的时期——「唐宋八大家」中宋占六家，都活跃在这个年代。</p>
-  <p>政治上，北宋实行「重文轻武」的国策，文人士大夫地位极高。但边疆压力从未停止——北有契丹辽国，西北有西夏李元昊。朝廷内部，改革派与保守派的党争愈演愈烈，这正是苏轼命运起伏的直接推手。</p>
-  <p>仁宗在位四十年（1022—1063），是北宋最繁荣的时期。城市经济空前发达，汴京人口超过百万，瓦舍勾栏遍布，活字印刷术的发明让知识传播前所未有地便捷。正是在这样的土壤中，苏轼的才华得以生长。</p>
-  <p>然而盛世之下，积弊已深——三冗（冗官、冗兵、冗费）问题严重，土地兼并加剧。当年轻的宋神宗与王安石开始轰轰烈烈的变法时，苏轼的命运也随之改变。</p>
-</div></div>
 
-<div class="divider">◆</div>
+<div class="section" id="trail"><div class="section-inner">
 
-<!-- ====== 3. 三苏 ====== -->
-<div class="section" id="three-su"><div class="section-inner">
+  <h2>北宋风烟</h2>
+  <p>苏轼生于仁宗景祐四年（1037年），恰逢北宋文化最灿烂的时期。政治上「重文轻武」，文人士大夫地位极高。经济上空前繁荣——汴京人口百万，活字印刷术让知识传播前所未有地便捷。但盛世之下，积弊已深：三冗（冗官、冗兵、冗费）严重，边疆辽夏环伺，改革与保守的党争愈演愈烈——这正是苏轼命运起伏的直接推手。</p>
+
+  <div class="divider">◆</div>
+
   <h2>三苏</h2>
-  <p>「三苏」——苏洵、苏轼、苏辙——是中国文学史上最著名的父子组合。苏辙在墓志铭中写道：「抚我则兄，诲我则师。」三人的关系超越了父子师生，是文学上相互砥砺的知己。</p>
+  <p>「三苏」——苏洵、苏轼、苏辙——是中国文学史上最著名的父子组合。苏辙在墓志铭中写道：「抚我则兄，诲我则师。」</p>
   <div class="grid-3">
     <div class="profile-card">
       <h3>苏洵</h3>
-      <div class="subtitle">父亲 · 1009—1066</div>
-      <p>号老泉，二十七岁始发愤读书。其文笔老辣雄健，为「唐宋八大家」之一。《六国论》是传世名篇。他对两个儿子的教育影响深远——不只是教文章，更教独立思考。</p>
+      <div class="sub">父亲 · 1009—1066</div>
+      <p>号老泉，二十七岁始发愤读书。文笔老辣雄健，《六国论》传世。对两个儿子的教育不只是教文章，更教独立思考。</p>
     </div>
     <div class="profile-card">
       <h3>苏轼</h3>
-      <div class="subtitle">长兄 · 1037—1101</div>
-      <p>字子瞻，号东坡居士。诗词文赋书画美食，无所不精。一生起伏跌宕，三度被贬而始终豁达。他是中国文人理想人格的化身——才华横溢，却从不恃才傲物。</p>
+      <div class="sub">长兄 · 1037—1101</div>
+      <p>字子瞻，号东坡居士。诗词文赋书画美食，无所不精。才华横溢而从不恃才傲物——中国文人理想人格的化身。</p>
     </div>
     <div class="profile-card">
       <h3>苏辙</h3>
-      <div class="subtitle">弟弟 · 1039—1112</div>
-      <p>字子由，与兄同榜进士。性情沉静内敛，文章汪洋澹泊。一生中多次为兄求情、代兄受过。苏轼获罪被贬时，苏辙常以身家性命担保。兄弟俩一生通信不绝，传世之作中有大量唱和诗。</p>
+      <div class="sub">弟弟 · 1039—1112</div>
+      <p>字子由，性沉静内敛，文章汪洋澹泊。多次为兄求情、代兄受过。兄弟一生通信不绝，传世之作中有大量唱和诗。</p>
     </div>
   </div>
-</div></div>
 
-<div class="divider">◆</div>
+  <div class="divider">◆</div>
 
-<!-- ====== 4. 生平轨迹 ====== -->
-<div class="section" id="timeline"><div class="section-inner">
   <h2>生平轨迹</h2>
   <div class="timeline">
     <div class="timeline-item">
       <div class="timeline-year">1037</div>
       <div class="timeline-dot"></div>
-      <div class="timeline-text">
-        <h3>生于眉山</h3>
-        <p>苏轼出生在四川眉山一个书香门第。父亲苏洵是著名散文家，弟弟苏辙与他同年中进士。眉山地处西南，民风淳朴、文化兴盛，为少年苏轼提供了自由生长的环境。</p>
-      </div>
+      <div class="timeline-text"><h3>生于眉山</h3><p>四川眉山书香门第。母亲程氏亲授《后汉书》，少年苏轼即「奋厉有当世志」。</p></div>
     </div>
     <div class="timeline-item">
       <div class="timeline-year">1057</div>
       <div class="timeline-dot"></div>
-      <div class="timeline-text">
-        <h3>进士及第 · 名动京师</h3>
-        <p>21岁与弟弟同榜中进士。主考官欧阳修读到他的《刑赏忠厚之至论》，惊叹「此人可谓善读书，善用书，他日文章必独步天下」，却因疑心是弟子曾巩所作，只给了第二名。从此苏轼名满天下。</p>
-      </div>
+      <div class="timeline-text"><h3>进士及第 · 名动京师</h3><p>21岁与弟同榜中进士。欧阳修读其文惊叹「此人可谓善读书，善用书，他日文章必独步天下」，因疑是弟子曾巩所作，只给了第二名。</p></div>
     </div>
     <div class="timeline-item">
       <div class="timeline-year">1061</div>
       <div class="timeline-dot"></div>
-      <div class="timeline-text">
-        <h3>制科入三等 · 凤翔任官</h3>
-        <p>参加制科考试，获「第三等」——这是北宋制科的最高等级，此前只有吴育一人获此殊荣。随后赴凤翔府（今陕西）任签书判官，是他政治生涯的起点。在这里他亲眼目睹了民间疾苦，萌生经世济民之志。</p>
-      </div>
+      <div class="timeline-text"><h3>制科入三等 · 凤翔任官</h3><p>获制科「第三等」——北宋最高记录。赴凤翔任签书判官，目睹民间疾苦，萌生经世济民之志。</p></div>
     </div>
     <div class="timeline-item">
       <div class="timeline-year">1071</div>
       <div class="timeline-dot"></div>
-      <div class="timeline-text">
-        <h3>离京外放 · 杭州通判</h3>
-        <p>因与王安石变法理念不合，自请外放。任杭州通判期间，游西湖、访寺院、作诗词，写下「欲把西湖比西子，淡妆浓抹总相宜」。这是他第一次近距离体验地方政务，也是他文学创作的第一个高峰期。</p>
-      </div>
+      <div class="timeline-text"><h3>离京外放 · 杭州通判</h3><p>与王安石变法理念不合，自请外放。游西湖、访寺院、作诗词——「欲把西湖比西子，淡妆浓抹总相宜。」</p></div>
     </div>
     <div class="timeline-item">
       <div class="timeline-year">1079</div>
       <div class="timeline-dot"></div>
-      <div class="timeline-text">
-        <h3>乌台诗案 · 命悬一线</h3>
-        <p>因诗文被御史弹劾「讥讽朝政」，被捕入御史台狱（因院中遍植柏树，常有乌鸦栖息，故称「乌台」）。关押103天，多次被审讯逼供，几近处死。经多方营救（包括王安石上书「安有盛世而杀才士者？」），最终被贬黄州。</p>
-      </div>
+      <div class="timeline-text"><h3>乌台诗案 · 命悬一线</h3><p>诗文被弹劾讥讽朝政，被捕入御史台狱，关押103天，几近处死。王安石上书「安有盛世而杀才士者」，终被贬黄州。</p></div>
     </div>
     <div class="timeline-item">
       <div class="timeline-year">1082</div>
       <div class="timeline-dot"></div>
-      <div class="timeline-text">
-        <h3>东坡耕读 · 千古名篇</h3>
-        <p>在黄州城东的坡地上开荒耕种，自号「东坡居士」。这一年他写下了《念奴娇·赤壁怀古》《前赤壁赋》《后赤壁赋》《记承天寺夜游》——几乎一夜间将中国文学的巅峰又抬高了一层。他不只是活下来了——他活成了另一种人。</p>
-      </div>
-    </div>
-    <div class="timeline-item">
-      <div class="timeline-year">1086</div>
-      <div class="timeline-dot"></div>
-      <div class="timeline-text">
-        <h3>短暂起复 · 新旧党争</h3>
-        <p>神宗去世，高太后摄政，起用旧党。苏轼被召回京，短短数月连升数级，官至翰林学士。但他不盲从旧党，对新法也不全盘否定——「较之新法，旧党亦有过之」。这种独立立场使他两面不讨好，再次自请外放杭州。</p>
-      </div>
+      <div class="timeline-text"><h3>东坡耕读 · 千古名篇</h3><p>在黄州东坡开荒耕种，自号「东坡居士」。写下《念奴娇》《前后赤壁赋》《记承天寺夜游》——将中国文学巅峰又抬高一层。</p></div>
     </div>
     <div class="timeline-item">
       <div class="timeline-year">1089</div>
       <div class="timeline-dot"></div>
-      <div class="timeline-text">
-        <h3>杭州知州 · 苏堤春晓</h3>
-        <p>任杭州知州。疏浚西湖，用淤泥筑堤——今「苏堤春晓」即其遗迹。同时开设了中国最早的公立医院之一「安乐坊」，救治瘟疫患者。这是他政治生涯中最大的实绩，至今惠泽杭州。</p>
-      </div>
+      <div class="timeline-text"><h3>杭州知州 · 苏堤春晓</h3><p>疏浚西湖，淤泥筑堤——「苏堤春晓」至今位列西湖十景之首。开中国最早公立医院之一「安乐坊」。</p></div>
     </div>
     <div class="timeline-item">
       <div class="timeline-year">1094</div>
       <div class="timeline-dot"></div>
-      <div class="timeline-text">
-        <h3>三贬岭南 · 惠州儋州</h3>
-        <p>新党再度上台，苏轼首当其冲。先被贬惠州（广东），写下「日啖荔枝三百颗，不辞长作岭南人」。62岁时再贬儋州（海南岛）——当时被视为天涯海角的流放极限。他却在海南教书育人，培养了当地第一位举人姜唐佐。</p>
-      </div>
+      <div class="timeline-text"><h3>三贬岭南 · 惠州儋州</h3><p>新党上台，贬惠州——「日啖荔枝三百颗，不辞长作岭南人」。62岁再贬儋州（海南），在蛮荒之地教书育人，开化一方。</p></div>
     </div>
     <div class="timeline-item">
-      <div class="timeline-year">1100</div>
+      <div class="timeline-year">1101</div>
       <div class="timeline-dot"></div>
-      <div class="timeline-text">
-        <h3>北归 · 常州病逝</h3>
-        <p>徽宗即位，大赦天下。苏轼北归途中，病逝于常州，享年64岁。临终对三个儿子说：「吾生无恶，死必不坠。」消息传开，「吴越之民，相与哭于市」。杭州、湖州等地百姓自发罢市悼念。苏辙遵兄遗嘱，将他安葬于汝州郏城县。</p>
-      </div>
+      <div class="timeline-text"><h3>北归 · 常州病逝</h3><p>徽宗大赦，北归途中病逝于常州，享年64。临终：「吾生无恶，死必不坠。」百姓罢市悼念。</p></div>
     </div>
   </div>
 </div></div>
 
 <div class="divider">◆</div>
 
-<!-- ====== 5. 心路历程 ====== -->
-<div class="section section-dark" id="journey"><div class="section-inner">
-  <h2>心路历程</h2>
-  <p>苏轼的一生，是一部从锋芒毕露到淡然超脱的精神成长史。三次贬谪，恰好印证了他三个阶段的心境变迁。</p>
+<!-- ====== 文心 ====== -->
+<div class="section-header" id="wenxin">
+  <img src="img/calligraphy.png" alt="文心" loading="lazy">
+  <h2>文心<span>The Literary Heart</span></h2>
+</div>
 
-  <div class="fu-section" style="border-left-color:#d46a5a">
-    <div class="excerpt">人生到处知何似，应似飞鸿踏雪泥。<br>泥上偶然留指爪，鸿飞那复计东西。</div>
-    <div class="title">——《和子由渑池怀旧》1061年，24岁</div>
-    <p style="margin-top:.8rem;font-size:.88rem">初入仕途时的感悟。已见人生无常的智慧，但仍是一种乐观的困惑——他知道自己是鸿鹄，却还不确定要飞向何方。</p>
-  </div>
+<div class="section"><div class="section-inner">
 
-  <div class="fu-section" style="border-left-color:#d46a5a">
-    <div class="excerpt">人生如逆旅，我亦是行人。</div>
-    <div class="title">——《临江仙·送钱穆父》1091年，54岁</div>
-    <p style="margin-top:.8rem;font-size:.88rem">经历了生死考验后的通透。不再是年轻时的哲学思辨，而是经历过后的接纳。「逆旅」是客栈，是短暂停留——他已接受命运不过是一场旅程。</p>
-  </div>
-
-  <div class="fu-section" style="border-left-color:#d46a5a">
-    <div class="excerpt">问汝平生功业，黄州惠州儋州。</div>
-    <div class="title">——《自题金山画像》1101年，64岁</div>
-    <p style="margin-top:.8rem;font-size:.88rem">去世前两个月写下的总结。用三次贬谪定义自己的一生——不是官位，不是名声，而是那些最艰难的时刻让他真正成为了苏东坡。这不是自嘲，是彻底的自我和解。</p>
-  </div>
-
-  <div class="quote">
-    「回首向来萧瑟处，归去，也无风雨也无晴。」
-    <cite>—— 《定风波》1082年，黄州</cite>
-  </div>
-</div></div>
-
-<div class="divider">◆</div>
-
-<!-- ====== 6. 诗词文赋 ====== -->
-<div class="section" id="poetry"><div class="section-inner">
   <h2>诗词文赋</h2>
-  <p>苏轼现存诗约2700首、词约300首，各体文章数千篇。他是宋词豪放派的奠基人，其文在「唐宋八大家」中与韩柳并峙。所谓「诗至杜子美，文至韩退之，书至颜鲁公，画至吴道子，天下之能事毕矣。能事毕而苏子出焉」。</p>
+  <p>苏轼现存诗约2700首、词约300首，各体文章数千篇。他是宋词豪放派的奠基人——「诗至杜子美，文至韩退之，书至颜鲁公，画至吴道子，天下之能事毕矣。能事毕而苏子出焉」。</p>
 
-  <h3>词</h3>
   <div class="poetry-grid">
     <div class="poem-card">
       <div class="badge">豪放 · 1082</div>
       <div class="verses">大江东去，浪淘尽，<br>千古风流人物。</div>
       <div class="title">《念奴娇·赤壁怀古》</div>
-      <div class="translation">The endless river eastward flows; with its huge waves are gone all those gallant heroes of bygone years.</div>
+      <div class="translation">The endless river eastward flows; with its huge waves are gone all those gallant heroes.</div>
     </div>
     <div class="poem-card">
       <div class="badge">中秋 · 1076</div>
@@ -349,10 +298,10 @@ footer{text-align:center;padding:clamp(2rem,4vw,4rem) clamp(1.25rem,3vw,2rem);co
       <div class="translation">Bamboo stick and straw sandals beat a horse. Who's afraid? A cloak of straw against mist and rain, I'll live my life.</div>
     </div>
     <div class="poem-card">
-      <div class="badge">哲理 · 1084</div>
-      <div class="verses">不识庐山真面目，<br>只缘身在此山中。</div>
-      <div class="title">《题西林壁》</div>
-      <div class="translation">We cannot see the true face of Mount Lu, because we are inside the mountain itself.</div>
+      <div class="badge">悼亡 · 1075</div>
+      <div class="verses">十年生死两茫茫，<br>不思量，自难忘。</div>
+      <div class="title">《江城子·乙卯正月二十日夜记梦》</div>
+      <div class="translation">For ten long years the living of the dead knows nought. Though not brought to mind, could the heart be forgot?</div>
     </div>
     <div class="poem-card">
       <div class="badge">送别 · 1091</div>
@@ -361,16 +310,16 @@ footer{text-align:center;padding:clamp(2rem,4vw,4rem) clamp(1.25rem,3vw,2rem);co
       <div class="translation">Life is like a journey inn — I am just a traveler too.</div>
     </div>
     <div class="poem-card">
-      <div class="badge">悼亡 · 1075</div>
-      <div class="verses">十年生死两茫茫，<br>不思量，自难忘。</div>
-      <div class="title">《江城子·乙卯正月二十日夜记梦》</div>
-      <div class="translation">For ten long years the living of the dead knows nought. Though to my mind not brought, could the heart be forgot?</div>
+      <div class="badge">哲理 · 1084</div>
+      <div class="verses">不识庐山真面目，<br>只缘身在此山中。</div>
+      <div class="title">《题西林壁》</div>
+      <div class="translation">We cannot see the true face of Mount Lu, because we are inside the mountain itself.</div>
     </div>
     <div class="poem-card">
-      <div class="badge">怀古 · 1082</div>
-      <div class="verses">羽扇纶巾，谈笑间，<br>樯橹灰飞烟灭。</div>
-      <div class="title">《念奴娇·赤壁怀古》</div>
-      <div class="translation">With silken fan and cap of a scholar, he laughed and talked, while enemy ships vanished as smoke and ashes.</div>
+      <div class="badge">西湖 · 1073</div>
+      <div class="verses">欲把西湖比西子，<br>淡妆浓抹总相宜。</div>
+      <div class="title">《饮湖上初晴后雨》</div>
+      <div class="translation">West Lake may be compared to Beauty Xi Shi. Whether richly adorned or plainly dressed, she is always fair.</div>
     </div>
     <div class="poem-card">
       <div class="badge">生活 · 1082</div>
@@ -380,311 +329,180 @@ footer{text-align:center;padding:clamp(2rem,4vw,4rem) clamp(1.25rem,3vw,2rem);co
     </div>
   </div>
 
-  <h3 style="margin-top:2rem">赋</h3>
-  <div class="fu-section">
-    <div class="excerpt">壬戌之秋，七月既望，苏子与客泛舟游于赤壁之下。清风徐来，水波不兴。举酒属客，诵明月之诗，歌窈窕之章。</div>
-    <div class="title">《前赤壁赋》1082年</div>
-    <p style="margin-top:.8rem;font-size:.88rem">以主客问答的形式，探讨宇宙与人生的哲理。文中「逝者如斯，而未尝往也；盈虚者如彼，而卒莫消长也」——将庄子哲学化入文学，是中国散文的最高成就之一。</p>
+  <div class="inline-img">
+    <img src="img/moon-river.png" alt="赤壁夜游" loading="lazy">
   </div>
 
+  <h2>赋</h2>
   <div class="fu-section">
-    <div class="excerpt">惟江上之清风，与山间之明月，耳得之而为声，目遇之而成色，取之无禁，用之不竭。是造物者之无尽藏也，而吾与子之所共适。</div>
+    <div class="excerpt">壬戌之秋，七月既望，苏子与客泛舟游于赤壁之下。清风徐来，水波不兴。</div>
+    <div class="title">《前赤壁赋》1082</div>
+    <p style="margin-top:.6rem;font-size:.88rem;max-width:none">以主客问答论宇宙人生，将庄子哲学化入文学。文末「逝者如斯，而未尝往也；盈虚者如彼，而卒莫消长也」——变与不变的辩证，是中国散文的最高成就之一。</p>
+  </div>
+  <div class="fu-section">
+    <div class="excerpt">惟江上之清风，与山间之明月……取之无禁，用之不竭。是造物者之无尽藏也。</div>
     <div class="title">《前赤壁赋》节选</div>
   </div>
-
   <div class="fu-section">
     <div class="excerpt">庭下如积水空明，水中藻、荇交横，盖竹柏影也。</div>
-    <div class="title">《记承天寺夜游》1083年</div>
-    <p style="margin-top:.8rem;font-size:.88rem">仅84字，写与张怀民夜游承天寺。月光的空灵，人生的闲适，透过三个比喻写尽。是北宋小品文的巅峰。</p>
+    <div class="title">《记承天寺夜游》1083 · 全文84字</div>
+    <p style="margin-top:.6rem;font-size:.88rem;max-width:none">月光的空灵、人生的闲适，透过三个比喻写尽。北宋小品文巅峰。</p>
   </div>
 
-  <div class="fu-section">
-    <div class="excerpt">天下有大勇者，卒然临之而不惊，无故加之而不怒。此其所挟持者甚大，而其志甚远也。</div>
-    <div class="title">《留侯论》 — 苏轼22岁应制科所作</div>
-  </div>
-
-  <h3 style="margin-top:2rem">诗</h3>
-  <div class="poetry-grid">
-    <div class="poem-card">
-      <div class="badge">西湖 · 1073</div>
-      <div class="verses">水光潋滟晴方好，<br>山色空蒙雨亦奇。<br>欲把西湖比西子，<br>淡妆浓抹总相宜。</div>
-      <div class="title">《饮湖上初晴后雨》</div>
-    </div>
-    <div class="poem-card">
-      <div class="badge">哲理 · 1084</div>
-      <div class="verses">横看成岭侧成峰，<br>远近高低各不同。</div>
-      <div class="title">《题西林壁》</div>
-    </div>
-    <div class="poem-card">
-      <div class="badge">春景 · 1079</div>
-      <div class="verses">竹外桃花三两枝，<br>春江水暖鸭先知。</div>
-      <div class="title">《惠崇春江晚景》</div>
-    </div>
-    <div class="poem-card">
-      <div class="badge">生活 · 1080</div>
-      <div class="verses">自笑平生为口忙，<br>老来事业转荒唐。<br>长江绕郭知鱼美，<br>好竹连山觉笋香。</div>
-      <div class="title">《初到黄州》</div>
-    </div>
-  </div>
-</div></div>
-
-<div class="divider">◆</div>
-
-<!-- ====== 7. 书画 ====== -->
-<div class="section section-dark" id="art"><div class="section-inner">
   <h2>书画</h2>
-  <p>苏轼是北宋「尚意」书风的代表人物，与黄庭坚、米芾、蔡襄并称「宋四家」。他的《寒食帖》被誉为「天下第三行书」（仅次于王羲之《兰亭序》和颜真卿《祭侄文稿》）。</p>
-  <p>画论方面，他提出「论画以形似，见与儿童邻」，强调神似重于形似。他擅长画竹石枯木，以简洁的笔墨传神。他开创了「文人画」的传统——画不只是造型艺术，更是画家精神世界的显现。</p>
-
-  <div class="fu-section" style="border-left-color:#d46a5a">
-    <div class="excerpt">空庖煮寒菜，破灶烧湿苇。那知是寒食，但见乌衔纸。君门深九重，坟墓在万里。也拟哭途穷，死灰吹不起。</div>
-    <div class="title">《寒食帖》全文（共两首，此其二）</div>
-    <p style="margin-top:.8rem;font-size:.88rem">《寒食帖》写于黄州被贬第三年。笔势跌宕错落，字形忽大忽小，浓墨处如泣血，飞白处如叹息。前半尚稳，至「春江欲入户」后渐狂——不仅是中国书法巅峰，也是苏轼内心苦闷最直接的流露。</p>
+  <p>苏轼是北宋「尚意」书风的代表人物，与黄庭坚、米芾、蔡襄并称「宋四家」。《寒食帖》被誉为「天下第三行书」——笔势跌宕，字形忽大忽小，浓墨如泣血，飞白如叹息。</p>
+  <p>画论方面，提出「论画以形似，见与儿童邻」，强调神似重于形似。主张「胸有成竹」——「画竹必先得成竹于胸中」。</p>
+  <div class="fu-section">
+    <div class="excerpt">空庖煮寒菜，破灶烧湿苇。那知是寒食，但见乌衔纸。</div>
+    <div class="title">《寒食帖》其二 · 黄州第三年，内心最直接的流露</div>
   </div>
-
-  <p style="margin-top:1rem">苏轼画竹，主张「胸有成竹」——「竹之始生，一寸之萌耳，而节叶具焉。今画者乃节节而为之，叶叶而累之，岂复有竹乎？故画竹必先得成竹于胸中。」（《文与可画筼筜谷偃竹记》）他画竹往往用朱砂画红竹，世人问为何？答：「世间亦有墨竹，何不问我为什么不能用红画？」</p>
 </div></div>
 
 <div class="divider">◆</div>
 
-<!-- ====== 8. 美食 ====== -->
-<div class="section-header">
-  <img src="img/food.png" alt="东坡美食" loading="lazy">
-  <h2>美食</h2>
+<!-- ====== 人间清欢 ====== -->
+<div class="section-header" id="life">
+  <img src="img/food.png" alt="人间清欢" loading="lazy">
+  <h2>人间清欢<span>Joy in the Mundane</span></h2>
 </div>
-<div class="section" id="food"><div class="section-inner">
-  <p>苏轼是中国文化史上最著名的美食家。被贬黄州时，他发现当地猪肉便宜却没人会做，于是亲自下厨炮制——这就是流传至今的「东坡肉」。</p>
-  <p>他在《猪肉颂》中详细记录了做法：「净洗铛，少著水，柴头罨烟焰不起。待他自熟莫催他，火候足时他自美。」慢火、少水、耐心——这不仅是烹饪之道，也是他的人生哲学。</p>
-  <p>黄州之后，他的美食版图一路扩展：</p>
+
+<div class="section section-dark"><div class="section-inner">
+  <p style="text-align:center;font-style:italic;font-size:1.1rem;color:#c8c0b4;margin-bottom:2rem">「雪沫乳花浮午盏，蓼茸蒿笋试春盘。人间有味是清欢。」</p>
+  <p>苏轼一生三度被贬，越贬越远。但他的伟大之处不在逆境中坚持，而在于他把最坏的命运活成了最好的诗——在黄州种地酿酒，在惠州日啖荔枝，在儋州教书育人。</p>
+  <p>「人间有味是清欢」——他不需要轰轰烈烈，只需要一碗茶、一盘笋、一个朋友，就活得津津有味。</p>
+
+  <div class="divider" style="color:#d46a5a">◆</div>
+
+  <h2>食</h2>
+  <p>中国文化史上最著名的美食家。被贬黄州时，发现当地猪肉便宜却没人会做——《猪肉颂》：「净洗铛，少著水，柴头罨烟焰不起。待他自熟莫催他，火候足时他自美。」</p>
   <div class="grid-3">
-    <div class="profile-card">
-      <h3>东坡肉</h3>
-      <div class="subtitle">黄州</div>
-      <p>慢火红烧肉，肥而不腻。至今是杭州名菜，也是全国大小餐馆的必备菜。</p>
-    </div>
-    <div class="profile-card">
-      <h3>东坡鱼</h3>
-      <div class="subtitle">黄州</div>
-      <p>用鲜鲤鱼，剖开不切，加盐、酱、姜、葱清炖。鲜嫩无比。</p>
-    </div>
-    <div class="profile-card">
-      <h3>岭南荔枝</h3>
-      <div class="subtitle">惠州</div>
-      <p>「日啖荔枝三百颗，不辞长作岭南人。」流放中的自我安慰，却成了最著名的荔枝广告。</p>
-    </div>
-    <div class="profile-card">
-      <h3>生蚝</h3>
-      <div class="subtitle">儋州</div>
-      <p>在海南发现生蚝美味，写信提醒儿子：「无令中朝士大夫知，恐争谋南徙，以分其味。」</p>
-    </div>
-    <div class="profile-card">
-      <h3>东坡饼</h3>
-      <div class="subtitle">黄州</div>
-      <p>用面粉、芝麻、香油制作的酥饼，流传湖北黄冈一带。</p>
-    </div>
-    <div class="profile-card">
-      <h3>东坡豆腐</h3>
-      <div class="subtitle">杭州</div>
-      <p>以黄州豆腐为主料，配以火腿、虾米蒸制。是杭州素菜名品。</p>
-    </div>
-  </div>
-</div></div>
-
-<div class="divider">◆</div>
-
-<!-- ====== 9. 友情 ====== -->
-<div class="section-header">
-  <img src="img/friendship.png" alt="苏轼与友" loading="lazy">
-  <h2>友情</h2>
-</div>
-<div class="section" id="friendship"><div class="section-inner">
-  <p>苏轼一生交友遍天下。他说「吾上可陪玉皇大帝，下可陪卑田院乞儿，眼前见天下无一个不好人。」这份赤子之心使他的友情超越了身份与流派。</p>
-
-  <div class="anecdote-card">
-    <div class="tag">亦师亦友</div>
-    <h3>欧阳修</h3>
-    <p>主考官，苏轼的伯乐。读苏轼文章后说「老夫当避路，放他出一头地」。这句话产生了成语「出人头地」。欧苏接力，完成了北宋古文运动的传承。</p>
+    <div class="profile-card"><h3>东坡肉</h3><div class="sub">黄州</div><p>慢火红烧肉，肥而不腻。至今是杭州名菜。</p></div>
+    <div class="profile-card"><h3>东坡鱼</h3><div class="sub">黄州</div><p>鲜鲤鱼清炖，加盐酱姜葱。</p></div>
+    <div class="profile-card"><h3>荔枝</h3><div class="sub">惠州</div><p>「日啖荔枝三百颗，不辞长作岭南人。」</p></div>
+    <div class="profile-card"><h3>生蚝</h3><div class="sub">儋州</div><p>写信提醒儿子：「无令中朝士大夫知，恐争谋南徙。」</p></div>
+    <div class="profile-card"><h3>东坡饼</h3><div class="sub">黄州</div><p>面粉芝麻香油酥饼。</p></div>
+    <div class="profile-card"><h3>东坡豆腐</h3><div class="sub">杭州</div><p>以黄州豆腐为主料的蒸菜。</p></div>
   </div>
 
-  <div class="anecdote-card">
-    <div class="tag">禅僧知己</div>
-    <h3>佛印禅师</h3>
-    <p>「一屁过江来」的典故：苏轼坐禅感悟，作诗「八风吹不动，端坐紫金莲」。派书童送佛印看。佛印批：「放屁」。苏轼大怒过江质问。佛印笑：「八风吹不动，一屁过江来。」苏轼惭愧而笑。他们的机锋对答，是中国禅宗文学中最生动的一页。</p>
+  <div class="divider" style="color:#d46a5a">◇</div>
+
+  <h2>友</h2>
+  <p>「吾上可陪玉皇大帝，下可陪卑田院乞儿，眼前见天下无一个不好人。」</p>
+  <div class="lives-grid">
+    <div class="life-card"><h3>欧阳修</h3><p>伯乐。读苏轼文章后说「老夫当避路，放他出一头地」——成语「出人头地」的出处。</p></div>
+    <div class="life-card"><h3>佛印</h3><p>「八风吹不动，一屁过江来」——两人的机锋对答是中国禅宗文学最生动的一页。</p></div>
+    <div class="life-card"><h3>王安石</h3><p>政敌。乌台诗案中上书「安有盛世而杀才士」，晚年金陵相会谈诗论文数日。</p></div>
+    <div class="life-card"><h3>黄庭坚</h3><p>苏门四学士之首。书法齐名「苏黄」。苏轼去世后，每日焚香致敬。</p></div>
+    <div class="life-card"><h3>陈慥</h3><p>成语「河东狮吼」即出自苏轼为他写的打趣诗。</p></div>
+    <div class="life-card"><h3>张怀民</h3><p>元丰六年十月十二日夜，月色入户，两人欣然起行——《记承天寺夜游》。</p></div>
   </div>
 
-  <div class="anecdote-card">
-    <div class="tag">政治与艺术</div>
-    <h3>王安石</h3>
-    <p>乌台诗案中，已退隐的王安石上书神宗：「安有圣世而杀才士乎？」最终救了苏轼一命。政敌之间的相惜——晚年两人在金陵相会，谈诗论文数日，苏叹道：「不知更几百年，方有如此人物。」</p>
+  <div class="inline-img" style="box-shadow:none">
+    <img src="img/friendship.png" alt="友" loading="lazy">
   </div>
 
-  <div class="anecdote-card">
-    <div class="tag">学生挚友</div>
-    <h3>黄庭坚</h3>
-    <p>「苏门四学士」之首，也是苏轼一生的知己。两人在书法上齐名（「苏黄」），在诗词上相互砥砺。黄庭坚说苏轼「文章妙天下，忠义贯日月」。苏轼去世后，黄庭坚在室内挂苏轼像，每日焚香致敬。</p>
-  </div>
+  <div class="divider" style="color:#d46a5a">◇</div>
 
-  <div class="anecdote-card">
-    <div class="tag">患难之交</div>
-    <h3>陈慥（季常）</h3>
-    <p>陈慥是苏轼在凤翔任官时的好友，后隐居黄州。苏轼被贬黄州后，两人常一起游山玩水。陈慥的妻子柳氏以善妒著称——成语「河东狮吼」即出自苏轼为陈慥写的打趣诗。</p>
-  </div>
-
-  <div class="anecdote-card">
-    <div class="tag">夜游之友</div>
-    <h3>张怀民</h3>
-    <p>元丰六年十月十二日夜，被贬黄州的苏轼和张怀民同在承天寺。月色入户，两人欣然起行——这便有了千古名篇《记承天寺夜游》。「何夜无月？何处无竹柏？但少闲人如吾两人者耳。」</p>
-  </div>
-</div></div>
-
-<div class="divider">◆</div>
-
-<!-- ====== 10. 兄弟情 ====== -->
-<div class="section-header">
-  <img src="img/brothers.png" alt="苏轼与苏辙" loading="lazy">
-  <h2>兄弟情</h2>
-</div>
-<div class="section section-dark" id="brothers"><div class="section-inner">
-  <p>苏轼与苏辙（子由）的兄弟情谊，是中国历史上一段佳话。二人不仅是骨肉兄弟，更是文学知己、精神同道。</p>
-  <p>兄弟俩同榜进士。苏轼性格豪放开朗，苏辙沉静内敛，恰如互补。苏轼一生中最著名的那首《水调歌头·明月几时有》——「但愿人长久，千里共婵娟」——就是中秋夜怀念弟弟苏辙而作。</p>
-
+  <h2>手足</h2>
+  <p>苏轼与苏辙的兄弟情谊，是中国历史上的一段佳话。二人同榜进士，性格互补——苏轼豪放开朗，苏辙沉静内敛。《水调歌头·明月几时有》正是中秋怀念苏辙所作。</p>
+  <p>乌台诗案时，苏辙上书神宗愿以全部官职为兄赎罪。兄弟一生聚少离多，但通信不绝。苏辙为兄长写的墓志铭——「抚我则兄，诲我则师」——是兄弟情最简洁也最深沉的总结。</p>
   <div class="fu-section" style="border-left-color:#d46a5a">
-    <div class="excerpt">明月几时有？把酒问青天。不知天上宫阙，今夕是何年。……人有悲欢离合，月有阴晴圆缺，此事古难全。但愿人长久，千里共婵娟。</div>
-    <div class="title">《水调歌头·明月几时有》—— 丙辰中秋，欢饮达旦，大醉，作此篇，兼怀子由。</div>
+    <div class="excerpt">与君世世为兄弟，再结来生未了因。</div>
+    <div class="title">苏轼狱中寄子由诗</div>
   </div>
 
-  <p>乌台诗案时，苏辙上书神宗，愿以自己的全部官职为兄长赎罪。他的奏章情深意切：「臣闻困急而呼天，疾痛而呼父母。臣之困疾，未有甚于今日者也。」</p>
-  <p>兄弟俩一生聚少离多，但通信不绝。《东坡集》中写给苏辙的诗有百首以上。苏辙为兄长写的墓志铭——「抚我则兄，诲我则师」——是兄弟情最简洁也是最深沉的总结。</p>
-
-  <div class="quote">
-    「与君世世为兄弟，再结来生未了因。」
-    <cite>—— 苏轼狱中寄子由诗</cite>
+  <div class="inline-img" style="box-shadow:none;margin-top:0">
+    <img src="img/brothers.png" alt="兄弟" loading="lazy">
   </div>
-</div></div>
 
-<div class="divider">◆</div>
+  <div class="divider" style="color:#d46a5a">◇</div>
 
-<!-- ====== 11. 爱情 ====== -->
-<div class="section" id="love"><div class="section-inner">
-  <h2>爱情与感情生活</h2>
-  <p>苏轼一生中有三位重要的女性，各自在他生命的不同阶段留下了深刻的印记。他的婚姻生活不像他的仕途那样跌宕起伏，但却是他精神世界的重要组成部分。</p>
-
-  <div class="grid-3">
-    <div class="profile-card">
-      <h3>王弗</h3>
-      <div class="subtitle">结发妻子 · 16岁出嫁</div>
-      <p>王弗是苏轼的第一任妻子，知书达理，聪明机敏。苏轼读书时，她常在旁陪伴；苏轼见客时，她隐在屏风后听，事后分析"某人说话模棱两可，不值得结交"。王弗去世后，苏轼在她坟前手植三万株松树。十年后写下千古第一悼亡词《江城子》——「十年生死两茫茫，不思量，自难忘。」</p>
-    </div>
-    <div class="profile-card">
-      <h3>王闰之</h3>
-      <div class="subtitle">继室 · 王弗堂妹</div>
-      <p>王弗死后三年，苏轼续娶了她的堂妹王闰之。闰之陪伴苏轼25年，经历了乌台诗案、黄州贬谪、起复回朝、再到杭州——是她陪他走过了一生中最动荡的岁月。她是一个朴实的女子，却有一颗包容的心。苏轼在黄州种地时，她和他一起劳作、一起酿酒。</p>
-    </div>
-    <div class="profile-card">
-      <h3>王朝云</h3>
-      <div class="subtitle">侍妾 · 歌女出身</div>
-      <p>王朝云12岁入苏家，是苏轼晚年最懂他的人。苏轼被贬惠州时，众多侍妾散去，唯有朝云执意相随。她唱「枝上柳绵吹又少」时泪流满面，说「妾所不能歌者，'枝上柳绵吹又少，天涯何处无芳草'也」——她听懂了词中的悲凉。朝云病逝于惠州，苏轼按佛礼葬她，题「惠州西湖栖禅寺朝云墓」。此后苏轼再不听此曲。</p>
-    </div>
+  <h2>爱</h2>
+  <p>苏轼一生三位重要的女性，各自在他生命的阶段留下深刻印记。</p>
+  <div class="lives-grid">
+    <div class="life-card"><h3>王弗</h3><p>结发妻子，聪敏机敏。去世后苏轼手植三万株松树于坟前。十年后写下千古第一悼亡词《江城子》——「十年生死两茫茫，不思量，自难忘。」</p></div>
+    <div class="life-card"><h3>王闰之</h3><p>王弗堂妹，继室。陪伴苏轼25年——乌台诗案、黄州贬谪、起复、杭州——陪他走完一生最动荡的岁月。</p></div>
+    <div class="life-card"><h3>王朝云</h3><p>歌女出身，晚年最懂他的人。被贬惠州时众妾散去，唯朝云执意相随。病逝后苏轼按佛礼葬于惠州西湖，此后不再听「枝上柳绵吹又少」。</p></div>
   </div>
 </div></div>
 
 <div class="divider">◆</div>
 
-<!-- ====== 12. 逸闻 ====== -->
-<div class="section" id="anecdotes"><div class="section-inner">
-  <h2>逸闻 · 花絮</h2>
+<!-- ====== 雪泥鸿爪 ====== -->
+<div class="section-header" id="traces">
+  <img src="img/bamboo-wine.png" alt="雪泥鸿爪" loading="lazy">
+  <h2>雪泥鸿爪<span>Traces Left by Chance</span></h2>
+</div>
+
+<div class="section"><div class="section-inner">
+  <p style="text-align:center;font-style:italic;color:#5a4e3e;margin-bottom:1.5rem;font-size:.95rem">「人生到处知何似，应似飞鸿踏雪泥。泥上偶然留指爪，鸿飞那复计东西。」</p>
 
   <div class="anecdote-card">
     <div class="tag">趣事</div>
-    <h3>东坡与琴操</h3>
-    <p>杭州名妓琴操，聪慧异常。一日苏轼问她：「我作长老，你来参禅，如何？」琴操答：「好。」苏轼问：「湖中景致如何？」答：「落霞与孤鹜齐飞，秋水共长天一色。」苏轼问：「景中人如何？」答：「裙拖六幅湘江水，髻挽巫山一段云。」苏轼问：「人心中事如何？」答：「随他。" 苏轼叹服。琴操后来在东坡点拨下出家为尼。</p>
-  </div>
-
-  <div class="anecdote-card">
-    <div class="tag">趣事</div>
-    <h3>苏轼与小妹</h3>
-    <p>民间传说苏轼有一个妹妹叫苏小妹，与秦观（少游）成婚。史上并无此人（苏轼只有姐姐八娘），但这不妨碍民间创造大量苏轼与苏小妹互怼、秦观娶亲的趣闻。其中最著名的是苏小妹出的对联：「闭门推出窗前月」——秦观对不出，苏轼暗中投石入水，秦观灵机一动：「投石冲开水底天」。</p>
+    <h3>苏东坡与琴操</h3>
+    <p>杭州名妓琴操聪慧异常。苏轼以禅机试探，琴操应对如流。后琴操在东坡点拨下出家为尼。苏轼对女性的尊重，超越了他所在的时代。</p>
   </div>
 
   <div class="anecdote-card">
     <div class="tag">趣事</div>
     <h3>佛印机锋</h3>
-    <p>苏轼与佛印泛舟江上，苏轼指着河岸上啃骨头的狗，笑问佛印：「你看到什么？」佛印微微一笑：「狗啃和尚骨。」苏轼愕然——他的本意是「狗啃河上（和尚）骨」，没想到佛印已经看穿了他的心思，还回了这么一句。</p>
+    <p>苏轼与佛印泛舟江上，见河岸上狗啃骨头，笑问：「你看到什么？」佛印微微一笑：「狗啃和尚骨。」——苏轼的本意是「狗啃河上（和尚）骨」，佛印已看穿，笑着回敬。</p>
   </div>
 
   <div class="anecdote-card">
     <div class="tag">趣事</div>
-    <h3>苏轼的养生术</h3>
-    <p>苏轼特别注重养生，自创「东坡养生术」。每天梳头百下、叩齿三十六、散步数里。他写《养生论》说：「吾闻战国中有一方，吾服之有效，故以奉传。其药四味而已：一曰无事以当贵，二曰早寝以当富，三曰安步以当车，四曰晚食以当肉。」——无事、早睡、走路、少吃。</p>
+    <h3>东坡的一级酿酒师之路</h3>
+    <p>苏轼酷爱酿酒，先后试酿蜜酒、桂酒、松酒、真一酒。甚至写了《东坡酒经》。不过据朋友记载，他酿的蜜酒喝完集体腹泻——才华横溢的一个人，唯独酿酒天赋堪忧。</p>
   </div>
 
   <div class="anecdote-card">
     <div class="tag">趣事</div>
-    <h3>朝廷里的一级酿酒师</h3>
-    <p>苏轼酷爱饮酒，但他酒量不大——「予饮酒终日，不过五合」。他更喜欢酿酒的过程，先后尝试酿制了蜜酒、桂酒、松酒、真一酒等多种酒品。他甚至写了一本《东坡酒经》，详细记录了酿酒工艺。不过据同时代人的记载，他酿的酒品质堪忧——朋友喝了他酿的蜜酒后集体腹泻。</p>
+    <h3>河东狮吼</h3>
+    <p>朋友陈慥好谈佛理却怕老婆。苏轼作诗打趣：「龙丘居士亦可怜，谈空说有夜不眠。忽闻河东狮子吼，拄杖落手心茫然。」——「河东狮吼」从此成为悍妇的代名词。</p>
   </div>
 
   <div class="anecdote-card">
     <div class="tag">趣事</div>
-    <h3>「河东狮吼」的由来</h3>
-    <p>苏轼的朋友陈慥（季常）好谈佛理，却是个怕老婆的男人。苏轼写了一首诗打趣他：「龙丘居士亦可怜，谈空说有夜不眠。忽闻河东狮子吼，拄杖落手心茫然。」「河东狮吼」从此成了悍妇的成语。</p>
+    <h3>养生四味药</h3>
+    <p>苏轼自创养生术——梳头百下、叩齿三十六、散步数里。他在《养生论》中说：「一曰无事以当贵，二曰早寝以当富，三曰安步以当车，四曰晚食以当肉。」无事、早睡、走路、少吃——九百年前的第一性原理养生。</p>
   </div>
 
   <div class="anecdote-card">
     <div class="tag">趣事</div>
-    <h3>苏东坡的雪堂</h3>
-    <p>在黄州时，苏轼在东坡上建了一间茅屋。落成之日正逢大雪，他欣然取名为「雪堂」，四壁画雪景。雪堂不仅是他的居所，更是他精神世界的象征——他在此读书、写作、会友、酿酒，度过了生命中最重要的四年。他写道：「吾饮酒至少，常以把杯为乐。往往颓然坐睡，人见其醉，而吾中了然，盖莫能名其为醉为醒也。」——他是醒是醉，已无人能明。</p>
+    <h3>雪堂</h3>
+    <p>黄州东坡上建茅屋，落成之日正逢大雪，取名「雪堂」，四壁画雪景。在此读书、写作、会友、酿酒——度过了生命中最重要的四年。「吾饮酒至少，常以把杯为乐。往往颓然坐睡……莫能名其为醉为醒也。」</p>
   </div>
 </div></div>
 
 <div class="divider">◆</div>
 
-<!-- ====== 13. Legacy ====== -->
+<!-- ====== 遗泽千古 ====== -->
 <div class="section section-dark" id="legacy"><div class="section-inner">
-  <h2>一生留下的</h2>
+  <h2>遗泽千古</h2>
+
   <div class="attributes">
-    <div class="attribute">
-      <span class="num">2700+</span>
-      <span class="label">传世诗篇</span>
-    </div>
-    <div class="attribute">
-      <span class="num">300+</span>
-      <span class="label">词作名篇</span>
-    </div>
-    <div class="attribute">
-      <span class="num">苏堤</span>
-      <span class="label">杭州西湖长堤</span>
-    </div>
-    <div class="attribute">
-      <span class="num">东坡肉</span>
-      <span class="label">千年传承</span>
-    </div>
-    <div class="attribute">
-      <span class="num">宋四家</span>
-      <span class="label">「尚意」书风</span>
-    </div>
-    <div class="attribute">
-      <span class="num">安乐坊</span>
-      <span class="label">中国最早公立医院</span>
-    </div>
+    <div class="attribute"><span class="num">2700+</span><span class="label">传世诗篇</span></div>
+    <div class="attribute"><span class="num">300+</span><span class="label">词作名篇</span></div>
+    <div class="attribute"><span class="num">苏堤</span><span class="label">西湖长堤</span></div>
+    <div class="attribute"><span class="num">东坡肉</span><span class="label">千年传承</span></div>
+    <div class="attribute"><span class="num">宋四家</span><span class="label">「尚意」书风</span></div>
+    <div class="attribute"><span class="num">安乐坊</span><span class="label">最早公立医院</span></div>
   </div>
 
-  <p>他疏浚西湖筑成苏堤，至今是「西湖十景」之首。他开设的安乐坊，是中国最早的公立医院之一。他的《寒食帖》是「天下第三行书」。</p>
-  <p>他是「唐宋八大家」之一，是「宋四家」之首。他一生中几乎没有敌人——即使是政治对手，也都尊重他的人格。王安石在他落难时出手相救，因为「安有圣世而杀才士？」</p>
-  <p>但比这些成就更重要的，是他面对命运的态度。三次贬谪，越贬越远，他却越活越开阔。在黄州，他种地酿酒写赤壁；在惠州，他日啖荔枝研究生蚝；在儋州，他办学教书开化一方。他把最坏的命运，过成了最好的诗。</p>
+  <p>他疏浚西湖筑成苏堤，位列西湖十景之首。开设的安乐坊是中国最早公立医院之一。《寒食帖》是天下第三行书。</p>
+  <p>他是唐宋八大家之一、宋四家之首。他一生几乎没真正的敌人——政治对手也尊重他的人格。王安石在他落难时出手相救——「安有圣世而杀才士？」</p>
+  <p>但比这些成就更重要的，是他面对命运的态度。三次贬谪、越贬越远——他却越活越开阔。他把最坏的命运，过成了最好的诗。</p>
 
   <div class="quote">
     「问汝平生功业，黄州惠州儋州。」
     <cite>—— 苏轼《自题金山画像》</cite>
   </div>
 
-  <p style="text-align:center;margin-top:3rem;font-size:.9rem;color:#8a7a6a">他去世近千年后，我们依旧在读他的诗，吃他发明的菜，走他修筑的堤。</p>
+  <p style="text-align:center;margin-top:3rem;font-size:.9rem;color:#8a7a6a">他去世近千年后，我们依旧读他的诗，吃他发明的菜，走他修筑的堤。</p>
   <p style="text-align:center;font-size:.9rem;color:#8a7a6a">一个人活成这样，就够了。</p>
 </div></div>
 
-<footer>
-  「人生如逆旅，我亦是行人」 · 献给苏东坡
-</footer>
+<footer>「人生如逆旅，我亦是行人」· 献给苏东坡</footer>
 
 </body>
 </html>
