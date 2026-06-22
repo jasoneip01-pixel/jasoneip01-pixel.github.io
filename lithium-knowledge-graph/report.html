@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="theme-color" content="#0f0f1a">
+<title>锂产业每日总结 | Lithium Daily Brief</title>
+<style>
+  /* Ariste Design Tokens — injected by fix-font-hardcoding.py */
+  --font-heading:      "DM Serif Display", "Noto Serif CJK SC", "Source Han Serif SC", Georgia, serif;
+  --font-body:         "Inter", "PingFang SC", "Microsoft YaHei", sans-serif;
+  --font-body-serif:   "Noto Serif CJK SC", "Source Han Serif SC", "Songti SC", Georgia, serif;
+  --font-ui:           "Inter", "PingFang SC", "Microsoft YaHei", sans-serif;
+  --font-mono:         "JetBrains Mono", "SF Mono", "Fira Code", "Consolas", monospace;
+
+:root {
+  --bg: #0f0f1a; --surface: #1a1a2e; --text: #e0e0e0;
+  --text2: #a0a0b8; --accent: #4fc3f7; --border: #2a2a4a;
+  --green: #27AE60; --red: #E74C3C; --orange: #E67E22;
+  --yellow: #F39C12; --purple: #8E44AD;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  font-family: var(--font-body);
+  background: var(--bg); color: var(--text); line-height:1.7;
+  max-width:900px; margin:0 auto; padding:20px;
+}
+.header {
+  text-align:center; padding: 40px 0 30px;
+  border-bottom: 2px solid var(--border); margin-bottom: 30px;
+}
+.header h1 { font-size:28px; color:#fff; margin-bottom:8px; }
+.header .date { color: var(--text2); font-size:14px; }
+.header .update-badge {
+  display:inline-block; background:var(--red); color:#fff; padding:2px 10px;
+  border-radius:10px; font-size:11px; margin-left:10px; vertical-align:middle;
+}
+.meta-bar {
+  display:flex; gap:24px; justify-content:center; margin-top:12px;
+  flex-wrap:wrap; font-size:13px; color:var(--text2);
+}
+.section {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 12px; padding: 24px; margin-bottom: 20px;
+}
+.section h2 { font-size:18px; color:#fff; margin-bottom:16px; display:flex; align-items:center; gap:8px; }
+.section h3 { font-size:15px; color:var(--accent); margin: 16px 0 10px; }
+
+.price-card { display:flex; gap:16px; flex-wrap:wrap; }
+.price-item {
+  flex:1; min-width:180px; background:var(--bg); border-radius:8px;
+  padding: 14px; text-align:center; border:1px solid var(--border);
+}
+.price-item .val { font-size:24px; font-weight:700; color:#fff; }
+.price-item .label { font-size:12px; color:var(--text2); margin-top:4px; }
+.price-item .chg { font-size:13px; margin-top:4px; }
+.up { color: var(--green); } .down { color: var(--red); }
+
+table { width:100%; border-collapse:collapse; font-size:13px; }
+th { text-align:left; padding:8px 10px; color:var(--text2); font-weight:500; border-bottom:1px solid var(--border); font-size:11px; text-transform:uppercase; }
+td { padding:8px 10px; border-bottom:1px solid rgba(42,42,74,0.4); }
+tr:last-child td { border-bottom:none; }
+.bullish { color: var(--green); } .bearish { color: var(--red); } .neutral { color: var(--yellow); }
+
+.tag {
+  display:inline-block; padding:2px 8px; border-radius:4px; font-size:11px; font-weight:500;
+}
+.tag-green { background: rgba(39,174,96,0.15); color: var(--green); }
+.tag-red { background: rgba(231,76,60,0.15); color: var(--red); }
+.tag-yellow { background: rgba(243,156,18,0.15); color: var(--yellow); }
+.tag-orange { background: rgba(230,126,34,0.15); color: var(--orange); }
+.tag-blue { background: rgba(79,195,247,0.15); color: var(--accent); }
+
+.grid2 { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+
+/* ── responsive: tablet ── */
+@media (max-width: 1024px) {
+  body { max-width:100%; padding:16px; }
+  .header { padding: 30px 0 20px; }
+  .header h1 { font-size: 24px; }
+  .price-card { gap: 10px; }
+  .price-item { min-width: 140px; padding: 12px; }
+  .price-item .val { font-size: 20px; }
+  .section { padding: 18px; }
+}
+
+/* ── responsive: phone ── */
+@media (max-width: 768px) {
+  body { max-width:100%; padding:10px; font-size:14px; }
+  .header { padding: 20px 0 15px; }
+  .header h1 { font-size: 20px; }
+  .header .date { font-size: 12px; }
+  .meta-bar { font-size: 11px; gap: 12px; }
+  .section { padding: 14px; margin-bottom: 12px; border-radius: 10px; }
+  .section h2 { font-size: 16px; }
+  .section h3 { font-size: 14px; }
+  .price-card { gap: 8px; }
+  .price-item { min-width: 130px; padding: 10px; flex: 1 1 calc(50% - 8px); }
+  .price-item .val { font-size: 18px; }
+  .price-item .label { font-size: 10px; }
+  .price-item .chg { font-size: 11px; }
+  .grid2 { grid-template-columns: 1fr; gap: 10px; }
+  table { font-size: 11px; }
+  th, td { padding: 6px 8px; }
+  .signal-list li { font-size: 12px; padding: 5px 0; }
+  .risk-row { padding: 6px 0; font-size: 12px; }
+  .risk-sev { font-size: 11px; }
+  .tag { font-size: 10px; padding: 2px 6px; }
+  .footer { padding: 20px 0; font-size: 11px; }
+}
+
+@media (max-width: 380px) {
+  .header h1 { font-size: 17px; }
+  .price-item { min-width: 110px; padding: 8px; }
+  .price-item .val { font-size: 16px; }
+  .section h2 { font-size: 14px; }
+}
+
+.risk-row { display:flex; justify-content:space-between; align-items:center; padding:8px 0; border-bottom:1px solid rgba(42,42,74,0.3); }
+.risk-row:last-child { border-bottom:none; }
+.risk-bar { flex:1; height:6px; background:var(--bg); border-radius:3px; margin:0 12px; overflow:hidden; }
+.risk-fill { height:100%; border-radius:3px; }
+.risk-sev { min-width:28px; font-size:12px; font-weight:600; text-align:right; }
+
+.signal-list { list-style:none; }
+.signal-list li { padding:6px 0; border-bottom:1px solid rgba(42,42,74,0.3); font-size:13px; display:flex; align-items:flex-start; gap:8px; }
+.signal-list li:last-child { border-bottom:none; }
+.signal-icon { font-size:16px; flex-shrink:0; }
+
+.footer {
+  text-align:center; padding:30px 0; color:var(--text2); font-size:12px;
+  border-top:1px solid var(--border); margin-top:30px;
+}
+.footer a { color: var(--accent); }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>🔋 锂产业每日总结</h1>
+  <div class="date">2026-06-22 <span class="update-badge">MONDAY 复盘版</span></div>
+  <div class="meta-bar">
+    <span>周一复盘 · 数据截至前一周交易日 6/18-6/19</span>
+    <span>·</span>
+    <span>LC2609收160,500(-6.58%) · 周内暴跌11,300元/吨 · 现货降至167,250均价 · 枧下窝复产获批引爆供给利空 · 非洲矿到港+江西复产预期三重共振</span>
+  </div>
+</div>
+
+<!-- PRICE SNAPSHOT -->
+<div class="section">
+  <h2>📊 价格快照</h2>
+  <div class="price-card">
+    <div class="price-item">
+      <div class="val down">¥167,250</div>
+      <div class="label">电池级碳酸锂 (SMM 6/18均价)</div>
+      <div class="chg down">区间164,500~170,000 · 日跌2,250元/吨 · 长江有色169,000(6/16,-2,250) · 生意社基准价166,000(6/19,-1,000) · 华泰期货166,000~172,000(-1,500)</div>
+    </div>
+    <div class="price-item">
+      <div class="val down">¥160,500</div>
+      <div class="label">广期所 LC2609 主力合约 6/18</div>
+      <div class="chg down">周度暴跌-11,300元/吨(-6.58%) · 从约171,800跌至160,500 · 创近期单周最大跌幅 · 枧下窝复产获批为核心导火索</div>
+    </div>
+    <div class="price-item">
+      <div class="val down">¥155,160</div>
+      <div class="label">广期所 LC2607 近月合约 6/18</div>
+      <div class="chg down">周度暴跌-11,720元/吨(-7.02%) · 近月跌幅更深 · 市场对短期现货压力预期更为悲观</div>
+    </div>
+    <div class="price-item">
+      <div class="val down">¥153,000</div>
+      <div class="label">电池级氢氧化锂 粗颗粒(周均价)</div>
+      <div class="chg down">周跌2.6% · 氢氧化锂跟随碳酸锂走弱 · 下游三元需求基本持平,缺乏支撑</div>
+    </div>
+  </div>
+  <div style="margin-top:12px; font-size:12px; color:var(--text2); background:var(--bg); border-radius:8px; padding:12px;">
+    <strong>📌 6/18-6/19周度交易复盘:</strong> 碳酸锂从~17.2万/吨区间加速下跌至16万关口附近。<strong>核心导火索:宁德时代枧下窝锂矿在停产超10个月后重获《用地预审与选址行政许可》,Q4有望复产。</strong>三重利空共振:(1)枧下窝复产预期→江西锂云母减产逻辑松动;(2)非洲津巴布韦锂精矿6月到港大增→进口补充超预期;(3)锂辉石精矿CIF价格下挫至2,443~2,495美元/吨(-52~-82美元/吨)→矿端成本支撑下移。<br>
+    <strong>⚠️ 关键信号:</strong> ①LC2609单周-6.58%是近期最大跌幅,16万整数关口成为新的多空博弈线;②现货同步下跌至16.6-16.7万,期现价差约+5,750元/吨(期货低于现货)或转为贴水结构(近月LC2607收155,160,低于现货约12,000);③<strong>16万附近现货成交放量</strong>——下游逢低采买意愿增强;④社会库存持续去化(SMM 97,829吨,周环比-857吨),去库趋势延续;⑤仓单从6/4峰值56,599手回落至52,685手,两周降~4,000手。
+  </div>
+</div>
+
+<!-- SUPPLY-DEMAND -->
+<div class="section">
+  <h2>⚖️ 供需平衡 (概率分布)</h2>
+  <table>
+    <tr><th>情景</th><th>概率</th><th>核心逻辑</th><th>锂价预测</th></tr>
+    <tr><td><span class="tag tag-green">A 瑞银多方</span></td><td>25%</td><td>产能利用率60% · ESS+108% · 宜春停产 · 津巴布韦受限</td><td>$26,000/吨</td></tr>
+    <tr><td><span class="tag tag-yellow">C 中间情景</span></td><td>40%</td><td>产能利用率70% · 供给和需求均有折扣</td><td>$18,000-22,000/吨</td></tr>
+    <tr><td><span class="tag tag-red">B 高盛空方</span></td><td>35%</td><td>产能利用率85% · 100万吨LCE新增供给 · 2026H2过剩</td><td>¥6.5-10.1万/吨</td></tr>
+  </table>
+  <p style="margin-top:12px;font-size:12px;color:var(--text2);">
+    📆 <strong>前一周(6/18-6/19)收盘全景:</strong> ①LC2609单周暴跌-6.58%收160,500,近月LC2607跌-7.02%收155,160——碳酸锂自20万高位持续回落,16万关口成为新的多空博弈线;②SMM电池级现货均价167,250(区间164,500~170,000),日跌2,250元/吨,现货跟随期货加速下行但跌幅小于期货;③<strong>三重供给利空共振:枧下窝复产获批+非洲矿到港+江西复产预期松动</strong>——此前"宜春停产+供给收缩"的核心看涨逻辑遭遇重大挑战;④<strong>下游逢低采买,16万附近现货成交放量</strong>——需求端在低价区间出现支撑信号;⑤SMM社会库存97,829吨(周环比-857吨),去库趋势延续(小样本周度去库1,184吨,大样本周度去库1,825吨);⑥仓单从峰值56,599手(6/4)降至52,685手,两周降~4,000手,仓单压力边际缓解;⑦<strong>广期所拟引入境外交易者参与碳酸锂期货</strong>——国际化迈出关键一步,利好长期流动性但短期加剧多空分歧;⑧锂辉石精矿6% CIF中国跌至2,443~2,495美元/吨(-52~-82美元/吨),矿端成本支撑持续下移;⑨6月磷酸铁锂排产环比+1.97%,三元材料环比基本持平——需求端增速温和,远不及供给端增速;⑩<strong>6月碳酸锂排产11.63万吨(环比+2.63%,同比+48.9%),产量增速远超需求增速</strong>——供给端产能释放持续超预期。
+  </p>
+</div>
+
+<!-- KEY COMPANIES -->
+<div class="section">
+  <h2>🏭 核心公司 Q1 2026 基本面</h2>
+  <table>
+    <tr><th>公司</th><th>代码</th><th>Q1利润增速</th><th>核心优势</th><th>关键风险</th></tr>
+    <tr><td>天齐锂业</td><td>002466</td><td class="bullish">+3,987%</td><td>Greenbushes 51% · 100%精矿自给</td><td>Greenbushes品位下降 · SQM权益</td></tr>
+    <tr><td>赣锋锂业</td><td>002460</td><td class="bullish">+633%</td><td>全产业链 · 固态电池 · Cauchari 97%</td><td>Cauchari超预期供给 · 估值较高</td></tr>
+    <tr><td>盐湖股份</td><td>000792</td><td class="bullish">+147%</td><td>成本¥3.1-3.8万最低 · 钾肥保护</td><td>五矿入主整合 · 资源税率</td></tr>
+    <tr><td>宁德时代</td><td>300750</td><td class="bullish">+48.5%</td><td>40.7%全球份额 · 储能+108%</td><td>枧下窝复产增加自有矿供给 · 35-40%全球锂需求</td></tr>
+    <tr><td>比亚迪</td><td>002594</td><td class="bearish">-55.4%</td><td>储能全球第一 · 海外+56%</td><td>国内-52% · 价格战 · 成本传导</td></tr>
+  </table>
+  <p style="margin-top:10px;font-size:12px;color:var(--text2);">
+    💡 6/18当周锂板块核心关注:①<strong>宁德时代枧下窝锂矿复产获批</strong>——CATL上游锂矿布局取得关键进展,长期利好CATL自身原料保障但利空锂价;②锂矿股面临锂价下行压力——天齐/赣锋/盐湖短期承压,但低成本矿企(盐湖)抗跌性更强;③6/18-6/19个股收盘价格暂未纳入本次更新(数据源限制),将以SMM/广期所/生意社价格数据为核心焦点。
+  </p>
+</div>
+
+<!-- ANALYST CONSENSUS -->
+<div class="section">
+  <h2>🏦 卖方分歧矩阵</h2>
+  <table>
+    <tr><th>机构</th><th>方向</th><th>产能利用率假设</th><th>2026供给(LCE)</th><th>价格预测</th><th>评级</th></tr>
+    <tr><td>高盛商品</td><td class="bearish">空</td><td>85%</td><td>+100万吨</td><td>¥16.4万见顶→¥6.5-10.1万</td><td>卖出天齐/赣锋</td></tr>
+    <tr><td>瑞银</td><td class="bullish">多</td><td>60%</td><td>+59.6万吨</td><td>$26,000/吨</td><td>买入天齐/赣锋/盐湖</td></tr>
+    <tr><td>摩根士丹利</td><td class="bullish">多</td><td>—</td><td>缺口2.2-8万吨</td><td>—</td><td>增持+实盘加仓</td></tr>
+    <tr><td>摩根大通</td><td class="bullish">多</td><td>—</td><td>—</td><td>$17,500→$22,000</td><td>11月从空翻多</td></tr>
+    <tr><td>花旗</td><td class="bullish">多</td><td>—</td><td>缺口</td><td>—</td><td>ESS容忍度高</td></tr>
+    <tr><td>中信建投</td><td class="bullish">多</td><td>—</td><td>去库延续</td><td>¥19-20万区间</td><td>供给改善延迟至7月</td></tr>
+    <tr><td>光大期货</td><td class="neutral">中</td><td>—</td><td>供需双增</td><td>短期下行压力较大</td><td>需求修复不及供给释放</td></tr>
+    <tr><td>五矿期货</td><td class="bullish">中偏多</td><td>—</td><td>仓单拐点已现</td><td>18万附近做多</td><td>短期存在反弹动能</td></tr>
+  </table>
+  <p style="margin-top:10px;font-size:12px;color:var(--text2);">⚠️ 7/9投行看多=一致预期风险持续暴露。自5月中旬20.99万高点以来,LC2609持续下行至6/18的160,500,累计跌幅约-23.7%。高盛空方¥16.4万见顶预测已被市场价格跌破(当前16.05万),空方逻辑已兑现且超出预期。<strong>枧下窝复产获批是5月底以来最重大的供给端利空,叠加非洲矿到港+江西复产预期,空方逻辑加速强化。</strong>五矿18万做多策略目前处于深度亏损(约-19,500元/吨),需重新评估。中信建投供给改善延迟判断已被证明过于乐观。</p>
+</div>
+
+<!-- EXTRACTIVE: SUPPLY DYNAMICS -->
+<div class="section">
+  <h2>⛏️ 供给端关键动态</h2>
+  <div class="grid2">
+    <div>
+      <h3>🟢 利多供给</h3>
+      <ul class="signal-list">
+        <li><span class="signal-icon">🔴</span> 宜春4家核心锂云母矿5/1停产换证 —— 但在枧下窝获批后,复产预期升温</li>
+        <li><span class="signal-icon">🟡</span> 津巴布韦出口限制→配额制 · 但5-6月非洲精矿大批量到港,进口环比大增</li>
+        <li><span class="signal-icon">🟢</span> 仓单库存从峰值56,599手降至52,685手(两周-4,000手)——仓单压力边际缓解</li>
+        <li><span class="signal-icon">🟢</span> SMM社会库存97,829吨(周-857吨),去库趋势延续</li>
+        <li><span class="signal-icon">🟡</span> 下游16万附近逢低采买,成交放量</li>
+      </ul>
+    </div>
+    <div>
+      <h3>🔴 利空供给</h3>
+      <ul class="signal-list">
+        <li><span class="signal-icon">🔴</span> <strong>宁德时代枧下窝锂矿复产获批——停产超10个月后获用地意见书,Q4有望复产</strong></li>
+        <li><span class="signal-icon">🔴</span> 非洲津巴布韦锂精矿6月到港大增——补充澳矿减量缺口</li>
+        <li><span class="signal-icon">🔴</span> 江西锂云母复产信号明确——省自然资源厅批准宜丰圳口里-奉新枧下窝矿区用地</li>
+        <li><span class="signal-icon">🔴</span> 锂辉石精矿CIF跌至2,443~2,495美元/吨(-52~-82)——矿端成本支撑下移</li>
+        <li><span class="signal-icon">🔴</span> 6月排产11.63万吨(环比+2.63%,同比+48.9%)——产量增速远超需求</li>
+        <li><span class="signal-icon">🔴</span> 周产量26,429吨(环比+85吨)——供给持续高位运行</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- RISK MONITOR -->
+<div class="section">
+  <h2>⚠️ 风险监测面板</h2>
+  <table>
+    <tr><th>风险因子</th><th>严重度</th><th>当前状态</th><th>触发条件</th></tr>
+    <tr><td><strong>枧下窝复产获批——5月底以来最大供给利空</strong></td><td><span class="tag tag-red">极高</span></td><td>宁德时代枧下窝锂矿停产超10个月后重获《用地预审与选址行政许可》,Q4有望复产。<strong>这是6/18期货单日暴跌-6.58%的核心导火索。</strong>此前"宜春停产收缩供给"的看涨逻辑遭遇结构性颠覆。江西锂云母从"永久性减量"叙事转向"阶段性停产"叙事。</td><td>枧下窝实际出矿进度(2026Q4-2027Q1);其他宜春矿区是否跟进获批</td></tr>
+    <tr><td><strong>非洲锂精矿到港冲击——进口超预期</strong></td><td><span class="tag tag-red">高</span></td><td>津巴布韦从原矿禁运改为配额出口后,5-6月非洲锂精矿大批量到港,进口环比大增,有效补充了澳矿减量缺口。此前市场预期非洲矿受限将收紧供给,但实际到港量超出预期。</td><td>7-8月非洲矿到港量能否持续高位;津巴布韦配额政策调整</td></tr>
+    <tr><td><strong>LC2609跌破16.4万(高盛见顶预测)——空方逻辑超额兑现</strong></td><td><span class="tag tag-orange">中高</span></td><td>6/18收160,500,已跌破高盛¥16.4万见顶预测。自5月中旬20.99万高点累计跌幅约-23.7%。<strong>期现价差结构转变:近月LC2607(155,160)已低于现货均价(167,250),出现约12,000元/吨的期货贴水,这是2026年以来首次。</strong></td><td>若继续跌破15万→恐慌性抛售;16万企稳→短期底部确认</td></tr>
+    <tr><td><strong>去库趋势延续——为数不多的积极信号</strong></td><td><span class="tag tag-green">正面</span></td><td>SMM社会库存97,829吨(周-857吨):冶炼厂16,494吨(-21),下游46,623吨(+194),其他34,712吨(-1,030)。仓单从56,599→52,685手(两周-4,000手)。去库趋势确认,但去库速度温和(周度-1,184至-1,825吨),能否在16万附近加速去库是关键。</td><td>去库加速+价格企稳→底部信号;去库放缓→下行压力加大</td></tr>
+    <tr><td><strong>下游16万附近逢低采买——需求端支撑</strong></td><td><span class="tag tag-green">正面</span></td><td>16万附近现货成交放量,下游采买意愿增强。6月磷酸铁锂排产环比+1.97%,需求仍在温和增长。<strong>但6月碳酸锂排产环比+2.63%远超需求增速,供过于求格局短期难改。</strong></td><td>下游补库力度能否在16万附近持续放大</td></tr>
+    <tr><td><strong>广期所拟引入境外交易者——长期利好但短期加剧波动</strong></td><td><span class="tag tag-yellow">中</span></td><td>碳酸锂期货国际化迈出关键一步,引入境外交易者参与。利好长期流动性和价格发现,但短期可能吸引更多投机资金,加剧多空博弈。</td><td>国际化细则落地时间表;境外资金参与规模</td></tr>
+    <tr><td><strong>矿端成本支撑下移——锂辉石CIF跌至~2,470美元</strong></td><td><span class="tag tag-orange">中高</span></td><td>锂辉石精矿6% CIF中国跌至2,443~2,495美元/吨(-52~-82美元/吨)。矿端价格松动意味着碳酸锂成本支撑线继续下移,此前3,000美元以上的"矿端成本刚性"逻辑被削弱。</td><td>若精矿跌破2,000美元→碳酸锂成本支撑崩溃</td></tr>
+    <tr><td><strong>产量增速远超需求——供过于求格局深化</strong></td><td><span class="tag tag-red">高</span></td><td>6月碳酸锂排产11.63万吨(环比+2.63%,同比+48.9%),而磷酸铁锂排产仅环比+1.97%,三元持平。供给增速约是需求增速的2-3倍,供过于求矛盾持续加深。</td><td>7月排产数据是否出现供给端收缩信号</td></tr>
+  </table>
+</div>
+
+<!-- FUND FLOWS -->
+<div class="section">
+  <h2>💹 市场信号汇总</h2>
+  <table>
+    <tr><th>信号</th><th>来源</th><th>方向</th><th>解读</th></tr>
+    <tr><td>LC2609单周暴跌-6.58%至160,500</td><td>广期所 6/18</td><td class="bearish">空</td><td>周跌幅11,300元/吨,创近期最大单周跌幅,枧下窝复产获批为核心导火索</td></tr>
+    <tr><td>LC2607近月合约跌-7.02%至155,160</td><td>广期所 6/18</td><td class="bearish">空</td><td>近月跌幅更深,期货转为贴水结构(低于现货~12,000元/吨)</td></tr>
+    <tr><td>枧下窝锂矿复产获批</td><td>6/18 官方</td><td class="bearish">空</td><td>停产超10个月后获用地意见书,江西锂云母从"永久减量"转"阶段性停产"叙事</td></tr>
+    <tr><td>非洲锂精矿6月到港大增</td><td>海关/华泰</td><td class="bearish">空</td><td>津巴布韦配额出口后到港超预期,补充澳矿减量</td></tr>
+    <tr><td>江西锂云母复产信号明确</td><td>省自然资源厅</td><td class="bearish">空</td><td>宜丰-奉新矿区用地获批,市场对江西停产减量预期松动</td></tr>
+    <tr><td>SMM现货均价167,250(-2,250/日)</td><td>SMM 6/18</td><td class="bearish">空</td><td>现货跟随期货下行,但跌幅小于期货</td></tr>
+    <tr><td>锂辉石精矿CIF跌至~2,470美元</td><td>SMM/华泰</td><td class="bearish">空</td><td>矿端成本支撑下移,削弱锂盐价格底部逻辑</td></tr>
+    <tr><td>社会库存去化延续(周-857吨)</td><td>SMM</td><td class="bullish">多</td><td>去库趋势确认,冶炼厂库存基本持平,贸易商去库最明显(-1,030吨)</td></tr>
+    <tr><td>仓单两周降~4,000手(52,685手)</td><td>广期所 6/16</td><td class="bullish">多</td><td>仓单从6/4峰值56,599回落,显性库存压力边际减轻</td></tr>
+    <tr><td>下游16万附近成交放量</td><td>市场反馈</td><td class="bullish">多</td><td>逢低采买意愿增强,需求端在低价区间形成一定支撑</td></tr>
+    <tr><td>6月碳酸锂排产+48.9%同比</td><td>SMM排产</td><td class="bearish">空</td><td>产量增速远超需求增速,供过于求矛盾恶化</td></tr>
+    <tr><td>广期所拟引入境外交易者</td><td>广期所</td><td class="neutral">中性</td><td>国际化利好长期,短期吸引投机资金加剧波动</td></tr>
+  </table>
+</div>
+
+<!-- KEY FIGURES -->
+<div class="section">
+  <h2>👤 关键人物追踪</h2>
+  <table>
+    <tr><th>人物</th><th>角色</th><th>最新动态</th></tr>
+    <tr><td>Chen (高盛)</td><td>唯一公开看空卖方</td><td>4.30研报:锂价¥16.4万见顶 · LC2609已跌破16.4万至160,500,空方逻辑超额兑现</td></tr>
+    <tr><td>曾毓群</td><td>CATL董事长</td><td>枧下窝锂矿复产获批——CATL上游资源布局取得关键突破,控制35-40%全球锂需求</td></tr>
+    <tr><td>Howard Klein (RK Equity)</td><td>独立锂研究标杆</td><td>Lithium-ion Bull月刊 · 2016年起覆盖锂</td></tr>
+    <tr><td>Elon Musk</td><td>Tesla CEO</td><td>"Battery pack capacity is the bottleneck" · 德州锂精炼推进</td></tr>
+    <tr><td>Jakob Stausholm</td><td>Rio Tinto CEO</td><td>$67亿收购Arcadium · 矿业巨头正式入局锂</td></tr>
+    <tr><td>余烁 (创元期货)</td><td>期货分析师</td><td>5/28观点:下跌由供给端预期改变+库存显性化驱动——已获6/18暴跌验证</td></tr>
+    <tr><td>张维鑫 (中信建投)</td><td>期货分析师</td><td>此前判断供给改善延迟至7月——已被枧下窝6月复产获批证明过于乐观</td></tr>
+  </table>
+</div>
+
+<!-- QUICK SUMMARY -->
+<div class="section" style="border-left:4px solid var(--accent);">
+  <h2>📌 一句话总结</h2>
+  <p style="font-size:15px;">
+    <strong>📆【周一复盘:6/18-6/19当周】枧下窝复产获批引爆三重供给利空共振——LC2609单周暴跌-6.58%至160,500,期货出现2026年首次贴水结构;现货降至16.6-16.7万但跌幅小于期货;16万附近下游逢低采买放量+库存去化延续提供有限支撑⚠️</strong><br><br>
+    <strong>📌 当周核心信号:</strong><br>
+    &nbsp;&nbsp;① <strong>枧下窝复产获批——结构性利空</strong>——宁德时代枧下窝锂矿在停产超10个月后重获《用地预审与选址行政许可》,Q4有望复产。<strong>这不是一次简单的矿山复产,而是对5月以来"宜春停产=供给收缩"核心看涨逻辑的结构性颠覆。</strong>市场迅速从"永久性减量"叙事切换至"阶段性停产"叙事,导致6/18单日暴跌-6.58%。<br>
+    &nbsp;&nbsp;② <strong>非洲矿到港+江西复产预期——双重辅助利空</strong>——津巴布韦配额出口后5-6月精矿大批到港,此前"非洲矿受限"逻辑被证伪;省自然资源厅批准宜丰-奉新矿区用地,江西锂云母复产信号从个别矿区扩散到区域性趋势。三重利空共振下供给端压力空前。<br>
+    &nbsp;&nbsp;③ <strong>期货出现2026年首次贴水——结构转变</strong>——近月LC2607收155,160,已低于现货均价167,250约12,000元/吨,期货贴水结构出现。<strong>这是2026年以来首次,反映市场对未来现货价格进一步下跌的强烈预期。</strong><br>
+    &nbsp;&nbsp;④ <strong>去库+下游采买——仅有的支撑</strong>——SMM社会库存周-857吨,仓单两周降~4,000手,去库趋势延续。<strong>16万附近现货成交放量,下游逢低采买意愿增强,但采买力度能否对冲供给端压力仍需观察。</strong><br>
+    &nbsp;&nbsp;⑤ <strong>产量增速碾压需求增速——供过于求持续恶化</strong>——6月碳酸锂排产环比+2.63%(同比+48.9%),磷酸铁锂仅环比+1.97%,三元持平。供给增量约是需求增量的2-3倍。<br><br>
+    <strong>❶ 价格坐标(基于6/18-6/19):</strong> LC2609收160,500(-11,300,-6.58%). LC2607收155,160(-11,720,-7.02%). SMM电池级现货均价167,250(区间164,500~170,000,日跌2,250). 生意社基准价166,000(-1,000,6/19). 长江有色169,000(-2,250,6/16). 锂辉石精矿CIF 2,443~2,495美元/吨(-52~-82). 氢氧化锂粗颗粒~153,000(周跌2.6%).<br><br>
+    <strong>❷ 周度复盘:加速下跌,供给端叙事反转:</strong><br>
+    &nbsp;&nbsp;· <strong>从20万到16万:</strong> 自5月中旬高点20.99万以来,LC2609累计跌幅约-23.7%(~4.94万元/吨)。下跌经历了两个阶段:5/26-5/27暴跌(从18.2万→17.3万,持仓限额新规+Greenbushes复产触发)→短暂弱反弹至17.97万→6/18周再度暴跌至16.05万(枧下窝复产+非洲矿到港+江西复产三重利空共振)。<br>
+    &nbsp;&nbsp;· <strong>叙事切换:</strong> 5月市场定价"宜春停产→供给收缩→锂价支撑";6月叙事已切换为"江西复产获批→供给放量→锂价承压"。空方逻辑(高盛16.4万见顶)已被市场跌破,且跌幅更深。<br>
+    &nbsp;&nbsp;· <strong>期现结构转变:</strong> 从5月期货升水~2,700-3,360元/吨切换至近月贴水~12,000元/吨,市场对未来价格的预期从"偏多"转向"偏空"。<br><br>
+    <strong>❸ 核心矛盾 — 三重供给利空 vs 去库+下游采买:</strong><br>
+    &nbsp;&nbsp;当前市场正处于供给侧叙事重构的关键节点。枧下窝复产获批不是一个孤立事件——它可能开启宜春锂云母矿全面复产的序幕。如果其他停产矿山陆续获批,供给端将面临远超市场预期的增量。<strong>但另一方面,16万附近现货成交放量+库存持续去化,说明需求端在低价区间确实存在支撑。</strong>下周的核心看点:①16万整数关口能否守住(失守则可能测试15万);②枧下窝获批后是否有其他矿山跟进;③7月排产数据是否显示供给增速放缓;④仓单去化能否加速(目前两周-4,000手,若加速则是积极信号);⑤非洲矿到港是否在7月出现高峰后的回落。<br><br>
+    <strong>❹ 本周(6/22-6/26)核心看点:</strong><br>
+    &nbsp;&nbsp;① <strong>16万关口——2026年最重要的多空分界线</strong>——跌破则可能引发连锁止损,测试15万甚至更低<br>
+    &nbsp;&nbsp;② <strong>下游补库力度</strong>——16万附近成交放量能否持续,补库规模是否超过去库速度<br>
+    &nbsp;&nbsp;③ <strong>仓单去化速度</strong>——如果加速去库,可能是底部信号;若去库放缓,则压力加大<br>
+    &nbsp;&nbsp;④ <strong>其他宜春矿山是否有复产信号</strong>——枧下窝是否开启复产潮<br>
+    &nbsp;&nbsp;⑤ <strong>SMM周度数据(产量/库存)</strong>——确认去库趋势是否持续<br><br>
+    <strong>⚠️ 综合研判（周一复盘）:</strong> 碳酸锂市场在6/18当周经历了供给端叙事的结构性转变。枧下窝复产获批不是一个小事件——它可能标志着2026年锂市从"供给收缩主导"向"供给放量主导"切换的转折点。<strong>三重利空共振(枧下窝+非洲矿+江西复产)的叠加效应远超市场此前预期,单周-6.58%的跌幅是市场对这一叙事切换的集中定价。</strong>但需注意,16万附近现货成交放量和去库趋势延续说明市场并非单边下行——需求端在低价区间有支撑。<strong>16万整数关口是当前最重要的观察点:守住了是底部确认的开始,守不住则可能引发第二轮加速下跌。</strong>高盛16.4万见顶预测已被跌破约4,000元/吨,空方逻辑超额兑现。但若供给端叙事继续恶化(枧下窝复产时间表提前/其他矿山跟进),15万并非不可想象的下行目标。<br><br>
+    <strong>📊 价格汇总:</strong> 碳酸锂主力LC2609=160,500(-6.58%) / 近月LC2607=155,160(-7.02%) / SMM现货均价=167,250(区间164,500~170,000,-2,250/日) / 生意社基准价=166,000(-1,000,6/19) / 长江有色=169,000(-2,250,6/16) / 氢氧化锂粗颗粒~153,000(-2.6%周) / 工业级碳酸锂162,000~168,000(-1,500/日) / 锂辉石精矿CIF 2,443~2,495美元/吨(-52~-82). 社会库存97,829吨(-857). 仓单52,685手(较峰值-3,914). 周产26,429吨(+85).
+  </p>
+</div>
+
+<div class="footer">
+  <p>锂产业知识图谱 v2.0 · 周一复盘(2026-06-22) · 数据基于 6/18-6/19 交易日</p>
+  <p><a href="https://jasoneip01-pixel.github.io/lithium-knowledge-graph/">交互式知识图谱</a> · <a href="https://github.com/jasoneip01-pixel/lithium-knowledge-graph">GitHub 仓库</a></p>
+  <p style="margin-top:8px;">⚠️ 不构成投资建议。基于公开信息分析，存在偏差和不确定性。每日自动更新。</p>
+</div>
+
+</body>
+</html>
