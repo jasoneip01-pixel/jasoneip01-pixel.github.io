@@ -1,6 +1,6 @@
 {
   "source": "Alpha Vantage",
-  "ts": "2026-06-22T11:49:17.115227+00:00",
+  "ts": "2026-06-22T20:44:02.397024+00:00",
   "quotes": [
     {
       "symbol": "AAPL",
@@ -10,9 +10,9 @@
     },
     {
       "symbol": "MSFT",
-      "price": "379.4000",
-      "change_pct": "0.1293%",
-      "volume": "59714157"
+      "price": "367.3400",
+      "change_pct": "-3.1787%",
+      "volume": "44026352"
     },
     {
       "symbol": "GOOGL",
