@@ -1,7 +1,42 @@
 {
   "source": "WSJ.com US Business RSS",
-  "ts": "Tue, 23 Jun 2026 09:31:26 GMT",
+  "ts": "Tue, 23 Jun 2026 19:57:22 GMT",
   "items": [
+    {
+      "title": "Can America’s Obsession With Mahjong Save This Dying Craft?",
+      "desc": "Watch how the last remaining artists of mahjong tile carving are trying to preserve the fading craft.",
+      "link": "https://www.wsj.com/business/can-americas-obsession-with-mahjong-save-this-dying-craft-9bd8b8dd?mod=pls_whats_news_us_business_f",
+      "pubDate": "Tue, 23 Jun 2026 19:00:00 GMT",
+      "creator": "Ksenia Shaikhutdinova"
+    },
+    {
+      "title": "Walmart, in Biggest Deal in Two Years, Buys Advertising Tech Firm",
+      "desc": "Retail giant is paying $1.4 billion for Vibe.co, a company that enables advertising through connected TVs.",
+      "link": "https://www.wsj.com/business/retail/walmart-in-biggest-deal-in-two-years-buys-advertising-tech-firm-ccd6c03b?mod=pls_whats_news_us_business_f",
+      "pubDate": "Tue, 23 Jun 2026 17:38:00 GMT",
+      "creator": "Sarah Nassauer"
+    },
+    {
+      "title": "Ranks of the Ultrawealthy Jumped in 2025",
+      "desc": "The number of those worth more than $30 million jumped by 14.4% last year.",
+      "link": "https://www.wsj.com/economy/ranks-of-the-ultrawealthy-jumped-in-2025-fe98fe37?mod=pls_whats_news_us_business_f",
+      "pubDate": "Tue, 23 Jun 2026 16:05:00 GMT",
+      "creator": "Juliet Chung"
+    },
+    {
+      "title": "Avis Wins $650 Million From Hedge Fund Accused of Stoking Wild Stock Swings",
+      "desc": "Pentwater Capital agrees to pay Avis Budget  to resolve an unusual spat where the car rental company singled out one of its major shareholders.",
+      "link": "https://www.wsj.com/business/avis-wins-650-million-from-hedge-fund-that-bet-big-on-its-stock-d31a03da?mod=pls_whats_news_us_business_f",
+      "pubDate": "Tue, 23 Jun 2026 12:37:00 GMT",
+      "creator": "Caitlin McCabe"
+    },
+    {
+      "title": "U.S. Bets Billions of Dollars in Low-Cost Loans Can Revive Nuclear Power",
+      "desc": "The Energy Department will let utilities tap government funds to kick-start reactor orders.",
+      "link": "https://www.wsj.com/business/energy-oil/u-s-bets-billions-of-dollars-in-low-cost-loans-can-revive-nuclear-power-be8dcf81?mod=pls_whats_news_us_business_f",
+      "pubDate": "Tue, 23 Jun 2026 12:30:00 GMT",
+      "creator": "Jennifer Hiller"
+    },
     {
       "title": "Top-Paid CEOs Smash the $200 Million Payday",
       "desc": "“Moonshot” deals pushed pay for company bosses to new highs in the WSJ’s annual ranking.",
@@ -10,39 +45,11 @@
       "creator": "Peter Santilli"
     },
     {
-      "title": "Fatal Tesla Crash Into Texas Home Now Under Federal Safety Investigation",
-      "desc": "A driver told officials he was using a driver-assistance system when his car slammed into a Houston-area home, killing a woman.",
-      "link": "https://www.wsj.com/business/autos/fatal-tesla-crash-into-texas-home-now-under-federal-safety-investigation-48cfeebe?mod=pls_whats_news_us_business_f",
-      "pubDate": "Mon, 22 Jun 2026 23:32:00 GMT",
-      "creator": "Ryan Felton"
-    },
-    {
-      "title": "Domino’s Pizza Picks Insider as New CEO",
-      "desc": "Plus, the U.S. will allow Iran to sell oil in dollars, and the ‘Gaokao’ test strikes fear in China’s high-schoolers.",
-      "link": "https://www.wsj.com/us-news/dominos-pizza-picks-insider-as-new-ceo-5f445aaf?mod=pls_whats_news_us_business_f",
-      "pubDate": "Mon, 22 Jun 2026 21:31:00 GMT",
-      "creator": "Zlati Meyer"
-    },
-    {
-      "title": "Domino’s Picks Veteran Executive to Steer It Through Tough Patch for Pizza",
-      "desc": "Joe Jordan, Domino’s operations chief, will succeed current CEO Russell Weiner.",
-      "link": "https://www.wsj.com/business/retail/dominos-picks-veteran-executive-to-steer-it-through-tough-patch-for-pizza-f14f8dae?mod=pls_whats_news_us_business_f",
-      "pubDate": "Mon, 22 Jun 2026 21:12:00 GMT",
-      "creator": "Heather Haddon"
-    },
-    {
-      "title": "Basic Materials Roundup: Market Talk",
-      "desc": "Find insight on gold, aluminum, Syensqo, Symrise and more in the latest Market Talks covering basic materials.",
-      "link": "https://www.wsj.com/business/basic-materials-roundup-market-talk-9da05100?mod=pls_whats_news_us_business_f",
-      "pubDate": "Mon, 22 Jun 2026 21:08:00 GMT",
-      "creator": ""
-    },
-    {
-      "title": "ABC Launches On-Air Campaign Against FCC Investigations",
-      "desc": "The Disney-owned network is encouraging viewers to tell the FCC to drop probes into “The View” and ABC broadcast licenses.",
-      "link": "https://www.wsj.com/business/media/abc-launches-on-air-campaign-against-fcc-investigations-dcd4a62c?mod=pls_whats_news_us_business_f",
-      "pubDate": "Mon, 22 Jun 2026 20:22:00 GMT",
-      "creator": "Joe Flint"
+      "title": "Energy Fuels to Acquire German Magnetics Firm for $1.9 Billion",
+      "desc": "Private-equity firm Ara Partners is selling Vac to the mining company.",
+      "link": "https://www.wsj.com/pro/private-equity/energy-fuels-to-acquire-german-magnetics-firm-for-1-9-billion-ea797791?mod=pls_whats_news_us_business_f",
+      "pubDate": "Tue, 23 Jun 2026 15:33:00 GMT",
+      "creator": "Katherine Hamilton"
     },
     {
       "title": "Germany’s RWE Plans $4.75 Billion Capital Raise to Fund Increase in Amprion Stake",
@@ -73,11 +80,25 @@
       "creator": "Nina Kienle"
     },
     {
-      "title": "UniCredit to Lift Commerzbank Stake to 42.5% After Initial Offer Period",
-      "desc": "The Italian lender plans to reopen its offer to Commerzbank shareholders for another two weeks.",
-      "link": "https://www.wsj.com/business/deals/unicredit-to-lift-commerzbank-stake-to-42-5-after-initial-offer-period-eab1cff0?mod=pls_whats_news_us_business_f",
-      "pubDate": "Fri, 19 Jun 2026 15:25:00 GMT",
+      "title": "Carnival Says Iran War Disrupted Bookings, Issues Soft Outlook",
+      "desc": "The cruise line said that booking trends during the recent quarter were most disrupted across Europe, particularly in the Mediterranean region.",
+      "link": "https://www.wsj.com/business/earnings/carnival-says-iran-war-disrupted-bookings-issues-soft-outlook-ebb24c52?mod=pls_whats_news_us_business_f",
+      "pubDate": "Tue, 23 Jun 2026 14:42:00 GMT",
+      "creator": "Connor Hart"
+    },
+    {
+      "title": "Athleisure Brand Vuori Targets China in Global Retail Push",
+      "desc": "The retailer, known for its jogger pants, is looking to snag market share in Asia from rivals like Lululemon and Alo Yoga.",
+      "link": "https://www.wsj.com/business/retail/athleisure-brand-vuori-targets-china-in-global-retail-push-e83fc9c8?mod=pls_whats_news_us_business_f",
+      "pubDate": "Tue, 23 Jun 2026 10:58:00 GMT",
       "creator": "Aimee Look"
+    },
+    {
+      "title": "Domino’s Picks Veteran Executive to Steer It Through Tough Patch for Pizza",
+      "desc": "Joe Jordan, Domino’s operations chief, will succeed current CEO Russell Weiner.",
+      "link": "https://www.wsj.com/business/retail/dominos-picks-veteran-executive-to-steer-it-through-tough-patch-for-pizza-f14f8dae?mod=pls_whats_news_us_business_f",
+      "pubDate": "Mon, 22 Jun 2026 21:12:00 GMT",
+      "creator": "Heather Haddon"
     },
     {
       "title": "A Hoarder’s Redemption: Bed Bath & Beyond Will Take Your Decades-Old Coupons",
@@ -94,25 +115,18 @@
       "creator": "Sarah Nassauer"
     },
     {
-      "title": "Protein-in-Everything Craze Has a Problem: Not Enough Whey Protein",
-      "desc": "Food companies are packing whey into more of their products to meet demand from protein-obsessed consumers—and depleting supplies.",
-      "link": "https://www.wsj.com/business/protein-demand-whey-prices-3717aa3a?mod=pls_whats_news_us_business_f",
-      "pubDate": "Sat, 20 Jun 2026 15:27:00 GMT",
-      "creator": "Amira McKee"
+      "title": "Auto & Transport Roundup: Market Talk",
+      "desc": "Find insight on Autoliv, Renault and more in the latest Market Talks covering auto and transport.",
+      "link": "https://www.wsj.com/business/auto-transport-roundup-market-talk-9c5b951d?mod=pls_whats_news_us_business_f",
+      "pubDate": "Tue, 23 Jun 2026 16:27:00 GMT",
+      "creator": ""
     },
     {
-      "title": "Celebrity-Favorite Retailer Reformation Prepares for Summer IPO",
-      "desc": "Taylor Swift and Meghan Markle helped make Reformation famous.",
-      "link": "https://www.wsj.com/business/retail/celebrity-favorite-retailer-reformation-prepares-for-summer-ipo-da9d1f78?mod=pls_whats_news_us_business_f",
-      "pubDate": "Thu, 18 Jun 2026 20:46:00 GMT",
-      "creator": "Lauren Thomas"
-    },
-    {
-      "title": "Mars Is Spending Millions to Give M&M’s a MAHA Makeover",
-      "desc": "The candy maker is trying to re-create M&M’s without artificial colors, but blue’s natural algae substitute is complex and costly.",
-      "link": "https://www.wsj.com/business/mars-is-spending-millions-to-give-m-ms-a-maha-makeover-2fa1bb88?mod=pls_whats_news_us_business_f",
-      "pubDate": "Thu, 18 Jun 2026 17:25:00 GMT",
-      "creator": "Jesse Newman"
+      "title": "Porsche Could Cut Jobs as It Pushes Ahead With Turnaround Effort",
+      "desc": "The sportscar maker is in talks with employee representatives as it pushes ahead with a broader streamlining plan.",
+      "link": "https://www.wsj.com/business/autos/porsche-could-cut-jobs-as-it-pushes-ahead-with-turnaround-effort-84e6a2ae?mod=pls_whats_news_us_business_f",
+      "pubDate": "Tue, 23 Jun 2026 09:30:00 GMT",
+      "creator": "Dominic Chopping"
     },
     {
       "title": "Alimentation Couche-Tard Profit Up on Increased Same-Store Sales",
@@ -136,32 +150,18 @@
       "creator": "Najat Kantouar"
     },
     {
-      "title": "Kroger Seeing Costs Outrun Sales Growth",
-      "desc": "The grocery chain said costs are climbing as the company spends more to increase store hours, improve employee training and outfit workers with new uniforms.",
-      "link": "https://www.wsj.com/business/retail/kroger-profit-rises-with-higher-sales-b6f2b90c?mod=pls_whats_news_us_business_f",
-      "pubDate": "Thu, 18 Jun 2026 14:26:00 GMT",
-      "creator": "Dean Seal"
-    },
-    {
-      "title": "BHP Flags $2.3 Billion Potash Write-Down as Costs Rise",
-      "desc": "The miner expects another cost overrun on a Canadian mine that is set to become one of the biggest sources of the fertilizer ingredient globally.",
-      "link": "https://www.wsj.com/business/bhp-raises-potash-project-costs-flags-2-3-billion-write-down-0d049b9b?mod=pls_whats_news_us_business_f",
-      "pubDate": "Thu, 18 Jun 2026 10:28:00 GMT",
-      "creator": "Rhiannon Hoyle"
-    },
-    {
-      "title": "Porsche Could Cut Jobs as It Pushes Ahead With Turnaround Effort",
-      "desc": "The sportscar maker is in talks with employee representatives as it pushes ahead with a broader streamlining plan.",
-      "link": "https://www.wsj.com/business/autos/porsche-could-cut-jobs-as-it-pushes-ahead-with-turnaround-effort-84e6a2ae?mod=pls_whats_news_us_business_f",
-      "pubDate": "Tue, 23 Jun 2026 09:04:00 GMT",
-      "creator": "Dominic Chopping"
-    },
-    {
       "title": "Tesla Notches Over Twofold Increase in European Monthly Sales",
       "desc": "Elon Musk’s EV maker continues to rebuild strength in a region where Chinese rivals are gaining ground.",
       "link": "https://www.wsj.com/business/autos/tesla-notches-over-twofold-increase-in-european-monthly-sales-f8533cdc?mod=pls_whats_news_us_business_f",
       "pubDate": "Tue, 23 Jun 2026 06:20:00 GMT",
       "creator": "Mauro Orru"
+    },
+    {
+      "title": "Fatal Tesla Crash Into Texas Home Now Under Federal Safety Investigation",
+      "desc": "A driver told officials he was using a driver-assistance system when his car slammed into a Houston-area home, killing a woman.",
+      "link": "https://www.wsj.com/business/autos/fatal-tesla-crash-into-texas-home-now-under-federal-safety-investigation-48cfeebe?mod=pls_whats_news_us_business_f",
+      "pubDate": "Mon, 22 Jun 2026 23:32:00 GMT",
+      "creator": "Ryan Felton"
     },
     {
       "title": "Lucid to Cut 18% of U.S. Workforce as Restructuring Continues",
@@ -185,6 +185,27 @@
       "creator": "Christopher Mims"
     },
     {
+      "title": "Opinion | Blame Environmental Regulations for U.S. Solar’s Troubles",
+      "desc": "It was red tape and poor tax credit structures, courtesy of both parties, that put America’s industry behind China’s.",
+      "link": "https://www.wsj.com/opinion/blame-environmental-regulations-for-u-s-solars-troubles-c37eed12?mod=pls_whats_news_us_business_f",
+      "pubDate": "Tue, 23 Jun 2026 17:26:00 GMT",
+      "creator": ""
+    },
+    {
+      "title": "Opinion | The Teamsters Put Their Wages Above the Public Good",
+      "desc": "Companies gain when consumers do, but unions make money at people’s expense.",
+      "link": "https://www.wsj.com/opinion/the-teamsters-put-their-wages-above-the-public-good-00c9bc8a?mod=pls_whats_news_us_business_f",
+      "pubDate": "Tue, 23 Jun 2026 17:25:00 GMT",
+      "creator": ""
+    },
+    {
+      "title": "Opinion | How Iran Plans to Consolidate Its Victory",
+      "desc": "Trump took bold actions other presidents never dared, only to end up where they were all along.",
+      "link": "https://www.wsj.com/opinion/how-iran-plans-to-consolidate-its-victory-f993941a?mod=pls_whats_news_us_business_f",
+      "pubDate": "Tue, 23 Jun 2026 16:09:00 GMT",
+      "creator": "Ray Takeyh"
+    },
+    {
       "title": "Opinion | Chuck Schumer’s Chip Shortage",
       "desc": "A Micron plant in New York is years behind schedule for all the reasons you’d expect.",
       "link": "https://www.wsj.com/opinion/chuck-schumer-micron-chip-shortage-new-york-environment-c090b7e6?mod=pls_whats_news_us_business_f",
@@ -206,24 +227,10 @@
       "creator": ""
     },
     {
-      "title": "Opinion | Put Pressure on Russia by Enforcing Sanctions",
-      "desc": "Oil sanctions tighten Moscow’s budget and force Vladimir Putin’s hand.",
-      "link": "https://www.wsj.com/opinion/put-pressure-on-russia-by-enforcing-sanctions-04d68936?mod=pls_whats_news_us_business_f",
-      "pubDate": "Mon, 22 Jun 2026 18:24:00 GMT",
-      "creator": ""
-    },
-    {
-      "title": "Opinion | Using a Vital Aviation Safety Tool to Collect Fees Is Wrong",
-      "desc": "Private planes already pay fees and taxes. Government armed with tracking tools aims to extract more money.",
-      "link": "https://www.wsj.com/opinion/using-a-vital-aviation-safety-tool-to-collect-fees-is-wrong-8ad97a19?mod=pls_whats_news_us_business_f",
-      "pubDate": "Mon, 22 Jun 2026 18:23:00 GMT",
-      "creator": ""
-    },
-    {
-      "title": "Opinion | Quick! Unionize the Candle Makers",
-      "desc": "There’s alarm at every new technology, and it’s rarely warranted.",
-      "link": "https://www.wsj.com/opinion/quick-unionize-the-candle-makers-bd3ec4a2?mod=pls_whats_news_us_business_f",
-      "pubDate": "Mon, 22 Jun 2026 18:22:00 GMT",
+      "title": "Energy & Utilities Roundup: Market Talk",
+      "desc": "Find insight on global energy prices, Couche-Tard, RWE,  and more in the latest Market Talks covering energy and utilities.",
+      "link": "https://www.wsj.com/business/energy-utilities-roundup-market-talk-782530e2?mod=pls_whats_news_us_business_f",
+      "pubDate": "Tue, 23 Jun 2026 16:25:00 GMT",
       "creator": ""
     },
     {
@@ -253,13 +260,6 @@
       "link": "https://www.wsj.com/business/energy-oil/explosion-at-qatar-gas-plant-leaves-dozens-injured-18-missing-8ae33c9b?mod=pls_whats_news_us_business_f",
       "pubDate": "Mon, 22 Jun 2026 14:42:00 GMT",
       "creator": "Farhan Rafid"
-    },
-    {
-      "title": "What’s the State of Play in the Strait of Hormuz?",
-      "desc": "It could take weeks for traffic through the route to return to even half of prewar levels, with knock-on effects continuing for months.",
-      "link": "https://www.wsj.com/business/energy-oil/how-quickly-can-the-strait-of-hormuz-get-back-up-and-running-a5380c70?mod=pls_whats_news_us_business_f",
-      "pubDate": "Mon, 22 Jun 2026 13:09:00 GMT",
-      "creator": "Georgi Kantchev"
     },
     {
       "title": "Auto & Transport Roundup: Market Talk",
@@ -367,6 +367,13 @@
       "creator": "Kate King"
     },
     {
+      "title": "ABC Launches On-Air Campaign Against FCC Investigations",
+      "desc": "The Disney-owned network is encouraging viewers to tell the FCC to drop probes into “The View” and ABC broadcast licenses.",
+      "link": "https://www.wsj.com/business/media/abc-launches-on-air-campaign-against-fcc-investigations-dcd4a62c?mod=pls_whats_news_us_business_f",
+      "pubDate": "Mon, 22 Jun 2026 20:22:00 GMT",
+      "creator": "Joe Flint"
+    },
+    {
       "title": "Google Investing in ‘Backrooms’ Studio A24",
       "desc": "The search giant is putting about $75 million into the studio as part of an artificial intelligence research partnership.",
       "link": "https://www.wsj.com/tech/ai/google-investing-in-backrooms-studio-a24-e7585ebe?mod=pls_whats_news_us_business_f",
@@ -393,13 +400,6 @@
       "link": "https://www.wsj.com/business/media/box-office-summer-2026-890603ff?mod=pls_whats_news_us_business_f",
       "pubDate": "Sun, 21 Jun 2026 17:27:00 GMT",
       "creator": "Ben Fritz"
-    },
-    {
-      "title": "They Looked Like They Were Getting Rich on Polymarket—but None of It Was Real",
-      "desc": "The prediction market has flooded social media with deceptive videos by paid creators. ‘Is this just free money?’",
-      "link": "https://www.wsj.com/business/media/polymarket-social-media-bets-prediction-market-441cdeb5?mod=pls_whats_news_us_business_f",
-      "pubDate": "Sun, 21 Jun 2026 00:30:00 GMT",
-      "creator": "Audrey Valbuena"
     },
     {
       "title": "Rising Trucking Rates Drive U.S. Companies Back to the Railroad",
@@ -472,6 +472,27 @@
       "creator": "Asa Fitch"
     },
     {
+      "title": "IBM Getting Ready to Scale Quantum Computing",
+      "desc": "This year, the company is laying the groundwork to turn quantum computing into a fully-fledged, scalable business from an expensive science project.",
+      "link": "https://www.wsj.com/tech/ibm-getting-ready-to-scale-quantum-computing-b2418cd5?mod=pls_whats_news_us_business_f",
+      "pubDate": "Tue, 23 Jun 2026 18:32:00 GMT",
+      "creator": "Elias Schisgall"
+    },
+    {
+      "title": "Chicago Missed the Tech Boom. Quantum Computing Gives It a Second Chance.",
+      "desc": "The city is betting on a promising—but commercially unproven—technology.",
+      "link": "https://www.wsj.com/tech/chicago-missed-the-tech-boom-quantum-computing-gives-it-a-second-chance-0b34d116?mod=pls_whats_news_us_business_f",
+      "pubDate": "Tue, 23 Jun 2026 17:00:00 GMT",
+      "creator": "Jeanne Whalen"
+    },
+    {
+      "title": "Businesses Are Taking Risks to Cash In on the Peptide Gold Rush",
+      "desc": "Doctors, telehealth companies, med spas and venture capitalists are racing to get in on the craze for injectable drugs.",
+      "link": "https://www.wsj.com/health/peptide-businesses-telehealth-mino-protocole-next-51b9e2ce?mod=pls_whats_news_us_business_f",
+      "pubDate": "Tue, 23 Jun 2026 16:26:00 GMT",
+      "creator": "Sara Ashley O’Brien"
+    },
+    {
       "title": "‘Founder’ Is the New Brass Ring for Computer Science Grads",
       "desc": "The share of employed 2025 CS graduates with the title doubled in a study of 20 universities with renowned tech programs.",
       "link": "https://www.wsj.com/pro/venture-capital/founder-is-the-new-brass-ring-for-computer-science-grads-d60f30f1?mod=pls_whats_news_us_business_f",
@@ -486,25 +507,18 @@
       "creator": "Jiahui Huang"
     },
     {
-      "title": "Robinhood’s Billionaire Founder on Fast Cars and His Boldest Bet Yet",
-      "desc": "Watch as the billionaire entrepreneur reveals the grueling series of “nos” he got while building Robinhood, what he bought to celebrate its IPO, and why his next big bet is on space.",
-      "link": "https://www.wsj.com/business/aetherflux-baiju-bhatt-wsj-money-interview-b6008f68?mod=pls_whats_news_us_business_f",
-      "pubDate": "Sun, 21 Jun 2026 11:01:00 GMT",
-      "creator": "Gunjan Banerji"
+      "title": "Domino’s Pizza Picks Insider as New CEO",
+      "desc": "Plus, the U.S. will allow Iran to sell oil in dollars, and the ‘Gaokao’ test strikes fear in China’s high-schoolers.",
+      "link": "https://www.wsj.com/us-news/dominos-pizza-picks-insider-as-new-ceo-5f445aaf?mod=pls_whats_news_us_business_f",
+      "pubDate": "Mon, 22 Jun 2026 21:31:00 GMT",
+      "creator": "Zlati Meyer"
     },
     {
-      "title": "Anthropic, Google, Other Tech Companies Commit $915 Million to Pull Carbon Out of the Sky",
-      "desc": "The committment comes through buying group Frontier, which aims to scale up the carbon removal sector.",
-      "link": "https://www.wsj.com/pro/sustainable-business/anthropic-google-other-tech-companies-commit-915-million-to-pull-carbon-out-of-the-sky-e2ee2c1e?mod=pls_whats_news_us_business_f",
-      "pubDate": "Wed, 17 Jun 2026 12:00:00 GMT",
-      "creator": "Yusuf Khan"
-    },
-    {
-      "title": "Australian Predictive Healthcare Startup Raises $46 Million",
-      "desc": "Sydney-based Airtree Ventures led the financing, joined by Left Lane Capital in New York.",
-      "link": "https://www.wsj.com/pro/private-equity/australian-predictive-healthcare-startup-raises-46-million-4730970c?mod=pls_whats_news_us_business_f",
-      "pubDate": "Tue, 16 Jun 2026 23:15:00 GMT",
-      "creator": "Stuart Condie"
+      "title": "Basic Materials Roundup: Market Talk",
+      "desc": "Find insight on gold, aluminum, Syensqo, Symrise and more in the latest Market Talks covering basic materials.",
+      "link": "https://www.wsj.com/business/basic-materials-roundup-market-talk-9da05100?mod=pls_whats_news_us_business_f",
+      "pubDate": "Mon, 22 Jun 2026 21:08:00 GMT",
+      "creator": ""
     },
     {
       "title": "SpaceX Strikes $6 Billion Deal With AI Startup for Data-Center Space",
@@ -514,6 +528,13 @@
       "creator": "Kate Clark"
     },
     {
+      "title": "What’s the State of Play in the Strait of Hormuz?",
+      "desc": "It could take weeks for traffic through the route to return to even half of prewar levels, with knock-on effects continuing for months.",
+      "link": "https://www.wsj.com/business/energy-oil/how-quickly-can-the-strait-of-hormuz-get-back-up-and-running-a5380c70?mod=pls_whats_news_us_business_f",
+      "pubDate": "Mon, 22 Jun 2026 13:09:00 GMT",
+      "creator": "Georgi Kantchev"
+    },
+    {
       "title": "Chevron Strikes Power Deal With Microsoft for West Texas AI Data Center",
       "desc": "The 2.7-gigawatt project will have its own on-site power plant fueled by Chevron’s local natural-gas production.",
       "link": "https://www.wsj.com/business/energy-oil/chevron-strikes-power-deal-with-microsoft-for-west-texas-ai-data-center-3751de34?mod=pls_whats_news_us_business_f",
@@ -521,32 +542,11 @@
       "creator": "Collin Eaton"
     },
     {
-      "title": "Tide Already Dominates Detergent. Why Is P&G Pushing a New Version?",
-      "desc": "Researchers and developers believed they could improve the company’s crown jewel—and sell consumers on a laundry ‘tile.’",
-      "link": "https://www.wsj.com/business/tide-laundry-soap-procter-gamble-2938e8b6?mod=pls_whats_news_us_business_f",
-      "pubDate": "Mon, 22 Jun 2026 01:00:00 GMT",
-      "creator": "Natasha Khan"
-    },
-    {
-      "title": "Coke Takes on IRS With $20 Billion at Stake",
-      "desc": "In a tax fight over foreign profits, the multinational giant and the U.S. head to court this week.",
-      "link": "https://www.wsj.com/us-news/law/coca-cola-irs-legal-fight-f1ec40e8?mod=pls_whats_news_us_business_f",
-      "pubDate": "Sun, 21 Jun 2026 09:30:00 GMT",
-      "creator": "Richard Rubin"
-    },
-    {
-      "title": "Immigration Crackdown Lifts Private-Prison Stocks",
-      "desc": "So far this year, prison operators Geo Group and CoreCivic are outperforming tech and energy giants alike.",
-      "link": "https://www.wsj.com/business/immigration-crackdown-lifts-private-prison-stocks-cc5e4442?mod=pls_whats_news_us_business_f",
-      "pubDate": "Sat, 20 Jun 2026 17:00:00 GMT",
-      "creator": "Heather Gillers"
-    },
-    {
-      "title": "Tide Already Dominates Detergent. Why Is P&G Pushing a New Version?",
-      "desc": "Researchers and developers believed they could improve the company’s crown jewel—and sell consumers on a laundry ‘tile.’",
-      "link": "https://www.wsj.com/business/tide-laundry-soap-procter-gamble-2938e8b6?mod=pls_whats_news_us_business_f",
-      "pubDate": "Mon, 22 Jun 2026 01:00:00 GMT",
-      "creator": "Natasha Khan"
+      "title": "Top-Paid CEOs Smash the $200 Million Payday",
+      "desc": "“Moonshot” deals pushed pay for company bosses to new highs in the WSJ’s annual ranking.",
+      "link": "https://www.wsj.com/articles/ceo-pay-2025-d2885ea3?mod=pls_whats_news_us_business_f",
+      "pubDate": "Tue, 23 Jun 2026 01:00:00 GMT",
+      "creator": "Peter Santilli"
     },
     {
       "title": "Fatal Tesla Crash Into Texas Home Now Under Federal Safety Investigation",
@@ -556,11 +556,18 @@
       "creator": "Ryan Felton"
     },
     {
-      "title": "Can Tony Dokoupil Weather the War at CBS?",
-      "desc": "The “Evening News” anchor has been thrust into the spotlight amid criticism of his network and its editor in chief.",
-      "link": "https://www.wsj.com/business/media/tony-dokoupil-cbs-evening-news-bari-weiss-paramount-david-ellison-acdb9131?mod=pls_whats_news_us_business_f",
-      "pubDate": "Mon, 22 Jun 2026 09:35:00 GMT",
-      "creator": "Isabella Simonetti"
+      "title": "Tide Already Dominates Detergent. Why Is P&G Pushing a New Version?",
+      "desc": "Researchers and developers believed they could improve the company’s crown jewel—and sell consumers on a laundry ‘tile.’",
+      "link": "https://www.wsj.com/business/tide-laundry-soap-procter-gamble-2938e8b6?mod=pls_whats_news_us_business_f",
+      "pubDate": "Mon, 22 Jun 2026 01:00:00 GMT",
+      "creator": "Natasha Khan"
+    },
+    {
+      "title": "Mars Is Spending Millions to Give M&M’s a MAHA Makeover",
+      "desc": "The candy maker is trying to re-create M&M’s without artificial colors, but blue’s natural algae substitute is complex and costly.",
+      "link": "https://www.wsj.com/business/mars-is-spending-millions-to-give-m-ms-a-maha-makeover-2fa1bb88?mod=pls_whats_news_us_business_f",
+      "pubDate": "Thu, 18 Jun 2026 17:25:00 GMT",
+      "creator": "Jesse Newman"
     },
     {
       "title": "Coke Takes on IRS With $20 Billion at Stake",
@@ -568,13 +575,6 @@
       "link": "https://www.wsj.com/us-news/law/coca-cola-irs-legal-fight-f1ec40e8?mod=pls_whats_news_us_business_f",
       "pubDate": "Sun, 21 Jun 2026 09:30:00 GMT",
       "creator": "Richard Rubin"
-    },
-    {
-      "title": "Hollywood Is Having Its Best Box Office Since Before the Pandemic",
-      "desc": "A boom year was accelerated by a franchise-best opening weekend for Disney’s “Toy Story 5.”",
-      "link": "https://www.wsj.com/business/media/box-office-summer-2026-890603ff?mod=pls_whats_news_us_business_f",
-      "pubDate": "Sun, 21 Jun 2026 17:27:00 GMT",
-      "creator": "Ben Fritz"
     },
     {
       "title": "Best Small-Business Loans in June 2026",
