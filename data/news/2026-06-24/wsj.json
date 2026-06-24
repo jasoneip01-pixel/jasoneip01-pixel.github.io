@@ -1,54 +1,61 @@
 {
   "source": "WSJ.com US Business RSS",
-  "ts": "Wed, 24 Jun 2026 09:21:30 GMT",
+  "ts": "Wed, 24 Jun 2026 19:41:20 GMT",
   "items": [
+    {
+      "title": "Trump, Frustrated With High Gas Prices, Channels Biden’s Criticism of Big Oil",
+      "desc": "Some oil executives were privately critical of the president’s comments and explained the fuel supply chain is a slow-moving machine.",
+      "link": "https://www.wsj.com/business/energy-oil/trump-frustrated-with-high-gas-prices-channels-bidens-criticism-of-big-oil-0ac58b26?mod=pls_whats_news_us_business_f",
+      "pubDate": "Wed, 24 Jun 2026 19:19:00 GMT",
+      "creator": "Benoît Morenne"
+    },
+    {
+      "title": "What’s the State of Play in the Strait of Hormuz?",
+      "desc": "Traffic through the waterway has ticked up, but could take months to return to normal.",
+      "link": "https://www.wsj.com/business/energy-oil/how-quickly-can-the-strait-of-hormuz-get-back-up-and-running-a5380c70?mod=pls_whats_news_us_business_f",
+      "pubDate": "Wed, 24 Jun 2026 17:13:00 GMT",
+      "creator": "Georgi Kantchev"
+    },
+    {
+      "title": "What Baiju Bhatt Learned From the 70 ‘Nos’ He Got While Building Robinhood",
+      "desc": "The billionaire co-founder of Robinhood shared his grueling journey to build the financial app with Gunjan Banerji in the latest episode of The WSJ Money Interview.",
+      "link": "https://www.wsj.com/business/how-baiju-bhatt-started-robinhood-79537954?mod=pls_whats_news_us_business_f",
+      "pubDate": "Wed, 24 Jun 2026 16:23:00 GMT",
+      "creator": "Gunjan Banerji"
+    },
+    {
+      "title": "Will Anyone Buy This Cheap EV Truck With Hand-Crank Windows and No Radio?",
+      "desc": "Slate Auto’s all-electric truck aims to prove that affordable cars can be both profitable and adored.",
+      "link": "https://www.wsj.com/business/autos/will-anyone-buy-this-cheap-ev-truck-with-hand-crank-windows-and-no-radio-699b285a?mod=pls_whats_news_us_business_f",
+      "pubDate": "Wed, 24 Jun 2026 12:03:00 GMT",
+      "creator": "Ryan Felton"
+    },
     {
       "title": "Agility, Maker of Humanlike Robots, to Go Public in $2.5 Billion SPAC Deal",
       "desc": "Agility’s humanoid robot, Digit, is used at manufacturing facilities and warehouses by companies such as Amazon.",
       "link": "https://www.wsj.com/finance/agility-maker-of-humanlike-robots-to-go-public-in-2-5-billion-spac-deal-62c3cb32?mod=pls_whats_news_us_business_f",
-      "pubDate": "Wed, 24 Jun 2026 03:59:00 GMT",
+      "pubDate": "Wed, 24 Jun 2026 10:23:00 GMT",
       "creator": "Lauren Thomas"
     },
     {
-      "title": "Will Anyone Buy This Cheap EV Truck With Hand-Crank Windows and No Radio?",
-      "desc": "Slate Auto’s all-electric truck, priced in the mid-$20,000s, aims to prove that affordable cars can be both profitable and adored.",
-      "link": "https://www.wsj.com/business/autos/will-anyone-buy-this-cheap-ev-truck-with-hand-crank-windows-and-no-radio-699b285a?mod=pls_whats_news_us_business_f",
-      "pubDate": "Wed, 24 Jun 2026 02:00:00 GMT",
-      "creator": "Ryan Felton"
+      "title": "As AI Companies Race for Power, Amazon and Google Have the Lead",
+      "desc": "Amazon has an incumbent advantage, and Google stands out for some innovative approaches.",
+      "link": "https://www.wsj.com/business/energy-oil/as-ai-companies-race-for-power-amazon-and-google-have-the-lead-1d97af9a?mod=pls_whats_news_us_business_f",
+      "pubDate": "Wed, 24 Jun 2026 09:30:00 GMT",
+      "creator": "Jinjoo Lee"
     },
     {
-      "title": "Can America’s Obsession With Mahjong Save This Dying Craft?",
-      "desc": "Watch how the last remaining artists of mahjong tile carving are trying to preserve the fading craft.",
-      "link": "https://www.wsj.com/business/can-americas-obsession-with-mahjong-save-this-dying-craft-9bd8b8dd?mod=pls_whats_news_us_business_f",
-      "pubDate": "Tue, 23 Jun 2026 19:00:00 GMT",
-      "creator": "Ksenia Shaikhutdinova"
-    },
-    {
-      "title": "Walmart, in Biggest Deal in Two Years, Buys Advertising Tech Firm",
-      "desc": "Retail giant is paying $1.4 billion for Vibe.co, a company that enables advertising through connected TVs.",
-      "link": "https://www.wsj.com/business/retail/walmart-in-biggest-deal-in-two-years-buys-advertising-tech-firm-ccd6c03b?mod=pls_whats_news_us_business_f",
-      "pubDate": "Tue, 23 Jun 2026 17:38:00 GMT",
-      "creator": "Sarah Nassauer"
-    },
-    {
-      "title": "Ranks of the Ultrawealthy Jumped in 2025",
-      "desc": "The number of those worth more than $30 million jumped by 14.4% last year.",
-      "link": "https://www.wsj.com/economy/ranks-of-the-ultrawealthy-jumped-in-2025-fe98fe37?mod=pls_whats_news_us_business_f",
-      "pubDate": "Tue, 23 Jun 2026 16:05:00 GMT",
-      "creator": "Juliet Chung"
-    },
-    {
-      "title": "Avis Wins $650 Million From Hedge Fund Accused of Stoking Wild Stock Swings",
-      "desc": "Pentwater Capital agrees to pay Avis Budget  to resolve an unusual spat where the car rental company singled out one of its major shareholders.",
-      "link": "https://www.wsj.com/business/avis-wins-650-million-from-hedge-fund-that-bet-big-on-its-stock-d31a03da?mod=pls_whats_news_us_business_f",
-      "pubDate": "Tue, 23 Jun 2026 12:37:00 GMT",
-      "creator": "Caitlin McCabe"
+      "title": "Qualcomm to Acquire AI Software Firm Modular in $3.9 Billion Stock Deal",
+      "desc": "Qualcomm agreed to acquire the AI software company Modular for about $3.9 billion, in a bid to make artificial intelligence faster and cheaper for its customers.",
+      "link": "https://www.wsj.com/tech/ai/qualcomm-to-acquire-ai-software-firm-modular-in-3-9-billion-stock-deal-7b620c7c?mod=pls_whats_news_us_business_f",
+      "pubDate": "Wed, 24 Jun 2026 12:52:00 GMT",
+      "creator": "Katherine Hamilton"
     },
     {
       "title": "Prologis Rebuffed in $16.6 Billion Takeover Approach for U.K.’s Segro",
       "desc": "The world’s largest owner of industrial real estate said it sees a clear strategic rationale for a combination and urged Segro shareholders to encourage the board to engage.",
       "link": "https://www.wsj.com/business/deals/prologis-rebuffed-in-16-6-billion-takeover-approach-for-u-k-s-segro-6c84855c?mod=pls_whats_news_us_business_f",
-      "pubDate": "Wed, 24 Jun 2026 06:30:00 GMT",
+      "pubDate": "Wed, 24 Jun 2026 09:58:00 GMT",
       "creator": "Adrià Calatayud"
     },
     {
@@ -73,11 +80,11 @@
       "creator": "Colin Kellaher"
     },
     {
-      "title": "Building-Materials Supplier CRH to Buy Rival Arcosa for $8.5 Billion",
-      "desc": "Building-materials supplier CRH said it will acquire rival Arcosa in a deal valued at roughly $8.5 billion, including debt.",
-      "link": "https://www.wsj.com/business/deals/building-materials-supplier-crh-to-buy-rival-arcosa-for-8-5-billion-d8910314?mod=pls_whats_news_us_business_f",
-      "pubDate": "Mon, 22 Jun 2026 11:51:00 GMT",
-      "creator": "Connor Hart"
+      "title": "Walmart, in Biggest Deal in Two Years, Buys Advertising Tech Firm",
+      "desc": "Retail giant is paying $1.4 billion for Vibe.co, a company that enables advertising through connected TVs.",
+      "link": "https://www.wsj.com/business/retail/walmart-in-biggest-deal-in-two-years-buys-advertising-tech-firm-ccd6c03b?mod=pls_whats_news_us_business_f",
+      "pubDate": "Tue, 23 Jun 2026 17:38:00 GMT",
+      "creator": "Sarah Nassauer"
     },
     {
       "title": "Carnival Says Iran War Disrupted Bookings, Issues Soft Outlook",
@@ -106,20 +113,6 @@
       "link": "https://www.wsj.com/business/retail/a-hoarders-redemption-bed-bath-beyond-will-take-your-decades-old-coupons-875c3fab?mod=pls_whats_news_us_business_f",
       "pubDate": "Mon, 22 Jun 2026 09:30:00 GMT",
       "creator": "Suzanne Kapner"
-    },
-    {
-      "title": "Why Back-to-School Deals Are Already Here",
-      "desc": "As shoppers spread out spending to manage their budgets, more retailers are promoting deals with summer sales, such as Amazon’s Prime Day.",
-      "link": "https://www.wsj.com/business/retail/back-to-school-shopping-startsnow-c5298017?mod=pls_whats_news_us_business_f",
-      "pubDate": "Sun, 21 Jun 2026 00:00:00 GMT",
-      "creator": "Sarah Nassauer"
-    },
-    {
-      "title": "Rheinmetall Shares Slump After Reports That Germany Is Dropping Frigate Project",
-      "desc": "Shares fell as much as 16% in European morning trading, meaning the stock shed more than one third of its value since the start of the year.",
-      "link": "https://www.wsj.com/business/earnings/rheinmetall-shares-slump-after-reports-that-germany-is-dropping-frigate-project-bbabccad?mod=pls_whats_news_us_business_f",
-      "pubDate": "Wed, 24 Jun 2026 08:46:00 GMT",
-      "creator": "Adrià Calatayud"
     },
     {
       "title": "FedEx Revenue Rises on Growth in Package Yields, Volume",
@@ -157,6 +150,20 @@
       "creator": "Dominic Chopping"
     },
     {
+      "title": "Amazon’s Zoox Redesigns Robotaxi for Large-Scale Production",
+      "desc": "Zoox plans to move the new robotaxi into large-scale production soon, expecting it will become available to riders later this year.",
+      "link": "https://www.wsj.com/business/amazons-zoox-redesigns-robotaxi-for-large-scale-production-6b658c4f?mod=pls_whats_news_us_business_f",
+      "pubDate": "Wed, 24 Jun 2026 17:49:00 GMT",
+      "creator": "Kelly Cloonan"
+    },
+    {
+      "title": "Hertz Dampens Guidance Amid Struggling Used-Car Market",
+      "desc": "Hertz Global said its adjusted earnings in the second quarter are shaping up to be on the low end of its expectations after used-car demand was worse than expected.",
+      "link": "https://www.wsj.com/business/autos/hertz-dampens-guidance-amid-struggling-used-car-market-f7af067a?mod=pls_whats_news_us_business_f",
+      "pubDate": "Wed, 24 Jun 2026 12:20:00 GMT",
+      "creator": "Katherine Hamilton"
+    },
+    {
       "title": "Tesla Notches Over Twofold Increase in European Monthly Sales",
       "desc": "Elon Musk’s EV maker continues to rebuild strength in a region where Chinese rivals are gaining ground.",
       "link": "https://www.wsj.com/business/autos/tesla-notches-over-twofold-increase-in-european-monthly-sales-f8533cdc?mod=pls_whats_news_us_business_f",
@@ -176,13 +183,6 @@
       "link": "https://www.wsj.com/business/autos/lucid-to-cut-18-of-u-s-workforce-as-restructuring-continues-06a4b381?mod=pls_whats_news_us_business_f",
       "pubDate": "Mon, 22 Jun 2026 14:26:00 GMT",
       "creator": "Connor Hart"
-    },
-    {
-      "title": "You Were Right to Hate EV Pickups. Automakers Want a Second Chance.",
-      "desc": "The first generation of mass-market electric pickups ended in financial disaster. As automakers try again with smaller designs, consumers are right to ask what will be different this time. The answer? Almost everything.",
-      "link": "https://www.wsj.com/lifestyle/cars/ev-pickups-telo-mt1-ford-f150-lightning-review-04ecbb6d?mod=pls_whats_news_us_business_f",
-      "pubDate": "Sat, 20 Jun 2026 01:00:00 GMT",
-      "creator": "Dan Neil"
     },
     {
       "title": "Opinion | Everyone vs. Superintelligence?",
@@ -227,7 +227,21 @@
       "creator": "Campbell Brown"
     },
     {
-      "title": "Trump Calls for Lower Gasoline Prices as Oil Falls",
+      "title": "Energy & Utilities Roundup: Market Talk",
+      "desc": "Find insight on oil futures, RWE, Adani Power and more in the latest Market Talks covering Energy and Utilities.",
+      "link": "https://www.wsj.com/articles/energy-utilities-roundup-market-talk-b9a03780?mod=pls_whats_news_us_business_f",
+      "pubDate": "Wed, 24 Jun 2026 16:34:00 GMT",
+      "creator": ""
+    },
+    {
+      "title": "U.S. Crude Oil Inventories Fall, Product Stocks Rise",
+      "desc": "Commercial crude oil stocks fell by 6.1 million barrels for a ninth consecutive decline, while gasoline and distillate fuel stocks posted increases.",
+      "link": "https://www.wsj.com/business/energy-oil/u-s-crude-oil-inventories-fall-product-stocks-rise-10d9bae1?mod=pls_whats_news_us_business_f",
+      "pubDate": "Wed, 24 Jun 2026 15:15:00 GMT",
+      "creator": "Anthony Harrup"
+    },
+    {
+      "title": "Trump Calls for Probe Into U.S. Gasoline Prices After Oil Falls",
       "desc": "The U.S. president has accused major oil companies of “gouging” customers by not lowering gasoline pump prices in line with falling crude costs.",
       "link": "https://www.wsj.com/business/energy-oil/trump-calls-for-lower-gasoline-prices-as-oil-falls-95080195?mod=pls_whats_news_us_business_f",
       "pubDate": "Wed, 24 Jun 2026 09:13:00 GMT",
@@ -246,20 +260,6 @@
       "link": "https://www.wsj.com/business/energy-oil/u-s-bets-billions-of-dollars-in-low-cost-loans-can-revive-nuclear-power-be8dcf81?mod=pls_whats_news_us_business_f",
       "pubDate": "Tue, 23 Jun 2026 12:30:00 GMT",
       "creator": "Jennifer Hiller"
-    },
-    {
-      "title": "Oil Prices Choppy Amid Mixed Signals From U.S.-Iran Peace Talks",
-      "desc": "Oil prices were up in Asia, amid conflicting signals from talks between the U.S. and Iran on ending the conflict.",
-      "link": "https://www.wsj.com/finance/oil-prices-rise-amid-mixed-signals-from-u-s-iran-peace-talks-b98b7ebf?mod=pls_whats_news_us_business_f",
-      "pubDate": "Tue, 23 Jun 2026 06:20:00 GMT",
-      "creator": "Ronnie Harui"
-    },
-    {
-      "title": "Auto & Transport Roundup: Market Talk",
-      "desc": "Find insight on the Strait of Hormuz,  European airlines, Ryanair and more in the latest Market Talks covering the auto and transport sector.",
-      "link": "https://www.wsj.com/business/auto-transport-roundup-market-talk-913d676b?mod=pls_whats_news_us_business_f",
-      "pubDate": "Mon, 22 Jun 2026 21:08:00 GMT",
-      "creator": ""
     },
     {
       "title": "Sixteen Airbus A380s to Undergo Inspection After Cracks Found on Airplane Wings",
@@ -437,6 +437,13 @@
       "creator": "Liz Young"
     },
     {
+      "title": "Memory-Chip Giant SK Hynix Seeks to Raise $29 Billion in U.S. Listing",
+      "desc": "The deal would be one of the biggest share sales in history, comparable to Saudi Aramco’s 2019 IPO.",
+      "link": "https://www.wsj.com/business/sk-hynix-seeks-to-raise-about-29-billion-in-u-s-listing-4185ac59?mod=pls_whats_news_us_business_f",
+      "pubDate": "Wed, 24 Jun 2026 11:19:00 GMT",
+      "creator": "Kimberley Kao"
+    },
+    {
       "title": "SK Hynix Tops Samsung to Become South Korea’s Most Valuable Company",
       "desc": "Memory-chip maker SK Hynix has overtaken Samsung Electronics to become South Korea’s most valuable company amid the AI-driven chip boom.",
       "link": "https://www.wsj.com/tech/sk-hynix-tops-samsung-to-become-south-koreas-most-valuable-company-279419a0?mod=pls_whats_news_us_business_f",
@@ -463,13 +470,6 @@
       "link": "https://www.wsj.com/business/c-suite/ericsson-ceo-ekholm-to-step-down-company-veteran-narvinger-named-successor-5607a49a?mod=pls_whats_news_us_business_f",
       "pubDate": "Tue, 16 Jun 2026 11:28:00 GMT",
       "creator": "Dominic Chopping"
-    },
-    {
-      "title": "Qualcomm Is a Rare AI Chip Value Play",
-      "desc": "Smartphone exposure haunts the stock despite diversifying into cars and data centers.",
-      "link": "https://www.wsj.com/tech/qualcomm-is-a-rare-ai-chip-value-play-3e09f70b?mod=pls_whats_news_us_business_f",
-      "pubDate": "Tue, 16 Jun 2026 09:30:00 GMT",
-      "creator": "Asa Fitch"
     },
     {
       "title": "IBM Getting Ready to Scale Quantum Computing",
@@ -507,6 +507,27 @@
       "creator": "Jiahui Huang"
     },
     {
+      "title": "Can America’s Obsession With Mahjong Save This Dying Craft?",
+      "desc": "Watch how the last remaining artists of mahjong tile carving are trying to preserve the fading craft.",
+      "link": "https://www.wsj.com/business/can-americas-obsession-with-mahjong-save-this-dying-craft-9bd8b8dd?mod=pls_whats_news_us_business_f",
+      "pubDate": "Tue, 23 Jun 2026 19:00:00 GMT",
+      "creator": "Ksenia Shaikhutdinova"
+    },
+    {
+      "title": "Ranks of the Ultrawealthy Jumped in 2025",
+      "desc": "The number of those worth more than $30 million jumped by 14.4% last year.",
+      "link": "https://www.wsj.com/economy/ranks-of-the-ultrawealthy-jumped-in-2025-fe98fe37?mod=pls_whats_news_us_business_f",
+      "pubDate": "Tue, 23 Jun 2026 16:05:00 GMT",
+      "creator": "Juliet Chung"
+    },
+    {
+      "title": "Avis Wins $650 Million From Hedge Fund Accused of Stoking Wild Stock Swings",
+      "desc": "Pentwater Capital agrees to pay Avis Budget  to resolve an unusual spat where the car rental company singled out one of its major shareholders.",
+      "link": "https://www.wsj.com/business/avis-wins-650-million-from-hedge-fund-that-bet-big-on-its-stock-d31a03da?mod=pls_whats_news_us_business_f",
+      "pubDate": "Tue, 23 Jun 2026 12:37:00 GMT",
+      "creator": "Caitlin McCabe"
+    },
+    {
       "title": "Top-Paid CEOs Smash the $200 Million Payday",
       "desc": "“Moonshot” deals pushed pay for company bosses to new highs in the WSJ’s annual ranking.",
       "link": "https://www.wsj.com/articles/ceo-pay-2025-d2885ea3?mod=pls_whats_news_us_business_f",
@@ -521,25 +542,18 @@
       "creator": "Zlati Meyer"
     },
     {
-      "title": "Basic Materials Roundup: Market Talk",
-      "desc": "Find insight on gold, aluminum, Syensqo, Symrise and more in the latest Market Talks covering basic materials.",
-      "link": "https://www.wsj.com/business/basic-materials-roundup-market-talk-9da05100?mod=pls_whats_news_us_business_f",
-      "pubDate": "Mon, 22 Jun 2026 21:08:00 GMT",
-      "creator": ""
+      "title": "Will Anyone Buy This Cheap EV Truck With Hand-Crank Windows and No Radio?",
+      "desc": "Slate Auto’s all-electric truck aims to prove that affordable cars can be both profitable and adored.",
+      "link": "https://www.wsj.com/business/autos/will-anyone-buy-this-cheap-ev-truck-with-hand-crank-windows-and-no-radio-699b285a?mod=pls_whats_news_us_business_f",
+      "pubDate": "Wed, 24 Jun 2026 12:03:00 GMT",
+      "creator": "Ryan Felton"
     },
     {
-      "title": "SpaceX Strikes $6 Billion Deal With AI Startup for Data-Center Space",
-      "desc": "Reflection AI will rent capacity from the newly public company to develop open-source models.",
-      "link": "https://www.wsj.com/tech/ai/spacex-strikes-6-billion-deal-with-ai-startup-for-data-center-space-85d3f72f?mod=pls_whats_news_us_business_f",
-      "pubDate": "Mon, 22 Jun 2026 17:43:00 GMT",
-      "creator": "Kate Clark"
-    },
-    {
-      "title": "What’s the State of Play in the Strait of Hormuz?",
-      "desc": "It could take weeks for traffic through the route to return to even half of prewar levels, with knock-on effects continuing for months.",
-      "link": "https://www.wsj.com/business/energy-oil/how-quickly-can-the-strait-of-hormuz-get-back-up-and-running-a5380c70?mod=pls_whats_news_us_business_f",
-      "pubDate": "Mon, 22 Jun 2026 13:09:00 GMT",
-      "creator": "Georgi Kantchev"
+      "title": "Sixteen Airbus A380s to Undergo Inspection After Cracks Found on Airplane Wings",
+      "desc": "Aircraft operated by Emirates and Qantas require inspections, with immediate checks needed for five of the jets.",
+      "link": "https://www.wsj.com/business/sixteen-airbus-a380s-to-undergo-inspection-after-cracks-found-on-wings-d51229c1?mod=pls_whats_news_us_business_f",
+      "pubDate": "Wed, 24 Jun 2026 09:13:00 GMT",
+      "creator": "Kimberley Kao"
     },
     {
       "title": "Top-Paid CEOs Smash the $200 Million Payday",
@@ -549,32 +563,18 @@
       "creator": "Peter Santilli"
     },
     {
-      "title": "Mars Is Spending Millions to Give M&M’s a MAHA Makeover",
-      "desc": "The candy maker is trying to re-create M&M’s without artificial colors, but blue’s natural algae substitute is complex and costly.",
-      "link": "https://www.wsj.com/business/mars-is-spending-millions-to-give-m-ms-a-maha-makeover-2fa1bb88?mod=pls_whats_news_us_business_f",
-      "pubDate": "Thu, 18 Jun 2026 17:25:00 GMT",
-      "creator": "Jesse Newman"
+      "title": "Can America’s Obsession With Mahjong Save This Dying Craft?",
+      "desc": "Watch how the last remaining artists of mahjong tile carving are trying to preserve the fading craft.",
+      "link": "https://www.wsj.com/business/can-americas-obsession-with-mahjong-save-this-dying-craft-9bd8b8dd?mod=pls_whats_news_us_business_f",
+      "pubDate": "Tue, 23 Jun 2026 19:00:00 GMT",
+      "creator": "Ksenia Shaikhutdinova"
     },
     {
-      "title": "Fatal Tesla Crash Into Texas Home Now Under Federal Safety Investigation",
-      "desc": "A driver told officials he was using a driver-assistance system when his car slammed into a Houston-area home, killing a woman.",
-      "link": "https://www.wsj.com/business/autos/fatal-tesla-crash-into-texas-home-now-under-federal-safety-investigation-48cfeebe?mod=pls_whats_news_us_business_f",
-      "pubDate": "Mon, 22 Jun 2026 23:32:00 GMT",
-      "creator": "Ryan Felton"
-    },
-    {
-      "title": "Oracle Sheds 21,000 Jobs as It Sharpens Focus on AI",
-      "desc": "The tech company’s head count shrank by roughly 13% in its last fiscal year, as it continued to invest in artificial intelligence.",
-      "link": "https://www.wsj.com/tech/ai/oracle-sheds-21-000-jobs-as-it-continues-ai-focused-streamlining-a3149b90?mod=pls_whats_news_us_business_f",
-      "pubDate": "Tue, 23 Jun 2026 10:40:00 GMT",
-      "creator": "Fabiana Negrin Ochoa"
-    },
-    {
-      "title": "U.S. Bets Billions of Dollars in Low-Cost Loans Can Revive Nuclear Power",
-      "desc": "The Energy Department will let utilities tap government funds to kick-start reactor orders.",
-      "link": "https://www.wsj.com/business/energy-oil/u-s-bets-billions-of-dollars-in-low-cost-loans-can-revive-nuclear-power-be8dcf81?mod=pls_whats_news_us_business_f",
-      "pubDate": "Tue, 23 Jun 2026 12:30:00 GMT",
-      "creator": "Jennifer Hiller"
+      "title": "Walmart, in Biggest Deal in Two Years, Buys Advertising Tech Firm",
+      "desc": "Retail giant is paying $1.4 billion for Vibe.co, a company that enables advertising through connected TVs.",
+      "link": "https://www.wsj.com/business/retail/walmart-in-biggest-deal-in-two-years-buys-advertising-tech-firm-ccd6c03b?mod=pls_whats_news_us_business_f",
+      "pubDate": "Tue, 23 Jun 2026 17:38:00 GMT",
+      "creator": "Sarah Nassauer"
     },
     {
       "title": "Best Small-Business Loans in June 2026",
