@@ -1,48 +1,69 @@
 {
   "source": "WSJ.com US Business RSS",
-  "ts": "Thu, 25 Jun 2026 08:54:47 GMT",
+  "ts": "Thu, 25 Jun 2026 19:54:49 GMT",
   "items": [
     {
-      "title": "Forget Work. Passive Income Is the New American Dream.",
-      "desc": "Driven by a growing feeling that 9-to-5 jobs are a dead end, people are turning to social media to test out eccentric moneymaking schemes.",
-      "link": "https://www.wsj.com/lifestyle/careers/passive-income-dreams-2e67ee5c?mod=pls_whats_news_us_business_f",
-      "pubDate": "Thu, 25 Jun 2026 01:00:00 GMT",
-      "creator": "Joe Pinsker"
+      "title": "Army Will Lease Land on Bases for Critical Mineral Production",
+      "desc": "The agreement with mining companies is part of the Trump administration’s push to establish a domestic supply chain for vital industrial inputs.",
+      "link": "https://www.wsj.com/politics/national-security/army-will-lease-land-on-bases-for-critical-mineral-production-e714d576?mod=pls_whats_news_us_business_f",
+      "pubDate": "Thu, 25 Jun 2026 19:35:00 GMT",
+      "creator": "Heather Somerville"
     },
     {
-      "title": "LVMH Fires Back at Hermès Heir Over His Missing Fortune",
-      "desc": "The luxury group says it was unaware of any misappropriation of Hermès shares when it was building up a covert position in its rival.",
-      "link": "https://www.wsj.com/business/lvmh-fires-back-at-hermes-heir-over-his-missing-fortune-6a7b90f1?mod=pls_whats_news_us_business_f",
-      "pubDate": "Thu, 25 Jun 2026 00:00:00 GMT",
-      "creator": "Nick Kostov"
+      "title": "FCC’s Carr Says ABC Is Running a ‘Campaign of Misinformation’ on Probe",
+      "desc": "The regulator says the Disney broadcaster’s TV spots about the agency’s inquiry into “The View” are misleading.",
+      "link": "https://www.wsj.com/business/media/fccs-carr-says-abc-is-running-a-campaign-of-misinformation-on-probe-762bfe46?mod=pls_whats_news_us_business_f",
+      "pubDate": "Thu, 25 Jun 2026 18:10:00 GMT",
+      "creator": "Joe Flint"
     },
     {
-      "title": "Trump, Frustrated With High Gas Prices, Channels Biden’s Criticism of Big Oil",
-      "desc": "Some oil executives were privately critical of the president’s comments and explained the fuel supply chain is a slow-moving machine.",
-      "link": "https://www.wsj.com/business/energy-oil/trump-frustrated-with-high-gas-prices-channels-bidens-criticism-of-big-oil-0ac58b26?mod=pls_whats_news_us_business_f",
-      "pubDate": "Wed, 24 Jun 2026 22:36:00 GMT",
-      "creator": "Benoît Morenne"
-    },
-    {
-      "title": "What’s the State of Play in the Strait of Hormuz?",
-      "desc": "Traffic through the waterway has ticked up, but could take months to return to normal.",
-      "link": "https://www.wsj.com/business/energy-oil/how-quickly-can-the-strait-of-hormuz-get-back-up-and-running-a5380c70?mod=pls_whats_news_us_business_f",
-      "pubDate": "Wed, 24 Jun 2026 17:13:00 GMT",
-      "creator": "Georgi Kantchev"
-    },
-    {
-      "title": "What Baiju Bhatt Learned From the 70 ‘Nos’ He Got While Building Robinhood",
-      "desc": "The billionaire co-founder of Robinhood shared his grueling journey to build the financial app with Gunjan Banerji in the latest episode of The WSJ Money Interview.",
-      "link": "https://www.wsj.com/business/how-baiju-bhatt-started-robinhood-79537954?mod=pls_whats_news_us_business_f",
-      "pubDate": "Wed, 24 Jun 2026 16:23:00 GMT",
-      "creator": "Gunjan Banerji"
-    },
-    {
-      "title": "Will Anyone Buy This Cheap EV Truck With Hand-Crank Windows and No Radio?",
-      "desc": "Slate Auto’s all-electric truck aims to prove that affordable cars can be both profitable and adored.",
-      "link": "https://www.wsj.com/business/autos/will-anyone-buy-this-cheap-ev-truck-with-hand-crank-windows-and-no-radio-699b285a?mod=pls_whats_news_us_business_f",
-      "pubDate": "Wed, 24 Jun 2026 12:03:00 GMT",
+      "title": "U.S. Bans Polestar, Chinese-Owned EV Maker, From Selling Cars in the U.S.",
+      "desc": "A government rule prohibiting Chinese software in cars resulted in Polestar bowing out of the U.S. market.",
+      "link": "https://www.wsj.com/business/autos/u-s-bans-polestar-chinese-owned-ev-maker-from-selling-cars-in-the-u-s-c64f0a70?mod=pls_whats_news_us_business_f",
+      "pubDate": "Thu, 25 Jun 2026 16:19:00 GMT",
       "creator": "Ryan Felton"
+    },
+    {
+      "title": "World Bank Watchdog Finds Cambodian Microfinance Lenders Harmed Borrowers",
+      "desc": "The  internal watchdog of the International Finance Corp. found that the lenders pressured borrowers to keep paying back loans they couldn’t afford.",
+      "link": "https://www.wsj.com/business/world-bank-watchdog-finds-cambodian-microfinance-lenders-harmed-borrowers-84f42450?mod=pls_whats_news_us_business_f",
+      "pubDate": "Thu, 25 Jun 2026 16:09:00 GMT",
+      "creator": "Gabriele Steinhauser"
+    },
+    {
+      "title": "Meta Tried to Silence Her. Now She’s Suing.",
+      "desc": "Sarah Wynn-Williams, a former Facebook policy executive, is suing Meta over its attempts to stop her from talking about her book, “Careless People,” a New York Times bestseller.",
+      "link": "https://www.wsj.com/us-news/law/meta-tried-to-silence-her-now-shes-suing-b228997c?mod=pls_whats_news_us_business_f",
+      "pubDate": "Thu, 25 Jun 2026 14:53:00 GMT",
+      "creator": "Keach Hagey"
+    },
+    {
+      "title": "The New Push to Ready Millions for AI Career Upheaval",
+      "desc": "A coalition of employers and state governments says it is developing a sweeping strategy to help workers respond to the AI age.",
+      "link": "https://www.wsj.com/lifestyle/careers/the-new-push-to-ready-millions-for-ai-career-upheaval-dfb04cc5?mod=pls_whats_news_us_business_f",
+      "pubDate": "Thu, 25 Jun 2026 14:43:00 GMT",
+      "creator": "Chip Cutter"
+    },
+    {
+      "title": "Germany’s Merck to Boost Lab-Tools Business With $11 Billion Bio-Techne Deal",
+      "desc": "The proposed acquisition will be the company’s biggest deal in more than a decade and represents an early move by new CEO Kai Beckmann to bolster the business.",
+      "link": "https://www.wsj.com/business/deals/germanys-merck-to-buy-bio-techne-for-11-billion-a0eff431?mod=pls_whats_news_us_business_f",
+      "pubDate": "Thu, 25 Jun 2026 16:09:00 GMT",
+      "creator": "Adrià Calatayud"
+    },
+    {
+      "title": "Under Siege From Chinese Automakers, Volkswagen Sells Engine Business",
+      "desc": "Bain Capital will buy 51% of heavy-engine business Everllence for $8.4 billion.",
+      "link": "https://www.wsj.com/business/deals/volkswagen-to-sell-majority-stake-in-engine-unit-to-bain-capital-ae17cb9f?mod=pls_whats_news_us_business_f",
+      "pubDate": "Thu, 25 Jun 2026 12:53:00 GMT",
+      "creator": "Ben Dummett"
+    },
+    {
+      "title": "easyJet to Open Books to Castlelake After Rejecting Revised $6.49 Billion Bid",
+      "desc": "The move marks a shift in easyJet’s stance toward Castlelake, which as recently as Monday called out the airline’s unwillingness to engage meaningfully.",
+      "link": "https://www.wsj.com/business/deals/easyjet-board-rejects-castlelakes-revised-6-49-billion-takeover-offer-5176bdee?mod=pls_whats_news_us_business_f",
+      "pubDate": "Thu, 25 Jun 2026 10:03:00 GMT",
+      "creator": "Adam Whittaker"
     },
     {
       "title": "Commerzbank Says Some Institutional Investors Have Accepted UniCredit’s Offer",
@@ -59,25 +80,25 @@
       "creator": "Adrià Calatayud"
     },
     {
-      "title": "easyJet Board Rejects Castlelake’s Revised $6.49 Billion Takeover Offer",
-      "desc": "The airline’s board rebuffed a fourth takeover bid from Castlelake, but said it would extend talks and share commercial information to obtain a higher offer.",
-      "link": "https://www.wsj.com/business/deals/easyjet-board-rejects-castlelakes-revised-6-49-billion-takeover-offer-5176bdee?mod=pls_whats_news_us_business_f",
-      "pubDate": "Thu, 25 Jun 2026 06:42:00 GMT",
-      "creator": "Adam Whittaker"
+      "title": "Darden Posts Higher Sales but Warns of Slower Growth",
+      "desc": "Darden posted higher profit and sales in its fiscal fourth quarter, once again led by its LongHorn Steakhouse brand, but expects growth to slow over the coming year.",
+      "link": "https://www.wsj.com/business/earnings/darden-restaurants-posts-higher-profit-sales-c1a84b75?mod=pls_whats_news_us_business_f",
+      "pubDate": "Thu, 25 Jun 2026 12:20:00 GMT",
+      "creator": "Connor Hart"
     },
     {
-      "title": "Volkswagen to Sell Majority Stake in Engine Unit to Bain Capital",
-      "desc": "The transaction in the form of a leveraged buy-out generates proceeds of roughly €7.4 billion for Volkswagen.",
-      "link": "https://www.wsj.com/business/deals/volkswagen-to-sell-majority-stake-in-engine-unit-to-bain-capital-ae17cb9f?mod=pls_whats_news_us_business_f",
-      "pubDate": "Thu, 25 Jun 2026 05:18:00 GMT",
-      "creator": "Megan Cheah"
+      "title": "Winnebago Cuts Outlook Amid Declining Sales",
+      "desc": "The motorhome maker posted a fiscal third-quarter profit of $14.5 million, or 51 cents a share, compared with $17.6 million, or 62 cents a share, in the same quarter a year ago.",
+      "link": "https://www.wsj.com/business/earnings/winnebago-cuts-outlook-amid-declining-sales-3ba01bd2?mod=pls_whats_news_us_business_f",
+      "pubDate": "Thu, 25 Jun 2026 11:42:00 GMT",
+      "creator": "Dean Seal"
     },
     {
-      "title": "Qualcomm to Acquire AI Software Firm Modular in $3.9 Billion Stock Deal",
-      "desc": "Qualcomm agreed to acquire the AI software company Modular for about $3.9 billion, in a bid to make artificial intelligence faster and cheaper for its customers.",
-      "link": "https://www.wsj.com/tech/ai/qualcomm-to-acquire-ai-software-firm-modular-in-3-9-billion-stock-deal-7b620c7c?mod=pls_whats_news_us_business_f",
-      "pubDate": "Wed, 24 Jun 2026 12:52:00 GMT",
-      "creator": "Katherine Hamilton"
+      "title": "McCormick Posts Higher Sales Amid Combination With Unilever",
+      "desc": "The maker of spices and seasonings reported higher sales in its fiscal second quarter, as it continues work to combine with Unilever’s food business.",
+      "link": "https://www.wsj.com/business/retail/mccormick-posts-higher-sales-amid-combination-with-unilever-de1cd41a?mod=pls_whats_news_us_business_f",
+      "pubDate": "Thu, 25 Jun 2026 11:08:00 GMT",
+      "creator": "Connor Hart"
     },
     {
       "title": "H&M Earnings Hit by One-Off Costs as Turnaround Efforts Continue",
@@ -94,25 +115,11 @@
       "creator": "James Hookway"
     },
     {
-      "title": "Walmart, in Biggest Deal in Two Years, Buys Advertising Tech Firm",
-      "desc": "Retail giant is paying $1.4 billion for Vibe.co, a company that enables advertising through connected TVs.",
-      "link": "https://www.wsj.com/business/retail/walmart-in-biggest-deal-in-two-years-buys-advertising-tech-firm-ccd6c03b?mod=pls_whats_news_us_business_f",
-      "pubDate": "Tue, 23 Jun 2026 17:38:00 GMT",
-      "creator": "Sarah Nassauer"
-    },
-    {
-      "title": "Carnival Says Iran War Disrupted Bookings, Issues Soft Outlook",
-      "desc": "The cruise line said that booking trends during the recent quarter were most disrupted across Europe, particularly in the Mediterranean region.",
-      "link": "https://www.wsj.com/business/earnings/carnival-says-iran-war-disrupted-bookings-issues-soft-outlook-ebb24c52?mod=pls_whats_news_us_business_f",
-      "pubDate": "Tue, 23 Jun 2026 14:42:00 GMT",
-      "creator": "Connor Hart"
-    },
-    {
-      "title": "Athleisure Brand Vuori Targets China in Global Retail Push",
-      "desc": "The retailer, known for its jogger pants, is looking to snag market share in Asia from rivals like Lululemon and Alo Yoga.",
-      "link": "https://www.wsj.com/business/retail/athleisure-brand-vuori-targets-china-in-global-retail-push-e83fc9c8?mod=pls_whats_news_us_business_f",
-      "pubDate": "Tue, 23 Jun 2026 10:58:00 GMT",
-      "creator": "Aimee Look"
+      "title": "BlackBerry Sees New AI Opportunities as Embedded-Software Business Accelerates",
+      "desc": "The company lifted its fiscal 2027 outlook on higher first-quarter results, driven by embedded-software growth and expanding opportunities with artificial intelligence.",
+      "link": "https://www.wsj.com/tech/ai/blackberry-sees-new-ai-opportunities-as-embedded-software-business-accelerates-5fccded6?mod=pls_whats_news_us_business_f",
+      "pubDate": "Thu, 25 Jun 2026 15:10:00 GMT",
+      "creator": "Adriano Marchese"
     },
     {
       "title": "Micron Shares Jump as Chip Shortage Projected to Last Beyond 2027",
@@ -143,13 +150,6 @@
       "creator": "Elias Schisgall"
     },
     {
-      "title": "Auto & Transport Roundup: Market Talk",
-      "desc": "Find insight on airfare increases, Autoliv, Renault and more in the latest Market Talks covering auto and transport.",
-      "link": "https://www.wsj.com/business/auto-transport-roundup-market-talk-9c5b951d?mod=pls_whats_news_us_business_f",
-      "pubDate": "Tue, 23 Jun 2026 21:11:00 GMT",
-      "creator": ""
-    },
-    {
       "title": "U.K. Auto Manufacturing Rose Slightly in May",
       "desc": "The U.S. saw the biggest increase in shipments among export markets.",
       "link": "https://www.wsj.com/business/autos/u-k-auto-manufacturing-rose-slightly-in-may-8c0f009f?mod=pls_whats_news_us_business_f",
@@ -171,6 +171,13 @@
       "creator": "Katherine Hamilton"
     },
     {
+      "title": "Will Anyone Buy This Cheap EV Truck With Hand-Crank Windows and No Radio?",
+      "desc": "Slate Auto’s all-electric truck aims to prove that affordable cars can be both profitable and adored.",
+      "link": "https://www.wsj.com/business/autos/will-anyone-buy-this-cheap-ev-truck-with-hand-crank-windows-and-no-radio-699b285a?mod=pls_whats_news_us_business_f",
+      "pubDate": "Wed, 24 Jun 2026 12:03:00 GMT",
+      "creator": "Ryan Felton"
+    },
+    {
       "title": "Porsche Could Cut Jobs as It Pushes Ahead With Turnaround Effort",
       "desc": "The sportscar maker is in talks with employee representatives as it pushes ahead with a broader streamlining plan.",
       "link": "https://www.wsj.com/business/autos/porsche-could-cut-jobs-as-it-pushes-ahead-with-turnaround-effort-84e6a2ae?mod=pls_whats_news_us_business_f",
@@ -178,11 +185,18 @@
       "creator": "Dominic Chopping"
     },
     {
-      "title": "Tesla Notches Over Twofold Increase in European Monthly Sales",
-      "desc": "Elon Musk’s EV maker continues to rebuild strength in a region where Chinese rivals are gaining ground.",
-      "link": "https://www.wsj.com/business/autos/tesla-notches-over-twofold-increase-in-european-monthly-sales-f8533cdc?mod=pls_whats_news_us_business_f",
-      "pubDate": "Tue, 23 Jun 2026 06:20:00 GMT",
-      "creator": "Mauro Orru"
+      "title": "Opinion | JD Vance’s Appeals to Arab Authority",
+      "desc": "‘Trust the people who . . . have the most to lose’ from a nuclear Iran, he says—but not the Israelis.",
+      "link": "https://www.wsj.com/opinion/jd-vances-appeals-toarab-authority-5f00f736?mod=pls_whats_news_us_business_f",
+      "pubDate": "Thu, 25 Jun 2026 18:43:00 GMT",
+      "creator": "Elliot Kaufman"
+    },
+    {
+      "title": "Opinion | Hormuz Crisis? More Like Fossil Fuel Crisis",
+      "desc": "The oil bottleneck showed that if policymakers want resilience, they should accelerate renewable energy deployment.",
+      "link": "https://www.wsj.com/opinion/hormuz-crisis-more-like-fossil-fuel-crisis-2bb9e496?mod=pls_whats_news_us_business_f",
+      "pubDate": "Thu, 25 Jun 2026 17:15:00 GMT",
+      "creator": ""
     },
     {
       "title": "Opinion | A Corporate Welfare Bust in Michigan",
@@ -213,18 +227,32 @@
       "creator": ""
     },
     {
-      "title": "Opinion | How Iran Plans to Consolidate Its Victory",
-      "desc": "Trump took bold actions other presidents never dared, only to end up where they were all along.",
-      "link": "https://www.wsj.com/opinion/how-iran-plans-to-consolidate-its-victory-f993941a?mod=pls_whats_news_us_business_f",
-      "pubDate": "Tue, 23 Jun 2026 16:09:00 GMT",
-      "creator": "Ray Takeyh"
+      "title": "Auto & Transport Roundup: Market Talk",
+      "desc": "Find insight on easyJet, tanker traffic through the Strait of Hormuz and more in the latest Market Talks covering the auto and transport sector.",
+      "link": "https://www.wsj.com/business/auto-transport-roundup-market-talk-afb44aa2?mod=pls_whats_news_us_business_f",
+      "pubDate": "Thu, 25 Jun 2026 16:25:00 GMT",
+      "creator": ""
     },
     {
-      "title": "Opinion | Chuck Schumer’s Chip Shortage",
-      "desc": "A Micron plant in New York is years behind schedule for all the reasons you’d expect.",
-      "link": "https://www.wsj.com/opinion/chuck-schumer-micron-chip-shortage-new-york-environment-c090b7e6?mod=pls_whats_news_us_business_f",
-      "pubDate": "Mon, 22 Jun 2026 21:38:00 GMT",
-      "creator": "The Editorial Board"
+      "title": "The Power Plant Hiding in Plain Sight",
+      "desc": "Plus: Will anyone buy a cheap EV truck, the World Cup tries to cool off and the Trump administration offers nuclear loans.",
+      "link": "https://www.wsj.com/business/energy-oil/the-power-plant-hiding-in-plain-sight-d7ec8dd4?mod=pls_whats_news_us_business_f",
+      "pubDate": "Thu, 25 Jun 2026 13:25:00 GMT",
+      "creator": "Jennifer Hiller"
+    },
+    {
+      "title": "Oil Retreats to Prewar Levels as Gulf Flows Through Hormuz Pick Up",
+      "desc": "Prices slipped back as a wave of supply trapped inside the Persian Gulf for months started flowing again.",
+      "link": "https://www.wsj.com/finance/commodities-futures/oil-retreats-to-prewar-levels-as-gulf-flows-through-hormuz-pick-up-498c5104?mod=pls_whats_news_us_business_f",
+      "pubDate": "Thu, 25 Jun 2026 10:14:00 GMT",
+      "creator": "Giulia Petroni"
+    },
+    {
+      "title": "Trump, Frustrated With High Gas Prices, Channels Biden’s Criticism of Big Oil",
+      "desc": "Some oil executives were privately critical of the president’s comments and explained the fuel supply chain is a slow-moving machine.",
+      "link": "https://www.wsj.com/business/energy-oil/trump-frustrated-with-high-gas-prices-channels-bidens-criticism-of-big-oil-0ac58b26?mod=pls_whats_news_us_business_f",
+      "pubDate": "Wed, 24 Jun 2026 22:36:00 GMT",
+      "creator": "Benoît Morenne"
     },
     {
       "title": "Auto & Transport Roundup: Market Talk",
@@ -232,34 +260,6 @@
       "link": "https://www.wsj.com/business/auto-transport-roundup-market-talk-18efc06b?mod=pls_whats_news_us_business_f",
       "pubDate": "Wed, 24 Jun 2026 20:56:00 GMT",
       "creator": ""
-    },
-    {
-      "title": "Energy & Utilities Roundup: Market Talk",
-      "desc": "Find insight on oil futures, Veolia Environnement and more in the latest Market Talks covering Energy and Utilities.",
-      "link": "https://www.wsj.com/articles/energy-utilities-roundup-market-talk-b9a03780?mod=pls_whats_news_us_business_f",
-      "pubDate": "Wed, 24 Jun 2026 20:54:00 GMT",
-      "creator": ""
-    },
-    {
-      "title": "U.S. Crude Oil Inventories Fall, Product Stocks Rise",
-      "desc": "Commercial crude oil stocks fell by 6.1 million barrels for a ninth consecutive decline, while gasoline and distillate fuel stocks posted increases.",
-      "link": "https://www.wsj.com/business/energy-oil/u-s-crude-oil-inventories-fall-product-stocks-rise-10d9bae1?mod=pls_whats_news_us_business_f",
-      "pubDate": "Wed, 24 Jun 2026 15:15:00 GMT",
-      "creator": "Anthony Harrup"
-    },
-    {
-      "title": "As AI Companies Race for Power, Amazon and Google Have the Lead",
-      "desc": "Amazon has an incumbent advantage, and Google stands out for some innovative approaches.",
-      "link": "https://www.wsj.com/business/energy-oil/as-ai-companies-race-for-power-amazon-and-google-have-the-lead-1d97af9a?mod=pls_whats_news_us_business_f",
-      "pubDate": "Wed, 24 Jun 2026 09:30:00 GMT",
-      "creator": "Jinjoo Lee"
-    },
-    {
-      "title": "Trump Calls for Probe Into U.S. Gasoline Prices After Oil Falls",
-      "desc": "The U.S. president has accused major oil companies of “gouging” customers by not lowering gasoline pump prices in line with falling crude costs.",
-      "link": "https://www.wsj.com/business/energy-oil/trump-calls-for-lower-gasoline-prices-as-oil-falls-95080195?mod=pls_whats_news_us_business_f",
-      "pubDate": "Wed, 24 Jun 2026 09:13:00 GMT",
-      "creator": "Giulia Petroni"
     },
     {
       "title": "Sixteen Airbus A380s to Undergo Inspection After Cracks Found on Airplane Wings",
@@ -297,6 +297,13 @@
       "creator": "Dean Seal"
     },
     {
+      "title": "Deutsche Bank’s Former CFO Has His Eye on a CEO Role",
+      "desc": "James von Moltke, who stepped down as CFO in March but remained president, is leaving this month after overseeing a transformation of the German bank.",
+      "link": "https://www.wsj.com/cfo-journal/deutsche-banks-former-cfo-has-his-eye-on-a-ceo-role-a11b4825?mod=pls_whats_news_us_business_f",
+      "pubDate": "Thu, 25 Jun 2026 10:00:00 GMT",
+      "creator": "Kristin Broughton"
+    },
+    {
       "title": "Nike Names Pfizer’s Denton as Next CFO",
       "desc": "David Denton’s appointment, effective Aug. 17, comes as the company struggles to execute a turnaround, with sales dropping in the company’s key China market and weakness in the Europe, Middle East, and Africa region.",
       "link": "https://www.wsj.com/business/c-suite/nike-names-pfizers-denton-as-next-cfo-ff46a44b?mod=pls_whats_news_us_business_f",
@@ -325,11 +332,11 @@
       "creator": "Mark Maurer"
     },
     {
-      "title": "Accenture Takes a Hit on Worsening Outlook and Cloudy AI Future",
-      "desc": "Shares dropped 18% as its CEO said the IT consulting firm will bring in less revenue than expected in coming months.",
-      "link": "https://www.wsj.com/business/accenture-takes-a-hit-on-worsening-outlook-and-cloudy-ai-future-73eb8bfb?mod=pls_whats_news_us_business_f",
-      "pubDate": "Thu, 18 Jun 2026 17:52:00 GMT",
-      "creator": "Allison Pohle"
+      "title": "Pizza Has Gone Cold. Domino’s Is Still Worth a Look.",
+      "desc": "The category’s sales are stagnant and its chains are faltering, but Domino’s can emerge as a winner",
+      "link": "https://www.wsj.com/business/hospitality/pizza-has-gone-cold-dominos-is-still-worth-a-look-38fab850?mod=pls_whats_news_us_business_f",
+      "pubDate": "Thu, 25 Jun 2026 09:30:00 GMT",
+      "creator": "David Wainer"
     },
     {
       "title": "Domino’s Picks Veteran Executive to Steer It Through Tough Patch for Pizza",
@@ -360,11 +367,11 @@
       "creator": "Rachel Louise Ensign"
     },
     {
-      "title": "Diners Aren’t as Into Pizza, but Private Equity Is",
-      "desc": "PE firm LongRange Capital will buy Pizza Hut’s operations outside mainland China for about $1.5 billion as part of a broader deal.",
-      "link": "https://www.wsj.com/business/deals/yum-brands-to-sell-pizza-hut-for-2-7-billion-e7c5565e?mod=pls_whats_news_us_business_f",
-      "pubDate": "Tue, 16 Jun 2026 19:40:00 GMT",
-      "creator": "Heather Haddon"
+      "title": "Walmart, in Biggest Deal in Two Years, Buys Advertising Tech Firm",
+      "desc": "Retail giant is paying $1.4 billion for Vibe.co, a company that enables advertising through connected TVs.",
+      "link": "https://www.wsj.com/business/retail/walmart-in-biggest-deal-in-two-years-buys-advertising-tech-firm-ccd6c03b?mod=pls_whats_news_us_business_f",
+      "pubDate": "Tue, 23 Jun 2026 17:38:00 GMT",
+      "creator": "Sarah Nassauer"
     },
     {
       "title": "ABC Launches On-Air Campaign Against FCC Investigations",
@@ -393,13 +400,6 @@
       "link": "https://www.wsj.com/business/media/tony-dokoupil-cbs-evening-news-bari-weiss-paramount-david-ellison-acdb9131?mod=pls_whats_news_us_business_f",
       "pubDate": "Mon, 22 Jun 2026 09:35:00 GMT",
       "creator": "Isabella Simonetti"
-    },
-    {
-      "title": "Hollywood Is Having Its Best Box Office Since Before the Pandemic",
-      "desc": "A boom year was accelerated by a franchise-best opening weekend for Disney’s “Toy Story 5.”",
-      "link": "https://www.wsj.com/business/media/box-office-summer-2026-890603ff?mod=pls_whats_news_us_business_f",
-      "pubDate": "Sun, 21 Jun 2026 17:27:00 GMT",
-      "creator": "Ben Fritz"
     },
     {
       "title": "Around $125 Billion of Vessels, Cargo Remain Stranded in Persian Gulf, Allianz Says",
@@ -437,6 +437,13 @@
       "creator": "Liz Young"
     },
     {
+      "title": "Qualcomm to Acquire AI Software Firm Modular in $3.9 Billion Stock Deal",
+      "desc": "Qualcomm agreed to acquire the AI software company Modular for about $3.9 billion, in a bid to make artificial intelligence faster and cheaper for its customers.",
+      "link": "https://www.wsj.com/tech/ai/qualcomm-to-acquire-ai-software-firm-modular-in-3-9-billion-stock-deal-7b620c7c?mod=pls_whats_news_us_business_f",
+      "pubDate": "Wed, 24 Jun 2026 12:52:00 GMT",
+      "creator": "Katherine Hamilton"
+    },
+    {
       "title": "Memory-Chip Giant SK Hynix Seeks to Raise $29 Billion in U.S. Listing",
       "desc": "The deal would be one of the biggest share sales in history, comparable to Saudi Aramco’s 2019 IPO.",
       "link": "https://www.wsj.com/business/sk-hynix-seeks-to-raise-about-29-billion-in-u-s-listing-4185ac59?mod=pls_whats_news_us_business_f",
@@ -465,11 +472,11 @@
       "creator": "Kelly Cloonan"
     },
     {
-      "title": "Ericsson CEO Ekholm to Step Down, Company Veteran Narvinger Named Successor",
-      "desc": "The telecommunications-equipment manufacturer said Borje Ekholm had decided to step down after more than nine years at the helm.",
-      "link": "https://www.wsj.com/business/c-suite/ericsson-ceo-ekholm-to-step-down-company-veteran-narvinger-named-successor-5607a49a?mod=pls_whats_news_us_business_f",
-      "pubDate": "Tue, 16 Jun 2026 11:28:00 GMT",
-      "creator": "Dominic Chopping"
+      "title": "What Baiju Bhatt Learned From the 70 ‘Nos’ He Got While Building Robinhood",
+      "desc": "The billionaire co-founder of Robinhood shared his grueling journey to build the financial app with Gunjan Banerji in the latest episode of The WSJ Money Interview.",
+      "link": "https://www.wsj.com/business/how-baiju-bhatt-started-robinhood-79537954?mod=pls_whats_news_us_business_f",
+      "pubDate": "Wed, 24 Jun 2026 16:23:00 GMT",
+      "creator": "Gunjan Banerji"
     },
     {
       "title": "Agility, Maker of Humanlike Robots, to Go Public in $2.5 Billion SPAC Deal",
@@ -500,46 +507,39 @@
       "creator": "Sara Ashley O’Brien"
     },
     {
-      "title": "‘Founder’ Is the New Brass Ring for Computer Science Grads",
-      "desc": "The share of employed 2025 CS graduates with the title doubled in a study of 20 universities with renowned tech programs.",
-      "link": "https://www.wsj.com/pro/venture-capital/founder-is-the-new-brass-ring-for-computer-science-grads-d60f30f1?mod=pls_whats_news_us_business_f",
-      "pubDate": "Mon, 22 Jun 2026 11:00:00 GMT",
-      "creator": "Yuliya Chernova"
+      "title": "Apple Raises Prices on Macs, iPads by $200 or More on Some Models",
+      "desc": "The increases come a week after Tim Cook said higher memory costs made them “unavoidable.”",
+      "link": "https://www.wsj.com/tech/apple-raises-prices-on-macs-ipads-by-200-or-more-on-some-models-a7463f99?mod=pls_whats_news_us_business_f",
+      "pubDate": "Thu, 25 Jun 2026 12:41:00 GMT",
+      "creator": "Rolfe Winkler"
     },
     {
-      "title": "Can America’s Obsession With Mahjong Save This Dying Craft?",
-      "desc": "Watch how the last remaining artists of mahjong tile carving are trying to preserve the fading craft.",
-      "link": "https://www.wsj.com/business/can-americas-obsession-with-mahjong-save-this-dying-craft-9bd8b8dd?mod=pls_whats_news_us_business_f",
-      "pubDate": "Tue, 23 Jun 2026 19:00:00 GMT",
-      "creator": "Ksenia Shaikhutdinova"
+      "title": "M.B.A. Pay Is Drifting Down—and So Is Demand for the Degree",
+      "desc": "Corporate recruiters in a new survey forecast lower starting salaries and AI disruption.",
+      "link": "https://www.wsj.com/lifestyle/careers/m-b-a-pay-is-drifting-downand-so-is-demand-for-the-degree-e8fa692e?mod=pls_whats_news_us_business_f",
+      "pubDate": "Thu, 25 Jun 2026 12:00:00 GMT",
+      "creator": "Ray A. Smith"
     },
     {
-      "title": "Ranks of the Ultrawealthy Jumped in 2025",
-      "desc": "The number of those worth more than $30 million jumped by 14.4% last year.",
-      "link": "https://www.wsj.com/economy/ranks-of-the-ultrawealthy-jumped-in-2025-fe98fe37?mod=pls_whats_news_us_business_f",
-      "pubDate": "Tue, 23 Jun 2026 16:05:00 GMT",
-      "creator": "Juliet Chung"
+      "title": "Forget Work. Passive Income Is the New American Dream.",
+      "desc": "Driven by a growing feeling that 9-to-5 jobs are a dead end, people are turning to social media to test out eccentric moneymaking schemes.",
+      "link": "https://www.wsj.com/lifestyle/careers/passive-income-dreams-2e67ee5c?mod=pls_whats_news_us_business_f",
+      "pubDate": "Thu, 25 Jun 2026 01:00:00 GMT",
+      "creator": "Joe Pinsker"
     },
     {
-      "title": "Avis Wins $650 Million From Hedge Fund Accused of Stoking Wild Stock Swings",
-      "desc": "Pentwater Capital agrees to pay Avis Budget  to resolve an unusual spat where the car rental company singled out one of its major shareholders.",
-      "link": "https://www.wsj.com/business/avis-wins-650-million-from-hedge-fund-that-bet-big-on-its-stock-d31a03da?mod=pls_whats_news_us_business_f",
-      "pubDate": "Tue, 23 Jun 2026 12:37:00 GMT",
-      "creator": "Caitlin McCabe"
+      "title": "LVMH Fires Back at Hermès Heir Over His Missing Fortune",
+      "desc": "The luxury group says it was unaware of any misappropriation of Hermès shares when it was building up a covert position in its rival.",
+      "link": "https://www.wsj.com/business/lvmh-fires-back-at-hermes-heir-over-his-missing-fortune-6a7b90f1?mod=pls_whats_news_us_business_f",
+      "pubDate": "Thu, 25 Jun 2026 00:00:00 GMT",
+      "creator": "Nick Kostov"
     },
     {
-      "title": "U.S. Bets Billions of Dollars in Low-Cost Loans Can Revive Nuclear Power",
-      "desc": "The Energy Department will let utilities tap government funds to kick-start reactor orders.",
-      "link": "https://www.wsj.com/business/energy-oil/u-s-bets-billions-of-dollars-in-low-cost-loans-can-revive-nuclear-power-be8dcf81?mod=pls_whats_news_us_business_f",
-      "pubDate": "Tue, 23 Jun 2026 12:30:00 GMT",
-      "creator": "Jennifer Hiller"
-    },
-    {
-      "title": "Top-Paid CEOs Smash the $200 Million Payday",
-      "desc": "“Moonshot” deals pushed pay for company bosses to new highs in the WSJ’s annual ranking.",
-      "link": "https://www.wsj.com/articles/ceo-pay-2025-d2885ea3?mod=pls_whats_news_us_business_f",
-      "pubDate": "Tue, 23 Jun 2026 01:00:00 GMT",
-      "creator": "Peter Santilli"
+      "title": "What’s the State of Play in the Strait of Hormuz?",
+      "desc": "Traffic through the waterway has ticked up, but could take months to return to normal.",
+      "link": "https://www.wsj.com/business/energy-oil/how-quickly-can-the-strait-of-hormuz-get-back-up-and-running-a5380c70?mod=pls_whats_news_us_business_f",
+      "pubDate": "Wed, 24 Jun 2026 17:13:00 GMT",
+      "creator": "Georgi Kantchev"
     },
     {
       "title": "Will Anyone Buy This Cheap EV Truck With Hand-Crank Windows and No Radio?",
@@ -549,11 +549,18 @@
       "creator": "Ryan Felton"
     },
     {
-      "title": "Sixteen Airbus A380s to Undergo Inspection After Cracks Found on Airplane Wings",
-      "desc": "Aircraft operated by Emirates and Qantas require inspections, with immediate checks needed for five of the jets.",
-      "link": "https://www.wsj.com/business/sixteen-airbus-a380s-to-undergo-inspection-after-cracks-found-on-wings-d51229c1?mod=pls_whats_news_us_business_f",
-      "pubDate": "Wed, 24 Jun 2026 09:13:00 GMT",
-      "creator": "Kimberley Kao"
+      "title": "The New Push to Ready Millions for AI Career Upheaval",
+      "desc": "A coalition of employers and state governments says it is developing a sweeping strategy to help workers respond to the AI age.",
+      "link": "https://www.wsj.com/lifestyle/careers/the-new-push-to-ready-millions-for-ai-career-upheaval-dfb04cc5?mod=pls_whats_news_us_business_f",
+      "pubDate": "Thu, 25 Jun 2026 14:43:00 GMT",
+      "creator": "Chip Cutter"
+    },
+    {
+      "title": "M.B.A. Pay Is Drifting Down—and So Is Demand for the Degree",
+      "desc": "Corporate recruiters in a new survey forecast lower starting salaries and AI disruption.",
+      "link": "https://www.wsj.com/lifestyle/careers/m-b-a-pay-is-drifting-downand-so-is-demand-for-the-degree-e8fa692e?mod=pls_whats_news_us_business_f",
+      "pubDate": "Thu, 25 Jun 2026 12:00:00 GMT",
+      "creator": "Ray A. Smith"
     },
     {
       "title": "Micron Shares Jump as Chip Shortage Projected to Last Beyond 2027",
@@ -563,18 +570,11 @@
       "creator": "Bradley Olson"
     },
     {
-      "title": "Walmart, in Biggest Deal in Two Years, Buys Advertising Tech Firm",
-      "desc": "Retail giant is paying $1.4 billion for Vibe.co, a company that enables advertising through connected TVs.",
-      "link": "https://www.wsj.com/business/retail/walmart-in-biggest-deal-in-two-years-buys-advertising-tech-firm-ccd6c03b?mod=pls_whats_news_us_business_f",
-      "pubDate": "Tue, 23 Jun 2026 17:38:00 GMT",
-      "creator": "Sarah Nassauer"
-    },
-    {
-      "title": "Qualcomm to Acquire AI Software Firm Modular in $3.9 Billion Stock Deal",
-      "desc": "Qualcomm agreed to acquire the AI software company Modular for about $3.9 billion, in a bid to make artificial intelligence faster and cheaper for its customers.",
-      "link": "https://www.wsj.com/tech/ai/qualcomm-to-acquire-ai-software-firm-modular-in-3-9-billion-stock-deal-7b620c7c?mod=pls_whats_news_us_business_f",
-      "pubDate": "Wed, 24 Jun 2026 12:52:00 GMT",
-      "creator": "Katherine Hamilton"
+      "title": "Sixteen Airbus A380s to Undergo Inspection After Cracks Found on Airplane Wings",
+      "desc": "Aircraft operated by Emirates and Qantas require inspections, with immediate checks needed for five of the jets.",
+      "link": "https://www.wsj.com/business/sixteen-airbus-a380s-to-undergo-inspection-after-cracks-found-on-wings-d51229c1?mod=pls_whats_news_us_business_f",
+      "pubDate": "Wed, 24 Jun 2026 09:13:00 GMT",
+      "creator": "Kimberley Kao"
     },
     {
       "title": "Best Small-Business Loans in June 2026",
@@ -594,7 +594,7 @@
       "title": "How to Choose a Financial Advisor",
       "desc": "Navigate the process of selecting a financial advisor by exploring advisor types, fee structures, credentials and essential questions.",
       "link": "https://www.wsj.com/buyside/personal-finance/financial-advisors/how-to-choose-a-financial-advisor?mod=pls_whats_news_us_business_f",
-      "pubDate": "Wed, 04 Mar 2026 19:17:00 GMT",
+      "pubDate": "Thu, 25 Jun 2026 16:05:00 GMT",
       "creator": "Miranda Marquit"
     }
   ]
