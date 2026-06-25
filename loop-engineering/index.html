@@ -3,20 +3,22 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Loop Engineering 入门</title>
+<title>Loop Engineering 视觉入门</title>
 <style>
   :root {
-    --bg: #0f0f13;
-    --surface: #1a1a24;
-    --surface2: #252536;
-    --border: #2e2e42;
+    --bg: #0b0b12;
+    --surface: #151520;
+    --surface2: #1e1e30;
+    --border: #2a2a40;
     --text: #e8e8f0;
-    --text2: #9898b8;
+    --text2: #8888aa;
     --accent: #7c6af0;
+    --accent2: #5b4bd4;
     --green: #4ade80;
     --yellow: #fbbf24;
     --red: #f87171;
     --blue: #60a5fa;
+    --pink: #f472b6;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
@@ -24,413 +26,547 @@
     background: var(--bg);
     color: var(--text);
     line-height: 1.7;
-    padding: 0;
   }
-  .container { max-width: 840px; margin: 0 auto; padding: 40px 24px 80px; }
+  .container { max-width: 880px; margin: 0 auto; padding: 24px 20px 60px; }
+
+  /* Warning banner — FIRST */
+  .warn-banner {
+    background: linear-gradient(135deg, rgba(248,113,113,0.08), rgba(251,191,36,0.06));
+    border: 1px solid rgba(248,113,113,0.2);
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin-bottom: 40px;
+  }
+  .warn-banner h3 { color: var(--yellow); font-size: 0.95em; margin-bottom: 8px; }
+  .warn-banner .items { display: flex; gap: 12px; flex-wrap: wrap; }
+  .warn-banner .items span {
+    background: rgba(248,113,113,0.1);
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.82em;
+    color: var(--red);
+    border: 1px solid rgba(248,113,113,0.15);
+  }
 
   /* Hero */
-  .hero {
-    text-align: center;
-    padding: 60px 20px 40px;
-    position: relative;
-  }
+  .hero { margin-bottom: 48px; }
   .hero h1 {
-    font-size: 2.6em;
-    font-weight: 700;
-    margin-bottom: 12px;
-    background: linear-gradient(135deg, var(--accent), var(--blue));
+    font-size: 2.4em; font-weight: 700; margin-bottom: 8px;
+    background: linear-gradient(135deg, var(--accent), var(--blue), var(--pink));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
-  .hero .subtitle {
-    font-size: 1.1em;
-    color: var(--text2);
-    max-width: 600px;
-    margin: 0 auto 24px;
-  }
-  .hero .quote {
-    background: var(--surface);
-    border-left: 3px solid var(--accent);
-    padding: 16px 20px;
-    border-radius: 8px;
-    max-width: 640px;
-    margin: 0 auto;
-    text-align: left;
-    font-size: 0.95em;
-    color: var(--text2);
-  }
-  .hero .quote strong { color: var(--text); }
+  .hero p { color: var(--text2); max-width: 640px; font-size: 1.05em; }
+  .hero .meta { color: var(--text2); font-size: 0.8em; margin-top: 12px; }
 
-  /* Sections */
+  /* Section */
   section { margin: 48px 0; }
-  h2 {
-    font-size: 1.4em;
-    font-weight: 600;
-    margin-bottom: 20px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  h2 .num {
-    background: var(--accent);
-    color: white;
-    width: 28px; height: 28px;
-    border-radius: 50%;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.8em;
-    font-weight: 700;
-  }
-  p { color: var(--text2); margin-bottom: 16px; font-size: 0.95em; }
+  h2 { font-size: 1.25em; font-weight: 600; margin-bottom: 20px; color: var(--text); }
 
-  /* Cards */
-  .card {
+  /* SVG Flowchart */
+  .svg-wrap {
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: 12px;
-    padding: 24px;
-    margin-bottom: 16px;
+    padding: 20px;
+    margin-bottom: 24px;
+    overflow-x: auto;
   }
-  .card h3 { font-size: 1.05em; margin-bottom: 8px; color: var(--text); }
-  .card p { font-size: 0.9em; margin-bottom: 0; }
+  .svg-wrap svg { display: block; margin: 0 auto; max-width: 100%; height: auto; }
 
-  /* Grid cards */
+  /* Cards */
+  .card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 10px; padding: 20px; margin-bottom: 12px;
+  }
+  .card h3 { font-size: 1em; margin-bottom: 6px; }
+  .card p { font-size: 0.9em; color: var(--text2); }
+
   .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-  /* Responsive */
-  @media (max-width: 768px) {
-    .container { padding: 24px 16px 60px; }
-    .hero h1 { font-size: 2em; }
-    .hero { padding: 36px 16px 28px; }
-    .grid2 { grid-template-columns: 1fr; }
-  }
-  @media (max-width: 480px) {
-    .container { padding: 16px 12px 48px; }
-    .hero h1 { font-size: 1.6em; }
-    .hero .subtitle { font-size: 0.95em; }
-    h2 { font-size: 1.2em; }
-    .stat-row { flex-direction: column; }
-    .stat .num { font-size: 1.4em; }
-    .tab-btn { padding: 6px 12px; font-size: 0.8em; }
-  }
-  @media (min-width: 1024px) {
-    .container { padding: 48px 32px 100px; }
-  }
 
-  /* Timeline */
-  .timeline { position: relative; padding-left: 28px; }
-  .timeline::before {
-    content: '';
-    position: absolute; left: 8px; top: 8px; bottom: 8px;
-    width: 2px; background: var(--border);
+  /* Live Loop Demo */
+  .demo-wrap {
+    background: var(--surface); border: 1px solid var(--accent);
+    border-radius: 12px; padding: 24px; margin-bottom: 24px;
   }
-  .tl-item { position: relative; margin-bottom: 24px; }
-  .tl-item::before {
-    content: '';
-    position: absolute; left: -24px; top: 6px;
-    width: 12px; height: 12px;
-    border-radius: 50%; border: 2px solid var(--accent);
-    background: var(--bg);
+  .demo-steps { display: flex; gap: 4px; margin-bottom: 16px; flex-wrap: wrap; }
+  .demo-step {
+    flex: 1; min-width: 60px;
+    padding: 10px 6px; text-align: center;
+    background: var(--surface2); border-radius: 8px;
+    font-size: 0.75em; color: var(--text2);
+    transition: all 0.3s;
+    position: relative;
   }
-  .tl-item:last-child::before { background: var(--accent); }
-  .tl-year { font-size: 0.8em; color: var(--accent); font-weight: 600; }
-  .tl-title { font-weight: 600; margin: 2px 0 4px; }
-  .tl-desc { font-size: 0.85em; color: var(--text2); }
+  .demo-step.active { background: var(--accent); color: white; }
+  .demo-step.pass { background: var(--green); color: #000; }
+  .demo-step.fail { background: var(--red); color: #fff; }
+  .demo-arrow { text-align: center; font-size: 0.7em; color: var(--text2); margin: -8px 0 4px; }
+  .demo-controls { display: flex; gap: 8px; margin-bottom: 12px; flex-wrap: wrap; }
+  .demo-btn {
+    padding: 8px 20px; border: 1px solid var(--accent);
+    background: transparent; color: var(--accent);
+    border-radius: 8px; cursor: pointer; font-size: 0.85em;
+    transition: all 0.15s;
+  }
+  .demo-btn:hover { background: var(--accent); color: white; }
+  .demo-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+  .demo-log {
+    background: var(--surface2); border-radius: 8px;
+    padding: 12px 16px; font-family: monospace; font-size: 0.8em;
+    max-height: 150px; overflow-y: auto; color: var(--text2);
+  }
+  .demo-log .log-pass { color: var(--green); }
+  .demo-log .log-fail { color: var(--red); }
+  .demo-log .log-info { color: var(--blue); }
 
-  /* Comparison table */
-  .compare { overflow-x: auto; }
-  .compare table {
-    width: 100%; border-collapse: collapse;
-    font-size: 0.85em;
-  }
-  .compare th, .compare td {
-    padding: 12px 14px; text-align: left;
-    border-bottom: 1px solid var(--border);
-  }
-  .compare th { background: var(--surface); color: var(--text2); font-weight: 500; }
-  .compare tr:hover td { background: var(--surface2); }
-  .tag {
-    display: inline-block; padding: 2px 10px; border-radius: 20px;
-    font-size: 0.8em; font-weight: 500;
-  }
-  .tag-green { background: rgba(74, 222, 128, 0.15); color: var(--green); }
-  .tag-yellow { background: rgba(251, 191, 36, 0.15); color: var(--yellow); }
-  .tag-blue { background: rgba(96, 165, 250, 0.15); color: var(--blue); }
-
-  /* Tabs */
-  .tabs { display: flex; gap: 4px; margin-bottom: 16px; flex-wrap: wrap; }
-  .tab-btn {
-    padding: 8px 16px; border: 1px solid var(--border);
-    background: transparent; color: var(--text2);
-    border-radius: 8px; cursor: pointer;
-    font-size: 0.85em; transition: all 0.15s;
-  }
-  .tab-btn:hover { border-color: var(--accent); color: var(--text); }
-  .tab-btn.active { background: var(--accent); border-color: var(--accent); color: white; }
-  .tab-content { display: none; }
-  .tab-content.active { display: block; }
-
-  /* Warning boxes */
-  .warn {
-    background: rgba(251, 191, 36, 0.08);
-    border: 1px solid rgba(251, 191, 36, 0.2);
-    border-radius: 10px; padding: 16px 20px; margin-bottom: 12px;
-  }
-  .warn h4 { color: var(--yellow); margin-bottom: 4px; font-size: 0.9em; }
-  .warn p { font-size: 0.85em; margin-bottom: 0; color: var(--text2); }
-  .warn-red { background: rgba(248, 113, 113, 0.08); border-color: rgba(248, 113, 113, 0.2); }
-  .warn-red h4 { color: var(--red); }
-  .warn-green { background: rgba(74, 222, 128, 0.08); border-color: rgba(74, 222, 128, 0.2); }
-  .warn-green h4 { color: var(--green); }
-
-  /* Code blocks */
-  .code {
-    background: var(--surface2); border: 1px solid var(--border);
-    border-radius: 8px; padding: 14px 16px;
-    font-family: 'SF Mono', 'Cascadia Code', monospace;
-    font-size: 0.82em; overflow-x: auto; color: var(--text2);
-    margin-bottom: 16px;
-  }
-  .code .hl { color: var(--accent); }
-  .code .cm { color: #6b7280; }
-
-  /* Footer */
-  footer {
-    text-align: center; padding: 40px 0;
-    color: var(--text2); font-size: 0.8em;
-    border-top: 1px solid var(--border);
-    margin-top: 60px;
-  }
-
-  /* Accordion */
-  details {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    margin-bottom: 8px;
-    overflow: hidden;
-  }
-  details summary {
-    padding: 14px 18px;
-    cursor: pointer;
-    font-weight: 500;
-    font-size: 0.92em;
-    color: var(--text);
-    transition: background 0.15s;
-  }
-  details summary:hover { background: var(--surface2); }
-  details .detail-body {
-    padding: 0 18px 16px;
-    font-size: 0.88em;
-    color: var(--text2);
-  }
-  details .detail-body p { margin-bottom: 8px; }
+  /* Timeline SVG */
+  .timeline-card { margin-bottom: 24px; }
 
   /* Stats */
-  .stat-row { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 16px; }
+  .stats { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 24px; }
   .stat {
-    flex: 1; min-width: 120px;
+    flex: 1; min-width: 100px;
     background: var(--surface); border: 1px solid var(--border);
-    border-radius: 10px; padding: 16px; text-align: center;
+    border-radius: 10px; padding: 14px; text-align: center;
   }
-  .stat .num { font-size: 1.8em; font-weight: 700; color: var(--accent); }
-  .stat .label { font-size: 0.8em; color: var(--text2); margin-top: 4px; }
+  .stat .num { font-size: 1.6em; font-weight: 700; color: var(--accent); }
+  .stat .label { font-size: 0.78em; color: var(--text2); margin-top: 2px; }
+
+  /* Details */
+  details {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 10px; margin-bottom: 8px; overflow: hidden;
+  }
+  details summary {
+    padding: 14px 18px; cursor: pointer; font-weight: 500;
+    font-size: 0.9em; transition: background 0.15s;
+  }
+  details summary:hover { background: var(--surface2); }
+  details .body { padding: 0 18px 16px; font-size: 0.85em; color: var(--text2); }
+  details .body p { margin-bottom: 6px; }
+
+  /* Quote */
+  .quote-block {
+    background: var(--surface);
+    border-left: 3px solid var(--accent);
+    padding: 16px 20px; border-radius: 8px;
+    margin-bottom: 16px; font-size: 0.9em; color: var(--text2);
+  }
+  .quote-block strong { color: var(--text); }
+
+  footer {
+    text-align: center; padding: 40px 0;
+    color: var(--text2); font-size: 0.78em;
+    border-top: 1px solid var(--border); margin-top: 48px;
+  }
+
+  @media (max-width: 640px) {
+    .container { padding: 16px 12px 48px; }
+    .hero h1 { font-size: 1.6em; }
+    .grid2 { grid-template-columns: 1fr; }
+    .stats { flex-direction: column; }
+    .demo-step { min-width: 48px; font-size: 0.7em; }
+  }
 </style>
 </head>
 <body>
 <div class="container">
 
-<!-- Hero -->
-<div class="hero">
-  <h1>🌀 Loop Engineering</h1>
-  <p class="subtitle">AI 编程的第四次范式跃迁——从"写提示词"到"设计让提示词自己转起来的系统"</p>
-  <div class="quote">
-    <strong>"Nobody writes prompts anymore. The new job is to write and handle loops."</strong><br>
-    —— 黄仁勋 · 英伟达 CEO
+<!-- WARNING FIRST -->
+<div class="warn-banner">
+  <h3>⚠️ 读之前，先知道三个陷阱</h3>
+  <div class="items">
+    <span>杰文斯悖论 — 效率越高，消耗越大</span>
+    <span>理解力债务 — 代码出来但没人读懂了</span>
+    <span>概念通胀 — 9个月一轮新词，焦虑是商业模式</span>
   </div>
 </div>
 
-<!-- Section 1: What -->
+<!-- Hero -->
+<div class="hero">
+  <h1>🌀 Loop Engineering</h1>
+  <p>AI 编程的第四次范式跃迁——<br>从「写提示词」到「设计让提示词自己转起来的系统」</p>
+  <div class="meta">2026.06 · 基于黄仁勋/36氪/字节洪定坤三篇深读合成</div>
+</div>
+
+<!-- Section 1: What is a Loop - with flowchart -->
 <section>
-  <h2><span class="num">1</span> 什么是 Loop？</h2>
-  <div class="card">
-    <h3>一个定义</h3>
-    <p>Loop（循环）就是一段预先写好的逻辑：它自己找出有什么活要干，把一块丢给 AI，检查交回来的东西，不合格就带着报错再丢一次，直到通过或撞到上限才停。你不再是那个写提示词的人，而是那个写"写提示词的东西"的人。</p>
+  <h2>01 · 一个 Loop 长什么样</h2>
+
+  <div class="svg-wrap">
+    <svg viewBox="0 0 660 340" xmlns="http://www.w3.org/2000/svg" font-family="system-ui,sans-serif">
+      <defs>
+        <linearGradient id="g1" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#7c6af0"/>
+          <stop offset="100%" stop-color="#60a5fa"/>
+        </linearGradient>
+        <linearGradient id="g2" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#4ade80" stop-opacity="0.8"/>
+          <stop offset="100%" stop-color="#22c55e" stop-opacity="0.8"/>
+        </linearGradient>
+        <linearGradient id="g3" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#f87171" stop-opacity="0.8"/>
+          <stop offset="100%" stop-color="#ef4444" stop-opacity="0.8"/>
+        </linearGradient>
+        <filter id="glow">
+          <feGaussianBlur stdDeviation="2" result="blur"/>
+          <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+        </filter>
+        <marker id="arrow" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto" fill="#8888aa"><polygon points="0 0, 10 3.5, 0 7"/></marker>
+        <marker id="arrowGreen" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto" fill="#4ade80"><polygon points="0 0, 10 3.5, 0 7"/></marker>
+        <marker id="arrowRed" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto" fill="#f87171"><polygon points="0 0, 10 3.5, 0 7"/></marker>
+      </defs>
+
+      <!-- Background -->
+      <rect x="0" y="0" width="660" height="340" rx="10" fill="#151520"/>
+
+      <!-- Boxes -->
+      <rect x="50" y="40" width="120" height="48" rx="8" fill="url(#g1)" filter="url(#glow)"/>
+      <text x="110" y="68" text-anchor="middle" fill="white" font-size="13" font-weight="600">🎯 目标设定</text>
+
+      <rect x="270" y="40" width="120" height="48" rx="8" fill="#2a2a40" stroke="#7c6af0" stroke-width="1.5"/>
+      <text x="330" y="68" text-anchor="middle" fill="#e8e8f0" font-size="13" font-weight="600">🤖 AI 执行</text>
+
+      <rect x="490" y="40" width="120" height="48" rx="8" fill="#2a2a40" stroke="#60a5fa" stroke-width="1.5"/>
+      <text x="550" y="68" text-anchor="middle" fill="#e8e8f0" font-size="13" font-weight="600">🔍 结果验收</text>
+
+      <rect x="270" y="200" width="120" height="48" rx="8" fill="#2a2a40" stroke="#fbbf24" stroke-width="1.5"/>
+      <text x="330" y="228" text-anchor="middle" fill="#e8e8f0" font-size="13" font-weight="600">🔄 路由判断</text>
+
+      <rect x="490" y="260" width="120" height="48" rx="8" fill="url(#g2)"/>
+      <text x="550" y="288" text-anchor="middle" fill="#000" font-size="13" font-weight="600">✅ 输出通过</text>
+
+      <rect x="50" y="260" width="120" height="48" rx="8" fill="url(#g3)"/>
+      <text x="110" y="288" text-anchor="middle" fill="#fff" font-size="13" font-weight="600">🔄 带错重试</text>
+
+      <!-- Arrows -->
+      <line x1="170" y1="64" x2="260" y2="64" stroke="#8888aa" stroke-width="2" marker-end="url(#arrow)"/>
+      <line x1="390" y1="64" x2="480" y2="64" stroke="#8888aa" stroke-width="2" marker-end="url(#arrow)"/>
+
+      <line x1="550" y1="88" x2="550" y2="170" stroke="#8888aa" stroke-width="2" marker-end="url(#arrow)" stroke-dasharray="4,4"/>
+      <rect x="510" y="125" width="80" height="20" rx="4" fill="#2a2a40"/>
+      <text x="550" y="139" text-anchor="middle" fill="#8888aa" font-size="10">不合格？↓</text>
+
+      <line x1="390" y1="224" x2="480" y2="224" stroke="#fbbf24" stroke-width="2" marker-end="url(#arrow)"/>
+      <text x="435" y="242" text-anchor="middle" fill="#fbbf24" font-size="10">通过？</text>
+
+      <line x1="270" y1="224" x2="170" y2="284" stroke="#f87171" stroke-width="2" marker-end="url(#arrowRed)"/>
+      <line x1="170" y1="284" x2="110" y2="140" stroke="#f87171" stroke-width="2" marker-end="url(#arrowRed)" stroke-dasharray="4,4"/>
+      <rect x="80" y="156" width="60" height="20" rx="4" fill="#2a2a40"/>
+      <text x="110" y="170" text-anchor="middle" fill="#8888aa" font-size="10">重试→</text>
+
+      <line x1="490" y1="284" x2="490" y2="320" stroke="#4ade80" stroke-width="2" marker-end="url(#arrowGreen)"/>
+      <text x="508" y="316" fill="#4ade80" font-size="10">输出</text>
+
+      <!-- Labels -->
+      <text x="110" y="320" fill="#8888aa" font-size="9" text-anchor="middle">直到成功或撞上限</text>
+    </svg>
+    <p style="color:#8888aa;font-size:0.78em;text-align:center;margin-top:8px">Loop 核心结构：目标 → 执行 → 验收 → 判断 → 通过/重试</p>
   </div>
+</section>
+
+<!-- Section 2: Comparison -->
+<section>
+  <h2>02 · 旧 vs 新</h2>
+  <div class="svg-wrap">
+    <svg viewBox="0 0 660 220" xmlns="http://www.w3.org/2000/svg" font-family="system-ui,sans-serif">
+      <defs>
+        <marker id="arrow2" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto" fill="#f87171"><polygon points="0 0, 10 3.5, 0 7"/></marker>
+        <marker id="arrow2g" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto" fill="#4ade80"><polygon points="0 0, 10 3.5, 0 7"/></marker>
+      </defs>
+      <rect x="0" y="0" width="660" height="220" rx="10" fill="#151520"/>
+
+      <!-- OLD -->
+      <rect x="20" y="20" width="620" height="80" rx="8" fill="#2a2a40" stroke="#f87171" stroke-width="1"/>
+      <text x="40" y="42" fill="#f87171" font-size="11" font-weight="600">🧑 Prompt Engineering (旧)</text>
+      <text x="40" y="62" fill="#8888aa" font-size="10">人手写 prompt → AI 输出 → 人看结果 → 不满意改 prompt → 再跑</text>
+      <text x="40" y="80" fill="#f87171" font-size="10">每一步都要人盯着。人是操作员。</text>
+
+      <line x1="200" y1="100" x2="200" y2="120" stroke="#8888aa" stroke-width="2" marker-end="url(#arrow2)"/>
+      <rect x="150" y="102" width="100" height="16" rx="4" fill="#2a2a40"/>
+      <text x="200" y="114" text-anchor="middle" fill="#f87171" font-size="9">人全程在环内</text>
+
+      <!-- NEW -->
+      <rect x="20" y="125" width="620" height="80" rx="8" fill="#2a2a40" stroke="#4ade80" stroke-width="1"/>
+      <text x="40" y="147" fill="#4ade80" font-size="11" font-weight="600">🤖 Loop Engineering (新)</text>
+      <text x="40" y="167" fill="#8888aa" font-size="10">人写目标+验收标准 → Loop 自执行 → 自检 → 不通过自修复 → 循环</text>
+      <text x="40" y="185" fill="#4ade80" font-size="10">人是规则设计者。只在异常时被叫醒。</text>
+
+      <line x1="200" y1="205" x2="450" y2="205" stroke="#8888aa" stroke-width="2" marker-end="url(#arrow2g)"/>
+      <rect x="300" y="188" width="180" height="16" rx="4" fill="#2a2a40"/>
+      <text x="390" y="200" text-anchor="middle" fill="#4ade80" font-size="9">人只在异常时被叫醒</text>
+    </svg>
+  </div>
+</section>
+
+<!-- Section 3: Four Paradigm Shifts -->
+<section>
+  <h2>03 · 四次范式跃迁</h2>
+  <div class="svg-wrap">
+    <svg viewBox="0 0 660 240" xmlns="http://www.w3.org/2000/svg" font-family="system-ui,sans-serif">
+      <defs><linearGradient id="gb" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#7c6af0" stop-opacity="0.3"/><stop offset="100%" stop-color="#7c6af0" stop-opacity="0"/></linearGradient></defs>
+      <rect x="0" y="0" width="660" height="240" rx="10" fill="#151520"/>
+
+      <line x1="80" y1="30" x2="80" y2="210" stroke="#2a2a40" stroke-width="2"/>
+      <circle cx="80" cy="50" r="10" fill="#7c6af0"/>
+      <circle cx="80" cy="95" r="10" fill="#60a5fa"/>
+      <circle cx="80" cy="145" r="10" fill="#fbbf24"/>
+      <circle cx="80" cy="195" r="10" fill="#4ade80"/>
+
+      <text x="105" y="54" fill="#e8e8f0" font-size="13" font-weight="600">Prompt Engineering</text>
+      <text x="105" y="72" fill="#8888aa" font-size="11">怎么写好单次提示词 — 2023</text>
+
+      <text x="105" y="99" fill="#e8e8f0" font-size="13" font-weight="600">Context Engineering</text>
+      <text x="105" y="117" fill="#8888aa" font-size="11">给模型提供什么背景 — 2024-25</text>
+
+      <text x="105" y="149" fill="#e8e8f0" font-size="13" font-weight="600">Harness Engineering</text>
+      <text x="105" y="167" fill="#8888aa" font-size="11">给 AI 搭什么脚手架运行 — 2026.02</text>
+
+      <text x="105" y="199" fill="#e8e8f0" font-size="13" font-weight="600">Loop Engineering</text>
+      <text x="105" y="217" fill="#8888aa" font-size="11">让系统自己转起来 — 2026.06</text>
+
+      <rect x="450" y="25" width="190" height="195" rx="8" fill="url(#gb)" stroke="#7c6af0" stroke-width="1" stroke-dasharray="4,4"/>
+      <text x="545" y="45" text-anchor="middle" fill="#8888aa" font-size="9">控制粒度上移</text>
+      <text x="545" y="65" text-anchor="middle" fill="#7c6af0" font-size="9">token级 → 上下文级</text>
+      <text x="545" y="85" text-anchor="middle" fill="#7c6af0" font-size="9">→ 系统级 → 行为级</text>
+    </svg>
+  </div>
+</section>
+
+<!-- Section 4: Core Principles -->
+<section>
+  <h2>04 · 核心原则</h2>
 
   <div class="grid2">
-    <div class="card" style="border-left: 3px solid var(--blue);">
-      <h3>🧑 旧范式：Prompt Engineering</h3>
-      <p>人：写一句提示词 → AI：输出一段代码 → 人：看结果不满意 → 人：再写一句提示词 → ... <br><br>每一步都要人盯着、出声。人是"操作员"。</p>
+    <div class="card" style="border-left:3px solid var(--blue)">
+      <h3>🔑 验收分离</h3>
+      <p>写代码的和验收的必须分开。Claude Code 用大模型写、Haiku 验——两个模型各司其职。</p>
     </div>
-    <div class="card" style="border-left: 3px solid var(--green);">
-      <h3>🤖 新范式：Loop Engineering</h3>
-      <p>人：写一个目标+验收标准 → Loop 自己反复提示 AI → AI 自己跑测试 → 不过就改 → 通过或卡住才叫人。<br><br>人是"规则设计者"。</p>
+    <div class="card" style="border-left:3px solid var(--yellow)">
+      <h3>🧱 Loop 四件套</h3>
+      <p>触发器 + 技能 + 状态文件 + 门禁。缺一不可。</p>
     </div>
-  </div>
-</section>
-
-<!-- Section 2: Timeline -->
-<section>
-  <h2><span class="num">2</span> 四次范式跃迁</h2>
-  <div class="timeline">
-    <div class="tl-item">
-      <div class="tl-year">2023 – Prompt Engineering</div>
-      <div class="tl-title">怎么跟模型说话</div>
-      <div class="tl-desc">怎么写好单次提示词，诱导模型输出。"会不会写 prompt = 会不会用 AI"。</div>
+    <div class="card" style="border-left:3px solid var(--green)">
+      <h3>⚡ 最小可行顺序</h3>
+      <p>① 手动跑通 → ② 写成 skill → ③ 包进 loop → ④ 上定时。跳步是死因。</p>
     </div>
-    <div class="tl-item">
-      <div class="tl-year">2024–2025 – Context Engineering</div>
-      <div class="tl-title">给模型看什么</div>
-      <div class="tl-desc">关注点从"怎么问"变成"提供什么背景"。信息组织能力比写 prompt 更重要。</div>
-    </div>
-    <div class="tl-item">
-      <div class="tl-year">2026.02 – Harness Engineering</div>
-      <div class="tl-title">模型在什么环境运行</div>
-      <div class="tl-desc">给 AI 搭能干活、能约束、能调取真实世界资源的脚手架。工具集成、权限边界。</div>
-    </div>
-    <div class="tl-item">
-      <div class="tl-year">2026.06 – Loop Engineering</div>
-      <div class="tl-title">让系统自己转起来</div>
-      <div class="tl-desc">从单次执行能力升级为闭环系统的自运行能力。控制粒度上移到"行为级"。</div>
+    <div class="card" style="border-left:3px solid var(--pink)">
+      <h3>💰 成本显性化</h3>
+      <p>每个循环的账单必须可见。不知花多少就不是管理，是赌博。</p>
     </div>
   </div>
 </section>
 
-<!-- Section 3: Core principles -->
+<!-- Section 5: Live Loop Demo -->
 <section>
-  <h2><span class="num">3</span> 核心原则</h2>
+  <h2>05 · 感受一个 Loop</h2>
 
-  <div class="tabs" id="principleTabs">
-    <button class="tab-btn active" data-tab="p1">🔑 验收分离</button>
-    <button class="tab-btn" data-tab="p2">🧱 四件套</button>
-    <button class="tab-btn" data-tab="p3">⚡ 最小可行 Loop</button>
-  </div>
-
-  <div class="tab-content active" id="p1">
-    <div class="card">
-      <h3>写代码的 ≠ 验代码的</h3>
-      <p>整个 loop 设计里最重要的原则：写代码的和验收的必须分开。Claude Code 把这条原则直接写进了产品架构——写代码的是大模型，验收的是另一个独立的小模型 Haiku。两个模型各司其职。<br><br>为什么这很重要？因为模型给自己写的代码打分时，手太松了。所有"看起来不错"的代码，在独立验收器面前都能挑出一堆毛病。</p>
+  <div class="demo-wrap">
+    <div class="demo-steps" id="demoSteps">
+      <div class="demo-step" data-step="0">🎯 目标</div>
+      <div class="demo-arrow">→</div>
+      <div class="demo-step" data-step="1">🤖 执行</div>
+      <div class="demo-arrow">→</div>
+      <div class="demo-step" data-step="2">🔍 验收</div>
+      <div class="demo-arrow" id="routeArrow">→</div>
+      <div class="demo-step" data-step="3">🛤️ 路由</div>
     </div>
-  </div>
 
-  <div class="tab-content" id="p2">
-    <div class="grid2">
-      <div class="card"><h3>⏰ 触发器</h3><p>定时跑、事件触发都行。Claude Code 里用 /loop，Codex 里用 Automations 面板。</p></div>
-      <div class="card"><h3>🔧 技能</h3><p>把项目上下文写进 STATE.md 文件，让每次运行不用重新解释一遍。</p></div>
-      <div class="card"><h3>📄 状态文件</h3><p>用 Markdown 记下"做到哪了、什么成了、什么挂了"，下次接着跑。</p></div>
-      <div class="card"><h3>🚪 门禁</h3><p>测试、类型检查、构建——能自动拦住坏结果的东西。</p></div>
+    <div class="demo-controls">
+      <button class="demo-btn" id="runBtn">▶ 跑一次 Loop</button>
+      <button class="demo-btn" id="run5Btn">▶▶ 跑 5 次</button>
+      <button class="demo-btn" id="resetBtn">⟲ 重置</button>
     </div>
-  </div>
 
-  <div class="tab-content" id="p3">
-    <div class="warn warn-green">
-      <h4>顺序不可跳</h4>
-      <p>① 先手动跑通一次 → ② 写成 Skill → ③ 包进 Loop → ④ 最后才上定时。跳步是 loop 死在生产环境的主要原因。</p>
+    <div class="demo-log" id="demoLog">
+      <div class="log-info">准备就绪。点击「跑一次 Loop」看看效果。</div>
     </div>
   </div>
 </section>
 
-<!-- Section 4: Real examples -->
+<!-- Section 6: Stats + Case Studies -->
 <section>
-  <h2><span class="num">4</span> 实战案例</h2>
+  <h2>06 · 数据与案例</h2>
+
+  <div class="stats">
+    <div class="stat"><div class="num">94%</div><div class="label">字节 AI 代码贡献率</div></div>
+    <div class="stat"><div class="num">60%</div><div class="label">实际效率提升</div></div>
+    <div class="stat"><div class="num">9mo</div><div class="label">范式迭代周期</div></div>
+    <div class="stat"><div class="num">$1,200</div><div class="label">单次 Loop 最高账单</div></div>
+  </div>
 
   <details>
-    <summary>🏢 Anthropic 核心工程师 Boris Cherny 的工作流</summary>
-    <div class="detail-body">
-      <p>他自述去年 11 月卸载了 IDE，一个月没打开过，索性删了。</p>
-      <p>现在他手下几百个小 Agent 同时跑——有的扫 GitHub issue，有的读 Slack 用户反馈，有的监控 CI 失败。每个 Agent 在自己隔离的代码分支里干活：一个写代码，另一个跑测试验收。</p>
-      <p>搞不定的才进他的收件箱，等他来做判断。自 Opus 4.5 以来，他的所有代码都是 Claude Code 写的，大部分直接在手机上完成。</p>
+    <summary>🏢 Boris Cherny (Anthropic) 的工作流</summary>
+    <div class="body">
+      <p>自述去年 11 月卸载了 IDE，一个月没打开过。手下几百个小 Agent 同时跑——扫 GitHub issue、读 Slack 用户反馈、监控 CI 失败。</p>
+      <p>每个 Agent 在隔离分支里干活：一个写代码，另一个跑测试验收。搞不定的才进他收件箱。</p>
+      <p class="log-info">自 Opus 4.5 以来，他的所有代码都是 Claude Code 写的，大部分直接在手机上完成。</p>
     </div>
   </details>
 
   <details>
-    <summary>📊 微软 Uber 的真实账单</summary>
-    <div class="detail-body">
-      <p>Uber 给约 5000 名工程师铺开 Claude Code 后，四个月烧穿了 2026 年全年 AI 预算。人均月支出 $150–250，重度用户 $500–2000。CTO 本人一次两小时会话花了 $1200。管理层描述为"脑袋要炸"的时刻。</p>
+    <summary>📊 Uber 和微软的真实账单</summary>
+    <div class="body">
+      <p>Uber 给 ~5000 名工程师铺开 Claude Code 后，四个月烧穿了 2026 年全年 AI 预算。人均月支出 $150-250，重度用户 $500-2000。</p>
       <p>微软在财年末要求数千名工程师从 Claude Code 迁回 GitHub Copilot，官方理由"工具链统一"，被普遍解读为真实动因是成本。</p>
     </div>
   </details>
 
   <details>
     <summary>⚠️ 三大隐蔽陷阱</summary>
-    <div class="detail-body">
+    <div class="body">
       <p><strong>偷懒</strong>：50 项安全任务做了 20 项就喊搞定</p>
       <p><strong>自夸</strong>：给自己的成果打高分</p>
-      <p><strong>漂移</strong>：跑了 47 轮之后，最初的"别做 X"约束悄悄消失。测试通过了，架构却偏了。</p>
+      <p><strong>漂移</strong>：跑了 47 轮后，最初的"别做 X"约束悄悄消失。测试通过了，架构却偏了。</p>
     </div>
   </details>
 </section>
 
-<!-- Section 5: Warning -->
+<!-- Section 7: Bottom quotes -->
 <section>
-  <h2><span class="num">5</span> ⚠️ 需要清醒的提醒</h2>
-
-  <div class="warn">
-    <h4>杰文斯悖论</h4>
-    <p>技术效率提升，反而带来总消耗的增长。Loop 让 AI 从"叫它才动"变成"它自己一直在动"。动得越多，账单越厚。经济学的铁律从不缺席。</p>
+  <div class="quote-block">
+    <strong>洪定坤 @ 字节火山引擎 Force 2026：</strong><br>
+    "VibeCoding 的困境——感觉快了，可能慢了。正确不等于可上线。"<br>
+    <span style="color:#8888aa;font-size:0.85em">AI 代码贡献率 94%，人均需求吞吐率提升 60%。但实际交付质量提升远小于这两个数字的差值。</span>
   </div>
 
-  <div class="warn warn-red">
-    <h4>理解力债务</h4>
-    <p>Loop 批量产出的代码没人读，团队对系统的理解深度持续下降。Addy Osmani（Loop Engineering 命名者）自省：循环产出越快，你读懂的比例越低，最舒适的选择是认知投降。</p>
-  </div>
-
-  <div class="warn">
-    <h4>概念通胀周期</h4>
-    <p>每 9 个月一轮新概念（Prompt→Context→Harness→Loop）。TCP/IP 二十年，React 五年，这个是九个月。跟上还是跟不上的焦虑本身可能就是商业策略。</p>
-  </div>
-
-  <div class="card" style="text-align:center; background: var(--surface2); margin-top: 24px;">
-    <p style="font-size: 1em; color: var(--text); font-weight: 500; margin-bottom: 8px;">🔑 Karpathy 那句值得刻在每个 loop 入口</p>
-    <p style="font-size: 0.95em;"><strong>"You can outsource your thinking, but you can't outsource your understanding."</strong><br>你可以外包思考，但你无法外包理解。</p>
+  <div class="quote-block">
+    <strong>Karpathy：</strong><br>
+    "You can outsource your thinking, but you can't outsource your understanding."<br>
+    <span style="color:#8888aa;font-size:0.85em">你可以外包思考，但无法外包理解。——刻在每个 loop 入口的警句</span>
   </div>
 </section>
-
-<!-- Stats -->
-<section>
-  <div class="stat-row">
-    <div class="stat">
-      <div class="num">200+</div>
-      <div class="label">累计可验证引用</div>
-    </div>
-    <div class="stat">
-      <div class="num">9mo</div>
-      <div class="label">范式迭代周期</div>
-    </div>
-    <div class="stat">
-      <div class="num">$1,200</div>
-      <div class="label">单次 Loop 账单上限(真实)</div>
-    </div>
-  </div>
-</section>
-
-<!-- Tabs JS -->
-<script>
-  document.querySelectorAll('.tabs').forEach(tabGroup => {
-    const buttons = tabGroup.querySelectorAll('.tab-btn');
-    buttons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        const target = btn.dataset.tab;
-        // Active button
-        buttons.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        // Active content
-        const parent = tabGroup.parentElement;
-        parent.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
-        const content = document.getElementById(target);
-        if (content) content.classList.add('active');
-      });
-    });
-  });
-</script>
 
 <footer>
-  <p>基于 36氪《黄仁勋：Prompt正在过时，Loop才是新范式》&《Loop Engineering：新的循环收费站》编写<br>
-  生成于 2026-06-25 · Ariste 🦞</p>
+  <p>基于 黄仁勋 FORCE 2026 / 36氪《Loop Engineering：新的循环收费站》/ 字节洪定坤 火山引擎演讲 编写</p>
+  <p>生成于 2026-06-25 · Ariste 🦞</p>
 </footer>
 
 </div>
+
+<script>
+// ====== LIVE LOOP DEMO ======
+const STEPS = ['🎯 目标', '🤖 执行', '🔍 验收', '🛤️ 路由'];
+const stepEls = document.querySelectorAll('.demo-step');
+const logEl = document.getElementById('demoLog');
+const runBtn = document.getElementById('runBtn');
+const run5Btn = document.getElementById('run5Btn');
+const resetBtn = document.getElementById('resetBtn');
+const routeArrow = document.getElementById('routeArrow');
+
+let running = false;
+let queue = [];
+
+function log(msg, cls = 'log-info') {
+  const d = document.createElement('div');
+  d.className = cls;
+  d.textContent = `> ${msg}`;
+  logEl.appendChild(d);
+  logEl.scrollTop = logEl.scrollHeight;
+}
+
+function clearActive() {
+  stepEls.forEach(el => el.className = 'demo-step');
+}
+
+function setStep(i, state = 'active') {
+  stepEls.forEach((el, idx) => {
+    if (idx === i) el.className = `demo-step ${state}`;
+    else if (idx < i) el.className = 'demo-step pass';
+    else el.className = 'demo-step';
+  });
+}
+
+function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
+
+async function runOneLoop() {
+  if (running) return;
+  running = true;
+  runBtn.disabled = true;
+  run5Btn.disabled = true;
+
+  clearActive();
+  let iteration = 1;
+  let lastLogCount = logEl.children.length;
+
+  while (true) {
+    // Step 0: Goal set
+    log(`#${iteration} 目标：编写一个加法函数`, 'log-info');
+
+    // Step 1: Execute
+    setStep(0, 'pass');
+    await sleep(400);
+    setStep(1, 'active');
+    log('AI 执行中...', 'log-info');
+    await sleep(600);
+
+    // Step 2: Verify
+    setStep(1, 'pass');
+    await sleep(200);
+    setStep(2, 'active');
+    log('验收中...', 'log-info');
+    await sleep(500);
+
+    // Step 3: Route
+    setStep(2, 'pass');
+    await sleep(200);
+    setStep(3, 'active');
+
+    const pass = Math.random() > 0.4;
+    await sleep(300);
+
+    if (pass) {
+      setStep(3, 'pass');
+      routeArrow.textContent = '→';
+      log('✅ 通过！函数正确返回结果', 'log-pass');
+      clearActive();
+      stepEls.forEach(el => (el.className = 'demo-step pass'));
+      break;
+    } else {
+      setStep(3, 'fail');
+      routeArrow.textContent = '→ 🔴';
+      log('❌ 验收不通过：边界条件未处理', 'log-fail');
+      iteration++;
+      if (iteration > 5) {
+        log('⛔ 撞到重试上限 (5次)，本轮终止', 'log-fail');
+        clearActive();
+        break;
+      }
+      log(`⏳ 第 ${iteration} 次重试...`, 'log-info');
+      await sleep(500);
+      clearActive();
+    }
+  }
+
+  running = false;
+  runBtn.disabled = false;
+  run5Btn.disabled = false;
+  routeArrow.textContent = '→';
+}
+
+async function runMultiple(n) {
+  if (running) return;
+  log(`▶ 执行 ${n} 次 Loop...`);
+  for (let i = 0; i < n; i++) {
+    log(`—— 第 ${i+1}/${n} 次 ——`);
+    await runOneLoop();
+    if (i < n - 1) await sleep(800);
+  }
+  log('✅ 批量执行完成');
+}
+
+function resetDemo() {
+  if (running) return;
+  clearActive();
+  logEl.innerHTML = '<div class="log-info">已重置。</div>';
+  routeArrow.textContent = '→';
+}
+
+runBtn.addEventListener('click', () => runOneLoop());
+run5Btn.addEventListener('click', () => runMultiple(5));
+resetBtn.addEventListener('click', resetDemo);
+</script>
 </body>
 </html>
