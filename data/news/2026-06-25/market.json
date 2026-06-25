@@ -1,0 +1,48 @@
+{
+  "source": "Alpha Vantage",
+  "ts": "2026-06-25T08:58:01.546643+00:00",
+  "quotes": [
+    {
+      "symbol": "AAPL",
+      "price": "N/A",
+      "change_pct": "N/A",
+      "volume": "N/A"
+    },
+    {
+      "symbol": "MSFT",
+      "price": "365.4600",
+      "change_pct": "-2.2677%",
+      "volume": "44509854"
+    },
+    {
+      "symbol": "GOOGL",
+      "price": "N/A",
+      "change_pct": "N/A",
+      "volume": "N/A"
+    },
+    {
+      "symbol": "AMZN",
+      "price": "N/A",
+      "change_pct": "N/A",
+      "volume": "N/A"
+    },
+    {
+      "symbol": "TSLA",
+      "price": "N/A",
+      "change_pct": "N/A",
+      "volume": "N/A"
+    },
+    {
+      "symbol": "SPY",
+      "price": "N/A",
+      "change_pct": "N/A",
+      "volume": "N/A"
+    },
+    {
+      "symbol": "QQQ",
+      "price": "N/A",
+      "change_pct": "N/A",
+      "volume": "N/A"
+    }
+  ]
+}
