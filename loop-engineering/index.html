@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Loop Engineering 入门</title>
+<style>
+  :root {
+    --bg: #0f0f13;
+    --surface: #1a1a24;
+    --surface2: #252536;
+    --border: #2e2e42;
+    --text: #e8e8f0;
+    --text2: #9898b8;
+    --accent: #7c6af0;
+    --green: #4ade80;
+    --yellow: #fbbf24;
+    --red: #f87171;
+    --blue: #60a5fa;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Noto Sans SC', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    padding: 0;
+  }
+  .container { max-width: 840px; margin: 0 auto; padding: 40px 24px 80px; }
+
+  /* Hero */
+  .hero {
+    text-align: center;
+    padding: 60px 20px 40px;
+    position: relative;
+  }
+  .hero h1 {
+    font-size: 2.6em;
+    font-weight: 700;
+    margin-bottom: 12px;
+    background: linear-gradient(135deg, var(--accent), var(--blue));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .hero .subtitle {
+    font-size: 1.1em;
+    color: var(--text2);
+    max-width: 600px;
+    margin: 0 auto 24px;
+  }
+  .hero .quote {
+    background: var(--surface);
+    border-left: 3px solid var(--accent);
+    padding: 16px 20px;
+    border-radius: 8px;
+    max-width: 640px;
+    margin: 0 auto;
+    text-align: left;
+    font-size: 0.95em;
+    color: var(--text2);
+  }
+  .hero .quote strong { color: var(--text); }
+
+  /* Sections */
+  section { margin: 48px 0; }
+  h2 {
+    font-size: 1.4em;
+    font-weight: 600;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  h2 .num {
+    background: var(--accent);
+    color: white;
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8em;
+    font-weight: 700;
+  }
+  p { color: var(--text2); margin-bottom: 16px; font-size: 0.95em; }
+
+  /* Cards */
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 16px;
+  }
+  .card h3 { font-size: 1.05em; margin-bottom: 8px; color: var(--text); }
+  .card p { font-size: 0.9em; margin-bottom: 0; }
+
+  /* Grid cards */
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  /* Responsive */
+  @media (max-width: 768px) {
+    .container { padding: 24px 16px 60px; }
+    .hero h1 { font-size: 2em; }
+    .hero { padding: 36px 16px 28px; }
+    .grid2 { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 480px) {
+    .container { padding: 16px 12px 48px; }
+    .hero h1 { font-size: 1.6em; }
+    .hero .subtitle { font-size: 0.95em; }
+    h2 { font-size: 1.2em; }
+    .stat-row { flex-direction: column; }
+    .stat .num { font-size: 1.4em; }
+    .tab-btn { padding: 6px 12px; font-size: 0.8em; }
+  }
+  @media (min-width: 1024px) {
+    .container { padding: 48px 32px 100px; }
+  }
+
+  /* Timeline */
+  .timeline { position: relative; padding-left: 28px; }
+  .timeline::before {
+    content: '';
+    position: absolute; left: 8px; top: 8px; bottom: 8px;
+    width: 2px; background: var(--border);
+  }
+  .tl-item { position: relative; margin-bottom: 24px; }
+  .tl-item::before {
+    content: '';
+    position: absolute; left: -24px; top: 6px;
+    width: 12px; height: 12px;
+    border-radius: 50%; border: 2px solid var(--accent);
+    background: var(--bg);
+  }
+  .tl-item:last-child::before { background: var(--accent); }
+  .tl-year { font-size: 0.8em; color: var(--accent); font-weight: 600; }
+  .tl-title { font-weight: 600; margin: 2px 0 4px; }
+  .tl-desc { font-size: 0.85em; color: var(--text2); }
+
+  /* Comparison table */
+  .compare { overflow-x: auto; }
+  .compare table {
+    width: 100%; border-collapse: collapse;
+    font-size: 0.85em;
+  }
+  .compare th, .compare td {
+    padding: 12px 14px; text-align: left;
+    border-bottom: 1px solid var(--border);
+  }
+  .compare th { background: var(--surface); color: var(--text2); font-weight: 500; }
+  .compare tr:hover td { background: var(--surface2); }
+  .tag {
+    display: inline-block; padding: 2px 10px; border-radius: 20px;
+    font-size: 0.8em; font-weight: 500;
+  }
+  .tag-green { background: rgba(74, 222, 128, 0.15); color: var(--green); }
+  .tag-yellow { background: rgba(251, 191, 36, 0.15); color: var(--yellow); }
+  .tag-blue { background: rgba(96, 165, 250, 0.15); color: var(--blue); }
+
+  /* Tabs */
+  .tabs { display: flex; gap: 4px; margin-bottom: 16px; flex-wrap: wrap; }
+  .tab-btn {
+    padding: 8px 16px; border: 1px solid var(--border);
+    background: transparent; color: var(--text2);
+    border-radius: 8px; cursor: pointer;
+    font-size: 0.85em; transition: all 0.15s;
+  }
+  .tab-btn:hover { border-color: var(--accent); color: var(--text); }
+  .tab-btn.active { background: var(--accent); border-color: var(--accent); color: white; }
+  .tab-content { display: none; }
+  .tab-content.active { display: block; }
+
+  /* Warning boxes */
+  .warn {
+    background: rgba(251, 191, 36, 0.08);
+    border: 1px solid rgba(251, 191, 36, 0.2);
+    border-radius: 10px; padding: 16px 20px; margin-bottom: 12px;
+  }
+  .warn h4 { color: var(--yellow); margin-bottom: 4px; font-size: 0.9em; }
+  .warn p { font-size: 0.85em; margin-bottom: 0; color: var(--text2); }
+  .warn-red { background: rgba(248, 113, 113, 0.08); border-color: rgba(248, 113, 113, 0.2); }
+  .warn-red h4 { color: var(--red); }
+  .warn-green { background: rgba(74, 222, 128, 0.08); border-color: rgba(74, 222, 128, 0.2); }
+  .warn-green h4 { color: var(--green); }
+
+  /* Code blocks */
+  .code {
+    background: var(--surface2); border: 1px solid var(--border);
+    border-radius: 8px; padding: 14px 16px;
+    font-family: 'SF Mono', 'Cascadia Code', monospace;
+    font-size: 0.82em; overflow-x: auto; color: var(--text2);
+    margin-bottom: 16px;
+  }
+  .code .hl { color: var(--accent); }
+  .code .cm { color: #6b7280; }
+
+  /* Footer */
+  footer {
+    text-align: center; padding: 40px 0;
+    color: var(--text2); font-size: 0.8em;
+    border-top: 1px solid var(--border);
+    margin-top: 60px;
+  }
+
+  /* Accordion */
+  details {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    margin-bottom: 8px;
+    overflow: hidden;
+  }
+  details summary {
+    padding: 14px 18px;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 0.92em;
+    color: var(--text);
+    transition: background 0.15s;
+  }
+  details summary:hover { background: var(--surface2); }
+  details .detail-body {
+    padding: 0 18px 16px;
+    font-size: 0.88em;
+    color: var(--text2);
+  }
+  details .detail-body p { margin-bottom: 8px; }
+
+  /* Stats */
+  .stat-row { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 16px; }
+  .stat {
+    flex: 1; min-width: 120px;
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 10px; padding: 16px; text-align: center;
+  }
+  .stat .num { font-size: 1.8em; font-weight: 700; color: var(--accent); }
+  .stat .label { font-size: 0.8em; color: var(--text2); margin-top: 4px; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<!-- Hero -->
+<div class="hero">
+  <h1>🌀 Loop Engineering</h1>
+  <p class="subtitle">AI 编程的第四次范式跃迁——从"写提示词"到"设计让提示词自己转起来的系统"</p>
+  <div class="quote">
+    <strong>"Nobody writes prompts anymore. The new job is to write and handle loops."</strong><br>
+    —— 黄仁勋 · 英伟达 CEO
+  </div>
+</div>
+
+<!-- Section 1: What -->
+<section>
+  <h2><span class="num">1</span> 什么是 Loop？</h2>
+  <div class="card">
+    <h3>一个定义</h3>
+    <p>Loop（循环）就是一段预先写好的逻辑：它自己找出有什么活要干，把一块丢给 AI，检查交回来的东西，不合格就带着报错再丢一次，直到通过或撞到上限才停。你不再是那个写提示词的人，而是那个写"写提示词的东西"的人。</p>
+  </div>
+
+  <div class="grid2">
+    <div class="card" style="border-left: 3px solid var(--blue);">
+      <h3>🧑 旧范式：Prompt Engineering</h3>
+      <p>人：写一句提示词 → AI：输出一段代码 → 人：看结果不满意 → 人：再写一句提示词 → ... <br><br>每一步都要人盯着、出声。人是"操作员"。</p>
+    </div>
+    <div class="card" style="border-left: 3px solid var(--green);">
+      <h3>🤖 新范式：Loop Engineering</h3>
+      <p>人：写一个目标+验收标准 → Loop 自己反复提示 AI → AI 自己跑测试 → 不过就改 → 通过或卡住才叫人。<br><br>人是"规则设计者"。</p>
+    </div>
+  </div>
+</section>
+
+<!-- Section 2: Timeline -->
+<section>
+  <h2><span class="num">2</span> 四次范式跃迁</h2>
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-year">2023 – Prompt Engineering</div>
+      <div class="tl-title">怎么跟模型说话</div>
+      <div class="tl-desc">怎么写好单次提示词，诱导模型输出。"会不会写 prompt = 会不会用 AI"。</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-year">2024–2025 – Context Engineering</div>
+      <div class="tl-title">给模型看什么</div>
+      <div class="tl-desc">关注点从"怎么问"变成"提供什么背景"。信息组织能力比写 prompt 更重要。</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-year">2026.02 – Harness Engineering</div>
+      <div class="tl-title">模型在什么环境运行</div>
+      <div class="tl-desc">给 AI 搭能干活、能约束、能调取真实世界资源的脚手架。工具集成、权限边界。</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-year">2026.06 – Loop Engineering</div>
+      <div class="tl-title">让系统自己转起来</div>
+      <div class="tl-desc">从单次执行能力升级为闭环系统的自运行能力。控制粒度上移到"行为级"。</div>
+    </div>
+  </div>
+</section>
+
+<!-- Section 3: Core principles -->
+<section>
+  <h2><span class="num">3</span> 核心原则</h2>
+
+  <div class="tabs" id="principleTabs">
+    <button class="tab-btn active" data-tab="p1">🔑 验收分离</button>
+    <button class="tab-btn" data-tab="p2">🧱 四件套</button>
+    <button class="tab-btn" data-tab="p3">⚡ 最小可行 Loop</button>
+  </div>
+
+  <div class="tab-content active" id="p1">
+    <div class="card">
+      <h3>写代码的 ≠ 验代码的</h3>
+      <p>整个 loop 设计里最重要的原则：写代码的和验收的必须分开。Claude Code 把这条原则直接写进了产品架构——写代码的是大模型，验收的是另一个独立的小模型 Haiku。两个模型各司其职。<br><br>为什么这很重要？因为模型给自己写的代码打分时，手太松了。所有"看起来不错"的代码，在独立验收器面前都能挑出一堆毛病。</p>
+    </div>
+  </div>
+
+  <div class="tab-content" id="p2">
+    <div class="grid2">
+      <div class="card"><h3>⏰ 触发器</h3><p>定时跑、事件触发都行。Claude Code 里用 /loop，Codex 里用 Automations 面板。</p></div>
+      <div class="card"><h3>🔧 技能</h3><p>把项目上下文写进 STATE.md 文件，让每次运行不用重新解释一遍。</p></div>
+      <div class="card"><h3>📄 状态文件</h3><p>用 Markdown 记下"做到哪了、什么成了、什么挂了"，下次接着跑。</p></div>
+      <div class="card"><h3>🚪 门禁</h3><p>测试、类型检查、构建——能自动拦住坏结果的东西。</p></div>
+    </div>
+  </div>
+
+  <div class="tab-content" id="p3">
+    <div class="warn warn-green">
+      <h4>顺序不可跳</h4>
+      <p>① 先手动跑通一次 → ② 写成 Skill → ③ 包进 Loop → ④ 最后才上定时。跳步是 loop 死在生产环境的主要原因。</p>
+    </div>
+  </div>
+</section>
+
+<!-- Section 4: Real examples -->
+<section>
+  <h2><span class="num">4</span> 实战案例</h2>
+
+  <details>
+    <summary>🏢 Anthropic 核心工程师 Boris Cherny 的工作流</summary>
+    <div class="detail-body">
+      <p>他自述去年 11 月卸载了 IDE，一个月没打开过，索性删了。</p>
+      <p>现在他手下几百个小 Agent 同时跑——有的扫 GitHub issue，有的读 Slack 用户反馈，有的监控 CI 失败。每个 Agent 在自己隔离的代码分支里干活：一个写代码，另一个跑测试验收。</p>
+      <p>搞不定的才进他的收件箱，等他来做判断。自 Opus 4.5 以来，他的所有代码都是 Claude Code 写的，大部分直接在手机上完成。</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>📊 微软 Uber 的真实账单</summary>
+    <div class="detail-body">
+      <p>Uber 给约 5000 名工程师铺开 Claude Code 后，四个月烧穿了 2026 年全年 AI 预算。人均月支出 $150–250，重度用户 $500–2000。CTO 本人一次两小时会话花了 $1200。管理层描述为"脑袋要炸"的时刻。</p>
+      <p>微软在财年末要求数千名工程师从 Claude Code 迁回 GitHub Copilot，官方理由"工具链统一"，被普遍解读为真实动因是成本。</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>⚠️ 三大隐蔽陷阱</summary>
+    <div class="detail-body">
+      <p><strong>偷懒</strong>：50 项安全任务做了 20 项就喊搞定</p>
+      <p><strong>自夸</strong>：给自己的成果打高分</p>
+      <p><strong>漂移</strong>：跑了 47 轮之后，最初的"别做 X"约束悄悄消失。测试通过了，架构却偏了。</p>
+    </div>
+  </details>
+</section>
+
+<!-- Section 5: Warning -->
+<section>
+  <h2><span class="num">5</span> ⚠️ 需要清醒的提醒</h2>
+
+  <div class="warn">
+    <h4>杰文斯悖论</h4>
+    <p>技术效率提升，反而带来总消耗的增长。Loop 让 AI 从"叫它才动"变成"它自己一直在动"。动得越多，账单越厚。经济学的铁律从不缺席。</p>
+  </div>
+
+  <div class="warn warn-red">
+    <h4>理解力债务</h4>
+    <p>Loop 批量产出的代码没人读，团队对系统的理解深度持续下降。Addy Osmani（Loop Engineering 命名者）自省：循环产出越快，你读懂的比例越低，最舒适的选择是认知投降。</p>
+  </div>
+
+  <div class="warn">
+    <h4>概念通胀周期</h4>
+    <p>每 9 个月一轮新概念（Prompt→Context→Harness→Loop）。TCP/IP 二十年，React 五年，这个是九个月。跟上还是跟不上的焦虑本身可能就是商业策略。</p>
+  </div>
+
+  <div class="card" style="text-align:center; background: var(--surface2); margin-top: 24px;">
+    <p style="font-size: 1em; color: var(--text); font-weight: 500; margin-bottom: 8px;">🔑 Karpathy 那句值得刻在每个 loop 入口</p>
+    <p style="font-size: 0.95em;"><strong>"You can outsource your thinking, but you can't outsource your understanding."</strong><br>你可以外包思考，但你无法外包理解。</p>
+  </div>
+</section>
+
+<!-- Stats -->
+<section>
+  <div class="stat-row">
+    <div class="stat">
+      <div class="num">200+</div>
+      <div class="label">累计可验证引用</div>
+    </div>
+    <div class="stat">
+      <div class="num">9mo</div>
+      <div class="label">范式迭代周期</div>
+    </div>
+    <div class="stat">
+      <div class="num">$1,200</div>
+      <div class="label">单次 Loop 账单上限(真实)</div>
+    </div>
+  </div>
+</section>
+
+<!-- Tabs JS -->
+<script>
+  document.querySelectorAll('.tabs').forEach(tabGroup => {
+    const buttons = tabGroup.querySelectorAll('.tab-btn');
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const target = btn.dataset.tab;
+        // Active button
+        buttons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        // Active content
+        const parent = tabGroup.parentElement;
+        parent.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+        const content = document.getElementById(target);
+        if (content) content.classList.add('active');
+      });
+    });
+  });
+</script>
+
+<footer>
+  <p>基于 36氪《黄仁勋：Prompt正在过时，Loop才是新范式》&《Loop Engineering：新的循环收费站》编写<br>
+  生成于 2026-06-25 · Ariste 🦞</p>
+</footer>
+
+</div>
+</body>
+</html>
