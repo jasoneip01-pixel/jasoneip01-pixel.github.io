@@ -1,7 +1,35 @@
 {
   "source": "WSJ.com US Business RSS",
-  "ts": "Sat, 27 Jun 2026 08:31:36 GMT",
+  "ts": "Sat, 27 Jun 2026 19:13:55 GMT",
   "items": [
+    {
+      "title": "CEOs Are Pulling In Record Pay. Here Are Some Big Numbers.",
+      "desc": "These figures put corporate bosses’ ever-bigger paychecks into context.",
+      "link": "https://www.wsj.com/business/ceo-executive-pay-packages-030db27e?mod=pls_whats_news_us_business_f",
+      "pubDate": "Sat, 27 Jun 2026 16:00:00 GMT",
+      "creator": "Theo Francis"
+    },
+    {
+      "title": "News Quiz for June 27, 2026",
+      "desc": "",
+      "link": "https://www.wsj.com/business/media/news-quiz-for-june-27-2026-785cc33b?mod=pls_whats_news_us_business_f",
+      "pubDate": "Sat, 27 Jun 2026 10:00:00 GMT",
+      "creator": "Daniel Akst"
+    },
+    {
+      "title": "FIFA Told Stadium Sponsors to Get Lost. They Spun It Into Marketing Gold.",
+      "desc": "Levi’s, Gillette, Lumen and others had to go into hiding during the World Cup—and wound up getting more exposure.",
+      "link": "https://www.wsj.com/business/media/world-cup-fifa-sponsors-stadium-3293cb07?mod=pls_whats_news_us_business_f",
+      "pubDate": "Sat, 27 Jun 2026 09:30:00 GMT",
+      "creator": "Katie Deighton"
+    },
+    {
+      "title": "Josh D’Amaro Is 100 Days Into His Mission to Make Disney Faster and Fiercer",
+      "desc": "Defending against the FCC and reorienting the company around its namesake streaming service are priorities.",
+      "link": "https://www.wsj.com/business/media/disney-ceo-josh-damaro-100-days-0b98897f?mod=pls_whats_news_us_business_f",
+      "pubDate": "Sat, 27 Jun 2026 09:30:00 GMT",
+      "creator": "Ben Fritz"
+    },
     {
       "title": "When Did Having Fun Get So Expensive? The Summer When ‘Funflation’ Went Wild",
       "desc": "From World Cup matches to concert tickets, live entertainment is testing household budgets. Fans are dipping into savings and taking on debt, while the industry finds new ways to cash in.",
@@ -15,34 +43,6 @@
       "link": "https://www.wsj.com/business/autos/nissan-christian-meunier-6a0d97ec?mod=pls_whats_news_us_business_f",
       "pubDate": "Fri, 26 Jun 2026 19:00:00 GMT",
       "creator": "Ellie Davis"
-    },
-    {
-      "title": "Women Were the Stars of JPMorgan’s CEO Succession Race—Until They Weren’t",
-      "desc": "The bank remains an industry leader in promoting women, but the female contenders for the top job are out of the running.",
-      "link": "https://www.wsj.com/business/jpmorgan-chase-ceo-search-women-7f593111?mod=pls_whats_news_us_business_f",
-      "pubDate": "Fri, 26 Jun 2026 17:23:00 GMT",
-      "creator": "Ben Glickman"
-    },
-    {
-      "title": "Bayer’s Roundup Win Brings Company New Life—and Renews Breakup Speculation",
-      "desc": "A high-court victory gives the German company more leverage to settle outstanding cases.",
-      "link": "https://www.wsj.com/business/bayer-gets-new-life-after-supreme-courts-roundup-ruling-65dcac63?mod=pls_whats_news_us_business_f",
-      "pubDate": "Fri, 26 Jun 2026 16:37:00 GMT",
-      "creator": "Patrick Thomas"
-    },
-    {
-      "title": "Robinhood Co-Founder Baiju Bhatt Breaks Down the Lucky Streaks in His Career",
-      "desc": "Baiju Bhatt, the billionaire behind Robinhood Markets, weighs in on whether luck or skill helped him most in pivoting business models and creating viral memes.",
-      "link": "https://www.wsj.com/business/baiju-bhatt-luck-vs-skill-e737ecf7?mod=pls_whats_news_us_business_f",
-      "pubDate": "Fri, 26 Jun 2026 16:01:00 GMT",
-      "creator": "Gunjan Banerji"
-    },
-    {
-      "title": "Zalando Shares Slump After German Regulator Opens Probe Into Accounts",
-      "desc": "Shares fell—wiping out most of the stock’s gains this year—after Germany’s financial regulator launched an audit of the company’s financial statements",
-      "link": "https://www.wsj.com/business/zalando-shares-slump-after-german-regulator-opens-probe-into-accounts-6aa76ab5?mod=pls_whats_news_us_business_f",
-      "pubDate": "Fri, 26 Jun 2026 07:36:00 GMT",
-      "creator": "Aimee Look"
     },
     {
       "title": "ON Semiconductor to Buy Synaptics in All-Stock Deal With $7 Billion Enterprise Value",
@@ -437,6 +437,13 @@
       "creator": "Dominic Chopping"
     },
     {
+      "title": "South Korea’s New ETFs Are So Risky Investors Have to Take a Test. Can You Pass It?",
+      "desc": "The South Korean government requires would-be investors in leveraged, single-firm ETFs, to take an eight-question exam.",
+      "link": "https://www.wsj.com/world/asia/south-koreas-new-etfs-are-so-risky-investors-have-to-take-a-test-can-you-pass-it-181b51ef?mod=pls_whats_news_us_business_f",
+      "pubDate": "Sat, 27 Jun 2026 18:00:00 GMT",
+      "creator": "Sooyoung Rhee"
+    },
+    {
       "title": "Tech, Media & Telecom Roundup: Market Talk",
       "desc": "Find insight on Corus Entertainment, OpenAI and more in the latest Market Talks covering technology, media and telecom.",
       "link": "https://www.wsj.com/business/tech-media-telecom-roundup-market-talk-10d9362c?mod=pls_whats_news_us_business_f",
@@ -462,13 +469,6 @@
       "desc": "The deal would be one of the biggest share sales in history, comparable to Saudi Aramco’s 2019 IPO.",
       "link": "https://www.wsj.com/business/sk-hynix-seeks-to-raise-about-29-billion-in-u-s-listing-4185ac59?mod=pls_whats_news_us_business_f",
       "pubDate": "Wed, 24 Jun 2026 11:19:00 GMT",
-      "creator": "Kimberley Kao"
-    },
-    {
-      "title": "SK Hynix Tops Samsung to Become South Korea’s Most Valuable Company",
-      "desc": "Memory-chip maker SK Hynix has overtaken Samsung Electronics to become South Korea’s most valuable company amid the AI-driven chip boom.",
-      "link": "https://www.wsj.com/tech/sk-hynix-tops-samsung-to-become-south-koreas-most-valuable-company-279419a0?mod=pls_whats_news_us_business_f",
-      "pubDate": "Mon, 22 Jun 2026 09:47:00 GMT",
       "creator": "Kimberley Kao"
     },
     {
@@ -514,32 +514,46 @@
       "creator": ""
     },
     {
-      "title": "World Bank Watchdog Finds Cambodian Microfinance Lenders Harmed Borrowers",
-      "desc": "The internal watchdog of the International Finance Corp. found that the lenders pressured borrowers to keep paying back loans they couldn’t afford.",
-      "link": "https://www.wsj.com/business/world-bank-watchdog-finds-cambodian-microfinance-lenders-harmed-borrowers-84f42450?mod=pls_whats_news_us_business_f",
-      "pubDate": "Thu, 25 Jun 2026 23:15:00 GMT",
-      "creator": "Gabriele Steinhauser"
+      "title": "Women Were the Stars of JPMorgan’s CEO Succession Race—Until They Weren’t",
+      "desc": "The bank remains an industry leader in promoting women, but the female contenders for the top job are out of the running.",
+      "link": "https://www.wsj.com/business/jpmorgan-chase-ceo-search-women-7f593111?mod=pls_whats_news_us_business_f",
+      "pubDate": "Fri, 26 Jun 2026 17:23:00 GMT",
+      "creator": "Ben Glickman"
     },
     {
-      "title": "Supreme Court Hands Trump Double Victory on Immigration Enforcement",
-      "desc": "Plus, Iran’s ship attack in the Strait of Hormuz tests Trump’s deal, and English roadside diners are turning into sex shops.",
-      "link": "https://www.wsj.com/us-news/supreme-court-hands-trump-double-victory-on-immigration-enforcement-700f7a23?mod=pls_whats_news_us_business_f",
-      "pubDate": "Thu, 25 Jun 2026 21:49:00 GMT",
-      "creator": "Zlati Meyer"
+      "title": "Bayer’s Roundup Win Brings Company New Life—and Renews Breakup Speculation",
+      "desc": "A high-court victory gives the German company more leverage to settle outstanding cases.",
+      "link": "https://www.wsj.com/business/bayer-gets-new-life-after-supreme-courts-roundup-ruling-65dcac63?mod=pls_whats_news_us_business_f",
+      "pubDate": "Fri, 26 Jun 2026 16:37:00 GMT",
+      "creator": "Patrick Thomas"
     },
     {
-      "title": "The New Push to Ready Millions for AI Career Upheaval",
-      "desc": "A coalition of employers and state governments says it is developing a sweeping strategy to help workers respond to the AI age.",
-      "link": "https://www.wsj.com/lifestyle/careers/the-new-push-to-ready-millions-for-ai-career-upheaval-dfb04cc5?mod=pls_whats_news_us_business_f",
-      "pubDate": "Thu, 25 Jun 2026 14:43:00 GMT",
-      "creator": "Chip Cutter"
+      "title": "Robinhood Co-Founder Baiju Bhatt Breaks Down the Lucky Streaks in His Career",
+      "desc": "Baiju Bhatt, the billionaire behind Robinhood Markets, weighs in on whether luck or skill helped him most in pivoting business models and creating viral memes.",
+      "link": "https://www.wsj.com/business/baiju-bhatt-luck-vs-skill-e737ecf7?mod=pls_whats_news_us_business_f",
+      "pubDate": "Fri, 26 Jun 2026 16:01:00 GMT",
+      "creator": "Gunjan Banerji"
     },
     {
-      "title": "Apple Raises Prices on Macs, iPads by $200 or More on Some Models",
-      "desc": "The increases come a week after Tim Cook said higher memory costs made them “unavoidable.”",
-      "link": "https://www.wsj.com/tech/apple-raises-prices-on-macs-ipads-by-200-or-more-on-some-models-a7463f99?mod=pls_whats_news_us_business_f",
-      "pubDate": "Thu, 25 Jun 2026 12:41:00 GMT",
-      "creator": "Rolfe Winkler"
+      "title": "Zalando Shares Slump After German Regulator Opens Probe Into Accounts",
+      "desc": "Shares fell—wiping out most of the stock’s gains this year—after Germany’s financial regulator launched an audit of the company’s financial statements",
+      "link": "https://www.wsj.com/business/zalando-shares-slump-after-german-regulator-opens-probe-into-accounts-6aa76ab5?mod=pls_whats_news_us_business_f",
+      "pubDate": "Fri, 26 Jun 2026 07:36:00 GMT",
+      "creator": "Aimee Look"
+    },
+    {
+      "title": "When Did Having Fun Get So Expensive? The Summer When ‘Funflation’ Went Wild",
+      "desc": "From World Cup matches to concert tickets, live entertainment is testing household budgets. Fans are dipping into savings and taking on debt, while the industry finds new ways to cash in.",
+      "link": "https://www.wsj.com/business/media/entertainment-events-inflation-demand-479c43a8?mod=pls_whats_news_us_business_f",
+      "pubDate": "Sat, 27 Jun 2026 00:00:00 GMT",
+      "creator": "Anne Steele"
+    },
+    {
+      "title": "Why One of Tech’s Biggest Gamblers Is Betting Against Elon Musk’s AI Vision",
+      "desc": "SoftBank’s Masayoshi Son thinks the math doesn’t support space-based data centers.",
+      "link": "https://www.wsj.com/tech/why-one-of-techs-biggest-gamblers-is-betting-against-elon-musks-ai-vision-7529f5c2?mod=pls_whats_news_us_business_f",
+      "pubDate": "Sat, 27 Jun 2026 09:30:00 GMT",
+      "creator": "Tim Higgins"
     },
     {
       "title": "Under Siege From Chinese Automakers, Volkswagen Sells Engine Business",
@@ -556,25 +570,11 @@
       "creator": "Ben Glickman"
     },
     {
-      "title": "When Did Having Fun Get So Expensive? The Summer When ‘Funflation’ Went Wild",
-      "desc": "From World Cup matches to concert tickets, live entertainment is testing household budgets. Fans are dipping into savings and taking on debt, while the industry finds new ways to cash in.",
-      "link": "https://www.wsj.com/business/media/entertainment-events-inflation-demand-479c43a8?mod=pls_whats_news_us_business_f",
-      "pubDate": "Sat, 27 Jun 2026 00:00:00 GMT",
-      "creator": "Anne Steele"
-    },
-    {
-      "title": "M.B.A. Pay Is Drifting Down—and So Is Demand for the Degree",
-      "desc": "Corporate recruiters in a new survey forecast lower starting salaries and AI disruption.",
-      "link": "https://www.wsj.com/lifestyle/careers/m-b-a-pay-is-drifting-downand-so-is-demand-for-the-degree-e8fa692e?mod=pls_whats_news_us_business_f",
-      "pubDate": "Thu, 25 Jun 2026 12:00:00 GMT",
-      "creator": "Ray A. Smith"
-    },
-    {
-      "title": "Will Anyone Buy This Cheap EV Truck With Hand-Crank Windows and No Radio?",
-      "desc": "Slate Auto’s all-electric truck aims to prove that affordable cars can be both profitable and adored.",
-      "link": "https://www.wsj.com/business/autos/will-anyone-buy-this-cheap-ev-truck-with-hand-crank-windows-and-no-radio-699b285a?mod=pls_whats_news_us_business_f",
-      "pubDate": "Wed, 24 Jun 2026 12:03:00 GMT",
-      "creator": "Ryan Felton"
+      "title": "Nissan Americas Chief Wants to Make the Automaker ‘Edgy’ Again",
+      "desc": "Christian Meunier is banking on a U.S. comeback for Nissan’s hybrids, more cars made in America and a revamp of the luxury Infiniti brand.",
+      "link": "https://www.wsj.com/business/autos/nissan-christian-meunier-6a0d97ec?mod=pls_whats_news_us_business_f",
+      "pubDate": "Fri, 26 Jun 2026 19:00:00 GMT",
+      "creator": "Ellie Davis"
     },
     {
       "title": "Best Small-Business Loans in June 2026",
