@@ -1,10 +1,38 @@
 {
   "source": "WSJ.com US Business RSS",
-  "ts": "Sun, 28 Jun 2026 08:45:33 GMT",
+  "ts": "Sun, 28 Jun 2026 19:13:31 GMT",
   "items": [
     {
-      "title": "One Man Tries to Make $2 Million Selling Coins at the Internet’s Outer Limits",
-      "desc": "Bjorn Bergstrom livestreamed for a week straight on Whatnot, a fast-growing live-shopping app. “I’m just here selling coins, but also being people’s therapist.”",
+      "title": "A $55 Billion Safety Net? Government Tab to Prop Up American Farms Is Rising",
+      "desc": "President Trump’s latest request extends a run of interventions intended to help the nation’s agricultural economy.",
+      "link": "https://www.wsj.com/politics/policy/a-55-billion-safety-net-government-tab-to-prop-up-american-farms-is-rising-67dc6634?mod=pls_whats_news_us_business_f",
+      "pubDate": "Sun, 28 Jun 2026 16:00:00 GMT",
+      "creator": "Patrick Thomas"
+    },
+    {
+      "title": "The Taser CEO Who Says AI Is the Future of Policing",
+      "desc": "Taser and body-cam king Rick Smith is betting Axon’s dominance—and his own pay package—on his tech-driven vision.",
+      "link": "https://www.wsj.com/tech/the-taser-ceo-who-says-ai-is-the-future-of-policing-4311d23c?mod=pls_whats_news_us_business_f",
+      "pubDate": "Sun, 28 Jun 2026 15:00:00 GMT",
+      "creator": "Victoria Albert"
+    },
+    {
+      "title": "The AI Startup Challenging Tesla and Waymo in the Race to Automate Driving",
+      "desc": "Wayve is emerging as a go-to partner for traditional automakers trying to keep up with Silicon Valley.",
+      "link": "https://www.wsj.com/business/autos/wayve-self-driving-technology-2e917ebd?mod=pls_whats_news_us_business_f",
+      "pubDate": "Sun, 28 Jun 2026 09:30:00 GMT",
+      "creator": "Christopher Otts"
+    },
+    {
+      "title": "Airlines Are Installing New Luxury Seats, but No One Is Allowed to Sit in Them",
+      "desc": "Lie-flat seats in private pods face long waits for safety certifications, delaying debuts for carriers’ high-end offerings.",
+      "link": "https://www.wsj.com/business/airlines/airlines-are-installing-new-luxury-seats-but-no-one-is-allowed-to-sit-in-them-14e2878c?mod=pls_whats_news_us_business_f",
+      "pubDate": "Sun, 28 Jun 2026 09:30:00 GMT",
+      "creator": "Alison Sider"
+    },
+    {
+      "title": "How One Man Makes Millions Selling Coins Live on the Internet",
+      "desc": "Bjorn Bergstrom livestreamed for a week straight on Whatnot, a fast-growing live-shopping app.",
       "link": "https://www.wsj.com/business/retail/one-man-tries-to-make-2-million-selling-coins-at-the-internets-outer-limits-ad9b6f4f?mod=pls_whats_news_us_business_f",
       "pubDate": "Sat, 27 Jun 2026 23:00:00 GMT",
       "creator": "Dalvin Brown"
@@ -15,34 +43,6 @@
       "link": "https://www.wsj.com/business/ceo-executive-pay-packages-030db27e?mod=pls_whats_news_us_business_f",
       "pubDate": "Sat, 27 Jun 2026 16:00:00 GMT",
       "creator": "Theo Francis"
-    },
-    {
-      "title": "FIFA Told Stadium Sponsors to Get Lost. They Spun It Into Marketing Gold.",
-      "desc": "Levi’s, Gillette, Lumen and others had to go into hiding during the World Cup—and wound up getting more exposure.",
-      "link": "https://www.wsj.com/business/media/world-cup-fifa-sponsors-stadium-3293cb07?mod=pls_whats_news_us_business_f",
-      "pubDate": "Sat, 27 Jun 2026 09:30:00 GMT",
-      "creator": "Katie Deighton"
-    },
-    {
-      "title": "Josh D’Amaro Is 100 Days Into His Mission to Make Disney Faster and Fiercer",
-      "desc": "Defending against the FCC and reorienting the company around its namesake streaming service are priorities.",
-      "link": "https://www.wsj.com/business/media/disney-ceo-josh-damaro-100-days-0b98897f?mod=pls_whats_news_us_business_f",
-      "pubDate": "Sat, 27 Jun 2026 09:30:00 GMT",
-      "creator": "Ben Fritz"
-    },
-    {
-      "title": "When Did Having Fun Get So Expensive? The Summer When ‘Funflation’ Went Wild",
-      "desc": "From World Cup matches to concert tickets, live entertainment is testing household budgets. Fans are dipping into savings and taking on debt, while the industry finds new ways to cash in.",
-      "link": "https://www.wsj.com/business/media/entertainment-events-inflation-demand-479c43a8?mod=pls_whats_news_us_business_f",
-      "pubDate": "Sat, 27 Jun 2026 00:00:00 GMT",
-      "creator": "Anne Steele"
-    },
-    {
-      "title": "Nissan Americas Chief Wants to Make the Automaker ‘Edgy’ Again",
-      "desc": "Christian Meunier is banking on a U.S. comeback for Nissan’s hybrids, more cars made in America and a revamp of the luxury Infiniti brand.",
-      "link": "https://www.wsj.com/business/autos/nissan-christian-meunier-6a0d97ec?mod=pls_whats_news_us_business_f",
-      "pubDate": "Fri, 26 Jun 2026 19:00:00 GMT",
-      "creator": "Ellie Davis"
     },
     {
       "title": "ON Semiconductor to Buy Synaptics in All-Stock Deal With $7 Billion Enterprise Value",
@@ -150,6 +150,13 @@
       "creator": "Bradley Olson"
     },
     {
+      "title": "Nissan Americas Chief Wants to Make the Automaker ‘Edgy’ Again",
+      "desc": "Christian Meunier is banking on a U.S. comeback for Nissan’s hybrids, more cars made in America and a revamp of the luxury Infiniti brand.",
+      "link": "https://www.wsj.com/business/autos/nissan-christian-meunier-6a0d97ec?mod=pls_whats_news_us_business_f",
+      "pubDate": "Fri, 26 Jun 2026 19:00:00 GMT",
+      "creator": "Ellie Davis"
+    },
+    {
       "title": "Volkswagen Deepens Cost-Cutting Overhaul",
       "desc": "The company has been working on a radical plan that will likely result in thousands of additional job losses.",
       "link": "https://www.wsj.com/business/volkswagen-deepens-cost-cutting-overhaul-a410c6ed?mod=pls_whats_news_us_business_f",
@@ -178,11 +185,18 @@
       "creator": "Kelly Cloonan"
     },
     {
-      "title": "Hertz Dampens Guidance Amid Struggling Used-Car Market",
-      "desc": "Hertz Global said its adjusted earnings in the second quarter are shaping up to be on the low end of its expectations after used-car demand was worse than expected.",
-      "link": "https://www.wsj.com/business/autos/hertz-dampens-guidance-amid-struggling-used-car-market-f7af067a?mod=pls_whats_news_us_business_f",
-      "pubDate": "Wed, 24 Jun 2026 12:20:00 GMT",
-      "creator": "Katherine Hamilton"
+      "title": "Opinion | New Name, New Mission at the Justice Department",
+      "desc": "It’s now the Energy and Natural Resources Division, dropping the redundant ‘Environment.’",
+      "link": "https://www.wsj.com/opinion/new-name-new-mission-at-the-justice-department-317865f1?mod=pls_whats_news_us_business_f",
+      "pubDate": "Sun, 28 Jun 2026 18:57:00 GMT",
+      "creator": "Adam Gustafson"
+    },
+    {
+      "title": "Opinion | Where Are the Trustworthy Checkers AI Needs?",
+      "desc": "Campbell Brown makes clear how vital what noted journalist Jonathan Rauch calls the ‘checking’ function is to a free society.",
+      "link": "https://www.wsj.com/opinion/where-are-the-trustworthy-checkers-ai-needs-cd8c1eaf?mod=pls_whats_news_us_business_f",
+      "pubDate": "Sun, 28 Jun 2026 17:57:00 GMT",
+      "creator": ""
     },
     {
       "title": "Opinion | All of Gavin Newsom’s Donors",
@@ -211,20 +225,6 @@
       "link": "https://www.wsj.com/opinion/corporate-welfare-michigan-business-subsidies-mackinac-center-5319c415?mod=pls_whats_news_us_business_f",
       "pubDate": "Wed, 24 Jun 2026 21:37:00 GMT",
       "creator": "The Editorial Board"
-    },
-    {
-      "title": "Opinion | Everyone vs. Superintelligence?",
-      "desc": "America must think quickly about how to meet AI safety goals without losing its lead.",
-      "link": "https://www.wsj.com/opinion/everyone-vs-superintelligence-0bcea78b?mod=pls_whats_news_us_business_f",
-      "pubDate": "Tue, 23 Jun 2026 21:07:00 GMT",
-      "creator": "Holman W. Jenkins, Jr."
-    },
-    {
-      "title": "Opinion | Blame Environmental Regulations for U.S. Solar’s Troubles",
-      "desc": "It was red tape and poor tax credit structures, courtesy of both parties, that put America’s industry behind China’s.",
-      "link": "https://www.wsj.com/opinion/blame-environmental-regulations-for-u-s-solars-troubles-c37eed12?mod=pls_whats_news_us_business_f",
-      "pubDate": "Tue, 23 Jun 2026 17:26:00 GMT",
-      "creator": ""
     },
     {
       "title": "U.S. Natural Gas Futures Slip As July Contract Expires",
@@ -374,32 +374,32 @@
       "creator": "Daniel Akst"
     },
     {
+      "title": "FIFA Told Stadium Sponsors to Get Lost. They Spun It Into Marketing Gold.",
+      "desc": "Levi’s, Gillette, Lumen and others had to go into hiding during the World Cup—and wound up getting more exposure.",
+      "link": "https://www.wsj.com/business/media/world-cup-fifa-sponsors-stadium-3293cb07?mod=pls_whats_news_us_business_f",
+      "pubDate": "Sat, 27 Jun 2026 09:30:00 GMT",
+      "creator": "Katie Deighton"
+    },
+    {
+      "title": "Josh D’Amaro Is 100 Days Into His Mission to Make Disney Faster and Fiercer",
+      "desc": "Defending against the FCC and reorienting the company around its namesake streaming service are priorities.",
+      "link": "https://www.wsj.com/business/media/disney-ceo-josh-damaro-100-days-0b98897f?mod=pls_whats_news_us_business_f",
+      "pubDate": "Sat, 27 Jun 2026 09:30:00 GMT",
+      "creator": "Ben Fritz"
+    },
+    {
+      "title": "When Did Having Fun Get So Expensive? The Summer When ‘Funflation’ Went Wild",
+      "desc": "From World Cup matches to concert tickets, live entertainment is testing household budgets. Fans are dipping into savings and taking on debt, while the industry finds new ways to cash in.",
+      "link": "https://www.wsj.com/business/media/entertainment-events-inflation-demand-479c43a8?mod=pls_whats_news_us_business_f",
+      "pubDate": "Sat, 27 Jun 2026 00:00:00 GMT",
+      "creator": "Anne Steele"
+    },
+    {
       "title": "U.S. Strikes Iran After Its Attack on Ship in Strait of Hormuz",
       "desc": "Plus, OpenAI limits access to its new model, and JD Vance says he feels like Nixon 2.0.",
       "link": "https://www.wsj.com/arts-culture/books/u-s-strikes-iran-after-its-attack-on-ship-in-strait-of-hormuz-6e798f7b?mod=pls_whats_news_us_business_f",
       "pubDate": "Fri, 26 Jun 2026 21:52:00 GMT",
       "creator": "Zlati Meyer"
-    },
-    {
-      "title": "Lawmakers Call for Federal Probe of Polymarket Over Deceptive Advertising",
-      "desc": "Two senators asked regulators to probe Polymarket’s promotion of fake bets following the Journal’s reporting.",
-      "link": "https://www.wsj.com/finance/regulation/lawmakers-call-for-investigation-into-deceptive-advertising-by-polymarket-267e1857?mod=pls_whats_news_us_business_f",
-      "pubDate": "Fri, 26 Jun 2026 21:22:00 GMT",
-      "creator": "Caitlin Ostroff"
-    },
-    {
-      "title": "FCC’s Carr Says ABC Is Running a ‘Campaign of Misinformation’ on Probe",
-      "desc": "The regulator says the Disney broadcaster’s TV spots about the agency’s inquiry into “The View” are misleading.",
-      "link": "https://www.wsj.com/business/media/fccs-carr-says-abc-is-running-a-campaign-of-misinformation-on-probe-762bfe46?mod=pls_whats_news_us_business_f",
-      "pubDate": "Thu, 25 Jun 2026 18:10:00 GMT",
-      "creator": "Joe Flint"
-    },
-    {
-      "title": "Meta Tried to Silence Her. Now She’s Suing.",
-      "desc": "Sarah Wynn-Williams, a former Facebook policy executive, is suing Meta over its attempts to stop her from talking about her book, “Careless People,” a New York Times bestseller.",
-      "link": "https://www.wsj.com/us-news/law/meta-tried-to-silence-her-now-shes-suing-b228997c?mod=pls_whats_news_us_business_f",
-      "pubDate": "Thu, 25 Jun 2026 14:53:00 GMT",
-      "creator": "Keach Hagey"
     },
     {
       "title": "Auto & Transport Roundup: Market Talk",
@@ -508,7 +508,7 @@
     },
     {
       "title": "China’s January-May Industrial Profit Rose 18.8% on Year",
-      "desc": "China’s industrial enterprises expanded by 18.8% year-on-year for the January–May period.",
+      "desc": "China’s industrial enterprises expanded by 18.8% year-over-year for the January—May period.",
       "link": "https://www.wsj.com/world/china/chinas-january-may-industrial-profit-rose-18-8-on-year-fc9389d7?mod=pls_whats_news_us_business_f",
       "pubDate": "Sat, 27 Jun 2026 02:01:00 GMT",
       "creator": ""
@@ -542,11 +542,18 @@
       "creator": "Aimee Look"
     },
     {
-      "title": "When Did Having Fun Get So Expensive? The Summer When ‘Funflation’ Went Wild",
-      "desc": "From World Cup matches to concert tickets, live entertainment is testing household budgets. Fans are dipping into savings and taking on debt, while the industry finds new ways to cash in.",
-      "link": "https://www.wsj.com/business/media/entertainment-events-inflation-demand-479c43a8?mod=pls_whats_news_us_business_f",
-      "pubDate": "Sat, 27 Jun 2026 00:00:00 GMT",
-      "creator": "Anne Steele"
+      "title": "The Father Who Bankrolled a High-School Football Team for His Son",
+      "desc": "Eric Obrokta put millions into The First Academy as he tried to propel his son to a college career. Elite players transferred to the team, but it ended in disaster.",
+      "link": "https://www.wsj.com/sports/football/high-school-football-father-bankroll-54575983?mod=pls_whats_news_us_business_f",
+      "pubDate": "Sun, 28 Jun 2026 01:00:00 GMT",
+      "creator": "Harriet Ryan"
+    },
+    {
+      "title": "Airlines Are Installing New Luxury Seats, but No One Is Allowed to Sit in Them",
+      "desc": "Lie-flat seats in private pods face long waits for safety certifications, delaying debuts for carriers’ high-end offerings.",
+      "link": "https://www.wsj.com/business/airlines/airlines-are-installing-new-luxury-seats-but-no-one-is-allowed-to-sit-in-them-14e2878c?mod=pls_whats_news_us_business_f",
+      "pubDate": "Sun, 28 Jun 2026 09:30:00 GMT",
+      "creator": "Alison Sider"
     },
     {
       "title": "Why One of Tech’s Biggest Gamblers Is Betting Against Elon Musk’s AI Vision",
@@ -556,25 +563,18 @@
       "creator": "Tim Higgins"
     },
     {
-      "title": "The Father Who Bankrolled a High-School Football Team for His Son",
-      "desc": "Eric Obrokta put millions into The First Academy as he tried to propel his son to a college career. Elite players transferred to the team, but it ended in disaster.",
-      "link": "https://www.wsj.com/sports/football/high-school-football-father-bankroll-54575983?mod=pls_whats_news_us_business_f",
-      "pubDate": "Sun, 28 Jun 2026 01:00:00 GMT",
-      "creator": "Harriet Ryan"
+      "title": "When Did Having Fun Get So Expensive? The Summer When ‘Funflation’ Went Wild",
+      "desc": "From World Cup matches to concert tickets, live entertainment is testing household budgets. Fans are dipping into savings and taking on debt, while the industry finds new ways to cash in.",
+      "link": "https://www.wsj.com/business/media/entertainment-events-inflation-demand-479c43a8?mod=pls_whats_news_us_business_f",
+      "pubDate": "Sat, 27 Jun 2026 00:00:00 GMT",
+      "creator": "Anne Steele"
     },
     {
-      "title": "Under Siege From Chinese Automakers, Volkswagen Sells Engine Business",
-      "desc": "Bain Capital will buy 51% of heavy-engine business Everllence for $8.4 billion.",
-      "link": "https://www.wsj.com/business/deals/volkswagen-to-sell-majority-stake-in-engine-unit-to-bain-capital-ae17cb9f?mod=pls_whats_news_us_business_f",
-      "pubDate": "Thu, 25 Jun 2026 12:53:00 GMT",
-      "creator": "Ben Dummett"
-    },
-    {
-      "title": "Josh D’Amaro Is 100 Days Into His Mission to Make Disney Faster and Fiercer",
-      "desc": "Defending against the FCC and reorienting the company around its namesake streaming service are priorities.",
-      "link": "https://www.wsj.com/business/media/disney-ceo-josh-damaro-100-days-0b98897f?mod=pls_whats_news_us_business_f",
-      "pubDate": "Sat, 27 Jun 2026 09:30:00 GMT",
-      "creator": "Ben Fritz"
+      "title": "The AI Startup Challenging Tesla and Waymo in the Race to Automate Driving",
+      "desc": "Wayve is emerging as a go-to partner for traditional automakers trying to keep up with Silicon Valley.",
+      "link": "https://www.wsj.com/business/autos/wayve-self-driving-technology-2e917ebd?mod=pls_whats_news_us_business_f",
+      "pubDate": "Sun, 28 Jun 2026 09:30:00 GMT",
+      "creator": "Christopher Otts"
     },
     {
       "title": "Best Small-Business Loans in June 2026",
