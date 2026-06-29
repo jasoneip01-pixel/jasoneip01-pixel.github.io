@@ -1,54 +1,68 @@
 {
   "source": "WSJ.com US Business RSS",
-  "ts": "Mon, 29 Jun 2026 10:51:33 GMT",
+  "ts": "Mon, 29 Jun 2026 19:51:13 GMT",
   "items": [
     {
-      "title": "Comcast Plans to Split Into Two, Sending Shares Soaring 25%",
-      "desc": "The company plans to separate through a tax-free spinoff of NBCUniversal and Sky.",
-      "link": "https://www.wsj.com/business/media/comcast-to-split-media-and-tech-businesses-into-two-separate-companies-20b8a3d0?mod=pls_whats_news_us_business_f",
-      "pubDate": "Mon, 29 Jun 2026 10:35:00 GMT",
-      "creator": "Gareth Vipers"
+      "title": "JetBlue Pilot Reports Striking Drone at New York’s JFK Airport",
+      "desc": "The passenger aircraft landed safely and reported no damage, the FAA said.",
+      "link": "https://www.wsj.com/business/airlines/jetblue-pilot-reports-striking-drone-at-new-yorks-jfk-airport-cddab75d?mod=pls_whats_news_us_business_f",
+      "pubDate": "Mon, 29 Jun 2026 18:55:00 GMT",
+      "creator": "Alison Sider"
     },
     {
-      "title": "Martin Marietta Strikes $13.5 Billion Deal for Limestone Supplier",
-      "desc": "",
-      "link": "https://www.wsj.com/business/deals/martin-marietta-strikes-13-5-billion-deal-for-limestone-supplier-3df35616?mod=pls_whats_news_us_business_f",
-      "pubDate": "Mon, 29 Jun 2026 10:30:00 GMT",
+      "title": "Trump Adds a Washington Golf Course Renovation to His Fall Agenda",
+      "desc": "The president said he would keep East Potomac Golf Links open to the public after rebuilding its course.",
+      "link": "https://www.wsj.com/us-news/trump-adds-a-washington-golf-course-renovation-to-his-fall-agenda-59ddcf84?mod=pls_whats_news_us_business_f",
+      "pubDate": "Mon, 29 Jun 2026 17:49:00 GMT",
+      "creator": "Alyssa Lukpat"
+    },
+    {
+      "title": "Construction-Products Supplier Carlisle Made Unsolicited Offers for Rival",
+      "desc": "Carlisle is contemplating its next move after Owens Corning appears unreceptive so far.",
+      "link": "https://www.wsj.com/business/deals/construction-products-supplier-carlisle-made-unsolicited-offers-for-rival-de34de31?mod=pls_whats_news_us_business_f",
+      "pubDate": "Mon, 29 Jun 2026 17:02:00 GMT",
       "creator": "Lauren Thomas"
     },
     {
-      "title": "He Dared to Buy Senior Housing at Its Lows. Now He Runs a $160 Billion Empire.",
-      "desc": "Welltower’s CEO received an enormous pay package for the company’s turnaround, which has drawn shareholder backlash.",
-      "link": "https://www.wsj.com/real-estate/he-dared-to-buy-senior-housing-at-its-lows-now-he-runs-a-160-billion-empire-5a035faf?mod=pls_whats_news_us_business_f",
-      "pubDate": "Mon, 29 Jun 2026 09:30:00 GMT",
-      "creator": "Peter Grant"
+      "title": "France Passes New Law to Fine Shein, Temu and Ultrafast Fashion",
+      "desc": "The legislation targets companies that release high volumes of low-price products while banning advertising and influencer promotions.",
+      "link": "https://www.wsj.com/business/retail/france-passes-new-law-to-fine-shein-temu-and-ultrafast-fashion-b5863958?mod=pls_whats_news_us_business_f",
+      "pubDate": "Mon, 29 Jun 2026 16:57:00 GMT",
+      "creator": "Nick Kostov"
     },
     {
-      "title": "Automakers Built Ever-Larger Trucks. Can Cheap, Small Pickups Make a Comeback?",
-      "desc": "After disappearing from the U.S. market, compact trucks are showing signs of life again.",
-      "link": "https://www.wsj.com/business/autos/automakers-built-ever-larger-trucks-can-cheap-small-pickups-make-a-comeback-4fd00522?mod=pls_whats_news_us_business_f",
-      "pubDate": "Mon, 29 Jun 2026 09:30:00 GMT",
-      "creator": "Christopher Otts"
+      "title": "AI Data Centers Have Been Great for the Steel Industry. Now, a Power Crisis Looms.",
+      "desc": "Steelmakers have warned of competition for electricity from their newest big customer.",
+      "link": "https://www.wsj.com/business/energy-oil/ai-data-centers-power-competition-steel-48a17dbd?mod=pls_whats_news_us_business_f",
+      "pubDate": "Mon, 29 Jun 2026 16:34:00 GMT",
+      "creator": "Bob Tita"
     },
     {
-      "title": "BAT to Reduce Workforce by Nearly a Fifth",
-      "desc": "The cigarette maker plans to cut about 5,500 jobs by the end of the year, on top of around 3,500 roles that it moved to outsourcing partners including Accenture.",
-      "link": "https://www.wsj.com/business/bat-to-cut-outsource-nearly-fifth-of-workforce-db729940?mod=pls_whats_news_us_business_f",
-      "pubDate": "Mon, 29 Jun 2026 08:52:00 GMT",
-      "creator": "Adrià Calatayud"
+      "title": "Comcast Plans Company Split as Competition Escalates",
+      "desc": "The spinoff of NBCUniversal and Sky will separate the company’s connectivity business from its film, theme park and streaming operations.",
+      "link": "https://www.wsj.com/business/media/comcast-nbcuniversal-split-cmcsa-stock-20b8a3d0?mod=pls_whats_news_us_business_f",
+      "pubDate": "Mon, 29 Jun 2026 15:42:00 GMT",
+      "creator": "Gareth Vipers"
     },
     {
-      "title": "The Cutthroat Battle to Become America’s Rare-Earth Champion",
-      "desc": "A fight between two of the U.S.’s biggest rare-earths companies illustrates the stakes behind the effort to loosen China’s hold on the sector.",
-      "link": "https://www.wsj.com/business/the-cutthroat-battle-to-become-americas-rare-earth-champion-31a2916f?mod=pls_whats_news_us_business_f",
-      "pubDate": "Mon, 29 Jun 2026 03:00:00 GMT",
-      "creator": "Jon Emont"
+      "title": "CVC Capital Partners to Buy Ingredients Business Irca From Advent",
+      "desc": "Irca creates more than 7,000 products and serves customers in more than 100 countries and CVC said it would support the next phase of the company’s growth.",
+      "link": "https://www.wsj.com/business/deals/cvc-capital-partners-to-buy-ingredients-business-irca-from-advent-d60bf54f?mod=pls_whats_news_us_business_f",
+      "pubDate": "Mon, 29 Jun 2026 12:03:00 GMT",
+      "creator": "Adam Whittaker"
     },
     {
-      "title": "Verizon, Britain’s BT to Form International Connectivity Joint Venture",
-      "desc": "The companies agreed to merge their international enterprise operations to provide connectivity services to thousands of clients across several countries.",
+      "title": "Martin Marietta Strikes $13.5 Billion Deal for Limestone Supplier",
+      "desc": "The purchase of Lhoist North America would be the building-materials supplier’s biggest ever.",
+      "link": "https://www.wsj.com/business/deals/martin-marietta-strikes-13-5-billion-deal-for-limestone-supplier-3df35616?mod=pls_whats_news_us_business_f",
+      "pubDate": "Mon, 29 Jun 2026 11:39:00 GMT",
+      "creator": "Lauren Thomas"
+    },
+    {
+      "title": "Verizon, Britain’s BT to Combine Overseas Operations",
+      "desc": "The companies said teaming up would allow both sides to benefit from greater scale and being able to use each other’s network infrastructure.",
       "link": "https://www.wsj.com/business/deals/bt-verizon-to-form-international-joint-venture-556f9848?mod=pls_whats_news_us_business_f",
-      "pubDate": "Mon, 29 Jun 2026 09:49:00 GMT",
+      "pubDate": "Mon, 29 Jun 2026 11:10:00 GMT",
       "creator": "Anthony O. Goriainoff"
     },
     {
@@ -66,18 +80,11 @@
       "creator": "Adrià Calatayud"
     },
     {
-      "title": "Under Siege From Chinese Automakers, Volkswagen Sells Engine Business",
-      "desc": "Bain Capital will buy 51% of heavy-engine business Everllence for $8.4 billion.",
-      "link": "https://www.wsj.com/business/deals/volkswagen-to-sell-majority-stake-in-engine-unit-to-bain-capital-ae17cb9f?mod=pls_whats_news_us_business_f",
-      "pubDate": "Thu, 25 Jun 2026 12:53:00 GMT",
-      "creator": "Ben Dummett"
-    },
-    {
-      "title": "easyJet to Open Books to Castlelake After Rejecting Revised $6.49 Billion Bid",
-      "desc": "The move marks a shift in easyJet’s stance toward Castlelake, which as recently as Monday called out the airline’s unwillingness to engage meaningfully.",
-      "link": "https://www.wsj.com/business/deals/easyjet-board-rejects-castlelakes-revised-6-49-billion-takeover-offer-5176bdee?mod=pls_whats_news_us_business_f",
-      "pubDate": "Thu, 25 Jun 2026 10:03:00 GMT",
-      "creator": "Adam Whittaker"
+      "title": "BAT to Reduce Workforce by Nearly a Fifth",
+      "desc": "The cigarette maker plans to cut about 5,500 jobs by the end of the year, on top of around 3,500 roles that it outsourced.",
+      "link": "https://www.wsj.com/business/bat-to-cut-outsource-nearly-fifth-of-workforce-db729940?mod=pls_whats_news_us_business_f",
+      "pubDate": "Mon, 29 Jun 2026 13:36:00 GMT",
+      "creator": "Adrià Calatayud"
     },
     {
       "title": "How One Man Makes Millions Selling Coins Live on the Internet",
@@ -108,13 +115,6 @@
       "creator": "Connor Hart"
     },
     {
-      "title": "Winnebago Cuts Outlook Amid Declining Sales",
-      "desc": "The motorhome maker posted a fiscal third-quarter profit of $14.5 million, or 51 cents a share, compared with $17.6 million, or 62 cents a share, in the same quarter a year ago.",
-      "link": "https://www.wsj.com/business/earnings/winnebago-cuts-outlook-amid-declining-sales-3ba01bd2?mod=pls_whats_news_us_business_f",
-      "pubDate": "Thu, 25 Jun 2026 11:42:00 GMT",
-      "creator": "Dean Seal"
-    },
-    {
       "title": "Prosus Targets $5 Billion Buyback, More Acquisitions to Drive Growth",
       "desc": "The tech investor seeks outright acquisitions and purchases of minority stakes to become less reliant on its stake in China’s Tencent Holdings.",
       "link": "https://www.wsj.com/business/earnings/prosus-targets-5-billion-buyback-more-acquisitions-to-drive-growth-b67cf9ae?mod=pls_whats_news_us_business_f",
@@ -143,11 +143,18 @@
       "creator": "Adriano Marchese"
     },
     {
-      "title": "McCormick Posts Higher Sales Amid Combination With Unilever",
-      "desc": "The maker of spices and seasonings reported higher sales in its fiscal second quarter, as it continues work to combine with Unilever’s food business.",
-      "link": "https://www.wsj.com/business/retail/mccormick-posts-higher-sales-amid-combination-with-unilever-de1cd41a?mod=pls_whats_news_us_business_f",
-      "pubDate": "Thu, 25 Jun 2026 11:08:00 GMT",
-      "creator": "Connor Hart"
+      "title": "Winnebago Cuts Outlook Amid Declining Sales",
+      "desc": "The motorhome maker posted a fiscal third-quarter profit of $14.5 million, or 51 cents a share, compared with $17.6 million, or 62 cents a share, in the same quarter a year ago.",
+      "link": "https://www.wsj.com/business/earnings/winnebago-cuts-outlook-amid-declining-sales-3ba01bd2?mod=pls_whats_news_us_business_f",
+      "pubDate": "Thu, 25 Jun 2026 11:42:00 GMT",
+      "creator": "Dean Seal"
+    },
+    {
+      "title": "Automakers Built Ever-Larger Trucks. Can Cheap, Small Pickups Make a Comeback?",
+      "desc": "After disappearing from the U.S. market, compact trucks are showing signs of life again.",
+      "link": "https://www.wsj.com/business/autos/automakers-built-ever-larger-trucks-can-cheap-small-pickups-make-a-comeback-4fd00522?mod=pls_whats_news_us_business_f",
+      "pubDate": "Mon, 29 Jun 2026 09:30:00 GMT",
+      "creator": "Christopher Otts"
     },
     {
       "title": "The AI Startup Challenging Tesla and Waymo in the Race to Automate Driving",
@@ -178,11 +185,11 @@
       "creator": "Ryan Felton"
     },
     {
-      "title": "U.K. Auto Manufacturing Rose Slightly in May",
-      "desc": "The U.S. saw the biggest increase in shipments among export markets.",
-      "link": "https://www.wsj.com/business/autos/u-k-auto-manufacturing-rose-slightly-in-may-8c0f009f?mod=pls_whats_news_us_business_f",
-      "pubDate": "Thu, 25 Jun 2026 01:30:00 GMT",
-      "creator": "Dominic Chopping"
+      "title": "Opinion | Washington Needs a Look in the Mirror, Not the Camera",
+      "desc": "Filming the Supreme Court would be a disaster. Let’s cut it out elsewhere in D.C., too.",
+      "link": "https://www.wsj.com/opinion/washington-needs-a-look-in-the-mirror-not-the-camera-b31449cc?mod=pls_whats_news_us_business_f",
+      "pubDate": "Mon, 29 Jun 2026 17:03:00 GMT",
+      "creator": ""
     },
     {
       "title": "Opinion | New Name, New Mission at the Justice Department",
@@ -220,13 +227,6 @@
       "creator": ""
     },
     {
-      "title": "Opinion | A Corporate Welfare Bust in Michigan",
-      "desc": "Only 3% of touted jobs have actually been created, says a Mackinac Center report.",
-      "link": "https://www.wsj.com/opinion/corporate-welfare-michigan-business-subsidies-mackinac-center-5319c415?mod=pls_whats_news_us_business_f",
-      "pubDate": "Wed, 24 Jun 2026 21:37:00 GMT",
-      "creator": "The Editorial Board"
-    },
-    {
       "title": "U.S. Natural Gas Futures Slip As July Contract Expires",
       "desc": "Nymex natural gas futures returned early gains to end the session lower.",
       "link": "https://www.wsj.com/finance/commodities-futures/u-s-natural-gas-futures-extend-gains-on-coming-hot-weather-c3163e5e?mod=pls_whats_news_us_business_f",
@@ -262,6 +262,13 @@
       "creator": "Jennifer Hiller"
     },
     {
+      "title": "Airbus to Get $3.42 Billion Loan From European Investment Bank in Tech Sovereignty Push",
+      "desc": "The financing will support the company’s investments in commercial aviation, security and defense, with projects in France, Germany and Spain as the bloc seeks to build out its tech capabilities.",
+      "link": "https://www.wsj.com/world/europe/airbus-to-get-3-42-billion-loan-from-european-investment-bank-in-tech-sovereignty-push-a686b9ed?mod=pls_whats_news_us_business_f",
+      "pubDate": "Mon, 29 Jun 2026 12:19:00 GMT",
+      "creator": "Edith Hancock"
+    },
+    {
       "title": "Airlines Are Installing New Luxury Seats, but No One Is Allowed to Sit in Them",
       "desc": "Lie-flat seats in private pods face long waits for safety certifications, delaying debuts for carriers’ high-end offerings.",
       "link": "https://www.wsj.com/business/airlines/airlines-are-installing-new-luxury-seats-but-no-one-is-allowed-to-sit-in-them-14e2878c?mod=pls_whats_news_us_business_f",
@@ -288,13 +295,6 @@
       "link": "https://www.wsj.com/business/earnings/norwegian-air-shuttle-buys-package-holiday-group-nordic-leisure-travel-for-833-million-d016df00?mod=pls_whats_news_us_business_f",
       "pubDate": "Tue, 16 Jun 2026 08:07:00 GMT",
       "creator": "Dominic Chopping"
-    },
-    {
-      "title": "Wizz Air Withholds Guidance Due to Middle East Conflict",
-      "desc": "The low-cost carrier posted a slump in net profit for the year through March and said it wasn’t providing guidance for fiscal 2027.",
-      "link": "https://www.wsj.com/business/earnings/wizz-air-withholds-guidance-due-to-middle-east-conflict-132bd917?mod=pls_whats_news_us_business_f",
-      "pubDate": "Thu, 11 Jun 2026 08:25:00 GMT",
-      "creator": "Nina Kienle"
     },
     {
       "title": "Inside Consultants’ Messy Shift From Hourly Billing",
@@ -367,6 +367,20 @@
       "creator": "Heather Haddon"
     },
     {
+      "title": "Tech, Media & Telecom Roundup: Market Talk",
+      "desc": "Find insight on Comcast, space-based data centers and more in the latest Market Talks covering Technology, Media and Telecom.",
+      "link": "https://www.wsj.com/business/tech-media-telecom-roundup-market-talk-97b7dbe9?mod=pls_whats_news_us_business_f",
+      "pubDate": "Mon, 29 Jun 2026 16:31:00 GMT",
+      "creator": ""
+    },
+    {
+      "title": "Madison Avenue Is Going All In on AI",
+      "desc": "Brands are rapidly embracing sophisticated AI tools to cut costs and automate ad production.",
+      "link": "https://www.wsj.com/business/media/madison-avenue-is-going-all-in-on-ai-bb9320f6?mod=pls_whats_news_us_business_f",
+      "pubDate": "Mon, 29 Jun 2026 15:11:00 GMT",
+      "creator": "Suzanne Vranica"
+    },
+    {
       "title": "News Quiz for June 27, 2026",
       "desc": "",
       "link": "https://www.wsj.com/business/media/news-quiz-for-june-27-2026-785cc33b?mod=pls_whats_news_us_business_f",
@@ -386,20 +400,6 @@
       "link": "https://www.wsj.com/business/media/disney-ceo-josh-damaro-100-days-0b98897f?mod=pls_whats_news_us_business_f",
       "pubDate": "Sat, 27 Jun 2026 09:30:00 GMT",
       "creator": "Ben Fritz"
-    },
-    {
-      "title": "When Did Having Fun Get So Expensive? The Summer When ‘Funflation’ Went Wild",
-      "desc": "From World Cup matches to concert tickets, live entertainment is testing household budgets. Fans are dipping into savings and taking on debt, while the industry finds new ways to cash in.",
-      "link": "https://www.wsj.com/business/media/entertainment-events-inflation-demand-479c43a8?mod=pls_whats_news_us_business_f",
-      "pubDate": "Sat, 27 Jun 2026 00:00:00 GMT",
-      "creator": "Anne Steele"
-    },
-    {
-      "title": "U.S. Strikes Iran After Its Attack on Ship in Strait of Hormuz",
-      "desc": "Plus, OpenAI limits access to its new model, and JD Vance says he feels like Nixon 2.0.",
-      "link": "https://www.wsj.com/arts-culture/books/u-s-strikes-iran-after-its-attack-on-ship-in-strait-of-hormuz-6e798f7b?mod=pls_whats_news_us_business_f",
-      "pubDate": "Fri, 26 Jun 2026 21:52:00 GMT",
-      "creator": "Zlati Meyer"
     },
     {
       "title": "Auto & Transport Roundup: Market Talk",
@@ -437,6 +437,27 @@
       "creator": "Dominic Chopping"
     },
     {
+      "title": "Satellite Pay-TV Provider Dish DBS Prepares for Bankruptcy Filing",
+      "desc": "The EchoStar unit is preparing for chapter 11 as soon as Tuesday, as it faces regulatory scrutiny over its network build-out.",
+      "link": "https://www.wsj.com/pro/bankruptcy/echostar-prepares-dish-dbs-bankruptcy-filing-as-soon-as-tuesday-b028dfe6?mod=pls_whats_news_us_business_f",
+      "pubDate": "Mon, 29 Jun 2026 17:00:00 GMT",
+      "creator": "Alexander Gladstone"
+    },
+    {
+      "title": "Rocket Lab Buys Satellite Operator Iridium in Bid to Challenge SpaceX",
+      "desc": "The $8 billion deal would give Rocket Lab control over a satellite fleet and access to wireless resources it could use to compete with SpaceX.",
+      "link": "https://www.wsj.com/business/telecom/rocket-lab-buys-satellite-operator-iridium-in-bid-to-challenge-spacex-d3a35be7?mod=pls_whats_news_us_business_f",
+      "pubDate": "Mon, 29 Jun 2026 14:37:00 GMT",
+      "creator": "Micah Maidenberg"
+    },
+    {
+      "title": "Digi to Launch IPO for Spanish Unit",
+      "desc": "The telecommunications operator plans to launch an initial public offering in Spain, with an investment pledge that could value the business at up to $1.94 billion.",
+      "link": "https://www.wsj.com/business/telecom/digi-to-launch-ipo-for-spanish-unit-486f60ec?mod=pls_whats_news_us_business_f",
+      "pubDate": "Mon, 29 Jun 2026 12:10:00 GMT",
+      "creator": "Adrià Calatayud"
+    },
+    {
       "title": "Samsung, SK Hynix to Spend $520 Billion on Chip Plants in South Korea",
       "desc": "The world’s two largest memory-chip makers said their existing investments wouldn’t be enough to meet demand, amid a worldwide shortage.",
       "link": "https://www.wsj.com/tech/samsung-sk-hynix-to-spend-520-billion-on-chip-plants-in-south-korea-7d50aab2?mod=pls_whats_news_us_business_f",
@@ -451,25 +472,11 @@
       "creator": "Sooyoung Rhee"
     },
     {
-      "title": "Tech, Media & Telecom Roundup: Market Talk",
-      "desc": "Find insight on Corus Entertainment, OpenAI and more in the latest Market Talks covering technology, media and telecom.",
-      "link": "https://www.wsj.com/business/tech-media-telecom-roundup-market-talk-10d9362c?mod=pls_whats_news_us_business_f",
-      "pubDate": "Fri, 26 Jun 2026 21:34:00 GMT",
-      "creator": ""
-    },
-    {
-      "title": "Verizon, T-Mobile Big Winners in FCC Spectrum Auction",
-      "desc": "The Federal Communications Commission’s first spectrum auction after a four-year hiatus. brought in upwards of $3.5 billion in total, the agency said.",
-      "link": "https://www.wsj.com/business/telecom/verizon-t-mobile-big-winners-in-fcc-spectrum-auction-d993a32c?mod=pls_whats_news_us_business_f",
-      "pubDate": "Fri, 26 Jun 2026 20:44:00 GMT",
-      "creator": "Elias Schisgall"
-    },
-    {
-      "title": "Qualcomm to Acquire AI Software Firm Modular in $3.9 Billion Stock Deal",
-      "desc": "Qualcomm agreed to acquire the AI software company Modular for about $3.9 billion, in a bid to make artificial intelligence faster and cheaper for its customers.",
-      "link": "https://www.wsj.com/tech/ai/qualcomm-to-acquire-ai-software-firm-modular-in-3-9-billion-stock-deal-7b620c7c?mod=pls_whats_news_us_business_f",
-      "pubDate": "Wed, 24 Jun 2026 12:52:00 GMT",
-      "creator": "Katherine Hamilton"
+      "title": "Silicon Valley Is Obsessed With ‘Trust Stacking,’ and the IRS Doesn’t Like It",
+      "desc": "A tax break for investing in small businesses is being multiplied by two, three, four or even more times through the use of trusts.",
+      "link": "https://www.wsj.com/personal-finance/taxes/silicon-valley-is-obsessed-with-trust-stacking-and-the-irs-doesnt-like-it-a542519b?mod=pls_whats_news_us_business_f",
+      "pubDate": "Mon, 29 Jun 2026 16:00:00 GMT",
+      "creator": "Ashlea Ebeling"
     },
     {
       "title": "What Baiju Bhatt Learned From the 70 ‘Nos’ He Got While Building Robinhood",
@@ -500,18 +507,25 @@
       "creator": "Jeanne Whalen"
     },
     {
-      "title": "Businesses Are Taking Risks to Cash In on the Peptide Gold Rush",
-      "desc": "Doctors, telehealth companies, med spas and venture capitalists are racing to get in on the craze for injectable drugs.",
-      "link": "https://www.wsj.com/health/peptide-businesses-telehealth-mino-protocole-next-51b9e2ce?mod=pls_whats_news_us_business_f",
-      "pubDate": "Tue, 23 Jun 2026 16:26:00 GMT",
-      "creator": "Sara Ashley O’Brien"
+      "title": "In the U.S., the Ties Between Industry and Defense Go Back to the Country’s Founding",
+      "desc": "Starting with George Washington creating the Springfield Armory, the country has fused war and business like never before.",
+      "link": "https://www.wsj.com/politics/national-security/industry-and-defense-historic-ties-a6cbe74e?mod=pls_whats_news_us_business_f",
+      "pubDate": "Mon, 29 Jun 2026 15:22:00 GMT",
+      "creator": "Daniel Michaels"
     },
     {
-      "title": "Trump Adds a Washington Golf Course Renovation to His Fall Agenda",
-      "desc": "The president said he would keep East Potomac Golf Links open to the public after rebuilding its course.",
-      "link": "https://www.wsj.com/us-news/trump-adds-a-washington-golf-course-renovation-to-his-fall-agenda-59ddcf84?mod=pls_whats_news_us_business_f",
-      "pubDate": "Sun, 28 Jun 2026 21:00:00 GMT",
-      "creator": "Alyssa Lukpat"
+      "title": "He Dared to Buy Senior Housing at Its Lows. Now He Runs a $160 Billion Empire.",
+      "desc": "Welltower’s CEO received an enormous pay package for the company’s turnaround, which has drawn shareholder backlash.",
+      "link": "https://www.wsj.com/real-estate/he-dared-to-buy-senior-housing-at-its-lows-now-he-runs-a-160-billion-empire-5a035faf?mod=pls_whats_news_us_business_f",
+      "pubDate": "Mon, 29 Jun 2026 09:30:00 GMT",
+      "creator": "Peter Grant"
+    },
+    {
+      "title": "The Cutthroat Battle to Become America’s Rare-Earth Champion",
+      "desc": "A fight between two of the U.S.’s biggest rare-earths companies illustrates the stakes behind the effort to loosen China’s hold on the sector.",
+      "link": "https://www.wsj.com/business/the-cutthroat-battle-to-become-americas-rare-earth-champion-31a2916f?mod=pls_whats_news_us_business_f",
+      "pubDate": "Mon, 29 Jun 2026 03:00:00 GMT",
+      "creator": "Jon Emont"
     },
     {
       "title": "A $55 Billion Safety Net? Government Tab to Prop Up American Farms Is Rising",
@@ -528,18 +542,11 @@
       "creator": "Victoria Albert"
     },
     {
-      "title": "CEOs Are Pulling In Record Pay. Here Are Some Big Numbers.",
-      "desc": "These figures put corporate bosses’ ever-bigger paychecks into context.",
-      "link": "https://www.wsj.com/business/ceo-executive-pay-packages-030db27e?mod=pls_whats_news_us_business_f",
-      "pubDate": "Sat, 27 Jun 2026 16:00:00 GMT",
-      "creator": "Theo Francis"
-    },
-    {
-      "title": "China’s January-May Industrial Profit Rose 18.8% on Year",
-      "desc": "China’s industrial enterprises expanded by 18.8% year-over-year for the January—May period.",
-      "link": "https://www.wsj.com/world/china/chinas-january-may-industrial-profit-rose-18-8-on-year-fc9389d7?mod=pls_whats_news_us_business_f",
-      "pubDate": "Sat, 27 Jun 2026 02:01:00 GMT",
-      "creator": ""
+      "title": "Comcast Plans Company Split as Competition Escalates",
+      "desc": "The spinoff of NBCUniversal and Sky will separate the company’s connectivity business from its film, theme park and streaming operations.",
+      "link": "https://www.wsj.com/business/media/comcast-nbcuniversal-split-cmcsa-stock-20b8a3d0?mod=pls_whats_news_us_business_f",
+      "pubDate": "Mon, 29 Jun 2026 15:42:00 GMT",
+      "creator": "Gareth Vipers"
     },
     {
       "title": "The Father Who Bankrolled a High-School Football Team for His Son",
@@ -556,25 +563,18 @@
       "creator": "Alison Sider"
     },
     {
-      "title": "The AI Startup Challenging Tesla and Waymo in the Race to Automate Driving",
-      "desc": "Wayve is emerging as a go-to partner for traditional automakers trying to keep up with Silicon Valley.",
-      "link": "https://www.wsj.com/business/autos/wayve-self-driving-technology-2e917ebd?mod=pls_whats_news_us_business_f",
-      "pubDate": "Sun, 28 Jun 2026 09:30:00 GMT",
+      "title": "The Baby Formula Probe Produced a Pile of Evidence. Then the DOJ Dropped the Case.",
+      "desc": "Some prosecutors believed they had enough to charge Abbott Laboratories, but senior officials opted for civil settlement.",
+      "link": "https://www.wsj.com/us-news/law/the-baby-formula-probe-produced-a-pile-of-evidence-then-the-doj-dropped-the-case-cdc68716?mod=pls_whats_news_us_business_f",
+      "pubDate": "Mon, 29 Jun 2026 01:00:00 GMT",
+      "creator": "Dave Michaels"
+    },
+    {
+      "title": "Automakers Built Ever-Larger Trucks. Can Cheap, Small Pickups Make a Comeback?",
+      "desc": "After disappearing from the U.S. market, compact trucks are showing signs of life again.",
+      "link": "https://www.wsj.com/business/autos/automakers-built-ever-larger-trucks-can-cheap-small-pickups-make-a-comeback-4fd00522?mod=pls_whats_news_us_business_f",
+      "pubDate": "Mon, 29 Jun 2026 09:30:00 GMT",
       "creator": "Christopher Otts"
-    },
-    {
-      "title": "When Did Having Fun Get So Expensive? The Summer When ‘Funflation’ Went Wild",
-      "desc": "From World Cup matches to concert tickets, live entertainment is testing household budgets. Fans are dipping into savings and taking on debt, while the industry finds new ways to cash in.",
-      "link": "https://www.wsj.com/business/media/entertainment-events-inflation-demand-479c43a8?mod=pls_whats_news_us_business_f",
-      "pubDate": "Sat, 27 Jun 2026 00:00:00 GMT",
-      "creator": "Anne Steele"
-    },
-    {
-      "title": "Why One of Tech’s Biggest Gamblers Is Betting Against Elon Musk’s AI Vision",
-      "desc": "SoftBank’s Masayoshi Son thinks the math doesn’t support space-based data centers.",
-      "link": "https://www.wsj.com/tech/why-one-of-techs-biggest-gamblers-is-betting-against-elon-musks-ai-vision-7529f5c2?mod=pls_whats_news_us_business_f",
-      "pubDate": "Sat, 27 Jun 2026 09:30:00 GMT",
-      "creator": "Tim Higgins"
     },
     {
       "title": "Best Small-Business Loans in June 2026",
