@@ -96,9 +96,10 @@
     display: flex; align-items: center; justify-content: center;
     font-size: 2.5rem;
   }
-  .david-bg { background: linear-gradient(135deg, #f5f0e8 0%, #e8dfd0 100%); }
-  .sistine-bg { background: linear-gradient(135deg, #1a2744 0%, #2c3e6b 100%); color: white; }
-  .pieta-bg { background: linear-gradient(135deg, #e8e0d8 0%, #d4c8b8 100%); }
+  .david-bg { background: var(--clr-bg-subtle); overflow: hidden; }
+  .sistine-bg { background: var(--clr-primary-900); overflow: hidden; }
+  .pieta-bg { background: var(--clr-bg-subtle); overflow: hidden; }
+  .work-card-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
   /* ── 平板 (641-1024px) ── */
   @media (max-width: 1024px) {
@@ -221,7 +222,7 @@
     <div class="work-grid">
       <div class="work-card fade-in">
         <div class="work-card-img david-bg">
-          <span>🗿</span>
+          <img src="david.webp" alt="米开朗琪罗 - 大卫像" loading="lazy" style="width:100%;height:100%;object-fit:cover">
         </div>
         <div class="work-card-body">
           <h3>大卫</h3>
@@ -231,7 +232,7 @@
       </div>
       <div class="work-card fade-in">
         <div class="work-card-img sistine-bg">
-          <span>🎨</span>
+          <img src="sistine.webp" alt="西斯廷礼拜堂穹顶画" loading="lazy" style="width:100%;height:100%;object-fit:cover">
         </div>
         <div class="work-card-body">
           <h3>创世记 · 西斯廷穹顶</h3>
@@ -241,7 +242,7 @@
       </div>
       <div class="work-card fade-in">
         <div class="work-card-img pieta-bg">
-          <span>🕊️</span>
+          <img src="pieta.webp" alt="米开朗琪罗 - 哀悼基督" loading="lazy" style="width:100%;height:100%;object-fit:cover">
         </div>
         <div class="work-card-body">
           <h3>哀悼基督</h3>
