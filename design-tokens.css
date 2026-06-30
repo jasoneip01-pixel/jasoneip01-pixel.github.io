@@ -1,0 +1,257 @@
+/* ══════════════════════════════════════════════════
+   design-tokens.css — CSS 自定义属性系统
+   设计语言: 极简 · 干净 · 克制
+   使用: @import "design-tokens.css"
+   ══════════════════════════════════════════════════ */
+
+:root {
+  /* ── 颜色系统 ── */
+  /* 主色: 冷灰蓝, 传达专业与冷静 */
+  --clr-primary-50:  #f0f4f8;
+  --clr-primary-100: #d9e2ec;
+  --clr-primary-200: #bcccdc;
+  --clr-primary-300: #9fb3c8;
+  --clr-primary-400: #829ab1;
+  --clr-primary-500: #627d98;
+  --clr-primary-600: #486581;
+  --clr-primary-700: #334e68;
+  --clr-primary-800: #243b53;
+  --clr-primary-900: #102a43;
+
+  /* 强调色: 暖橙, 克制使用 */
+  --clr-accent-50:  #fff8f0;
+  --clr-accent-100: #ffe8d6;
+  --clr-accent-200: #ffd3ae;
+  --clr-accent-300: #ffb980;
+  --clr-accent-400: #ff9e55;
+  --clr-accent-500: #f57c2e;
+  --clr-accent-600: #d9601a;
+  --clr-accent-700: #b64910;
+  --clr-accent-800: #8f360c;
+  --clr-accent-900: #6b2709;
+
+  /* 中性色 */
+  --clr-neutral-50:  #f7f7f7;
+  --clr-neutral-100: #e5e5e5;
+  --clr-neutral-200: #cccccc;
+  --clr-neutral-300: #adadad;
+  --clr-neutral-400: #8c8c8c;
+  --clr-neutral-500: #6b6b6b;
+  --clr-neutral-600: #4d4d4d;
+  --clr-neutral-700: #333333;
+  --clr-neutral-800: #1a1a1a;
+  --clr-neutral-900: #0d0d0d;
+
+  /* 语义色 */
+  --clr-success: #3b8b5e;
+  --clr-warning: #d48806;
+  --clr-error:   #c73a3a;
+  --clr-info:    #3b7fc4;
+
+  /* 背景 & 文字 */
+  --clr-bg:       #ffffff;
+  --clr-bg-subtle:#fafafa;
+  --clr-bg-code:  #f4f4f5;
+  --clr-text:     #1a1a1a;
+  --clr-text-secondary: #6b6b6b;
+  --clr-text-muted:     #adadad;
+  --clr-border:   #e5e5e5;
+
+  /* ── 字体系统 ── */
+  --font-sans:    -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans SC", system-ui, sans-serif;
+  --font-mono:    "SF Mono", "JetBrains Mono", "Fira Code", "Consolas", monospace;
+  --font-display: var(--font-sans);  /* 展示用正文族, 不加花哨 */
+
+  /* 字号渐变 */
+  --text-xs:   0.75rem;   /* 12px */
+  --text-sm:   0.875rem;  /* 14px */
+  --text-base: 1rem;      /* 16px */
+  --text-lg:   1.125rem;  /* 18px */
+  --text-xl:   1.25rem;   /* 20px */
+  --text-2xl:  1.5rem;    /* 24px */
+  --text-3xl:  1.875rem;  /* 30px */
+  --text-4xl:  2.25rem;   /* 36px */
+
+  /* 行高 */
+  --leading-tight:  1.25;
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.75;
+
+  /* 字重 */
+  --weight-normal: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+
+  /* ── 间距系统 (8px 基数) ── */
+  --space-0:  0;
+  --space-1:  0.25rem;   /* 4px */
+  --space-2:  0.5rem;    /* 8px */
+  --space-3:  0.75rem;   /* 12px */
+  --space-4:  1rem;      /* 16px */
+  --space-5:  1.25rem;   /* 20px */
+  --space-6:  1.5rem;    /* 24px */
+  --space-8:  2rem;      /* 32px */
+  --space-10: 2.5rem;    /* 40px */
+  --space-12: 3rem;      /* 48px */
+  --space-16: 4rem;      /* 64px */
+  --space-20: 5rem;      /* 80px */
+  --space-24: 6rem;      /* 96px */
+
+  /* ── 圆角 ── */
+  --radius-sm:   4px;
+  --radius-md:   8px;
+  --radius-lg:   12px;
+  --radius-xl:   16px;
+  --radius-full: 9999px;
+
+  /* ── 阴影 ── */
+  --shadow-sm:  0 1px 2px rgba(0,0,0,.06);
+  --shadow-md:  0 4px 8px rgba(0,0,0,.08);
+  --shadow-lg:  0 8px 24px rgba(0,0,0,.10);
+  --shadow-xl:  0 16px 40px rgba(0,0,0,.12);
+
+  /* ── 动效 ── */
+  --ease-out:   cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-inout: cubic-bezier(0.65, 0, 0.35, 1);
+  --duration-fast:   150ms;
+  --duration-normal: 250ms;
+  --duration-slow:   400ms;
+
+  /* ── 布局 ── */
+  --container-sm:  640px;
+  --container-md:  768px;
+  --container-lg:  1024px;
+  --container-xl:  1200px;
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+
+  /* ── 反模式编码约束 ── */
+  /* 禁止使用的颜色值 (不放入token系统) */
+  /* 禁止: #8B5CF6, #7C3AED (紫色渐变) */
+  /* 禁止: #06B6D4, #0891B2 (青色渐变) */
+}
+
+/* ── 基础重置 ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { font-size: 16px; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+
+body {
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  line-height: var(--leading-normal);
+  color: var(--clr-text);
+  background: var(--clr-bg);
+}
+
+/* ── 排版基础 ── */
+h1, h2, h3, h4 { font-weight: var(--weight-semibold); line-height: var(--leading-tight); }
+h1 { font-size: var(--text-4xl); }
+h2 { font-size: var(--text-3xl); }
+h3 { font-size: var(--text-2xl); }
+h4 { font-size: var(--text-xl); }
+
+p { margin-bottom: var(--space-4); }
+small { font-size: var(--text-sm); color: var(--clr-text-secondary); }
+
+code, pre {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+}
+pre {
+  background: var(--clr-bg-code);
+  padding: var(--space-4);
+  border-radius: var(--radius-md);
+  overflow-x: auto;
+}
+
+/* ── 基础组件: 按钮 ── */
+.btn {
+  display: inline-flex; align-items: center; gap: var(--space-2);
+  padding: var(--space-2) var(--space-5);
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
+  line-height: var(--leading-tight);
+  border: 1px solid transparent;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all var(--duration-fast) var(--ease-out);
+}
+.btn-primary {
+  background: var(--clr-primary-700);
+  color: white;
+}
+.btn-primary:hover { background: var(--clr-primary-800); }
+.btn-secondary {
+  background: transparent;
+  color: var(--clr-text);
+  border-color: var(--clr-border);
+}
+.btn-secondary:hover { border-color: var(--clr-primary-400); color: var(--clr-primary-700); }
+
+/* ── 基础组件: 卡片 ── */
+.card {
+  background: var(--clr-bg);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+}
+.card-elevated {
+  border-color: transparent;
+  box-shadow: var(--shadow-sm);
+}
+
+/* ── 基础组件: 表格 ── */
+.table-wrap { overflow-x: auto; }
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--text-sm);
+}
+th, td {
+  text-align: left;
+  padding: var(--space-3) var(--space-4);
+  border-bottom: 1px solid var(--clr-border);
+}
+th {
+  font-weight: var(--weight-semibold);
+  color: var(--clr-text-secondary);
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* ── 基础组件: 标签 ── */
+.tag {
+  display: inline-flex; align-items: center;
+  padding: var(--space-1) var(--space-2);
+  font-size: var(--text-xs);
+  font-weight: var(--weight-medium);
+  border-radius: var(--radius-sm);
+}
+.tag-success { background: #e6f4ea; color: var(--clr-success); }
+.tag-warning { background: #fef7e0; color: var(--clr-warning); }
+.tag-error   { background: #fce8e8; color: var(--clr-error); }
+
+/* ── 布局辅助 ── */
+.container { max-width: var(--container-lg); margin: 0 auto; padding: 0 var(--space-6); }
+.container-sm { max-width: var(--container-sm); margin: 0 auto; padding: 0 var(--space-6); }
+.flex { display: flex; }
+.flex-col { flex-direction: column; }
+.gap-2 { gap: var(--space-2); }
+.gap-4 { gap: var(--space-4); }
+.gap-6 { gap: var(--space-6); }
+.grid { display: grid; }
+.grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); }
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); }
+
+@media (max-width: 768px) {
+  .grid-2, .grid-3 { grid-template-columns: 1fr; }
+}
+
+/* ── 动效工具 ── */
+.fade-in { animation: fadeIn var(--duration-normal) var(--ease-out); }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
