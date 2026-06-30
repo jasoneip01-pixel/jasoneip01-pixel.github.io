@@ -1,285 +1,856 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>米开朗琪罗 · Michelangelo</title>
-<link rel="stylesheet" href="/design-tokens.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
+<title>米开朗琪罗 · Il Divino</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
 <style>
-  .hero {
-    padding: var(--space-20) 0 var(--space-16);
-    background: linear-gradient(135deg, var(--clr-primary-900) 0%, var(--clr-primary-700) 100%);
-    color: white;
-    text-align: center;
-  }
-  .hero h1 { font-size: clamp(2rem, 5vw, 3.5rem); margin-bottom: var(--space-3); }
-  .hero p { color: var(--clr-primary-200); font-size: var(--text-lg); max-width: 560px; margin: 0 auto var(--space-6); }
+:root {
+  --bg: #f0e8d8;
+  --page: #faf3e8;
+  --text: #3d2817;
+  --text-light: #7a6a58;
+  --accent: #c8954a;
+  --accent-dim: #a07830;
+  --shadow: rgba(61,40,23,0.12);
+  --divider: #d4c0aa;
+  --terracotta: #8b5e3c;
+  --stone: #c4b5a0;
+  --gold: #d4a84e;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
 
-  .hero .years {
-    display: inline-flex;
-    gap: var(--space-6);
-    padding: var(--space-3) var(--space-6);
-    border: 1px solid rgba(255,255,255,.15);
-    border-radius: var(--radius-full);
-    font-size: var(--text-sm);
-    color: var(--clr-primary-200);
-  }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Noto Serif SC', 'Songti SC', 'STSong', serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-x: hidden;
+}
 
-  .section-alt { background: var(--clr-bg-subtle); }
+/* ── Top Bar ── */
+.top-bar {
+  position: fixed; top:0; left:0; right:0; z-index:100;
+  height: 56px;
+  background: linear-gradient(180deg, rgba(240,232,216,0.98), rgba(240,232,216,0.9));
+  backdrop-filter: blur(8px);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 24px;
+  border-bottom: 1px solid var(--divider);
+}
+.top-bar .title-group { display:flex; align-items:baseline; gap:12px; }
+.top-bar h1 { font-size:1.1rem; font-weight:600; color:var(--text); letter-spacing:0.02em; }
+.top-bar .subtitle { font-size:0.8rem; color:var(--text-light); font-family:'Playfair Display',Georgia,serif; font-style:italic; }
+.top-bar .controls { display:flex; align-items:center; gap:16px; }
+.scene-label { font-size:0.78rem; color:var(--text-light); font-family:'Playfair Display',Georgia,serif; font-style:italic; min-width:100px; text-align:right; }
 
-  .work-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--space-6); }
+/* ── Book Container ── */
+.book-wrapper {
+  margin-top: 56px;
+  width: 100%; max-width: 1100px;
+  min-height: calc(100vh - 56px);
+  display:flex; align-items:center; justify-content:center;
+  padding: 24px;
+}
+.book {
+  width:100%; max-width:1000px;
+  background: var(--page);
+  border-radius: 4px 12px 12px 4px;
+  box-shadow: 2px 4px 24px var(--shadow), 0 1px 3px rgba(0,0,0,0.06);
+  overflow: hidden;
+  position: relative;
+  min-height: 500px;
+}
+.book::before {
+  content:''; position:absolute; left:0; top:0; bottom:0; width:8px;
+  background: linear-gradient(90deg, rgba(0,0,0,0.06), transparent);
+  z-index:2; pointer-events:none;
+}
 
-  .work-card {
-    background: var(--clr-bg);
-    border: 1px solid var(--clr-border);
-    border-radius: var(--radius-lg);
-    overflow: hidden;
-    transition: box-shadow var(--duration-normal) var(--ease-out), transform var(--duration-normal) var(--ease-out);
-  }
-  .work-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
-  .work-card-img {
-    height: 200px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 3rem;
-  }
-  .work-card-body { padding: var(--space-5); }
-  .work-card-body h3 { font-size: var(--text-lg); margin-bottom: var(--space-2); }
-  .work-card-body .meta { font-size: var(--text-sm); color: var(--clr-text-muted); margin-bottom: var(--space-2); }
-  .work-card-body p { font-size: var(--text-sm); color: var(--clr-text-secondary); }
+/* ── Scene ── */
+.scene { display:none; }
+.scene.active { display:flex; -webkit-backface-visibility:hidden; backface-visibility:hidden; }
 
-  .timeline { position: relative; padding-left: var(--space-8); }
-  .timeline::before {
-    content: ''; position: absolute; left: 0; top: 0; bottom: 0;
-    width: 1px; background: var(--clr-border);
-  }
-  .timeline-item { position: relative; padding-bottom: var(--space-8); }
-  .timeline-item::before {
-    content: ''; position: absolute; left: calc(-1 * var(--space-8) + 1px);
-    top: var(--space-1); width: 8px; height: 8px;
-    background: var(--clr-primary-500); border-radius: 50%;
-    transform: translateX(-50%);
-  }
-  .timeline-item .year {
-    font-size: var(--text-sm);
-    font-weight: var(--weight-semibold);
-    color: var(--clr-primary-600);
-    margin-bottom: var(--space-1);
-  }
-  .timeline-item p { font-size: var(--text-sm); color: var(--clr-text-secondary); }
+.scene-inner { display:flex; width:100%; min-height:500px; }
 
-  .quote-block {
-    max-width: var(--container-sm);
-    margin: 0 auto;
-    text-align: center;
-    padding: var(--space-12) var(--space-6);
-  }
-  .quote-block blockquote {
-    font-size: var(--text-xl);
-    font-style: italic;
-    color: var(--clr-primary-700);
-    line-height: var(--leading-relaxed);
-    margin-bottom: var(--space-4);
-  }
-  .quote-block cite {
-    font-size: var(--text-sm);
-    color: var(--clr-text-muted);
-    font-style: normal;
-  }
+.scene-image {
+  flex:0 0 50%; position:relative; overflow:hidden;
+  background: #e0d6c8;
+  display:flex; align-items:center; justify-content:center;
+  align-self:center;
+}
+.scene-image img {
+  width:100%; height:auto; display:block;
+  transition: opacity 0.6s ease;
+  opacity:0;
+}
+.scene-image img.loaded { opacity:1; }
 
-  .stat-row { display: flex; gap: var(--space-8); justify-content: center; flex-wrap: wrap; }
-  .stat { text-align: center; }
-  .stat .num { font-size: var(--text-3xl); font-weight: var(--weight-bold); color: var(--clr-primary-700); }
-  .stat .label { font-size: var(--text-sm); color: var(--clr-text-secondary); margin-top: var(--space-1); }
+.scene-content {
+  flex:1; padding:48px 40px;
+  display:flex; flex-direction:column;
+  justify-content:center;
+  min-width:0;
+  overflow-wrap:break-word;
+}
+.scene-number {
+  font-family:'Playfair Display',Georgia,serif;
+  font-size:0.85rem; color:var(--accent); letter-spacing:0.15em;
+  margin-bottom:8px;
+}
+.scene-title {
+  font-size:1.6rem; font-weight:700; margin-bottom:4px; line-height:1.3;
+}
+.scene-title-it {
+  font-family:'Playfair Display',Georgia,serif;
+  font-size:1.1rem; font-style:italic; color:var(--terracotta);
+  margin-bottom:24px;
+}
+.dialogue-block { margin-bottom:20px; }
+.dialogue-block .speaker {
+  font-weight:600; font-size:0.9rem; color:var(--accent-dim);
+  margin-bottom:2px; letter-spacing:0.05em;
+}
+.dialogue-block .zh { font-size:1.05rem; line-height:1.75; color:var(--text); }
+.dialogue-block .it {
+  font-family:'Crimson Pro', Georgia, serif;
+  font-size:0.9rem; font-style:italic; color:var(--terracotta);
+  line-height:1.6; margin-top:4px;
+}
+.stage-direction {
+  font-size:0.9rem; color:var(--text-light); font-style:italic;
+  margin:12px 0; padding-left:16px; border-left:2px solid var(--divider);
+}
 
-  .img-placeholder {
-    width: 100%; height: 100%;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 2.5rem;
-  }
-  .david-bg { background: var(--clr-bg-subtle); overflow: hidden; }
-  .sistine-bg { background: var(--clr-primary-900); overflow: hidden; }
-  .pieta-bg { background: var(--clr-bg-subtle); overflow: hidden; }
-  .work-card-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.historical-note {
+  margin-top:auto; padding-top:20px; border-top:1px solid var(--divider);
+  font-size:0.82rem; color:var(--text-light); line-height:1.6;
+}
+.historical-note strong { color:var(--accent-dim); }
 
-  /* ── 平板 (641-1024px) ── */
-  @media (max-width: 1024px) {
-    .work-grid { grid-template-columns: repeat(2, 1fr); }
-    .hero h1 { font-size: clamp(1.8rem, 4vw, 2.8rem); }
-  }
+/* ── Navigation ── */
+.nav-area {
+  display:flex; align-items:center; justify-content:center; gap:24px;
+  padding: 16px 40px 32px;
+  border-top: 1px solid var(--divider);
+}
+.nav-btn {
+  background:none; border:1px solid var(--divider);
+  width:42px; height:42px; border-radius:50%;
+  cursor:pointer; font-size:1.2rem; color:var(--text-light);
+  display:flex; align-items:center; justify-content:center;
+  transition:all 0.25s;
+}
+.nav-btn:hover { border-color:var(--accent); color:var(--accent); }
+.nav-btn:disabled { opacity:0.3; cursor:default; }
+.nav-btn:disabled:hover { border-color:var(--divider); color:var(--text-light); }
 
-  /* ── 手机 (≤640px) ── */
-  @media (max-width: 640px) {
-    .hero { padding: var(--space-10) 0 var(--space-8); }
-    .hero h1 { font-size: 1.75rem; }
-    .hero p { font-size: var(--text-base); padding: 0 var(--space-4); }
-    .hero .years {
-      font-size: var(--text-xs);
-      padding: var(--space-2) var(--space-4);
-      gap: var(--space-3);
-    }
+.page-dots { display:flex; gap:8px; align-items:center; }
+.page-dot {
+  width:8px; height:8px; border-radius:50%; background:var(--divider);
+  cursor:pointer; transition:all 0.3s;
+}
+.page-dot.active { background:var(--accent); width:9px; height:9px; }
+.page-dot:hover { background:var(--accent-dim); }
 
-    .stat-row { gap: var(--space-4); }
-    .stat .num { font-size: var(--text-2xl); }
-    .stat .label { font-size: var(--text-xs); }
+.page-label {
+  font-size:0.8rem; color:var(--text-light);
+  font-family:'Playfair Display',Georgia,serif;
+  min-width:60px; text-align:center;
+}
 
-    section[style*="padding: var(--space-16)"] {
-      padding: var(--space-10) 0 !important;
-    }
+/* ── Loading placeholder ── */
+.loading-placeholder {
+  position:absolute; inset:0;
+  display:flex; align-items:center; justify-content:center;
+  color:var(--text-light); font-size:0.9rem;
+}
+.spinner {
+  width:32px; height:32px; border:3px solid var(--divider);
+  border-top-color:var(--accent); border-radius:50%;
+  animation: spin 1s linear infinite;
+}
+@keyframes spin { to { transform:rotate(360deg); } }
 
-    .work-grid { grid-template-columns: 1fr; gap: var(--space-4); }
-    .work-card-img { height: 160px; }
+/* ── Scene transitions ── */
+.scene.slide-left-out { display:flex; animation: slideLeftOut 0.45s cubic-bezier(.4,0,.2,1) forwards; }
+.scene.slide-right-out { display:flex; animation: slideRightOut 0.45s cubic-bezier(.4,0,.2,1) forwards; }
+.scene.slide-left-in { display:flex; animation: slideLeftIn 0.45s cubic-bezier(.4,0,.2,1) forwards; }
+.scene.slide-right-in { display:flex; animation: slideRightIn 0.45s cubic-bezier(.4,0,.2,1) forwards; }
 
-    .timeline { padding-left: var(--space-6); }
-    .timeline-item { padding-bottom: var(--space-6); }
-    .timeline-item::before { left: calc(-1 * var(--space-6) + 1px); }
+@keyframes slideLeftOut { 0% { transform:translate3d(0,0,0); opacity:1; } 100% { transform:translate3d(-60px,0,0); opacity:0; } }
+@keyframes slideRightOut { 0% { transform:translate3d(0,0,0); opacity:1; } 100% { transform:translate3d(60px,0,0); opacity:0; } }
+@keyframes slideLeftIn { 0% { transform:translate3d(60px,0,0); opacity:0; } 100% { transform:translate3d(0,0,0); opacity:1; } }
+@keyframes slideRightIn { 0% { transform:translate3d(-60px,0,0); opacity:0; } 100% { transform:translate3d(0,0,0); opacity:1; } }
 
-    .quote-block { padding: var(--space-8) var(--space-4); }
-    .quote-block blockquote { font-size: var(--text-lg); }
+/* ── Visual Notes ── */
+.visual-notes {
+  border-top: 1px solid var(--divider);
+  margin-top: 0;
+}
+.visual-notes .vn-header {
+  display:flex; align-items:center; justify-content:space-between;
+  padding: 16px 40px;
+  cursor:pointer; user-select:none;
+  background: linear-gradient(180deg, rgba(250,243,232,0.5), transparent);
+  transition: background 0.2s;
+}
+.visual-notes .vn-header:hover { background: rgba(200,149,74,0.06); }
+.vn-title-group { display:flex; align-items:center; gap:10px; }
+.vn-icon { font-size:1.3rem; }
+.vn-header h2 { font-size:1.1rem; font-weight:600; color:var(--text); }
+.vn-title-it {
+  font-family:'Playfair Display',Georgia,serif;
+  font-size:0.9rem; font-style:italic; color:var(--terracotta);
+  margin-left:8px; font-weight:400;
+}
+.vn-arrow { font-size:0.8rem; color:var(--text-light); transition: transform 0.3s; }
+.visual-notes.expanded .vn-arrow { transform: rotate(180deg); }
 
-    footer .flex {
-      flex-direction: column;
-      gap: var(--space-2);
-      text-align: center;
-    }
-  }
+.vn-content { display:none; padding: 0 40px 32px; }
+.visual-notes.expanded .vn-content { display:block; }
 
-  /* ── 小手机 (≤380px) ── */
-  @media (max-width: 380px) {
-    .hero h1 { font-size: 1.5rem; }
-    .stat-row { flex-direction: column; gap: var(--space-4); }
-    .container { padding: 0 var(--space-4); }
-  }
+.vn-section { margin-bottom: 36px; }
+.vn-section h3 { font-size:1.05rem; font-weight:600; color:var(--accent-dim); margin-bottom:2px; }
+.vn-sub-it {
+  font-family:'Playfair Display',Georgia,serif;
+  font-size:0.85rem; font-style:italic; color:var(--terracotta);
+  margin-bottom:12px; font-weight:400;
+}
+.vn-desc { font-size:0.9rem; color:var(--text-light); line-height:1.7; margin-bottom:16px; }
+.vn-desc-center { text-align:center; font-style:italic; margin-top:24px; }
+
+.vn-image-frame {
+  text-align:center;
+  background: #ede4d4;
+  border-radius:6px; overflow:hidden;
+  padding: 12px 12px 4px;
+}
+.vn-img {
+  width:100%; height:auto; display:block;
+  border-radius:3px; opacity:0; transition: opacity 0.5s;
+}
+.vn-img.loaded { opacity:1; }
+.vn-caption {
+  font-size:0.78rem; color:var(--text-light);
+  text-align:center; padding:8px 4px 4px; line-height:1.5;
+}
+
+/* Gallery */
+.vn-gallery { display:grid; grid-template-columns: repeat(3, 1fr); gap:16px; }
+.vn-card {
+  background: #faf3e8;
+  border:1px solid var(--divider);
+  border-radius:6px; overflow:hidden;
+  transition: box-shadow 0.2s;
+}
+.vn-card:hover { box-shadow: 0 2px 12px var(--shadow); }
+.vn-card .vn-img { width:100%; aspect-ratio:4/3; object-fit:cover; }
+.vn-card-text { padding:14px 16px; }
+.vn-card-title { font-size:0.9rem; font-weight:600; color:var(--text); margin-bottom:2px; }
+.vn-card-it {
+  font-family:'Crimson Pro', Georgia, serif;
+  font-size:0.8rem; color:var(--terracotta); margin-bottom:6px;
+}
+.vn-card-note { font-size:0.8rem; color:var(--text-light); line-height:1.55; }
+
+/* Parallel columns */
+.vn-parallel { display:grid; grid-template-columns: 1fr 1fr; gap:24px; margin-bottom:16px; }
+.vn-image-compact {
+  background:#ede4d4; border-radius:4px; overflow:hidden;
+  margin-bottom:12px; max-height:200px; min-height:120px;
+  display:flex; align-items:center;
+}
+.vn-image-compact .vn-img { width:100%; height:auto; }
+.vn-quote-block {
+  border-left:3px solid var(--accent);
+  padding:8px 16px; margin-bottom:12px;
+  background: rgba(200,149,74,0.06);
+  border-radius:0 4px 4px 0;
+}
+.vn-quote { font-size:0.95rem; font-weight:600; color:var(--text); line-height:1.5; margin-bottom:4px; }
+.vn-quote-it {
+  font-family:'Crimson Pro', Georgia, serif;
+  font-size:0.82rem; color:var(--terracotta); line-height:1.4;
+}
+.vn-attr { font-size:0.78rem; color:var(--accent-dim); text-align:right; }
+.vn-note { font-size:0.82rem; color:var(--text-light); line-height:1.6; }
+
+.vn-footer-note { text-align:center; padding-top:20px; border-top:1px solid var(--divider); }
+.vn-footer-note small { color:var(--text-light); opacity:0.7; }
+
+/* ── Responsive ── */
+
+/* ══ Desktop Large: ≥1440px ══ */
+@media (min-width: 1440px) {
+  .book-wrapper { max-width:1300px; padding:40px; }
+  .book { max-width:1200px; }
+  .scene-content { padding:56px 52px; }
+  .scene-title { font-size:1.9rem; }
+  .scene-title-it { font-size:1.25rem; }
+  .dialogue-block .zh { font-size:1.15rem; line-height:1.8; }
+  .dialogue-block .it { font-size:1rem; line-height:1.7; }
+  .top-bar { padding:0 48px; }
+  .nav-area { padding:20px 48px 36px; }
+}
+
+/* ══ Desktop / Laptop: 1200–1439px ══ */
+@media (min-width: 1200px) and (max-width: 1439px) {
+  .book-wrapper { max-width:1200px; padding:32px; }
+  .book { max-width:1100px; }
+  .scene-content { padding:48px 44px; }
+  .scene-title { font-size:1.75rem; }
+  .scene-title-it { font-size:1.15rem; }
+  .dialogue-block .zh { font-size:1.1rem; }
+  .top-bar { padding:0 36px; }
+}
+
+/* ══ Laptop Small: 1024–1199px ══ */
+@media (min-width: 1024px) and (max-width: 1199px) {
+  .book-wrapper { max-width:1024px; padding:24px; }
+  .book { max-width:960px; }
+  .scene-content { padding:44px 38px; }
+  .scene-title { font-size:1.6rem; }
+  .scene-title-it { font-size:1.1rem; }
+  .dialogue-block .zh { font-size:1.05rem; }
+  .top-bar { padding:0 28px; }
+}
+
+/* ══ Tablet Landscape: 768–1023px ══ */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .scene-inner { flex-direction:column; align-items:stretch; }
+  .scene-image { flex:0 0 auto; aspect-ratio:1/1; max-width:520px; align-self:stretch; }
+  .scene-image img { position:absolute; inset:0; object-fit:cover; }
+  .scene-content { padding:44px 40px 56px; justify-content:flex-start; }
+  .scene-title { font-size:1.55rem; }
+  .scene-title-it { font-size:1.05rem; margin-bottom:20px; }
+  .dialogue-block .zh { font-size:1.05rem; line-height:1.8; }
+  .dialogue-block .it { font-size:0.92rem; line-height:1.65; }
+  .book-wrapper { padding:20px; margin-top:56px; }
+  .book { border-radius:4px 10px 10px 4px; max-width:740px; overflow:visible; }
+  .book::before { width:6px; }
+  .top-bar { padding:0 24px; }
+  .top-bar h1 { font-size:1.05rem; }
+  .top-bar .subtitle { font-size:0.78rem; }
+  .nav-area { padding:16px 36px 30px; gap:20px; }
+  .historical-note { font-size:0.85rem; }
+  .footer { padding:20px; font-size:0.78rem; }
+}
+
+/* ══ Tablet Portrait / Large Phone: 480–767px ══ */
+@media (min-width: 480px) and (max-width: 767px) {
+  @keyframes slideLeftOut { 0% { transform:translate3d(0,0,0); opacity:1; } 100% { transform:translate3d(-40px,0,0); opacity:0; } }
+  @keyframes slideRightOut { 0% { transform:translate3d(0,0,0); opacity:1; } 100% { transform:translate3d(40px,0,0); opacity:0; } }
+  @keyframes slideLeftIn { 0% { transform:translate3d(40px,0,0); opacity:0; } 100% { transform:translate3d(0,0,0); opacity:1; } }
+  @keyframes slideRightIn { 0% { transform:translate3d(-40px,0,0); opacity:0; } 100% { transform:translate3d(0,0,0); opacity:1; } }
+  .scene-inner { flex-direction:column; align-items:stretch; }
+  .scene-image { flex:0 0 auto; aspect-ratio:1/1; align-self:stretch; }
+  .scene-image img { position:absolute; inset:0; object-fit:cover; }
+  .scene-content { padding:36px 28px 44px; justify-content:flex-start; }
+  .scene-title { font-size:1.4rem; }
+  .scene-title-it { font-size:1rem; margin-bottom:18px; }
+  .dialogue-block .zh { font-size:1rem; line-height:1.75; }
+  .dialogue-block .it { font-size:0.88rem; line-height:1.6; }
+  .dialogue-block .speaker { font-size:0.85rem; }
+  .stage-direction { font-size:0.85rem; }
+  .historical-note { font-size:0.8rem; padding-top:16px; }
+  .book-wrapper { padding:12px 12px 0; margin-top:52px; }
+  .book { border-radius:4px 8px 8px 4px; max-width:100%; min-height:auto; overflow:visible; }
+  .book::before { width:5px; }
+  .top-bar { padding:0 16px; height:52px; }
+  .top-bar h1 { font-size:0.95rem; }
+  .top-bar .subtitle { font-size:0.72rem; }
+  .top-bar .controls { gap:10px; }
+  .scene-label { font-size:0.72rem; min-width:80px; }
+  .nav-area { padding:12px 24px 24px; gap:18px; }
+  .nav-btn { width:40px; height:40px; font-size:1.1rem; }
+  .page-dots { gap:8px; }
+  .page-dot { width:8px; height:8px; padding:10px; }
+  .page-dot.active { width:9px; height:9px; }
+  .page-label { font-size:0.78rem; min-width:52px; }
+  .scene-number { font-size:0.8rem; }
+  .footer { font-size:0.74rem; padding:18px 20px; }
+  .vn-gallery { grid-template-columns:1fr; }
+  .vn-parallel { grid-template-columns:1fr; gap:16px; }
+  .visual-notes .vn-header { padding:14px 20px; }
+  .vn-content { padding:0 20px 24px; }
+  .vn-header h2 { font-size:1rem; }
+  .vn-title-it { font-size:0.8rem; }
+}
+
+/* ══ Mobile Phone: < 480px ══ */
+@media (max-width: 479px) {
+  @keyframes slideLeftOut { 0% { transform:translate3d(0,0,0); opacity:1; } 100% { transform:translate3d(-35px,0,0); opacity:0; } }
+  @keyframes slideRightOut { 0% { transform:translate3d(0,0,0); opacity:1; } 100% { transform:translate3d(35px,0,0); opacity:0; } }
+  @keyframes slideLeftIn { 0% { transform:translate3d(35px,0,0); opacity:0; } 100% { transform:translate3d(0,0,0); opacity:1; } }
+  @keyframes slideRightIn { 0% { transform:translate3d(-35px,0,0); opacity:0; } 100% { transform:translate3d(0,0,0); opacity:1; } }
+  .scene-inner { flex-direction:column; align-items:stretch; }
+  .scene-image { flex:0 0 auto; aspect-ratio:1/1; align-self:stretch; }
+  .scene-image img { position:absolute; inset:0; object-fit:cover; }
+  .scene-content { padding:28px 20px 40px; justify-content:flex-start; }
+  .scene-title { font-size:1.25rem; }
+  .scene-title-it { font-size:0.92rem; margin-bottom:14px; }
+  .dialogue-block { margin-bottom:16px; }
+  .dialogue-block .zh { font-size:0.95rem; line-height:1.7; }
+  .dialogue-block .it { font-size:0.82rem; line-height:1.55; }
+  .dialogue-block .speaker { font-size:0.82rem; }
+  .stage-direction { font-size:0.82rem; margin:10px 0; padding-left:12px; }
+  .historical-note { font-size:0.76rem; padding-top:14px; }
+  .book-wrapper { padding:6px 6px 0; margin-top:50px; }
+  .book { border-radius:4px 6px 6px 4px; max-width:100%; min-height:auto; overflow:visible; }
+  .book::before { width:4px; }
+  .top-bar { padding:0 10px; height:48px; }
+  .top-bar h1 { font-size:0.88rem; }
+  .top-bar .subtitle { display:none; }
+  .top-bar .controls { gap:6px; }
+  .scene-label { font-size:0.68rem; min-width:60px; }
+  .nav-area { padding:12px 14px 20px; gap:12px; }
+  .nav-btn { width:44px; height:44px; font-size:1.1rem; }
+  .page-dots { gap:6px; }
+  .page-dot { width:8px; height:8px; padding:10px; }
+  .page-dot.active { width:9px; height:9px; box-shadow:0 0 3px var(--accent); }
+  .page-label { font-size:0.7rem; min-width:44px; }
+  .scene-number { font-size:0.72rem; margin-bottom:6px; }
+  .footer { font-size:0.68rem; padding:16px 14px; line-height:1.5; }
+  .vn-gallery { grid-template-columns:1fr; }
+  .vn-parallel { grid-template-columns:1fr; gap:16px; }
+  .visual-notes .vn-header { padding:14px 14px; }
+  .vn-content { padding:0 14px 20px; }
+  .vn-header h2 { font-size:0.95rem; }
+  .vn-title-it { font-size:0.75rem; }
+  .vn-section h3 { font-size:0.95rem; }
+  .vn-quote { font-size:0.88rem; }
+}
+
+/* ══ Mobile Small: < 375px ══ */
+@media (max-width: 374px) {
+  .scene-content { padding:24px 14px; justify-content:flex-start; }
+  .scene-title { font-size:1.15rem; }
+  .scene-title-it { font-size:0.85rem; }
+  .dialogue-block .zh { font-size:0.9rem; line-height:1.65; }
+  .dialogue-block .it { font-size:0.78rem; }
+  .top-bar { padding:0 8px; height:44px; }
+  .top-bar h1 { font-size:0.78rem; }
+  .nav-btn { width:42px; height:42px; }
+  .page-dots { gap:4px; }
+  .page-dot { padding:10px; }
+  .page-dot.active { width:9px; height:9px; }
+  .nav-area { gap:8px; }
+}
+
+/* ── Footer ── */
+.footer {
+  padding:24px; text-align:center; font-size:0.78rem; color:var(--text-light);
+  border-top:1px solid var(--divider); width:100%; max-width:1100px;
+}
+.footer a { color:var(--accent-dim); text-decoration:none; }
+html { scroll-behavior: smooth; scroll-padding-top: 56px; overscroll-behavior: none; }
 </style>
 </head>
 <body>
 
-<!-- Hero -->
-<section class="hero">
-  <div class="container">
-    <div class="years">1475 — 1564</div>
+<!-- Top Bar -->
+<div class="top-bar">
+  <div class="title-group">
     <h1>米开朗琪罗</h1>
-    <p>Michelangelo di Lodovico Buonarroti Simoni<br>意大利文艺复兴时期最伟大的雕塑家、画家、建筑师与诗人</p>
+    <span class="subtitle">Il Divino</span>
   </div>
-</section>
+  <div class="controls">
+    <span class="scene-label" id="topSceneLabel">Scena 1 · 学徒时代</span>
+  </div>
+</div>
 
-<!-- 数字 -->
-<section style="padding: var(--space-12) 0;">
-  <div class="container">
-    <div class="stat-row">
-      <div class="stat"><div class="num">89</div><div class="label">年生涯</div></div>
-      <div class="stat"><div class="num">300+</div><div class="label">传世作品</div></div>
-      <div class="stat"><div class="num">4</div><div class="label">领域通才</div></div>
-      <div class="stat"><div class="num">2</div><div class="label">教皇服务</div></div>
+<!-- Book -->
+<div class="book-wrapper">
+<div class="book" id="book">
+
+<!-- ═══ Scene 1 ═══ -->
+<div class="scene active" data-scene="1" data-title="学徒时代">
+  <div class="scene-inner">
+    <div class="scene-image">
+      <div class="loading-placeholder"><div class="spinner"></div></div>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/d/d7/Michelangelo%27s_house_in_Caprese.jpg" fetchpriority="high" alt="卡普雷塞 - 米开朗琪罗故居" onload="this.classList.add('loaded');this.previousElementSibling.remove()" onerror="this.parentElement.innerHTML='<div class=loading-placeholder style=color:var(--text-light)>🖼 卡普雷塞 · 米开朗琪罗出生地</div>'">
     </div>
-  </div>
-</section>
-
-<!-- 生平时间线 -->
-<section class="section-alt" style="padding: var(--space-16) 0;">
-  <div class="container-sm">
-    <h2 style="margin-bottom: var(--space-8)">生平 · Life</h2>
-    <div class="timeline">
-      <div class="timeline-item fade-in">
-        <div class="year">1475</div>
-        <p>3月6日出生于佛罗伦萨附近的卡普雷塞。父亲是当地行政长官，家族是古老的佛罗伦萨贵族。</p>
+    <div class="scene-content">
+      <div class="scene-number">SCENA 1</div>
+      <div class="scene-title">学徒时代</div>
+      <div class="scene-title-it">L'Apprendistato</div>
+      <div class="stage-direction">1475年3月6日，佛罗伦萨共和国卡普雷塞。一个男孩出生在古老的贵族家庭——但通往荣耀的路，不在血统里，在石头里。</div>
+      <div class="dialogue-block">
+        <div class="speaker">父亲·洛多维科</div>
+        <div class="zh">石头里能挣到什么钱？Buonarroti家的人不该碰凿子！</div>
+        <div class="it">Che denaro si può guadagnare dalla pietra? Un Buonarroti non tocca scalpelli!</div>
       </div>
-      <div class="timeline-item fade-in">
-        <div class="year">1488</div>
-        <p>13岁进入画家吉兰达约的工作室学艺，次年转入美第奇家族创办的雕塑学院，师从多纳泰罗的弟子。</p>
+      <div class="dialogue-block">
+        <div class="speaker">乔尔乔·瓦萨里（传记作者）</div>
+        <div class="zh">但上帝已经把凿子放在他手里了。13岁进入吉兰达约工作室，他不仅在学——他在超越。一年后转入美第奇花园雕塑学院，在多纳泰罗弟子的指导下，第一次把手伸进大理石。</div>
+        <div class="it">Ma Dio aveva già messo lo scalpello nella sua mano. A tredici anni entra nella bottega del Ghirlandaio — non impara, supera. Un anno dopo, nei giardini medicei, tocca per la prima volta il marmo.</div>
       </div>
-      <div class="timeline-item fade-in">
-        <div class="year">1496</div>
-        <p>首次来到罗马。两年后完成《哀悼基督》（Pietà），时年 23 岁——这件作品让他一夜成名。</p>
-      </div>
-      <div class="timeline-item fade-in">
-        <div class="year">1501</div>
-        <p>回到佛罗伦萨，受委托用一块废弃了 40 年的大理石创作《大卫》。1504 年揭幕时轰动全城。</p>
-      </div>
-      <div class="timeline-item fade-in">
-        <div class="year">1508</div>
-        <p>受教皇尤利乌斯二世委托，独自绘制西斯廷礼拜堂穹顶画。四年后完成 500 平方米的《创世记》。</p>
-      </div>
-      <div class="timeline-item fade-in">
-        <div class="year">1534</div>
-        <p>移居罗马，开始创作西斯廷礼拜堂祭坛画《最后的审判》，耗时七年，1537 年揭幕。</p>
-      </div>
-      <div class="timeline-item fade-in">
-        <div class="year">1546</div>
-        <p>被任命为圣彼得大教堂总建筑师。重建设计方案，最终形成我们今天看到的穹顶。</p>
-      </div>
-      <div class="timeline-item fade-in">
-        <div class="year">1564</div>
-        <p>2月18日在罗马去世，享年 88 岁。遗体被秘密运回佛罗伦萨，安葬在圣十字大教堂。</p>
+      <div class="historical-note">
+        <strong>ⓘ</strong> 米开朗琪罗出生时，父亲是卡普雷塞的行政长官。家族自称是佛罗伦萨贵族波纳罗蒂家族后裔。他后来常以此自豪——"我是一个贵族，不是工匠。"但一辈子做的是工匠的事。
       </div>
     </div>
   </div>
-</section>
+</div>
 
-<!-- 代表作品 -->
-<section style="padding: var(--space-16) 0;">
-  <div class="container">
-    <h2 style="margin-bottom: var(--space-8)">代表作品 · Masterworks</h2>
-    <div class="work-grid">
-      <div class="work-card fade-in">
-        <div class="work-card-img david-bg">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/c/c0/David_von_Michelangelo.jpg" alt="米开朗琪罗 - 大卫像" loading="lazy" style="width:100%;height:100%;object-fit:cover">
-        </div>
-        <div class="work-card-body">
-          <h3>大卫</h3>
-          <div class="meta">1501—1504 · 大理石 · 高 5.17 米</div>
-          <p>文艺复兴最著名的雕塑，以完美的人体比例和深刻的心理刻画，成为人类艺术史上不可逾越的巅峰。原本放置在佛罗伦萨市政厅前，现藏于学院美术馆。</p>
-        </div>
+<!-- ═══ Scene 2 ═══ -->
+<div class="scene" data-scene="2" data-title="哀悼基督">
+  <div class="scene-inner">
+    <div class="scene-image">
+      <div class="loading-placeholder"><div class="spinner"></div></div>
+      <img data-src="https://upload.wikimedia.org/wikipedia/commons/d/d9/Michelangelo%27s_Pieta_%28cropped%29.jpg" alt="哀悼基督" onload="this.classList.add('loaded');this.previousElementSibling.remove()" onerror="this.parentElement.innerHTML='<div class=loading-placeholder style=color:var(--text-light)>🖼 哀悼基督</div>'">
+    </div>
+    <div class="scene-content">
+      <div class="scene-number">SCENA 2</div>
+      <div class="scene-title">哀悼基督</div>
+      <div class="scene-title-it">La Pietà</div>
+      <div class="stage-direction">罗马，1498年。23岁。一块来自卡拉拉的大理石。法国红衣主教委托的圣母哀悼基督雕像——没人认为一个23岁的年轻人能驾驭如此巨大的石材。</div>
+      <div class="dialogue-block">
+        <div class="speaker">米开朗琪罗</div>
+        <div class="zh">圣母的脸为什么那么年轻？耶稣33岁，她看起来比儿子还小。有人质疑。</div>
+        <div class="it">Perché il volto della Vergine è così giovane?</div>
       </div>
-      <div class="work-card fade-in">
-        <div class="work-card-img sistine-bg">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/5/5b/Michelangelo_-_Creation_of_Adam_%28cropped%29.jpg" alt="西斯廷礼拜堂穹顶画" loading="lazy" style="width:100%;height:100%;object-fit:cover">
-        </div>
-        <div class="work-card-body">
-          <h3>创世记 · 西斯廷穹顶</h3>
-          <div class="meta">1508—1512 · 湿壁画 · 500 m²</div>
-          <p>独自一人仰面在 20 米高的脚手架上完成。含 300 多个人物，核心场景《创造亚当》中上帝与亚当手指相接的瞬间，成为人类美术史上被引用最多的图像。</p>
-        </div>
+      <div class="dialogue-block">
+        <div class="speaker">米开朗琪罗的回答</div>
+        <div class="zh">「你不知道纯洁的女人比被玷污的女人老得更慢吗？」</div>
+        <div class="it">Non sapete che le donne caste conservano la loro freschezza più a lungo di quelle che non lo sono?</div>
       </div>
-      <div class="work-card fade-in">
-        <div class="work-card-img pieta-bg">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/d/d9/Michelangelo%27s_Pieta_%28cropped%29.jpg" alt="米开朗琪罗 - 哀悼基督" loading="lazy" style="width:100%;height:100%;object-fit:cover">
-        </div>
-        <div class="work-card-body">
-          <h3>哀悼基督</h3>
-          <div class="meta">1498—1499 · 大理石 · 高 1.74 米</div>
-          <p>23 岁的处女作。圣母怀抱被钉死的耶稣，面部却异常年轻——米开朗琪罗解释：纯洁使人永葆青春。唯一署名的作品（圣母衣带上刻有自己的名字）。</p>
-        </div>
+      <div class="historical-note">
+        <strong>ⓘ</strong> 这是米开朗琪罗唯一署名的作品——揭幕后他听到有人把作品归功于另一位雕塑家，当晚他潜入教堂，在圣母衣带上刻下一行字：<em>MICHEL.A[N]GELUS BONAROTUS FLORENTIN[US] FACIEBAT</em>（佛罗伦萨的米开朗琪罗·博纳罗蒂作）。据说他后来为此举感到后悔，发誓再也不署名。
       </div>
     </div>
   </div>
-</section>
+</div>
 
-<!-- 引语 -->
-<section class="section-alt">
-  <div class="quote-block">
-    <blockquote>「我在大理石中看见了天使，于是不停地雕刻，直到把他解放出来。」</blockquote>
-    <cite>— 米开朗琪罗</cite>
-  </div>
-</section>
-
-<!-- 晚年与遗产 -->
-<section style="padding: var(--space-16) 0;">
-  <div class="container-sm">
-    <h2 style="margin-bottom: var(--space-6)">遗产 · Legacy</h2>
-    <p>米开朗琪罗是文艺复兴三杰之一（与达·芬奇、拉斐尔并列），但与前两者不同——他是唯一在世时就被称为 "Il Divino"（神性之人）的艺术家。他一生留下了超过 300 首十四行诗，证明他也是那个时代最杰出的诗人之一。</p>
-    <p style="margin-top:var(--space-4)">他的雕塑理念深刻影响了后世的艺术美学：<strong>"每块石头里都住着一个形象，艺术家的任务只是去掉多余的部分。"</strong> 这句话不仅定义了雕塑的本质，也成为极简主义美学的源头之一。</p>
-    <p>今天，从 Google Doodle 到《忍者神龟》的角色命名（米开朗基罗是其中一只乌龟——虽然拼写混用了意大利名 Michelangelo 的英文化拼写 Michelangelo → Michelangelo），他的影响早已超越了艺术史本身。</p>
-  </div>
-</section>
-
-<footer style="padding: var(--space-8) 0; border-top: 1px solid var(--clr-border); background: var(--clr-bg-subtle);">
-  <div class="container">
-    <div class="flex" style="justify-content: space-between; align-items: center;">
-      <a href="/" style="font-size:var(--text-sm);color:var(--clr-primary-600);text-decoration:none">← 返回首页</a>
-      <small style="color: var(--clr-text-muted)">图片: Wikimedia Commons</small>
+<!-- ═══ Scene 3 ═══ -->
+<div class="scene" data-scene="3" data-title="大卫">
+  <div class="scene-inner">
+    <div class="scene-image">
+      <div class="loading-placeholder"><div class="spinner"></div></div>
+      <img data-src="https://upload.wikimedia.org/wikipedia/commons/c/c0/David_von_Michelangelo.jpg" alt="大卫像" onload="this.classList.add('loaded');this.previousElementSibling.remove()" onerror="this.parentElement.innerHTML='<div class=loading-placeholder style=color:var(--text-light)>🖼 大卫像</div>'">
+    </div>
+    <div class="scene-content">
+      <div class="scene-number">SCENA 3</div>
+      <div class="scene-title">大卫</div>
+      <div class="scene-title-it">Il David</div>
+      <div class="stage-direction">佛罗伦萨，1501年。圣母百花大教堂工地上，一块巨型卡拉拉大理石已经废弃了四十年。风吹雨打，没人敢动。26岁的米开朗琪罗走上前。</div>
+      <div class="dialogue-block">
+        <div class="speaker">米开朗琪罗</div>
+        <div class="zh">我在大理石里看见了天使。我的工作只是把他放出来。</div>
+        <div class="it">Vedo l'angelo nel marmo. Il mio compito è solo liberarlo.</div>
+      </div>
+      <div class="dialogue-block">
+        <div class="speaker">瓦萨里</div>
+        <div class="zh">两年半。5.17米高。从一块被所有人放弃的石头里，他释放了一个巨人——不是胜利后的大卫，而是战斗前的大卫。眉头紧锁、肌肉紧绷、全身每一寸都在等待。等待巨人倒下。</div>
+        <div class="it">Due anni e mezzo. Cinque metri e diciassette. Da un blocco che tutti avevano abbandonato, liberò un gigante — non David dopo la vittoria, ma David prima della battaglia. Ogni muscolo attende.</div>
+      </div>
+      <div class="historical-note">
+        <strong>ⓘ</strong> 1504年1月25日，佛罗伦萨艺术家委员会开会决定大卫的安置地点——达·芬奇、波提切利、菲利皮诺·利皮都参加了。最终决定放在领主广场入口，而非原定的教堂屋顶。大卫成为佛罗伦萨共和国的象征：弱小者以勇气挑战巨人。
+      </div>
     </div>
   </div>
-</footer>
+</div>
 
+<!-- ═══ Scene 4 ═══ -->
+<div class="scene" data-scene="4" data-title="西斯廷穹顶">
+  <div class="scene-inner">
+    <div class="scene-image">
+      <div class="loading-placeholder"><div class="spinner"></div></div>
+      <img data-src="https://upload.wikimedia.org/wikipedia/commons/5/5b/Michelangelo_-_Creation_of_Adam_%28cropped%29.jpg" alt="创造亚当" onload="this.classList.add('loaded');this.previousElementSibling.remove()" onerror="this.parentElement.innerHTML='<div class=loading-placeholder style=color:var(--text-light)>🖼 创世记 · 创造亚当</div>'">
+    </div>
+    <div class="scene-content">
+      <div class="scene-number">SCENA 4</div>
+      <div class="scene-title">西斯廷穹顶</div>
+      <div class="scene-title-it">La Cappella Sistina</div>
+      <div class="stage-direction">1508年。教皇尤利乌斯二世强迫米开朗琪罗放下凿子，拿起画笔。他愤怒地接受了——但他要的是整个穹顶，而不是教皇要求的十二使徒。</div>
+      <div class="dialogue-block">
+        <div class="speaker">米开朗琪罗</div>
+        <div class="zh">这不是我的工作。我是雕塑家，不是画家！</div>
+        <div class="it">Non è il mio mestiere. Io sono scultore, non pittore!</div>
+      </div>
+      <div class="dialogue-block">
+        <div class="speaker">教皇尤利乌斯二世</div>
+        <div class="zh">那就让它成为。你是那个唯一能把穹顶画成雕塑的人。</div>
+        <div class="it">Che lo diventi. Tu sei l'unico che può dipingere la volta come fosse scultura.</div>
+      </div>
+      <div class="dialogue-block">
+        <div class="speaker">瓦萨里</div>
+        <div class="zh">四年。500平方米。300多个人物。独自一人在20米高的脚手架上仰面作画。颜料滴到眼睛里、滴到胡子上、滴到地板上。当穹顶揭幕时——罗马沉默了。教皇跪了下来。</div>
+        <div class="it">Quattro anni. Cinquecento metri quadrati. Più di trecento figure. Solo, su un'impalcatura a venti metri, dipingendo a testa in giù. Quando la volta fu svelata — Roma tacque. Il Papa si inginocchiò.</div>
+      </div>
+      <div class="historical-note">
+        <strong>ⓘ</strong> 《创造亚当》中上帝与亚当手指将触未触的间隙——约1毫米——成为西方艺术史上被引用最多的画面。西斯廷穹顶上的9幅《创世记》场景从《分开光与暗》到《诺亚醉酒》，是人类对自身起源最宏伟的视觉想象。
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ Scene 5 ═══ -->
+<div class="scene" data-scene="5" data-title="最后的审判">
+  <div class="scene-inner">
+    <div class="scene-image">
+      <div class="loading-placeholder"><div class="spinner"></div></div>
+      <img data-src="https://upload.wikimedia.org/wikipedia/commons/6/6c/Michelangelo%27s_Last_Judgement.jpg" alt="最后的审判" onload="this.classList.add('loaded');this.previousElementSibling.remove()" onerror="this.parentElement.innerHTML='<div class=loading-placeholder style=color:var(--text-light)>🖼 最后的审判</div>'">
+    </div>
+    <div class="scene-content">
+      <div class="scene-number">SCENA 5</div>
+      <div class="scene-title">最后的审判</div>
+      <div class="scene-title-it">Il Giudizio Universale</div>
+      <div class="stage-direction">1534年。60岁的米开朗琪罗回到西斯廷礼拜堂。这次不是穹顶——是整面祭坛墙。近200平方米，400个人物在末日审判中翻滚、挣扎、上升、坠落。</div>
+      <div class="dialogue-block">
+        <div class="speaker">教廷礼仪官·切塞纳</div>
+        <div class="zh">这是妓院！不是礼拜堂！那么多裸体——成何体统！</div>
+        <div class="it">Questo è un postribolo, non una cappella! Tutti quei nudi — che indecenza!</div>
+      </div>
+      <div class="dialogue-block">
+        <div class="speaker">米开朗琪罗</div>
+        <div class="zh">审判日那天，你希望自己是什么样子？穿着衣服站在上帝面前吗？</div>
+        <div class="it">Nel giorno del giudizio, come vorresti presentarti davanti a Dio? Vestito?</div>
+      </div>
+      <div class="dialogue-block">
+        <div class="speaker">（米开朗琪罗报复性地将切塞纳画成地狱判官米诺斯，被毒蛇缠绕生殖器——永远定格在右下角。）</div>
+      </div>
+      <div class="historical-note">
+        <strong>ⓘ</strong> 《最后的审判》1537年揭幕时引发轩然大波——这是天主教世界最大的祭坛画，400个人物几乎全身赤裸。米开朗琪罗去世后，教廷命画家伏尔泰拉给关键部位画上遮羞布——伏尔泰拉从此被称为"内裤制造商"（<em>Il Braghettone</em>）。然而，那些裸体从未真正被遮盖。
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ Visual Notes ═══ -->
+<div class="visual-notes" id="visualNotes">
+  <div class="vn-header" onclick="document.getElementById('visualNotes').classList.toggle('expanded')">
+    <div class="vn-title-group">
+      <span class="vn-icon">🏛️</span>
+      <h2>视觉笔记 <span class="vn-title-it">Note Visive</span></h2>
+    </div>
+    <span class="vn-arrow">▼</span>
+  </div>
+  <div class="vn-content">
+
+    <!-- Section 1: The three works -->
+    <div class="vn-section">
+      <h3>① 三件杰作，一个灵魂</h3>
+      <h3 class="vn-sub-it">Tre Capolavori, Un'Anima</h3>
+      <p class="vn-desc">米开朗琪罗一生跨越雕塑、绘画、建筑、诗歌四大领域。但无论什么媒介，他都在做同一件事：从物质中释放灵魂。以下是三件他最著名的作品——全部是他30岁之前已经完成或开始的。</p>
+      <div class="vn-gallery">
+        <div class="vn-card">
+          <img data-src="https://upload.wikimedia.org/wikipedia/commons/d/d9/Michelangelo%27s_Pieta_%28cropped%29.jpg" alt="哀悼基督" class="vn-img vn-lazy" loading="lazy" onload="this.classList.add('loaded')" onerror="this.style.display='none'">
+          <div class="vn-card-text">
+            <p class="vn-card-title">《哀悼基督》1499</p>
+            <p class="vn-card-it"><em>La Pietà</em></p>
+            <p class="vn-card-note">23岁。23岁的年轻人雕出了圣母最极致的哀伤——不是哭喊，是沉默的承受。米开朗琪罗后来说：「没有哪颗灵魂比我祖母更纯洁，所以她的面容才如此年轻。」</p>
+          </div>
+        </div>
+        <div class="vn-card">
+          <img data-src="https://upload.wikimedia.org/wikipedia/commons/c/c0/David_von_Michelangelo.jpg" alt="大卫" class="vn-img vn-lazy" loading="lazy" onload="this.classList.add('loaded')" onerror="this.style.display='none'">
+          <div class="vn-card-text">
+            <p class="vn-card-title">《大卫》1504</p>
+            <p class="vn-card-it"><em>Il David</em></p>
+            <p class="vn-card-note">26岁。从废弃四十年的石料中解放。右手青筋暴起——不是力量的炫耀，是战斗前的紧张。米开朗琪罗选择的不是胜利者，而是准备迎战的人。</p>
+          </div>
+        </div>
+        <div class="vn-card">
+          <img data-src="https://upload.wikimedia.org/wikipedia/commons/5/5b/Michelangelo_-_Creation_of_Adam_%28cropped%29.jpg" alt="创造亚当" class="vn-img vn-lazy" loading="lazy" onload="this.classList.add('loaded')" onerror="this.style.display='none'">
+          <div class="vn-card-text">
+            <p class="vn-card-title">《创造亚当》1512</p>
+            <p class="vn-card-it"><em>La Creazione di Adamo</em></p>
+            <p class="vn-card-note">37岁。西斯廷穹顶的核心。上帝的手指与亚当的手指之间——那1毫米的间隙——是整个文艺复兴的宣言：人正在接近神，但永远不会到达。美存在于那个即将发生的瞬间。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section 2: The non-finito -->
+    <div class="vn-section">
+      <h3>② "未完成"的艺术</h3>
+      <h3 class="vn-sub-it">Il Non-Finito</h3>
+      <div class="vn-parallel">
+        <div class="vn-col">
+          <div class="vn-image-compact">
+            <img data-src="https://upload.wikimedia.org/wikipedia/commons/8/8e/Michelangelo%27s_Slaves_Louvre.jpg" alt="被缚的奴隶" class="vn-img vn-lazy" loading="lazy" onload="this.classList.add('loaded')" onerror="this.style.display='none'">
+          </div>
+          <div class="vn-quote-block">
+            <p class="vn-quote">「最高贵的艺术不是完成——是快要完成。」</p>
+            <p class="vn-quote-it"><em>L'arte più nobile non è compiuta — è sul punto di esserlo.</em></p>
+            <p class="vn-attr">— Michelangelo</p>
+          </div>
+          <p class="vn-note">《被缚的奴隶》和《苏醒的奴隶》（卢浮宫）——身体从大理石中挣扎而出，但下半身仍困在石头里。米开朗琪罗故意不完成它们。人在物质中挣扎、但永远无法彻底挣脱——这就是非弗尼托（non-finito）哲学。</p>
+        </div>
+        <div class="vn-col">
+          <div class="vn-image-compact">
+            <img data-src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Michelangelo%27s_attic_slave.jpg" alt="阿特拉斯奴隶" class="vn-img vn-lazy" loading="lazy" onload="this.classList.add('loaded')" onerror="this.style.display='none'">
+          </div>
+          <div class="vn-quote-block">
+            <p class="vn-quote">「我在大理石中看见了天使，于是不停地雕刻，直到把他解放出来。」</p>
+            <p class="vn-quote-it"><em>Vedo l'angelo nel marmo e scolpisco finché non lo libero.</em></p>
+            <p class="vn-attr">— Michelangelo</p>
+          </div>
+          <p class="vn-note">这些"未完成"的奴隶原本是为尤利乌斯二世陵墓制作的。它们证明了米开朗琪罗独特的创作方法：不是从外向内塑造，而是从内向外释放。那些留在石头里的身体，比完成的更动人。</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section 3: The Sonnets -->
+    <div class="vn-section">
+      <h3>③ 诗人的凿子</h3>
+      <h3 class="vn-sub-it">Lo Scalpello del Poeta</h3>
+      <p class="vn-desc">米开朗琪罗留下了超过300首十四行诗——文艺复兴三杰中，只有他被同时代的人称为"诗人"。他的诗和他的雕塑用的是同一把凿子：都在问同一个问题——灵魂如何挣脱肉体？</p>
+      <div class="vn-image-frame">
+        <p class="vn-desc"><em>「夜晚是仁慈的，它让渴望栖息」</em>——下面是米开朗琪罗写给维多利亚·科隆纳的一首十四行诗的中文和意大利文：</p>
+        <div class="vn-quote-block" style="max-width:500px;margin:0 auto;">
+          <p class="vn-quote">「雕刻的双手能赋予石头生命，</p>
+          <p class="vn-quote">但只有爱才能让灵魂苏醒。」</p>
+          <p class="vn-quote-it"><em>Le man che scolpisano danno vita alla pietra,</em></p>
+          <p class="vn-quote-it"><em>ma solo l'amore risveglia l'anima.</em></p>
+          <p class="vn-attr">— Michelangelo, Sonetto per Vittoria Colonna</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="vn-footer-note">
+      <small>🏛️ 图片来自 Wikimedia Commons · 教育用途 · 所有作品均为公共领域</small>
+    </div>
+
+  </div><!-- /vn-content -->
+</div><!-- /visual-notes -->
+
+<!-- Navigation -->
+<div class="nav-area">
+  <button class="nav-btn" id="prevBtn" onclick="goTo(currentScene-1)" disabled>←</button>
+  <div class="page-dots" id="pageDots"></div>
+  <button class="nav-btn" id="nextBtn" onclick="goTo(currentScene+1)">→</button>
+  <span class="page-label" id="pageLabel">1 / 5</span>
+</div>
+
+</div><!-- /book -->
+</div><!-- /book-wrapper -->
+
+<div class="footer">
+  米开朗琪罗 (1475–1564) · Il Divino · 
+  <a href="https://github.com/jasoneip01-pixel" target="_blank">Ariste 策展</a>
+</div>
+
+<script>
+// ── State ──
+let currentScene = 1;
+const totalScenes = 5;
+
+// ── Scene navigation ──
+function loadImg(sceneNum) {
+  const img = document.querySelector(`.scene[data-scene="${sceneNum}"] img`);
+  if (img && img.dataset.src && !img.src) {
+    img.src = img.dataset.src;
+  }
+}
+
+function updateTopBar(sceneNum) {
+  const scene = document.querySelector(`.scene[data-scene="${sceneNum}"]`);
+  const title = scene ? scene.dataset.title : '';
+  document.getElementById('topSceneLabel').textContent = `Scena ${sceneNum} · ${title}`;
+}
+
+function goTo(n) {
+  if (n < 1 || n > totalScenes || n === currentScene) return;
+  const dir = n > currentScene ? 'left' : 'right';
+  const old = currentScene;
+  
+  const oldScene = document.querySelector(`.scene[data-scene="${old}"]`);
+  const newScene = document.querySelector(`.scene[data-scene="${n}"]`);
+  
+  oldScene.classList.remove('active');
+  oldScene.classList.add(dir === 'left' ? 'slide-left-out' : 'slide-right-out');
+  
+  newScene.classList.remove('slide-left-in', 'slide-right-in');
+  newScene.classList.add('active', dir === 'left' ? 'slide-right-in' : 'slide-left-in');
+  
+  currentScene = n;
+  loadImg(n);
+  
+  // Update dots
+  document.querySelectorAll('.page-dot').forEach((dot, i) => {
+    dot.classList.toggle('active', i+1 === n);
+  });
+  document.getElementById('pageLabel').textContent = `${n} / ${totalScenes}`;
+  document.getElementById('prevBtn').disabled = n === 1;
+  document.getElementById('nextBtn').disabled = n === totalScenes;
+  updateTopBar(n);
+  
+  // Cleanup animations
+  setTimeout(() => {
+    oldScene.classList.remove('slide-left-out', 'slide-right-out');
+    newScene.classList.remove('slide-left-in', 'slide-right-in');
+  }, 500);
+}
+
+// ── Keyboard navigation ──
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'ArrowLeft') goTo(currentScene - 1);
+  if (e.key === 'ArrowRight') goTo(currentScene + 1);
+});
+
+// ── Touch swipe ──
+let touchStartX = 0;
+let touchEndX = 0;
+document.getElementById('book').addEventListener('touchstart', (e) => {
+  touchStartX = e.changedTouches[0].screenX;
+}, {passive: true});
+document.getElementById('book').addEventListener('touchend', (e) => {
+  touchEndX = e.changedTouches[0].screenX;
+  const diff = touchStartX - touchEndX;
+  if (Math.abs(diff) > 60) {
+    if (diff > 0) goTo(currentScene + 1);
+    else goTo(currentScene - 1);
+  }
+}, {passive: true});
+
+// ── Init ──
+(function init() {
+  // Create dots
+  const dotsContainer = document.getElementById('pageDots');
+  for (let i = 1; i <= totalScenes; i++) {
+    const dot = document.createElement('span');
+    dot.className = `page-dot${i === 1 ? ' active' : ''}`;
+    dot.onclick = () => goTo(i);
+    dotsContainer.appendChild(dot);
+  }
+  document.getElementById('pageLabel').textContent = `1 / ${totalScenes}`;
+  loadImg(1);
+  updateTopBar(1);
+  
+  // Keyboard shortcut hints
+  console.log('🦞 Il Divino · 用 ← → 键或滑动手势翻页');
+})();
+
+// ── Lazy load images on scroll (for visual notes) ──
+document.addEventListener('DOMContentLoaded', () => {
+  const lazyImgs = document.querySelectorAll('.vn-lazy');
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const img = entry.target;
+          if (img.dataset.src && !img.src) {
+            img.src = img.dataset.src;
+          }
+          observer.unobserve(img);
+        }
+      });
+    });
+    lazyImgs.forEach(img => observer.observe(img));
+  } else {
+    // Fallback: load all
+    lazyImgs.forEach(img => {
+      if (img.dataset.src && !img.src) img.src = img.dataset.src;
+    });
+  }
+});
+</script>
 </body>
 </html>
