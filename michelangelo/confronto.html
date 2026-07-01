@@ -207,36 +207,22 @@ body{
   </div>
 
   <!-- Desktop slider -->
-  <div class="slider-comparison">
-    <div class="img-container" id="slider1">
-      <img src="david-new.webp" alt="大卫解剖细节">
-      <img src="david-new.webp" alt="大卫解剖细节" class="overlay-img" style="clip-path:inset(0 50% 0 0)">
-      <div class="slider-handle"></div>
-      <input type="range" min="0" max="100" value="50" 
-        oninput="document.querySelector('#slider1 .overlay-img').style.clipPath='inset(0 '+ (100-this.value) +'% 0 0)'; this.previousElementSibling.style.left=this.value+'%'">
-    </div>
-    <div class="slider-labels">
-      <span>👈 自然观察 · 真实人体比例</span>
-      <span>理想化 · 超越自然 👉</span>
-    </div>
-  </div>
-
-  <!-- Mobile side-by-side -->
-  <div class="comparison comparison-mobile">
+  <!-- Split comparison: David full body vs face closeup -->
+  <div class="comparison">
     <div class="compare-item">
-      <img src="david-new.webp" alt="大卫" loading="lazy">
-      <span class="compare-label l">自然 · 真实</span>
+      <img src="david-new.webp" alt="大卫全身" loading="lazy">
+      <span class="compare-label l">真实解剖 · 尸检基础</span>
       <div class="compare-captions">
-        <p class="name">真实人体</p>
-        <p class="sub">米开朗琪罗解剖过尸体——他的肌肉走向、骨骼比例以真实尸体解剖为基础</p>
+        <p class="name">大卫（全身）1504</p>
+        <p class="sub">米开朗琪罗在圣灵教堂解剖过数十具尸体——肌肉的走向、骨骼的比例、每一条肌腱的位置，都有尸体解剖的精确依据。</p>
       </div>
     </div>
     <div class="compare-item">
-      <img src="david-new.webp" alt="大卫" loading="lazy">
-      <span class="compare-label r">理想 · 超越</span>
+      <img src="david.webp" alt="大卫右手特写" loading="lazy">
+      <span class="compare-label r">超越真实 · 理想比例</span>
       <div class="compare-captions">
-        <p class="name">超越自然</p>
-        <p class="sub">但他从不照抄自然——右手比实际放大15%，青筋暴起到现实中不可能的程度</p>
+        <p class="name">大卫（手部）1504</p>
+        <p class="sub">但他从不照抄自然——右手比实际放大15%，青筋暴起到现实中不可能的程度。真实 vs 理想被他走成了同一条路。</p>
       </div>
     </div>
   </div>
@@ -350,7 +336,10 @@ body{
 </section>
 
 <div class="footer">
-  Il Confronto · 四重视角看懂米开朗琪罗 · <a href="portale.html" style="color:#5a4a38;text-decoration:none;">← 三界</a>
+  Il Confronto · 四重视角看懂米开朗琪罗 ·
+  <a href="portale.html" style="color:#5a4a38;text-decoration:none;">← 三界</a>
+  <a href="cappella.html" style="color:#5a4a38;text-decoration:none;margin-left:16px;">沉浸长卷 →</a>
+  <a href="studio.html" style="color:#5a4a38;text-decoration:none;margin-left:16px;">图鉴柜 →</a>
 </div>
 
 </body>

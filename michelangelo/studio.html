@@ -76,12 +76,15 @@ body{
   box-shadow:0 12px 40px rgba(0,0,0,0.4);
 }
 .card img{
-  width:100%;aspect-ratio:4/3;object-fit:cover;
-  display:block;
+  width:100%;height:auto;display:block;
+  min-height:180px;object-fit:contain;
+  background:#1a1410;
 }
 .card-body{
-  padding:14px 16px;
+  padding:16px 18px;
 }
+.card{overflow:visible;}
+.card-inner{border-radius:8px;overflow:hidden;}
 .card-title{
   font-size:0.92rem;font-weight:600;
   margin-bottom:2px;
@@ -166,29 +169,40 @@ body{
 .footer{
   padding:16px;text-align:center;font-size:0.72rem;color:#5a4a38;
 }
+.footer a{color:#5a4a38;text-decoration:none;}
+.footer a:hover{color:#7a6a58;}
 
 @keyframes cardIn{
   from{opacity:0;transform:translateY(30px)}
   to{opacity:1;transform:translateY(0)}
 }
 
+/* ── Lightbox fix: ensure scrollable content ── */
+#lightbox{max-height:90vh;height:90vh;}
+.lb-inner{height:100%;min-height:0;}
+.lb-detail{overflow-y:auto;flex-shrink:1;min-height:0;}
+.lb-image{flex-shrink:0;}
+
 /* ── Responsive ── */
 @media(max-width:1023px){
   .gallery{grid-template-columns:repeat(2,1fr);gap:16px;padding:16px;}
-  #lightbox{width:95vw;}
-  .lb-inner{flex-direction:column;}
-  .lb-image{flex:0 0 auto;max-height:50vh;}
-  .lb-detail{padding:24px 20px;}
+  #lightbox{width:95vw;height:85vh;max-height:85vh;}
+  .lb-inner{flex-direction:column;height:100%;}
+  .lb-image{flex:0 0 auto;max-height:40vh;}
+  .lb-detail{padding:20px 20px 28px;}
   .lb-title{font-size:1.2rem;}
   .lb-info{grid-template-columns:1fr 1fr;}
 }
 @media(max-width:479px){
   .gallery{grid-template-columns:1fr;gap:12px;padding:12px;}
+  .card img{min-height:120px;}
   .nav-bar{padding:10px 14px;}
   .nav-bar h1{font-size:0.95rem;}
   .filters{padding:12px 14px;gap:6px;}
   .filter-btn{font-size:0.72rem;padding:4px 12px;}
-  .lb-detail{padding:20px 16px;}
+  #lightbox{width:100vw;height:100dvh;max-height:100dvh;border-radius:0;}
+  .lb-image{max-height:35vh;}
+  .lb-detail{padding:16px 16px 24px;}
   .lb-title{font-size:1.05rem;}
   .lb-info{grid-template-columns:1fr;gap:4px;}
 }
@@ -214,7 +228,11 @@ body{
 
 <div class="gallery" id="gallery"></div>
 
-<div class="footer">点击卡片查看详情 · Ariste 策展</div>
+<div class="footer">
+  点击卡片查看详情 ·
+  <a href="portale.html">← 三界</a>
+  <a href="confronto.html" style="margin-left:16px;">对照剧场 →</a>
+</div>
 
 <!-- Lightbox -->
 <dialog id="lightbox">
@@ -300,13 +318,15 @@ function render(filter){
     card.style.animation = `cardIn 0.5s ease ${delay}s both`;
     delay += 0.08;
     card.innerHTML = `
-      <img src="${w.img}" alt="${w.title}" loading="lazy">
-      <div class="card-body">
-        <p class="card-title">${w.title}</p>
-        <p class="card-it">${w.titleIt}</p>
-        <div class="card-meta">
-          <span>${w.year}</span>
-          <span class="card-badge">${w.cat === 'sculpture' ? '雕塑' : w.cat === 'painting' ? '绘画' : '肖像'}</span>
+      <div class="card-inner">
+        <img src="${w.img}" alt="${w.title}" loading="lazy" onerror="this.style.display='none'">
+        <div class="card-body">
+          <p class="card-title">${w.title}</p>
+          <p class="card-it">${w.titleIt}</p>
+          <div class="card-meta">
+            <span>${w.year}</span>
+            <span class="card-badge">${w.cat === 'sculpture' ? '雕塑' : w.cat === 'painting' ? '绘画' : '肖像'}</span>
+          </div>
         </div>
       </div>
     `;
