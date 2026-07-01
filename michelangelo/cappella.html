@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
+<title>La Cappella · 沉浸长卷</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Crimson+Pro:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+
+body{
+  font-family:'Noto Serif SC','Songti SC',serif;
+  background:#1e1610;color:#e8dcc8;
+  overflow-x:hidden;
+}
+
+/* Nav */
+.nav-top{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:12px 24px;
+  background:linear-gradient(180deg,rgba(30,22,16,0.95),transparent);
+  transition:opacity 0.3s;
+}
+.nav-top a{
+  color:#a08870;text-decoration:none;font-size:0.8rem;
+  display:inline-flex;align-items:center;gap:6px;
+  transition:color 0.2s;
+}
+.nav-top a:hover{color:#c8954a}
+.nav-top .step{
+  font-family:'Playfair Display',Georgia,serif;
+  font-size:0.75rem;color:#7a6a58;letter-spacing:0.08em;
+}
+
+/* Progress bar */
+.progress-track{
+  position:fixed;top:0;left:0;right:0;z-index:101;
+  height:3px;background:rgba(255,255,255,0.05);
+}
+.progress-fill{
+  height:100%;width:0%;
+  background:linear-gradient(90deg,#c8954a,#d4a84e);
+  transition:width 0.1s linear;
+}
+
+/* Sections */
+.sec{
+  position:relative;
+  min-height:100vh;
+  display:flex;align-items:center;justify-content:center;
+  overflow:hidden;
+}
+.sec-bg{
+  position:absolute;inset:0;
+  background-size:cover;background-position:center;
+  will-change:transform;
+}
+.sec-bg::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(180deg,
+    rgba(30,22,16,0.3) 0%,
+    rgba(30,22,16,0.6) 40%,
+    rgba(30,22,16,0.85) 80%,
+    rgba(30,22,16,1) 100%
+  );
+}
+
+.sec-content{
+  position:relative;z-index:2;
+  max-width:720px;padding:40px 32px;
+  text-align:center;
+  opacity:0;transform:translateY(40px);
+  transition:opacity 0.8s ease, transform 0.8s cubic-bezier(.4,0,.2,1);
+}
+.sec-content.visible{
+  opacity:1;transform:translateY(0);
+}
+
+.sec-number{
+  font-family:'Playfair Display',Georgia,serif;
+  font-size:0.8rem;color:#c8954a;
+  letter-spacing:0.2em;margin-bottom:8px;
+}
+.sec-title{
+  font-size:2.8rem;font-weight:700;line-height:1.2;
+  margin-bottom:4px;
+  background:linear-gradient(135deg,#f0e4d0 0%,#c8954a 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+.sec-title-it{
+  font-family:'Playfair Display',Georgia,serif;
+  font-size:1.1rem;font-style:italic;color:#b8946a;
+  margin-bottom:20px;
+}
+.sec-text{
+  font-size:1rem;line-height:1.8;color:#c8b898;font-weight:300;
+  max-width:600px;margin:0 auto;
+}
+.sec-text .strong{color:#e8dcc8;font-weight:400;}
+.sec-quote{
+  font-family:'Crimson Pro',Georgia,serif;
+  font-size:1.15rem;font-style:italic;color:#c8954a;
+  line-height:1.6;margin:20px 0;
+  padding:16px 24px;
+  border-left:2px solid rgba(200,149,74,0.3);
+}
+
+/* Prologue special */
+.sec-prologue .sec-bg::after{
+  background:linear-gradient(180deg,
+    rgba(30,22,16,0.2) 0%,
+    rgba(30,22,16,0.5) 50%,
+    rgba(30,22,16,0.9) 100%
+  );
+}
+.sec-prologue .sec-content{max-width:800px;}
+.sec-prologue .sec-title{font-size:3.6rem;}
+.sec-prologue .sec-title-it{font-size:1.4rem;}
+
+/* Epilogue special */
+.sec-epilogue .sec-bg::after{
+  background:linear-gradient(180deg,
+    rgba(30,22,16,0.4) 0%,
+    rgba(30,22,16,0.75) 60%,
+    rgba(30,22,16,1) 100%
+  );
+}
+
+/* Timeline indicator */
+.timeline-label{
+  position:fixed;bottom:32px;left:50%;transform:translateX(-50%);
+  z-index:100;
+  display:flex;align-items:center;gap:16px;
+  padding:8px 20px;
+  background:rgba(30,22,16,0.8);
+  backdrop-filter:blur(8px);
+  border-radius:20px;
+  border:1px solid rgba(200,149,74,0.1);
+  transition:opacity 0.3s;
+}
+.timeline-label .dot{
+  width:6px;height:6px;border-radius:50%;
+  background:#4a3a28;transition:all 0.3s;
+}
+.timeline-label .dot.active{background:#c8954a;width:8px;height:8px;}
+.timeline-label .yr{
+  font-family:'Playfair Display',Georgia,serif;
+  font-size:0.7rem;color:#7a6a58;min-width:28px;text-align:center;
+}
+
+/* Footer */
+.footer{
+  padding:20px;text-align:center;
+  font-size:0.72rem;color:#5a4a38;
+  background:#1e1610;
+}
+
+/* ── Responsive ── */
+@media(max-width:1023px){
+  .sec-title{font-size:2rem;}
+  .sec-prologue .sec-title{font-size:2.4rem;}
+  .sec-prologue .sec-title-it{font-size:1rem;}
+  .sec-content{padding:32px 24px;}
+  .sec-text{font-size:0.92rem;}
+}
+@media(max-width:479px){
+  .sec-title{font-size:1.6rem;}
+  .sec-prologue .sec-title{font-size:1.8rem;}
+  .sec-prologue .sec-title-it{font-size:0.85rem;}
+  .sec-content{padding:24px 16px;}
+  .sec-text{font-size:0.85rem;line-height:1.7;}
+  .sec-quote{font-size:1rem;padding:12px 16px;}
+  .nav-top{padding:8px 12px;}
+  .nav-top a{font-size:0.72rem;}
+  .timeline-label{bottom:16px;padding:6px 14px;gap:10px;}
+}
+</style>
+</head>
+<body>
+
+<!-- Progress -->
+<div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+
+<!-- Nav -->
+<div class="nav-top">
+  <a href="portale.html">← 三界</a>
+  <span class="step" id="stepLabel">1475 · 诞生</span>
+</div>
+
+<!-- ═══ Section 1: Prologue ═══ -->
+<section class="sec sec-prologue" data-step="1475·诞生" data-idx="0">
+  <div class="sec-bg" style="background-image:url(creazione.webp)"></div>
+  <div class="sec-content visible">
+    <p class="sec-number">PROLOGO</p>
+    <h2 class="sec-title">La Cappella</h2>
+    <p class="sec-title-it">Un viaggio attraverso la vita</p>
+    <p class="sec-text">
+      1475年3月6日，佛罗伦萨共和国卡普雷塞。一个男孩出生在古老的贵族家庭——他的父亲认为石头里挣不到钱。但上帝已经把凿子放在他手里了。
+    </p>
+    <p class="sec-quote">"我在大理石中看见了天使。我的工作只是把他放出来。"</p>
+    <p class="sec-text" style="font-size:0.82rem;color:#8a7a68">向下滚动，穿越他一生的七幕</p>
+  </div>
+</section>
+
+<!-- ═══ Section 2: David ═══ -->
+<section class="sec" data-step="1504·大卫" data-idx="1">
+  <div class="sec-bg" style="background-image:url(david-new.webp)"></div>
+  <div class="sec-content">
+    <p class="sec-number">I · LA FORZA</p>
+    <h2 class="sec-title">力量</h2>
+    <p class="sec-title-it">Il David, 1501–1504</p>
+    <p class="sec-text">
+      一块废弃了四十年的巨型卡拉拉大理石。26岁的米开朗琪罗走上前，<span class="strong">两年半后</span>，一个5.17米的巨人站在领主广场入口。不是胜利后的大卫——是战斗前的大卫。眉头紧锁，肌肉紧绷，全身每一寸都在等待。
+    </p>
+    <p class="sec-quote">"从一块被所有人放弃的石头里，他释放了一个巨人。"<br>— 瓦萨里</p>
+  </div>
+</section>
+
+<!-- ═══ Section 3: Pietà ═══ -->
+<section class="sec" data-step="1499·圣殇" data-idx="2">
+  <div class="sec-bg" style="background-image:url(pieta-new.webp)"></div>
+  <div class="sec-content">
+    <p class="sec-number">II · LA COMPASSIONE</p>
+    <h2 class="sec-title">悲悯</h2>
+    <p class="sec-title-it">La Pietà, 1498–1499</p>
+    <p class="sec-text">
+      23岁。法国红衣主教委托的圣母哀悼基督雕像。没有人认为一个23岁的年轻人能驾驭如此巨大的石材。<span class="strong">他是唯一不这么认为的人。</span>当有人质疑圣母的脸为何比儿子还年轻时，他回答："你不知道纯洁的女人老得更慢吗？"
+    </p>
+    <p class="sec-quote">"没有哪颗灵魂比我祖母更纯洁，所以她的面容才如此年轻。"</p>
+    <p class="sec-text" style="font-size:0.82rem;color:#8a7a68;">这是他一生唯一署名的作品。</p>
+  </div>
+</section>
+
+<!-- ═══ Section 4: Sistine ═══ -->
+<section class="sec" data-step="1512·创世" data-idx="3">
+  <div class="sec-bg" style="background-image:url(sistine.webp)"></div>
+  <div class="sec-content">
+    <p class="sec-number">III · LA CREAZIONE</p>
+    <h2 class="sec-title">创世</h2>
+    <p class="sec-title-it">Cappella Sistina, 1508–1512</p>
+    <p class="sec-text">
+      教皇尤利乌斯二世强迫他放下凿子拿起画笔。他说<span class="strong">"我不是画家"</span>——然后画了500平方米、300多个人物、四年孤独地仰面在20米高的脚手架上。当穹顶揭幕时，罗马沉默了，教皇跪了下来。
+    </p>
+    <p class="sec-text">
+      上帝与亚当手指之间的那<span class="strong">1毫米间隙</span>——是整个文艺复兴的宣言：人正在接近神，但永远不会到达。
+    </p>
+  </div>
+</section>
+
+<!-- ═══ Section 5: Slaves ═══ -->
+<section class="sec" data-step="1516·奴隶" data-idx="4">
+  <div class="sec-bg" style="background-image:url(schiavo-morto.webp)"></div>
+  <div class="sec-content">
+    <p class="sec-number">IV · LA LOTTA</p>
+    <h2 class="sec-title">挣扎</h2>
+    <p class="sec-title-it">Gli Schiavi, 1513–1516</p>
+    <p class="sec-text">
+      身体从大理石中挣扎而出，但下半身永远埋在石头里。米开朗琪罗故意不完成它们。<span class="strong">"最高贵的艺术不是完成——是快要完成。"</span>这就是非弗尼托（non-finito）哲学：人在物质中挣扎，但永远无法彻底挣脱。
+    </p>
+    <p class="sec-quote">"那些留在石头里的身体，比完成的更动人。"</p>
+  </div>
+</section>
+
+<!-- ═══ Section 6: Judgment ═══ -->
+<section class="sec" data-step="1541·审判" data-idx="5">
+  <div class="sec-bg" style="background-image:url(creazione.webp)"></div>
+  <div class="sec-content">
+    <p class="sec-number">V · IL GIUDIZIO</p>
+    <h2 class="sec-title">审判</h2>
+    <p class="sec-title-it">Giudizio Universale, 1536–1541</p>
+    <p class="sec-text">
+      60岁的米开朗琪罗回到西斯廷。这次不是穹顶——是整面祭坛墙。近200平方米，<span class="strong">400个人物</span>在末日中翻滚——几乎全部裸体。教廷礼仪官说"这是妓院"。米开朗琪罗把他画成地狱判官米诺斯，被毒蛇缠绕生殖器——永远定格在右下角。
+    </p>
+    <p class="sec-quote">"审判日那天，你希望自己穿衣服站在上帝面前吗？"</p>
+  </div>
+</section>
+
+<!-- ═══ Section 7: Epilogue ═══ -->
+<section class="sec sec-epilogue" data-step="1564·不朽" data-idx="6">
+  <div class="sec-bg" style="background-image:url(michelangelo-ritratto.webp)"></div>
+  <div class="sec-content">
+    <p class="sec-number">EPILOGO</p>
+    <h2 class="sec-title">不朽的面容</h2>
+    <p class="sec-title-it">L'Eredità</p>
+    <p class="sec-text">
+      1564年2月18日，罗马。89岁的米开朗琪罗在工作室去世——<span class="strong">去世前六天他还在雕刻</span>。他一生没结过婚，没留下子女。留下的是石头——以及石头里的人。
+    </p>
+    <p class="sec-quote">
+      "大自然能创造的一切，他都用凿子、画笔和言辞超越了。<br>
+      他的作品对活着的人是教训，对死去的人是慰藉。"<br>
+      — 瓦萨里的墓志铭
+    </p>
+    <p class="sec-text" style="font-size:0.82rem;color:#8a7a68;margin-top:20px;">
+      断裂的鼻子、深邃的双眼、倔强的下颚——他从不掩饰。
+    </p>
+  </div>
+</section>
+
+<!-- Timeline -->
+<div class="timeline-label" id="timelineLabel">
+  <span class="yr" data-idx="0">1475</span>
+  <span class="dot active" data-idx="0"></span>
+  <span class="dot" data-idx="1"></span>
+  <span class="dot" data-idx="2"></span>
+  <span class="dot" data-idx="3"></span>
+  <span class="dot" data-idx="4"></span>
+  <span class="dot" data-idx="5"></span>
+  <span class="dot" data-idx="6"></span>
+  <span class="yr" data-idx="6">1564</span>
+</div>
+
+<div class="footer">
+  米开朗琪罗 (1475–1564) · La Cappella · <a href="portale.html" style="color:#7a6a58;text-decoration:none;">← 返回三界</a>
+</div>
+
+<script>
+const sections = document.querySelectorAll('.sec');
+const contents = document.querySelectorAll('.sec-content');
+const dots = document.querySelectorAll('.timeline-label .dot');
+const yrs = document.querySelectorAll('.timeline-label .yr');
+const stepLabel = document.getElementById('stepLabel');
+const progressFill = document.getElementById('progressFill');
+
+function update(){
+  const scrollY = window.scrollY;
+  const winH = window.innerHeight;
+  const docH = document.documentElement.scrollHeight;
+  
+  // Progress
+  progressFill.style.width = Math.min(100, (scrollY / (docH - winH)) * 100) + '%';
+  
+  // Find active section
+  let activeIdx = 0;
+  sections.forEach((sec, i) => {
+    const rect = sec.getBoundingClientRect();
+    const mid = rect.top + rect.height / 2;
+    if (mid < winH * 0.7 && mid > -winH * 0.3) activeIdx = i;
+    // Show content
+    if (rect.top < winH * 0.85 && rect.bottom > winH * 0.15) {
+      contents[i].classList.add('visible');
+    }
+  });
+  
+  // Parallax
+  sections.forEach((sec, i) => {
+    const rect = sec.getBoundingClientRect();
+    const offset = rect.top / winH;
+    const bg = sec.querySelector('.sec-bg');
+    if (bg) bg.style.transform = `translate3d(0,${offset * 30}px,0)`;
+  });
+  
+  // Dots
+  dots.forEach((d, i) => d.classList.toggle('active', i === activeIdx));
+  
+  // Step label
+  const step = sections[activeIdx]?.dataset.step || '';
+  stepLabel.textContent = step;
+}
+
+window.addEventListener('scroll', update, {passive:true});
+window.addEventListener('resize', update, {passive:true});
+update();
+</script>
+
+</body>
+</html>

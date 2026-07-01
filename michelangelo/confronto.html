@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
+<title>Il Confronto · 对照剧场</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Crimson+Pro:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+
+body{
+  background:#0e0b08;color:#e8dcc8;
+  font-family:'Noto Serif SC','Songti SC',serif;
+  min-height:100vh;
+}
+
+/* Nav */
+.nav-top{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:12px 24px;
+  background:rgba(14,11,8,0.92);backdrop-filter:blur(8px);
+  border-bottom:1px solid rgba(200,149,74,0.06);
+}
+.nav-top a{
+  color:#a08870;text-decoration:none;font-size:0.8rem;
+  display:inline-flex;align-items:center;gap:6px;
+  transition:color 0.2s;
+}
+.nav-top a:hover{color:#c8954a}
+.nav-top h1{
+  font-size:1rem;font-weight:600;
+  background:linear-gradient(135deg,#e8dcc8,#c8954a);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+
+/* Sections */
+.confronto-section{
+  min-height:100vh;display:flex;flex-direction:column;
+  justify-content:center;position:relative;
+  padding:80px 24px 40px;
+  border-bottom:1px solid rgba(200,149,74,0.06);
+}
+.confronto-section:last-child{border-bottom:none;}
+
+.sec-header{text-align:center;margin-bottom:32px;}
+.sec-number{
+  font-family:'Playfair Display',Georgia,serif;
+  font-size:0.8rem;color:#c8954a;letter-spacing:0.15em;
+}
+.sec-title{font-size:1.6rem;font-weight:700;margin-bottom:2px;}
+.sec-title-it{
+  font-family:'Playfair Display',Georgia,serif;
+  font-size:0.95rem;color:#b8946a;font-style:italic;margin-bottom:6px;
+}
+.sec-theme{
+  font-size:0.82rem;color:#7a6a58;
+  padding:4px 14px;display:inline-block;
+  border:1px solid rgba(200,149,74,0.1);border-radius:12px;
+}
+
+/* Comparison area */
+.comparison{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:24px;max-width:1000px;margin:0 auto 28px;
+  align-items:stretch;
+}
+.compare-item{
+  position:relative;border-radius:8px;overflow:hidden;
+  background:#1a1410;border:1px solid rgba(200,149,74,0.06);
+  transition:transform 0.3s;
+}
+.compare-item:hover{transform:translateY(-2px);}
+.compare-item img{
+  width:100%;aspect-ratio:16/10;object-fit:cover;display:block;
+}
+.compare-label{
+  position:absolute;top:12px;left:12px;
+  padding:4px 10px;border-radius:4px;
+  background:rgba(14,11,8,0.8);backdrop-filter:blur(4px);
+  font-size:0.72rem;font-weight:600;
+}
+.compare-label.l{color:#c8954a;border-left:2px solid #c8954a;}
+.compare-label.r{color:#e8dcc8;border-left:2px solid #e8dcc8;}
+.compare-captions{
+  padding:12px 16px 16px;
+}
+.compare-captions .name{
+  font-size:0.9rem;font-weight:600;margin-bottom:2px;
+}
+.compare-captions .sub{
+  font-family:'Crimson Pro',Georgia,serif;
+  font-size:0.78rem;color:#b8946a;font-style:italic;
+}
+
+/* Insight */
+.insight{
+  max-width:700px;margin:0 auto;text-align:center;
+}
+.insight p{
+  font-size:0.92rem;line-height:1.7;color:#b8a890;
+  font-weight:300;
+}
+.insight .key{
+  position:relative;display:inline-block;
+  color:#e8dcc8;font-weight:400;
+  border-bottom:1px solid rgba(200,149,74,0.2);
+  padding-bottom:2px;
+}
+.verdict{
+  margin-top:16px;padding:16px 24px;
+  border-top:1px solid rgba(200,149,74,0.08);
+  font-family:'Playfair Display',Georgia,serif;
+  font-size:1.05rem;font-style:italic;
+  color:#c8954a;line-height:1.5;
+}
+
+/* Slider comparison (for desktop) */
+.slider-comparison{
+  display:none;position:relative;
+  max-width:800px;margin:0 auto 28px;
+  border-radius:8px;overflow:hidden;
+  border:1px solid rgba(200,149,74,0.06);
+}
+.slider-comparison .img-container{
+  position:relative;width:100%;aspect-ratio:16/10;
+}
+.slider-comparison .img-container img{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+}
+.slider-comparison .overlay-img{
+  clip-path:inset(0 50% 0 0);
+}
+.slider-comparison .slider-handle{
+  position:absolute;top:0;bottom:0;left:50%;width:4px;
+  background:#c8954a;cursor:ew-resize;z-index:10;
+  transform:translateX(-50%);
+}
+.slider-comparison .slider-handle::before{
+  content:'⇄';position:absolute;top:50%;left:50%;
+  transform:translate(-50%,-50%);
+  width:36px;height:36px;border-radius:50%;
+  background:#c8954a;color:#0e0b08;
+  display:flex;align-items:center;justify-content:center;
+  font-size:0.9rem;font-weight:700;
+}
+.slider-comparison input[type=range]{
+  position:absolute;inset:0;z-index:11;
+  width:100%;height:100%;
+  opacity:0;cursor:ew-resize;
+}
+.slider-comparison .slider-labels{
+  display:flex;justify-content:space-between;
+  padding:8px 16px;font-size:0.72rem;color:#7a6a58;
+  background:#1a1410;
+}
+
+/* Footer */
+.footer{
+  padding:20px;text-align:center;font-size:0.72rem;color:#4a3a28;
+}
+
+/* ── Responsive ── */
+@media(min-width:768px){
+  .comparison-mobile{display:none;}
+  .slider-comparison{display:block;}
+}
+@media(max-width:767px){
+  .confronto-section{padding:64px 16px 32px;}
+  .comparison{grid-template-columns:1fr;gap:16px;max-width:500px;}
+  .sec-title{font-size:1.3rem;}
+  .compare-item img{aspect-ratio:16/10;}
+  .slider-comparison{display:none;}
+  .insight p{font-size:0.85rem;}
+  .verdict{font-size:0.92rem;padding:12px 16px;}
+  .nav-top h1{font-size:0.85rem;}
+}
+@media(max-width:479px){
+  .sec-title{font-size:1.15rem;}
+  .sec-title-it{font-size:0.82rem;}
+  .compare-captions{padding:10px 12px 14px;}
+  .compare-captions .name{font-size:0.82rem;}
+  .insight p{font-size:0.8rem;line-height:1.6;}
+  .nav-top{padding:8px 12px;}
+}
+</style>
+</head>
+<body>
+
+<div class="nav-top">
+  <a href="portale.html">← 三界</a>
+  <h1>Il Confronto · 对照剧场</h1>
+  <span style="width:50px"></span>
+</div>
+
+<!-- ═══ Comparison 1: Anatomy ═══ -->
+<section class="confronto-section">
+  <div class="sec-header">
+    <p class="sec-number">I</p>
+    <h2 class="sec-title">人体解剖 · 自然vs理想</h2>
+    <p class="sec-title-it">Anatomia — Natura contro Ideale</p>
+    <p class="sec-theme">人体 / Anatomy</p>
+  </div>
+
+  <!-- Desktop slider -->
+  <div class="slider-comparison">
+    <div class="img-container" id="slider1">
+      <img src="david-new.webp" alt="大卫解剖细节">
+      <img src="david-new.webp" alt="大卫解剖细节" class="overlay-img" style="clip-path:inset(0 50% 0 0)">
+      <div class="slider-handle"></div>
+      <input type="range" min="0" max="100" value="50" 
+        oninput="document.querySelector('#slider1 .overlay-img').style.clipPath='inset(0 '+ (100-this.value) +'% 0 0)'; this.previousElementSibling.style.left=this.value+'%'">
+    </div>
+    <div class="slider-labels">
+      <span>👈 自然观察 · 真实人体比例</span>
+      <span>理想化 · 超越自然 👉</span>
+    </div>
+  </div>
+
+  <!-- Mobile side-by-side -->
+  <div class="comparison comparison-mobile">
+    <div class="compare-item">
+      <img src="david-new.webp" alt="大卫" loading="lazy">
+      <span class="compare-label l">自然 · 真实</span>
+      <div class="compare-captions">
+        <p class="name">真实人体</p>
+        <p class="sub">米开朗琪罗解剖过尸体——他的肌肉走向、骨骼比例以真实尸体解剖为基础</p>
+      </div>
+    </div>
+    <div class="compare-item">
+      <img src="david-new.webp" alt="大卫" loading="lazy">
+      <span class="compare-label r">理想 · 超越</span>
+      <div class="compare-captions">
+        <p class="name">超越自然</p>
+        <p class="sub">但他从不照抄自然——右手比实际放大15%，青筋暴起到现实中不可能的程度</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="insight">
+    <p>米开朗琪罗在圣灵教堂的医院里解剖了 <span class="key">数十具尸体</span>，对人体结构了如指掌。但他的大卫从不去复制任何一具真实的人体——它是人类对自身肉体的 <span class="key">最高想象</span>。真实 vs 理想：他把两条路走成了同一条。</p>
+    <p class="verdict">"他画的人体比真实的人体更真实。" — 贡布里希</p>
+  </div>
+</section>
+
+<!-- ═══ Comparison 2: Drama ═══ -->
+<section class="confronto-section">
+  <div class="sec-header">
+    <p class="sec-number">II</p>
+    <h2 class="sec-title">戏剧张力 · 亲密vs宏大</h2>
+    <p class="sec-title-it">Dramma — Intimo contro Monumentale</p>
+    <p class="sec-theme">情感 / Emotion</p>
+  </div>
+
+  <div class="comparison">
+    <div class="compare-item">
+      <img src="pieta-new.webp" alt="哀悼基督" loading="lazy">
+      <span class="compare-label l">亲密 · 两人沉默</span>
+      <div class="compare-captions">
+        <p class="name">《哀悼基督》1499</p>
+        <p class="sub">两个人物。一块石头。母亲抱着死去的儿子。所有情感压缩在衣袍的褶皱和低垂的目光里。</p>
+      </div>
+    </div>
+    <div class="compare-item">
+      <img src="creazione.webp" alt="最后的审判" loading="lazy">
+      <span class="compare-label r">宏大 · 四百人翻滚</span>
+      <div class="compare-captions">
+        <p class="name">《最后的审判》1541</p>
+        <p class="sub">近200平方米，400个人物在末日中翻滚、挣扎、上升、坠落。全人类的故事压缩在一面墙上。</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="insight">
+    <p>米开朗琪罗的情感跨度从 <span class="key">两个人的沉默</span> 到 <span class="key">全人类的审判</span>。他在23岁能雕出圣母最克制的悲伤，在60岁能画出400个人体在末日中的喧嚣。达·芬奇在细腻上比他好，拉斐尔在和谐上比他好——但没有人能在 <span class="key">同一个艺术家身上</span> 找到这种从最小到最大的戏剧跨度。</p>
+    <p class="verdict">"他不是一个艺术家，是一个剧场。"</p>
+  </div>
+</section>
+
+<!-- ═══ Comparison 3: Non-Finito ═══ -->
+<section class="confronto-section">
+  <div class="sec-header">
+    <p class="sec-number">III</p>
+    <h2 class="sec-title">非·弗尼托 · 完成vs未完成</h2>
+    <p class="sec-title-it">Non-Finito — Compiuto contro Incompiuto</p>
+    <p class="sec-theme">哲学 / Philosophy</p>
+  </div>
+
+  <div class="comparison">
+    <div class="compare-item">
+      <img src="david-new.webp" alt="完成的大卫" loading="lazy">
+      <span class="compare-label l">完成 · 完美的囚徒</span>
+      <div class="compare-captions">
+        <p class="name">《大卫》1504</p>
+        <p class="sub">每一寸被打磨到极致。肌肉、血管、表情——完全从石头中解放。完美的完成。</p>
+      </div>
+    </div>
+    <div class="compare-item">
+      <img src="schiavo-risveglio.webp" alt="未完成的奴隶" loading="lazy">
+      <span class="compare-label r">未完成 · 永恒的挣扎</span>
+      <div class="compare-captions">
+        <p class="name">《苏醒的奴隶》1516</p>
+        <p class="sub">上半身已经挣脱，下半身永远留在石头里。米开朗琪罗故意停手。</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="insight">
+    <p>从 <span class="key">完美完成</span> 的《大卫》到 <span class="key">故意未完成</span> 的《奴隶》，米开朗琪罗用三十年走完了从"做到极致"到"在致命一刻停手"的哲学路程。非弗尼托（non-finito）不是能力不足——是 <span class="key">刻意选择</span>。人在物质中挣扎，但永远无法完全挣脱。承认这一点，比假装能做到，更深刻。</p>
+    <p class="verdict">"最高贵的艺术不是完成——是快要完成。"</p>
+  </div>
+</section>
+
+<!-- ═══ Comparison 4: Scale ═══ -->
+<section class="confronto-section">
+  <div class="sec-header">
+    <p class="sec-number">IV</p>
+    <h2 class="sec-title">尺度的野心 · 宏伟vs私密</h2>
+    <p class="sec-title-it">Scala — Monumentale contro Personale</p>
+    <p class="sec-theme">尺度 / Scale</p>
+  </div>
+
+  <div class="comparison">
+    <div class="compare-item">
+      <img src="sistine.webp" alt="西斯廷穹顶" loading="lazy">
+      <span class="compare-label l">宏伟 · 500平方米穹顶</span>
+      <div class="compare-captions">
+        <p class="name">《西斯廷穹顶》1512</p>
+        <p class="sub">500㎡。300人物。四年。一个人仰面在20米高的脚手架上画了3000多个工作日。</p>
+      </div>
+    </div>
+    <div class="compare-item">
+      <img src="michelangelo-ritratto.webp" alt="个人肖像" loading="lazy">
+      <span class="compare-label r">私密 · 一张脸的故事</span>
+      <div class="compare-captions">
+        <p class="name">米开朗琪罗肖像 16世纪</p>
+        <p class="sub">断裂的鼻子、深邃的目光。一张脸上刻着一生的倔强、孤独和不肯妥协。</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="insight">
+    <p>他能画一座 <span class="key">500平方米的穹顶</span>，也能只关注 <span class="key">一张脸上的伤疤</span>。文艺复兴三杰中，米开朗琪罗是唯一一个在最大尺度和最小尺度上都做到极致的人。达·芬奇没画过穹顶。拉斐尔37岁就去世了。米开朗琪罗活了89岁，做了三个人一生的工作量——而他认为自己 <span class="key">还什么都没做完</span>。</p>
+    <p class="verdict">"雕刻和绘画已不再能让我安宁——我的灵魂转向那份拥抱一切的爱。"<br>— 米开朗琪罗，80岁时的最后一首十四行诗</p>
+  </div>
+</section>
+
+<div class="footer">
+  Il Confronto · 四重视角看懂米开朗琪罗 · <a href="portale.html" style="color:#5a4a38;text-decoration:none;">← 三界</a>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
+<title>米开朗琪罗 · 三界</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Crimson+Pro:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  min-height:100vh;
+  background: linear-gradient(145deg, #2a1f14 0%, #3d2b1a 30%, #4a3520 50%, #3d2b1a 70%, #2a1f14 100%);
+  color:#e8dcc8;
+  font-family:'Noto Serif SC','Songti SC',serif;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  overflow-x:hidden;padding:40px 24px;
+  position:relative;
+}
+body::before{
+  content:'';position:fixed;inset:0;
+  background:radial-gradient(ellipse at 50% 0%, rgba(200,149,74,0.08) 0%, transparent 70%);
+  pointer-events:none;z-index:0;
+}
+
+.portale{position:relative;z-index:1;max-width:1200px;width:100%;}
+
+/* Title */
+.titolo{
+  text-align:center;margin-bottom:48px;
+  animation:fadeIn 1s ease both;
+}
+.titolo h1{
+  font-size:2.4rem;font-weight:700;letter-spacing:0.06em;
+  background:linear-gradient(135deg,#e8dcc8 0%,#c8954a 50%,#e8dcc8 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+.titolo .sub{
+  font-family:'Playfair Display',Georgia,serif;
+  font-size:1.2rem;font-style:italic;color:#b8946a;
+  margin-top:8px;letter-spacing:0.1em;
+}
+.titolo .desc{
+  font-size:0.85rem;color:#a08870;margin-top:8px;font-weight:300;
+}
+
+/* Cards */
+.galleria{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:24px;
+}
+.card{
+  position:relative;border-radius:12px;overflow:hidden;
+  min-height:400px;cursor:pointer;
+  background: linear-gradient(160deg, rgba(60,40,25,0.9), rgba(40,28,16,0.95));
+  border:1px solid rgba(200,149,74,0.15);
+  transition:transform 0.5s cubic-bezier(.4,0,.2,1), box-shadow 0.5s, border-color 0.3s;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  padding:40px 32px;text-align:center;
+  text-decoration:none;color:inherit;
+  animation:cardIn 0.8s ease both;
+}
+.card:nth-child(1){animation-delay:0.2s}
+.card:nth-child(2){animation-delay:0.4s}
+.card:nth-child(3){animation-delay:0.6s}
+.card:hover{
+  transform:translateY(-8px) scale(1.02);
+  box-shadow:0 20px 60px rgba(0,0,0,0.5), 0 0 40px rgba(200,149,74,0.08);
+  border-color:rgba(200,149,74,0.4);
+}
+.card::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(180deg, transparent 40%, rgba(200,149,74,0.04) 100%);
+  opacity:0;transition:opacity 0.5s;pointer-events:none;
+}
+.card:hover::after{opacity:1}
+
+.card-icon{
+  font-size:3rem;margin-bottom:16px;
+  filter:drop-shadow(0 4px 12px rgba(200,149,74,0.2));
+}
+.card h2{
+  font-size:1.5rem;font-weight:700;letter-spacing:0.03em;
+  margin-bottom:4px;
+}
+.card .it{
+  font-family:'Playfair Display',Georgia,serif;
+  font-size:1rem;font-style:italic;color:#c8954a;
+  margin-bottom:16px;
+}
+.card .tagline{
+  font-size:0.82rem;color:#a08870;line-height:1.5;font-weight:300;
+}
+.card .via{
+  margin-top:20px;font-size:0.75rem;color:#7a6a58;
+  font-family:'Crimson Pro',Georgia,serif;
+  letter-spacing:0.05em;
+}
+
+/* Decorative accent */
+.card .accent-line{
+  width:40px;height:2px;background:linear-gradient(90deg,#c8954a,transparent);
+  margin:12px auto;border-radius:1px;
+}
+
+/* Book link */
+.book-link{
+  margin-top:40px;text-align:center;
+  animation:fadeIn 1s 0.8s ease both;
+}
+.book-link a{
+  display:inline-flex;align-items:center;gap:8px;
+  color:#a08870;text-decoration:none;font-size:0.85rem;
+  padding:10px 20px;border:1px solid rgba(200,149,74,0.15);
+  border-radius:20px;transition:all 0.3s;
+}
+.book-link a:hover{
+  color:#c8954a;border-color:#c8954a;
+  background:rgba(200,149,74,0.06);
+}
+
+/* Footer */
+.footer{
+  margin-top:32px;font-size:0.72rem;color:#6a5a48;
+  text-align:center;animation:fadeIn 1s 1s ease both;
+}
+
+/* Animations */
+@keyframes fadeIn{
+  from{opacity:0;transform:translateY(20px)}
+  to{opacity:1;transform:translateY(0)}
+}
+@keyframes cardIn{
+  from{opacity:0;transform:translateY(40px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+/* ── Responsive ── */
+@media(max-width:1023px){
+  .galleria{grid-template-columns:1fr;gap:20px;max-width:500px;margin:0 auto;}
+  .card{min-height:280px;padding:32px 24px;}
+  .card-icon{font-size:2.4rem;}
+  .card h2{font-size:1.3rem;}
+  .titolo h1{font-size:1.8rem;}
+  .titolo .sub{font-size:1rem;}
+}
+@media(max-width:479px){
+  body{padding:24px 16px;}
+  .card{min-height:240px;padding:24px 20px;}
+  .card-icon{font-size:2rem;}
+  .card h2{font-size:1.15rem;}
+  .titolo h1{font-size:1.5rem;}
+  .titolo .sub{font-size:0.85rem;}
+  .titolo .desc{font-size:0.78rem;}
+  .card .tagline{font-size:0.78rem;}
+}
+</style>
+</head>
+<body>
+
+<div class="portale">
+  <div class="titolo">
+    <h1>米开朗琪罗</h1>
+    <p class="sub">Michelangelo Buonarroti · 1475–1564</p>
+    <p class="desc">三重视角，走进「神圣者」的世界</p>
+  </div>
+
+  <div class="galleria">
+    <a class="card" href="cappella.html">
+      <div class="card-icon">🏛️</div>
+      <h2>沉浸长卷</h2>
+      <p class="it">La Cappella</p>
+      <div class="accent-line"></div>
+      <p class="tagline">垂直滚动，视觉朝圣。穿越他一生的七幕。</p>
+      <p class="via">Scroll through his life</p>
+    </a>
+
+    <a class="card" href="studio.html">
+      <div class="card-icon">🖼️</div>
+      <h2>图鉴柜</h2>
+      <p class="it">Lo Studio</p>
+      <div class="accent-line"></div>
+      <p class="tagline">画廊式浏览，点开每一件杰作的深处。</p>
+      <p class="via">Browse his works</p>
+    </a>
+
+    <a class="card" href="confronto.html">
+      <div class="card-icon">⚔️</div>
+      <h2>对照剧场</h2>
+      <p class="it">Il Confronto</p>
+      <div class="accent-line"></div>
+      <p class="tagline">分屏对比，看懂他为什么是"神圣的"。</p>
+      <p class="via">See why he's divine</p>
+    </a>
+  </div>
+
+  <div class="book-link">
+    <a href="michelangelo.html">📖 返回书册版 · Il Divino</a>
+  </div>
+
+  <div class="footer">
+    <p>Ariste 策展 · 2026</p>
+  </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
+<title>Lo Studio · 图鉴柜</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Crimson+Pro:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  background:#1a1410;color:#e8dcc8;
+  font-family:'Noto Serif SC','Songti SC',serif;
+  min-height:100vh;
+}
+
+/* Nav */
+.nav-bar{
+  position:sticky;top:0;z-index:100;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:14px 24px;
+  background:rgba(26,20,16,0.92);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid rgba(200,149,74,0.08);
+}
+.nav-bar a{
+  color:#a08870;text-decoration:none;font-size:0.8rem;
+  display:inline-flex;align-items:center;gap:6px;
+  transition:color 0.2s;
+}
+.nav-bar a:hover{color:#c8954a}
+.nav-bar h1{
+  font-size:1.1rem;font-weight:600;
+  background:linear-gradient(135deg,#e8dcc8,#c8954a);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+.nav-bar .sub{
+  font-family:'Playfair Display',Georgia,serif;
+  font-size:0.72rem;color:#7a6a58;font-style:italic;
+}
+
+/* Filters */
+.filters{
+  display:flex;gap:8px;padding:16px 24px;
+  flex-wrap:wrap;justify-content:center;
+  background:rgba(26,20,16,0.5);
+}
+.filter-btn{
+  padding:6px 16px;border:1px solid rgba(200,149,74,0.15);
+  border-radius:16px;background:transparent;
+  color:#a08870;font-size:0.78rem;cursor:pointer;
+  font-family:inherit;transition:all 0.2s;
+}
+.filter-btn.active{background:rgba(200,149,74,0.15);color:#c8954a;border-color:#c8954a;}
+.filter-btn:hover{border-color:rgba(200,149,74,0.3);color:#c8b898;}
+
+/* Gallery */
+.gallery{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;padding:24px;
+  max-width:1200px;margin:0 auto;
+}
+
+.card{
+  position:relative;border-radius:8px;overflow:hidden;
+  cursor:pointer;background:#2a2018;
+  border:1px solid rgba(200,149,74,0.06);
+  transition:transform 0.35s cubic-bezier(.4,0,.2,1), box-shadow 0.35s;
+  opacity:1;
+}
+.card:hover{
+  transform:translateY(-4px) scale(1.01);
+  box-shadow:0 12px 40px rgba(0,0,0,0.4);
+}
+.card img{
+  width:100%;aspect-ratio:4/3;object-fit:cover;
+  display:block;
+}
+.card-body{
+  padding:14px 16px;
+}
+.card-title{
+  font-size:0.92rem;font-weight:600;
+  margin-bottom:2px;
+}
+.card-it{
+  font-family:'Crimson Pro',Georgia,serif;
+  font-size:0.8rem;color:#b8946a;font-style:italic;
+  margin-bottom:4px;
+}
+.card-meta{
+  display:flex;justify-content:space-between;
+  font-size:0.72rem;color:#7a6a58;
+}
+.card-badge{
+  padding:2px 8px;border-radius:8px;
+  background:rgba(200,149,74,0.1);color:#c8954a;
+  font-size:0.68rem;
+}
+.card.hidden{display:none}
+
+/* Lightbox Dialog */
+#lightbox{
+  border:none;padding:0;background:transparent;
+  max-width:95vw;max-height:95vh;width:1000px;
+  border-radius:12px;overflow:hidden;
+  box-shadow:0 40px 120px rgba(0,0,0,0.8);
+  color:#e8dcc8;
+}
+#lightbox::backdrop{
+  background:rgba(10,8,6,0.85);
+  backdrop-filter:blur(4px);
+}
+.lb-inner{display:flex;min-height:400px;background:#2a2018;}
+.lb-image{
+  flex:0 0 55%;position:relative;overflow:hidden;
+  background:#1a1410;
+  display:flex;align-items:center;
+}
+.lb-image img{width:100%;height:auto;display:block;max-height:80vh;object-fit:contain;}
+.lb-detail{
+  flex:1;padding:32px 28px;overflow-y:auto;
+  display:flex;flex-direction:column;
+}
+.lb-close{
+  position:absolute;top:12px;right:12px;z-index:10;
+  width:36px;height:36px;border-radius:50%;
+  background:rgba(0,0,0,0.5);border:none;
+  color:#e8dcc8;font-size:1.2rem;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  transition:background 0.2s;
+}
+.lb-close:hover{background:rgba(0,0,0,0.8);}
+.lb-number{
+  font-family:'Playfair Display',Georgia,serif;
+  font-size:0.8rem;color:#c8954a;letter-spacing:0.15em;
+  margin-bottom:4px;
+}
+.lb-title{font-size:1.4rem;font-weight:700;margin-bottom:2px;}
+.lb-title-it{
+  font-family:'Crimson Pro',Georgia,serif;
+  font-size:0.95rem;font-style:italic;color:#b8946a;
+  margin-bottom:20px;
+}
+.lb-info{display:grid;grid-template-columns:1fr 1fr;gap:8px 16px;margin-bottom:20px;}
+.lb-info dt{
+  font-size:0.72rem;color:#7a6a58;letter-spacing:0.05em;
+  text-transform:uppercase;
+}
+.lb-info dd{font-size:0.85rem;color:#c8b898;}
+.lb-desc{font-size:0.88rem;line-height:1.7;color:#b8a890;font-weight:300;margin-bottom:16px;}
+.lb-quote{
+  font-family:'Crimson Pro',Georgia,serif;
+  font-size:0.95rem;font-style:italic;color:#c8954a;
+  line-height:1.5;padding:12px 16px;
+  border-left:2px solid rgba(200,149,74,0.2);
+  margin-top:auto;
+  background:rgba(200,149,74,0.04);
+  border-radius:0 4px 4px 0;
+}
+
+/* Footer */
+.footer{
+  padding:16px;text-align:center;font-size:0.72rem;color:#5a4a38;
+}
+
+@keyframes cardIn{
+  from{opacity:0;transform:translateY(30px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+/* ── Responsive ── */
+@media(max-width:1023px){
+  .gallery{grid-template-columns:repeat(2,1fr);gap:16px;padding:16px;}
+  #lightbox{width:95vw;}
+  .lb-inner{flex-direction:column;}
+  .lb-image{flex:0 0 auto;max-height:50vh;}
+  .lb-detail{padding:24px 20px;}
+  .lb-title{font-size:1.2rem;}
+  .lb-info{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:479px){
+  .gallery{grid-template-columns:1fr;gap:12px;padding:12px;}
+  .nav-bar{padding:10px 14px;}
+  .nav-bar h1{font-size:0.95rem;}
+  .filters{padding:12px 14px;gap:6px;}
+  .filter-btn{font-size:0.72rem;padding:4px 12px;}
+  .lb-detail{padding:20px 16px;}
+  .lb-title{font-size:1.05rem;}
+  .lb-info{grid-template-columns:1fr;gap:4px;}
+}
+</style>
+</head>
+<body>
+
+<div class="nav-bar">
+  <a href="portale.html">← 三界</a>
+  <div style="text-align:center">
+    <h1>Lo Studio</h1>
+    <p class="sub">图鉴柜</p>
+  </div>
+  <span style="width:60px"></span>
+</div>
+
+<div class="filters">
+  <button class="filter-btn active" data-filter="all">全部</button>
+  <button class="filter-btn" data-filter="sculpture">雕塑</button>
+  <button class="filter-btn" data-filter="painting">绘画</button>
+  <button class="filter-btn" data-filter="portrait">肖像</button>
+</div>
+
+<div class="gallery" id="gallery"></div>
+
+<div class="footer">点击卡片查看详情 · Ariste 策展</div>
+
+<!-- Lightbox -->
+<dialog id="lightbox">
+  <div class="lb-inner">
+    <div class="lb-image">
+      <img id="lbImg" src="" alt="">
+      <button class="lb-close" onclick="document.getElementById('lightbox').close()">✕</button>
+    </div>
+    <div class="lb-detail">
+      <p class="lb-number" id="lbNumber"></p>
+      <h2 class="lb-title" id="lbTitle"></h2>
+      <p class="lb-title-it" id="lbTitleIt"></p>
+      <dl class="lb-info" id="lbInfo"></dl>
+      <p class="lb-desc" id="lbDesc"></p>
+      <div class="lb-quote" id="lbQuote"></div>
+    </div>
+  </div>
+</dialog>
+
+<script>
+const works = [
+  {
+    id:0,img:'david-new.webp',cat:'sculpture',
+    title:'大卫',titleIt:'Il David',year:'1501–1504',
+    material:'卡拉拉大理石',location:'佛罗伦萨美术学院',
+    size:'5.17 米',period:'文艺复兴盛期',
+    desc:'26岁。从废弃四十年的巨型石料中解放。不是胜利后的大卫——是战斗前的大卫。眉头紧锁、肌肉紧绷、右手青筋暴起。大卫成为佛罗伦萨共和国的象征：弱小者以勇气挑战巨人。',
+    quote:'「我在大理石中看见了天使。我的工作只是把他放出来。」'
+  },
+  {
+    id:1,img:'pieta-new.webp',cat:'sculpture',
+    title:'哀悼基督',titleIt:'La Pietà',year:'1498–1499',
+    material:'卡拉拉大理石',location:'圣彼得大教堂 · 梵蒂冈',
+    size:'1.74 × 1.95 米',period:'文艺复兴盛期',
+    desc:'23岁。法国红衣主教委托。圣母哀悼基督——不是哭喊，是沉默的承受。这是他唯一署名的作品：揭幕后他听到有人把作品归功于他人，当晚潜入教堂在圣母衣带上刻下自己的名字。他后来后悔了。',
+    quote:'「你不知道纯洁的女人比被玷污的女人老得更慢吗？」'
+  },
+  {
+    id:2,img:'creazione.webp',cat:'painting',
+    title:'创世记 · 创造亚当',titleIt:'La Creazione di Adamo',year:'1508–1512',
+    material:'湿壁画',location:'西斯廷礼拜堂 · 梵蒂冈',
+    size:'约 500㎡（全穹顶）',period:'文艺复兴盛期',
+    desc:'西斯廷穹顶的核心画面。上帝与亚当手指之间那1毫米的间隙——被引用最多的艺术画面。整个穹顶500平方米、300多个人物、四年孤独，米开朗琪罗拒绝助手，独自仰面在20米高的脚手架上完成。',
+    quote:'「我不是画家。」——然后他画了西斯廷穹顶。'
+  },
+  {
+    id:3,img:'schiavo-morto.webp',cat:'sculpture',
+    title:'垂死的奴隶',titleIt:'Schiavo morente',year:'1513–1516',
+    material:'大理石',location:'卢浮宫 · 巴黎',
+    size:'2.29 米',period:'文艺复兴盛期',
+    desc:'为尤利乌斯二世陵墓制作的四十尊雕像之一。头向后仰，手抚胸口——不是痛苦，而是平静的屈服。他在沉睡中离开。死亡不是恐惧，是解脱。非弗尼托（non-finito）哲学的体现——下半身留在未完成的石头里。',
+    quote:'「最高贵的艺术不是完成——是快要完成。」'
+  },
+  {
+    id:4,img:'schiavo-risveglio.webp',cat:'sculpture',
+    title:'苏醒的奴隶',titleIt:'Schiavo ribelle',year:'1513–1516',
+    material:'大理石',location:'卢浮宫 · 巴黎',
+    size:'2.09 米',period:'文艺复兴盛期',
+    desc:'与垂死的奴隶配对的另一尊。身体扭动、肌肉膨胀——他不是在醒来，是在挣脱。背部的每一束肌肉都绷紧到极限，但大腿以下还埋在石头里。米开朗琪罗故意没有完成下半身——人在物质中挣扎，但永远无法彻底挣脱。',
+    quote:'「那些留在石头里的身体，比完成的更动人。」'
+  },
+  {
+    id:5,img:'michelangelo-ritratto.webp',cat:'portrait',
+    title:'米开朗琪罗肖像',titleIt:'Ritratto di Michelangelo',year:'16世纪',
+    material:'木板油画',location:'乌菲兹美术馆 · 佛罗伦萨',
+    size:'未知',period:'文艺复兴盛期',
+    desc:'断裂的鼻子、深邃的双眼、倔强的下颚。他从不掩饰脸上的伤疤——那是他年轻时在圣灵教堂与学徒斗殴留下的印记。他一辈子以"贵族"自称，做的是工匠的事。89岁去世时——去世前六天还在雕刻。',
+    quote:'「大自然能创造的一切，他都用凿子、画笔和言辞超越了。」— 瓦萨里'
+  }
+];
+
+// Render gallery
+const gallery = document.getElementById('gallery');
+let currentFilter = 'all';
+
+function render(filter){
+  gallery.innerHTML = '';
+  let delay = 0;
+  works.forEach(w => {
+    if(filter !== 'all' && w.cat !== filter) return;
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.style.animation = `cardIn 0.5s ease ${delay}s both`;
+    delay += 0.08;
+    card.innerHTML = `
+      <img src="${w.img}" alt="${w.title}" loading="lazy">
+      <div class="card-body">
+        <p class="card-title">${w.title}</p>
+        <p class="card-it">${w.titleIt}</p>
+        <div class="card-meta">
+          <span>${w.year}</span>
+          <span class="card-badge">${w.cat === 'sculpture' ? '雕塑' : w.cat === 'painting' ? '绘画' : '肖像'}</span>
+        </div>
+      </div>
+    `;
+    card.onclick = () => openLightbox(w.id);
+    gallery.appendChild(card);
+  });
+}
+
+// Filters
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.onclick = () => {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    currentFilter = btn.dataset.filter;
+    render(currentFilter);
+  };
+});
+
+// Lightbox
+function openLightbox(id){
+  const w = works[id];
+  document.getElementById('lbImg').src = w.img;
+  document.getElementById('lbNumber').textContent = `${String(id+1).padStart(2,'0')} · ${w.cat === 'sculpture' ? '雕塑' : w.cat === 'painting' ? '绘画' : '肖像'}`;
+  document.getElementById('lbTitle').textContent = w.title;
+  document.getElementById('lbTitleIt').textContent = w.titleIt;
+  document.getElementById('lbInfo').innerHTML = `
+    <dt>年代</dt><dd>${w.year}</dd>
+    <dt>材质</dt><dd>${w.material}</dd>
+    <dt>尺寸</dt><dd>${w.size}</dd>
+    <dt>现藏</dt><dd>${w.location}</dd>
+  `;
+  document.getElementById('lbDesc').textContent = w.desc;
+  document.getElementById('lbQuote').innerHTML = w.quote;
+  document.getElementById('lightbox').showModal();
+}
+
+// Close on backdrop click
+document.getElementById('lightbox').addEventListener('click', (e) => {
+  const rect = e.target.getBoundingClientRect();
+  if(rect.left > e.clientX || rect.right < e.clientX || rect.top > e.clientY || rect.bottom < e.clientY){
+    e.target.close();
+  }
+});
+
+// Init
+render('all');
+</script>
+
+</body>
+</html>
