@@ -73,10 +73,16 @@ body{
   position:relative;border-radius:8px;overflow:hidden;
   background:#1a1410;border:1px solid rgba(200,149,74,0.06);
   transition:transform 0.3s;
+  display:flex;flex-direction:column;
 }
 .compare-item:hover{transform:translateY(-2px);}
-.compare-item img{
-  width:100%;aspect-ratio:16/10;object-fit:cover;display:block;
+.compare-item .img-wrap{
+  width:100%;max-height:45vh;overflow:hidden;
+  background:#1a1410;display:flex;align-items:center;justify-content:center;
+}
+.compare-item .img-wrap img{
+  width:100%;height:auto;max-height:45vh;object-fit:contain;
+  display:block;
 }
 .compare-label{
   position:absolute;top:12px;left:12px;
@@ -87,14 +93,14 @@ body{
 .compare-label.l{color:#c8954a;border-left:2px solid #c8954a;}
 .compare-label.r{color:#e8dcc8;border-left:2px solid #e8dcc8;}
 .compare-captions{
-  padding:12px 16px 16px;
+  padding:14px 18px 18px;
 }
 .compare-captions .name{
-  font-size:0.9rem;font-weight:600;margin-bottom:2px;
+  font-size:0.9rem;font-weight:600;margin-bottom:4px;
 }
 .compare-captions .sub{
   font-family:'Crimson Pro',Georgia,serif;
-  font-size:0.78rem;color:#b8946a;font-style:italic;
+  font-size:0.78rem;color:#b8946a;font-style:italic;line-height:1.5;
 }
 
 /* Insight */
@@ -170,10 +176,11 @@ body{
   .slider-comparison{display:block;}
 }
 @media(max-width:767px){
-  .confronto-section{padding:64px 16px 32px;}
-  .comparison{grid-template-columns:1fr;gap:16px;max-width:500px;}
-  .sec-title{font-size:1.3rem;}
-  .compare-item img{aspect-ratio:16/10;}
+  .confronto-section{padding:56px 12px 24px;}
+  .comparison{grid-template-columns:1fr;gap:14px;max-width:500px;}
+  .sec-title{font-size:1.25rem;}
+  .sec-header{margin-bottom:20px;}
+  .compare-item .img-wrap{max-height:35vh;}
   .slider-comparison{display:none;}
   .insight p{font-size:0.85rem;}
   .verdict{font-size:0.92rem;padding:12px 16px;}
@@ -210,7 +217,7 @@ body{
   <!-- Split comparison: David full body vs face closeup -->
   <div class="comparison">
     <div class="compare-item">
-      <img src="david-new.webp" alt="大卫全身" loading="lazy">
+      <div class="img-wrap"><img src="david-new.webp" alt="大卫全身" loading="lazy"></div>
       <span class="compare-label l">真实解剖 · 尸检基础</span>
       <div class="compare-captions">
         <p class="name">大卫（全身）1504</p>
@@ -218,7 +225,7 @@ body{
       </div>
     </div>
     <div class="compare-item">
-      <img src="david.webp" alt="大卫右手特写" loading="lazy">
+      <div class="img-wrap"><img src="david.webp" alt="大卫右手特写" loading="lazy"></div>
       <span class="compare-label r">超越真实 · 理想比例</span>
       <div class="compare-captions">
         <p class="name">大卫（手部）1504</p>
@@ -244,7 +251,7 @@ body{
 
   <div class="comparison">
     <div class="compare-item">
-      <img src="pieta-new.webp" alt="哀悼基督" loading="lazy">
+      <div class="img-wrap"><img src="pieta-new.webp" alt="哀悼基督" loading="lazy"></div>
       <span class="compare-label l">亲密 · 两人沉默</span>
       <div class="compare-captions">
         <p class="name">《哀悼基督》1499</p>
@@ -252,7 +259,7 @@ body{
       </div>
     </div>
     <div class="compare-item">
-      <img src="creazione.webp" alt="最后的审判" loading="lazy">
+      <div class="img-wrap"><img src="creazione.webp" alt="最后的审判" loading="lazy"></div>
       <span class="compare-label r">宏大 · 四百人翻滚</span>
       <div class="compare-captions">
         <p class="name">《最后的审判》1541</p>
@@ -278,7 +285,7 @@ body{
 
   <div class="comparison">
     <div class="compare-item">
-      <img src="david-new.webp" alt="完成的大卫" loading="lazy">
+      <div class="img-wrap"><img src="david-new.webp" alt="完成的大卫" loading="lazy"></div>
       <span class="compare-label l">完成 · 完美的囚徒</span>
       <div class="compare-captions">
         <p class="name">《大卫》1504</p>
@@ -286,7 +293,7 @@ body{
       </div>
     </div>
     <div class="compare-item">
-      <img src="schiavo-risveglio.webp" alt="未完成的奴隶" loading="lazy">
+      <div class="img-wrap"><img src="schiavo-risveglio.webp" alt="未完成的奴隶" loading="lazy"></div>
       <span class="compare-label r">未完成 · 永恒的挣扎</span>
       <div class="compare-captions">
         <p class="name">《苏醒的奴隶》1516</p>
@@ -312,7 +319,7 @@ body{
 
   <div class="comparison">
     <div class="compare-item">
-      <img src="sistine.webp" alt="西斯廷穹顶" loading="lazy">
+      <div class="img-wrap"><img src="sistine.webp" alt="西斯廷穹顶" loading="lazy"></div>
       <span class="compare-label l">宏伟 · 500平方米穹顶</span>
       <div class="compare-captions">
         <p class="name">《西斯廷穹顶》1512</p>
@@ -320,7 +327,7 @@ body{
       </div>
     </div>
     <div class="compare-item">
-      <img src="michelangelo-ritratto.webp" alt="个人肖像" loading="lazy">
+      <div class="img-wrap"><img src="michelangelo-ritratto.webp" alt="个人肖像" loading="lazy"></div>
       <span class="compare-label r">私密 · 一张脸的故事</span>
       <div class="compare-captions">
         <p class="name">米开朗琪罗肖像 16世纪</p>

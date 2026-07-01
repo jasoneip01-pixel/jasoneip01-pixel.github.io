@@ -51,9 +51,10 @@ body{
 .sec{
   position:relative;
   min-height:100vh;
-  display:flex;align-items:center;justify-content:center;
-  overflow:hidden;
+  display:flex;align-items:flex-start;justify-content:center;
+  padding-top:14vh;padding-bottom:10vh;
 }
+.sec-prologue{padding-top:8vh;}
 .sec-bg{
   position:absolute;inset:0;
   background-size:cover;background-position:center;
@@ -118,7 +119,7 @@ body{
     rgba(30,22,16,0.9) 100%
   );
 }
-.sec-prologue .sec-content{max-width:800px;}
+.sec-prologue .sec-content{max-width:800px;padding-top:4vh;}
 .sec-prologue .sec-title{font-size:3.6rem;}
 .sec-prologue .sec-title-it{font-size:1.4rem;}
 
@@ -130,6 +131,7 @@ body{
     rgba(30,22,16,1) 100%
   );
 }
+.sec-epilogue .sec-bg{background-position:center 20%;}
 
 /* Timeline indicator */
 .timeline-label{
