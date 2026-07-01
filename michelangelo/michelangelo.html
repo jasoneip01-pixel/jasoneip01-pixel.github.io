@@ -183,11 +183,33 @@ body {
 .scene.slide-right-out { display:flex; animation: slideRightOut 0.45s cubic-bezier(.4,0,.2,1) forwards; }
 .scene.slide-left-in { display:flex; animation: slideLeftIn 0.45s cubic-bezier(.4,0,.2,1) forwards; }
 .scene.slide-right-in { display:flex; animation: slideRightIn 0.45s cubic-bezier(.4,0,.2,1) forwards; }
+.scene.slide-down-in { display:flex; animation: slideDownIn 0.45s cubic-bezier(.4,0,.2,1) forwards; }
 
 @keyframes slideLeftOut { 0% { transform:translate3d(0,0,0); opacity:1; } 100% { transform:translate3d(-60px,0,0); opacity:0; } }
 @keyframes slideRightOut { 0% { transform:translate3d(0,0,0); opacity:1; } 100% { transform:translate3d(60px,0,0); opacity:0; } }
 @keyframes slideLeftIn { 0% { transform:translate3d(60px,0,0); opacity:0; } 100% { transform:translate3d(0,0,0); opacity:1; } }
 @keyframes slideRightIn { 0% { transform:translate3d(-60px,0,0); opacity:0; } 100% { transform:translate3d(0,0,0); opacity:1; } }
+@keyframes slideDownIn { 0% { transform:translate3d(0,-30px,0); opacity:0; } 100% { transform:translate3d(0,0,0); opacity:1; } }
+
+/* ── Dual Image Scene ── */
+.scene-dual-inner {
+  display:flex; flex-direction:column; width:100%;
+}
+.scene-dual-images {
+  display:flex; width:100%;
+}
+.scene-dual-images .scene-image {
+  flex:1; min-height:300px;
+}
+.scene-dual-images .scene-image img {
+  width:100%; height:100%; object-fit:cover;
+}
+.scene-dual-content {
+  padding:48px 40px;
+  display:flex; flex-direction:column;
+  justify-content:center;
+  overflow-wrap:break-word;
+}
 
 /* ── Visual Notes ── */
 .visual-notes {
@@ -291,7 +313,7 @@ body {
 @media (min-width: 1440px) {
   .book-wrapper { max-width:1300px; padding:40px; }
   .book { max-width:1200px; }
-  .scene-content { padding:56px 52px; }
+  .scene-content, .scene-dual-content { padding:56px 52px; }
   .scene-title { font-size:1.9rem; }
   .scene-title-it { font-size:1.25rem; }
   .dialogue-block .zh { font-size:1.15rem; line-height:1.8; }
@@ -304,7 +326,7 @@ body {
 @media (min-width: 1200px) and (max-width: 1439px) {
   .book-wrapper { max-width:1200px; padding:32px; }
   .book { max-width:1100px; }
-  .scene-content { padding:48px 44px; }
+  .scene-content, .scene-dual-content { padding:48px 44px; }
   .scene-title { font-size:1.75rem; }
   .scene-title-it { font-size:1.15rem; }
   .dialogue-block .zh { font-size:1.1rem; }
@@ -315,7 +337,7 @@ body {
 @media (min-width: 1024px) and (max-width: 1199px) {
   .book-wrapper { max-width:1024px; padding:24px; }
   .book { max-width:960px; }
-  .scene-content { padding:44px 38px; }
+  .scene-content, .scene-dual-content { padding:44px 38px; }
   .scene-title { font-size:1.6rem; }
   .scene-title-it { font-size:1.1rem; }
   .dialogue-block .zh { font-size:1.05rem; }
@@ -326,8 +348,8 @@ body {
 @media (min-width: 768px) and (max-width: 1023px) {
   .scene-inner { flex-direction:column; align-items:stretch; }
   .scene-image { flex:0 0 auto; aspect-ratio:1/1; max-width:520px; align-self:stretch; }
-  .scene-image img { position:absolute; inset:0; object-fit:cover; }
-  .scene-content { padding:44px 40px 56px; justify-content:flex-start; }
+  .scene-image img, .scene-dual-images .scene-image img { position:absolute; inset:0; object-fit:cover; }
+  .scene-content, .scene-dual-content { padding:44px 40px 56px; justify-content:flex-start; }
   .scene-title { font-size:1.55rem; }
   .scene-title-it { font-size:1.05rem; margin-bottom:20px; }
   .dialogue-block .zh { font-size:1.05rem; line-height:1.8; }
@@ -341,6 +363,9 @@ body {
   .nav-area { padding:16px 36px 30px; gap:20px; }
   .historical-note { font-size:0.85rem; }
   .footer { padding:20px; font-size:0.78rem; }
+  .scene-dual-images { flex-direction:column; }
+  .scene-dual-images .scene-image { aspect-ratio:1/1; max-width:400px; }
+  .vn-gallery { grid-template-columns:1fr 1fr; }
 }
 
 /* ══ Tablet Portrait / Large Phone: 480–767px ══ */
@@ -351,8 +376,8 @@ body {
   @keyframes slideRightIn { 0% { transform:translate3d(-40px,0,0); opacity:0; } 100% { transform:translate3d(0,0,0); opacity:1; } }
   .scene-inner { flex-direction:column; align-items:stretch; }
   .scene-image { flex:0 0 auto; aspect-ratio:1/1; align-self:stretch; }
-  .scene-image img { position:absolute; inset:0; object-fit:cover; }
-  .scene-content { padding:36px 28px 44px; justify-content:flex-start; }
+  .scene-image img, .scene-dual-images .scene-image img { position:absolute; inset:0; object-fit:cover; }
+  .scene-content, .scene-dual-content { padding:36px 28px 44px; justify-content:flex-start; }
   .scene-title { font-size:1.4rem; }
   .scene-title-it { font-size:1rem; margin-bottom:18px; }
   .dialogue-block .zh { font-size:1rem; line-height:1.75; }
@@ -376,6 +401,8 @@ body {
   .page-label { font-size:0.78rem; min-width:52px; }
   .scene-number { font-size:0.8rem; }
   .footer { font-size:0.74rem; padding:18px 20px; }
+  .scene-dual-images { flex-direction:column; }
+  .scene-dual-images .scene-image { aspect-ratio:1/1; }
   .vn-gallery { grid-template-columns:1fr; }
   .vn-parallel { grid-template-columns:1fr; gap:16px; }
   .visual-notes .vn-header { padding:14px 20px; }
@@ -392,8 +419,8 @@ body {
   @keyframes slideRightIn { 0% { transform:translate3d(-35px,0,0); opacity:0; } 100% { transform:translate3d(0,0,0); opacity:1; } }
   .scene-inner { flex-direction:column; align-items:stretch; }
   .scene-image { flex:0 0 auto; aspect-ratio:1/1; align-self:stretch; }
-  .scene-image img { position:absolute; inset:0; object-fit:cover; }
-  .scene-content { padding:28px 20px 40px; justify-content:flex-start; }
+  .scene-image img, .scene-dual-images .scene-image img { position:absolute; inset:0; object-fit:cover; }
+  .scene-content, .scene-dual-content { padding:28px 20px 40px; justify-content:flex-start; }
   .scene-title { font-size:1.25rem; }
   .scene-title-it { font-size:0.92rem; margin-bottom:14px; }
   .dialogue-block { margin-bottom:16px; }
@@ -418,6 +445,8 @@ body {
   .page-label { font-size:0.7rem; min-width:44px; }
   .scene-number { font-size:0.72rem; margin-bottom:6px; }
   .footer { font-size:0.68rem; padding:16px 14px; line-height:1.5; }
+  .scene-dual-images { flex-direction:column; }
+  .scene-dual-images .scene-image { aspect-ratio:1/1; }
   .vn-gallery { grid-template-columns:1fr; }
   .vn-parallel { grid-template-columns:1fr; gap:16px; }
   .visual-notes .vn-header { padding:14px 14px; }
@@ -430,7 +459,7 @@ body {
 
 /* ══ Mobile Small: < 375px ══ */
 @media (max-width: 374px) {
-  .scene-content { padding:24px 14px; justify-content:flex-start; }
+  .scene-content, .scene-dual-content { padding:24px 14px; justify-content:flex-start; }
   .scene-title { font-size:1.15rem; }
   .scene-title-it { font-size:0.85rem; }
   .dialogue-block .zh { font-size:0.9rem; line-height:1.65; }
@@ -475,7 +504,7 @@ html { scroll-behavior: smooth; scroll-padding-top: 56px; overscroll-behavior: n
   <div class="scene-inner">
     <div class="scene-image">
       <div class="loading-placeholder"><div class="spinner"></div></div>
-      <img src="david.webp" fetchpriority="high" alt="米开朗琪罗" width="1200" height="1200" style="width:100%;height:auto;display:block" onload="this.classList.add('loaded');this.previousElementSibling.remove()" onerror="this.parentElement.innerHTML='<div class=loading-placeholder style=color:var(--text-light)>🖼 米开朗琪罗</div>'">
+      <img src="michelangelo-ritratto.webp" fetchpriority="high" alt="米开朗琪罗" width="1200" height="1200" style="width:100%;height:auto;display:block" onload="this.classList.add('loaded');this.previousElementSibling.remove()" onerror="this.parentElement.innerHTML='<div class=loading-placeholder style=color:var(--text-light)>🖼 米开朗琪罗</div>'">
     </div>
     <div class="scene-content">
       <div class="scene-number">SCENA 1</div>
@@ -504,7 +533,7 @@ html { scroll-behavior: smooth; scroll-padding-top: 56px; overscroll-behavior: n
   <div class="scene-inner">
     <div class="scene-image">
       <div class="loading-placeholder"><div class="spinner"></div></div>
-      <img data-src="pieta.webp" alt="哀悼基督" width="1200" height="1200" loading="lazy" onload="this.classList.add('loaded');this.previousElementSibling.remove()" onerror="this.parentElement.innerHTML='<div class=loading-placeholder style=color:var(--text-light)>🖼 哀悼基督</div>'">
+      <img data-src="pieta-new.webp" alt="哀悼基督" width="1200" height="1200" loading="lazy" onload="this.classList.add('loaded');this.previousElementSibling.remove()" onerror="this.parentElement.innerHTML='<div class=loading-placeholder style=color:var(--text-light)>🖼 哀悼基督</div>'">
     </div>
     <div class="scene-content">
       <div class="scene-number">SCENA 2</div>
@@ -533,7 +562,7 @@ html { scroll-behavior: smooth; scroll-padding-top: 56px; overscroll-behavior: n
   <div class="scene-inner">
     <div class="scene-image">
       <div class="loading-placeholder"><div class="spinner"></div></div>
-      <img data-src="david.webp" alt="大卫像" width="1200" height="1200" loading="lazy" onload="this.classList.add('loaded');this.previousElementSibling.remove()" onerror="this.parentElement.innerHTML='<div class=loading-placeholder style=color:var(--text-light)>🖼 大卫像</div>'">
+      <img data-src="david-new.webp" alt="大卫像" width="1200" height="1200" loading="lazy" onload="this.classList.add('loaded');this.previousElementSibling.remove()" onerror="this.parentElement.innerHTML='<div class=loading-placeholder style=color:var(--text-light)>🖼 大卫像</div>'">
     </div>
     <div class="scene-content">
       <div class="scene-number">SCENA 3</div>
@@ -562,7 +591,7 @@ html { scroll-behavior: smooth; scroll-padding-top: 56px; overscroll-behavior: n
   <div class="scene-inner">
     <div class="scene-image">
       <div class="loading-placeholder"><div class="spinner"></div></div>
-      <img data-src="sistine.webp" alt="创造亚当" width="1200" height="1200" loading="lazy" onload="this.classList.add('loaded');this.previousElementSibling.remove()" onerror="this.parentElement.innerHTML='<div class=loading-placeholder style=color:var(--text-light)>🖼 创世记 · 创造亚当</div>'">
+      <img data-src="creazione.webp" alt="创造亚当" width="1200" height="1200" loading="lazy" onload="this.classList.add('loaded');this.previousElementSibling.remove()" onerror="this.parentElement.innerHTML='<div class=loading-placeholder style=color:var(--text-light)>🖼 创世记 · 创造亚当</div>'">
     </div>
     <div class="scene-content">
       <div class="scene-number">SCENA 4</div>
@@ -596,7 +625,7 @@ html { scroll-behavior: smooth; scroll-padding-top: 56px; overscroll-behavior: n
   <div class="scene-inner">
     <div class="scene-image">
       <div class="loading-placeholder"><div class="spinner"></div></div>
-      <img data-src="sistine.webp" alt="最后的审判" width="1200" height="1200" loading="lazy" onload="this.classList.add('loaded');this.previousElementSibling.remove()" onerror="this.parentElement.innerHTML='<div class=loading-placeholder style=color:var(--text-light)>🖼 最后的审判</div>'">
+      <img data-src="creazione.webp" alt="最后的审判" width="1200" height="1200" loading="lazy" onload="this.classList.add('loaded');this.previousElementSibling.remove()" onerror="this.parentElement.innerHTML='<div class=loading-placeholder style=color:var(--text-light)>🖼 最后的审判</div>'">
     </div>
     <div class="scene-content">
       <div class="scene-number">SCENA 5</div>
@@ -623,6 +652,80 @@ html { scroll-behavior: smooth; scroll-padding-top: 56px; overscroll-behavior: n
   </div>
 </div>
 
+<!-- ═══ Scene 6 ═══ -->
+<div class="scene" data-scene="6" data-title="奴隶">
+  <div class="scene-dual-inner">
+    <div class="scene-dual-images">
+      <div class="scene-image">
+        <div class="loading-placeholder"><div class="spinner"></div></div>
+        <img data-src="schiavo-morto.webp" alt="垂死的奴隶" width="1200" height="1200" loading="lazy" onload="this.classList.add('loaded');this.previousElementSibling.remove()" onerror="this.parentElement.innerHTML='<div class=loading-placeholder style=color:var(--text-light)>🖼 垂死的奴隶</div>'">
+      </div>
+      <div class="scene-image">
+        <div class="loading-placeholder"><div class="spinner"></div></div>
+        <img data-src="schiavo-risveglio.webp" alt="苏醒的奴隶" width="1200" height="1200" loading="lazy" onload="this.classList.add('loaded');this.previousElementSibling.remove()" onerror="this.parentElement.innerHTML='<div class=loading-placeholder style=color:var(--text-light)>🖼 苏醒的奴隶</div>'">
+      </div>
+    </div>
+    <div class="scene-dual-content">
+      <div class="scene-number">SCENA 6</div>
+      <div class="scene-title">奴隶</div>
+      <div class="scene-title-it">Gli Schiavi</div>
+      <div class="stage-direction">1513年。尤利乌斯二世陵墓工程。米开朗琪罗开始雕刻一系列名为"奴隶"的雕像——没有人命令他这样做。这些身体从大理石中挣扎而出，但永远无法完全挣脱。</div>
+      <div class="dialogue-block">
+        <div class="speaker">垂死的奴隶 · 左</div>
+        <div class="zh">头向后仰，手抚胸口——不是痛苦，是平静的屈服。他在沉睡中离开。米开朗琪罗给他的脸刻上了近乎古典的安宁——死亡不是恐惧，是解脱。</div>
+        <div class="it">La testa reclinata, la mano sul petto — non dolore, serena resa. Se ne va nel sonno. La morte non è paura, è liberazione.</div>
+      </div>
+      <div class="dialogue-block">
+        <div class="speaker">苏醒的奴隶 · 右</div>
+        <div class="zh">身体扭曲、肌肉膨胀。他不是在醒来——是在挣脱。背部的每一束肌肉都绷紧到极限，但大腿以下还埋在石头里。米开朗琪罗没有完成它的下半身——不是来不及，是故意的。</div>
+        <div class="it">Corpo contorto, muscoli tesi. Non si sta svegliando — si sta liberando. Ma le gambe sono ancora prigioniere della pietra. Non finito — non per fretta, per scelta.</div>
+      </div>
+      <div class="dialogue-block">
+        <div class="speaker">非·弗尼托——"未完成"</div>
+        <div class="zh">米开朗琪罗一生有大量作品没有完成。并非偶然——是他的哲学：人在物质中挣扎，但永远无法完全挣脱。那些留在石头里的身体，比完成的更动人。他们告诉我们——伟大的艺术不是把一切做尽，是在最致命的一刻停手。</div>
+        <div class="it">Il non-finito. L'arte più nobile non è compiuta — è sul punto di esserlo. Le figure che restano nella pietra dicono più di quelle liberate. La grande arte non finisce tutto — si ferma al momento giusto.</div>
+      </div>
+      <div class="historical-note">
+        <strong>ⓘ</strong> 这两尊雕像现藏于巴黎卢浮宫。它们原本是为尤利乌斯二世陵墓设计的四十尊雕像之一，最终只有《摩西》完成。米开朗琪罗在80岁时试图将它们送给一位朋友，说"这些东西会让人想起我的才能——以及我未完成的事业。"
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ Scene 7 ═══ -->
+<div class="scene" data-scene="7" data-title="不朽的面容">
+  <div class="scene-inner">
+    <div class="scene-image">
+      <div class="loading-placeholder"><div class="spinner"></div></div>
+      <img data-src="david-new.webp" alt="米开朗琪罗的面容" width="1200" height="1200" loading="lazy" onload="this.classList.add('loaded');this.previousElementSibling.remove()" onerror="this.parentElement.innerHTML='<div class=loading-placeholder style=color:var(--text-light)>🖼 不朽的面容</div>'">
+    </div>
+    <div class="scene-content">
+      <div class="scene-number">SCENA 7</div>
+      <div class="scene-title">不朽的面容</div>
+      <div class="scene-title-it">Il Volto Immortale</div>
+      <div class="stage-direction">1564年2月18日，罗马。89岁的米开朗琪罗在工作室里去世——去世前六天，他还在雕刻《隆达尼尼哀悼基督》。他一生没结过婚，没留下子女。留下的是石头——以及石头里的人。</div>
+      <div class="dialogue-block">
+        <div class="speaker">瓦萨里为他写的墓志铭</div>
+        <div class="zh">「大自然能创造的一切，他都用凿子、画笔和言辞超越了。他的作品对活着的人是教训，对死去的人是慰藉。」</div>
+        <div class="it">Tutto ciò che la natura può creare, egli superò con scalpello, pennello e parole. Le sue opere sono lezioni per i vivi, conforto per i morti.</div>
+      </div>
+      <div class="dialogue-block">
+        <div class="speaker">最后的诗句</div>
+        <div class="zh">米开朗琪罗在80岁时写的十四行诗——关于艺术与死亡：</div>
+      </div>
+      <div class="dialogue-block">
+        <div class="zh">「雕刻和绘画已不再能让我安宁——</div>
+        <div class="zh">我的灵魂转向那份拥抱一切的爱，</div>
+        <div class="zh">那在十字架上张开双臂等待我的爱。」</div>
+        <div class="it">Né pinger né scolpir fia più che quieti l'anima, volta a quell'Amor che squarcia le braccia a prender noi sulla Croce.</div>
+      </div>
+      <div class="historical-note">
+        <strong>ⓘ</strong> 米开朗琪罗的遗体被秘密运回佛罗伦萨——葬在圣十字大教堂。他的墓由瓦萨里设计，装饰着三尊女性雕像——代表他一生投身的三件事：雕塑、绘画、建筑。他的鼻子因年轻时的学术争执被打断，所以所有肖像都带着那个断裂的鼻子——他从不掩饰。
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- ═══ Visual Notes ═══ -->
 <div class="visual-notes" id="visualNotes">
   <div class="vn-header" onclick="document.getElementById('visualNotes').classList.toggle('expanded')">
@@ -634,34 +737,58 @@ html { scroll-behavior: smooth; scroll-padding-top: 56px; overscroll-behavior: n
   </div>
   <div class="vn-content">
 
-    <!-- Section 1: The three works -->
+    <!-- Section 1: The six works -->
     <div class="vn-section">
-      <h3>① 三件杰作，一个灵魂</h3>
-      <h3 class="vn-sub-it">Tre Capolavori, Un'Anima</h3>
-      <p class="vn-desc">米开朗琪罗一生跨越雕塑、绘画、建筑、诗歌四大领域。但无论什么媒介，他都在做同一件事：从物质中释放灵魂。以下是三件他最著名的作品——全部是他30岁之前已经完成或开始的。</p>
+      <h3>① 六件杰作，一个灵魂</h3>
+      <h3 class="vn-sub-it">Sei Capolavori, Un'Anima</h3>
+      <p class="vn-desc">米开朗琪罗跨越雕塑、绘画、建筑、诗歌四大领域。不论什么媒介，他都在做同一件事：从物质中释放灵魂。以下是覆盖他一生的六件代表作——从23岁到89岁。</p>
       <div class="vn-gallery">
         <div class="vn-card">
-          <img data-src="pieta.webp" alt="哀悼基督" class="vn-img vn-lazy" loading="lazy" onload="this.classList.add('loaded')" onerror="this.style.display='none'">
+          <img data-src="pieta-new.webp" alt="哀悼基督" class="vn-img vn-lazy" loading="lazy" onload="this.classList.add('loaded')" onerror="this.style.display='none'">
           <div class="vn-card-text">
             <p class="vn-card-title">《哀悼基督》1499</p>
             <p class="vn-card-it"><em>La Pietà</em></p>
-            <p class="vn-card-note">23岁。23岁的年轻人雕出了圣母最极致的哀伤——不是哭喊，是沉默的承受。米开朗琪罗后来说：「没有哪颗灵魂比我祖母更纯洁，所以她的面容才如此年轻。」</p>
+            <p class="vn-card-note">23岁。23岁的年轻人雕出了圣母最极致的哀伤——不是哭喊，是沉默的承受。圣彼得大教堂。</p>
           </div>
         </div>
         <div class="vn-card">
-          <img data-src="david.webp" alt="大卫" class="vn-img vn-lazy" loading="lazy" onload="this.classList.add('loaded')" onerror="this.style.display='none'">
+          <img data-src="david-new.webp" alt="大卫" class="vn-img vn-lazy" loading="lazy" onload="this.classList.add('loaded')" onerror="this.style.display='none'">
           <div class="vn-card-text">
             <p class="vn-card-title">《大卫》1504</p>
             <p class="vn-card-it"><em>Il David</em></p>
-            <p class="vn-card-note">26岁。从废弃四十年的石料中解放。右手青筋暴起——不是力量的炫耀，是战斗前的紧张。米开朗琪罗选择的不是胜利者，而是准备迎战的人。</p>
+            <p class="vn-card-note">26岁。从废弃四十年的石料中解放。右手青筋暴起——不是力量，是战斗前的紧张。佛罗伦萨美术学院。</p>
           </div>
         </div>
         <div class="vn-card">
-          <img data-src="sistine.webp" alt="创造亚当" class="vn-img vn-lazy" loading="lazy" onload="this.classList.add('loaded')" onerror="this.style.display='none'">
+          <img data-src="creazione.webp" alt="创造亚当" class="vn-img vn-lazy" loading="lazy" onload="this.classList.add('loaded')" onerror="this.style.display='none'">
           <div class="vn-card-text">
-            <p class="vn-card-title">《创造亚当》1512</p>
-            <p class="vn-card-it"><em>La Creazione di Adamo</em></p>
-            <p class="vn-card-note">37岁。西斯廷穹顶的核心。上帝的手指与亚当的手指之间——那1毫米的间隙——是整个文艺复兴的宣言：人正在接近神，但永远不会到达。美存在于那个即将发生的瞬间。</p>
+            <p class="vn-card-title">《创世记》1512</p>
+            <p class="vn-card-it"><em>La Creazione</em></p>
+            <p class="vn-card-note">37岁。西斯廷穹顶。500㎡、300个人物、四年孤独。上帝手指与亚当手指之间那1毫米的间隙——整个文艺复兴的宣言。梵蒂冈。</p>
+          </div>
+        </div>
+        <div class="vn-card">
+          <img data-src="schiavo-morto.webp" alt="垂死的奴隶" class="vn-img vn-lazy" loading="lazy" onload="this.classList.add('loaded')" onerror="this.style.display='none'">
+          <div class="vn-card-text">
+            <p class="vn-card-title">《垂死的奴隶》1513-16</p>
+            <p class="vn-card-it"><em>Schiavo morente</em></p>
+            <p class="vn-card-note">38岁。头和手向后垂——像在平静的沉睡中离开。手抚胸膛，嘴角微启。不是痛苦，是解脱。卢浮宫。</p>
+          </div>
+        </div>
+        <div class="vn-card">
+          <img data-src="schiavo-risveglio.webp" alt="苏醒的奴隶" class="vn-img vn-lazy" loading="lazy" onload="this.classList.add('loaded')" onerror="this.style.display='none'">
+          <div class="vn-card-text">
+            <p class="vn-card-title">《苏醒的奴隶》1513-16</p>
+            <p class="vn-card-it"><em>Schiavo ribelle</em></p>
+            <p class="vn-card-note">同一时期。身体扭动，肌肉膨胀——不是醒来，是挣扎。下半身永远埋在石头里。非弗尼托哲学的完美体现。卢浮宫。</p>
+          </div>
+        </div>
+        <div class="vn-card">
+          <img data-src="michelangelo-ritratto.webp" alt="米开朗琪罗" class="vn-img vn-lazy" loading="lazy" onload="this.classList.add('loaded')" onerror="this.style.display='none'">
+          <div class="vn-card-text">
+            <p class="vn-card-title">米开朗琪罗肖像 16世纪</p>
+            <p class="vn-card-it"><em>Ritratto di Michelangelo</em></p>
+            <p class="vn-card-note">断裂的鼻子、深邃的双眼、倔强的下颚。他从不掩饰脸上的伤疤——那是他年轻时在圣灵教堂与学徒斗殴留下的印记，也是他一生好斗的物证。</p>
           </div>
         </div>
       </div>
@@ -674,7 +801,7 @@ html { scroll-behavior: smooth; scroll-padding-top: 56px; overscroll-behavior: n
       <div class="vn-parallel">
         <div class="vn-col">
           <div class="vn-image-compact">
-            <img data-src="david.webp" alt="被缚的奴隶" class="vn-img vn-lazy" loading="lazy" onload="this.classList.add('loaded')" onerror="this.style.display='none'">
+            <img data-src="schiavo-risveglio.webp" alt="苏醒的奴隶" class="vn-img vn-lazy" loading="lazy" onload="this.classList.add('loaded')" onerror="this.style.display='none'">
           </div>
           <div class="vn-quote-block">
             <p class="vn-quote">「最高贵的艺术不是完成——是快要完成。」</p>
@@ -685,7 +812,7 @@ html { scroll-behavior: smooth; scroll-padding-top: 56px; overscroll-behavior: n
         </div>
         <div class="vn-col">
           <div class="vn-image-compact">
-            <img data-src="david.webp" alt="阿特拉斯奴隶" class="vn-img vn-lazy" loading="lazy" onload="this.classList.add('loaded')" onerror="this.style.display='none'">
+            <img data-src="schiavo-morto.webp" alt="垂死的奴隶" class="vn-img vn-lazy" loading="lazy" onload="this.classList.add('loaded')" onerror="this.style.display='none'">
           </div>
           <div class="vn-quote-block">
             <p class="vn-quote">「我在大理石中看见了天使，于是不停地雕刻，直到把他解放出来。」</p>
@@ -703,7 +830,6 @@ html { scroll-behavior: smooth; scroll-padding-top: 56px; overscroll-behavior: n
       <h3 class="vn-sub-it">Lo Scalpello del Poeta</h3>
       <p class="vn-desc">米开朗琪罗留下了超过300首十四行诗——文艺复兴三杰中，只有他被同时代的人称为"诗人"。他的诗和他的雕塑用的是同一把凿子：都在问同一个问题——灵魂如何挣脱肉体？</p>
       <div class="vn-image-frame">
-        <p class="vn-desc"><em>「夜晚是仁慈的，它让渴望栖息」</em>——下面是米开朗琪罗写给维多利亚·科隆纳的一首十四行诗的中文和意大利文：</p>
         <div class="vn-quote-block" style="max-width:500px;margin:0 auto;">
           <p class="vn-quote">「雕刻的双手能赋予石头生命，</p>
           <p class="vn-quote">但只有爱才能让灵魂苏醒。」</p>
@@ -712,10 +838,11 @@ html { scroll-behavior: smooth; scroll-padding-top: 56px; overscroll-behavior: n
           <p class="vn-attr">— Michelangelo, Sonetto per Vittoria Colonna</p>
         </div>
       </div>
+      <p class="vn-desc vn-desc-center" style="margin-top:16px;">1526年，50岁的米开朗琪罗遇见维多利亚·科隆纳——一位侯爵夫人、诗人。他们的友谊持续了十年，直至她去世。他把这种柏拉图式的爱写进了最动人的十四行诗——一种灵魂对另一个灵魂的凝视，而非肉体的渴望。</p>
     </div>
 
     <div class="vn-footer-note">
-      <small>🏛️ 图片来自 ARK Seedream</small>
+      <small>🏛️ 图片来自 Google Arts & Culture · Ariste 策展</small>
     </div>
 
   </div><!-- /vn-content -->
@@ -726,7 +853,7 @@ html { scroll-behavior: smooth; scroll-padding-top: 56px; overscroll-behavior: n
   <button class="nav-btn" id="prevBtn" onclick="goTo(currentScene-1)" disabled>←</button>
   <div class="page-dots" id="pageDots"></div>
   <button class="nav-btn" id="nextBtn" onclick="goTo(currentScene+1)">→</button>
-  <span class="page-label" id="pageLabel">1 / 5</span>
+  <span class="page-label" id="pageLabel">1 / 7</span>
 </div>
 
 </div><!-- /book -->
@@ -740,14 +867,17 @@ html { scroll-behavior: smooth; scroll-padding-top: 56px; overscroll-behavior: n
 <script>
 // ── State ──
 let currentScene = 1;
-const totalScenes = 5;
+const totalScenes = 7;
 
 // ── Scene navigation ──
 function loadImg(sceneNum) {
-  const img = document.querySelector(`.scene[data-scene="${sceneNum}"] img`);
-  if (img && img.dataset.src && !img.src) {
-    img.src = img.dataset.src;
-  }
+  const scene = document.querySelector(`.scene[data-scene="${sceneNum}"]`);
+  if (!scene) return;
+  scene.querySelectorAll('img').forEach(img => {
+    if (img.dataset.src && (!img.src || img.src === window.location.href)) {
+      img.src = img.dataset.src;
+    }
+  });
 }
 
 function updateTopBar(sceneNum) {
