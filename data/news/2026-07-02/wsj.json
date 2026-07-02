@@ -1,48 +1,48 @@
 {
   "source": "WSJ.com US Business RSS",
-  "ts": "Thu, 02 Jul 2026 08:51:12 GMT",
+  "ts": "Thu, 02 Jul 2026 19:17:53 GMT",
   "items": [
     {
-      "title": "The Middle East Has Been Good for Trump’s Bottom Line",
-      "desc": "Plus, SpaceX showed investors an AI device prototype, and Mars tries to make a naturally blue M&M.",
-      "link": "https://www.wsj.com/business/the-middle-east-has-been-good-for-trumps-bottom-line-c2434e69?mod=pls_whats_news_us_business_f",
-      "pubDate": "Wed, 01 Jul 2026 21:07:00 GMT",
-      "creator": "Liz Webber"
+      "title": "Noel Hord, Who Went From Shoe Salesman to President of Nine West, Dies at Age 79",
+      "desc": "Starting as a stock assistant, he rose to president of Nine West Group.",
+      "link": "https://www.wsj.com/business/retail/noel-hord-nine-west-347a9dea?mod=pls_whats_news_us_business_f",
+      "pubDate": "Thu, 02 Jul 2026 18:51:00 GMT",
+      "creator": "James R. Hagerty"
     },
     {
-      "title": "Inside the Multimillion Dollar Saga to Make a Naturally Blue M&M",
-      "desc": "Watch the complicated process behind making M&M’s with natural dyes.",
-      "link": "https://www.wsj.com/business/inside-the-multimillion-dollar-saga-to-make-a-naturally-blue-m-m-78d6f3a9?mod=pls_whats_news_us_business_f",
-      "pubDate": "Wed, 01 Jul 2026 19:02:00 GMT",
-      "creator": "Claire Hogan"
+      "title": "Tesla Driver Charged With Manslaughter After Crashing Into Texas Home, Killing Woman",
+      "desc": "Investigators say the driver acted to override the car’s automated driving assistance system.",
+      "link": "https://www.wsj.com/business/autos/driver-charged-with-manslaughter-after-tesla-crashed-into-texas-home-killing-woman-inside-65e17279?mod=pls_whats_news_us_business_f",
+      "pubDate": "Thu, 02 Jul 2026 18:21:00 GMT",
+      "creator": "Patrick George"
     },
     {
-      "title": "The World’s Top Economists Are Sounding the Alarm on AI",
-      "desc": "Several have joined the chorus of voices warning about the potential global fallout if the AI boom turns to bust.",
-      "link": "https://www.wsj.com/tech/ai/the-worlds-top-economists-are-sounding-the-alarm-on-ai-d99055b6?mod=pls_whats_news_us_business_f",
-      "pubDate": "Wed, 01 Jul 2026 17:21:00 GMT",
-      "creator": "Chelsey Dulaney"
+      "title": "The ‘Five Alarm’ Risks Facing the Power Grid This Summer",
+      "desc": "High temperatures, new AI data centers and drought conditions pose challenges to the electricity system.",
+      "link": "https://www.wsj.com/business/energy-oil/the-five-alarm-risks-facing-the-power-grid-this-summer-3404b031?mod=pls_whats_news_us_business_f",
+      "pubDate": "Thu, 02 Jul 2026 16:21:00 GMT",
+      "creator": "Jennifer Hiller"
     },
     {
-      "title": "McKinsey Shakes Up Its Board After Scandals Over Past Work With Clients",
-      "desc": "The move creates a separate chair role to strengthen oversight of the elite consulting firm.",
-      "link": "https://www.wsj.com/business/mckinsey-shakes-up-its-board-after-scandals-over-past-work-with-clients-71a77fea?mod=pls_whats_news_us_business_f",
-      "pubDate": "Wed, 01 Jul 2026 15:30:00 GMT",
-      "creator": "Allison Pohle"
+      "title": "Tesla Sales Jumped in Second Quarter",
+      "desc": "The electric automaker sells just three new-car models now, with CEO Elon Musk putting the focus on autonomous vehicles and robotics.",
+      "link": "https://www.wsj.com/business/autos/tesla-sales-jumped-in-second-quarter-c9e2f067?mod=pls_whats_news_us_business_f",
+      "pubDate": "Thu, 02 Jul 2026 14:14:00 GMT",
+      "creator": "Becky Peterson"
     },
     {
-      "title": "Google Must Pay Nearly $2 Billion to Klarna in Antitrust Case",
-      "desc": "A Swedish court ruled that the search giant favored its own price-comparison service over Klarna’s.",
-      "link": "https://www.wsj.com/tech/google-must-pay-nearly-2-billion-to-klarna-in-antitrust-case-f398d46f?mod=pls_whats_news_us_business_f",
-      "pubDate": "Wed, 01 Jul 2026 14:04:00 GMT",
-      "creator": "Joseph De Avila"
+      "title": "A Cable Scion’s Hardest Deal Yet: Breaking Up His Family’s Company",
+      "desc": "Comcast co-CEO Brian Roberts spent his career building an integrated cable giant. To grow, he now plans to split it apart.",
+      "link": "https://www.wsj.com/business/media/a-cable-scions-hardest-deal-yet-breaking-up-his-familys-company-472b18ae?mod=pls_whats_news_us_business_f",
+      "pubDate": "Thu, 02 Jul 2026 13:53:00 GMT",
+      "creator": "Jessica Toonkel"
     },
     {
-      "title": "This Beer CEO Is Thrilled About a Knicks Title and the World Cup",
-      "desc": "Nick Fink, leader of Modelo maker Constellation Brands, discussed the biggest season for brews and how GLP-1s and affordability are reshaping habits.",
-      "link": "https://www.wsj.com/business/retail/constellation-brands-new-chief-wants-to-win-the-pool-cooler-fc88679e?mod=pls_whats_news_us_business_f",
-      "pubDate": "Wed, 01 Jul 2026 13:32:00 GMT",
-      "creator": "Laura Cooper"
+      "title": "Heat Waves Are Becoming a Chronic Drag on the Economy",
+      "desc": "",
+      "link": "https://www.wsj.com/business/energy-oil/heat-waves-are-becoming-a-chronic-drag-on-the-economy-f5000335?mod=pls_whats_news_us_business_f",
+      "pubDate": "Thu, 02 Jul 2026 13:41:00 GMT",
+      "creator": "Ed Ballard"
     },
     {
       "title": "Ipsen to Buy Swiss Biotech Memo in Deal That Could Top $800 Million",
@@ -80,6 +80,27 @@
       "creator": "Adam Whittaker"
     },
     {
+      "title": "Consumers Shun Mid-Sized Packs Amid Price Squeeze, Nestle Says",
+      "desc": "The company is working to keep prices in check, as U.S. consumers fixate on affordability and buyers shift toward bulk or budget pack sizes, passing over middle formats.",
+      "link": "https://www.wsj.com/business/retail/consumers-shun-mid-sized-packs-amid-price-squeeze-nestle-says-38f2f37d?mod=pls_whats_news_us_business_f",
+      "pubDate": "Thu, 02 Jul 2026 11:12:00 GMT",
+      "creator": "Aimee Look"
+    },
+    {
+      "title": "Chanel Snaps Up Storied French Shirtmaker Charvet",
+      "desc": "It is a rare acquisition for the fashion house as it looks to further widen its offer beyond its famed luxury handbags.",
+      "link": "https://www.wsj.com/business/retail/chanel-snaps-up-storied-french-shirtmaker-charvet-792ab11e?mod=pls_whats_news_us_business_f",
+      "pubDate": "Thu, 02 Jul 2026 09:38:00 GMT",
+      "creator": "Joshua Kirby"
+    },
+    {
+      "title": "Big Brewers Are Making an Outsize Bet on Tiny Cans of Beer",
+      "desc": "‘Pony’ beers are getting attention from brewers like Constellation Brands that want to appeal to moderation-minded drinkers and the GLP-1 crowd.",
+      "link": "https://www.wsj.com/business/big-brewers-are-making-an-outsize-bet-on-tiny-cans-of-beer-57766956?mod=pls_whats_news_us_business_f",
+      "pubDate": "Thu, 02 Jul 2026 09:30:00 GMT",
+      "creator": "Laura Cooper"
+    },
+    {
       "title": "Sodexo Shares Rise on Strong Revenue Growth, Raised Outlook",
       "desc": "Shares rose 6.8% following a strong third-quarter and an upgraded organic revenue growth forecast for the fiscal year.",
       "link": "https://www.wsj.com/business/retail/sodexo-shares-rise-on-strong-revenue-growth-raised-outlook-a3bd1c9e?mod=pls_whats_news_us_business_f",
@@ -92,6 +113,13 @@
       "link": "https://www.wsj.com/business/alibaba-u-s-payment-processor-to-pay-600-million-in-doj-settlement-over-illegal-drug-sales-23c40942?mod=pls_whats_news_us_business_f",
       "pubDate": "Wed, 01 Jul 2026 21:43:00 GMT",
       "creator": "Elias Schisgall"
+    },
+    {
+      "title": "Auto & Transport Roundup: Market Talk",
+      "desc": "Find insight on car purchases, auto loans, the USMCA and more in the latest Market Talks covering Auto and Transport.",
+      "link": "https://www.wsj.com/business/auto-transport-roundup-market-talk-7763a4e3?mod=pls_whats_news_us_business_f",
+      "pubDate": "Wed, 01 Jul 2026 20:53:00 GMT",
+      "creator": ""
     },
     {
       "title": "Nike Guides for Steeper Sales Decline as Consumers Come Under Pressure",
@@ -108,20 +136,6 @@
       "creator": "Katherine Hamilton"
     },
     {
-      "title": "Nestle’s Coffee Boss Eyes Matcha Push",
-      "desc": "The company’s interest in the green, tea-based product comes amid volatility in coffee-bean prices and as it looks to tap younger customers.",
-      "link": "https://www.wsj.com/business/nestles-coffee-boss-eyes-matcha-push-08bc0726?mod=pls_whats_news_us_business_f",
-      "pubDate": "Wed, 01 Jul 2026 13:19:00 GMT",
-      "creator": "Aimee Look"
-    },
-    {
-      "title": "Auto & Transport Roundup: Market Talk",
-      "desc": "Find insight on car purchases, auto loans, the USMCA and more in the latest Market Talks covering Auto and Transport.",
-      "link": "https://www.wsj.com/business/auto-transport-roundup-market-talk-7763a4e3?mod=pls_whats_news_us_business_f",
-      "pubDate": "Wed, 01 Jul 2026 20:53:00 GMT",
-      "creator": ""
-    },
-    {
       "title": "Associated British Foods Sugar Unit Weighs on Business Ahead of Primark Spinoff",
       "desc": "Associated British Foods backed its guidance across all businesses apart from its sugar unit which it said would post a loss as market conditions deteriorate.",
       "link": "https://www.wsj.com/business/retail/associated-british-foods-sugar-unit-weighs-on-business-ahead-of-primark-spinoff-fe06004d?mod=pls_whats_news_us_business_f",
@@ -136,18 +150,18 @@
       "creator": "Elias Schisgall"
     },
     {
-      "title": "Siemens Energy Shares Rise on Management Optimism Over Electrification, AI Demand",
-      "desc": "Shares jumped after the company reported high demand across gas services, and said order visibility remained high.",
-      "link": "https://www.wsj.com/business/retail/siemens-energy-shares-rise-on-management-optimism-over-electrification-ai-demand-d3a6dc28?mod=pls_whats_news_us_business_f",
-      "pubDate": "Tue, 30 Jun 2026 10:10:00 GMT",
-      "creator": "Adam Whittaker"
+      "title": "Auto & Transport Roundup: Market Talk",
+      "desc": "Find insight on Tesla, Malaysian auto sales and more in the latest Market Talks covering the auto and transport sector.",
+      "link": "https://www.wsj.com/finance/stocks/auto-transport-roundup-market-talk-6073dcc9?mod=pls_whats_news_us_business_f",
+      "pubDate": "Thu, 02 Jul 2026 16:25:00 GMT",
+      "creator": ""
     },
     {
-      "title": "Maersk Lifts Guidance on Strong Demand, Higher Freight Rates",
-      "desc": "Continued strong demand in the container market, particularly in East Asia, and a recent sustained increase in spot market rates prompted the group to upgrade its outlook.",
-      "link": "https://www.wsj.com/business/retail/maersk-lifts-guidance-on-strong-demand-higher-freight-rates-fe667d53?mod=pls_whats_news_us_business_f",
-      "pubDate": "Tue, 30 Jun 2026 06:37:00 GMT",
-      "creator": "Adrià Calatayud"
+      "title": "Safety Regulator Closes Tesla Phantom Braking Probe After Complaints Drop Sharply",
+      "desc": "The National Highway Traffic Safety Administration found no crashes tied to the issues and that they posed only a low safety risk and were addressed in software updates.",
+      "link": "https://www.wsj.com/business/autos/safety-regulator-closes-tesla-phantom-braking-probe-after-complaints-drop-sharply-9ffc4361?mod=pls_whats_news_us_business_f",
+      "pubDate": "Thu, 02 Jul 2026 12:20:00 GMT",
+      "creator": "Adriano Marchese"
     },
     {
       "title": "How Western Automakers Are Losing Their Grip on the Chinese Market",
@@ -169,20 +183,6 @@
       "link": "https://www.wsj.com/business/autos/automakers-built-ever-larger-trucks-can-cheap-small-pickups-make-a-comeback-4fd00522?mod=pls_whats_news_us_business_f",
       "pubDate": "Mon, 29 Jun 2026 09:30:00 GMT",
       "creator": "Christopher Otts"
-    },
-    {
-      "title": "The AI Startup Challenging Tesla and Waymo in the Race to Automate Driving",
-      "desc": "Wayve is emerging as a go-to partner for traditional automakers trying to keep up with Silicon Valley.",
-      "link": "https://www.wsj.com/business/autos/wayve-self-driving-technology-2e917ebd?mod=pls_whats_news_us_business_f",
-      "pubDate": "Sun, 28 Jun 2026 09:30:00 GMT",
-      "creator": "Christopher Otts"
-    },
-    {
-      "title": "Nissan Americas Chief Wants to Make the Automaker ‘Edgy’ Again",
-      "desc": "Christian Meunier is banking on a U.S. comeback for Nissan’s hybrids, more cars made in America and a revamp of the luxury Infiniti brand.",
-      "link": "https://www.wsj.com/business/autos/nissan-christian-meunier-6a0d97ec?mod=pls_whats_news_us_business_f",
-      "pubDate": "Fri, 26 Jun 2026 19:00:00 GMT",
-      "creator": "Ellie Davis"
     },
     {
       "title": "Opinion | Me, Myself and AI",
@@ -227,6 +227,13 @@
       "creator": "The Editorial Board"
     },
     {
+      "title": "Yara to Buy Texas Ammonia Plant For $1.3 Billion",
+      "desc": "The addition of  U.S. production capacity supports the fertilizer producer’s strategy of diversifying energy exposure, capturing economies of scale, and lowering fixed costs.",
+      "link": "https://www.wsj.com/business/energy-oil/yara-buys-texas-ammonia-plant-for-1-3-billion-0fadb729?mod=pls_whats_news_us_business_f",
+      "pubDate": "Thu, 02 Jul 2026 10:47:00 GMT",
+      "creator": "Dominic Chopping"
+    },
+    {
       "title": "Energy & Utilities Roundup: Market Talk",
       "desc": "Find insight on crude futures, BP, Amplitude Energy and more in the latest Market Talks covering Energy and Utilities.",
       "link": "https://www.wsj.com/business/energy-utilities-roundup-market-talk-197fa534?mod=pls_whats_news_us_business_f",
@@ -253,13 +260,6 @@
       "link": "https://www.wsj.com/business/energy-oil/small-engine-makers-gain-big-momentum-in-data-centers-32cd1254?mod=pls_whats_news_us_business_f",
       "pubDate": "Wed, 01 Jul 2026 09:30:00 GMT",
       "creator": "Jinjoo Lee"
-    },
-    {
-      "title": "Eni, Mercuria to Establish Commodities Trading Joint Venture",
-      "desc": "The Italian oil-and-gas major said the joint venture with Swiss trading firm Mercuria will operate independently and trade commodities such as oil, gas, liquefied natural gas and biofuels.",
-      "link": "https://www.wsj.com/business/energy-oil/eni-mercuria-to-establish-commodities-trading-joint-venture-b147968a?mod=pls_whats_news_us_business_f",
-      "pubDate": "Wed, 01 Jul 2026 07:52:00 GMT",
-      "creator": "Adam Whittaker"
     },
     {
       "title": "After Deadly D.C. Crash, FAA Moves Toward Sweeping Aircraft-Technology Mandate",
@@ -409,6 +409,13 @@
       "creator": "Liz Young"
     },
     {
+      "title": "Maersk Lifts Guidance on Strong Demand, Higher Freight Rates",
+      "desc": "Continued strong demand in the container market, particularly in East Asia, and a recent sustained increase in spot market rates prompted the group to upgrade its outlook.",
+      "link": "https://www.wsj.com/business/retail/maersk-lifts-guidance-on-strong-demand-higher-freight-rates-fe667d53?mod=pls_whats_news_us_business_f",
+      "pubDate": "Tue, 30 Jun 2026 06:37:00 GMT",
+      "creator": "Adrià Calatayud"
+    },
+    {
       "title": "Adani Ports to Sell India Port Stake to Swiss Shipping Group MSC for $1.40B",
       "desc": "Adani Ports said MSC’s 49% stake in Kerala-based transshipment hub is the single largest foreign private investment in Indian port infrastructure.",
       "link": "https://www.wsj.com/business/logistics/adani-ports-to-sell-india-port-stake-to-swiss-shipping-group-msc-for-1-40b-39866d1b?mod=pls_whats_news_us_business_f",
@@ -430,11 +437,11 @@
       "creator": "Paul Berger"
     },
     {
-      "title": "FedEx Freight Guides for Growth After Spinoff from FedEx",
-      "desc": "The company expects revenue to grow 4% to 6% for June 1 to Dec. 31, and said the outlook reflects its confidence in the underlying strength of the business.",
-      "link": "https://www.wsj.com/business/logistics/fedex-freight-guides-for-growth-after-spinoff-from-fedex-e097f8b6?mod=pls_whats_news_us_business_f",
-      "pubDate": "Thu, 25 Jun 2026 20:34:00 GMT",
-      "creator": "Kelly Cloonan"
+      "title": "Starlink Dominates Internet From Space. Can It Disrupt AT&T and Verizon on the Ground?",
+      "desc": "SpaceX wants its satellite network to eventually serve cellphones in dense urban areas, but capacity and infrastructure hurdles remain.",
+      "link": "https://www.wsj.com/business/telecom/starlink-internet-att-verizon-t-mobile-005cf4e3?mod=pls_whats_news_us_business_f",
+      "pubDate": "Thu, 02 Jul 2026 12:00:00 GMT",
+      "creator": "Micah Maidenberg"
     },
     {
       "title": "Satellite TV Provider Dish DBS Files for Bankruptcy Following AT&T Deal Snag",
@@ -465,11 +472,11 @@
       "creator": "Adrià Calatayud"
     },
     {
-      "title": "Verizon, Britain’s BT to Combine Overseas Operations",
-      "desc": "The companies said teaming up would allow both sides to benefit from greater scale and being able to use each other’s network infrastructure.",
-      "link": "https://www.wsj.com/business/deals/bt-verizon-to-form-international-joint-venture-556f9848?mod=pls_whats_news_us_business_f",
-      "pubDate": "Mon, 29 Jun 2026 11:10:00 GMT",
-      "creator": "Anthony O. Goriainoff"
+      "title": "German Drone Maker Quantum Systems Raises Funding at $8 Billion Valuation",
+      "desc": "Quantum Systems said it had raised $1.2 billion at a valuation of roughly $8 billion, bringing in fresh capital to expand drone production and invest in software for autonomous systems powered by artificial intelligence.",
+      "link": "https://www.wsj.com/finance/investing/german-drone-maker-quantum-systems-raises-funding-at-8-billion-valuation-cdd941c7?mod=pls_whats_news_us_business_f",
+      "pubDate": "Thu, 02 Jul 2026 14:08:00 GMT",
+      "creator": "Mauro Orru"
     },
     {
       "title": "The New ‘Bootstrap’ to the American Dream: Deep Cleaning Cars",
@@ -500,53 +507,18 @@
       "creator": "Lauren Thomas"
     },
     {
-      "title": "IBM Getting Ready to Scale Quantum Computing",
-      "desc": "This year, the company is laying the groundwork to turn quantum computing into a fully-fledged, scalable business from an expensive science project.",
-      "link": "https://www.wsj.com/tech/ibm-getting-ready-to-scale-quantum-computing-b2418cd5?mod=pls_whats_news_us_business_f",
-      "pubDate": "Tue, 23 Jun 2026 18:32:00 GMT",
-      "creator": "Elias Schisgall"
-    },
-    {
-      "title": "U.N. Staves Off Financial Collapse With Rule Change Around U.S. Nonpayment",
-      "desc": "The organization said it will save hundreds of millions of dollars by not refunding unspent dollars to countries that don’t pay.",
-      "link": "https://www.wsj.com/world/u-n-staves-off-financial-collapse-with-rule-change-around-u-s-nonpayment-378204d1?mod=pls_whats_news_us_business_f",
-      "pubDate": "Wed, 01 Jul 2026 00:25:00 GMT",
-      "creator": "James T. Areddy"
-    },
-    {
-      "title": "Inside the Egg Price-Fixing Scandal That Spiked American Grocery Bills",
-      "desc": "Executives’ texts and emails show an effort to sway the market, the Justice Department says.",
-      "link": "https://www.wsj.com/business/retail/inside-the-egg-price-fixing-scandal-that-spiked-american-grocery-bills-4a919c51?mod=pls_whats_news_us_business_f",
-      "pubDate": "Wed, 01 Jul 2026 00:00:00 GMT",
-      "creator": "Dave Michaels"
-    },
-    {
-      "title": "Justices Uphold Birthright Citizenship in Blow to Trump",
-      "desc": "Plus, it was a great quarter for U.S. stocks, and Equinox tries to squeeze more money out of its customers.",
-      "link": "https://www.wsj.com/business/justices-uphold-birthright-citizenship-in-blow-to-trump-e31ed979?mod=pls_whats_news_us_business_f",
-      "pubDate": "Tue, 30 Jun 2026 21:06:00 GMT",
+      "title": "The Middle East Has Been Good for Trump’s Bottom Line",
+      "desc": "Plus, SpaceX showed investors an AI device prototype, and Mars tries to make a naturally blue M&M.",
+      "link": "https://www.wsj.com/business/the-middle-east-has-been-good-for-trumps-bottom-line-c2434e69?mod=pls_whats_news_us_business_f",
+      "pubDate": "Wed, 01 Jul 2026 21:07:00 GMT",
       "creator": "Liz Webber"
     },
     {
-      "title": "USDA Plans to Pay Smaller Meatpackers to Keep Slaughtering Cattle",
-      "desc": "The Agriculture Department aims to offer up to $500 million in payments as meat processors navigate a livestock shortage.",
-      "link": "https://www.wsj.com/politics/policy/trump-administration-plans-to-pay-smaller-meatpackers-to-keep-slaughtering-cattle-73bfad6e?mod=pls_whats_news_us_business_f",
-      "pubDate": "Tue, 30 Jun 2026 19:05:00 GMT",
-      "creator": "Patrick Thomas"
-    },
-    {
-      "title": "Zyn Can Market Itself as Less Harmful Than Cigarettes, FDA Says",
-      "desc": "The federal regulator gave Philip Morris International a win for nicotine pouches.",
-      "link": "https://www.wsj.com/health/healthcare/zyn-can-be-marketed-as-safe-alternative-to-cigarettes-fda-says-f22dfb34?mod=pls_whats_news_us_business_f",
-      "pubDate": "Tue, 30 Jun 2026 18:34:00 GMT",
-      "creator": "Laura Cooper"
-    },
-    {
-      "title": "Inside the Egg Price-Fixing Scandal That Spiked American Grocery Bills",
-      "desc": "Executives’ texts and emails show an effort to sway the market, the Justice Department says.",
-      "link": "https://www.wsj.com/business/retail/inside-the-egg-price-fixing-scandal-that-spiked-american-grocery-bills-4a919c51?mod=pls_whats_news_us_business_f",
-      "pubDate": "Wed, 01 Jul 2026 00:00:00 GMT",
-      "creator": "Dave Michaels"
+      "title": "Inside the Multimillion Dollar Saga to Make a Naturally Blue M&M",
+      "desc": "Watch the complicated process behind making M&M’s with natural dyes.",
+      "link": "https://www.wsj.com/business/inside-the-multimillion-dollar-saga-to-make-a-naturally-blue-m-m-78d6f3a9?mod=pls_whats_news_us_business_f",
+      "pubDate": "Wed, 01 Jul 2026 19:02:00 GMT",
+      "creator": "Claire Hogan"
     },
     {
       "title": "The World’s Top Economists Are Sounding the Alarm on AI",
@@ -563,18 +535,46 @@
       "creator": "Allison Pohle"
     },
     {
-      "title": "The Latest Senior-Citizen Special Is Here: Cheap Weight-Loss Drugs",
-      "desc": "Millions of older Americans are on the cusp of more affordable access to popular weight-loss drugs when a major Medicare coverage expansion kicks in July 1.",
-      "link": "https://www.wsj.com/health/pharma/the-latest-senior-citizen-special-is-here-cheap-weight-loss-drugs-6ef60165?mod=pls_whats_news_us_business_f",
-      "pubDate": "Wed, 01 Jul 2026 09:00:00 GMT",
-      "creator": "Peter Loftus"
+      "title": "Google Must Pay Nearly $2 Billion to Klarna in Antitrust Case",
+      "desc": "A Swedish court ruled that the search giant favored its own price-comparison service over Klarna’s.",
+      "link": "https://www.wsj.com/tech/google-must-pay-nearly-2-billion-to-klarna-in-antitrust-case-f398d46f?mod=pls_whats_news_us_business_f",
+      "pubDate": "Wed, 01 Jul 2026 14:04:00 GMT",
+      "creator": "Joseph De Avila"
     },
     {
-      "title": "Kroger to Buy Food & Pharmacy Retailer Giant Eagle for $1.65 Billion",
-      "desc": "Kroger has agreed to acquire food and pharmacy retailer Giant Eagle for $1.65 billion in cash and assumed liabilities.",
-      "link": "https://www.wsj.com/business/retail/kroger-to-buy-food-pharmacy-retailer-giant-eagle-for-1-65-billion-f5377a41?mod=pls_whats_news_us_business_f",
-      "pubDate": "Wed, 01 Jul 2026 12:22:00 GMT",
-      "creator": "Freddy Sebastian"
+      "title": "The World’s Top Economists Are Sounding the Alarm on AI",
+      "desc": "Several have joined the chorus of voices warning about the potential global fallout if the AI boom turns to bust.",
+      "link": "https://www.wsj.com/tech/ai/the-worlds-top-economists-are-sounding-the-alarm-on-ai-d99055b6?mod=pls_whats_news_us_business_f",
+      "pubDate": "Wed, 01 Jul 2026 17:21:00 GMT",
+      "creator": "Chelsey Dulaney"
+    },
+    {
+      "title": "Big Brewers Are Making an Outsize Bet on Tiny Cans of Beer",
+      "desc": "‘Pony’ beers are getting attention from brewers like Constellation Brands that want to appeal to moderation-minded drinkers and the GLP-1 crowd.",
+      "link": "https://www.wsj.com/business/big-brewers-are-making-an-outsize-bet-on-tiny-cans-of-beer-57766956?mod=pls_whats_news_us_business_f",
+      "pubDate": "Thu, 02 Jul 2026 09:30:00 GMT",
+      "creator": "Laura Cooper"
+    },
+    {
+      "title": "McKinsey Shakes Up Its Board After Scandals Over Past Work With Clients",
+      "desc": "The move creates a separate chair role to strengthen oversight of the elite consulting firm.",
+      "link": "https://www.wsj.com/business/mckinsey-shakes-up-its-board-after-scandals-over-past-work-with-clients-71a77fea?mod=pls_whats_news_us_business_f",
+      "pubDate": "Wed, 01 Jul 2026 15:30:00 GMT",
+      "creator": "Allison Pohle"
+    },
+    {
+      "title": "Tesla Sales Jumped in Second Quarter",
+      "desc": "The electric automaker sells just three new-car models now, with CEO Elon Musk putting the focus on autonomous vehicles and robotics.",
+      "link": "https://www.wsj.com/business/autos/tesla-sales-jumped-in-second-quarter-c9e2f067?mod=pls_whats_news_us_business_f",
+      "pubDate": "Thu, 02 Jul 2026 14:14:00 GMT",
+      "creator": "Becky Peterson"
+    },
+    {
+      "title": "Inside the Egg Price-Fixing Scandal That Spiked American Grocery Bills",
+      "desc": "Executives’ texts and emails show an effort to sway the market, the Justice Department says.",
+      "link": "https://www.wsj.com/business/retail/inside-the-egg-price-fixing-scandal-that-spiked-american-grocery-bills-4a919c51?mod=pls_whats_news_us_business_f",
+      "pubDate": "Wed, 01 Jul 2026 00:00:00 GMT",
+      "creator": "Dave Michaels"
     },
     {
       "title": "Best Small-Business Loans in July 2026",
@@ -584,10 +584,10 @@
       "creator": "Miranda Marquit"
     },
     {
-      "title": "Best Business Debt Consolidation Loans in June 2026",
+      "title": "Best Business Debt Consolidation Loans in July 2026",
       "desc": "Business debt consolidation can improve your cash flow and repackage your obligations to potentially save you money.",
       "link": "https://www.wsj.com/buyside/personal-finance/business-loans/business-debt-consolidation-loans?mod=pls_whats_news_us_business_f",
-      "pubDate": "Mon, 08 Jun 2026 18:56:00 GMT",
+      "pubDate": "Thu, 02 Jul 2026 18:00:00 GMT",
       "creator": "Miranda Marquit"
     },
     {
