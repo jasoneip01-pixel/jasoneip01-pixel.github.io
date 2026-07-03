@@ -1,7 +1,35 @@
 {
   "source": "WSJ.com US Business RSS",
-  "ts": "Fri, 03 Jul 2026 08:55:50 GMT",
+  "ts": "Fri, 03 Jul 2026 19:13:54 GMT",
   "items": [
+    {
+      "title": "France’s Thales to Take Hit After Germany Scraps Frigate Program",
+      "desc": "The aerospace-and-defense group said it would record a charge in the first half after Berlin scrapped a project to procure F126 frigates.",
+      "link": "https://www.wsj.com/business/earnings/frances-thales-to-take-hit-after-germany-scraps-frigate-program-51bcb164?mod=pls_whats_news_us_business_f",
+      "pubDate": "Fri, 03 Jul 2026 16:42:00 GMT",
+      "creator": "Mauro Orru"
+    },
+    {
+      "title": "U.K., Italian, Japanese Fighter Jet Venture Wins $6.14 Billion Contract",
+      "desc": "U.K.’s BAE Systems, Italy’s Leonardo and  Japan’s Mitsubishi Heavy Industries secured a contract funded by the three nations to develop a new stealth fighter jet.",
+      "link": "https://www.wsj.com/business/u-k-italian-japan-fighter-jet-venture-wins-6-14-billion-contract-e63655a3?mod=pls_whats_news_us_business_f",
+      "pubDate": "Fri, 03 Jul 2026 16:13:00 GMT",
+      "creator": "Mauro Orru"
+    },
+    {
+      "title": "What Happened in Fuel Markets When Trump Lifted the Century-Old Jones Act",
+      "desc": "California drivers, Gulf Coast refiners and Puerto Ricans have benefited from temporary suspension of the act.",
+      "link": "https://www.wsj.com/business/logistics/what-happened-in-fuel-markets-when-trump-lifted-the-century-old-jones-act-199da395?mod=pls_whats_news_us_business_f",
+      "pubDate": "Fri, 03 Jul 2026 15:55:00 GMT",
+      "creator": "Alana Pipe"
+    },
+    {
+      "title": "Energy & Utilities Roundup: Market Talk",
+      "desc": "Find insight on Sembcorp Industries and more in the latest Market Talks covering energy and utilities.",
+      "link": "https://www.wsj.com/business/energy-utilities-roundup-market-talk-dd5892d3?mod=pls_whats_news_us_business_f",
+      "pubDate": "Fri, 03 Jul 2026 09:46:00 GMT",
+      "creator": ""
+    },
     {
       "title": "How Bezos Learned to Love Trump—and Win More Contracts for Blue Origin",
       "desc": "The space company has booked rapid growth under this administration, after the founder spent president’s first term being ‘hated.’",
@@ -10,39 +38,11 @@
       "creator": "Dana Mattioli"
     },
     {
-      "title": "The Korean Tanker Tycoon Winning Big From the Iran War",
-      "desc": "Ga-Hyun Chung spent around $7 billion amassing the world’s largest fleet of oil tankers. His timing could hardly have been better.",
+      "title": "His $7 Billion Tanker Bet Raised Eyebrows. He Couldn’t Have Timed It Better.",
+      "desc": "The Korean tycoon spent the sum amassing the world’s largest fleet of oil tankers just before the Iran war sent the market haywire.",
       "link": "https://www.wsj.com/business/the-korean-tanker-tycoon-winning-big-from-the-iran-war-ac9efe83?mod=pls_whats_news_us_business_f",
       "pubDate": "Thu, 02 Jul 2026 23:00:00 GMT",
       "creator": "Costas Paris"
-    },
-    {
-      "title": "Weak Jobs Report Prompts Wall Street to Change Strategy",
-      "desc": "Plus, an Olympian is charged with damaging the D.C. reflecting pool, and celebs use special-ops tactics to keep their weddings private.",
-      "link": "https://www.wsj.com/business/weak-jobs-report-prompts-wall-street-to-change-strategy-f7bd350a?mod=pls_whats_news_us_business_f",
-      "pubDate": "Thu, 02 Jul 2026 21:44:00 GMT",
-      "creator": "Zlati Meyer"
-    },
-    {
-      "title": "Noel Hord, Who Went From Shoe Salesman to President of Nine West, Dies at Age 79",
-      "desc": "Starting as a stock assistant, he rose to president of Nine West Group.",
-      "link": "https://www.wsj.com/business/retail/noel-hord-nine-west-347a9dea?mod=pls_whats_news_us_business_f",
-      "pubDate": "Thu, 02 Jul 2026 18:51:00 GMT",
-      "creator": "James R. Hagerty"
-    },
-    {
-      "title": "Tesla Driver Charged With Manslaughter After Crashing Into Texas Home, Killing Woman",
-      "desc": "Investigators say the driver acted to override the car’s automated driving assistance system.",
-      "link": "https://www.wsj.com/business/autos/driver-charged-with-manslaughter-after-tesla-crashed-into-texas-home-killing-woman-inside-65e17279?mod=pls_whats_news_us_business_f",
-      "pubDate": "Thu, 02 Jul 2026 18:21:00 GMT",
-      "creator": "Patrick George"
-    },
-    {
-      "title": "The ‘Five Alarm’ Risks Facing the Power Grid This Summer",
-      "desc": "High temperatures, new AI data centers and drought conditions pose challenges to the electricity system.",
-      "link": "https://www.wsj.com/business/energy-oil/the-five-alarm-risks-facing-the-power-grid-this-summer-3404b031?mod=pls_whats_news_us_business_f",
-      "pubDate": "Thu, 02 Jul 2026 16:21:00 GMT",
-      "creator": "Jennifer Hiller"
     },
     {
       "title": "Ipsen to Buy Swiss Biotech Memo in Deal That Could Top $800 Million",
@@ -94,6 +94,13 @@
       "creator": "Doc Louallen"
     },
     {
+      "title": "Noel Hord, Who Went From Shoe Salesman to President of Nine West, Dies at Age 79",
+      "desc": "Starting as a stock assistant, he rose to president of Nine West Group.",
+      "link": "https://www.wsj.com/business/retail/noel-hord-nine-west-347a9dea?mod=pls_whats_news_us_business_f",
+      "pubDate": "Thu, 02 Jul 2026 18:51:00 GMT",
+      "creator": "James R. Hagerty"
+    },
+    {
       "title": "Consumers Shun Mid-Sized Packs Amid Price Squeeze, Nestle Says",
       "desc": "The company is working to keep prices in check, as U.S. consumers fixate on affordability and buyers shift toward bulk or budget pack sizes, passing over middle formats.",
       "link": "https://www.wsj.com/business/retail/consumers-shun-mid-sized-packs-amid-price-squeeze-nestle-says-38f2f37d?mod=pls_whats_news_us_business_f",
@@ -106,13 +113,6 @@
       "link": "https://www.wsj.com/business/retail/chanel-snaps-up-storied-french-shirtmaker-charvet-792ab11e?mod=pls_whats_news_us_business_f",
       "pubDate": "Thu, 02 Jul 2026 09:38:00 GMT",
       "creator": "Joshua Kirby"
-    },
-    {
-      "title": "Big Brewers Are Making an Outsize Bet on Tiny Cans of Beer",
-      "desc": "‘Pony’ beers are getting attention from brewers like Constellation Brands that want to appeal to moderation-minded drinkers and the GLP-1 crowd.",
-      "link": "https://www.wsj.com/business/big-brewers-are-making-an-outsize-bet-on-tiny-cans-of-beer-57766956?mod=pls_whats_news_us_business_f",
-      "pubDate": "Thu, 02 Jul 2026 09:30:00 GMT",
-      "creator": "Laura Cooper"
     },
     {
       "title": "Auto & Transport Roundup: Market Talk",
@@ -150,6 +150,13 @@
       "creator": "Katherine Hamilton"
     },
     {
+      "title": "Tesla Driver Charged With Manslaughter After Crashing Into Texas Home, Killing Woman",
+      "desc": "Investigators say the driver acted to override the car’s automated driving assistance system.",
+      "link": "https://www.wsj.com/business/autos/driver-charged-with-manslaughter-after-tesla-crashed-into-texas-home-killing-woman-inside-65e17279?mod=pls_whats_news_us_business_f",
+      "pubDate": "Thu, 02 Jul 2026 18:21:00 GMT",
+      "creator": "Patrick George"
+    },
+    {
       "title": "Tesla Sales Jumped in Second Quarter",
       "desc": "The electric automaker sells just three new-car models now, with CEO Elon Musk putting the focus on autonomous vehicles and robotics.",
       "link": "https://www.wsj.com/business/autos/tesla-sales-jumped-in-second-quarter-c9e2f067?mod=pls_whats_news_us_business_f",
@@ -176,13 +183,6 @@
       "link": "https://www.wsj.com/business/autos/ford-recalls-more-than-740-000-vehicles-over-transmission-issue-179134fc?mod=pls_whats_news_us_business_f",
       "pubDate": "Tue, 30 Jun 2026 16:25:00 GMT",
       "creator": "Joseph De Avila"
-    },
-    {
-      "title": "Automakers Built Ever-Larger Trucks. Can Cheap, Small Pickups Make a Comeback?",
-      "desc": "After disappearing from the U.S. market, compact trucks are showing signs of life again.",
-      "link": "https://www.wsj.com/business/autos/automakers-built-ever-larger-trucks-can-cheap-small-pickups-make-a-comeback-4fd00522?mod=pls_whats_news_us_business_f",
-      "pubDate": "Mon, 29 Jun 2026 09:30:00 GMT",
-      "creator": "Christopher Otts"
     },
     {
       "title": "Opinion | AI and the English Language",
@@ -227,6 +227,20 @@
       "creator": "Paul H. Tice"
     },
     {
+      "title": "AI Data Centers Use Far More Water Than Most Tech Giants Report",
+      "desc": "Water used at the power plants that supply electricity to data centers can be much greater than the water used in the data centers themselves.",
+      "link": "https://www.wsj.com/tech/ai/ai-data-centers-water-use-901e2902?mod=pls_whats_news_us_business_f",
+      "pubDate": "Fri, 03 Jul 2026 09:30:00 GMT",
+      "creator": "Christopher Mims"
+    },
+    {
+      "title": "The ‘Five Alarm’ Risks Facing the Power Grid This Summer",
+      "desc": "High temperatures, new AI data centers and drought conditions pose challenges to the electricity system.",
+      "link": "https://www.wsj.com/business/energy-oil/the-five-alarm-risks-facing-the-power-grid-this-summer-3404b031?mod=pls_whats_news_us_business_f",
+      "pubDate": "Thu, 02 Jul 2026 16:21:00 GMT",
+      "creator": "Jennifer Hiller"
+    },
+    {
       "title": "Heat Waves Are Becoming a Chronic Drag on the Economy",
       "desc": "",
       "link": "https://www.wsj.com/business/energy-oil/heat-waves-are-becoming-a-chronic-drag-on-the-economy-f5000335?mod=pls_whats_news_us_business_f",
@@ -246,20 +260,6 @@
       "link": "https://www.wsj.com/business/energy-utilities-roundup-market-talk-197fa534?mod=pls_whats_news_us_business_f",
       "pubDate": "Wed, 01 Jul 2026 20:53:00 GMT",
       "creator": ""
-    },
-    {
-      "title": "U.S. Crude Oil Inventories Extend Decline",
-      "desc": "Commercial crude oil stocks excluding the Strategic Petroleum Reserve fell by 3.8 million barrels to 408.4 million barrels in the week ended June 26, and were about 7% below the five-year average for the time of year, the EIA said.",
-      "link": "https://www.wsj.com/business/energy-oil/u-s-crude-oil-inventories-extend-decline-4fa9cfb8?mod=pls_whats_news_us_business_f",
-      "pubDate": "Wed, 01 Jul 2026 15:14:00 GMT",
-      "creator": "Anthony Harrup"
-    },
-    {
-      "title": "National Grid to Invest $1.75 Billion in Joulent in U.S. Energy Push",
-      "desc": "National Grid will get a 35% stake in Joulent, which is developing contracted power generation and high-voltage infrastructure for U.S. customers that require substantial amounts of power.",
-      "link": "https://www.wsj.com/business/energy-oil/national-grid-to-invest-1-75-billion-in-joulent-in-u-s-energy-push-9d84d5b8?mod=pls_whats_news_us_business_f",
-      "pubDate": "Wed, 01 Jul 2026 12:29:00 GMT",
-      "creator": "Adam Whittaker"
     },
     {
       "title": "After Deadly D.C. Crash, FAA Moves Toward Sweeping Aircraft-Technology Mandate",
@@ -507,6 +507,20 @@
       "creator": "Lauren Thomas"
     },
     {
+      "title": "Weak Jobs Report Prompts Wall Street to Change Strategy",
+      "desc": "Plus, an Olympian is charged with damaging the D.C. reflecting pool, and celebs use special-ops tactics to keep their weddings private.",
+      "link": "https://www.wsj.com/business/weak-jobs-report-prompts-wall-street-to-change-strategy-f7bd350a?mod=pls_whats_news_us_business_f",
+      "pubDate": "Thu, 02 Jul 2026 21:44:00 GMT",
+      "creator": "Zlati Meyer"
+    },
+    {
+      "title": "Big Brewers Are Making an Outsize Bet on Tiny Cans of Beer",
+      "desc": "‘Pony’ beers are getting attention from brewers like Constellation Brands that want to appeal to moderation-minded drinkers and the GLP-1 crowd.",
+      "link": "https://www.wsj.com/business/big-brewers-are-making-an-outsize-bet-on-tiny-cans-of-beer-57766956?mod=pls_whats_news_us_business_f",
+      "pubDate": "Thu, 02 Jul 2026 09:30:00 GMT",
+      "creator": "Laura Cooper"
+    },
+    {
       "title": "The Middle East Has Been Good for Trump’s Bottom Line",
       "desc": "Plus, SpaceX showed investors an AI device prototype, and Mars tries to make a naturally blue M&M.",
       "link": "https://www.wsj.com/business/the-middle-east-has-been-good-for-trumps-bottom-line-c2434e69?mod=pls_whats_news_us_business_f",
@@ -528,18 +542,11 @@
       "creator": "Chelsey Dulaney"
     },
     {
-      "title": "McKinsey Shakes Up Its Board After Scandals Over Past Work With Clients",
-      "desc": "The move creates a separate chair role to strengthen oversight of the elite consulting firm.",
-      "link": "https://www.wsj.com/business/mckinsey-shakes-up-its-board-after-scandals-over-past-work-with-clients-71a77fea?mod=pls_whats_news_us_business_f",
-      "pubDate": "Wed, 01 Jul 2026 15:30:00 GMT",
-      "creator": "Allison Pohle"
-    },
-    {
-      "title": "Google Must Pay Nearly $2 Billion to Klarna in Antitrust Case",
-      "desc": "A Swedish court ruled that the search giant favored its own price-comparison service over Klarna’s.",
-      "link": "https://www.wsj.com/tech/google-must-pay-nearly-2-billion-to-klarna-in-antitrust-case-f398d46f?mod=pls_whats_news_us_business_f",
-      "pubDate": "Wed, 01 Jul 2026 14:04:00 GMT",
-      "creator": "Joseph De Avila"
+      "title": "How Bezos Learned to Love Trump—and Win More Contracts for Blue Origin",
+      "desc": "The space company has booked rapid growth under this administration, after the founder spent president’s first term being ‘hated.’",
+      "link": "https://www.wsj.com/business/jeff-bezos-donald-trump-relationship-7e6a742e?mod=pls_whats_news_us_business_f",
+      "pubDate": "Fri, 03 Jul 2026 01:00:00 GMT",
+      "creator": "Dana Mattioli"
     },
     {
       "title": "Big Brewers Are Making an Outsize Bet on Tiny Cans of Beer",
@@ -556,25 +563,18 @@
       "creator": "Patrick George"
     },
     {
-      "title": "Tesla Sales Jumped in Second Quarter",
-      "desc": "The electric automaker sells just three new-car models now, with CEO Elon Musk putting the focus on autonomous vehicles and robotics.",
-      "link": "https://www.wsj.com/business/autos/tesla-sales-jumped-in-second-quarter-c9e2f067?mod=pls_whats_news_us_business_f",
-      "pubDate": "Thu, 02 Jul 2026 14:14:00 GMT",
-      "creator": "Becky Peterson"
+      "title": "How to Beat the Heat Like a Pro: Tips From a Veteran UPS Driver",
+      "desc": "Pickles, ice chests and high-tech towels are just some of the hacks for staying cool in one of the hottest jobs.",
+      "link": "https://www.wsj.com/lifestyle/workplace/how-to-beat-the-heat-like-a-pro-tips-from-a-veteran-ups-driver-af3a52a8?mod=pls_whats_news_us_business_f",
+      "pubDate": "Fri, 03 Jul 2026 09:30:00 GMT",
+      "creator": "Esther Fung"
     },
     {
-      "title": "Inside the Egg Price-Fixing Scandal That Spiked American Grocery Bills",
-      "desc": "Executives’ texts and emails show an effort to sway the market, the Justice Department says.",
-      "link": "https://www.wsj.com/business/retail/inside-the-egg-price-fixing-scandal-that-spiked-american-grocery-bills-4a919c51?mod=pls_whats_news_us_business_f",
-      "pubDate": "Wed, 01 Jul 2026 00:00:00 GMT",
-      "creator": "Dave Michaels"
-    },
-    {
-      "title": "A Cable Scion’s Hardest Deal Yet: Breaking Up His Family’s Company",
-      "desc": "Comcast co-CEO Brian Roberts spent his career building an integrated cable giant. To grow, he now plans to split it apart.",
-      "link": "https://www.wsj.com/business/media/a-cable-scions-hardest-deal-yet-breaking-up-his-familys-company-472b18ae?mod=pls_whats_news_us_business_f",
-      "pubDate": "Thu, 02 Jul 2026 13:53:00 GMT",
-      "creator": "Jessica Toonkel"
+      "title": "His $7 Billion Tanker Bet Raised Eyebrows. He Couldn’t Have Timed It Better.",
+      "desc": "The Korean tycoon spent the sum amassing the world’s largest fleet of oil tankers just before the Iran war sent the market haywire.",
+      "link": "https://www.wsj.com/business/the-korean-tanker-tycoon-winning-big-from-the-iran-war-ac9efe83?mod=pls_whats_news_us_business_f",
+      "pubDate": "Thu, 02 Jul 2026 23:00:00 GMT",
+      "creator": "Costas Paris"
     },
     {
       "title": "Best Small-Business Loans in July 2026",
