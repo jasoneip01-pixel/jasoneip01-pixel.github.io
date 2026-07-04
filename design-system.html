@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Design System · Ariste</title>
+<link rel="stylesheet" href="design-tokens.css">
+<style>
+  /* ── 页面专用样式 ── */
+  body { background: var(--clr-bg); }
+  .ds-header {
+    padding: var(--space-16) 0 var(--space-10);
+    border-bottom: 1px solid var(--clr-border);
+  }
+  .ds-header h1 { font-size: var(--text-4xl); margin-bottom: var(--space-2); }
+  .ds-header p { color: var(--clr-text-secondary); max-width: 480px; }
+
+  .ds-nav {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(255,255,255,.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--clr-border);
+    padding: var(--space-3) 0;
+  }
+  .ds-nav .container { display: flex; gap: var(--space-6); flex-wrap: wrap; }
+  .ds-nav a {
+    font-size: var(--text-sm);
+    color: var(--clr-text-secondary);
+    text-decoration: none;
+    padding: var(--space-1) var(--space-2);
+    border-radius: var(--radius-sm);
+    transition: color var(--duration-fast) var(--ease-out);
+  }
+  .ds-nav a:hover { color: var(--clr-text); }
+
+  .ds-section {
+    padding: var(--space-12) 0;
+    border-bottom: 1px solid var(--clr-border);
+  }
+  .ds-section:last-of-type { border-bottom: none; }
+  .ds-section h2 {
+    font-size: var(--text-2xl);
+    margin-bottom: var(--space-2);
+    display: flex; align-items: center; gap: var(--space-3);
+  }
+  .ds-section h2 .badge {
+    font-size: var(--text-xs);
+    font-weight: var(--weight-normal);
+    padding: 2px var(--space-2);
+    border-radius: var(--radius-full);
+    background: var(--clr-primary-100);
+    color: var(--clr-primary-600);
+  }
+  .ds-section > .desc {
+    color: var(--clr-text-secondary);
+    font-size: var(--text-sm);
+    margin-bottom: var(--space-8);
+    max-width: 480px;
+  }
+
+  /* ── 颜色展示 ── */
+  .palette-grid { display: grid; gap: var(--space-3); }
+  .palette-row { display: flex; gap: var(--space-2); border-radius: var(--radius-md); overflow: hidden; }
+  .palette-swatch {
+    flex: 1; padding: var(--space-4) var(--space-2);
+    text-align: center; font-size: var(--text-xs);
+    min-height: 80px; display: flex; flex-direction: column;
+    align-items: center; justify-content: flex-end;
+    gap: var(--space-1);
+  }
+  .palette-swatch .code { font-family: var(--font-mono); font-size: 11px; opacity: .75; }
+
+  /* ── 字体展示 ── */
+  .type-grid { display: grid; gap: var(--space-4); }
+  .type-item {
+    display: flex; align-items: baseline; gap: var(--space-6);
+    padding: var(--space-3) var(--space-4);
+    border-radius: var(--radius-md);
+    transition: background var(--duration-fast) var(--ease-out);
+  }
+  .type-item:hover { background: var(--clr-bg-subtle); }
+  .type-label {
+    min-width: 56px; font-family: var(--font-mono);
+    font-size: var(--text-xs); color: var(--clr-text-muted);
+    text-align: right;
+  }
+  .type-sample { flex: 1; }
+  .type-var { font-size: var(--text-xs); color: var(--clr-text-muted); }
+
+  /* ── 间距可视化 ── */
+  .space-grid { display: grid; gap: var(--space-4); }
+  .space-item { display: flex; align-items: center; gap: var(--space-4); }
+  .space-bar {
+    background: var(--clr-primary-200);
+    border-radius: var(--radius-sm);
+    transition: width var(--duration-normal) var(--ease-out);
+  }
+  .space-info { min-width: 100px; }
+  .space-info .token { font-family: var(--font-mono); font-size: var(--text-xs); display: block; }
+  .space-info .value { font-size: var(--text-xs); color: var(--clr-text-muted); }
+
+  /* ── 阴影演示 ── */
+  .shadow-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-4); }
+  .shadow-card {
+    background: white; border-radius: var(--radius-lg);
+    padding: var(--space-8); text-align: center;
+    font-size: var(--text-sm); color: var(--clr-text-secondary);
+  }
+
+  /* ── 动效表格 ── */
+  .motion-card {
+    background: var(--clr-bg-subtle); border-radius: var(--radius-md);
+    padding: var(--space-6); transition: background var(--duration-fast) var(--ease-out);
+  }
+  .motion-card:hover { background: var(--clr-bg-code); }
+  .motion-card .preview {
+    height: 48px; display: flex; align-items: center;
+    position: relative; overflow: hidden;
+  }
+  .motion-dot {
+    width: 16px; height: 16px; border-radius: 50%;
+    background: var(--clr-primary-500);
+    position: relative; left: 0;
+  }
+  .motion-card:hover .motion-dot {
+    animation: slideAcross var(--duration-normal) var(--ease-out);
+  }
+  .motion-card:hover .motion-dot.slow { animation-duration: var(--duration-slow); }
+  @keyframes slideAcross {
+    0% { left: 0; }
+    100% { left: calc(100% - 16px); }
+  }
+
+  /* ── 栅格展示 ── */
+  .grid-demo { display: flex; flex-direction: column; gap: var(--space-3); }
+  .grid-demo > div {
+    background: var(--clr-bg-subtle); border: 1px dashed var(--clr-border);
+    border-radius: var(--radius-md); padding: var(--space-4);
+    font-size: var(--text-sm); color: var(--clr-text-secondary); text-align: center;
+  }
+
+  /* ── 代码块美化 ── */
+  .code-example {
+    overflow-x: auto;
+    padding: var(--space-4);
+    border: 1px solid var(--clr-border);
+    border-radius: var(--radius-md);
+  }
+  .inline-code {
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+    background: var(--clr-bg-code);
+    padding: 2px var(--space-1);
+    border-radius: var(--radius-sm);
+  }
+
+  /* ── 脚注 ── */
+  .ds-footer {
+    padding: var(--space-10) 0;
+    text-align: center;
+  }
+
+  /* ── VSCode / 暗色支持 ── */
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --clr-bg:       #0d1117;
+      --clr-bg-subtle:#161b22;
+      --clr-bg-code:  #1c2128;
+      --clr-text:     #e6edf3;
+      --clr-text-secondary: #8b949e;
+      --clr-text-muted:     #6e7681;
+      --clr-border:   #30363d;
+    }
+    .ds-nav { background: rgba(13,17,23,.92); }
+    .shadow-card { background: #161b22; }
+    .code-example { background: #161b22; }
+    .palette-swatch.dark-swatch div { color: white !important; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── 页头 ── -->
+<header class="ds-header">
+  <div class="container">
+    <h1>设计系统 / Design System</h1>
+    <p>极简 · 干净 · 克制 · 冷灰蓝 + 暖橙 · 8px 基数 · 120+ CSS 自定义属性</p>
+    <div class="flex gap-2" style="margin-top:var(--space-4)">
+      <span class="tag" style="background:var(--clr-primary-100);color:var(--clr-primary-700);font-size:var(--text-xs)">θ</span>
+      <span class="tag" style="background:var(--clr-bg-code);color:var(--clr-text-secondary);font-size:var(--text-xs)">v1</span>
+      <span class="tag" style="background:var(--clr-bg-code);color:var(--clr-text-secondary);font-size:var(--text-xs)">120+ tokens</span>
+    </div>
+  </div>
+</header>
+
+<!-- ── 导航 ── -->
+<nav class="ds-nav">
+  <div class="container">
+    <a href="#color">颜色</a>
+    <a href="#typo">字体</a>
+    <a href="#space">间距</a>
+    <a href="#comp">组件</a>
+    <a href="#shadow">阴影</a>
+    <a href="#motion">动效</a>
+    <a href="#layout">布局</a>
+    <a href="#usage">使用</a>
+  </div>
+</nav>
+
+<main>
+
+<!-- ── 颜色 ── -->
+<section class="ds-section" id="color">
+  <div class="container">
+    <h2>颜色 <span class="badge">84 tokens</span></h2>
+    <p class="desc">冷灰蓝为主色（专业·冷静），暖橙为强调色（克制使用）。两套中性色 + 语义色。</p>
+
+    <h3 style="font-size:var(--text-sm);margin-bottom:var(--space-3);color:var(--clr-text-secondary)">主色 / Primary — Cold Blue-Gray</h3>
+    <div class="palette-grid" style="margin-bottom:var(--space-8)">
+      <div class="palette-row">
+        <div class="palette-swatch" style="background:var(--clr-primary-50);color:var(--clr-text)"><div>50</div><span class="code">$50</span></div>
+        <div class="palette-swatch" style="background:var(--clr-primary-100);color:var(--clr-text)"><div>100</div><span class="code">$100</span></div>
+        <div class="palette-swatch" style="background:var(--clr-primary-200);color:var(--clr-text)"><div>200</div><span class="code">$200</span></div>
+        <div class="palette-swatch" style="background:var(--clr-primary-300)"><div style="color:#fff">300</div><span class="code" style="color:rgba(255,255,255,.75)">$300</span></div>
+        <div class="palette-swatch" style="background:var(--clr-primary-400)"><div style="color:#fff">400</div><span class="code" style="color:rgba(255,255,255,.75)">$400</span></div>
+        <div class="palette-swatch" style="background:var(--clr-primary-500)"><div style="color:#fff">500</div><span class="code" style="color:rgba(255,255,255,.75)">$500</span></div>
+        <div class="palette-swatch" style="background:var(--clr-primary-600)"><div style="color:#fff">600</div><span class="code" style="color:rgba(255,255,255,.75)">$600</span></div>
+        <div class="palette-swatch" style="background:var(--clr-primary-700)"><div style="color:#fff">700</div><span class="code" style="color:rgba(255,255,255,.75)">$700</span></div>
+        <div class="palette-swatch" style="background:var(--clr-primary-800)"><div style="color:#fff">800</div><span class="code" style="color:rgba(255,255,255,.75)">$800</span></div>
+        <div class="palette-swatch" style="background:var(--clr-primary-900)"><div style="color:#fff">900</div><span class="code" style="color:rgba(255,255,255,.75)">$900</span></div>
+      </div>
+    </div>
+
+    <div class="grid-2 gap-6">
+      <div>
+        <h3 style="font-size:var(--text-sm);margin-bottom:var(--space-3);color:var(--clr-text-secondary)">强调色 / Accent — 暖橙</h3>
+        <div class="palette-row">
+          <div class="palette-swatch" style="background:var(--clr-accent-100);color:var(--clr-text)"><div>100</div><span class="code">$100</span></div>
+          <div class="palette-swatch" style="background:var(--clr-accent-300)"><div style="color:#fff">300</div><span class="code">$300</span></div>
+          <div class="palette-swatch" style="background:var(--clr-accent-500)"><div style="color:#fff">500</div><span class="code">$500</span></div>
+          <div class="palette-swatch" style="background:var(--clr-accent-700)"><div style="color:#fff">700</div><span class="code">$700</span></div>
+          <div class="palette-swatch" style="background:var(--clr-accent-900)"><div style="color:#fff">900</div><span class="code">$900</span></div>
+        </div>
+      </div>
+      <div>
+        <h3 style="font-size:var(--text-sm);margin-bottom:var(--space-3);color:var(--clr-text-secondary)">语义色 / Semantic</h3>
+        <div class="palette-row">
+          <div class="palette-swatch" style="background:var(--clr-success)"><div style="color:#fff">成功</div></div>
+          <div class="palette-swatch" style="background:var(--clr-warning)"><div style="color:#fff">警告</div></div>
+          <div class="palette-swatch" style="background:var(--clr-error)"><div style="color:#fff">错误</div></div>
+          <div class="palette-swatch" style="background:var(--clr-info)"><div style="color:#fff">信息</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── 字体 ── -->
+<section class="ds-section" id="typo">
+  <div class="container">
+    <h2>字体 <span class="badge">10 tokens</span></h2>
+    <p class="desc">7 级字号渐变 · 3 种字族 · 3 种字重 · 3 种行高。不加花哨，只做干净的中西文混排。</p>
+
+    <div class="type-grid">
+      <div class="type-item">
+        <span class="type-label">4xl</span>
+        <div class="type-sample" style="font-size:var(--text-4xl);font-weight:var(--weight-bold)">36px 标题展示</div>
+        <span class="type-var">--text-4xl × --weight-bold</span>
+      </div>
+      <div class="type-item">
+        <span class="type-label">3xl</span>
+        <div class="type-sample" style="font-size:var(--text-3xl);font-weight:var(--weight-semibold)">30px 章节标题</div>
+        <span class="type-var">--text-3xl × --weight-semibold</span>
+      </div>
+      <div class="type-item">
+        <span class="type-label">2xl</span>
+        <div class="type-sample" style="font-size:var(--text-2xl);font-weight:var(--weight-semibold)">24px 卡片标题</div>
+        <span class="type-var">--text-2xl × --weight-semibold</span>
+      </div>
+      <div class="type-item">
+        <span class="type-label">xl</span>
+        <div class="type-sample" style="font-size:var(--text-xl);font-weight:var(--weight-medium)">20px 小标题</div>
+        <span class="type-var">--text-xl × --weight-medium</span>
+      </div>
+      <div class="type-item">
+        <span class="type-label">base</span>
+        <div class="type-sample" style="font-size:var(--text-base)">16px 正文。据统计，2026年上半年中国经济继续保持稳定增长态势，其中制造业PMI连续12个月位于扩张区间。</div>
+        <span class="type-var">--text-base × --weight-normal</span>
+      </div>
+      <div class="type-item">
+        <span class="type-label">sm</span>
+        <div class="type-sample" style="font-size:var(--text-sm);color:var(--clr-text-secondary)">14px 次要文字。辅助说明、元数据、标签等次要信息。</div>
+        <span class="type-var">--text-sm</span>
+      </div>
+      <div class="type-item">
+        <span class="type-label">xs</span>
+        <div class="type-sample" style="font-size:var(--text-xs);color:var(--clr-text-muted)">12px 小号。表格表头、代码注释、版本号等。设计语言的一致性应该精确到每一像素。</div>
+        <span class="type-var">--text-xs</span>
+      </div>
+    </div>
+
+    <div class="flex gap-8" style="margin-top:var(--space-6)">
+      <div>
+        <span class="inline-code">--font-sans</span>
+        <div style="font-family:var(--font-sans);margin-top:var(--space-1)">Noto Sans SC · 中文 123 ABC</div>
+      </div>
+      <div>
+        <span class="inline-code">--font-mono</span>
+        <div style="font-family:var(--font-mono);margin-top:var(--space-1)">JetBrains Mono · 中文 123 ABC</div>
+      </div>
+    </div>
+
+    <div style="margin-top:var(--space-6);padding:var(--space-4);background:var(--clr-bg-subtle);border-radius:var(--radius-md)">
+      <h4 style="font-size:var(--text-sm);margin-bottom:var(--space-2)">行高对比</h4>
+      <div class="grid-3 gap-4">
+        <div><span class="inline-code">tight (1.25)</span><p style="line-height:var(--leading-tight);margin-top:var(--space-1)">正文内容较多的段落，行高 tight 模式可以让文字更紧凑，适用于标题和列表。</p></div>
+        <div><span class="inline-code">normal (1.5)</span><p style="line-height:var(--leading-normal);margin-top:var(--space-1)">正文内容较多的段落，行高 normal 模式是最通用的阅读体验。</p></div>
+        <div><span class="inline-code">relaxed (1.75)</span><p style="line-height:var(--leading-relaxed);margin-top:var(--space-1)">正文内容较多的段落，行高 relaxed 模式提供宽松的间距，适合长文阅读。</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── 间距 ── -->
+<section class="ds-section" id="space">
+  <div class="container">
+    <h2>间距 <span class="badge">14 tokens</span></h2>
+    <p class="desc">8px 基数递进：4 · 8 · 12 · 16 · 20 · 24 · 32 · 40 · 48 · 64 · 80 · 96。无随机间距。</p>
+
+    <div class="space-grid">
+      <div class="space-item"><div class="space-bar" style="width:4px;height:12px"></div><div class="space-info"><span class="token">--space-1</span><span class="value">0.25rem (4px)</span></div></div>
+      <div class="space-item"><div class="space-bar" style="width:8px;height:16px"></div><div class="space-info"><span class="token">--space-2</span><span class="value">0.5rem (8px)</span></div></div>
+      <div class="space-item"><div class="space-bar" style="width:12px;height:20px"></div><div class="space-info"><span class="token">--space-3</span><span class="value">0.75rem (12px)</span></div></div>
+      <div class="space-item"><div class="space-bar" style="width:16px;height:24px"></div><div class="space-info"><span class="token">--space-4</span><span class="value">1rem (16px)</span></div></div>
+      <div class="space-item"><div class="space-bar" style="width:20px;height:28px"></div><div class="space-info"><span class="token">--space-5</span><span class="value">1.25rem (20px)</span></div></div>
+      <div class="space-item"><div class="space-bar" style="width:24px;height:32px"></div><div class="space-info"><span class="token">--space-6</span><span class="value">1.5rem (24px)</span></div></div>
+      <div class="space-item"><div class="space-bar" style="width:32px;height:36px"></div><div class="space-info"><span class="token">--space-8</span><span class="value">2rem (32px)</span></div></div>
+      <div class="space-item"><div class="space-bar" style="width:40px;height:40px"></div><div class="space-info"><span class="token">--space-10</span><span class="value">2.5rem (40px)</span></div></div>
+      <div class="space-item"><div class="space-bar" style="width:48px;height:44px"></div><div class="space-info"><span class="token">--space-12</span><span class="value">3rem (48px)</span></div></div>
+      <div class="space-item"><div class="space-bar" style="width:64px;height:48px"></div><div class="space-info"><span class="token">--space-16</span><span class="value">4rem (64px)</span></div></div>
+    </div>
+    <p class="desc" style="margin-top:var(--space-6)">规律：基数 8px 递进，每逢 2 倍跳转（8→12 跳 4，12→16 跳 4，16→24 跳 8…）。覆盖从微型间距（4px）到大区块分隔（96px）。</p>
+  </div>
+</section>
+
+<!-- ── 组件 ── -->
+<section class="ds-section" id="comp">
+  <div class="container">
+    <h2>组件 <span class="badge">6+ 基础组件</span></h2>
+    <p class="desc">最小可行组件集——不重不滥，够用就行。按钮 · 卡片 · 表格 · 标签 · 代码块。</p>
+
+    <div class="grid-2 gap-8">
+      <div>
+        <h3 style="font-size:var(--text-sm);color:var(--clr-text-secondary);margin-bottom:var(--space-3)">按钮 / Button</h3>
+        <div class="flex gap-3" style="flex-wrap:wrap">
+          <button class="btn btn-primary">主要按钮</button>
+          <button class="btn btn-secondary">次要按钮</button>
+          <button class="btn btn-primary" style="opacity:.4" disabled>禁用</button>
+        </div>
+        <div class="code-example" style="margin-top:var(--space-3)">
+<pre style="background:none;padding:0;font-size:var(--text-xs)">&lt;button class="btn btn-primary"&gt;主要按钮&lt;/button&gt;
+&lt;button class="btn btn-secondary"&gt;次要按钮&lt;/button&gt;</pre>
+        </div>
+      </div>
+
+      <div>
+        <h3 style="font-size:var(--text-sm);color:var(--clr-text-secondary);margin-bottom:var(--space-3)">卡片 / Card</h3>
+        <div class="demo-card">
+          <h3>卡片标题</h3>
+          <p>这是一张示例卡片，展示 Card 组件的默认样式。包含标题、描述文本和操作区域。</p>
+          <button class="btn btn-primary">查看详情</button>
+        </div>
+        <div class="demo-card card-elevated" style="margin-top:var(--space-2)">
+          <h3>Elevated 卡片</h3>
+          <p>带阴影的卡片，浮出效果.</p>
+        </div>
+      </div>
+
+      <div>
+        <h3 style="font-size:var(--text-sm);color:var(--clr-text-secondary);margin-bottom:var(--space-3)">标签 / Tag</h3>
+        <div class="flex gap-2" style="flex-wrap:wrap">
+          <span class="tag tag-success">运行中</span>
+          <span class="tag tag-warning">待审查</span>
+          <span class="tag tag-error">已停止</span>
+          <span class="tag" style="background:var(--clr-primary-100);color:var(--clr-primary-600)">中性</span>
+        </div>
+        <div class="code-example" style="margin-top:var(--space-3)">
+<pre style="background:none;padding:0;font-size:var(--text-xs)">&lt;span class="tag tag-success"&gt;运行中&lt;/span&gt;</pre>
+        </div>
+      </div>
+
+      <div>
+        <h3 style="font-size:var(--text-sm);color:var(--clr-text-secondary);margin-bottom:var(--space-3)">表格 / Table</h3>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>股票</th><th>代码</th><th>价格</th><th>涨幅</th><th>状态</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>贵州茅台</td><td>600519</td><td>1,179.44</td><td style="color:var(--clr-error)">-1.30%</td><td><span class="tag tag-error">下跌</span></td></tr>
+              <tr><td>上证指数</td><td>000001</td><td>4,062.48</td><td style="color:var(--clr-error)">-0.28%</td><td><span class="tag tag-warning">震荡</span></td></tr>
+              <tr><td>宁德时代</td><td>300750</td><td>182.60</td><td style="color:var(--clr-success)">+2.15%</td><td><span class="tag tag-success">上涨</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── 阴影 ── -->
+<section class="ds-section" id="shadow">
+  <div class="container">
+    <h2>阴影 <span class="badge">4 tokens</span></h2>
+    <p class="desc">4 级深度：sm → md → lg → xl。克制，只在需要层级分离时使用。</p>
+
+    <div class="shadow-grid">
+      <div class="shadow-card" style="box-shadow:var(--shadow-sm)">sm</div>
+      <div class="shadow-card" style="box-shadow:var(--shadow-md)">md</div>
+      <div class="shadow-card" style="box-shadow:var(--shadow-lg)">lg</div>
+      <div class="shadow-card" style="box-shadow:var(--shadow-xl)">xl</div>
+    </div>
+    <div class="code-example" style="margin-top:var(--space-4)">
+<pre style="background:none;padding:0;font-size:var(--text-xs)">box-shadow: var(--shadow-sm | --shadow-md | --shadow-lg | --shadow-xl);</pre>
+    </div>
+  </div>
+</section>
+
+<!-- ── 动效 ── -->
+<section class="ds-section" id="motion">
+  <div class="container">
+    <h2>动效 <span class="badge">5 tokens</span></h2>
+    <p class="desc">两种缓动曲线 + 3 种时长。hover 态 150ms，过渡 250ms，大块动效 400ms。</p>
+
+    <div class="grid-2 gap-6">
+      <div class="motion-card">
+        <h4 style="font-size:var(--text-sm);margin-bottom:var(--space-2)">fast — 150ms</h4>
+        <div class="preview"><div class="motion-dot"></div></div>
+        <span class="inline-code">--duration-fast: 150ms</span>
+      </div>
+      <div class="motion-card">
+        <h4 style="font-size:var(--text-sm);margin-bottom:var(--space-2)">normal — 250ms</h4>
+        <div class="preview"><div class="motion-dot" style="animation-duration:var(--duration-normal)"></div></div>
+        <span class="inline-code">--duration-normal: 250ms</span>
+      </div>
+      <div class="motion-card">
+        <h4 style="font-size:var(--text-sm);margin-bottom:var(--space-2)">slow — 400ms</h4>
+        <div class="preview"><div class="motion-dot slow"></div></div>
+        <span class="inline-code">--duration-slow: 400ms</span>
+      </div>
+      <div>
+        <h4 style="font-size:var(--text-sm);margin-bottom:var(--space-2)">缓动曲线</h4>
+        <div style="display:grid;gap:var(--space-2)">
+          <div><span class="inline-code">--ease-out</span> cubic-bezier(0.16, 1, 0.3, 1) — 强调结尾弹感</div>
+          <div><span class="inline-code">--ease-inout</span> cubic-bezier(0.65, 0, 0.35, 1) — 匀速入出</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── 布局 ── -->
+<section class="ds-section" id="layout">
+  <div class="container">
+    <h2>布局 <span class="badge">10+ tokens</span></h2>
+    <p class="desc">容器宽度 · 响应式断点 · Flex/Grid 辅助类。容器默认 1024px，移动端 640px。</p>
+
+    <div class="grid-2 gap-6" style="margin-bottom:var(--space-6)">
+      <div>
+        <h3 style="font-size:var(--text-sm);color:var(--clr-text-secondary);margin-bottom:var(--space-3)">容器</h3>
+        <table>
+          <tr><td><span class="inline-code">--container-sm</span></td><td>640px</td></tr>
+          <tr><td><span class="inline-code">--container-md</span></td><td>768px</td></tr>
+          <tr><td><span class="inline-code">--container-lg</span></td><td>1024px</td></tr>
+          <tr><td><span class="inline-code">--container-xl</span></td><td>1200px</td></tr>
+        </table>
+      </div>
+      <div>
+        <h3 style="font-size:var(--text-sm);color:var(--clr-text-secondary);margin-bottom:var(--space-3)">断点</h3>
+        <table>
+          <tr><td><span class="inline-code">--breakpoint-sm</span></td><td>640px</td></tr>
+          <tr><td><span class="inline-code">--breakpoint-md</span></td><td>768px</td></tr>
+          <tr><td><span class="inline-code">--breakpoint-lg</span></td><td>1024px</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="grid-2 gap-6" style="margin-bottom:var(--space-6)">
+      <div>
+        <h3 style="font-size:var(--text-sm);color:var(--clr-text-secondary);margin-bottom:var(--space-3)">CSS 类辅助</h3>
+        <div class="code-example">
+<pre style="background:none;padding:0;font-size:var(--text-xs)">.container      /* max-width:1024px, center */
+.container-sm   /* max-width:640px, center */
+.flex / .flex-col
+.gap-2 / .gap-4 / .gap-6
+.grid / .grid-2 / .grid-3  (响应式: 768px 单列)</pre>
+        </div>
+      </div>
+      <div>
+        <h3 style="font-size:var(--text-sm);color:var(--clr-text-secondary);margin-bottom:var(--space-3)">圆角</h3>
+        <div class="flex gap-3" style="flex-wrap:wrap">
+          <div style="background:var(--clr-bg-code);padding:var(--space-3) var(--space-4);border-radius:var(--radius-sm);font-size:var(--text-sm);border:1px solid var(--clr-border)">sm 4px</div>
+          <div style="background:var(--clr-bg-code);padding:var(--space-3) var(--space-4);border-radius:var(--radius-md);font-size:var(--text-sm);border:1px solid var(--clr-border)">md 8px</div>
+          <div style="background:var(--clr-bg-code);padding:var(--space-3) var(--space-4);border-radius:var(--radius-lg);font-size:var(--text-sm);border:1px solid var(--clr-border)">lg 12px</div>
+          <div style="background:var(--clr-bg-code);padding:var(--space-3) var(--space-4);border-radius:var(--radius-xl);font-size:var(--text-sm);border:1px solid var(--clr-border)">xl 16px</div>
+          <div style="background:var(--clr-bg-code);padding:var(--space-3) var(--space-5);border-radius:var(--radius-full);font-size:var(--text-sm);border:1px solid var(--clr-border)">pill</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── 使用方式 ── -->
+<section class="ds-section" id="usage">
+  <div class="container">
+    <h2>使用方式 <span class="badge">两种</span></h2>
+    <p class="desc">在任何 HTML 项目中引入 design-tokens.css，立刻获得全部 120+ CSS 自定义属性和基础组件。</p>
+
+    <div class="grid-2 gap-8">
+      <div>
+        <div class="demo-card">
+          <h3>现有项目引入</h3>
+          <p>在 &lt;head&gt; 中引用 design-tokens.css，所有 token 立即可用。</p>
+          <div class="code-example" style="background:var(--clr-bg-code)">
+<pre style="background:none;padding:0;font-size:var(--text-xs)">&lt;link rel="stylesheet"
+  href="design-tokens.css"&gt;</pre>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="demo-card">
+          <h3>定制覆盖</h3>
+          <p>新项目从 Token 系统开始，覆盖需要变化的变量即可。</p>
+          <div class="code-example" style="background:var(--clr-bg-code)">
+<pre style="background:none;padding:0;font-size:var(--text-xs)">:root {
+  /* 仅覆盖需要变化的 token */
+  --clr-primary-700: #1e40af;
+  --font-sans: "Inter",
+    "Noto Sans SC", sans-serif;
+}</pre>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:var(--space-6);padding:var(--space-6);background:var(--clr-bg-subtle);border-radius:var(--radius-lg)">
+      <h3 style="font-size:var(--text-base);margin-bottom:var(--space-3)">设计原则 / Design Principles</h3>
+      <div class="grid-3 gap-6">
+        <div><h4 style="font-size:var(--text-sm);color:var(--clr-primary-600)">极简</h4><p style="font-size:var(--text-sm);color:var(--clr-text-secondary);margin:var(--space-1) 0 0">不做多余的东西。每个 token 都有明确用途，没有"看着好看"的变量。</p></div>
+        <div><h4 style="font-size:var(--text-sm);color:var(--clr-primary-600)">干净</h4><p style="font-size:var(--text-sm);color:var(--clr-text-secondary);margin:var(--space-1) 0 0">8px 基数间距，无随机偏移。色彩克制——冷灰蓝为主，暖橙为点缀。</p></div>
+        <div><h4 style="font-size:var(--text-sm);color:var(--clr-primary-600)">克制</h4><p style="font-size:var(--text-sm);color:var(--clr-text-secondary);margin:var(--space-1) 0 0">反模式编码约束——禁用紫/青渐变。组件集最小化，不追求完整 UI 框架。</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ── 脚注 ── -->
+<footer class="ds-footer">
+  <div class="container">
+    <div class="flex" style="justify-content:space-between;align-items:center">
+      <small>Design Token System v1 · Ariste 🦞</small>
+      <a href="https://jasoneip01-pixel.github.io/design-tokens.css" style="font-size:var(--text-sm);color:var(--clr-text-muted);text-decoration:none">design-tokens.css (120+ 变量)</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
