@@ -557,7 +557,79 @@
 
 </main>
 
-<!-- ── 脚注 ── -->
+<!-- ── 📋 团队参考指南 ── -->
+<section style="padding:var(--space-12) 0;border-top:1px solid var(--clr-border)">
+  <div class="container">
+    <h2 style="font-size:var(--text-2xl);font-weight:var(--weight-bold);margin-bottom:var(--space-8)">📋 团队参考指南</h2>
+    <p style="font-size:var(--text-sm);color:var(--clr-text-secondary);margin-bottom:var(--space-8)">新项目如何复用现有设计资产。三步启动，不从头写。</p>
+
+    <div class="grid-2 gap-6" style="margin-bottom:var(--space-8)">
+      <div style="padding:var(--space-5);background:var(--clr-bg-subtle);border-radius:var(--radius-md)">
+        <h3 style="font-size:var(--text-base);margin-bottom:var(--space-3)">1️⃣ 去哪儿参考</h3>
+        <table style="width:100%;font-size:var(--text-sm);border-collapse:collapse">
+          <tr><td style="padding:var(--space-2) var(--space-3) var(--space-2) 0;border-bottom:1px solid var(--clr-border);white-space:nowrap"><strong>设计系统主页</strong></td><td style="padding:var(--space-2) 0;border-bottom:1px solid var(--clr-border)"><a href="https://jasoneip01-pixel.github.io/design-system.html" style="color:var(--clr-primary-600)">design-system.html</a> — 完整色板/间距/字体/组件/Shadow</td></tr>
+          <tr><td style="padding:var(--space-2) var(--space-3) var(--space-2) 0;border-bottom:1px solid var(--clr-border);white-space:nowrap"><strong>Token 文件</strong></td><td style="padding:var(--space-2) 0;border-bottom:1px solid var(--clr-border)"><a href="https://jasoneip01-pixel.github.io/design-tokens.css" style="color:var(--clr-primary-600)">design-tokens.css</a> — 直接 @import 用的单文件</td></tr>
+          <tr><td style="padding:var(--space-2) var(--space-3) var(--space-2) 0;border-bottom:1px solid var(--clr-border);white-space:nowrap"><strong>米开朗琪罗</strong></td><td style="padding:var(--space-2) 0;border-bottom:1px solid var(--clr-border)"><a href="https://jasoneip01-pixel.github.io/michelangelo/michelangelo.html" style="color:var(--clr-primary-600)">michelangelo/</a> — 文化类多页画廊最佳实践</td></tr>
+          <tr><td style="padding:var(--space-2) var(--space-3) var(--space-2) 0;border-bottom:1px solid var(--clr-border);white-space:nowrap"><strong>高迪×毕加索</strong></td><td style="padding:var(--space-2) 0;border-bottom:1px solid var(--clr-border)"><a href="https://jasoneip01-pixel.github.io/gaudi-picasso/index.html" style="color:var(--clr-primary-600)">gaudi-picasso/</a> — 品牌/展览落地页</td></tr>
+          <tr><td style="padding:var(--space-2) var(--space-3) var(--space-2) 0;border-bottom:1px solid var(--clr-border);white-space:nowrap"><strong>隐藏款（首页）</strong></td><td style="padding:var(--space-2) 0;border-bottom:1px solid var(--clr-border)"><a href="https://jasoneip01-pixel.github.io/" style="color:var(--clr-primary-600)">index.html</a> — 交互问答 + OG meta + Schema.org</td></tr>
+          <tr><td style="padding:var(--space-2) var(--space-3) var(--space-2) 0;white-space:nowrap"><strong>十三诗人</strong></td><td style="padding:var(--space-2) 0"><a href="https://jasoneip01-pixel.github.io/poets/" style="color:var(--clr-primary-600)">poets/</a> — 暗色读书页 + 专题内容</td></tr>
+        </table>
+      </div>
+
+      <div style="padding:var(--space-5);background:var(--clr-bg-subtle);border-radius:var(--radius-md)">
+        <h3 style="font-size:var(--text-base);margin-bottom:var(--space-3)">2️⃣ 如何复用</h3>
+        <p style="font-size:var(--text-sm);color:var(--clr-text-secondary);margin-bottom:var(--space-3)">新项目三步流程：</p>
+        <ol style="font-size:var(--text-sm);color:var(--clr-text-secondary);padding-left:var(--space-5);line-height:1.8">
+          <li><strong>引用 token</strong> — <code style="background:var(--clr-bg-code);padding:1px 4px;border-radius:3px">&lt;link rel="stylesheet" href="design-tokens.css"&gt;</code>，立刻获得全部变量</li>
+          <li><strong>查组件</strong> — 在本页面找到对标的颜色/间距/组件样式，直接使用 token 名</li>
+          <li><strong>找对标页面</strong> — 从左侧参考表找到风格最接近的项目，复制 CSS 结构，替换 token 值</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="grid-2 gap-6" style="margin-bottom:var(--space-8)">
+      <div style="padding:var(--space-5);background:var(--clr-bg-subtle);border-radius:var(--radius-md)">
+        <h3 style="font-size:var(--text-base);margin-bottom:var(--space-3)">3️⃣ 如何贡献</h3>
+        <p style="font-size:var(--text-sm);color:var(--clr-text-secondary);margin-bottom:var(--space-3)">新组件/新色板进 token 系统：</p>
+        <ol style="font-size:var(--text-sm);color:var(--clr-text-secondary);padding-left:var(--space-5);line-height:1.8">
+          <li>先在本页面确认是否已有对应 token</li>
+          <li>没有 → 加新变量到 <code style="background:var(--clr-bg-code);padding:1px 4px;border-radius:3px">design-tokens.css</code>，不修改现有值</li>
+          <li>新组件模式出现 → 添加到本页对应章节</li>
+          <li>只加不减，不破旧页面</li>
+        </ol>
+      </div>
+
+      <div style="padding:var(--space-5);background:var(--clr-bg-subtle);border-radius:var(--radius-md)">
+        <h3 style="font-size:var(--text-base);margin-bottom:var(--space-3)">4️⃣ 品味基线</h3>
+        <table style="width:100%;font-size:var(--text-sm);border-collapse:collapse">
+          <tr><td style="padding:var(--space-2) var(--space-3) var(--space-2) 0;border-bottom:1px solid var(--clr-border);color:var(--clr-text-secondary);white-space:nowrap">颜色</td><td style="padding:var(--space-2) 0;border-bottom:1px solid var(--clr-border)">主+辅+中性，最多 3 色。禁止紫色渐变</td></tr>
+          <tr><td style="padding:var(--space-2) var(--space-3) var(--space-2) 0;border-bottom:1px solid var(--clr-border);color:var(--clr-text-secondary);white-space:nowrap">字体</td><td style="padding:var(--space-2) 0;border-bottom:1px solid var(--clr-border)">最多 2 种（展示+正文）。中文：Noto Serif SC / 系统默认</td></tr>
+          <tr><td style="padding:var(--space-2) var(--space-3) var(--space-2) 0;border-bottom:1px solid var(--clr-border);color:var(--clr-text-secondary);white-space:nowrap">装饰</td><td style="padding:var(--space-2) 0;border-bottom:1px solid var(--clr-border)">禁止 emoji 做图标。禁止无意义渐变</td></tr>
+          <tr><td style="padding:var(--space-2) var(--space-3) var(--space-2) 0;border-bottom:1px solid var(--clr-border);color:var(--clr-text-secondary);white-space:nowrap">布局</td><td style="padding:var(--space-2) 0;border-bottom:1px solid var(--clr-border)">断点：768px / 1024px / 1440px。8px 基数间距</td></tr>
+          <tr><td style="padding:var(--space-2) var(--space-3) var(--space-2) 0;color:var(--clr-text-secondary);white-space:nowrap">动效</td><td style="padding:var(--space-2) 0">transition 默认 300ms ease。动画不超过 1.5s</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div style="padding:var(--space-5);background:var(--clr-bg-subtle);border-radius:var(--radius-md)">
+      <h3 style="font-size:var(--text-base);margin-bottom:var(--space-3)">5️⃣ 工作流</h3>
+      <div style="display:flex;flex-wrap:wrap;gap:var(--space-3);align-items:center;font-size:var(--text-sm);color:var(--clr-text-secondary)">
+        <span>新页面需求 →</span>
+        <span style="padding:var(--space-1) var(--space-2);background:var(--clr-bg-code);border-radius:var(--radius-sm)">群聊提需求</span>
+        <span>→</span>
+        <span style="padding:var(--space-1) var(--space-2);background:var(--clr-bg-code);border-radius:var(--radius-sm)">出 DESIGN.md 方案</span>
+        <span>→</span>
+        <span style="padding:var(--space-1) var(--space-2);background:var(--clr-bg-code);border-radius:var(--radius-sm)">审核通过</span>
+        <span>→</span>
+        <span style="padding:var(--space-1) var(--space-2);background:var(--clr-bg-code);border-radius:var(--radius-sm)">引用 token + 对标页面 + 生成</span>
+        <span>→</span>
+        <span style="padding:var(--space-1) var(--space-2);background:var(--clr-bg-code);border-radius:var(--radius-sm)">推送上线</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
 <footer class="ds-footer">
   <div class="container">
     <div class="flex" style="justify-content:space-between;align-items:center">
