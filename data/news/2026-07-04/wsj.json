@@ -1,7 +1,28 @@
 {
   "source": "WSJ.com US Business RSS",
-  "ts": "Sat, 04 Jul 2026 08:31:18 GMT",
+  "ts": "Sat, 04 Jul 2026 19:05:32 GMT",
   "items": [
+    {
+      "title": "News Quiz for July 4, 2026",
+      "desc": "",
+      "link": "https://www.wsj.com/business/media/news-quiz-for-july-4-2026-a73200a2?mod=pls_whats_news_us_business_f",
+      "pubDate": "Sat, 04 Jul 2026 10:00:00 GMT",
+      "creator": "Daniel Akst"
+    },
+    {
+      "title": "The Quest to Make Humanoid Robots Safe Enough for Humans",
+      "desc": "Viral mishaps underscore a big challenge for robot makers: How can they ensure a humanoid doesn’t hurt a human?",
+      "link": "https://www.wsj.com/tech/the-quest-to-make-humanoid-robots-safe-enough-for-humans-4887c123?mod=pls_whats_news_us_business_f",
+      "pubDate": "Sat, 04 Jul 2026 09:30:00 GMT",
+      "creator": "John Keilman"
+    },
+    {
+      "title": "The Company Founder Who Got Fired for Ignoring His Own Return-to-Office Rules",
+      "desc": "The former executive alleges his fellow co-owners used the policy as an excuse to push him out of the asset-management firm he helped run.",
+      "link": "https://www.wsj.com/business/the-founder-who-got-fired-for-ignoring-his-own-return-to-office-rules-6b194dd7?mod=pls_whats_news_us_business_f",
+      "pubDate": "Sat, 04 Jul 2026 09:30:00 GMT",
+      "creator": "Lindsay Ellis"
+    },
     {
       "title": "This Simple White Line Is America’s Greatest Unsung Innovation",
       "desc": "You know about the lightbulb and the iPhone. This is the unknown story of another ingenious creation that changed a nation.",
@@ -22,27 +43,6 @@
       "link": "https://www.wsj.com/business/u-k-italian-japan-fighter-jet-venture-wins-6-14-billion-contract-e63655a3?mod=pls_whats_news_us_business_f",
       "pubDate": "Fri, 03 Jul 2026 16:13:00 GMT",
       "creator": "Mauro Orru"
-    },
-    {
-      "title": "What Happened in Fuel Markets When Trump Lifted the Century-Old Jones Act",
-      "desc": "California drivers, Gulf Coast refiners and Puerto Ricans have benefited from temporary suspension of the act.",
-      "link": "https://www.wsj.com/business/logistics/what-happened-in-fuel-markets-when-trump-lifted-the-century-old-jones-act-199da395?mod=pls_whats_news_us_business_f",
-      "pubDate": "Fri, 03 Jul 2026 15:55:00 GMT",
-      "creator": "Alana Pipe"
-    },
-    {
-      "title": "How Bezos Learned to Love Trump—and Win More Contracts for Blue Origin",
-      "desc": "The space company has booked rapid growth under this administration, after the founder spent president’s first term being ‘hated.’",
-      "link": "https://www.wsj.com/business/jeff-bezos-donald-trump-relationship-7e6a742e?mod=pls_whats_news_us_business_f",
-      "pubDate": "Fri, 03 Jul 2026 01:00:00 GMT",
-      "creator": "Dana Mattioli"
-    },
-    {
-      "title": "His $7 Billion Tanker Bet Raised Eyebrows. He Couldn’t Have Timed It Better.",
-      "desc": "The Korean tycoon spent the sum amassing the world’s largest fleet of oil tankers just before the Iran war sent the market haywire.",
-      "link": "https://www.wsj.com/business/the-korean-tanker-tycoon-winning-big-from-the-iran-war-ac9efe83?mod=pls_whats_news_us_business_f",
-      "pubDate": "Thu, 02 Jul 2026 23:00:00 GMT",
-      "creator": "Costas Paris"
     },
     {
       "title": "Ipsen to Buy Swiss Biotech Memo in Deal That Could Top $800 Million",
@@ -227,11 +227,25 @@
       "creator": "Holman W. Jenkins, Jr."
     },
     {
+      "title": "What Happened in Fuel Markets When Trump Lifted the Century-Old Jones Act",
+      "desc": "California drivers, Gulf Coast refiners and Puerto Ricans have benefited from temporary suspension of the act.",
+      "link": "https://www.wsj.com/business/logistics/what-happened-in-fuel-markets-when-trump-lifted-the-century-old-jones-act-199da395?mod=pls_whats_news_us_business_f",
+      "pubDate": "Fri, 03 Jul 2026 15:55:00 GMT",
+      "creator": "Alana Pipe"
+    },
+    {
       "title": "AI Data Centers Use Far More Water Than Most Tech Giants Report",
       "desc": "Water used at the power plants that supply electricity to data centers can be much greater than the water used in the data centers themselves.",
       "link": "https://www.wsj.com/tech/ai/ai-data-centers-water-use-901e2902?mod=pls_whats_news_us_business_f",
       "pubDate": "Fri, 03 Jul 2026 09:30:00 GMT",
       "creator": "Christopher Mims"
+    },
+    {
+      "title": "His $7 Billion Tanker Bet Raised Eyebrows. He Couldn’t Have Timed It Better.",
+      "desc": "The Korean tycoon spent the sum amassing the world’s largest fleet of oil tankers just before the Iran war sent the market haywire.",
+      "link": "https://www.wsj.com/business/the-korean-tanker-tycoon-winning-big-from-the-iran-war-ac9efe83?mod=pls_whats_news_us_business_f",
+      "pubDate": "Thu, 02 Jul 2026 23:00:00 GMT",
+      "creator": "Costas Paris"
     },
     {
       "title": "The ‘Five Alarm’ Risks Facing the Power Grid This Summer",
@@ -246,20 +260,6 @@
       "link": "https://www.wsj.com/business/energy-oil/heat-waves-are-becoming-a-chronic-drag-on-the-economy-f5000335?mod=pls_whats_news_us_business_f",
       "pubDate": "Thu, 02 Jul 2026 13:41:00 GMT",
       "creator": "Ed Ballard"
-    },
-    {
-      "title": "Yara to Buy Texas Ammonia Plant For $1.3 Billion",
-      "desc": "The addition of  U.S. production capacity supports the fertilizer producer’s strategy of diversifying energy exposure, capturing economies of scale, and lowering fixed costs.",
-      "link": "https://www.wsj.com/business/energy-oil/yara-buys-texas-ammonia-plant-for-1-3-billion-0fadb729?mod=pls_whats_news_us_business_f",
-      "pubDate": "Thu, 02 Jul 2026 10:47:00 GMT",
-      "creator": "Dominic Chopping"
-    },
-    {
-      "title": "Energy & Utilities Roundup: Market Talk",
-      "desc": "Find insight on crude futures, BP, Amplitude Energy and more in the latest Market Talks covering Energy and Utilities.",
-      "link": "https://www.wsj.com/business/energy-utilities-roundup-market-talk-197fa534?mod=pls_whats_news_us_business_f",
-      "pubDate": "Wed, 01 Jul 2026 20:53:00 GMT",
-      "creator": ""
     },
     {
       "title": "After Deadly D.C. Crash, FAA Moves Toward Sweeping Aircraft-Technology Mandate",
@@ -514,6 +514,13 @@
       "creator": ""
     },
     {
+      "title": "How Bezos Learned to Love Trump—and Win More Contracts for Blue Origin",
+      "desc": "The space company has booked rapid growth under this administration, after the founder spent president’s first term being ‘hated.’",
+      "link": "https://www.wsj.com/business/jeff-bezos-donald-trump-relationship-7e6a742e?mod=pls_whats_news_us_business_f",
+      "pubDate": "Fri, 03 Jul 2026 01:00:00 GMT",
+      "creator": "Dana Mattioli"
+    },
+    {
       "title": "Weak Jobs Report Prompts Wall Street to Change Strategy",
       "desc": "Plus, an Olympian is charged with damaging the D.C. reflecting pool, and celebs use special-ops tactics to keep their weddings private.",
       "link": "https://www.wsj.com/business/weak-jobs-report-prompts-wall-street-to-change-strategy-f7bd350a?mod=pls_whats_news_us_business_f",
@@ -535,18 +542,18 @@
       "creator": "Liz Webber"
     },
     {
-      "title": "Inside the Multimillion Dollar Saga to Make a Naturally Blue M&M",
-      "desc": "Watch the complicated process behind making M&M’s with natural dyes.",
-      "link": "https://www.wsj.com/business/inside-the-multimillion-dollar-saga-to-make-a-naturally-blue-m-m-78d6f3a9?mod=pls_whats_news_us_business_f",
-      "pubDate": "Wed, 01 Jul 2026 19:02:00 GMT",
-      "creator": "Claire Hogan"
+      "title": "This Simple White Line Is America’s Greatest Unsung Innovation",
+      "desc": "You know about the lightbulb and the iPhone. This is the unknown story of another ingenious creation that changed a nation.",
+      "link": "https://www.wsj.com/business/white-line-road-invention-america-250-8ce6bb89?mod=pls_whats_news_us_business_f",
+      "pubDate": "Sat, 04 Jul 2026 01:00:00 GMT",
+      "creator": "Ben Cohen"
     },
     {
-      "title": "How to Beat the Heat Like a Pro: Tips From a Veteran UPS Driver",
-      "desc": "Pickles, ice chests and high-tech towels are just some of the hacks for staying cool in one of the hottest jobs.",
-      "link": "https://www.wsj.com/lifestyle/workplace/how-to-beat-the-heat-like-a-pro-tips-from-a-veteran-ups-driver-af3a52a8?mod=pls_whats_news_us_business_f",
-      "pubDate": "Fri, 03 Jul 2026 09:30:00 GMT",
-      "creator": "Esther Fung"
+      "title": "The Company Founder Who Got Fired for Ignoring His Own Return-to-Office Rules",
+      "desc": "The former executive alleges his fellow co-owners used the policy as an excuse to push him out of the asset-management firm he helped run.",
+      "link": "https://www.wsj.com/business/the-founder-who-got-fired-for-ignoring-his-own-return-to-office-rules-6b194dd7?mod=pls_whats_news_us_business_f",
+      "pubDate": "Sat, 04 Jul 2026 09:30:00 GMT",
+      "creator": "Lindsay Ellis"
     },
     {
       "title": "How Bezos Learned to Love Trump—and Win More Contracts for Blue Origin",
@@ -556,25 +563,18 @@
       "creator": "Dana Mattioli"
     },
     {
-      "title": "Big Brewers Are Making an Outsize Bet on Tiny Cans of Beer",
-      "desc": "‘Pony’ beers are getting attention from brewers like Constellation Brands that want to appeal to moderation-minded drinkers and the GLP-1 crowd.",
-      "link": "https://www.wsj.com/business/big-brewers-are-making-an-outsize-bet-on-tiny-cans-of-beer-57766956?mod=pls_whats_news_us_business_f",
-      "pubDate": "Thu, 02 Jul 2026 09:30:00 GMT",
-      "creator": "Laura Cooper"
+      "title": "U.K., Italian, Japanese Fighter Jet Venture Wins $6.14 Billion Contract",
+      "desc": "U.K.’s BAE Systems, Italy’s Leonardo and  Japan’s Mitsubishi Heavy Industries secured a contract funded by the three nations to develop a new stealth fighter jet.",
+      "link": "https://www.wsj.com/business/u-k-italian-japan-fighter-jet-venture-wins-6-14-billion-contract-e63655a3?mod=pls_whats_news_us_business_f",
+      "pubDate": "Fri, 03 Jul 2026 16:13:00 GMT",
+      "creator": "Mauro Orru"
     },
     {
-      "title": "This Simple White Line Is America’s Greatest Unsung Innovation",
-      "desc": "You know about the lightbulb and the iPhone. This is the unknown story of another ingenious creation that changed a nation.",
-      "link": "https://www.wsj.com/business/white-line-road-invention-america-250-8ce6bb89?mod=pls_whats_news_us_business_f",
-      "pubDate": "Sat, 04 Jul 2026 01:00:00 GMT",
-      "creator": "Ben Cohen"
-    },
-    {
-      "title": "His $7 Billion Tanker Bet Raised Eyebrows. He Couldn’t Have Timed It Better.",
-      "desc": "The Korean tycoon spent the sum amassing the world’s largest fleet of oil tankers just before the Iran war sent the market haywire.",
-      "link": "https://www.wsj.com/business/the-korean-tanker-tycoon-winning-big-from-the-iran-war-ac9efe83?mod=pls_whats_news_us_business_f",
-      "pubDate": "Thu, 02 Jul 2026 23:00:00 GMT",
-      "creator": "Costas Paris"
+      "title": "How Disneyland’s 36,000 Workers Create the ‘Most Magical Place on Earth’",
+      "desc": "From opening the gates each morning to designing the park’s future, watch how thousands of employees keep the resort operating.",
+      "link": "https://www.wsj.com/us-news/how-disneylands-36-000-workers-create-the-most-magical-place-on-earth-56f48af7?mod=pls_whats_news_us_business_f",
+      "pubDate": "Fri, 03 Jul 2026 14:01:00 GMT",
+      "creator": "Mia Hariz"
     },
     {
       "title": "Best Small-Business Loans in July 2026",
