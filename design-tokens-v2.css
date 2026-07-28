@@ -1,0 +1,341 @@
+/* ═══════════════════════════════════════════════════════════
+   Design Tokens v2 — Warm Modernist Academic
+   从 80 页 HTML 中提炼的约束系统。约束 = 品味。
+
+   三个铁律（违反任一 = 品味失败）：
+   1. 单页颜色 ≤ 12 种（含背景色变体）
+   2. 内容型页面必须含至少一种衬线字体
+   3. 装饰性渐变 / #6c5ce7 / #8B5CF6 紫色系——禁止
+
+   Usage: <link rel="stylesheet" href="design-tokens-v2.css">
+   然后选择材质主题，通过 data-theme 属性切换。
+   ═══════════════════════════════════════════════════════════ */
+
+/* ═══ 材质主题 ═══ */
+
+/* 默认: 羊皮纸 (Parchment) — 文艺复兴手稿感
+   代表: 米开朗琪罗、高迪×毕加索、四只猫 */
+:root, [data-theme="parchment"] {
+  --bg:              #f0e8d8;
+  --bg-warm:         #faf3e8;
+  --bg-card:         #f5efe4;
+  --text:            #3d2817;
+  --text-secondary:  #7a6a58;
+  --text-muted:      #b8a898;
+  --border:          #d4c4a8;
+  --accent:          #c8954a;
+  --accent-hover:    #a07830;
+  --accent-subtle:   #e8d5b0;
+  --shadow:          0 2px 12px rgba(61, 40, 23, 0.08);
+  --radius:          6px;
+  --font-display:    'Noto Serif SC', 'Songti SC', 'STSong', serif;
+  --font-body:       -apple-system, 'Noto Serif SC', 'Source Han Serif SC', serif;
+  --font-ui:         -apple-system, 'PingFang SC', 'Noto Sans SC', sans-serif;
+}
+
+/* 宣纸 (Xuan Paper) — 中国传统书卷感
+   代表: 苏东坡、李白 */
+[data-theme="xuan"] {
+  --bg:              #f6f2eb;
+  --bg-warm:         #fdf9f4;
+  --bg-card:         #faf6f0;
+  --text:            #2c2416;
+  --text-secondary:  #5a4e3e;
+  --text-muted:      #9c9284;
+  --border:          #e0d6c4;
+  --accent:          #c8412b;
+  --accent-hover:    #a0311e;
+  --accent-subtle:   #ede8df;
+  --shadow:          0 1px 8px rgba(44, 36, 22, 0.06);
+  --radius:          4px;
+  --font-display:    'Noto Serif CJK SC', 'Source Han Serif SC', 'Songti SC', 'STSong', serif;
+  --font-body:       -apple-system, 'Noto Serif CJK SC', 'Source Han Serif SC', serif;
+  --font-ui:         -apple-system, 'PingFang SC', sans-serif;
+}
+
+/* 暗木 (Dark Wood) — 修道院烛光 / 深夜书房
+   代表: 歌尔德蒙、计划-D */
+[data-theme="darkwood"] {
+  --bg:              #1a0e08;
+  --bg-warm:         #2a1a0e;
+  --bg-card:         #231510;
+  --text:            #e8d5b0;
+  --text-secondary:  #b8957a;
+  --text-muted:      #7a5a3e;
+  --border:          #3d2317;
+  --accent:          #d4a855;
+  --accent-hover:    #e8c878;
+  --accent-subtle:   #3d2317;
+  --shadow:          0 4px 20px rgba(0, 0, 0, 0.3);
+  --radius:          8px;
+  --font-display:    'Georgia', 'Noto Serif SC', 'STSong', serif;
+  --font-body:       -apple-system, 'Georgia', 'Noto Serif SC', serif;
+  --font-ui:         -apple-system, 'Noto Sans SC', sans-serif;
+}
+
+/* 石板 (Slate) — 分析/数据/严肃学术
+   代表: 锂产业报告、loop-engineering */
+[data-theme="slate"] {
+  --bg:              #faf8f5;
+  --bg-warm:         #ffffff;
+  --bg-card:         #f5f2ed;
+  --text:            #1a1816;
+  --text-secondary:  #6b6560;
+  --text-muted:      #9c9590;
+  --border:          #e4e0d8;
+  --accent:          #5a7a8a;
+  --accent-hover:    #3d5a6a;
+  --accent-subtle:   #e8ecef;
+  --shadow:          0 1px 4px rgba(0, 0, 0, 0.05);
+  --radius:          6px;
+  --font-display:    -apple-system, 'Noto Sans SC', 'PingFang SC', sans-serif;
+  --font-body:       -apple-system, 'Noto Serif SC', 'Source Han Serif SC', serif;
+  --font-ui:         -apple-system, 'PingFang SC', sans-serif;
+}
+
+/* ═══ 间距系统 (保持 8px 基数) ═══ */
+:root {
+  --space-1:  0.25rem;
+  --space-2:  0.5rem;
+  --space-3:  0.75rem;
+  --space-4:  1rem;
+  --space-5:  1.25rem;
+  --space-6:  1.5rem;
+  --space-8:  2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+  --space-24: 6rem;
+}
+
+/* ═══ 字体层级 ═══ */
+:root {
+  /* 字号 */
+  --text-xs:   0.75rem;
+  --text-sm:   0.875rem;
+  --text-base: 1rem;
+  --text-lg:   1.125rem;
+  --text-xl:   1.25rem;
+  --text-2xl:  1.5rem;
+  --text-3xl:  1.875rem;
+  --text-4xl:  2.25rem;
+
+  /* 行高 */
+  --leading-tight:   1.2;
+  --leading-normal:  1.6;
+  --leading-relaxed: 1.8;
+  --leading-loose:   2.0;
+
+  /* 字重 */
+  --weight-normal:   400;
+  --weight-medium:   500;
+  --weight-semibold: 600;
+  --weight-bold:     700;
+
+  /* 布局 */
+  --content-max: 42rem;     /* 阅读最佳宽度 */
+  --content-wide: 56rem;    /* 宽版图文 */
+  --page-max: 72rem;        /* 最大页面宽度 */
+  --page-gutter: var(--space-8);
+}
+
+/* ═══ 动效 — 只用淡入，不用变形 ═══ */
+:root {
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --duration-fast:   200ms;
+  --duration-normal: 350ms;
+  --duration-slow:   600ms;
+}
+
+/* ═══ 全局重置 ═══ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  line-height: var(--leading-relaxed);
+  color: var(--text);
+  background: var(--bg);
+}
+
+/* ═══ 排版 ═══ */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: var(--weight-semibold);
+  line-height: var(--leading-tight);
+  color: var(--text);
+  letter-spacing: -0.01em;
+}
+
+h1 { font-size: var(--text-4xl); margin-bottom: var(--space-8); }
+h2 { font-size: var(--text-3xl); margin-bottom: var(--space-6); }
+h3 { font-size: var(--text-2xl); margin-bottom: var(--space-4); }
+h4 { font-size: var(--text-xl); margin-bottom: var(--space-3); }
+
+p {
+  margin-bottom: var(--space-4);
+  max-width: var(--content-max);
+}
+
+/* blockquote — 引用块，书卷感 */
+blockquote {
+  margin: var(--space-6) 0;
+  padding: var(--space-4) var(--space-6);
+  border-left: 3px solid var(--accent);
+  background: var(--bg-warm);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  font-family: var(--font-display);
+  font-style: italic;
+  color: var(--text-secondary);
+}
+
+/* ═══ 基础组件 ═══ */
+
+/* 卡片 — 纸张感，不是玻璃态 */
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: var(--space-6);
+  box-shadow: var(--shadow);
+}
+
+/* 按钮 — 低调，不抢内容 */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-5);
+  font-family: var(--font-ui);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg-warm);
+  color: var(--text);
+  cursor: pointer;
+  transition: all var(--duration-fast) var(--ease-out);
+  text-decoration: none;
+}
+.btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+.btn-primary {
+  background: var(--accent);
+  color: white;
+  border-color: var(--accent);
+}
+.btn-primary:hover {
+  background: var(--accent-hover);
+  border-color: var(--accent-hover);
+  color: white;
+}
+
+/* ═══ 布局工具 ═══ */
+
+/* 阅读容器 — 42rem = 最佳中文阅读宽度 */
+.reading-width {
+  max-width: var(--content-max);
+  margin: 0 auto;
+}
+
+/* 页面容器 */
+.page {
+  max-width: var(--page-max);
+  margin: 0 auto;
+  padding: 0 var(--page-gutter);
+}
+
+/* 章节间距 */
+.section {
+  padding: var(--space-16) 0;
+}
+
+/* 分隔线 — 材质感 */
+hr.divider {
+  border: none;
+  height: 1px;
+  background: var(--border);
+  margin: var(--space-12) 0;
+}
+
+/* 图片容器 */
+.figure {
+  margin: var(--space-8) 0;
+}
+.figure img {
+  width: 100%;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+.figure figcaption {
+  margin-top: var(--space-2);
+  font-family: var(--font-ui);
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+  text-align: center;
+}
+
+/* ═══ 动效工具 ═══ */
+.fade-in {
+  animation: tokenFadeIn var(--duration-normal) var(--ease-out) both;
+}
+@keyframes tokenFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.fade-up {
+  animation: tokenFadeUp var(--duration-slow) var(--ease-out) both;
+}
+@keyframes tokenFadeUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ═══ 响应式 ═══ */
+@media (max-width: 768px) {
+  :root {
+    --page-gutter: var(--space-4);
+  }
+  h1 { font-size: var(--text-3xl); }
+  h2 { font-size: var(--text-2xl); }
+  h3 { font-size: var(--text-xl); }
+  .section { padding: var(--space-10) 0; }
+}
+
+/* ═══ 暗色模式适配 (仅石板/暗木主题需要，羊皮纸/宣纸不需要) ═══ */
+@media (prefers-color-scheme: dark) {
+  [data-theme="slate"] {
+    --bg:              #1a1816;
+    --bg-warm:         #242220;
+    --bg-card:         #1f1d1b;
+    --text:            #e8e6e3;
+    --text-secondary:  #9c9590;
+    --text-muted:      #6b6560;
+    --border:          #3a3632;
+    --accent:          #8aaabb;
+    --accent-hover:    #aaccdd;
+    --accent-subtle:   #2a3035;
+  }
+}
+
+/* ═══ 反模式检测 (注释提醒，编译时不生效) ═══ */
+/*
+ * 如果你发现自己在添加以下任何东西，停手，重新读铁律：
+ * ❌ #6c5ce7, #8B5CF6, #7C3AED (AI 默认紫色)
+ * ❌ linear-gradient 用于装饰目的
+ * ❌ box-shadow 超过 0.3 不透明度
+ * ❌ border-radius > 12px (过度圆角 = 玻璃态)
+ * ❌ @keyframes 超过 2 个
+ * ❌ 第 13 个颜色声明
+ */

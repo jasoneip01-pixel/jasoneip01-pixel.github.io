@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Design Tokens v2 · Warm Modernist Academic · 设计系统展示</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600&family=Noto+Serif+SC:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+body { font-family: -apple-system, 'PingFang SC', sans-serif; background: #1a1816; color: #e8e6e3; }
+.header { padding: 4rem 2rem 2rem; text-align: center; max-width: 48rem; margin: 0 auto; }
+.header h1 { font-size: 2rem; font-weight: 600; margin-bottom: 0.5rem; }
+.header p { color: #9c9590; font-size: 0.95rem; line-height: 1.7; }
+.themes { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; padding: 2rem; max-width: 72rem; margin: 0 auto; }
+.theme-card { border-radius: 12px; overflow: hidden; box-shadow: 0 4px 24px rgba(0,0,0,0.3); }
+.theme-label { padding: 0.75rem 1.25rem; font-size: 0.85rem; font-weight: 600; display: flex; justify-content: space-between; align-items: center; }
+.theme-label .theme-name { font-size: 1rem; }
+.theme-label .theme-desc { opacity: 0.7; font-weight: 400; }
+.theme-body { padding: 1.5rem; }
+.theme-body h3 { margin: 0 0 0.5rem; font-size: 1.2rem; }
+.theme-body p { margin: 0 0 1rem; font-size: 0.9rem; line-height: 1.7; }
+.theme-body blockquote { margin: 0 0 1rem; padding: 0.75rem 1rem; border-left: 3px solid; font-style: italic; font-size: 0.9rem; }
+.theme-swatches { display: flex; gap: 0.5rem; margin-top: 1rem; flex-wrap: wrap; }
+.swatch { width: 2rem; height: 2rem; border-radius: 4px; border: 1px solid rgba(0,0,0,0.1); }
+.token-list { margin-top: 1rem; font-size: 0.75rem; }
+.token-list code { display: inline-block; padding: 0.15rem 0.4rem; border-radius: 3px; font-size: 0.7rem; margin: 0.15rem; }
+
+.rules { padding: 3rem 2rem; max-width: 48rem; margin: 0 auto; }
+.rules h2 { font-size: 1.4rem; margin-bottom: 1rem; }
+.rules ul { color: #9c9590; line-height: 1.8; font-size: 0.9rem; }
+.rules ul li { margin-bottom: 0.5rem; }
+.rules .red { color: #e05555; }
+.rules .green { color: #55a055; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>Design Tokens v2</h1>
+  <p>
+    「温性现代主义学术风」— 从 80 页 HTML 作品中提炼的约束系统。<br>
+    四个材质主题。6-12 色。衬线有魂。约束 = 品味。
+  </p>
+</div>
+
+<div class="themes" id="themes"></div>
+
+<div class="rules">
+  <h2>三个铁律</h2>
+  <ul>
+    <li class="red">❌ 单页颜色 ≤ 12 种（含背景色变体）— 超过 = 失控</li>
+    <li class="red">❌ 内容型页面必须含至少一种衬线字体 — 系统字体 = 无魂</li>
+    <li class="red">❌ #6c5ce7 / #8B5CF6 / 装饰性渐变 — 禁用，AI 默认=人类审美拒绝</li>
+  </ul>
+  <h2 style="margin-top:2rem;">使用方式</h2>
+  <ul>
+    <li class="green">✅ 复制 design-tokens-v2-template.html，改 content 即可</li>
+    <li class="green">✅ 切换主题：改 &lt;html data-theme="parchment|xuan|darkwood|slate"&gt;</li>
+    <li class="green">✅ 如需定制：在 &lt;style&gt; 中覆盖 CSS 变量，不写裸 hex</li>
+  </ul>
+</div>
+
+<script>
+const themes = [
+  {
+    id: 'parchment',
+    name: '羊皮纸',
+    en: 'Parchment',
+    desc: '文艺复兴手稿',
+    use: '米开朗琪罗 / 高迪×毕加索 / 文化类',
+    bg: '#f0e8d8', text: '#3d2817', accent: '#c8954a',
+    font: '"Noto Serif SC", "Songti SC"',
+    colors: ['#f0e8d8','#faf3e8','#f5efe4','#3d2817','#7a6a58','#c8954a','#a07830','#d4c4a8']
+  },
+  {
+    id: 'xuan',
+    name: '宣纸',
+    en: 'Xuan Paper',
+    desc: '中国传统书卷',
+    use: '苏东坡 / 李白 / 中国古典',
+    bg: '#f6f2eb', text: '#2c2416', accent: '#c8412b',
+    font: '"Noto Serif CJK SC", "Source Han Serif SC"',
+    colors: ['#f6f2eb','#fdf9f4','#2c2416','#5a4e3e','#c8412b','#ede8df','#e0d6c4']
+  },
+  {
+    id: 'darkwood',
+    name: '暗木',
+    en: 'Dark Wood',
+    desc: '修道院烛光 / 深夜书房',
+    use: '歌尔德蒙 / 计划-D / 沉浸叙事',
+    bg: '#1a0e08', text: '#e8d5b0', accent: '#d4a855',
+    font: '"Georgia", "Noto Serif SC"',
+    colors: ['#1a0e08','#2a1a0e','#231510','#e8d5b0','#b8957a','#d4a855','#3d2317']
+  },
+  {
+    id: 'slate',
+    name: '石板',
+    en: 'Slate',
+    desc: '分析 / 学术 / 报告',
+    use: '锂产业 / 数据报告 / 严肃文档',
+    bg: '#faf8f5', text: '#1a1816', accent: '#5a7a8a',
+    font: '"Noto Sans SC" + "Noto Serif SC"',
+    colors: ['#faf8f5','#1a1816','#6b6560','#5a7a8a','#e4e0d8','#f5f2ed']
+  }
+];
+
+const $themes = document.getElementById('themes');
+themes.forEach(t => {
+  $themes.innerHTML += `
+    <div class="theme-card">
+      <div class="theme-label" style="background:${t.bg};color:${t.text}">
+        <span class="theme-name">${t.name} <span style="opacity:0.5;font-weight:400;">${t.en}</span></span>
+        <span class="theme-desc">${t.desc}</span>
+      </div>
+      <div class="theme-body" style="background:${t.bg};color:${t.text}">
+        <h3 style="font-family:${t.font};color:${t.text}">典型用法：${t.use}</h3>
+        <p style="font-size:0.85rem;color:${t.id==='darkwood'?'#b8957a':'#7a6a58'}">
+          代表作品来自我们的 HTML 全集。字体：${t.font}。
+        </p>
+        <blockquote style="border-left-color:${t.accent};background:${t.id==='darkwood'?'#2a1a0e':t.id==='xuan'?'#fdf9f4':'#faf3e8'};color:${t.id==='darkwood'?'#b8957a':'#7a6a58'}">
+          「CSS 变量定义了整个世界的材质——不是装饰，是诚实。」
+        </blockquote>
+        <div class="theme-swatches">
+          ${t.colors.map(c => `<div class="swatch" style="background:${c}" title="${c}"></div>`).join('')}
+        </div>
+      </div>
+    </div>
+  `;
+});
+</script>
+
+</body>
+</html>
