@@ -42,11 +42,17 @@
   --clr-neutral-800: #1a1a1a;
   --clr-neutral-900: #0d0d0d;
 
-  /* 语义色 */
-  --clr-success: #3b8b5e;
-  --clr-warning: #d48806;
-  --clr-error:   #c73a3a;
-  --clr-info:    #3b7fc4;
+  /* 语义色 (均过 WCAG AA 4.5:1, 白底实测) */
+  --clr-success: #2f7a4e;   /* 白底 5.23:1 / tag 底 4.61:1 */
+  --clr-warning: #8a6100;   /* 白底 5.54:1 / tag 底 5.17:1 */
+  --clr-error:   #b02a2a;   /* 白底 6.54:1 / tag 底 5.56:1 */
+  --clr-info:    #2f6da8;   /* 白底 5.42:1 */
+
+  /* 语义色浅背景 (tag/alert 场景, 文字用上方深色语义色) */
+  --clr-success-bg: #e6f4ea;
+  --clr-warning-bg: #fef7e0;
+  --clr-error-bg:   #fce8e8;
+  --clr-info-bg:    #e7f0f8;
 
   /* 背景 & 文字 */
   --clr-bg:       #ffffff;
@@ -54,13 +60,14 @@
   --clr-bg-code:  #f4f4f5;
   --clr-text:     #1a1a1a;
   --clr-text-secondary: #6b6b6b;
-  --clr-text-muted:     #adadad;
+  --clr-text-muted:     #757575;   /* 白底 4.61:1 AA ✅ (原 #adadad 仅 2.24:1) */
   --clr-border:   #e5e5e5;
 
   /* ── 字体系统 ── */
   --font-sans:    -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans SC", system-ui, sans-serif;
   --font-mono:    "SF Mono", "JetBrains Mono", "Fira Code", "Consolas", monospace;
-  --font-display: var(--font-sans);  /* 展示用正文族, 不加花哨 */
+  --font-display: var(--font-sans);  /* 展示用正文族, 不加花哨 (刻意与正文一致) */
+  --font-serif: 'Noto Serif SC', 'Songti SC', 'STSong', serif;  /* 可选: 需衬线展示时覆盖 --font-display */
 
   /* 字号渐变 */
   --text-xs:   0.75rem;   /* 12px */
@@ -123,9 +130,15 @@
   --container-md:  768px;
   --container-lg:  1024px;
   --container-xl:  1200px;
+  /* 断点仅供文档/JS 参考 — CSS 变量不能用于 @media 查询, 媒体查询处须硬编码对应值 */
   --breakpoint-sm: 640px;
   --breakpoint-md: 768px;
   --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1440px;
+
+  /* ── 焦点环 ── */
+  --focus-ring:        2px solid var(--clr-primary-500);
+  --focus-ring-offset: 2px;
 
   /* ── 反模式编码约束 ── */
   /* 禁止使用的颜色值 (不放入token系统) */
@@ -191,6 +204,11 @@ pre {
   border-color: var(--clr-border);
 }
 .btn-secondary:hover { border-color: var(--clr-primary-400); color: var(--clr-primary-700); }
+.btn:disabled, .btn[disabled] {
+  opacity: .5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
 
 /* ── 基础组件: 卡片 ── */
 .card {
@@ -232,9 +250,9 @@ th {
   font-weight: var(--weight-medium);
   border-radius: var(--radius-sm);
 }
-.tag-success { background: #e6f4ea; color: var(--clr-success); }
-.tag-warning { background: #fef7e0; color: var(--clr-warning); }
-.tag-error   { background: #fce8e8; color: var(--clr-error); }
+.tag-success { background: var(--clr-success-bg); color: var(--clr-success); }
+.tag-warning { background: var(--clr-warning-bg); color: var(--clr-warning); }
+.tag-error   { background: var(--clr-error-bg); color: var(--clr-error); }
 
 /* ── 布局辅助 ── */
 .container { max-width: var(--container-lg); margin: 0 auto; padding: 0 var(--space-6); }
@@ -248,8 +266,44 @@ th {
 .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); }
 .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); }
 
+/* 断点须硬编码 (CSS 变量不能用于 @media) — 此处对应 --breakpoint-md */
 @media (max-width: 768px) {
   .grid-2, .grid-3 { grid-template-columns: 1fr; }
+}
+
+/* ── 基础组件: 表单控件 (最小集) ── */
+input, select, textarea {
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  color: var(--clr-text);
+  background: var(--clr-bg);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-2) var(--space-3);
+  transition: border-color var(--duration-fast) var(--ease-out), box-shadow var(--duration-fast) var(--ease-out);
+}
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: var(--clr-primary-500);
+  box-shadow: 0 0 0 3px rgba(72, 101, 129, 0.15);
+}
+input::placeholder, textarea::placeholder { color: var(--clr-text-muted); }
+label { font-size: var(--text-sm); font-weight: var(--weight-medium); color: var(--clr-text-secondary); }
+.form-field { display: flex; flex-direction: column; gap: var(--space-1); }
+
+/* ── 焦点环 (键盘可达性) ── */
+:focus-visible {
+  outline: var(--focus-ring);
+  outline-offset: var(--focus-ring-offset);
+}
+
+/* ── 动效无障碍: 尊重系统减弱动态偏好 ── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
 
 /* ── 动效工具 ── */

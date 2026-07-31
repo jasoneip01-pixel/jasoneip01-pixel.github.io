@@ -347,8 +347,8 @@
 <!-- ── 组件 ── -->
 <section class="ds-section" id="comp">
   <div class="container">
-    <h2>组件 <span class="badge">6+ 基础组件</span></h2>
-    <p class="desc">最小可行组件集——不重不滥，够用就行。按钮 · 卡片 · 表格 · 标签 · 代码块。</p>
+    <h2>组件 <span class="badge">7+ 基础组件</span></h2>
+    <p class="desc">最小可行组件集——不重不滥，够用就行。按钮 · 卡片 · 表格 · 标签 · 代码块 · 表单。</p>
 
     <div class="grid-2 gap-8">
       <div>
@@ -356,7 +356,7 @@
         <div class="flex gap-3" style="flex-wrap:wrap">
           <button class="btn btn-primary">主要按钮</button>
           <button class="btn btn-secondary">次要按钮</button>
-          <button class="btn btn-primary" style="opacity:.4" disabled>禁用</button>
+          <button class="btn btn-primary" disabled>禁用</button>
         </div>
         <div class="code-example" style="margin-top:var(--space-3)">
 <pre style="background:none;padding:0;font-size:var(--text-xs)">&lt;button class="btn btn-primary"&gt;主要按钮&lt;/button&gt;
@@ -603,9 +603,9 @@
         <h3 style="font-size:var(--text-base);margin-bottom:var(--space-3)">4️⃣ 品味基线</h3>
         <table style="width:100%;font-size:var(--text-sm);border-collapse:collapse">
           <tr><td style="padding:var(--space-2) var(--space-3) var(--space-2) 0;border-bottom:1px solid var(--clr-border);color:var(--clr-text-secondary);white-space:nowrap">颜色</td><td style="padding:var(--space-2) 0;border-bottom:1px solid var(--clr-border)">主+辅+中性，最多 3 色。禁止紫色渐变</td></tr>
-          <tr><td style="padding:var(--space-2) var(--space-3) var(--space-2) 0;border-bottom:1px solid var(--clr-border);color:var(--clr-text-secondary);white-space:nowrap">字体</td><td style="padding:var(--space-2) 0;border-bottom:1px solid var(--clr-border)">最多 2 种（展示+正文）。中文：Noto Serif SC / 系统默认</td></tr>
+          <tr><td style="padding:var(--space-2) var(--space-3) var(--space-2) 0;border-bottom:1px solid var(--clr-border);color:var(--clr-text-secondary);white-space:nowrap">字体</td><td style="padding:var(--space-2) 0;border-bottom:1px solid var(--clr-border)">最多 2 种（展示+正文）。中文：Noto Serif SC / 系统默认（--font-serif 已入 token，可覆盖 --font-display）</td></tr>
           <tr><td style="padding:var(--space-2) var(--space-3) var(--space-2) 0;border-bottom:1px solid var(--clr-border);color:var(--clr-text-secondary);white-space:nowrap">装饰</td><td style="padding:var(--space-2) 0;border-bottom:1px solid var(--clr-border)">禁止 emoji 做图标。禁止无意义渐变</td></tr>
-          <tr><td style="padding:var(--space-2) var(--space-3) var(--space-2) 0;border-bottom:1px solid var(--clr-border);color:var(--clr-text-secondary);white-space:nowrap">布局</td><td style="padding:var(--space-2) 0;border-bottom:1px solid var(--clr-border)">断点：768px / 1024px / 1440px。8px 基数间距</td></tr>
+          <tr><td style="padding:var(--space-2) var(--space-3) var(--space-2) 0;border-bottom:1px solid var(--clr-border);color:var(--clr-text-secondary);white-space:nowrap">布局</td><td style="padding:var(--space-2) 0;border-bottom:1px solid var(--clr-border)">断点：640px / 768px / 1024px / 1440px（--breakpoint-sm/md/lg/xl）。8px 基数间距</td></tr>
           <tr><td style="padding:var(--space-2) var(--space-3) var(--space-2) 0;color:var(--clr-text-secondary);white-space:nowrap">动效</td><td style="padding:var(--space-2) 0">transition 默认 300ms ease。动画不超过 1.5s</td></tr>
         </table>
       </div>
@@ -622,6 +622,8 @@
         <span style="padding:var(--space-1) var(--space-2);background:var(--clr-bg-code);border-radius:var(--radius-sm)">审核通过</span>
         <span>→</span>
         <span style="padding:var(--space-1) var(--space-2);background:var(--clr-bg-code);border-radius:var(--radius-sm)">引用 token + 对标页面 + 生成</span>
+        <span>→</span>
+        <span style="padding:var(--space-1) var(--space-2);background:var(--clr-bg-code);border-radius:var(--radius-sm)">跑 check-contrast.py 过对比度门槛</span>
         <span>→</span>
         <span style="padding:var(--space-1) var(--space-2);background:var(--clr-bg-code);border-radius:var(--radius-sm)">推送上线</span>
       </div>
