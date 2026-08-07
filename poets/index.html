@@ -180,6 +180,40 @@
     font-size: 1.65rem;
   }
 
+  /* Feature banner (deep dive entry) */
+  .card.feature-banner {
+    grid-column: 1 / -1;
+    min-height: auto;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    background: linear-gradient(135deg, #141a30 0%, #1e2017 100%);
+    border-color: var(--accent);
+  }
+
+  .card.feature-banner .card-name {
+    font-size: 1.8rem;
+  }
+
+  .banner-note {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    line-height: 1.9;
+    text-align: right;
+    letter-spacing: 0.04em;
+    flex-shrink: 0;
+  }
+
+  .banner-note b {
+    color: var(--accent);
+  }
+
+  @media (max-width: 768px) {
+    .card.feature-banner { flex-direction: column; align-items: flex-start; }
+    .banner-note { text-align: left; }
+  }
+
   /* Footer */
   .footer {
     text-align: center;
@@ -224,6 +258,19 @@
 </div>
 
 <div class="grid">
+
+  <!-- ★ 专题：锦瑟 · 李商隐（深度页入口） -->
+  <a href="../lishangyin/" class="card feature-banner">
+    <span class="card-number">专题</span>
+    <div>
+      <div class="card-header">
+        <span class="card-name">锦瑟 · 李商隐</span>
+        <span class="card-dynasty">深度专题 ✦ 新</span>
+      </div>
+      <div class="card-quote">此情可待成追忆<br>只是当时已惘然</div>
+    </div>
+    <div class="banner-note"><b>2026 菲尔兹奖得主邓煜</b> × 晚唐诗人<br>写给牧之的互动专题 · 逐句点亮 →</div>
+  </a>
 
   <!-- 1. 屈原 -->
   <a href="quyuan.html" class="card">
