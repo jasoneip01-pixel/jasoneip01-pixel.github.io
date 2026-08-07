@@ -10,20 +10,41 @@
 <meta property="og:type" content="website">
 <style>
 :root{
-  --bg:#0b1022;
-  --bg2:#101731;
-  --panel:#141c38;
-  --panel2:#1a2447;
-  --ink:#e9e4d4;
-  --ink-dim:#a89fc0;
-  --ink-faint:#6f6a8a;
-  --gold:#d8b46a;
-  --gold-bright:#f0d48a;
-  --cinnabar:#d9534f;
-  --jade:#7fb5a4;
+  --bg:#0b1022;--bg2:#101731;--panel:#141c38;--panel2:#1a2447;
+  --ink:#e9e4d4;--ink-dim:#a89fc0;--ink-faint:#6f6a8a;
+  --gold:#d8b46a;--gold-bright:#f0d48a;--cinnabar:#d9534f;--jade:#7fb5a4;
   --line:rgba(216,180,106,.18);
-  --serif:"Kaiti SC","STKaiti","KaiTi","SimSun",serif;
-  --sans:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,sans-serif;
+  --nav-bg:rgba(11,16,34,.82);--drawer-bg:rgba(11,16,34,.97);
+  --btn-bg:rgba(20,28,56,.9);--figcap-bg:rgba(20,28,56,.6);
+  --scrim1:rgba(11,16,34,.55);--scrim2:rgba(11,16,34,.25);
+  --cap-grad:linear-gradient(180deg,transparent,rgba(11,16,34,.92));
+  --cap-text:var(--gold-bright);
+  --stage-bg:linear-gradient(180deg,#0d1428,#0b1022 60%,#101731);
+  --paper-bg:linear-gradient(165deg,#1b1a16,#14130f 70%);
+  --star:#fff;
+  --hero-shadow:0 1px 8px rgba(0,0,0,.6);
+  --h1-shadow:0 0 40px rgba(216,180,106,.4),0 2px 12px rgba(0,0,0,.7);
+  --dim-shadow:0 1px 6px rgba(0,0,0,.8);
+  --serif:"Kaiti SC","STKaiti","KaiTi","Noto Serif SC","Source Han Serif SC","SimSun",serif;
+  --sans:"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",system-ui,sans-serif;
+}
+/* 宣纸日间模式 */
+body.theme-paper{
+  --bg:#f7f1e3;--bg2:#efe6d2;--panel:#fffdf5;--panel2:#f6efdd;
+  --ink:#3a3226;--ink-dim:#6b6150;--ink-faint:#9a907c;
+  --gold:#a67c2e;--gold-bright:#8a6420;--cinnabar:#c24038;--jade:#4f7d6e;
+  --line:rgba(166,124,46,.3);
+  --nav-bg:rgba(247,241,227,.92);--drawer-bg:rgba(247,241,227,.98);
+  --btn-bg:rgba(255,253,245,.95);--figcap-bg:rgba(255,253,245,.8);
+  --scrim1:rgba(247,241,227,.5);--scrim2:rgba(247,241,227,.22);
+  --cap-grad:linear-gradient(180deg,transparent,rgba(247,241,227,.95));
+  --cap-text:#7a5c1e;
+  --stage-bg:linear-gradient(180deg,#f2ead6,#f7f1e3 60%,#efe6d2);
+  --paper-bg:linear-gradient(165deg,#fdf7e8,#f3ead4 70%);
+  --star:#c9b98a;
+  --hero-shadow:0 1px 8px rgba(58,50,38,.35);
+  --h1-shadow:0 0 40px rgba(166,124,46,.35),0 2px 12px rgba(58,50,38,.35);
+  --dim-shadow:none;
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:76px}
@@ -32,7 +53,7 @@ body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1
 img{max-width:100%;display:block}
 
 /* ── top nav ── */
-#topnav{position:fixed;top:0;left:0;right:0;z-index:80;background:rgba(11,16,34,.82);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+#topnav{position:fixed;top:0;left:0;right:0;z-index:80;background:var(--nav-bg);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
 .nav-inner{max-width:900px;margin:0 auto;display:flex;align-items:center;gap:4px;padding:10px 16px;overflow-x:auto;scrollbar-width:none}
 .nav-inner::-webkit-scrollbar{display:none}
 .nav-logo{font-family:var(--serif);color:var(--gold);font-size:15px;letter-spacing:.14em;white-space:nowrap;margin-right:10px;flex-shrink:0}
@@ -41,7 +62,9 @@ img{max-width:100%;display:block}
 .nav-link:hover{color:var(--gold-bright)}
 .nav-link.on{color:var(--gold-bright);border-color:var(--line);background:rgba(216,180,106,.08)}
 .nav-burger{display:none;margin-left:auto;background:none;border:1px solid var(--line);color:var(--gold);font-size:16px;border-radius:8px;padding:4px 10px;cursor:pointer;flex-shrink:0}
-#drawer{display:none;position:fixed;top:48px;left:0;right:0;z-index:79;background:rgba(11,16,34,.97);border-bottom:1px solid var(--line);padding:8px 16px 14px}
+.theme-btn{background:none;border:1px solid var(--line);color:var(--gold);font-size:15px;border-radius:8px;padding:4px 9px;cursor:pointer;flex-shrink:0;margin-left:6px;transition:all .25s}
+.theme-btn:hover{color:var(--gold-bright);border-color:var(--gold)}
+#drawer{display:none;position:fixed;top:48px;left:0;right:0;z-index:79;background:var(--drawer-bg);border-bottom:1px solid var(--line);padding:8px 16px 14px}
 #drawer.open{display:block}
 #drawer a{display:block;padding:9px 6px;color:var(--ink-dim);text-decoration:none;font-size:14.5px;border-bottom:1px dashed rgba(216,180,106,.12)}
 #drawer a:last-child{border-bottom:none}
@@ -51,12 +74,12 @@ img{max-width:100%;display:block}
 #progress{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--gold),var(--cinnabar));z-index:99;transition:width .1s linear}
 
 /* back to top */
-#btt{position:fixed;right:18px;bottom:22px;z-index:78;width:42px;height:42px;border-radius:50%;border:1px solid var(--line);background:rgba(20,28,56,.9);color:var(--gold);font-size:17px;cursor:pointer;opacity:0;pointer-events:none;transition:opacity .3s}
+#btt{position:fixed;right:18px;bottom:22px;z-index:78;width:42px;height:42px;border-radius:50%;border:1px solid var(--line);background:var(--btn-bg);color:var(--gold);font-size:17px;cursor:pointer;opacity:0;pointer-events:none;transition:opacity .3s}
 #btt.show{opacity:1;pointer-events:auto}
 
 /* starfield */
 #stars{position:fixed;inset:0;pointer-events:none;z-index:0}
-#stars i{position:absolute;background:#fff;border-radius:50%;opacity:.6;animation:twinkle 4s ease-in-out infinite}
+#stars i{position:absolute;background:var(--star);border-radius:50%;opacity:.6;animation:twinkle 4s ease-in-out infinite}
 @keyframes twinkle{0%,100%{opacity:.15}50%{opacity:.8}}
 
 .wrap{position:relative;z-index:1;max-width:860px;margin:0 auto;padding:0 24px}
@@ -65,13 +88,13 @@ img{max-width:100%;display:block}
 .hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;position:relative;padding:90px 20px 70px;overflow:hidden}
 .hero-bg{position:absolute;inset:0;z-index:0}
 .hero-bg img{width:100%;height:100%;object-fit:cover;opacity:.55}
-.hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,16,34,.55),rgba(11,16,34,.25) 45%,var(--bg) 96%)}
-.hero .kicker{position:relative;z-index:2;font-size:14px;letter-spacing:.35em;color:var(--gold);margin-bottom:26px;font-weight:600;text-shadow:0 1px 8px rgba(0,0,0,.6)}
-.hero h1{position:relative;z-index:2;font-family:var(--serif);font-weight:700;font-size:clamp(52px,10vw,96px);letter-spacing:.12em;line-height:1.25;text-shadow:0 0 40px rgba(216,180,106,.4),0 2px 12px rgba(0,0,0,.7)}
+.hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,var(--scrim1),var(--scrim2) 45%,var(--bg) 96%)}
+.hero .kicker{position:relative;z-index:2;font-size:14px;letter-spacing:.35em;color:var(--gold);margin-bottom:26px;font-weight:600;text-shadow:var(--hero-shadow)}
+.hero h1{position:relative;z-index:2;font-family:var(--serif);font-weight:700;font-size:clamp(52px,10vw,96px);letter-spacing:.12em;line-height:1.25;text-shadow:var(--h1-shadow)}
 .hero h1 .red{color:var(--cinnabar);text-shadow:0 0 40px rgba(217,83,79,.4)}
-.hero .sub{position:relative;z-index:2;margin-top:20px;font-size:clamp(15px,2.6vw,19px);color:var(--ink);letter-spacing:.08em;text-shadow:0 1px 8px rgba(0,0,0,.7)}
+.hero .sub{position:relative;z-index:2;margin-top:20px;font-size:clamp(15px,2.6vw,19px);color:var(--ink);letter-spacing:.08em;text-shadow:var(--hero-shadow)}
 .hero .byline{position:relative;z-index:2;margin-top:12px;font-size:13px;color:var(--ink-faint);letter-spacing:.2em}
-.hero .hook{position:relative;z-index:2;margin-top:44px;max-width:600px;font-size:15.5px;color:var(--ink-dim);line-height:2.1;text-shadow:0 1px 6px rgba(0,0,0,.6)}
+.hero .hook{position:relative;z-index:2;margin-top:44px;max-width:600px;font-size:15.5px;color:var(--ink-dim);line-height:2.1;text-shadow:var(--hero-shadow)}
 .hero .hook b{color:var(--gold-bright);font-weight:600}
 .scroll-hint{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);color:var(--ink-faint);font-size:12px;letter-spacing:.3em;z-index:2;animation:bob 2.2s ease-in-out infinite}
 @keyframes bob{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,8px)}}
@@ -110,13 +133,19 @@ p.body b,.lead b{color:var(--gold-bright);font-weight:600}
 .pillar p b{color:var(--ink)}
 
 /* 锦瑟 immersive */
-#jinse-stage{position:relative;background:linear-gradient(180deg,#0d1428,#0b1022 60%,#101731);border:1px solid var(--line);border-radius:16px;padding:56px 24px;margin:28px 0;overflow:hidden;text-align:center}
+#jinse-stage{position:relative;background:var(--stage-bg);border:1px solid var(--line);border-radius:16px;padding:56px 24px;margin:28px 0;overflow:hidden;text-align:center}
 .couplet{position:relative;isolation:isolate;min-height:74px;opacity:.12;transition:opacity 1.1s ease,transform 1.1s ease;transform:translateY(8px);font-family:var(--serif);font-size:clamp(16px,3.2vw,21px);letter-spacing:.14em;line-height:1.9;color:var(--ink)}
 .couplet.on{opacity:1;transform:none}
 /* 点亮后浮现：意象水墨图作为柔光背景同步浮现 */
 .couplet::after{content:"";position:absolute;inset:-12px;z-index:-1;background-image:var(--img,none);background-size:cover;background-position:center;opacity:0;filter:blur(5px) brightness(.85);border-radius:12px;transition:opacity 1.6s ease;pointer-events:none}
 .couplet.on::after{opacity:.16}
-.couplet .dim{color:var(--ink-faint);font-size:.72em;letter-spacing:.08em;display:block;font-family:var(--sans);margin-top:2px;text-shadow:0 1px 6px rgba(0,0,0,.8)}
+.couplet .dim{color:var(--ink-faint);font-size:.72em;letter-spacing:.08em;display:block;font-family:var(--sans);margin-top:2px;text-shadow:var(--dim-shadow)}
+/* 只看原文模式：隐藏白话 */
+#jinse-stage.plain .dim,#jinse-stage.plain .stage-foot{display:none}
+/* 白话开关 */
+.lit-bar{display:flex;justify-content:center;gap:10px;margin:8px 0 2px}
+.lit-btn{background:none;border:1px solid var(--line);color:var(--ink-dim);font-size:12.5px;letter-spacing:.12em;border-radius:999px;padding:5px 18px;cursor:pointer;transition:all .25s}
+.lit-btn.on{color:var(--gold-bright);border-color:var(--gold);background:rgba(216,180,106,.1)}
 #jinse-stage .stage-foot{margin-top:24px;font-size:12.5px;color:var(--ink-faint);letter-spacing:.16em}
 
 /* 四象 gallery */
@@ -124,7 +153,7 @@ p.body b,.lead b{color:var(--gold-bright);font-weight:600}
 .quad-card{position:relative;border-radius:12px;overflow:hidden;border:1px solid var(--line);aspect-ratio:1;cursor:default}
 .quad-card img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
 .quad-card:hover img{transform:scale(1.05)}
-.quad-card .cap{position:absolute;left:0;right:0;bottom:0;padding:18px 10px 10px;background:linear-gradient(180deg,transparent,rgba(11,16,34,.92));font-family:var(--serif);font-size:13.5px;letter-spacing:.1em;color:var(--gold-bright);text-align:center}
+.quad-card .cap{position:absolute;left:0;right:0;bottom:0;padding:18px 10px 10px;background:var(--cap-grad);font-family:var(--serif);font-size:13.5px;letter-spacing:.1em;color:var(--cap-text);text-align:center}
 .quad-card .cap small{display:block;font-family:var(--sans);font-size:11px;color:var(--ink-faint);letter-spacing:.04em;margin-top:2px}
 @media(max-width:720px){.quad{grid-template-columns:repeat(2,1fr)}}
 
@@ -163,10 +192,10 @@ p.body b,.lead b{color:var(--gold-bright);font-weight:600}
 /* portrait figure */
 .figure{margin:26px 0;border-radius:14px;overflow:hidden;border:1px solid var(--line);position:relative}
 .figure img{width:100%;max-height:460px;object-fit:cover}
-.figure .figcap{padding:10px 16px;font-size:12.5px;color:var(--ink-faint);background:rgba(20,28,56,.6);letter-spacing:.06em;text-align:center}
+.figure .figcap{padding:10px 16px;font-size:12.5px;color:var(--ink-faint);background:var(--figcap-bg);letter-spacing:.06em;text-align:center}
 
 /* 低谷 信纸手稿 */
-.paper{background:linear-gradient(165deg,#1b1a16,#14130f 70%);border:1px solid rgba(216,180,106,.25);border-radius:14px;padding:40px 34px;margin:26px 0;position:relative;box-shadow:inset 0 0 60px rgba(216,180,106,.05)}
+.paper{background:var(--paper-bg);border:1px solid rgba(216,180,106,.25);border-radius:14px;padding:40px 34px;margin:26px 0;position:relative;box-shadow:inset 0 0 60px rgba(216,180,106,.05)}
 .paper::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold),transparent 70%)}
 .paper .paper-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;flex-wrap:wrap;gap:10px}
 .paper .paper-head .ph-title{font-family:var(--serif);color:var(--gold-bright);font-size:18px;letter-spacing:.12em}
@@ -227,6 +256,33 @@ details.trans summary::-webkit-details-marker{display:none}
 details.trans summary::before{content:"▸ ";color:var(--gold)}
 details.trans[open] summary::before{content:"▾ "}
 details.trans .en{font-size:13.5px;color:var(--ink-dim);line-height:2.1;margin-top:10px;padding-top:10px;border-top:1px dashed var(--line);font-style:italic}
+
+/* 章节翻页（移动端） */
+#pager{position:fixed;left:0;right:0;bottom:0;z-index:77;display:none;justify-content:space-between;padding:8px 14px 16px;pointer-events:none}
+@media(max-width:720px){#pager{display:flex}}
+#pager button{pointer-events:auto;background:var(--btn-bg);border:1px solid var(--line);color:var(--gold-bright);font-size:13px;letter-spacing:.06em;border-radius:999px;padding:9px 18px;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);cursor:pointer;transition:all .25s}
+#pager button:not(:disabled):hover{border-color:var(--gold)}
+#pager button:disabled{opacity:.32;cursor:default}
+
+/* 金句卡复制 */
+.wall-card{position:relative}
+.copy{position:absolute;top:10px;right:12px;font-size:11px;color:var(--ink-faint);background:none;border:1px solid var(--line);border-radius:6px;padding:2px 9px;cursor:pointer;opacity:.55;transition:all .2s}
+.copy:hover{opacity:1;color:var(--gold-bright)}
+.copy.done{color:var(--jade);border-color:var(--jade);opacity:1}
+
+/* 尾声回环 */
+.loop-btn{display:inline-block;margin-top:36px;border:1px solid var(--gold);color:var(--gold-bright);font-size:14px;letter-spacing:.18em;padding:12px 30px;border-radius:999px;text-decoration:none;transition:all .3s}
+.loop-btn:hover{background:rgba(216,180,106,.12);transform:translateY(-2px)}
+
+/* 减弱动态降级 */
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .reveal{opacity:1;transform:none}
+  .couplet{opacity:1;transform:none}
+  .couplet::after{opacity:.16}
+  .flip-inner{transition:none}
+}
 </style>
 </head>
 <body>
@@ -245,6 +301,7 @@ details.trans .en{font-size:13.5px;color:var(--ink-dim);line-height:2.1;margin-t
     <a class="nav-link" href="#riddle">解谜</a>
     <a class="nav-link" href="#poems">诗选</a>
     <a class="nav-link" href="#quotes">金句</a>
+    <button class="theme-btn" id="themeBtn" title="切换日夜主题" aria-label="切换日夜主题">☀</button>
     <button class="nav-burger" id="burger" aria-label="目录">☰</button>
   </div>
 </nav>
@@ -254,10 +311,14 @@ details.trans .en{font-size:13.5px;color:var(--ink-dim);line-height:2.1;margin-t
   <a class="nav-link" href="#low">低谷 · 长滩写诗</a>
   <a class="nav-link" href="#life">生平 · 李商隐</a>
   <a class="nav-link" href="#riddle">解谜 · 四种猜想</a>
-  <a class="nav-link" href="#poems">诗选 · 五首精读</a>
+  <a class="nav-link" href="#poems">诗选 · 六首精读</a>
   <a class="nav-link" href="#quotes">金句墙</a>
 </div>
 <button id="btt" title="回到顶部">↑</button>
+<div id="pager">
+  <button id="pPrev" disabled>‹ 上一节</button>
+  <button id="pNext">下一节 ›</button>
+</div>
 
 <!-- ═══════ HERO ═══════ -->
 <header class="hero">
@@ -273,7 +334,7 @@ details.trans .en{font-size:13.5px;color:var(--ink-dim);line-height:2.1;margin-t
 </header>
 
 <!-- ═══════ 01 引子 ═══════ -->
-<section class="wrap">
+<section class="wrap" id="intro">
   <div class="reveal">
     <div class="tag">01 · 引子</div>
     <h2>一个数学家，为什么爱上一首谜一样的诗？<span class="en">WHY A MATHEMATICIAN LOVES A POEM NO ONE CAN EXPLAIN</span></h2>
@@ -303,6 +364,10 @@ details.trans .en{font-size:13.5px;color:var(--ink-dim);line-height:2.1;margin-t
     <div class="tag">02 · 谜面</div>
     <h2>《锦瑟》<span class="en">THE BROCADE ZITHER — 逐句点亮</span></h2>
     <p class="lead">往下滚，让这首诗一句一句亮起来。读的时候想一想：它到底在说什么？</p>
+  </div>
+  <div class="lit-bar reveal">
+    <button class="lit-btn on" data-mode="full">带白话</button>
+    <button class="lit-btn" data-mode="plain">只看原文</button>
   </div>
   <div id="jinse-stage" class="reveal">
     <div class="couplet" data-i="0">锦瑟无端五十弦，<span class="dim">锦瑟呀，你为什么无缘无故有五十根弦？</span></div>
@@ -483,7 +548,7 @@ details.trans .en{font-size:13.5px;color:var(--ink-dim);line-height:2.1;margin-t
 <section class="wrap" id="poems">
   <div class="reveal">
     <div class="tag">07 · 诗选</div>
-    <h2>再读五首，认识完整的李商隐<span class="en">FIVE MORE POEMS</span></h2>
+    <h2>再读六首，认识完整的李商隐<span class="en">SIX MORE POEMS</span></h2>
     <p class="lead">锦瑟是他的"谜"，下面这些是他的"心"：爱情、亲情、黄昏、嘲讽、孤独。<b>点卡片展开全文</b>。</p>
   </div>
   <div class="scroll-grid reveal">
@@ -533,6 +598,15 @@ details.trans .en{font-size:13.5px;color:var(--ink-dim);line-height:2.1;margin-t
       </div>
     </details>
 
+    <details class="scroll-card">
+      <summary><span class="t">晚晴</span><span class="first">深居俯夹城，春去夏犹清…</span><span class="arrow">▾</span></summary>
+      <div class="full">
+        <div class="lines">深居俯夹城，春去夏犹清。<br>天意怜幽草，人间重晚晴。<br>并添高阁迥，微注小窗明。<br>越鸟巢干后，归飞体更轻。</div>
+        <div class="trans">白话：住在幽静的地方，俯视着夹城；春已归去，初夏依然清和。天意怜爱幽僻的小草，人间最珍重雨后放晴的黄昏。登上高阁，视野更远；夕阳余晖，微微照亮小窗。越鸟巢干了，归飞时身体更轻。</div>
+        <div class="note">💡 点睛：“天意怜幽草，人间重晚晴”——雨过天晴的黄昏，人间最懂得珍惜。这是李商隐在低谷里写的治愈诗：越是身处幽暗，越要看见晚晴。</div>
+      </div>
+    </details>
+
   </div>
 </section>
 
@@ -561,13 +635,14 @@ details.trans .en{font-size:13.5px;color:var(--ink-dim);line-height:2.1;margin-t
 <div class="divider">✦ ✦ ✦</div>
 
 <!-- ═══════ 09 尾声 ═══════ -->
-<section class="ending">
+<section class="ending" id="end">
   <div class="reveal">
     <div class="big">好的诗和好的问题一样——<br><span class="r">不会因为没被解出</span>，<span class="g">就失去价值。</span></div>
     <p>一千二百年前，李商隐在牛李党争的夹缝里写下这些句子。他没有等到理解，诗却替他等到了。<br><br>
     邓煜在低谷时靠格律诗找回自己，最后拿到了数学界的最高奖。<br><br>
     牧之，如果你以后遇到"解不完的题"——不管是数学题，还是人生题——<br>记得这首诗：有些东西解释不完，恰恰是它迷人的原因。</p>
     <div class="sig">此情可待成追忆，只是当时已惘然 · 🦞</div>
+    <br><a class="loop-btn" href="#jinse">🔁 重读《锦瑟》</a>
   </div>
 </section>
 
@@ -599,6 +674,12 @@ btt.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'
 var burger=document.getElementById('burger'),drawer=document.getElementById('drawer');
 burger.addEventListener('click',function(){drawer.classList.toggle('open');});
 drawer.addEventListener('click',function(e){if(e.target.tagName==='A'){drawer.classList.remove('open');}});
+
+// 宣纸日间模式
+var themeBtn=document.getElementById('themeBtn');
+function setTheme(p){document.body.classList.toggle('theme-paper',p);themeBtn.textContent=p?'☾':'☀';try{localStorage.setItem('lsy-theme',p?'paper':'night');}catch(e){}}
+try{setTheme(localStorage.getItem('lsy-theme')==='paper');}catch(e){}
+themeBtn.addEventListener('click',function(){setTheme(!document.body.classList.contains('theme-paper'));});
 var navLinks=document.querySelectorAll('#topnav .nav-link[href^="#"],#drawer a[href^="#"]');
 var sections=[];
 document.querySelectorAll('section[id],header.hero').forEach(function(s){sections.push(s);});
@@ -621,19 +702,30 @@ document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
 // 锦瑟 couplet lighting
 var stage=document.getElementById('jinse-stage');
 var couples=stage.querySelectorAll('.couplet');
+var reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
 var stageIo=new IntersectionObserver(function(es){
   es.forEach(function(e){
     if(e.isIntersecting){
-      var idx=0;
-      var t=setInterval(function(){
-        if(idx<couples.length){couples[idx].classList.add('on');idx++;}
-        else{clearInterval(t);}
-      },520);
+      if(reduced){couples.forEach(function(c){c.classList.add('on');});}
+      else{
+        var idx=0;
+        var t=setInterval(function(){
+          if(idx<couples.length){couples[idx].classList.add('on');idx++;}
+          else{clearInterval(t);}
+        },520);
+      }
       stageIo.unobserve(stage);
     }
   });
 },{threshold:.3});
 stageIo.observe(stage);
+
+// 白话开关（只看原文 / 带白话）
+var litBtns=document.querySelectorAll('.lit-btn');
+litBtns.forEach(function(b){b.addEventListener('click',function(){
+  litBtns.forEach(function(x){x.classList.toggle('on',x===b);});
+  stage.classList.toggle('plain',b.dataset.mode==='plain');
+});});
 
 // flip cards
 document.querySelectorAll('.flip').forEach(function(f){
@@ -648,6 +740,31 @@ document.querySelectorAll('.scroll-card').forEach(function(c){
     }
   });
 });
+
+// 金句卡一键复制
+function fallbackCopy(t){var ta=document.createElement('textarea');ta.value=t;ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.select();try{document.execCommand('copy');}catch(e){}document.body.removeChild(ta);}
+document.querySelectorAll('.wall-card').forEach(function(card){
+  var b=document.createElement('button');b.className='copy';b.textContent='复制';b.setAttribute('aria-label','复制这句');
+  card.appendChild(b);
+  b.addEventListener('click',function(){
+    var txt=card.querySelector('.q').innerText;
+    var done=function(){b.textContent='✓ 已复制';b.classList.add('done');setTimeout(function(){b.textContent='复制';b.classList.remove('done');},1500);};
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(txt).then(done,function(){fallbackCopy(txt);done();});}
+    else{fallbackCopy(txt);done();}
+  });
+});
+
+// 章节翻页（移动端上一节/下一节）
+var chapters=['intro','jinse','pillars','low','life','riddle','poems','quotes','end'];
+var pPrev=document.getElementById('pPrev'),pNext=document.getElementById('pNext');
+function curIdx(){var y=window.scrollY+window.innerHeight*0.4,idx=0;
+  chapters.forEach(function(id,i){var el=document.getElementById(id);if(el&&el.offsetTop<=y)idx=i;});
+  return idx;}
+function renderPager(){var i=curIdx();pPrev.disabled=i<=0;pNext.disabled=i>=chapters.length-1;}
+window.addEventListener('scroll',renderPager,{passive:true});
+renderPager();
+pPrev.addEventListener('click',function(){var i=curIdx();if(i>0)document.getElementById(chapters[i-1]).scrollIntoView({behavior:'smooth'});});
+pNext.addEventListener('click',function(){var i=curIdx();if(i<chapters.length-1)document.getElementById(chapters[i+1]).scrollIntoView({behavior:'smooth'});});
 </script>
 </body>
 </html>
