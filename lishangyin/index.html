@@ -4,6 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>锦瑟 · 李商隐 — 数学家最爱的诗人</title>
+<meta property="og:title" content="锦瑟 · 李商隐 — 数学家最爱的诗人">
+<meta property="og:description" content="2026 菲尔兹奖得主邓煜 × 晚唐诗人李商隐：一首没人能解释的诗。写给牧之。">
+<meta property="og:image" content="assets/share-wide.webp">
+<meta property="og:type" content="website">
 <style>
 :root{
   --bg:#0b1022;
@@ -22,12 +26,33 @@
   --sans:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,sans-serif;
 }
 *{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;scroll-padding-top:76px}
 body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.9;overflow-x:hidden}
 ::selection{background:rgba(216,180,106,.35)}
+img{max-width:100%;display:block}
 
-/* progress bar */
+/* ── top nav ── */
+#topnav{position:fixed;top:0;left:0;right:0;z-index:80;background:rgba(11,16,34,.82);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav-inner{max-width:900px;margin:0 auto;display:flex;align-items:center;gap:4px;padding:10px 16px;overflow-x:auto;scrollbar-width:none}
+.nav-inner::-webkit-scrollbar{display:none}
+.nav-logo{font-family:var(--serif);color:var(--gold);font-size:15px;letter-spacing:.14em;white-space:nowrap;margin-right:10px;flex-shrink:0}
+.nav-logo i{color:var(--cinnabar);font-style:normal}
+.nav-link{white-space:nowrap;font-size:13px;color:var(--ink-dim);text-decoration:none;padding:5px 11px;border-radius:999px;border:1px solid transparent;transition:all .25s}
+.nav-link:hover{color:var(--gold-bright)}
+.nav-link.on{color:var(--gold-bright);border-color:var(--line);background:rgba(216,180,106,.08)}
+.nav-burger{display:none;margin-left:auto;background:none;border:1px solid var(--line);color:var(--gold);font-size:16px;border-radius:8px;padding:4px 10px;cursor:pointer;flex-shrink:0}
+#drawer{display:none;position:fixed;top:48px;left:0;right:0;z-index:79;background:rgba(11,16,34,.97);border-bottom:1px solid var(--line);padding:8px 16px 14px}
+#drawer.open{display:block}
+#drawer a{display:block;padding:9px 6px;color:var(--ink-dim);text-decoration:none;font-size:14.5px;border-bottom:1px dashed rgba(216,180,106,.12)}
+#drawer a:last-child{border-bottom:none}
+#drawer a.on{color:var(--gold-bright)}
+
+/* progress */
 #progress{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--gold),var(--cinnabar));z-index:99;transition:width .1s linear}
+
+/* back to top */
+#btt{position:fixed;right:18px;bottom:22px;z-index:78;width:42px;height:42px;border-radius:50%;border:1px solid var(--line);background:rgba(20,28,56,.9);color:var(--gold);font-size:17px;cursor:pointer;opacity:0;pointer-events:none;transition:opacity .3s}
+#btt.show{opacity:1;pointer-events:auto}
 
 /* starfield */
 #stars{position:fixed;inset:0;pointer-events:none;z-index:0}
@@ -37,35 +62,33 @@ body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1
 .wrap{position:relative;z-index:1;max-width:860px;margin:0 auto;padding:0 24px}
 
 /* ── hero ── */
-.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;position:relative;padding:80px 20px}
-.moon{position:absolute;top:12vh;right:12%;width:120px;height:120px;border-radius:50%;background:radial-gradient(circle at 38% 35%,#fdf6e0,#e8d9a8 55%,#c9b27a);box-shadow:0 0 80px 24px rgba(232,217,168,.25);opacity:.9}
-.moon::after{content:"";position:absolute;inset:0;border-radius:50%;background:radial-gradient(circle at 60% 55%,rgba(120,105,70,.35) 0 6%,transparent 7%),radial-gradient(circle at 30% 65%,rgba(120,105,70,.3) 0 5%,transparent 6%),radial-gradient(circle at 45% 35%,rgba(120,105,70,.28) 0 4%,transparent 5%)}
-.sea{position:absolute;bottom:0;left:0;right:0;height:26vh;background:linear-gradient(180deg,transparent,rgba(16,23,49,.6) 30%,#0d1428);z-index:0}
-.sea::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,rgba(216,180,106,.6),transparent)}
-.hero .kicker{font-size:14px;letter-spacing:.35em;color:var(--gold);margin-bottom:28px;font-weight:600}
-.hero h1{font-family:var(--serif);font-weight:700;font-size:clamp(52px,10vw,96px);letter-spacing:.12em;line-height:1.25;text-shadow:0 0 40px rgba(216,180,106,.35)}
-.hero h1 .red{color:var(--cinnabar);text-shadow:0 0 40px rgba(217,83,79,.35)}
-.hero .sub{margin-top:22px;font-size:clamp(15px,2.6vw,19px);color:var(--ink-dim);letter-spacing:.08em}
-.hero .byline{margin-top:14px;font-size:13px;color:var(--ink-faint);letter-spacing:.2em}
-.hero .hook{margin-top:46px;max-width:600px;font-size:15.5px;color:var(--ink-dim);line-height:2.1}
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;position:relative;padding:90px 20px 70px;overflow:hidden}
+.hero-bg{position:absolute;inset:0;z-index:0}
+.hero-bg img{width:100%;height:100%;object-fit:cover;opacity:.55}
+.hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,16,34,.55),rgba(11,16,34,.25) 45%,var(--bg) 96%)}
+.hero .kicker{position:relative;z-index:2;font-size:14px;letter-spacing:.35em;color:var(--gold);margin-bottom:26px;font-weight:600;text-shadow:0 1px 8px rgba(0,0,0,.6)}
+.hero h1{position:relative;z-index:2;font-family:var(--serif);font-weight:700;font-size:clamp(52px,10vw,96px);letter-spacing:.12em;line-height:1.25;text-shadow:0 0 40px rgba(216,180,106,.4),0 2px 12px rgba(0,0,0,.7)}
+.hero h1 .red{color:var(--cinnabar);text-shadow:0 0 40px rgba(217,83,79,.4)}
+.hero .sub{position:relative;z-index:2;margin-top:20px;font-size:clamp(15px,2.6vw,19px);color:var(--ink);letter-spacing:.08em;text-shadow:0 1px 8px rgba(0,0,0,.7)}
+.hero .byline{position:relative;z-index:2;margin-top:12px;font-size:13px;color:var(--ink-faint);letter-spacing:.2em}
+.hero .hook{position:relative;z-index:2;margin-top:44px;max-width:600px;font-size:15.5px;color:var(--ink-dim);line-height:2.1;text-shadow:0 1px 6px rgba(0,0,0,.6)}
 .hero .hook b{color:var(--gold-bright);font-weight:600}
-.scroll-hint{position:absolute;bottom:30px;left:50%;transform:translateX(-50%);color:var(--ink-faint);font-size:12px;letter-spacing:.3em;animation:bob 2.2s ease-in-out infinite}
+.scroll-hint{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);color:var(--ink-faint);font-size:12px;letter-spacing:.3em;z-index:2;animation:bob 2.2s ease-in-out infinite}
+@keyframes bob{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,8px)}}
 @media(max-width:720px){
-  .hero{padding:64px 18px 74px}
-  .hero .kicker{font-size:12px;margin-bottom:20px;letter-spacing:.28em}
+  .hero{padding:70px 18px 80px}
+  .hero .kicker{font-size:12px;margin-bottom:18px;letter-spacing:.28em}
   .hero h1{font-size:clamp(46px,16vw,64px)}
   .hero .hook{margin-top:30px;font-size:14px;line-height:2}
   .hero .byline{font-size:12px}
-  .moon{width:84px;height:84px;top:7vh;right:8%}
 }
-@keyframes bob{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,8px)}}
 
 /* ── sections ── */
-section{padding:90px 0 20px;position:relative}
-.tag{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;letter-spacing:.22em;color:var(--gold);border:1px solid var(--line);border-radius:999px;padding:5px 16px;margin-bottom:22px;background:rgba(216,180,106,.06)}
+section{padding:80px 0 16px;position:relative}
+.tag{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;letter-spacing:.22em;color:var(--gold);border:1px solid var(--line);border-radius:999px;padding:5px 16px;margin-bottom:20px;background:rgba(216,180,106,.06)}
 h2{font-family:var(--serif);font-size:clamp(26px,4.6vw,36px);font-weight:700;letter-spacing:.06em;margin-bottom:10px;line-height:1.5}
 h2 .en{display:block;font-family:var(--sans);font-size:11.5px;letter-spacing:.3em;color:var(--ink-faint);font-weight:400;margin-top:6px}
-.lead{color:var(--ink-dim);font-size:15.5px;margin-bottom:26px}
+.lead{color:var(--ink-dim);font-size:15.5px;margin-bottom:24px}
 p.body{color:var(--ink-dim);font-size:15.5px;margin-bottom:16px}
 p.body b,.lead b{color:var(--gold-bright);font-weight:600}
 
@@ -78,44 +101,85 @@ p.body b,.lead b{color:var(--gold-bright);font-weight:600}
 .quote-card .en{font-size:13px;color:var(--ink-faint);font-style:italic;margin-top:8px;line-height:1.8}
 
 /* three pillars */
-.pillars{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;margin:26px 0}
+.pillars{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;margin:24px 0}
 .pillar{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:20px 18px;transition:transform .3s ease,border-color .3s ease}
 .pillar:hover{transform:translateY(-4px);border-color:var(--gold)}
 .pillar .ic{font-size:26px;margin-bottom:10px}
 .pillar h4{font-family:var(--serif);font-size:17px;color:var(--gold-bright);margin-bottom:8px;letter-spacing:.04em}
 .pillar p{font-size:13.5px;color:var(--ink-dim);line-height:1.85}
-.pillar .mirror{display:inline-block}
-@media(max-width:720px){.pillars{grid-template-columns:1fr}}
+.pillar p b{color:var(--ink)}
 
-/* poem block */
-.poem-block{background:linear-gradient(160deg,var(--panel),var(--panel2));border:1px solid var(--line);border-radius:14px;padding:36px 28px;margin:22px 0;position:relative;overflow:hidden}
+/* 锦瑟 immersive */
+#jinse-stage{position:relative;background:linear-gradient(180deg,#0d1428,#0b1022 60%,#101731);border:1px solid var(--line);border-radius:16px;padding:56px 24px;margin:28px 0;overflow:hidden;text-align:center}
+.couplet{min-height:74px;opacity:.12;transition:opacity 1.1s ease,transform 1.1s ease;transform:translateY(8px);font-family:var(--serif);font-size:clamp(16px,3.2vw,21px);letter-spacing:.14em;line-height:1.9;color:var(--ink)}
+.couplet.on{opacity:1;transform:none}
+.couplet .dim{color:var(--ink-faint);font-size:.72em;letter-spacing:.08em;display:block;font-family:var(--sans);margin-top:2px}
+#jinse-stage .stage-foot{margin-top:24px;font-size:12.5px;color:var(--ink-faint);letter-spacing:.16em}
+
+/* 四象 gallery */
+.quad{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:8px 0 6px}
+.quad-card{position:relative;border-radius:12px;overflow:hidden;border:1px solid var(--line);aspect-ratio:1;cursor:default}
+.quad-card img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+.quad-card:hover img{transform:scale(1.05)}
+.quad-card .cap{position:absolute;left:0;right:0;bottom:0;padding:18px 10px 10px;background:linear-gradient(180deg,transparent,rgba(11,16,34,.92));font-family:var(--serif);font-size:13.5px;letter-spacing:.1em;color:var(--gold-bright);text-align:center}
+.quad-card .cap small{display:block;font-family:var(--sans);font-size:11px;color:var(--ink-faint);letter-spacing:.04em;margin-top:2px}
+@media(max-width:720px){.quad{grid-template-columns:repeat(2,1fr)}}
+
+/* poem block (non-accordion ones) */
+.poem-block{background:linear-gradient(160deg,var(--panel),var(--panel2));border:1px solid var(--line);border-radius:14px;padding:34px 26px;margin:20px 0;position:relative;overflow:hidden}
 .poem-block::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold),transparent 60%)}
-.poem-block .title{font-family:var(--serif);font-size:19px;color:var(--gold-bright);letter-spacing:.14em;margin-bottom:18px}
+.poem-block .title{font-family:var(--serif);font-size:19px;color:var(--gold-bright);letter-spacing:.14em;margin-bottom:16px}
 .poem-block .lines{font-family:var(--serif);font-size:clamp(17px,3vw,20px);line-height:2.3;letter-spacing:.12em;text-align:center;color:var(--ink)}
 .poem-block .lines .hl{color:var(--cinnabar)}
-.poem-block .trans{margin-top:16px;padding-top:16px;border-top:1px dashed var(--line);font-size:13.5px;color:var(--ink-faint);line-height:2}
-.poem-block .note{margin-top:12px;font-size:13.5px;color:var(--jade);line-height:1.9}
-.poem-block .note b{color:var(--jade)}
+
+/* 卷轴卡 accordion */
+.scroll-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:22px 0}
+@media(max-width:720px){.scroll-grid{grid-template-columns:1fr}}
+.scroll-card{background:linear-gradient(160deg,var(--panel),var(--panel2));border:1px solid var(--line);border-radius:14px;overflow:hidden;transition:border-color .3s}
+.scroll-card[open]{border-color:var(--gold)}
+.scroll-card summary{list-style:none;cursor:pointer;padding:18px 20px;display:flex;flex-direction:column;gap:6px;position:relative}
+.scroll-card summary::-webkit-details-marker{display:none}
+.scroll-card summary .t{font-family:var(--serif);font-size:17.5px;color:var(--gold-bright);letter-spacing:.1em}
+.scroll-card summary .first{font-family:var(--serif);font-size:14.5px;color:var(--ink-dim);letter-spacing:.08em;line-height:1.9}
+.scroll-card summary .arrow{position:absolute;top:16px;right:18px;color:var(--gold);font-size:13px;transition:transform .3s}
+.scroll-card[open] summary .arrow{transform:rotate(180deg)}
+.scroll-card .full{padding:0 20px 22px;border-top:1px dashed var(--line)}
+.scroll-card .full .lines{font-family:var(--serif);font-size:16.5px;line-height:2.3;letter-spacing:.1em;text-align:center;color:var(--ink);padding:16px 0 4px}
+.scroll-card .full .trans{margin-top:10px;font-size:13px;color:var(--ink-faint);line-height:2}
+.scroll-card .full .note{margin-top:8px;font-size:13px;color:var(--jade);line-height:1.9}
 
 /* timeline */
-.tl{position:relative;margin:30px 0 10px;padding-left:28px}
+.tl{position:relative;margin:28px 0 8px;padding-left:28px}
 .tl::before{content:"";position:absolute;left:8px;top:6px;bottom:6px;width:2px;background:linear-gradient(180deg,var(--gold),var(--line),transparent)}
-.tl-item{position:relative;padding:0 0 26px 14px}
+.tl-item{position:relative;padding:0 0 24px 14px}
 .tl-item::before{content:"";position:absolute;left:-25px;top:9px;width:10px;height:10px;border-radius:50%;background:var(--bg);border:2px solid var(--gold)}
 .tl-item .yr{font-size:13px;color:var(--gold);letter-spacing:.12em;font-weight:600}
 .tl-item p{font-size:14.5px;color:var(--ink-dim);margin-top:4px;line-height:1.9}
 .tl-item p b{color:var(--ink)}
 
-/* 锦瑟 immersive couplets */
-#jinse-stage{position:relative;background:linear-gradient(180deg,#0d1428,#0b1022 60%,#101731);border:1px solid var(--line);border-radius:16px;padding:56px 24px;margin:30px 0;overflow:hidden;text-align:center}
-#jinse-stage .stage-moon{position:absolute;top:-40px;left:50%;transform:translateX(-50%);width:200px;height:200px;border-radius:50%;background:radial-gradient(circle at 40% 35%,#fdf6e0,#e6d6a4 60%,#c0a86f);opacity:.22;filter:blur(2px)}
-.couplet{min-height:74px;opacity:.12;transition:opacity 1.1s ease,transform 1.1s ease;transform:translateY(8px);font-family:var(--serif);font-size:clamp(16px,3.2vw,21px);letter-spacing:.14em;line-height:1.9;color:var(--ink)}
-.couplet.on{opacity:1;transform:none}
-.couplet .dim{color:var(--ink-faint);font-size:.72em;letter-spacing:.08em;display:block;font-family:var(--sans);margin-top:2px}
-#jinse-stage .stage-foot{margin-top:26px;font-size:12.5px;color:var(--ink-faint);letter-spacing:.16em}
+/* portrait figure */
+.figure{margin:26px 0;border-radius:14px;overflow:hidden;border:1px solid var(--line);position:relative}
+.figure img{width:100%;max-height:460px;object-fit:cover}
+.figure .figcap{padding:10px 16px;font-size:12.5px;color:var(--ink-faint);background:rgba(20,28,56,.6);letter-spacing:.06em;text-align:center}
 
-/* flip cards (interpretations) */
-.flips{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:26px 0}
+/* 低谷 信纸手稿 */
+.paper{background:linear-gradient(165deg,#1b1a16,#14130f 70%);border:1px solid rgba(216,180,106,.25);border-radius:14px;padding:40px 34px;margin:26px 0;position:relative;box-shadow:inset 0 0 60px rgba(216,180,106,.05)}
+.paper::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold),transparent 70%)}
+.paper .paper-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;flex-wrap:wrap;gap:10px}
+.paper .paper-head .ph-title{font-family:var(--serif);color:var(--gold-bright);font-size:18px;letter-spacing:.12em}
+.paper .paper-head .ph-sub{font-size:12px;color:var(--ink-faint);letter-spacing:.14em}
+.paper .paper-body{display:flex;gap:26px;align-items:flex-start;flex-wrap:wrap}
+.paper .paper-img{flex:1 1 260px;border-radius:10px;overflow:hidden;border:1px solid var(--line)}
+.paper .paper-img img{width:100%;height:100%;object-fit:cover;min-height:180px}
+.paper .paper-text{flex:2 1 300px}
+.paper .paper-text p{font-size:14.5px;color:var(--ink-dim);line-height:2;margin-bottom:12px}
+.paper .paper-text p b{color:var(--gold-bright)}
+.vertical{writing-mode:vertical-rl;font-family:var(--serif);font-size:21px;letter-spacing:.3em;color:var(--gold);line-height:2;margin:0 auto;text-align:center}
+.seal{display:inline-block;background:var(--cinnabar);color:#f6ead2;font-family:var(--serif);font-size:12px;letter-spacing:.1em;padding:6px 8px 5px;border-radius:5px;transform:rotate(-5deg);box-shadow:0 1px 4px rgba(0,0,0,.4);line-height:1.4;margin-left:14px}
+@media(max-width:720px){.paper{padding:30px 20px}.paper .paper-body{flex-direction:column}}
+
+/* flip cards */
+.flips{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:24px 0}
 .flip{perspective:900px;cursor:pointer;min-height:190px}
 .flip-inner{position:relative;width:100%;height:100%;min-height:190px;transform-style:preserve-3d;transition:transform .65s ease}
 .flip.flipped .flip-inner{transform:rotateY(180deg)}
@@ -126,21 +190,20 @@ p.body b,.lead b{color:var(--gold-bright);font-weight:600}
 .flip-front .tap{font-size:11px;color:var(--ink-faint);margin-top:8px;letter-spacing:.1em}
 .flip-back{background:var(--panel2);transform:rotateY(180deg);border-color:var(--gold)}
 .flip-back p{font-size:12.8px;color:var(--ink-dim);line-height:1.85}
-@media(max-width:720px){.flips{grid-template-columns:repeat(2,1fr)}}
-@media(min-width:721px) and (max-width:1024px){.flips{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:1024px){.flips{grid-template-columns:repeat(2,1fr)}}
 
-/* quote wall (horizontal swipe) */
-.wall{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;padding:10px 4px 22px;margin:22px 0 6px;-webkit-overflow-scrolling:touch}
+/* quote wall */
+.wall{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;padding:10px 4px 22px;margin:20px 0 6px;-webkit-overflow-scrolling:touch}
 .wall::-webkit-scrollbar{height:6px}
 .wall::-webkit-scrollbar-thumb{background:var(--line);border-radius:3px}
 .wall-card{flex:0 0 78%;scroll-snap-align:center;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:30px 26px;min-height:170px;display:flex;flex-direction:column;justify-content:center}
 @media(min-width:721px){.wall-card{flex-basis:46%}}
 .wall-card .q{font-family:var(--serif);font-size:clamp(18px,3.4vw,23px);letter-spacing:.1em;color:var(--gold-bright);line-height:2}
 .wall-card .src{font-size:12.5px;color:var(--ink-faint);margin-top:12px;letter-spacing:.08em}
-.wall-hint{font-size:12px;color:var(--ink-faint);text-align:center;letter-spacing:.2em;margin-bottom:8px}
+.wall-hint{font-size:12px;color:var(--ink-faint);text-align:center;letter-spacing:.2em;margin-bottom:6px}
 
 /* ending */
-.ending{text-align:center;padding:110px 20px 90px}
+.ending{text-align:center;padding:100px 20px 80px}
 .ending .big{font-family:var(--serif);font-size:clamp(24px,5vw,38px);line-height:2;color:var(--ink)}
 .ending .big .r{color:var(--cinnabar)}
 .ending .big .g{color:var(--gold)}
@@ -151,12 +214,16 @@ footer{border-top:1px solid var(--line);padding:34px 24px 60px;text-align:center
 footer a{color:var(--gold);text-decoration:none}
 footer a:hover{text-decoration:underline}
 
-/* divider */
-.divider{text-align:center;color:var(--gold);letter-spacing:.6em;font-size:13px;margin:60px 0 0;opacity:.7}
+.divider{text-align:center;color:var(--gold);letter-spacing:.6em;font-size:13px;margin:56px 0 0;opacity:.7}
 
-/* fact chip */
 .fact{display:inline-block;background:rgba(127,181,164,.08);border:1px solid rgba(127,181,164,.3);color:var(--jade);border-radius:8px;padding:10px 16px;font-size:13.5px;margin:14px 0 6px;line-height:1.9}
 .fact b{color:var(--jade)}
+details.trans{background:var(--panel);border:1px solid var(--line);border-radius:10px;margin:18px 0;padding:14px 20px}
+details.trans summary{cursor:pointer;color:var(--gold);font-size:13.5px;letter-spacing:.06em;list-style:none}
+details.trans summary::-webkit-details-marker{display:none}
+details.trans summary::before{content:"▸ ";color:var(--gold)}
+details.trans[open] summary::before{content:"▾ "}
+details.trans .en{font-size:13.5px;color:var(--ink-dim);line-height:2.1;margin-top:10px;padding-top:10px;border-top:1px dashed var(--line);font-style:italic}
 </style>
 </head>
 <body>
@@ -164,10 +231,34 @@ footer a:hover{text-decoration:underline}
 <div id="progress"></div>
 <div id="stars"></div>
 
+<!-- ═══════ NAV ═══════ -->
+<nav id="topnav">
+  <div class="nav-inner">
+    <span class="nav-logo">锦<i>瑟</i></span>
+    <a class="nav-link" href="#jinse">谜面</a>
+    <a class="nav-link" href="#pillars">读诗法</a>
+    <a class="nav-link" href="#low">低谷</a>
+    <a class="nav-link" href="#life">生平</a>
+    <a class="nav-link" href="#riddle">解谜</a>
+    <a class="nav-link" href="#poems">诗选</a>
+    <a class="nav-link" href="#quotes">金句</a>
+    <button class="nav-burger" id="burger" aria-label="目录">☰</button>
+  </div>
+</nav>
+<div id="drawer">
+  <a class="nav-link" href="#jinse">谜面 ·《锦瑟》</a>
+  <a class="nav-link" href="#pillars">读诗法 · 数学家的眼光</a>
+  <a class="nav-link" href="#low">低谷 · 长滩写诗</a>
+  <a class="nav-link" href="#life">生平 · 李商隐</a>
+  <a class="nav-link" href="#riddle">解谜 · 四种猜想</a>
+  <a class="nav-link" href="#poems">诗选 · 五首精读</a>
+  <a class="nav-link" href="#quotes">金句墙</a>
+</div>
+<button id="btt" title="回到顶部">↑</button>
+
 <!-- ═══════ HERO ═══════ -->
 <header class="hero">
-  <div class="moon"></div>
-  <div class="sea"></div>
+  <div class="hero-bg"><img src="assets/hero-jinse.webp" alt="沧海月明锦瑟意境"></div>
   <div class="kicker">2026 菲尔兹奖 × 晚唐诗人</div>
   <h1>锦<span class="red">瑟</span></h1>
   <div class="sub">李商隐 · 数学家最爱的诗人</div>
@@ -204,14 +295,13 @@ footer a:hover{text-decoration:underline}
 <div class="divider">✦ ✦ ✦</div>
 
 <!-- ═══════ 02 锦瑟沉浸 ═══════ -->
-<section class="wrap">
+<section class="wrap" id="jinse">
   <div class="reveal">
     <div class="tag">02 · 谜面</div>
     <h2>《锦瑟》<span class="en">THE BROCADE ZITHER — 逐句点亮</span></h2>
     <p class="lead">往下滚，让这首诗一句一句亮起来。读的时候想一想：它到底在说什么？</p>
   </div>
   <div id="jinse-stage" class="reveal">
-    <div class="stage-moon"></div>
     <div class="couplet" data-i="0">锦瑟无端五十弦，<span class="dim">锦瑟呀，你为什么无缘无故有五十根弦？</span></div>
     <div class="couplet" data-i="1">一弦一柱思华年。<span class="dim">每一弦每一柱，都让我想起逝去的年华。</span></div>
     <div class="couplet" data-i="2">庄生晓梦迷蝴蝶，<span class="dim">庄周梦见自己变成蝴蝶，醒来不知哪个才是真的自己。</span></div>
@@ -223,14 +313,36 @@ footer a:hover{text-decoration:underline}
     <div class="stage-foot">—— 李商隐《锦瑟》 · 白话译文</div>
   </div>
   <div class="reveal">
-    <div class="fact">📌 许渊冲英译末两句：<b>"Such feeling cannot be recalled again; It seemed long lost e'en when it was felt then."</b></div>
+    <details class="trans">
+      <summary>🌍 许渊冲英译全诗（Quanta 原文刊载 · 点开看）</summary>
+      <div class="en">
+        Why should the sad zither have fifty strings?<br>
+        Each string, each strain evokes but vanished springs:<br>
+        Dim morning dream to be a butterfly;<br>
+        Amorous heart poured out in cuckoo's cry.<br>
+        In moonlit pearls see tears in mermaid's eyes;<br>
+        With sunburnt mirth let blue jade vapor rise.<br>
+        Such feeling cannot be recalled again;<br>
+        It seemed long lost e'en when it was felt then.<br>
+        <br>– Translation by Xu Yuanchong
+      </div>
+    </details>
+  </div>
+  <div class="reveal">
+    <p class="lead" style="margin-top:20px">诗里的四幅画——<b>谜面的四个意象</b>：</p>
+  </div>
+  <div class="quad reveal">
+    <div class="quad-card"><img src="assets/couplet-butterfly.webp" alt="庄生晓梦迷蝴蝶" loading="lazy"><div class="cap">庄生晓梦迷蝴蝶<small>庄周梦蝶 · 真与幻</small></div></div>
+    <div class="quad-card"><img src="assets/couplet-cuckoo.webp" alt="望帝春心托杜鹃" loading="lazy"><div class="cap">望帝春心托杜鹃<small>望帝啼鹃 · 执着与悲</small></div></div>
+    <div class="quad-card"><img src="assets/couplet-pearl.webp" alt="沧海月明珠有泪" loading="lazy"><div class="cap">沧海月明珠有泪<small>鲛人泣珠 · 珍宝与泪</small></div></div>
+    <div class="quad-card"><img src="assets/couplet-jade.webp" alt="蓝田日暖玉生烟" loading="lazy"><div class="cap">蓝田日暖玉生烟<small>良玉生烟 · 可望不可即</small></div></div>
   </div>
 </section>
 
 <div class="divider">✦ ✦ ✦</div>
 
-<!-- ═══════ 03 数学家读诗法 ═══════ -->
-<section class="wrap">
+<!-- ═══════ 03 读诗法 ═══════ -->
+<section class="wrap" id="pillars">
   <div class="reveal">
     <div class="tag">03 · 读诗法</div>
     <h2>邓煜为什么爱它？三个理由<span class="en">RESTRAINT · SYMMETRY · OPEN PROBLEM</span></h2>
@@ -264,15 +376,30 @@ footer a:hover{text-decoration:underline}
 <div class="divider">✦ ✦ ✦</div>
 
 <!-- ═══════ 04 低谷 ═══════ -->
-<section class="wrap">
+<section class="wrap" id="low">
   <div class="reveal">
     <div class="tag">04 · 转折</div>
     <h2>低谷时，他去海边写诗<span class="en">THE POETRY THAT SAVED HIM</span></h2>
   </div>
   <div class="reveal">
-    <p class="body">邓煜不是天生爱诗。2017 年的冬天，是他最难的时候：博士后快结束了，理想的教职还没有着落，研究卡在瓶颈。他"非常焦虑、非常紧张"。</p>
-    <p class="body">他没有找朋友倾诉，而是坐火车去了长滩——纽约长岛南岸的海边。订了一家旅馆，沿着海岸线来回走，<b>写诗</b>。</p>
-    <p class="body">写的是八行格律诗——<b>和李商隐用过的一模一样的形式</b>。他写自己想逃离，写逃离会背叛他做数学的梦想，写海边的潮水"焦虑不安"。</p>
+    <div class="paper">
+      <div class="paper-head">
+        <span class="ph-title">2017 年冬 · 长滩手记</span>
+        <span class="ph-sub">Quanta Magazine 采访实录</span>
+      </div>
+      <div class="paper-body">
+        <div class="paper-img"><img src="assets/longbeach.webp" alt="冬夜海边写诗" loading="lazy"></div>
+        <div class="paper-text">
+          <p>邓煜不是天生爱诗。2017 年的冬天，是他最难的时候：博士后快结束，理想的教职还没有着落，研究卡在瓶颈。他"非常焦虑、非常紧张"。</p>
+          <p>他没有找朋友倾诉，而是坐火车去了长滩——纽约长岛南岸的海边。订了一家旅馆，沿着海岸线来回走，<b>写诗</b>。</p>
+          <p>写的是八行格律诗——<b>和李商隐用过的一模一样的形式</b>。他写自己想逃离，写逃离会背叛他做数学的梦想，写海边的潮水"焦虑不安"。</p>
+        </div>
+      </div>
+      <div style="text-align:center;margin-top:24px">
+        <span class="vertical">此情可待成追忆<br>只是当时已惘然</span>
+        <span class="seal">玉谿生</span>
+      </div>
+    </div>
   </div>
   <div class="reveal">
     <div class="quote-card">
@@ -290,11 +417,15 @@ footer a:hover{text-decoration:underline}
 <div class="divider">✦ ✦ ✦</div>
 
 <!-- ═══════ 05 李商隐生平 ═══════ -->
-<section class="wrap">
+<section class="wrap" id="life">
   <div class="reveal">
     <div class="tag">05 · 其人</div>
     <h2>李商隐：夹在两党之间的一生<span class="en">A LIFE CAUGHT BETWEEN TWO FACTIONS</span></h2>
     <p class="lead">现在，认识这首诗的作者。他的一生是个"因果链"问题——每一步选择，都把他推向更深的困境。</p>
+  </div>
+  <div class="figure reveal">
+    <img src="assets/poet-portrait.webp" alt="李商隐凭栏望月" loading="lazy">
+    <div class="figcap">凭栏望月 · 一生都在追忆的人</div>
   </div>
   <div class="tl reveal">
     <div class="tl-item"><div class="yr">约 813 年</div><p><b>生于河南</b>，字义山，号玉谿生。家里排行小，父亲是个小官。</p></div>
@@ -312,8 +443,8 @@ footer a:hover{text-decoration:underline}
 
 <div class="divider">✦ ✦ ✦</div>
 
-<!-- ═══════ 06 锦瑟解谜 ═══════ -->
-<section class="wrap">
+<!-- ═══════ 06 解谜 ═══════ -->
+<section class="wrap" id="riddle">
   <div class="reveal">
     <div class="tag">06 · 解谜</div>
     <h2>《锦瑟》到底在写什么？<span class="en">FOUR THEORIES, NO VERDICT</span></h2>
@@ -346,53 +477,66 @@ footer a:hover{text-decoration:underline}
 <div class="divider">✦ ✦ ✦</div>
 
 <!-- ═══════ 07 诗选 ═══════ -->
-<section class="wrap">
+<section class="wrap" id="poems">
   <div class="reveal">
     <div class="tag">07 · 诗选</div>
     <h2>再读五首，认识完整的李商隐<span class="en">FIVE MORE POEMS</span></h2>
-    <p class="lead">锦瑟是他的"谜"，下面这些是他的"心"：爱情、亲情、黄昏、嘲讽、孤独。</p>
+    <p class="lead">锦瑟是他的"谜"，下面这些是他的"心"：爱情、亲情、黄昏、嘲讽、孤独。<b>点卡片展开全文</b>。</p>
   </div>
+  <div class="scroll-grid reveal">
 
-  <div class="poem-block reveal">
-    <div class="title">无题 · 相见时难</div>
-    <div class="lines">相见时难别亦难，东风无力百花残。<br>春蚕到死丝方尽，蜡炬成灰泪始干。<br>晓镜但愁云鬓改，夜吟应觉月光寒。<br>蓬山此去无多路，青鸟殷勤为探看。</div>
-    <div class="trans">白话：相见很难，离别更难；东风无力，百花凋残。春蚕到死才吐尽丝，蜡烛烧成灰才流干泪。早晨对镜，只愁鬓发变白；夜里吟诗，该觉月光清寒。蓬山离这里没有多远，只盼青鸟为我探看。</div>
-    <div class="note">💡 点睛：<b>"丝"谐音"思"</b>——爱一个人，像春蚕吐丝，到死方休。中国情诗里最痴情的一句。</div>
-  </div>
+    <details class="scroll-card">
+      <summary><span class="t">无题 · 相见时难</span><span class="first">相见时难别亦难，东风无力百花残…</span><span class="arrow">▾</span></summary>
+      <div class="full">
+        <div class="lines">相见时难别亦难，东风无力百花残。<br>春蚕到死丝方尽，蜡炬成灰泪始干。<br>晓镜但愁云鬓改，夜吟应觉月光寒。<br>蓬山此去无多路，青鸟殷勤为探看。</div>
+        <div class="trans">白话：相见很难，离别更难；东风无力，百花凋残。春蚕到死才吐尽丝，蜡烛烧成灰才流干泪。早晨对镜，只愁鬓发变白；夜里吟诗，该觉月光清寒。蓬山离这里没有多远，只盼青鸟为我探看。</div>
+        <div class="note">💡 点睛："丝"谐音"思"——爱一个人，像春蚕吐丝，到死方休。中国情诗里最痴情的一句。</div>
+      </div>
+    </details>
 
-  <div class="poem-block reveal">
-    <div class="title">夜雨寄北</div>
-    <div class="lines">君问归期未有期，巴山夜雨涨秋池。<br>何当共剪西窗烛，却话巴山夜雨时。</div>
-    <div class="trans">白话：你问我何时归来，我说不准。今夜巴山大雨，涨满了秋池。什么时候才能一起剪烛西窗，再回头说说今夜这场雨呢？</div>
-    <div class="note">💡 点睛：写给妻子的信，玩了一次<b>时空折叠</b>——"现在的雨"和"未来回忆这场雨的时刻"，在诗里叠在一起。一千二百年前的"时间旅行"。</div>
-  </div>
+    <details class="scroll-card">
+      <summary><span class="t">夜雨寄北</span><span class="first">君问归期未有期，巴山夜雨涨秋池…</span><span class="arrow">▾</span></summary>
+      <div class="full">
+        <div class="lines">君问归期未有期，巴山夜雨涨秋池。<br>何当共剪西窗烛，却话巴山夜雨时。</div>
+        <div class="trans">白话：你问我何时归来，我说不准。今夜巴山大雨，涨满了秋池。什么时候才能一起剪烛西窗，再回头说说今夜这场雨呢？</div>
+        <div class="note">💡 点睛：写给妻子的信，玩了一次时空折叠——"现在的雨"和"未来回忆这场雨的时刻"，在诗里叠在一起。一千二百年前的"时间旅行"。</div>
+      </div>
+    </details>
 
-  <div class="poem-block reveal">
-    <div class="title">登乐游原</div>
-    <div class="lines">向晚意不适，驱车登古原。<br>夕阳无限好，只是近黄昏。</div>
-    <div class="trans">白话：傍晚心情不好，驾车登上乐游原。夕阳无限美好，只是已经接近黄昏。</div>
-    <div class="note">💡 点睛：二十个字，写尽"美好正在消逝"的伤感。晚唐的气数、个人的迟暮，全在这十个字里——人人都懂，人人都会背。</div>
-  </div>
+    <details class="scroll-card">
+      <summary><span class="t">登乐游原</span><span class="first">向晚意不适，驱车登古原…</span><span class="arrow">▾</span></summary>
+      <div class="full">
+        <div class="lines">向晚意不适，驱车登古原。<br>夕阳无限好，只是近黄昏。</div>
+        <div class="trans">白话：傍晚心情不好，驾车登上乐游原。夕阳无限美好，只是已经接近黄昏。</div>
+        <div class="note">💡 点睛：二十个字，写尽"美好正在消逝"的伤感。晚唐的气数、个人的迟暮，全在这十个字里——人人都懂，人人都会背。</div>
+      </div>
+    </details>
 
-  <div class="poem-block reveal">
-    <div class="title">贾生</div>
-    <div class="lines">宣室求贤访逐臣，贾生才调更无伦。<br>可怜夜半虚前席，不问苍生问鬼神。</div>
-    <div class="trans">白话：汉文帝在宣室召见被贬的贾谊，他的才华无人能比。可惜深夜长谈，皇帝听得直往前倾，问的却不是民生疾苦，而是鬼神之事。</div>
-    <div class="note">💡 点睛：咏史诗的终极技巧——<b>借古讽今</b>。表面写汉文帝，实际在讽刺当权者：人才就在眼前，却只关心迷信。</div>
-  </div>
+    <details class="scroll-card">
+      <summary><span class="t">贾生</span><span class="first">宣室求贤访逐臣，贾生才调更无伦…</span><span class="arrow">▾</span></summary>
+      <div class="full">
+        <div class="lines">宣室求贤访逐臣，贾生才调更无伦。<br>可怜夜半虚前席，不问苍生问鬼神。</div>
+        <div class="trans">白话：汉文帝在宣室召见被贬的贾谊，他的才华无人能比。可惜深夜长谈，皇帝听得直往前倾，问的却不是民生疾苦，而是鬼神之事。</div>
+        <div class="note">💡 点睛：咏史诗的终极技巧——借古讽今。表面写汉文帝，实际在讽刺当权者：人才就在眼前，却只关心迷信。</div>
+      </div>
+    </details>
 
-  <div class="poem-block reveal">
-    <div class="title">嫦娥</div>
-    <div class="lines">云母屏风烛影深，长河渐落晓星沉。<br>嫦娥应悔偷灵药，碧海青天夜夜心。</div>
-    <div class="trans">白话：云母屏风上映着深深的烛影，银河渐渐西沉，晓星隐没。嫦娥应该后悔偷吃了灵药吧——如今只剩碧海青天，夜夜相伴。</div>
-    <div class="note">💡 点睛：每个人心里都住着一个嫦娥：<b>得到了想要的，却发现代价是孤独</b>。李商隐写嫦娥，也在写自己。</div>
+    <details class="scroll-card">
+      <summary><span class="t">嫦娥</span><span class="first">云母屏风烛影深，长河渐落晓星沉…</span><span class="arrow">▾</span></summary>
+      <div class="full">
+        <div class="lines">云母屏风烛影深，长河渐落晓星沉。<br>嫦娥应悔偷灵药，碧海青天夜夜心。</div>
+        <div class="trans">白话：云母屏风上映着深深的烛影，银河渐渐西沉，晓星隐没。嫦娥应该后悔偷吃了灵药吧——如今只剩碧海青天，夜夜相伴。</div>
+        <div class="note">💡 点睛：每个人心里都住着一个嫦娥：得到了想要的，却发现代价是孤独。李商隐写嫦娥，也在写自己。</div>
+      </div>
+    </details>
+
   </div>
 </section>
 
 <div class="divider">✦ ✦ ✦</div>
 
 <!-- ═══════ 08 金句墙 ═══════ -->
-<section class="wrap">
+<section class="wrap" id="quotes">
   <div class="reveal">
     <div class="tag">08 · 金句墙</div>
     <h2>值得背下来的句子<span class="en">SAY IT LIKE LI SHANGYIN</span></h2>
@@ -427,24 +571,43 @@ footer a:hover{text-decoration:underline}
 <footer>
   信源：Quanta Magazine《Yu Deng Wins the Fields Medal 2026》 (2026-07-23, Jordana Cepelewicz)<br>
   英译：许渊冲 Xu Yuanchong · 诗作原文：中华书局《李商隐诗集》通行本<br>
-  <a href="https://www.quantamagazine.org/yu-deng-wins-the-fields-medal-2026-for-his-work-on-the-random-data-problem-20260723/" target="_blank">阅读 Quanta 英文原文 →</a>
+  插图：Seedream 4.0 生成（水墨风格）· <a href="https://www.quantamagazine.org/yu-deng-wins-the-fields-medal-2026-for-his-work-on-the-random-data-problem-20260723/" target="_blank">阅读 Quanta 英文原文 →</a>
 </footer>
 
 <script>
 // stars
 (function(){
-  var c=document.getElementById('stars'),n=70;
+  var c=document.getElementById('stars'),n=60;
   for(var i=0;i<n;i++){var s=document.createElement('i');var sz=Math.random()*2+1;
     s.style.cssText='left:'+(Math.random()*100)+'%;top:'+(Math.random()*100)+'%;width:'+sz+'px;height:'+sz+'px;animation-delay:'+(Math.random()*4)+'s';
     c.appendChild(s);}
 })();
 
-// progress
-var prog=document.getElementById('progress');
+// progress + back-to-top
+var prog=document.getElementById('progress'),btt=document.getElementById('btt');
 window.addEventListener('scroll',function(){
   var h=document.documentElement.scrollHeight-window.innerHeight;
   prog.style.width=(h>0?(window.scrollY/h*100):0)+'%';
+  btt.classList.toggle('show',window.scrollY>600);
 },{passive:true});
+btt.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});
+
+// nav active + drawer
+var burger=document.getElementById('burger'),drawer=document.getElementById('drawer');
+burger.addEventListener('click',function(){drawer.classList.toggle('open');});
+drawer.addEventListener('click',function(e){if(e.target.tagName==='A'){drawer.classList.remove('open');}});
+var navLinks=document.querySelectorAll('#topnav .nav-link[href^="#"],#drawer a[href^="#"]');
+var sections=[];
+document.querySelectorAll('section[id],header.hero').forEach(function(s){sections.push(s);});
+var navIo=new IntersectionObserver(function(es){
+  es.forEach(function(e){
+    if(e.isIntersecting){
+      var id=e.target.id||'hero';
+      navLinks.forEach(function(l){l.classList.toggle('on',l.getAttribute('href')==='#'+id);});
+    }
+  });
+},{rootMargin:'-30% 0px -60% 0px'});
+sections.forEach(function(s){navIo.observe(s);});
 
 // reveal on scroll
 var io=new IntersectionObserver(function(es){
@@ -472,6 +635,15 @@ stageIo.observe(stage);
 // flip cards
 document.querySelectorAll('.flip').forEach(function(f){
   f.addEventListener('click',function(){f.classList.toggle('flipped');});
+});
+
+// scroll cards: close others when one opens (desktop harmony)
+document.querySelectorAll('.scroll-card').forEach(function(c){
+  c.addEventListener('toggle',function(){
+    if(c.open){
+      document.querySelectorAll('.scroll-card').forEach(function(o){if(o!==c)o.removeAttribute('open');});
+    }
+  });
 });
 </script>
 </body>
