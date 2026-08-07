@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>锦瑟 · 李商隐 — 数学家最爱的诗人</title>
+<style>
+:root{
+  --bg:#0b1022;
+  --bg2:#101731;
+  --panel:#141c38;
+  --panel2:#1a2447;
+  --ink:#e9e4d4;
+  --ink-dim:#a89fc0;
+  --ink-faint:#6f6a8a;
+  --gold:#d8b46a;
+  --gold-bright:#f0d48a;
+  --cinnabar:#d9534f;
+  --jade:#7fb5a4;
+  --line:rgba(216,180,106,.18);
+  --serif:"Kaiti SC","STKaiti","KaiTi","SimSun",serif;
+  --sans:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.9;overflow-x:hidden}
+::selection{background:rgba(216,180,106,.35)}
+
+/* progress bar */
+#progress{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--gold),var(--cinnabar));z-index:99;transition:width .1s linear}
+
+/* starfield */
+#stars{position:fixed;inset:0;pointer-events:none;z-index:0}
+#stars i{position:absolute;background:#fff;border-radius:50%;opacity:.6;animation:twinkle 4s ease-in-out infinite}
+@keyframes twinkle{0%,100%{opacity:.15}50%{opacity:.8}}
+
+.wrap{position:relative;z-index:1;max-width:860px;margin:0 auto;padding:0 24px}
+
+/* ── hero ── */
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;position:relative;padding:80px 20px}
+.moon{position:absolute;top:12vh;right:12%;width:120px;height:120px;border-radius:50%;background:radial-gradient(circle at 38% 35%,#fdf6e0,#e8d9a8 55%,#c9b27a);box-shadow:0 0 80px 24px rgba(232,217,168,.25);opacity:.9}
+.moon::after{content:"";position:absolute;inset:0;border-radius:50%;background:radial-gradient(circle at 60% 55%,rgba(120,105,70,.35) 0 6%,transparent 7%),radial-gradient(circle at 30% 65%,rgba(120,105,70,.3) 0 5%,transparent 6%),radial-gradient(circle at 45% 35%,rgba(120,105,70,.28) 0 4%,transparent 5%)}
+.sea{position:absolute;bottom:0;left:0;right:0;height:26vh;background:linear-gradient(180deg,transparent,rgba(16,23,49,.6) 30%,#0d1428);z-index:0}
+.sea::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,rgba(216,180,106,.6),transparent)}
+.hero .kicker{font-size:14px;letter-spacing:.35em;color:var(--gold);margin-bottom:28px;font-weight:600}
+.hero h1{font-family:var(--serif);font-weight:700;font-size:clamp(52px,10vw,96px);letter-spacing:.12em;line-height:1.25;text-shadow:0 0 40px rgba(216,180,106,.35)}
+.hero h1 .red{color:var(--cinnabar);text-shadow:0 0 40px rgba(217,83,79,.35)}
+.hero .sub{margin-top:22px;font-size:clamp(15px,2.6vw,19px);color:var(--ink-dim);letter-spacing:.08em}
+.hero .byline{margin-top:14px;font-size:13px;color:var(--ink-faint);letter-spacing:.2em}
+.hero .hook{margin-top:46px;max-width:600px;font-size:15.5px;color:var(--ink-dim);line-height:2.1}
+.hero .hook b{color:var(--gold-bright);font-weight:600}
+.scroll-hint{position:absolute;bottom:30px;left:50%;transform:translateX(-50%);color:var(--ink-faint);font-size:12px;letter-spacing:.3em;animation:bob 2.2s ease-in-out infinite}
+@media(max-width:720px){
+  .hero{padding:64px 18px 74px}
+  .hero .kicker{font-size:12px;margin-bottom:20px;letter-spacing:.28em}
+  .hero h1{font-size:clamp(46px,16vw,64px)}
+  .hero .hook{margin-top:30px;font-size:14px;line-height:2}
+  .hero .byline{font-size:12px}
+  .moon{width:84px;height:84px;top:7vh;right:8%}
+}
+@keyframes bob{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,8px)}}
+
+/* ── sections ── */
+section{padding:90px 0 20px;position:relative}
+.tag{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;letter-spacing:.22em;color:var(--gold);border:1px solid var(--line);border-radius:999px;padding:5px 16px;margin-bottom:22px;background:rgba(216,180,106,.06)}
+h2{font-family:var(--serif);font-size:clamp(26px,4.6vw,36px);font-weight:700;letter-spacing:.06em;margin-bottom:10px;line-height:1.5}
+h2 .en{display:block;font-family:var(--sans);font-size:11.5px;letter-spacing:.3em;color:var(--ink-faint);font-weight:400;margin-top:6px}
+.lead{color:var(--ink-dim);font-size:15.5px;margin-bottom:26px}
+p.body{color:var(--ink-dim);font-size:15.5px;margin-bottom:16px}
+p.body b,.lead b{color:var(--gold-bright);font-weight:600}
+
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .8s ease,transform .8s ease}
+.reveal.in{opacity:1;transform:none}
+
+/* quote cards */
+.quote-card{background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--gold);border-radius:10px;padding:22px 24px;margin:18px 0}
+.quote-card .zh{font-family:var(--serif);font-size:18px;line-height:2;color:var(--ink)}
+.quote-card .en{font-size:13px;color:var(--ink-faint);font-style:italic;margin-top:8px;line-height:1.8}
+
+/* three pillars */
+.pillars{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;margin:26px 0}
+.pillar{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:20px 18px;transition:transform .3s ease,border-color .3s ease}
+.pillar:hover{transform:translateY(-4px);border-color:var(--gold)}
+.pillar .ic{font-size:26px;margin-bottom:10px}
+.pillar h4{font-family:var(--serif);font-size:17px;color:var(--gold-bright);margin-bottom:8px;letter-spacing:.04em}
+.pillar p{font-size:13.5px;color:var(--ink-dim);line-height:1.85}
+.pillar .mirror{display:inline-block}
+@media(max-width:720px){.pillars{grid-template-columns:1fr}}
+
+/* poem block */
+.poem-block{background:linear-gradient(160deg,var(--panel),var(--panel2));border:1px solid var(--line);border-radius:14px;padding:36px 28px;margin:22px 0;position:relative;overflow:hidden}
+.poem-block::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold),transparent 60%)}
+.poem-block .title{font-family:var(--serif);font-size:19px;color:var(--gold-bright);letter-spacing:.14em;margin-bottom:18px}
+.poem-block .lines{font-family:var(--serif);font-size:clamp(17px,3vw,20px);line-height:2.3;letter-spacing:.12em;text-align:center;color:var(--ink)}
+.poem-block .lines .hl{color:var(--cinnabar)}
+.poem-block .trans{margin-top:16px;padding-top:16px;border-top:1px dashed var(--line);font-size:13.5px;color:var(--ink-faint);line-height:2}
+.poem-block .note{margin-top:12px;font-size:13.5px;color:var(--jade);line-height:1.9}
+.poem-block .note b{color:var(--jade)}
+
+/* timeline */
+.tl{position:relative;margin:30px 0 10px;padding-left:28px}
+.tl::before{content:"";position:absolute;left:8px;top:6px;bottom:6px;width:2px;background:linear-gradient(180deg,var(--gold),var(--line),transparent)}
+.tl-item{position:relative;padding:0 0 26px 14px}
+.tl-item::before{content:"";position:absolute;left:-25px;top:9px;width:10px;height:10px;border-radius:50%;background:var(--bg);border:2px solid var(--gold)}
+.tl-item .yr{font-size:13px;color:var(--gold);letter-spacing:.12em;font-weight:600}
+.tl-item p{font-size:14.5px;color:var(--ink-dim);margin-top:4px;line-height:1.9}
+.tl-item p b{color:var(--ink)}
+
+/* 锦瑟 immersive couplets */
+#jinse-stage{position:relative;background:linear-gradient(180deg,#0d1428,#0b1022 60%,#101731);border:1px solid var(--line);border-radius:16px;padding:56px 24px;margin:30px 0;overflow:hidden;text-align:center}
+#jinse-stage .stage-moon{position:absolute;top:-40px;left:50%;transform:translateX(-50%);width:200px;height:200px;border-radius:50%;background:radial-gradient(circle at 40% 35%,#fdf6e0,#e6d6a4 60%,#c0a86f);opacity:.22;filter:blur(2px)}
+.couplet{min-height:74px;opacity:.12;transition:opacity 1.1s ease,transform 1.1s ease;transform:translateY(8px);font-family:var(--serif);font-size:clamp(16px,3.2vw,21px);letter-spacing:.14em;line-height:1.9;color:var(--ink)}
+.couplet.on{opacity:1;transform:none}
+.couplet .dim{color:var(--ink-faint);font-size:.72em;letter-spacing:.08em;display:block;font-family:var(--sans);margin-top:2px}
+#jinse-stage .stage-foot{margin-top:26px;font-size:12.5px;color:var(--ink-faint);letter-spacing:.16em}
+
+/* flip cards (interpretations) */
+.flips{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:26px 0}
+.flip{perspective:900px;cursor:pointer;min-height:190px}
+.flip-inner{position:relative;width:100%;height:100%;min-height:190px;transform-style:preserve-3d;transition:transform .65s ease}
+.flip.flipped .flip-inner{transform:rotateY(180deg)}
+.flip-face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:12px;padding:16px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;border:1px solid var(--line)}
+.flip-front{background:var(--panel)}
+.flip-front .f-ic{font-size:30px;margin-bottom:8px}
+.flip-front h4{font-family:var(--serif);font-size:16.5px;color:var(--gold-bright)}
+.flip-front .tap{font-size:11px;color:var(--ink-faint);margin-top:8px;letter-spacing:.1em}
+.flip-back{background:var(--panel2);transform:rotateY(180deg);border-color:var(--gold)}
+.flip-back p{font-size:12.8px;color:var(--ink-dim);line-height:1.85}
+@media(max-width:720px){.flips{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:721px) and (max-width:1024px){.flips{grid-template-columns:repeat(2,1fr)}}
+
+/* quote wall (horizontal swipe) */
+.wall{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;padding:10px 4px 22px;margin:22px 0 6px;-webkit-overflow-scrolling:touch}
+.wall::-webkit-scrollbar{height:6px}
+.wall::-webkit-scrollbar-thumb{background:var(--line);border-radius:3px}
+.wall-card{flex:0 0 78%;scroll-snap-align:center;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:30px 26px;min-height:170px;display:flex;flex-direction:column;justify-content:center}
+@media(min-width:721px){.wall-card{flex-basis:46%}}
+.wall-card .q{font-family:var(--serif);font-size:clamp(18px,3.4vw,23px);letter-spacing:.1em;color:var(--gold-bright);line-height:2}
+.wall-card .src{font-size:12.5px;color:var(--ink-faint);margin-top:12px;letter-spacing:.08em}
+.wall-hint{font-size:12px;color:var(--ink-faint);text-align:center;letter-spacing:.2em;margin-bottom:8px}
+
+/* ending */
+.ending{text-align:center;padding:110px 20px 90px}
+.ending .big{font-family:var(--serif);font-size:clamp(24px,5vw,38px);line-height:2;color:var(--ink)}
+.ending .big .r{color:var(--cinnabar)}
+.ending .big .g{color:var(--gold)}
+.ending p{margin-top:26px;color:var(--ink-dim);font-size:14.5px;max-width:560px;margin-left:auto;margin-right:auto;line-height:2.1}
+.ending .sig{margin-top:40px;font-size:13px;color:var(--ink-faint);letter-spacing:.2em}
+
+footer{border-top:1px solid var(--line);padding:34px 24px 60px;text-align:center;color:var(--ink-faint);font-size:12.5px;line-height:2.2}
+footer a{color:var(--gold);text-decoration:none}
+footer a:hover{text-decoration:underline}
+
+/* divider */
+.divider{text-align:center;color:var(--gold);letter-spacing:.6em;font-size:13px;margin:60px 0 0;opacity:.7}
+
+/* fact chip */
+.fact{display:inline-block;background:rgba(127,181,164,.08);border:1px solid rgba(127,181,164,.3);color:var(--jade);border-radius:8px;padding:10px 16px;font-size:13.5px;margin:14px 0 6px;line-height:1.9}
+.fact b{color:var(--jade)}
+</style>
+</head>
+<body>
+
+<div id="progress"></div>
+<div id="stars"></div>
+
+<!-- ═══════ HERO ═══════ -->
+<header class="hero">
+  <div class="moon"></div>
+  <div class="sea"></div>
+  <div class="kicker">2026 菲尔兹奖 × 晚唐诗人</div>
+  <h1>锦<span class="red">瑟</span></h1>
+  <div class="sub">李商隐 · 数学家最爱的诗人</div>
+  <div class="byline">写给牧之 · 813 – 858</div>
+  <p class="hook">牧之，你最近在追的菲尔兹奖专题里，藏着一首一千二百年前的诗。<br>
+  拿奖的<b>邓煜哥哥</b>说，这是他<b>有史以来最爱的一首诗</b>——<br>
+  而这首诗，<b>没人能完全解释</b>。今天我们就来破这个谜。</p>
+  <div class="scroll-hint">往下走 ▼</div>
+</header>
+
+<!-- ═══════ 01 引子 ═══════ -->
+<section class="wrap">
+  <div class="reveal">
+    <div class="tag">01 · 引子</div>
+    <h2>一个数学家，为什么爱上一首谜一样的诗？<span class="en">WHY A MATHEMATICIAN LOVES A POEM NO ONE CAN EXPLAIN</span></h2>
+  </div>
+  <div class="reveal">
+    <p class="lead">2026 年，菲尔兹奖（数学界的诺贝尔奖）颁给了四位数学家。其中两位是中国人——<b>王虹</b>和<b>邓煜</b>，这是这个奖 90 年历史上第一次有两位中国籍数学家同届获奖。</p>
+    <p class="body">邓煜研究的是"随机数据"问题——海浪那样混乱、随机的初始数据，背后的波动方程到底有没有解。他 2011 年从普林斯顿博士毕业，一路做到了芝加哥大学教授。</p>
+    <p class="body">但这位顶尖数学家，在接受 Quanta 杂志采访时，先打开的却是一首诗。他管它叫：<b>"我的有史以来最爱"</b>。</p>
+  </div>
+  <div class="reveal">
+    <div class="quote-card">
+      <div class="zh">"很多人尝试解释这首诗。但我觉得，它本来就是解释不完的。"</div>
+      <div class="en">"Many people have tried to explain it. But I think this is something that's not explainable." — Yu Deng, Quanta Magazine, July 23, 2026</div>
+    </div>
+  </div>
+  <div class="reveal">
+    <p class="body">这首诗，就是李商隐的《锦瑟》。写它的诗人，晚唐的李商隐，被称作中国诗歌史上"最朦胧的诗人"——他的诗像是用文字做的<b>谜面</b>，一千二百年来，无数人猜，没人能定论。</p>
+    <p class="body">一个做数学的人，为什么会爱上一首"解释不完"的诗？这可能正是答案：<b>数学里最迷人的，也是那些解不完的问题。</b></p>
+  </div>
+</section>
+
+<div class="divider">✦ ✦ ✦</div>
+
+<!-- ═══════ 02 锦瑟沉浸 ═══════ -->
+<section class="wrap">
+  <div class="reveal">
+    <div class="tag">02 · 谜面</div>
+    <h2>《锦瑟》<span class="en">THE BROCADE ZITHER — 逐句点亮</span></h2>
+    <p class="lead">往下滚，让这首诗一句一句亮起来。读的时候想一想：它到底在说什么？</p>
+  </div>
+  <div id="jinse-stage" class="reveal">
+    <div class="stage-moon"></div>
+    <div class="couplet" data-i="0">锦瑟无端五十弦，<span class="dim">锦瑟呀，你为什么无缘无故有五十根弦？</span></div>
+    <div class="couplet" data-i="1">一弦一柱思华年。<span class="dim">每一弦每一柱，都让我想起逝去的年华。</span></div>
+    <div class="couplet" data-i="2">庄生晓梦迷蝴蝶，<span class="dim">庄周梦见自己变成蝴蝶，醒来不知哪个才是真的自己。</span></div>
+    <div class="couplet" data-i="3">望帝春心托杜鹃。<span class="dim">望帝把一颗春心，托付给啼血的杜鹃。</span></div>
+    <div class="couplet" data-i="4">沧海月明珠有泪，<span class="dim">沧海明月之夜，鲛人泣泪，化为珍珠。</span></div>
+    <div class="couplet" data-i="5">蓝田日暖玉生烟。<span class="dim">蓝田暖日，良玉生烟，可望而不可即。</span></div>
+    <div class="couplet" data-i="6">此情可待成追忆，<span class="dim">这份情，哪里是等到今天才值得追忆？</span></div>
+    <div class="couplet" data-i="7">只是当时已惘然。<span class="dim">在它发生的时候，就已经惘然若失了。</span></div>
+    <div class="stage-foot">—— 李商隐《锦瑟》 · 白话译文</div>
+  </div>
+  <div class="reveal">
+    <div class="fact">📌 许渊冲英译末两句：<b>"Such feeling cannot be recalled again; It seemed long lost e'en when it was felt then."</b></div>
+  </div>
+</section>
+
+<div class="divider">✦ ✦ ✦</div>
+
+<!-- ═══════ 03 数学家读诗法 ═══════ -->
+<section class="wrap">
+  <div class="reveal">
+    <div class="tag">03 · 读诗法</div>
+    <h2>邓煜为什么爱它？三个理由<span class="en">RESTRAINT · SYMMETRY · OPEN PROBLEM</span></h2>
+    <p class="lead">Quanta 的采访里，邓煜亲口讲了三个理由——每一个，都像数学家在说话。</p>
+  </div>
+  <div class="pillars reveal">
+    <div class="pillar">
+      <div class="ic">📏</div>
+      <h4>格律 = 约束</h4>
+      <p>律诗八句，每句七字，要讲平仄、要对仗、要押韵。规矩极多。邓煜说：<b>"这些模式本身就是美。但它们也限制你的表达。在限制之下你依然能说出这么多东西——这是另一层美。"</b></p>
+    </div>
+    <div class="pillar">
+      <div class="ic">🪞</div>
+      <h4>对仗 = 对称</h4>
+      <p>"沧海月明"对"蓝田日暖"，"珠有泪"对"玉生烟"——意象成对出现，像方程两边的平衡，像镜像。数学里的对称，在诗里叫对仗。</p>
+    </div>
+    <div class="pillar">
+      <div class="ic">❓</div>
+      <h4>朦胧 = 开放问题</h4>
+      <p>一个词可能指向古代战争，也可能指向神话传说；一句话可以有几十种解释。数学里最迷人的是解不完的开放问题——李商隐的诗，就是文学的开放问题。</p>
+    </div>
+  </div>
+  <div class="reveal">
+    <div class="quote-card">
+      <div class="zh">"它有一种孤独的氛围。星辰遥远，连思绪都是遥远的……你完全独自一人，世界在周围安静下来。真的，是一种很好的感觉。"</div>
+      <div class="en">"It's a lonely kind of atmosphere… The stars are distant, even your thoughts are distant… completely, utterly alone, the world quiet around you. It's really a nice feeling." — Yu Deng</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider">✦ ✦ ✦</div>
+
+<!-- ═══════ 04 低谷 ═══════ -->
+<section class="wrap">
+  <div class="reveal">
+    <div class="tag">04 · 转折</div>
+    <h2>低谷时，他去海边写诗<span class="en">THE POETRY THAT SAVED HIM</span></h2>
+  </div>
+  <div class="reveal">
+    <p class="body">邓煜不是天生爱诗。2017 年的冬天，是他最难的时候：博士后快结束了，理想的教职还没有着落，研究卡在瓶颈。他"非常焦虑、非常紧张"。</p>
+    <p class="body">他没有找朋友倾诉，而是坐火车去了长滩——纽约长岛南岸的海边。订了一家旅馆，沿着海岸线来回走，<b>写诗</b>。</p>
+    <p class="body">写的是八行格律诗——<b>和李商隐用过的一模一样的形式</b>。他写自己想逃离，写逃离会背叛他做数学的梦想，写海边的潮水"焦虑不安"。</p>
+  </div>
+  <div class="reveal">
+    <div class="quote-card">
+      <div class="zh">"我独自在海边徘徊了一周，什么都没做。然后我自动感觉到：我需要做数学了。"</div>
+      <div class="en">He roamed the coastline and wrote poetry — eight lines of restricted verse, the same style that Li Shangyin had used. — Quanta Magazine</div>
+    </div>
+  </div>
+  <div class="reveal">
+    <p class="body">一年后，他拿到了 USC 的教职。再后来，他证明了困扰数学界多年的"随机数据"问题，拿到了菲尔兹奖。</p>
+    <p class="body">为什么写诗能救他？也许是因为：<b>当生活一团乱麻时，格律给了他一个确定的框架</b>——就像数学里的规则。在规则里，混乱的情绪可以被安放。</p>
+    <div class="fact">💡 邓煜的客厅几乎是空的：一张桌子、一块白板、一把扶手椅。没有沙发，没有电视，墙上没有画。<b>"这让我感觉自由。我可以走来走去地思考。"</b></div>
+  </div>
+</section>
+
+<div class="divider">✦ ✦ ✦</div>
+
+<!-- ═══════ 05 李商隐生平 ═══════ -->
+<section class="wrap">
+  <div class="reveal">
+    <div class="tag">05 · 其人</div>
+    <h2>李商隐：夹在两党之间的一生<span class="en">A LIFE CAUGHT BETWEEN TWO FACTIONS</span></h2>
+    <p class="lead">现在，认识这首诗的作者。他的一生是个"因果链"问题——每一步选择，都把他推向更深的困境。</p>
+  </div>
+  <div class="tl reveal">
+    <div class="tl-item"><div class="yr">约 813 年</div><p><b>生于河南</b>，字义山，号玉谿生。家里排行小，父亲是个小官。</p></div>
+    <div class="tl-item"><div class="yr">约 9 岁</div><p><b>父亲去世</b>。家道中落，他替人抄书、帮人舂米养活母亲和弟弟。早慧的孩子，很早就尝到世态炎凉。</p></div>
+    <div class="tl-item"><div class="yr">16 岁</div><p>以<b>古文</b>出名。被朝廷重臣<b>令狐楚</b>赏识，收为弟子，亲自教他写骈文。这是他人生的第一块跳板。</p></div>
+    <div class="tl-item"><div class="yr">837 年</div><p><b>考中进士</b>。就在仕途要起飞时，他做了一个改变一生的决定——</p></div>
+    <div class="tl-item"><div class="yr">838 年</div><p><b>娶了王茂元的女儿</b>。问题来了：令狐楚属于"牛党"，王茂元属于"李党"，两党正斗得你死我活。在李商隐眼里，他只是娶了自己爱的人；在别人眼里，他<b>背叛了恩师的门派</b>。</p></div>
+    <div class="tl-item"><div class="yr">此后 20 年</div><p>牛党骂他"背恩"，李党不信任他。每次升迁，都有人翻旧账。他一生辗转于各地幕府，做小幕僚，<b>四十六岁郁郁而终</b>（858 年，郑州）。</p></div>
+    <div class="tl-item"><div class="yr">身后</div><p>他留下的诗集成了谜。宋初"西昆体"诗人专门学他，却只学到皮毛。元好问感叹：<b>"诗家总爱西昆好，独恨无人作郑笺"</b>——大家都爱他的诗，可惜没人能真正注解他。</p></div>
+  </div>
+  <div class="reveal">
+    <div class="fact">🧩 牧之的因果链题：为什么李商隐一生不顺？→ 拜的恩师是牛党大佬 → 娶的妻子是李党之女 → 两党都觉得他是对方的人 → 每次机会都被搅黄。就像两个小团体打架，你两边都有好朋友，结果两边都当你是卧底。</div>
+  </div>
+</section>
+
+<div class="divider">✦ ✦ ✦</div>
+
+<!-- ═══════ 06 锦瑟解谜 ═══════ -->
+<section class="wrap">
+  <div class="reveal">
+    <div class="tag">06 · 解谜</div>
+    <h2>《锦瑟》到底在写什么？<span class="en">FOUR THEORIES, NO VERDICT</span></h2>
+    <p class="lead">一千二百年来，学者们吵成一团。点一下卡片，看看四种主流猜想——注意，<b>至今没有定论</b>。</p>
+  </div>
+  <div class="flips reveal">
+    <div class="flip"><div class="flip-inner">
+      <div class="flip-face flip-front"><div class="f-ic">🕯️</div><h4>悼念亡妻</h4><div class="tap">点击翻面</div></div>
+      <div class="flip-face flip-back"><p>王夫人早逝，李商隐晚年写诗悼念。"此情可待成追忆"——那个"情"，是没来得及好好珍惜的爱情。支持者：诗里"珠有泪""玉生烟"都是悼亡常用意象。</p></div>
+    </div></div>
+    <div class="flip"><div class="flip-inner">
+      <div class="flip-face flip-front"><div class="f-ic">😔</div><h4>自伤身世</h4><div class="tap">点击翻面</div></div>
+      <div class="flip-face flip-back"><p>"五十弦"暗指自己年近五十；一生怀才不遇，回首往事只剩惘然。支持者：李商隐 46 岁去世，这首诗像他给自己的墓志铭。</p></div>
+    </div></div>
+    <div class="flip"><div class="flip-inner">
+      <div class="flip-face flip-front"><div class="f-ic">💔</div><h4>追忆爱情</h4><div class="tap">点击翻面</div></div>
+      <div class="flip-face flip-back"><p>年轻时与某位女子（或女道士）的隐秘恋情。庄生迷蝶、望帝杜鹃，都是"说不清、放不下"的暗语。支持者：李商隐的《无题》诗都有这个味道。</p></div>
+    </div></div>
+    <div class="flip"><div class="flip-inner">
+      <div class="flip-face flip-front"><div class="f-ic">🎶</div><h4>咏锦瑟</h4><div class="tap">点击翻面</div></div>
+      <div class="flip-face flip-back"><p>就是写这把乐器本身：瑟的悲音、古曲的意境。支持者：诗题就叫《锦瑟》，起句"锦瑟无端五十弦"就是咏物起兴。</p></div>
+    </div></div>
+  </div>
+  <div class="reveal">
+    <p class="body">四种解释，都有道理，都推翻不了别人。邓煜说它"解释不完"——这恰恰是它的伟大：<b>一首诗能容纳一千二百年的争论，本身就是它生命力的证明。</b></p>
+    <p class="body">就像数学里，一道好题不会因为没被解出就失去价值——它会让一代代数学家为它着迷。</p>
+  </div>
+</section>
+
+<div class="divider">✦ ✦ ✦</div>
+
+<!-- ═══════ 07 诗选 ═══════ -->
+<section class="wrap">
+  <div class="reveal">
+    <div class="tag">07 · 诗选</div>
+    <h2>再读五首，认识完整的李商隐<span class="en">FIVE MORE POEMS</span></h2>
+    <p class="lead">锦瑟是他的"谜"，下面这些是他的"心"：爱情、亲情、黄昏、嘲讽、孤独。</p>
+  </div>
+
+  <div class="poem-block reveal">
+    <div class="title">无题 · 相见时难</div>
+    <div class="lines">相见时难别亦难，东风无力百花残。<br>春蚕到死丝方尽，蜡炬成灰泪始干。<br>晓镜但愁云鬓改，夜吟应觉月光寒。<br>蓬山此去无多路，青鸟殷勤为探看。</div>
+    <div class="trans">白话：相见很难，离别更难；东风无力，百花凋残。春蚕到死才吐尽丝，蜡烛烧成灰才流干泪。早晨对镜，只愁鬓发变白；夜里吟诗，该觉月光清寒。蓬山离这里没有多远，只盼青鸟为我探看。</div>
+    <div class="note">💡 点睛：<b>"丝"谐音"思"</b>——爱一个人，像春蚕吐丝，到死方休。中国情诗里最痴情的一句。</div>
+  </div>
+
+  <div class="poem-block reveal">
+    <div class="title">夜雨寄北</div>
+    <div class="lines">君问归期未有期，巴山夜雨涨秋池。<br>何当共剪西窗烛，却话巴山夜雨时。</div>
+    <div class="trans">白话：你问我何时归来，我说不准。今夜巴山大雨，涨满了秋池。什么时候才能一起剪烛西窗，再回头说说今夜这场雨呢？</div>
+    <div class="note">💡 点睛：写给妻子的信，玩了一次<b>时空折叠</b>——"现在的雨"和"未来回忆这场雨的时刻"，在诗里叠在一起。一千二百年前的"时间旅行"。</div>
+  </div>
+
+  <div class="poem-block reveal">
+    <div class="title">登乐游原</div>
+    <div class="lines">向晚意不适，驱车登古原。<br>夕阳无限好，只是近黄昏。</div>
+    <div class="trans">白话：傍晚心情不好，驾车登上乐游原。夕阳无限美好，只是已经接近黄昏。</div>
+    <div class="note">💡 点睛：二十个字，写尽"美好正在消逝"的伤感。晚唐的气数、个人的迟暮，全在这十个字里——人人都懂，人人都会背。</div>
+  </div>
+
+  <div class="poem-block reveal">
+    <div class="title">贾生</div>
+    <div class="lines">宣室求贤访逐臣，贾生才调更无伦。<br>可怜夜半虚前席，不问苍生问鬼神。</div>
+    <div class="trans">白话：汉文帝在宣室召见被贬的贾谊，他的才华无人能比。可惜深夜长谈，皇帝听得直往前倾，问的却不是民生疾苦，而是鬼神之事。</div>
+    <div class="note">💡 点睛：咏史诗的终极技巧——<b>借古讽今</b>。表面写汉文帝，实际在讽刺当权者：人才就在眼前，却只关心迷信。</div>
+  </div>
+
+  <div class="poem-block reveal">
+    <div class="title">嫦娥</div>
+    <div class="lines">云母屏风烛影深，长河渐落晓星沉。<br>嫦娥应悔偷灵药，碧海青天夜夜心。</div>
+    <div class="trans">白话：云母屏风上映着深深的烛影，银河渐渐西沉，晓星隐没。嫦娥应该后悔偷吃了灵药吧——如今只剩碧海青天，夜夜相伴。</div>
+    <div class="note">💡 点睛：每个人心里都住着一个嫦娥：<b>得到了想要的，却发现代价是孤独</b>。李商隐写嫦娥，也在写自己。</div>
+  </div>
+</section>
+
+<div class="divider">✦ ✦ ✦</div>
+
+<!-- ═══════ 08 金句墙 ═══════ -->
+<section class="wrap">
+  <div class="reveal">
+    <div class="tag">08 · 金句墙</div>
+    <h2>值得背下来的句子<span class="en">SAY IT LIKE LI SHANGYIN</span></h2>
+    <p class="lead">左右滑动。这些句子活了一千二百年，现在还在被引用。</p>
+  </div>
+  <div class="wall-hint reveal">← 滑动 →</div>
+  <div class="wall reveal">
+    <div class="wall-card"><div class="q">春蚕到死丝方尽，蜡炬成灰泪始干。</div><div class="src">《无题·相见时难》—— 形容至死不渝</div></div>
+    <div class="wall-card"><div class="q">身无彩凤双飞翼，心有灵犀一点通。</div><div class="src">《无题·昨夜星辰》—— 形容心意相通</div></div>
+    <div class="wall-card"><div class="q">此情可待成追忆，只是当时已惘然。</div><div class="src">《锦瑟》—— 邓煜的挚爱</div></div>
+    <div class="wall-card"><div class="q">夕阳无限好，只是近黄昏。</div><div class="src">《登乐游原》—— 美好与消逝</div></div>
+    <div class="wall-card"><div class="q">何当共剪西窗烛，却话巴山夜雨时。</div><div class="src">《夜雨寄北》—— 想念与重逢</div></div>
+    <div class="wall-card"><div class="q">嫦娥应悔偷灵药，碧海青天夜夜心。</div><div class="src">《嫦娥》—— 孤独的代价</div></div>
+    <div class="wall-card"><div class="q">春心莫共花争发，一寸相思一寸灰。</div><div class="src">《无题·飒飒东风》—— 相思成灰</div></div>
+    <div class="wall-card"><div class="q">天意怜幽草，人间重晚晴。</div><div class="src">《晚晴》—— 雨过天晴的慰藉</div></div>
+  </div>
+</section>
+
+<div class="divider">✦ ✦ ✦</div>
+
+<!-- ═══════ 09 尾声 ═══════ -->
+<section class="ending">
+  <div class="reveal">
+    <div class="big">好的诗和好的问题一样——<br><span class="r">不会因为没被解出</span>，<span class="g">就失去价值。</span></div>
+    <p>一千二百年前，李商隐在牛李党争的夹缝里写下这些句子。他没有等到理解，诗却替他等到了。<br><br>
+    邓煜在低谷时靠格律诗找回自己，最后拿到了数学界的最高奖。<br><br>
+    牧之，如果你以后遇到"解不完的题"——不管是数学题，还是人生题——<br>记得这首诗：有些东西解释不完，恰恰是它迷人的原因。</p>
+    <div class="sig">此情可待成追忆，只是当时已惘然 · 🦞</div>
+  </div>
+</section>
+
+<footer>
+  信源：Quanta Magazine《Yu Deng Wins the Fields Medal 2026》 (2026-07-23, Jordana Cepelewicz)<br>
+  英译：许渊冲 Xu Yuanchong · 诗作原文：中华书局《李商隐诗集》通行本<br>
+  <a href="https://www.quantamagazine.org/yu-deng-wins-the-fields-medal-2026-for-his-work-on-the-random-data-problem-20260723/" target="_blank">阅读 Quanta 英文原文 →</a>
+</footer>
+
+<script>
+// stars
+(function(){
+  var c=document.getElementById('stars'),n=70;
+  for(var i=0;i<n;i++){var s=document.createElement('i');var sz=Math.random()*2+1;
+    s.style.cssText='left:'+(Math.random()*100)+'%;top:'+(Math.random()*100)+'%;width:'+sz+'px;height:'+sz+'px;animation-delay:'+(Math.random()*4)+'s';
+    c.appendChild(s);}
+})();
+
+// progress
+var prog=document.getElementById('progress');
+window.addEventListener('scroll',function(){
+  var h=document.documentElement.scrollHeight-window.innerHeight;
+  prog.style.width=(h>0?(window.scrollY/h*100):0)+'%';
+},{passive:true});
+
+// reveal on scroll
+var io=new IntersectionObserver(function(es){
+  es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
+},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
+
+// 锦瑟 couplet lighting
+var stage=document.getElementById('jinse-stage');
+var couples=stage.querySelectorAll('.couplet');
+var stageIo=new IntersectionObserver(function(es){
+  es.forEach(function(e){
+    if(e.isIntersecting){
+      var idx=0;
+      var t=setInterval(function(){
+        if(idx<couples.length){couples[idx].classList.add('on');idx++;}
+        else{clearInterval(t);}
+      },520);
+      stageIo.unobserve(stage);
+    }
+  });
+},{threshold:.3});
+stageIo.observe(stage);
+
+// flip cards
+document.querySelectorAll('.flip').forEach(function(f){
+  f.addEventListener('click',function(){f.classList.toggle('flipped');});
+});
+</script>
+</body>
+</html>
