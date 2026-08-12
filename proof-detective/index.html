@@ -24,7 +24,10 @@
   --font-mono:'JetBrains Mono','Fira Code',Consolas,monospace;
 }
 *{margin:0;padding:0;box-sizing:border-box}
+html{overflow-x:hidden;max-width:100%}
 body{
+  max-width:100%;
+  overflow-x:hidden;
   background:var(--bg);
   color:var(--ink);
   font-family:var(--font);
@@ -52,10 +55,10 @@ body{
 
 /* ── 档案卡片 ── */
 .case{
-  width:min(92vw,760px);
+  width:min(94vw,760px);
   background:var(--paper);
   border-radius:10px;
-  padding:26px 28px;
+  padding:22px 18px;
   box-shadow:0 18px 50px rgba(0,0,0,.5);
   position:relative;
 }
@@ -75,21 +78,24 @@ body{
   padding:2px 10px;border-radius:4px;font-weight:700;
 }
 .case-head .tag{
-  border:1px solid #b7a78c;padding:2px 8px;border-radius:4px;
+  border:1px solid #b7a78c;padding:4px 10px;border-radius:4px;font-size:14px;
 }
 .question{font-size:clamp(15px,3vw,18px);line-height:1.7;font-weight:700;margin-bottom:14px}
-.story{font-size:clamp(13.5px,2.6vw,15.5px);line-height:1.85;color:#3d3629;margin-bottom:18px}
+.story{font-size:clamp(15px,3vw,17px);line-height:1.9;color:#3d3629;margin-bottom:18px}
 .story b{color:var(--red)}
 
 /* ── 黑板演算区 ── */
 .board{
+  overflow-x:hidden;
+  overflow-wrap:break-word;
+  word-break:break-word;
   background:var(--board);
   border-radius:8px;
-  padding:18px 20px;
+  padding:14px 12px;
   font-family:var(--font-mono);
   color:var(--chalk);
-  font-size:clamp(13px,2.5vw,15.5px);
-  line-height:1.9;
+  font-size:clamp(12px,2.2vw,15.5px);
+  line-height:1.85;
   margin-bottom:18px;
   border:4px solid #4a3b2a;
   box-shadow:inset 0 0 40px rgba(0,0,0,.4);
@@ -98,7 +104,7 @@ body{
 .board .step:hover{background:rgba(255,255,255,.08)}
 .board .step.hint-glow{background:rgba(201,146,14,.18)}
 .board .step.found{background:rgba(179,55,46,.35);text-decoration:line-through wavy rgba(255,120,100,.7)}
-.board .stepline{display:block;padding-left:1.5em;text-indent:-1.5em}
+.board .stepline{display:block;padding-left:1.1em;text-indent:-1.1em;white-space:pre-wrap;overflow-wrap:anywhere;word-break:break-all}
 .board .lbl{color:#8fa3b5;margin-right:.6em}
 .board .bad{color:#ff8d80}
 
@@ -109,8 +115,9 @@ body{
   background:#fff;
   border:2px solid #d8cdb8;
   border-radius:8px;
-  padding:12px 16px;
-  font-size:clamp(13.5px,2.6vw,15.5px);
+  padding:14px 16px;
+  min-height:48px;
+  font-size:clamp(15px,2.8vw,16.5px);
   font-family:var(--font);
   color:var(--ink);
   cursor:pointer;
@@ -120,7 +127,7 @@ body{
 .opt:hover{border-color:var(--amber);transform:translateX(3px)}
 .opt.correct{border-color:var(--green);background:#e8f5ec;font-weight:700}
 .opt.wrong{border-color:var(--red);background:#fdecea}
-.opt .letter{font-weight:900;margin-right:8px;color:#8a7a5e}
+.opt .letter{font-weight:900;margin-right:10px;color:#8a7a5e;display:inline-block;min-width:1.2em}
 
 /* ── 反馈区 ── */
 .feedback{
@@ -178,6 +185,17 @@ body{
 .footer a:hover{border-bottom-color:var(--amber)}
 .finale .nng-link{color:var(--amber);text-decoration:none;border-bottom:1px solid rgba(201,146,14,.4);padding-bottom:1px;font-weight:700}
 .finale .nng-link:hover{border-bottom-color:var(--amber)}
+
+/* ── 窄屏微调 ── */
+@media (max-width:380px){
+  .board{font-size:12px;padding:12px 9px;line-height:1.8}
+  .board .stepline{padding-left:1.2em;text-indent:-1.2em}
+  .case{padding:20px 14px}
+  .hero h1{font-size:26px}
+  .question{font-size:15px}
+  .story{font-size:14.5px}
+  .opt{font-size:14.5px;padding:13px 14px}
+}
 </style>
 </head>
 <body>
@@ -227,20 +245,20 @@ const CASES = [
     question: "「证明 1 = 2」：漏洞在哪一步？",
     story: "有人在黑板上写下了这个「证明」。它一定错了，因为 1 不可能等于 2。<b>找出偷换概念的那一步</b>。",
     steps: [
-      {lbl:"①", t:"设 a = b"},
-      {lbl:"②", t:"两边乘 a：a² = ab"},
-      {lbl:"③", t:"两边减 b²：a² − b² = ab − b²"},
-      {lbl:"④", t:"因式分解：(a+b)(a−b) = b(a−b)"},
-      {lbl:"⑤", t:"两边除以 (a−b)：a+b = b"},
-      {lbl:"⑥", t:"因为 a=b，所以 2b = b，所以 2 = 1（？）"}
+      {lbl:"1", t:"设 a = b"},
+      {lbl:"2", t:"两边乘 a：a² = ab"},
+      {lbl:"3", t:"两边减 b²：a² − b² = ab − b²"},
+      {lbl:"4", t:"因式分解：(a+b)(a−b) = b(a−b)"},
+      {lbl:"5", t:"两边除以 (a−b)：\na+b = b"},
+      {lbl:"6", t:"因为 a=b，所以 2b = b，所以 2 = 1（？）"}
     ],
     badStep: 4,
     hint: "第⑤步之前，先想想：a 和 b 相等的话，(a−b) 等于多少？",
     options: [
-      "② 两边乘 a 不合法",
-      "⑤ 除以 (a−b)，但 a−b = 0，不能除以 0",
-      "③ 减 b² 本身合法（问题出在后面的除以 0）",
-      "④ 因式分解公式用错了"
+      "两边乘 a 不合法",
+      "除以 (a−b)，但 a−b = 0，不能除以 0",
+      "减 b² 本身合法（问题出在后面的除以 0）",
+      "因式分解公式用错了"
     ],
     correct: 1,
     explain: "a = b 时 a−b = 0。<b>除以 0</b> 是数学里唯一绝对禁止的操作。前面六步全部合法，就这一步毁了整个证明。计算机验证证明时，这种「偷偷除以零」是它第一眼就能抓到的漏洞。"
@@ -250,20 +268,20 @@ const CASES = [
     question: "「所有三角形都是等腰三角形」？漏洞在哪？",
     story: "一个「著名」的伪证明：随便画一个三角形，都能「证明」它是等腰的。来看看它怎么骗人的。<b>找出那个画错的辅助线</b>。",
     steps: [
-      {lbl:"①", t:"画三角形 ABC，取 BC 中点 M"},
-      {lbl:"②", t:"作 ∠A 的角平分线，交 BC 于 D"},
-      {lbl:"③", t:"过 D 作 AB、AC 的垂线，垂足 E、F"},
-      {lbl:"④", t:"直角三角形 ADE ≅ ADF（角角边）→ AE = AF"},
-      {lbl:"⑤", t:"直角三角形 BDE ≅ CDF（斜边直角边）→ BE = CF"},
-      {lbl:"⑥", t:"AE+BE = AF+CF → AB = AC → 等腰！✗"}
+      {lbl:"1", t:"画三角形 ABC，取 BC 中点 M"},
+      {lbl:"2", t:"作 ∠A 的角平分线，交 BC 于 D"},
+      {lbl:"3", t:"过 D 作 AB、AC 的垂线，垂足 E、F"},
+      {lbl:"4", t:"直角三角形 ADE ≅ ADF（角角边）→ AE = AF"},
+      {lbl:"5", t:"直角三角形 BDE ≅ CDF（斜边直角边）→ BE = CF"},
+      {lbl:"6", t:"AE+BE = AF+CF → AB = AC → 等腰！✗"}
     ],
     badStep: 2,
     hint: "∠A 的角平分线一定会和 BC 相交于中点 M 吗？",
     options: [
-      "① 取中点 M 不合法",
-      "② 角平分线和 BC 的交点 D，不一定在 M 上（图里 D 和 M 被画重合了）",
-      "④ 直角三角形全等判定用错了",
-      "⑥ 加法 AE+BE 不等于 AB"
+      "取中点 M 不合法",
+      "角平分线和 BC 的交点 D，不一定在 M 上（图里 D 和 M 被画重合了）",
+      "直角三角形全等判定用错了",
+      "加法 AE+BE 不等于 AB"
     ],
     correct: 1,
     explain: "漏洞在②：角平分线交 BC 于 D，但 D 一般<b>不是</b>中点 M。伪证明的图故意把 D 画在 M 的位置，于是后面的全等「恰好」成立。这就是几何伪证明的惯用伎俩：<b>图画得不对，推导全白搭</b>。"
@@ -273,20 +291,20 @@ const CASES = [
     question: "「所有马都是同一种颜色」？漏洞在哪？",
     story: "一个著名的归纳法伪证明。归纳法本身没问题，但这个证明里有个隐藏前提。<b>找出它第一次失效的地方</b>。",
     steps: [
-      {lbl:"①", t:"基础：1 匹马当然和自己同色 ✓"},
-      {lbl:"②", t:"假设任意 n 匹马都同色（归纳假设）"},
-      {lbl:"③", t:"考虑 n+1 匹马：编号 1 到 n+1"},
-      {lbl:"④", t:"前 n 匹（1~n）同色（用假设）"},
-      {lbl:"⑤", t:"后 n 匹（2~n+1）同色（用假设）"},
-      {lbl:"⑥", t:"两组的交集非空 → 全部同色！✗"}
+      {lbl:"1", t:"基础：1 匹马当然和自己同色 ✓"},
+      {lbl:"2", t:"假设任意 n 匹马都同色（归纳假设）"},
+      {lbl:"3", t:"考虑 n+1 匹马：编号 1 到 n+1"},
+      {lbl:"4", t:"前 n 匹（1~n）同色（用假设）"},
+      {lbl:"5", t:"后 n 匹（2~n+1）同色（用假设）"},
+      {lbl:"6", t:"两组的交集非空 → 全部同色！✗"}
     ],
     badStep: 5,
     hint: "从 n 推到 n+1 时，前 n 匹和后 n 匹一定有交集吗？",
     options: [
-      "① 基础情况就错了",
-      "② 归纳假设不允许这么用",
-      "④ 前 n 匹不一定同色",
-      "⑥ 当 n=1 时：前 1 匹是马1，后 1 匹是马2，交集是空的！"
+      "基础情况就错了",
+      "归纳假设不允许这么用",
+      "前 n 匹不一定同色",
+      "当 n=1 时：前 1 匹是马1，后 1 匹是马2，交集是空的！"
     ],
     correct: 3,
     explain: "n=1 时，前 1 匹（马1）和后 1 匹（马2）<b>没有交集</b>，所以「两组同色 → 全部同色」的桥断了。归纳法要从小推到大，<b>每一步的桥都必须真的存在</b>——计算机验证归纳证明时，这种「桥断了」的情况会被精准抓出来。"
@@ -296,18 +314,18 @@ const CASES = [
     question: "AI 时代的侦探题：哪个推理是可靠的？",
     story: "你让 AI 帮你检查投资分析。它给出了四条「推理」，<b>只有一条是机器可验证的</b>。找出它。",
     steps: [
-      {lbl:"①", t:"「经验告诉我，这家公司会涨」"},
-      {lbl:"②", t:"「如果营收增长 20% 且利润率稳定，则 EPS 增长约 20%；现在两者都成立，所以 EPS 会增长」"},
-      {lbl:"③", t:"「很多专家都说好，应该没问题」"},
-      {lbl:"④", t:"「感觉最近市场情绪不错」"}
+      {lbl:"1", t:"「经验告诉我，这家公司会涨」"},
+      {lbl:"2", t:"「如果营收增长 20% 且利润率稳定，则 EPS 增长约 20%；现在两者都成立，所以 EPS 会增长」"},
+      {lbl:"3", t:"「很多专家都说好，应该没问题」"},
+      {lbl:"4", t:"「感觉最近市场情绪不错」"}
     ],
     badStep: -1,
     hint: "哪一条的每一步都能被机器检查？",
     options: [
-      "① 经验直觉：无法验证",
-      "② 条件推理：前提可查、结论可算，机器能验证",
-      "③ 专家意见：权威不等于证明",
-      "④ 市场情绪——主观感受"
+      "经验直觉：无法验证",
+      "条件推理：前提可查、结论可算，机器能验证",
+      "专家意见：权威不等于证明",
+      "市场情绪——主观感受"
     ],
     correct: 1,
     explain: "②是唯一可验证的：<b>「如果 A 且 B，则 C」</b>——A、B 可以从财报数据查到，C 可以重新算一遍。这就是形式化思维：把「我觉得」改写成「如果…则…」，机器就能帮你查漏。AI 时代，<b>能写出可验证推理的人，才是真正的侦探</b>。"
@@ -345,7 +363,7 @@ function renderCase(){
   c.steps.forEach((s, i) => {
     const line = document.createElement('div');
     line.className = 'step';
-    line.innerHTML = `<span class="stepline"><span class="lbl">${s.lbl}</span>${s.t}</span>`;
+    line.innerHTML = `<span class="stepline"><span class="lbl">${s.lbl}</span>${s.t.replace(/\n/g, '<br>')}</span>`;
     if (i === c.badStep){ line.dataset.bad = '1'; line.innerHTML = line.innerHTML.replace('<span class="lbl">', '<span class="lbl">⚠️ '); }
     line.addEventListener('click', () => {
       if (line.dataset.found) return;
