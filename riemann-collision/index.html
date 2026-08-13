@@ -298,6 +298,41 @@
   .col-numerical li::before { background: #d8a018; }
   .col-open li::before { background: #c0392b; }
 
+  /* ===== Comparison ===== */
+  .cmp-table { overflow-x: auto; margin-bottom: 28px; }
+  .cmp-table table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--panel);
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    font-size: 0.88rem;
+    min-width: 660px;
+  }
+  .cmp-table th, .cmp-table td {
+    padding: 13px 16px;
+    text-align: left;
+    border-bottom: 1px solid var(--rule);
+    vertical-align: top;
+  }
+  .cmp-table thead th {
+    background: var(--accent-soft);
+    color: var(--accent);
+    font-weight: 700;
+    font-size: 0.84rem;
+  }
+  .cmp-table td:first-child { font-weight: 600; white-space: nowrap; }
+  .cmp-table tbody tr:last-child td { border-bottom: 0; }
+  .cmp-notes { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+  .cmp-note {
+    background: var(--panel);
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    padding: 20px 22px;
+  }
+  .cmp-note h3 { font-size: 0.95rem; color: var(--accent); margin-bottom: 10px; }
+  .cmp-note p { font-size: 0.87rem; color: #3a3a38; line-height: 1.65; }
+
   /* ===== Lean ===== */
   .lean-block {
     background: #20241f;
@@ -344,7 +379,7 @@
     <a href="#paper">论文</a>
     <a href="#theorems">定理</a>
     <a href="#sources">文献</a>
-    <a href="#honesty">边界</a>
+    <a href="#context">边界</a>
     <a href="#lean">形式化</a>
   </span>
 </nav>
@@ -521,6 +556,66 @@
           <div class="ref-authors">Guth, Maynard, 2024 · 80 年来首次改进 Ingham 零密度界</div>
         </div>
         <div class="ref-links"><a href="https://arxiv.org/abs/2405.20552" target="_blank" rel="noopener">arXiv ↗</a></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 独立探索与约束 -->
+  <section id="context">
+    <h2>独立探索与约束 · Independent Exploration & Constraints</h2>
+    <p class="section-note">一份诚实的定位：我们不是第二个 Anthropic。这份探索在资源、方法、验证上都有明确的边界。</p>
+
+    <div class="cmp-table">
+      <table>
+        <thead>
+          <tr>
+            <th>维度</th>
+            <th>Anthropic</th>
+            <th>我们（Ariste + DeepSeek）</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>结果性质</td>
+            <td>无条件定理：41.6% → 67.2%</td>
+            <td>方法识别 + 数值信号 + 机器证明</td>
+          </tr>
+          <tr>
+            <td>资源投入</td>
+            <td>约 31M tokens，约 650 次失败</td>
+            <td>百万 token 量级，16 次探索止损</td>
+          </tr>
+          <tr>
+            <td>验证方式</td>
+            <td>两位数学家研究并验证</td>
+            <td>Lean + Mathlib 机器证明 + 区间算术</td>
+          </tr>
+          <tr>
+            <td>运行环境</td>
+            <td>大厂基础设施</td>
+            <td>单机、无外网、GitHub 封锁、手动下载依赖</td>
+          </tr>
+          <tr>
+            <td>触及深度</td>
+            <td>解析数论（变分问题、素分布）</td>
+            <td>线性代数（矩阵碰撞、特征值界）</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="cmp-notes">
+      <div class="cmp-note">
+        <h3>我们的探索</h3>
+        <p>一份独立探索笔记，不是黎曼假设的证明。核心动作是识别一个结构性事实：Anthropic（计数框架）、Connes（极小特征向量）、Goldston 与 Suriajaya（水平对角方法）三篇论文，从同一个 Weil 二次型读取三种不相交的数据。我们把极小特征向量移植进计数框架，构造合成函数，得到跑赢两矩框架上限的数值信号，并用机器验证固定其中的线性代数结论。</p>
+      </div>
+      <div class="cmp-note">
+        <h3>约束条件</h3>
+        <p>全程在单机环境完成：单核编译、4GB 内存、无外网访问（GitHub 封锁，Mathlib 八千模块依赖全部手动下载）。底层模型为 DeepSeek，探索广度按 16 次失败止损阈值收敛，对比 Anthropic 约 650 次的失败规模。没有数学家的同行评审。</p>
+      </div>
+      <div class="cmp-note">
+        <h3>独立验证</h3>
+        <p>这里的「验证」是机器验证，不是数学同行评审。线性代数结论（Gershgorin 圆盘、碰撞恒等式、区间零点包围）由 Lean 4 + Mathlib 形式化，编译通过即证明成立。数值部分（H/d 比例、匹配率）可复现，脚本与数据随论文公开。这些验证固定的是线性代数事实，不是解析数论定理。</p>
       </div>
     </div>
   </section>
