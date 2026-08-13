@@ -202,6 +202,25 @@
   }
   .ref-links a:hover { background: var(--accent-soft); }
   .ref-local { color: var(--muted); font-size: 0.75rem; }
+  .ref.response-ref {
+    border-left: 3px solid var(--accent);
+    background: var(--accent-soft);
+  }
+  .ds-badge {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    color: var(--accent);
+    background: #fff;
+    border: 1px solid var(--accent);
+    padding: 3px 10px;
+    border-radius: 20px;
+    margin-left: 10px;
+    vertical-align: 2px;
+    white-space: nowrap;
+  }
+  .ref.response-ref .ref-title { color: var(--accent); }
 
   /* ===== Honesty card ===== */
   .honesty {
@@ -343,6 +362,18 @@
           <a href="assets/anthropic/informal-note.pdf" download>非正式注记</a>
           <a href="assets/anthropic/explanation.pdf" download>过程解释</a>
           <a href="assets/anthropic/transcripts.pdf" download>过程记录</a>
+        </div>
+      </div>
+
+      <div class="ref response-ref">
+        <div class="ref-main">
+          <div class="ref-title"><a href="assets/our-paper.pdf" target="_blank" rel="noopener">我们的回应 · Minimal Eigenvectors of the Compressed Weil Form</a><span class="ds-badge">DeepSeek 驱动</span></div>
+          <div class="ref-authors">Independent Exploration, 2026 · 全程由 DeepSeek 完成，非 Anthropic · 识别碰撞结构并构造极小特征向量合成函数</div>
+        </div>
+        <div class="ref-links">
+          <a href="assets/our-paper.pdf" download>回应 PDF</a>
+          <a href="assets/our-paper.tex" download>LaTeX 源</a>
+          <a href="assets/p2_gershgorin_mathlib.lean" download>Lean 证明</a>
         </div>
       </div>
 
