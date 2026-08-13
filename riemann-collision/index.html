@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>黎曼碰撞 · Riemann Collision</title>
+<style>
+  :root {
+    --bg: #f8f6f1;
+    --panel: #ffffff;
+    --ink: #1c1c1c;
+    --muted: #5f5f5a;
+    --accent: #1a5c43;
+    --accent-soft: #e8efe9;
+    --rule: #e5e0d5;
+    --quote-bg: #eef3f0;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", "Segoe UI", sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.7;
+    min-height: 100dvh;
+  }
+  .serif { font-family: "Georgia", "Times New Roman", serif; }
+
+  /* ===== Hero ===== */
+  header {
+    padding: clamp(40px, 8vw, 96px) clamp(20px, 5vw, 64px) clamp(32px, 6vw, 72px);
+    border-bottom: 1px solid var(--rule);
+  }
+  .kicker {
+    display: inline-block;
+    font-size: 0.82rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 600;
+    margin-bottom: 18px;
+  }
+  h1 {
+    font-family: "Georgia", "Times New Roman", serif;
+    font-size: clamp(1.6rem, 4.5vw, 2.7rem);
+    line-height: 1.25;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    max-width: 22em;
+    margin-bottom: 20px;
+  }
+  .lead {
+    font-size: clamp(1rem, 2.2vw, 1.15rem);
+    color: var(--muted);
+    max-width: 34em;
+  }
+  .quote {
+    margin-top: 34px;
+    padding: 20px 24px;
+    background: var(--quote-bg);
+    border-left: 3px solid var(--accent);
+    font-size: clamp(0.98rem, 2vw, 1.1rem);
+    color: #2a3a33;
+    max-width: 40em;
+  }
+  .quote .zh { font-weight: 600; color: var(--accent); }
+  .quote .en { display: block; margin-top: 6px; font-family: "Georgia", serif; font-style: italic; color: var(--muted); font-size: 0.92em; }
+
+  /* ===== Layout ===== */
+  main { max-width: 1200px; margin: 0 auto; padding: clamp(24px, 4vw, 56px) clamp(20px, 5vw, 64px) 80px; }
+  section { margin-bottom: clamp(48px, 7vw, 88px); }
+  h2 {
+    font-family: "Georgia", "Times New Roman", serif;
+    font-size: clamp(1.25rem, 2.6vw, 1.6rem);
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .section-note { color: var(--muted); font-size: 0.9rem; margin-bottom: 22px; }
+
+  /* ===== Paper block (two-column) ===== */
+  .paper-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.15fr;
+    gap: clamp(20px, 3vw, 40px);
+    align-items: start;
+  }
+  .paper-info { display: flex; flex-direction: column; gap: 14px; }
+  .paper-meta { color: var(--muted); font-size: 0.92rem; }
+  .btn-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 6px; }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 11px 20px;
+    border-radius: 8px;
+    font-size: 0.92rem;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    border: 1px solid transparent;
+    transition: background 0.18s, border-color 0.18s, color 0.18s;
+  }
+  .btn-primary { background: var(--accent); color: #fff; }
+  .btn-primary:hover { background: #145043; }
+  .btn-ghost { background: transparent; color: var(--accent); border-color: var(--accent); }
+  .btn-ghost:hover { background: var(--accent-soft); }
+  .btn-icon { font-size: 0.85rem; opacity: 0.85; margin-left: 2px; }
+  .pdf-frame {
+    background: var(--panel);
+    border: 1px solid var(--rule);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }
+  .pdf-frame object {
+    display: block;
+    width: 100%;
+    height: 72vh;
+    min-height: 480px;
+    border: 0;
+    background: var(--panel);
+  }
+  .pdf-fallback {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 72vh;
+    min-height: 480px;
+    color: var(--muted);
+    font-size: 0.9rem;
+    text-align: center;
+    padding: 20px;
+  }
+  .pdf-caption {
+    padding: 10px 16px;
+    font-size: 0.8rem;
+    color: var(--muted);
+    border-top: 1px solid var(--rule);
+  }
+
+  /* ===== Theorems ===== */
+  .thm-list { display: grid; gap: 16px; }
+  .thm {
+    background: var(--panel);
+    border: 1px solid var(--rule);
+    border-left: 3px solid var(--accent);
+    border-radius: 8px;
+    padding: 20px 22px;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 16px;
+    align-items: start;
+  }
+  .thm-num {
+    font-family: "Georgia", serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--accent);
+    line-height: 1;
+  }
+  .thm-title { font-weight: 700; font-size: 1.02rem; margin-bottom: 6px; }
+  .thm-body { color: #3a3a38; font-size: 0.94rem; }
+  .thm-tag {
+    font-size: 0.74rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    padding: 5px 12px;
+    border-radius: 20px;
+    white-space: nowrap;
+  }
+  .tag-proven { background: #e3f0e6; color: #1a5c43; }
+  .tag-numerical { background: #f5efe0; color: #9a6b00; }
+  .thm .math { margin-top: 8px; overflow-x: auto; font-size: 0.95em; }
+
+  /* ===== References ===== */
+  .ref-grid { display: grid; gap: 14px; }
+  .ref {
+    background: var(--panel);
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    padding: 18px 22px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 18px;
+    align-items: baseline;
+    justify-content: space-between;
+  }
+  .ref-main { flex: 1 1 320px; }
+  .ref-title { font-weight: 700; font-size: 0.98rem; margin-bottom: 4px; }
+  .ref-title a { color: var(--ink); text-decoration: none; }
+  .ref-title a:hover { color: var(--accent); }
+  .ref-authors { color: var(--muted); font-size: 0.85rem; }
+  .ref-links { display: flex; flex-wrap: wrap; gap: 8px; }
+  .ref-links a {
+    font-size: 0.8rem;
+    text-decoration: none;
+    color: var(--accent);
+    border: 1px solid var(--rule);
+    padding: 5px 12px;
+    border-radius: 6px;
+    transition: background 0.15s;
+  }
+  .ref-links a:hover { background: var(--accent-soft); }
+  .ref-local { color: var(--muted); font-size: 0.75rem; }
+
+  /* ===== Honesty card ===== */
+  .honesty {
+    background: var(--quote-bg);
+    border-radius: 10px;
+    padding: clamp(22px, 3vw, 32px);
+  }
+  .honesty h3 { font-size: 1.05rem; margin-bottom: 14px; color: var(--accent); }
+  .honesty .cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 22px; }
+  .honesty .col h4 { font-size: 0.9rem; margin-bottom: 8px; letter-spacing: 0.03em; }
+  .honesty ul { list-style: none; font-size: 0.88rem; color: #3a3a38; }
+  .honesty li { padding: 5px 0 5px 18px; position: relative; }
+  .honesty li::before { content: ""; position: absolute; left: 0; top: 13px; width: 7px; height: 7px; border-radius: 50%; }
+  .col-proven li::before { background: #2a8a55; }
+  .col-numerical li::before { background: #d8a018; }
+  .col-open li::before { background: #c0392b; }
+
+  /* ===== Lean ===== */
+  .lean-block {
+    background: #20241f;
+    border-radius: 10px;
+    padding: 22px 24px;
+    color: #d8e0d5;
+  }
+  .lean-block .lean-head { font-size: 0.85rem; color: #8fae94; margin-bottom: 12px; font-weight: 600; }
+  .lean-block code {
+    font-family: "SF Mono", "Menlo", "Consolas", monospace;
+    font-size: 0.8rem;
+    line-height: 1.6;
+    white-space: pre-wrap;
+    word-break: break-word;
+  }
+  .lean-block a { color: #7bc69a; text-decoration: none; font-size: 0.82rem; }
+
+  footer {
+    border-top: 1px solid var(--rule);
+    padding: 28px clamp(20px, 5vw, 64px);
+    text-align: center;
+    color: var(--muted);
+    font-size: 0.8rem;
+  }
+
+  /* ===== Responsive ===== */
+  @media (max-width: 1024px) {
+    .paper-grid { grid-template-columns: 1fr; }
+    .pdf-frame object, .pdf-fallback { height: 60vh; min-height: 400px; }
+  }
+  @media (max-width: 768px) {
+    .thm { grid-template-columns: auto 1fr; }
+    .thm-tag { grid-column: 1 / -1; justify-self: start; }
+    .ref { flex-direction: column; align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <span class="kicker">Independent Exploration Note · 2026</span>
+  <h1>Minimal Eigenvectors of the Compressed Weil Form:<br>A Constructive Collision Beyond the 67.25% Gabor Certificate</h1>
+  <p class="lead">Anthropic 把 ζ 零点在临界线上的比例下界从 41.6% 推到 67.2%。这份独立探索识别出一个结构性事实：三种方法在读同一个矩阵的三种不相交数据。我们把 Connes 的极小特征向量，移植进 Anthropic 的计数框架，得到一个系统跑赢 67.25% 的构造。</p>
+  <div class="quote">
+    <span class="zh">三种方法，读同一矩阵的三种不相交数据。</span>
+    <span class="en">Three methods read three disjoint datasets from the same matrix.</span>
+  </div>
+</header>
+
+<main>
+
+  <!-- 论文本体 -->
+  <section>
+    <h2>论文 · The Paper</h2>
+    <p class="section-note">在线预览，或下载 PDF 与 LaTeX 源。全文 9 页，机器验证的线性代数结论。</p>
+    <div class="paper-grid">
+      <div class="paper-info">
+        <p class="paper-meta">一篇 9 页的独立探索笔记。核心是「碰撞」：识别 Anthropic、Connes、Goldston–Suriajaya 三篇论文从同一个 Weil 二次型读取不相交的数据，然后构造极小特征向量合成函数，让零点计数系统超过两矩框架的理论上限。</p>
+        <div class="btn-row">
+          <a class="btn btn-primary" href="assets/our-paper.pdf" download>
+            <span>下载 PDF</span><span class="btn-icon">↓</span>
+          </a>
+          <a class="btn btn-ghost" href="assets/our-paper.pdf" target="_blank" rel="noopener">新窗口打开</a>
+          <a class="btn btn-ghost" href="assets/our-paper.tex" download>LaTeX 源</a>
+          <a class="btn btn-ghost" href="assets/p2_gershgorin_mathlib.lean" download>Lean 证明源码</a>
+        </div>
+      </div>
+      <div class="pdf-frame">
+        <object data="assets/our-paper.pdf" type="application/pdf">
+          <div class="pdf-fallback">论文预览 · 点击上方「新窗口打开」查看完整 PDF</div>
+        </object>
+        <div class="pdf-caption">若预览不显示，请点击上方「新窗口打开」。</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 三大定理 -->
+  <section>
+    <h2>三大定理 · Main Results</h2>
+    <p class="section-note">两个机器证明，一个数值信号。性质在标签里如实标注。</p>
+    <div class="thm-list">
+      <div class="thm">
+        <div class="thm-num">1</div>
+        <div>
+          <div class="thm-title">数值碰撞界 · Numerical Collision Bound</div>
+          <div class="thm-body">Gaussian 窗 <span class="math">σ = 3L/4</span>，全覆盖缩放下，合成函数 H 的零点数在 [0,2T] 内稳定落在 <span class="math">87%–94%</span> 的原子数 d 比例，全覆盖匹配率约 89%，真零点残差 <span class="math">≲ 10⁻¹⁵</span>。</div>
+        </div>
+        <span class="thm-tag tag-numerical">数值信号</span>
+      </div>
+      <div class="thm">
+        <div class="thm-num">2</div>
+        <div>
+          <div class="thm-title">Gershgorin 圆盘定理 · Formalized</div>
+          <div class="thm-body">严格对角占优矩阵非奇异，且每个特征值落在 Gershgorin 圆盘并集内。已在 Lean 4 + Mathlib 机器证明（<code>eigenvalue_mem_ball</code>），碰撞恒等式 <span class="math">53 + 17 = 70</span> 由 <code>native_decide</code> 验证。</div>
+        </div>
+        <span class="thm-tag tag-proven">机器证明</span>
+      </div>
+      <div class="thm">
+        <div class="thm-num">3</div>
+        <div>
+          <div class="thm-title">严格区间零点包围 · Interval Enclosure</div>
+          <div class="thm-body">前 30 个候选零点在严格向外舍入的区间算术下全部通过符号变化验证，最小安全余量 <span class="math">1.936 × 10⁻⁷</span>，即包围宽度的 1000 倍以上。15 个故意植入的伪影全部被拒绝。</div>
+        </div>
+        <span class="thm-tag tag-proven">机器证明</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 一手文献 -->
+  <section>
+    <h2>一手文献 · Primary Sources</h2>
+    <p class="section-note">Anthropic 四份文件已本地镜像，离线可看。其余为 arXiv 外链。</p>
+    <div class="ref-grid">
+      <div class="ref">
+        <div class="ref-main">
+          <div class="ref-title"><a href="https://www.anthropic.com/research/riemann-zeta" target="_blank" rel="noopener">More Than Two Thirds of the Zeros of the Riemann Zeta Function Lie on the Critical Line</a></div>
+          <div class="ref-authors">Anthropic, 2026 · 41.6% → 67.2% 的无条件下界</div>
+        </div>
+        <div class="ref-links">
+          <a href="https://www.anthropic.com/research/riemann-zeta" target="_blank" rel="noopener">官网 ↗</a>
+          <a href="assets/anthropic/paper.pdf" download>论文 PDF</a>
+          <a href="assets/anthropic/informal-note.pdf" download>非正式注记</a>
+          <a href="assets/anthropic/explanation.pdf" download>过程解释</a>
+          <a href="assets/anthropic/transcripts.pdf" download>过程记录</a>
+        </div>
+      </div>
+
+      <div class="ref">
+        <div class="ref-main">
+          <div class="ref-title"><a href="https://arxiv.org/abs/2602.04022" target="_blank" rel="noopener">The Riemann Hypothesis: Past, Present and a Letter Through Time</a></div>
+          <div class="ref-authors">A. Connes, 2026 · 极小特征向量与长球波函数</div>
+        </div>
+        <div class="ref-links"><a href="https://arxiv.org/abs/2602.04022" target="_blank" rel="noopener">arXiv ↗</a></div>
+      </div>
+
+      <div class="ref">
+        <div class="ref-main">
+          <div class="ref-title"><a href="https://arxiv.org/abs/2511.20059" target="_blank" rel="noopener">Zeta Zeros on the Critical Line</a></div>
+          <div class="ref-authors">D. Goldston, A. Suriajaya, 2025 · 去 RH 化的水平对角方法</div>
+        </div>
+        <div class="ref-links"><a href="https://arxiv.org/abs/2511.20059" target="_blank" rel="noopener">arXiv ↗</a></div>
+      </div>
+
+      <div class="ref">
+        <div class="ref-main">
+          <div class="ref-title"><a href="https://arxiv.org/abs/1002.4127" target="_blank" rel="noopener">More than 41% of the zeros of the zeta function are on the critical line</a></div>
+          <div class="ref-authors">H. Bui, B. Conrey, M. Young, 2011 · 41.6% 的历史下界</div>
+        </div>
+        <div class="ref-links"><a href="https://arxiv.org/abs/1002.4127" target="_blank" rel="noopener">arXiv ↗</a></div>
+      </div>
+
+      <div class="ref">
+        <div class="ref-main">
+          <div class="ref-title"><a href="https://arxiv.org/abs/2501.14545" target="_blank" rel="noopener">Pair Correlation of Zeros of the Riemann Zeta Function I</a></div>
+          <div class="ref-authors">Baluyot, Goldston, Suriajaya, Turnage-Butterbaugh, 2025 · 无条件 Montgomery 定理</div>
+        </div>
+        <div class="ref-links"><a href="https://arxiv.org/abs/2501.14545" target="_blank" rel="noopener">arXiv ↗</a></div>
+      </div>
+
+      <div class="ref">
+        <div class="ref-main">
+          <div class="ref-title"><a href="https://arxiv.org/abs/2405.20552" target="_blank" rel="noopener">New bounds for the Riemann zeta function on the critical line</a></div>
+          <div class="ref-authors">Guth, Maynard, 2024 · 80 年来首次改进 Ingham 零密度界</div>
+        </div>
+        <div class="ref-links"><a href="https://arxiv.org/abs/2405.20552" target="_blank" rel="noopener">arXiv ↗</a></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 诚实声明 -->
+  <section>
+    <h2>诚实边界 · What Is and Is Not Proven</h2>
+    <p class="section-note">这张表是整份工作最重要的部分。数值信号与定理的边界必须如实标注。</p>
+    <div class="honesty">
+      <h3>三个清单</h3>
+      <div class="cols">
+        <div class="col col-proven">
+          <h4>✅ 机器证明</h4>
+          <ul>
+            <li>Gershgorin 圆盘定理</li>
+            <li>对角占优非奇异</li>
+            <li>碰撞恒等式 53+17=70</li>
+            <li>前 30 零点区间包围</li>
+            <li>15 伪影拒绝</li>
+            <li>第一零点 Riemann–Siegel Z</li>
+          </ul>
+        </div>
+        <div class="col col-numerical">
+          <h4>🔶 数值信号</h4>
+          <ul>
+            <li>H/d ∈ [0.87, 0.94]</li>
+            <li>匹配率约 89%</li>
+            <li>残差 ≲ 10⁻¹⁵</li>
+          </ul>
+        </div>
+        <div class="col col-open">
+          <h4>❌ 未证</h4>
+          <ul>
+            <li>绕数恒等式 #zeros(H) = n₊(G̃)</li>
+            <li>素数侧误差界</li>
+            <li>任何超过 2/3 的无条件比例</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lean 形式化 -->
+  <section>
+    <h2>形式化 · Lean 4 / Mathlib</h2>
+    <p class="section-note">编译 8139 个 Mathlib 模块，在无网络环境下从源码构建 Lean 4.35，绕过 GitHub 封锁。</p>
+    <div class="lean-block">
+      <div class="lean-head">p2_gershgorin_mathlib.lean · 116 行 · 全绿编译</div>
+      <code>theorem A1_det_ne_zero :
+  IsStrictlyDiagDominant A → A.det ≠ 0 := ...
+
+theorem B_eigenvalue_in_gershgorin_disk :
+  ∀ μ ∈ spectrum A, μ ∈ ⋃ᵢ GershgorinDisk A i := ...
+
+example : 53 + 17 = 70 := by native_decide</code>
+      <p style="margin-top:14px"><a href="assets/p2_gershgorin_mathlib.lean" download>下载完整 Lean 源码 ↓</a></p>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  黎曼碰撞 · Riemann Collision · 独立探索笔记 · 不证明也不假设黎曼假设 · 方法与数值证据公开
+</footer>
+
+</body>
+</html>

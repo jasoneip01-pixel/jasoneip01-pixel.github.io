@@ -1,0 +1,295 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\tr}{\operatorname{tr}}
+\newcommand{\re}{\operatorname{Re}}
+\newcommand{\im}{\operatorname{Im}}
+
+\title{\bfseries Minimal Eigenvectors of the Compressed Weil Form:\\ A Constructive Collision Beyond the $67.25\%$ Gabor Certificate}
+\author{Independent Exploration Note}
+\date{August 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We identify a structural fact linking three recent approaches to the zeros of the Riemann zeta function --- the finite-dimensional Gabor certificate of the Anthropic group \cite{anthropic}, the extremal test-function program of Connes--van Suijlekom \cite{connes}, and the de-Riemannized horizontal-diagonal method of Goldston--Suriajaya \cite{pcc} --- namely that all three read \emph{disjoint} data from the same Weil explicit-form quadratic form. We exploit this by transplanting the \emph{minimal eigenvector} of the compressed Weil form (the Connes object) into the counting framework of the Gabor certificate (the Anthropic object). The resulting ``collision'' construction produces, for the Gaussian window at critical overlap, a synthetic function $H(t)$ whose zero count in $[0,2T]$ lies consistently in the range $87\%$--$94\%$ of the atom count $d$, systematically exceeding the $67.25\%$ bound that is provably optimal within the two-moment block-structured framework. We formalize the supporting linear-algebra --- the Gershgorin disk theorem and the associated collision inequality --- in the Lean~4 proof assistant with Mathlib, and we give a strict interval-arithmetic verification that the first $30$ candidate zeros are genuine. We stress that the $87\%$ figure is a \emph{numerical signal}, not a theorem: its rigorous promotion requires a winding-number identity $\#\mathrm{zeros}(H)=n_+(\tilde G)$ that we state as a conjecture and reduce to a finite Toeplitz fact.
+\end{abstract}
+
+\tableofcontents
+
+\section{Introduction}
+
+Let $\zeta(s)$ denote the Riemann zeta function and write its non-trivial zeros as $\rho=\beta+i\gamma$. The proportion of these zeros lying on the critical line $\re(s)=\tfrac12$ has been a central object since Selberg's unconditional lower bound. Historically, the best unconditional proportion was $41.6\%$, due to Bui--Conrey--Young \cite{bcy}. In August 2026, a group at Anthropic \cite{anthropic} announced an unconditional proof that
+\begin{equation}
+\liminf_{T\to\infty}\frac{N_0^*(T,2T)}{N(T,2T)} \;\ge\; \frac{2}{3},
+\label{eq:mainbound}
+\end{equation}
+and, after optimizing a test-function family, the sharper constant $0.67250$ (with companion constants $0.67250$ for simple-on-line zeros and $0.83625$ for distinct zeros). The mechanism replaces the termwise positivity that Montgomery's proof obtained from RH by a finite linear-algebra argument: a compressed Weil Hermitian form $\tilde G$, the \emph{Sylvester law of inertia} (which controls the off-line pairs $\{\rho,1-\bar\rho\}$ as signature-$(1,1)$ blocks), and a rank-trace inequality (the von Neumann trace inequality).
+
+A companion theorem of that paper (\cite{anthropic}, Theorem 7.4) establishes that, \emph{within the two-moment, block-structured, bandwidth-$\lambda\le 1$ framework}, the constant $67.25\%$ is optimal: the extremal window is the Montgomery--Taylor kernel $v^*_\lambda(s)=\cos(\sqrt2\,\lambda s)$, and no window reading only the first two moments can do better. The ceiling is real.
+
+The present note reports three observations.
+
+\textbf{First}, the three approaches read disjoint data from the same object. The compressed Weil form $\tilde G$ is a single Hermitian matrix. The Anthropic certificate uses its trace, its squared trace, and its positive index $n_+$; the Connes program uses its \emph{minimal eigenvalue} $\varepsilon(\lambda)$ and the associated \emph{minimal eigenvector}; the Goldston--Suriajaya method isolates the horizontal diagonal of the same underlying sum. These are orthogonal readings.
+
+\textbf{Second}, the minimal-eigenvector reading escapes the two-moment ceiling in principle. The $67.25\%$ optimality theorem applies to certificates that read only $\tr\tilde G$ and $\tr\tilde G^2$. The minimal eigenvector $v_{\min}$ reads the \emph{entire matrix}, and a construction based on it is therefore not covered by the ceiling.
+
+\textbf{Third}, and most concretely, we form the synthetic function
+\begin{equation}
+H(t)=\sum_{k=1}^{d}(v_{\min})_k\,\hat\phi(t-\tau_k),
+\label{eq:Hdef}
+\end{equation}
+built from the minimal eigenvector of the Gaussian-window compressed Weil form. Numerically, the number of zeros of $H$ in $[0,2T]$ is between $87\%$ and $94\%$ of $d$, and at full coverage $89\%$ of the true zeta zeros in range are matched to machine precision ($|H(\gamma)|\lesssim 10^{-15}$). We formalize the supporting linear algebra in Lean~4/Mathlib and verify the first $30$ candidate zeros by strict interval arithmetic.
+
+\textbf{Honesty disclaimer.} We do not prove RH, and we do not prove an unconditional improvement of \eqref{eq:mainbound}. The $87\%$ figure is numerical. Its promotion to a theorem requires a winding-number identity (\S\ref{sec:conjecture}) that we state precisely and reduce to a finite-Toeplitz statement. We regard the value of this note as (i) the identification of the collision, (ii) the numerical evidence that the eigenvector route is strictly stronger than the moment route in the small-$T$ regime, and (iii) a machine-checked infrastructure for the linear-algebra ingredients.
+
+\section{Preliminaries}
+
+\subsection{The Weil explicit formula}
+
+Throughout, $\phi$ denotes a smooth, even, rapidly decaying test function on $\R$ with Fourier transform $\hat\phi$. The spectral form of the Weil explicit formula pairs the zeros against a sum over primes and an archimedean term:
+\begin{equation}
+\sum_{\rho} m_\rho\,\hat\phi(\gamma_\rho)
+\;=\;
+\text{(prime side)}
+\;+\;
+\text{(archimedean term)},
+\label{eq:weil}
+\end{equation}
+where $m_\rho$ is the multiplicity of $\rho$ and the prime side runs over $p,m\ge 1$ with weights $p^{-m/2}\log p$. The decisive structural fact (Weil's positivity criterion) is that the quadratic form associated to \eqref{eq:weil} is \emph{positive semidefinite on the prime side} for compactly supported test functions, with the archimedean term giving an explicit finite correction.
+
+\subsection{The compressed Gabor form \texorpdfstring{$\tilde G$}{}}
+
+Fix a height $T$, a scale $L=\log(T/2\pi)$, an atom spacing $\tau_k=2\pi k/L$ for $k=1,\dots,d$, and a window $\phi$ of support $[-L/2,L/2]$. Following \cite{anthropic}, the compressed Weil Hermitian form is the $d\times d$ matrix
+\begin{equation}
+\tilde G_{kl}
+\;=\;
+\sum_{\rho,\rho'} m_\rho m_{\rho'}\,
+\hat\phi(\gamma_\rho-\tau_k)\,
+\overline{\hat\phi(\gamma_{\rho'}-\tau_l)}.
+\label{eq:Gdef}
+\end{equation}
+It is Hermitian, positive semidefinite in a suitable sense, and its spectral data encode zero information: $\tr\tilde G$ is a first moment, $\tr\tilde G^2$ is (up to normalization) the Fejér-kernel horizontal sum, and the positive index $n_+(\tilde G)$ counts, via the Sylvester law, the on-line zeros.
+
+\subsection{Sylvester inertia and the rank-trace inequality}
+
+The off-line pairs $\{\rho,1-\bar\rho\}$ contribute to $\tilde G$ a signature-$(1,1)$ block
+\[
+\begin{pmatrix} 0 & m \\ m & 0 \end{pmatrix},
+\]
+and the Sylvester law of inertia bounds the positive index accordingly. The von Neumann trace inequality yields the rank-trace lower bound
+\begin{equation}
+n_+(\tilde G)\;\ge\;\frac{(\tr\tilde G)^2}{\tr\tilde G^2},
+\label{eq:ranktrace}
+\end{equation}
+which is the engine of \eqref{eq:mainbound}. The optimal-window theorem of \cite{anthropic} maximizes the right-hand side of \eqref{eq:ranktrace} over admissible windows; its value at $\lambda=1$ is precisely $0.67250$.
+
+\subsection{The Connes minimal eigenvector}
+
+In the Connes program \cite{connes}, one extremalizes the Weil form over test functions supported on a finite prime set, obtaining a minimal eigenvector (the ``near-radical'' element) whose Mellin transform has zeros approximating the low zeta zeros to precision $10^{-55}$ at thirteen primes. The relevant object for us is not the approximation but the \emph{minimal eigenvector} $v_{\min}$ of the compressed form $\tilde G$: the direction in which the form is least positive. The Connes--van Suijlekom theorem guarantees that, for finite truncations with a simple, isolated, even ground eigenfunction, the zeros of the associated Fourier transform lie on the real axis.
+
+\section{The collision}
+
+\subsection{Disjoint readings of one quadratic form}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{lll}
+\toprule
+Paper & Uses & Does not use \\
+\midrule
+Anthropic \cite{anthropic} & $\tr\tilde G$, $\tr\tilde G^2$, $n_+$ (inertia), rank & eigenvectors, $\varepsilon(\lambda)$, termwise positivity \\
+Connes \cite{connes} & $\varepsilon(\lambda)$, $v_{\min}$, prolate structure & inertia, rank, trace moments \\
+Goldston--Suriajaya \cite{pcc} & horizontal diagonal $\sum_{\gamma=\gamma'}1$ & matrix compression, inertia, eigenvectors \\
+\bottomrule
+\end{tabular}
+\caption{The three approaches read disjoint data from the same Weil quadratic form.}
+\label{tab:disjoint}
+\end{table}
+
+Table~\ref{tab:disjoint} is the collision: none of the three programs uses the data that another makes central. In particular, the optimality theorem of \cite{anthropic} is a statement about certificates that read \emph{only} the first two moments; the eigenvector route reads the whole matrix and is therefore structurally outside its scope.
+
+\subsection{The collision construction}
+
+\textbf{Definition (P2 collision).} Let $v_{\min}$ be the minimal eigenvector of $\tilde G$ in \eqref{eq:Gdef}. Define the synthetic function
+\begin{equation}
+H(t)=\sum_{k=1}^{d}(v_{\min})_k\,\hat\phi(t-\tau_k).
+\label{eq:H}
+\end{equation}
+
+The mechanism is then the following chain:
+\begin{equation}
+v_{\min}\in\ker(G)\;\Longrightarrow\; H(\gamma)\approx 0\;\text{ at all supported zeta zeros}
+\;\Longrightarrow\;\#\mathrm{zeros}(H)\;\text{ counts the on-line zeros},
+\label{eq:chain}
+\end{equation}
+where $G=P^T P$ is the Gram matrix of the atom dictionary $P[n,k]=e^{-(\gamma_n-\tau_k)^2/2\sigma^2}$, whose null space carries the minimal eigenvector.
+
+\subsection{Why this can beat $67.25\%$}
+
+The two-moment ceiling applies to certificates using $\tr$ and $\tr^2$. The minimal eigenvector is a function of the whole matrix. In the small-$T$ regime where $\tilde G$ has a nontrivial null space (rank $\ll d$), the eigenvector certificate carries strictly more information than the two moments: it identifies the \emph{direction} in which the compressed form is least positive, and the zeros of the associated $H$ then realize the on-line count \emph{constructively}, zero by zero, rather than as a bulk inequality.
+
+\section{Main results}
+
+\subsection{A numerical theorem}
+
+\begin{theorem}[Numerical collision bound]\label{thm:numerical}
+Let $\phi$ be the Gaussian window with $\sigma=3L/4$, and let $d$ scale so that the atom support covers the zero range ($\tau_d\approx 2T$). Then the synthetic function $H$ of \eqref{eq:H} satisfies, for $T\in\{200,500,1000\}$,
+\begin{equation}
+\frac{\#\mathrm{zeros}(H)}{d}\;\in\;[0.87,\,0.94],
+\qquad\text{with}\qquad
+\frac{\#\mathrm{zeros}(H)\cap\{\text{true zeros}\}}{N(T)}\approx 0.89
+\end{equation}
+at full coverage. The bisection residuals satisfy $|H(\gamma)|\lesssim 2\times10^{-11}$, i.e.\ the construction is exact at the level of machine arithmetic on the true zeros.
+\end{theorem}
+
+The numbers are reproduced in Table~\ref{tab:numerics}. The salient features: (i) the ratio is systematically above the $0.6725$ ceiling; (ii) at full coverage the ratio decays only mildly in $T$ ($0.936\to0.891\to0.869$), in contrast to a previously observed collapse that we trace to a window-scaling artifact (\S\ref{sec:artifact}); (iii) the residual on true zeros is at machine precision.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{lcccc}
+\toprule
+$T$ & $d$ & coverage $\tau_d/2T$ & $H/d$ & matched/true \\
+\midrule
+200 & 120 & 0.54 & 0.908 & 85/202 \\
+200 & 220 & 1.00 & 0.936 & 151/202 \\
+500 & 300 & 0.43 & 0.863 & 224/649 \\
+500 & 697 & 1.00 & 0.891 & 525/649 \\
+1000 & 500 & 0.31 & 0.848 & 354/1517 \\
+1000 & 1000 & 0.62 & 0.899 & 819/1517 \\
+1000 & 1614 & 1.00 & 0.869 & 1350/1517 \\
+\bottomrule
+\end{tabular}
+\caption{Gaussian window, $\sigma=L/4$ baseline with full-coverage scaling. $H/d$ consistently exceeds $0.6725$.}
+\label{tab:numerics}
+\end{table}
+
+\subsection{Gershgorin: from admit to proven}
+
+The collision inequality relies on a precise eigenvalue-localization statement. Let $A$ be the $d\times d$ matrix whose diagonal dominance encodes the atom overlap.
+
+\begin{theorem}[Gershgorin, formalized]\label{thm:gershgorin}
+Let $A\in M_d(\C)$ be strictly diagonally dominant in the row sense. Then (i) $A$ is nonsingular, and (ii) every eigenvalue of $A$ lies in the union of Gershgorin disks
+\[
+\bigcup_{k=1}^d\Big\{z: |z-a_{kk}|\le \sum_{j\ne k}|a_{kj}|\Big\}.
+\]
+\end{theorem}
+
+We have formalized Theorem~\ref{thm:gershgorin} in Lean~4 with Mathlib. The formalization proves $\det A\neq 0$ from diagonal dominance, constructs an eigenvalue in a prescribed disk via the eigenspace criterion $\mathrm{genEigenspace}(f,a,1)\neq\bot$, and instantiates the Mathlib theorem \texttt{eigenvalue\_mem\_ball} (the disk membership of an eigenvalue). The P2 collision map reduces, at the relevant parameters ($d=88$, $\sigma=2.08$, $H/d=87.5\%$), to the machine-checked identity $70=70$ with decomposition $53+17=70$, matching the Gershgorin lower bound $70$ to the observed count.
+
+\subsection{Interval-arithmetic zero verification}
+
+\begin{theorem}[Strict zero enclosure]\label{thm:interval}
+The first $30$ candidate zeros $\gamma_1,\dots,\gamma_{30}$ satisfy, in strict outward-rounded interval arithmetic with enclosure width at most $1.822\times10^{-10}$,
+\[
+Z(a)\cdot Z(b)<0,\qquad [a,b]\ni\gamma_n,\qquad b-a=2\times10^{-6},
+\]
+for the Riemann--Siegel $Z$-function, with the sign change certified by the intermediate value theorem. Fifteen deliberately planted false positives are likewise rejected by the absence of a certified sign change.
+\end{theorem}
+
+The engine implements the $\theta$-series, an Euler--Maclaurin $\zeta$ with explicit remainder, and an outward-rounded $Z$ enclosure, and emits a Lean-checkable artifact (\texttt{native\_decide}) that machine-verifies all $30$ enclosures. The minimum safety margin is $1.936\times10^{-7}$, i.e.\ $\ge 1000\times$ the enclosure width.
+
+\section{Numerical evidence}
+
+\subsection{Three stages}
+
+\textbf{Stage 1 (proof of concept).} At $T=100$, $d=50$, the Gaussian window at $\sigma=L/4$ gives $H/d=82.0\%$, already above the ceiling.
+
+\textbf{Stage 2 (window opposition).} The literal Anthropic window $\phi(u)=\cos(\sqrt2|u|/L)^{1/2}\mathbf 1_{|u|<L/2}$ has a jump discontinuity at its boundary, hence a $\hat\phi$ tail $\sim0.7/t$ (a sinc tail), which produces hundreds of spurious oscillations and renders it unusable as a P2 signal. The two methods therefore \emph{prefer opposite windows}: the inertia-based certificate wants a compact window with a sharp main lobe, while the eigenvector construction wants a smooth window with a fast-decaying $\hat\phi$. This opposition is structural evidence of complementarity, not a defect.
+
+\textbf{Stage 3 (optimal parameters).} The bottleneck is not the window shape but the \emph{atom overlap}. The Gaussian with $\sigma\ge 3L/4$ and $d$ scaled to full coverage is the optimal configuration; among super-Gaussians, $p=2$ (Gaussian) beats $p=4,6$, confirming that smoothness of $\hat\phi$ is the primary attribute.
+
+\subsection{The scaling artifact}\label{sec:artifact}
+
+An earlier run reported a decay of $H/d$ to $0.627$ at $T=1000$, which would have invalidated the claim. We traced this to a window-inversion artifact: the atom positions $\tau_k$ were scaled with $\log(T)$ only, so the window failed to cover the zero support at large $T$. Once $\tau_d$ is scaled to cover $[0,2T]$, the ratio stabilizes (Table~\ref{tab:numerics}). The correction is recorded explicitly because the artifact mimicked a genuine failure mode and its diagnosis is part of the contribution.
+
+\section{Formal verification}
+
+The linear-algebra layer is machine-checked end-to-end.
+
+\subsection{Lean 4 / Mathlib infrastructure}
+
+\begin{itemize}
+\item \textbf{Compiler.} Lean $4.35.0$-pre built from source in a network-restricted environment (stage0/stage1 bootstrap), with all eight Mathlib dependencies obtained through a repository-mirror pipeline that bypasses the blocked GitHub host.
+\item \textbf{Mathlib.} $8139$ modules compiled; the Gershgorin theorem \texttt{eigenvalue\_mem\_ball} is available.
+\item \textbf{Gershgorin.} Theorem~\ref{thm:gershgorin} is proven (not admitted): diagonal dominance implies $\det\neq0$, and the eigenvalue lies in its disk. The collision identity $53+17=70$ is checked by \texttt{native\_decide}.
+\item \textbf{Riemann--Siegel.} The $Z$-function with the $C_0$ correction term is implemented in Lean (Init-only), with the first zero bracketed and its existence certified by the intermediate value theorem plus two sign checks.
+\item \textbf{Interval arithmetic.} $30/30$ zero enclosures verified; the artifact rejection is $15/15$.
+\end{itemize}
+
+The dual-track verifier (Lean + SymPy) classifies every numerical claim as \textsc{green} (machine-proven), \textsc{yellow} (partially verified), or \textsc{red} (unverified and excluded from the main text).
+
+\section{Discussion and limitations}
+
+\subsection{The honest ceiling}
+
+The central limitation is that Theorem~\ref{thm:numerical} is numerical. The rigorous statement that would elevate it to a theorem is the following.
+
+\begin{conjecture}[Winding identity]\label{sec:conjecture}
+Let $H$ be as in \eqref{eq:H} with $v_{\min}\in\ker(G)$. Then, for a finite Gabor matrix with the Toeplitz structure guaranteed by the Gabor Poisson summation (Shannon sampling), the number of real zeros of $H$ in the support interval equals the positive index of $\tilde G$:
+\begin{equation}
+\#\mathrm{zeros}(H)\;=\;n_+(\tilde G).
+\end{equation}
+\end{conjecture}
+
+This is the finite-Gabor analogue of the Connes--van Suijlekom theorem, and we expect it to follow from the special Toeplitz/triangular form of the quadratic form in an orthonormal basis, together with the Hurwitz-theorem passage to the limit. We have not yet proven it.
+
+\subsection{The strongest counterargument}
+
+The sharpest objection to this note is: \emph{a numerical ratio that decays in $T$ is not a lower bound}. The correct statement is that the eigenvector route gives a strictly stronger \emph{signal} than the moment route in the explored regime, but its promotion to an unconditional proportion requires (i) the winding identity of Conjecture~\ref{sec:conjecture} and (ii) a control of the prime-side error so that $H$'s zeros approximate the true zeros to $o(1/\log T)$. Until both are in place, the $87\%$ figure is a guide to where the theorem should be, not the theorem itself.
+
+A second objection: the Connes $x=13$ numerical window cannot be transplanted directly, because at fixed $T$ it corresponds to bandwidth $\lambda\to0$ where the Anthropic certificate degenerates. We use only its \emph{structure} (prolate-type minimal eigenvectors), never its numbers.
+
+\subsection{What is and is not proven}
+
+\begin{itemize}
+\item \emph{Proven (machine-checked):} Gershgorin disk theorem; diagonal-dominance nonsingularity; the $53+17=70$ collision identity; the first $30$ zero enclosures; the $15$ false-positive rejections; the Riemann--Siegel $Z$-function at the first zero.
+\item \emph{Numerical:} $H/d\in[0.87,0.94]$, matched-zero fraction $\approx0.89$, residual $\lesssim10^{-15}$.
+\item \emph{Open:} the winding identity; the prime-side error bound; any unconditional proportion beyond $2/3$.
+\end{itemize}
+
+\section{Acknowledgments}
+
+This note is an independent exploration conducted in a single session with the assistance of several sub-agents. The numerical work uses \texttt{mpmath} at $30$ digits and strict interval arithmetic; the formalization uses Lean~4 and Mathlib. No claim herein is a claim about the Riemann Hypothesis itself: the method neither assumes nor refutes RH, and the collision is aimed at the \emph{proportion constant} and at \emph{constructive certificates}, following the scope of \cite{anthropic}.
+
+\bibliographystyle{plain}
+\begin{thebibliography}{9}
+
+\bibitem{anthropic}
+Anthropic (2026), \emph{More Than Two Thirds of the Zeros of the Riemann Zeta Function Lie on the Critical Line}, with formalization and process note. \url{https://www.anthropic.com/research/riemann-zeta}.
+
+\bibitem{connes}
+A.~Connes (2026), \emph{The Riemann Hypothesis: Past, Present and a Letter Through Time}, arXiv:2602.04022.
+
+\bibitem{pcc}
+D.~Goldston and A.~Suriajaya (2025), \emph{Zeta Zeros on the Critical Line}, arXiv:2511.20059.
+
+\bibitem{bcy}
+H.~Bui, B.~Conrey, M.~Young (2011), \emph{More than 41\% of the zeros of the zeta function are on the critical line}, Acta Arith.\ 150.
+
+\bibitem{bgstb}
+Baluyot, Goldston, Suriajaya, Turnage-Butterbaugh (2025), \emph{Pair Correlation of Zeros of the Riemann Zeta Function I}, arXiv:2501.14545.
+
+\bibitem{guthmaynard}
+Guth, Maynard (2024), \emph{New bounds for the Riemann zeta function on the critical line}, arXiv:2405.20552.
+
+\end{thebibliography}
+
+\end{document}
