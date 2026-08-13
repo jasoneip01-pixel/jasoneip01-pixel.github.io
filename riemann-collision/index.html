@@ -125,6 +125,7 @@
     letter-spacing: -0.01em;
   }
   .stat-label { font-size: 0.8rem; color: var(--muted); margin-top: 4px; line-height: 1.45; }
+  .stat-retracted .stat-num { color: #a02c2c; }
 
   /* ===== Layout ===== */
   main { max-width: 1200px; margin: 0 auto; padding: clamp(24px, 4vw, 56px) clamp(20px, 5vw, 64px) 80px; }
@@ -230,6 +231,7 @@
   }
   .tag-proven { background: #e3f0e6; color: #1a5c43; }
   .tag-numerical { background: #f5efe0; color: #9a6b00; }
+  .tag-retracted { background: #f5e6e6; color: #a02c2c; }
   .thm .math { margin-top: 8px; overflow-x: auto; font-size: 0.95em; }
 
   /* ===== References ===== */
@@ -296,6 +298,7 @@
   .honesty li::before { content: ""; position: absolute; left: 0; top: 13px; width: 7px; height: 7px; border-radius: 50%; }
   .col-proven li::before { background: #2a8a55; }
   .col-numerical li::before { background: #d8a018; }
+  .col-retracted li::before { background: #a02c2c; }
   .col-open li::before { background: #c0392b; }
 
   /* ===== Comparison ===== */
@@ -386,8 +389,8 @@
 
 <header>
   <span class="kicker">Independent Exploration Note · 2026</span>
-  <h1>Minimal Eigenvectors of the Compressed Weil Form:<br>A Constructive Collision Beyond the 67.25% Gabor Certificate</h1>
-  <p class="lead">Anthropic 把 ζ 零点在临界线上的比例下界从 41.6% 推到 67.2%。这份独立探索识别出一个结构性事实：三种方法在读同一个矩阵的三种不相交数据。我们把 Connes 的极小特征向量，移植进 Anthropic 的计数框架，得到一个系统跑赢 67.25% 的构造。</p>
+  <h1>Minimal Eigenvectors of the Compressed Weil Form:<br>A Structural Collision of Three Approaches</h1>
+  <p class="lead">Anthropic 把 ζ 零点在临界线上的比例下界从 41.6% 推到 67.2%。这份独立探索识别出一个结构性事实：三种方法在读同一个矩阵的三种不相交数据。我们把 Connes 的极小特征向量，移植进 Anthropic 的计数框架。最初的「87–94% 数零点」数值信号，经盲测证伪为循环论证——它只能复现已知零点，无法预测未知零点。保留下来的是结构洞察与机器证明。</p>
   <div class="quote">
     <span class="zh">三种方法，读同一矩阵的三种不相交数据。</span>
     <span class="en">Three methods read three disjoint datasets from the same matrix.</span>
@@ -400,7 +403,7 @@
     </div>
     <div class="contrib-item">
       <span class="contrib-tag">构造</span>
-      <span class="contrib-text">极小特征向量合成函数，跑赢两矩框架上限</span>
+      <span class="contrib-text">极小特征向量合成函数（数值信号已盲测证伪）</span>
     </div>
     <div class="contrib-item">
       <span class="contrib-tag">验证</span>
@@ -413,9 +416,9 @@
       <div class="stat-num">41.6% → 67.2%</div>
       <div class="stat-label">Anthropic 无条件下界</div>
     </div>
-    <div class="stat">
-      <div class="stat-num">87–94%</div>
-      <div class="stat-label">我们的 H/d 比例</div>
+    <div class="stat stat-retracted">
+      <div class="stat-num">⛔ 87–94%</div>
+      <div class="stat-label">H/d 比例 · 已撤回（盲测证伪）</div>
     </div>
     <div class="stat">
       <div class="stat-num">70 = 53 + 17</div>
@@ -436,7 +439,7 @@
     <p class="section-note">在线预览，或下载 PDF 与 LaTeX 源。全文 9 页，机器验证的线性代数结论。</p>
     <div class="paper-grid">
       <div class="paper-info">
-        <p class="paper-meta">一篇 9 页的独立探索笔记。核心是「碰撞」：识别 Anthropic、Connes、Goldston–Suriajaya 三篇论文从同一个 Weil 二次型读取不相交的数据，然后构造极小特征向量合成函数，让零点计数系统超过两矩框架的理论上限。</p>
+        <p class="paper-meta">一篇 9 页的独立探索笔记。核心是「碰撞」：识别 Anthropic、Connes、Goldston–Suriajaya 三篇论文从同一个 Weil 二次型读取不相交的数据，然后构造极小特征向量合成函数。数值信号（87–94%）经盲测证伪为循环论证，保留的是结构识别与机器验证。</p>
         <div class="btn-row">
           <a class="btn btn-primary" href="assets/our-paper.pdf" download>
             <span>下载 PDF</span><span class="btn-icon">↓</span>
@@ -458,15 +461,15 @@
   <!-- 三大定理 -->
   <section id="theorems">
     <h2>三大定理 · Main Results</h2>
-    <p class="section-note">两个机器证明，一个数值信号。性质在标签里如实标注。</p>
+    <p class="section-note">两个机器证明，一个已撤回的数值信号。性质在标签里如实标注。</p>
     <div class="thm-list">
       <div class="thm">
         <div class="thm-num">1</div>
         <div>
-          <div class="thm-title">数值碰撞界 · Numerical Collision Bound</div>
-          <div class="thm-body">Gaussian 窗 <span class="math">σ = 3L/4</span>，全覆盖缩放下，合成函数 H 的零点数在 [0,2T] 内稳定落在 <span class="math">87%–94%</span> 的原子数 d 比例，全覆盖匹配率约 89%，真零点残差 <span class="math">≲ 10⁻¹⁵</span>。</div>
+          <div class="thm-title">数值碰撞信号 · Numerical Collision Signal</div>
+          <div class="thm-body">Gaussian 窗 <span class="math">σ ∈ [0.4L, 0.6L]</span>（原 σ=3L/4 为参数错误），全覆盖缩放下 H 的零点数落在 87%–94% 的 d 比例。<strong>盲测证伪</strong>：只用 γ&lt;250 构造 H，(250,1000] 仅 1–2 零点（真实 541），故该比例是循环论证，非零点检测。</div>
         </div>
-        <span class="thm-tag tag-numerical">数值信号</span>
+        <span class="thm-tag tag-retracted">已撤回</span>
       </div>
       <div class="thm">
         <div class="thm-num">2</div>
@@ -578,7 +581,7 @@
           <tr>
             <td>结果性质</td>
             <td>无条件定理：41.6% → 67.2%</td>
-            <td>方法识别 + 数值信号 + 机器证明</td>
+            <td>方法识别 + 机器证明（数值信号已撤回）</td>
           </tr>
           <tr>
             <td>资源投入</td>
@@ -607,7 +610,7 @@
     <div class="cmp-notes">
       <div class="cmp-note">
         <h3>我们的探索</h3>
-        <p>一份独立探索笔记，不是黎曼假设的证明。核心动作是识别一个结构性事实：Anthropic（计数框架）、Connes（极小特征向量）、Goldston 与 Suriajaya（水平对角方法）三篇论文，从同一个 Weil 二次型读取三种不相交的数据。我们把极小特征向量移植进计数框架，构造合成函数，得到跑赢两矩框架上限的数值信号，并用机器验证固定其中的线性代数结论。</p>
+        <p>一份独立探索笔记，不是黎曼假设的证明。核心动作是识别一个结构性事实：Anthropic（计数框架）、Connes（极小特征向量）、Goldston 与 Suriajaya（水平对角方法）三篇论文，从同一个 Weil 二次型读取三种不相交的数据。我们把极小特征向量移植进计数框架，构造合成函数。最初的数值信号经盲测证伪为循环论证，已撤回；保留的是结构识别与机器验证的线性代数结论。</p>
       </div>
       <div class="cmp-note">
         <h3>约束条件</h3>
@@ -615,7 +618,7 @@
       </div>
       <div class="cmp-note">
         <h3>独立验证</h3>
-        <p>这里的「验证」是机器验证，不是数学同行评审。线性代数结论（Gershgorin 圆盘、碰撞恒等式、区间零点包围）由 Lean 4 + Mathlib 形式化，编译通过即证明成立。数值部分（H/d 比例、匹配率）可复现，脚本与数据随论文公开。这些验证固定的是线性代数事实，不是解析数论定理。</p>
+        <p>这里的「验证」是机器验证，不是数学同行评审。线性代数结论（Gershgorin 圆盘、碰撞恒等式、区间零点包围）由 Lean 4 + Mathlib 形式化，编译通过即证明成立。数值部分（H/d 比例、匹配率）可复现，脚本与数据随论文公开；但盲测证伪了其预测能力——它只能复现已知零点，不能预测未知零点。这些验证固定的是线性代数事实，不是解析数论定理。</p>
       </div>
     </div>
   </section>
@@ -638,12 +641,13 @@
             <li>第一零点 Riemann–Siegel Z</li>
           </ul>
         </div>
-        <div class="col col-numerical">
-          <h4>🔶 数值信号</h4>
+        <div class="col col-retracted">
+          <h4>⛔ 已撤回（盲测证伪）</h4>
           <ul>
-            <li>H/d ∈ [0.87, 0.94]</li>
-            <li>匹配率约 89%</li>
-            <li>残差 ≲ 10⁻¹⁵</li>
+            <li>H/d ∈ [0.87, 0.94] 是循环论证，非零点检测</li>
+            <li>盲测：只用 γ&lt;250 构造 H，(250,1000] 仅 1–2 零点（真实 541）</li>
+            <li>匹配率 89% 是构造使然，非发现</li>
+            <li>σ=3L/4 参数声明有误（sweep：plateau 在 0.4–0.6L）</li>
           </ul>
         </div>
         <div class="col col-open">
