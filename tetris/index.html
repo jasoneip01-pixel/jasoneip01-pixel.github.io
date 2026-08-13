@@ -6,19 +6,19 @@
 <title>Tetris 俄罗斯方块</title>
 <style>
   :root {
-    --bg: #191008;
-    --bg2: #2a1708;
-    --panel: #271a0e;
-    --panel-edge: #4a3219;
-    --text: #f6e9d4;
-    --text-dim: #c2a380;
-    --accent: #ffb347;
+    --bg: #f4f1ea;
+    --bg2: #e9edf2;
+    --panel: #ffffff;
+    --panel-edge: #e6dfd2;
+    --text: #3a4654;
+    --text-dim: #8a94a6;
+    --accent: #ff8a65;
     --danger: #ff6b6b;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
   html, body {
     height: 100%;
-    background: radial-gradient(130% 110% at 50% 0%, var(--bg2) 0%, var(--bg) 62%);
+    background: radial-gradient(130% 110% at 50% 0%, var(--bg) 0%, var(--bg2) 70%);
     color: var(--text);
     font-family: -apple-system, "PingFang SC", "Segoe UI", "Microsoft YaHei", sans-serif;
     overflow: hidden;
@@ -41,52 +41,52 @@
     justify-content: space-between;
     align-items: baseline;
   }
-  .title { font-size: 16px; font-weight: 800; letter-spacing: 0.1em; color: var(--accent); text-shadow: 0 0 14px rgba(255,179,71,0.35); }
+  .title { font-size: 16px; font-weight: 800; letter-spacing: 0.1em; color: var(--accent); text-shadow: 0 1px 0 rgba(255,255,255,0.8); }
   .scoreline { font-size: 14px; color: var(--text-dim); font-variant-numeric: tabular-nums; }
   .scoreline b { color: var(--text); font-size: 16px; }
   .stage {
     position: relative;
-    width: min(94vw, 480px);
+    width: min(94vw, 520px);
     display: flex;
     flex-direction: row;
     gap: 10px;
     padding: 10px;
     background: var(--panel);
     border: 1px solid var(--panel-edge);
-    border-radius: 12px;
-    box-shadow: 0 0 0 1px rgba(0,0,0,.4), 0 14px 44px rgba(0,0,0,.5), inset 0 1px 0 rgba(255,220,170,0.06);
-    max-height: calc(100vh - 230px);
+    border-radius: 14px;
+    box-shadow: 0 2px 6px rgba(90,110,140,.10), 0 18px 48px rgba(90,110,140,.18);
+    max-height: calc(100vh - 210px);
   }
   .board-wrap {
     position: relative;
     flex: 1;
     aspect-ratio: 10 / 20;
-    background: rgba(0,0,0,0.28);
-    border: 1px solid rgba(255,200,140,0.12);
-    border-radius: 6px;
-    max-height: calc(100vh - 252px);
+    background: #faf9f6;
+    border: 1px solid rgba(120,140,170,0.18);
+    border-radius: 8px;
+    max-height: calc(100vh - 232px);
     overflow: hidden;
   }
   canvas#board { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
   .side {
-    width: 96px;
+    width: 88px;
     display: flex;
     flex-direction: column;
     gap: 8px;
   }
   .mini {
-    background: rgba(0,0,0,0.22);
-    border: 1px solid rgba(255,200,140,0.14);
-    border-radius: 8px;
+    background: #faf9f6;
+    border: 1px solid rgba(120,140,170,0.18);
+    border-radius: 10px;
     padding: 6px;
     font-size: 11px;
     color: var(--text-dim);
   }
   .mini canvas { display: block; width: 100%; aspect-ratio: 1 / 1; margin-top: 4px; }
   .info {
-    background: rgba(0,0,0,0.22);
-    border: 1px solid rgba(255,200,140,0.14);
-    border-radius: 8px;
+    background: #faf9f6;
+    border: 1px solid rgba(120,140,170,0.18);
+    border-radius: 10px;
     padding: 8px;
     font-size: 11px;
     color: var(--text-dim);
@@ -94,7 +94,7 @@
   .info .row { display: flex; justify-content: space-between; align-items: center; margin: 5px 0; }
   .info .row b { color: var(--text); font-size: 13px; font-variant-numeric: tabular-nums; }
   .controls {
-    width: min(94vw, 480px);
+    width: min(94vw, 520px);
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 10px;
@@ -103,8 +103,8 @@
     background: var(--panel);
     border: 1px solid var(--panel-edge);
     color: var(--text);
-    border-radius: 10px;
-    height: 52px;
+    border-radius: 12px;
+    height: 50px;
     font-size: 15px;
     font-weight: 700;
     display: flex;
@@ -113,14 +113,15 @@
     cursor: pointer;
     transition: transform .06s, background .12s;
     touch-action: manipulation;
+    box-shadow: 0 2px 4px rgba(90,110,140,.12);
   }
-  .btn:active { transform: scale(0.94); background: var(--panel-edge); }
+  .btn:active { transform: scale(0.94); background: #f2eee6; }
   .btn:disabled { opacity: 0.35; pointer-events: none; }
   .btn.accent { color: var(--accent); }
   .overlay {
     position: absolute;
     inset: 0;
-    background: rgba(20, 12, 5, 0.85);
+    background: rgba(255, 253, 250, 0.92);
     backdrop-filter: blur(3px);
     display: flex;
     flex-direction: column;
@@ -128,11 +129,11 @@
     justify-content: center;
     gap: 14px;
     z-index: 5;
-    border-radius: 12px;
+    border-radius: 14px;
     text-align: center;
     padding: 12px;
   }
-  .overlay h2 { font-size: 22px; letter-spacing: 0.12em; color: var(--accent); text-shadow: 0 0 16px rgba(255,179,71,0.4); }
+  .overlay h2 { font-size: 22px; letter-spacing: 0.12em; color: var(--accent); }
   .overlay p { font-size: 13px; color: var(--text-dim); line-height: 1.7; }
   .overlay .btn { width: 70%; height: 46px; font-size: 16px; }
   .hidden { display: none !important; }
@@ -143,21 +144,21 @@
     .info, .mini { padding: 5px; font-size: 10px; }
   }
   @media (max-width: 639px) {
-    .stage { flex-direction: column; max-height: calc(100vh - 186px); }
+    .stage { flex-direction: column; max-height: calc(100vh - 168px); gap: 8px; padding: 8px; }
     .board-wrap {
       width: 100%;
       flex: none;
-      height: calc(100vh - 300px);
-      max-height: calc(100vh - 262px);
+      height: calc(100vh - 282px);
+      max-height: calc(100vh - 244px);
       aspect-ratio: auto;
     }
-    .side { width: 100%; flex-direction: row; }
+    .side { width: 100%; flex-direction: row; gap: 8px; }
     .mini { flex: 1.3; }
     .mini canvas { aspect-ratio: 4 / 3; margin-top: 3px; }
     .info { flex: 1; }
   }
   @media (min-width: 640px) {
-    #app { gap: 12px; }
+    #app { gap: 10px; }
   }
 </style>
 </head>
@@ -198,8 +199,8 @@
   'use strict';
   // ── 常量（暖色系）──
   var COLS = 10, ROWS = 20, BLOCK = 24;
-  var COLORS = ['#ff8c42', '#ffd166', '#e0568f', '#ff7a7a', '#ffb37e', '#ff9440', '#e63b3b'];
-  var EDGE = 'rgba(255,235,210,0.6)';
+  var COLORS = ['#4fc3f7', '#ffe066', '#b388ff', '#ff8a80', '#ffab91', '#69f0ae', '#ff80ab'];
+  var EDGE = 'rgba(255,255,255,0.95)';
   var SHAPES = [
     [[0,0,0,0],[1,1,1,1],[0,0,0,0],[0,0,0,0]],
     [[1,1,0,0],[1,1,0,0],[0,0,0,0],[0,0,0,0]],
@@ -395,22 +396,29 @@
   }
   function paintCell(ctx, x, y, s, type) {
     var col = COLORS[type];
+    // 柔和投影（糖果立体感）
+    ctx.fillStyle = 'rgba(90,110,140,0.22)';
+    ctx.fillRect(x + 2.5, y + 2.5, s - 1, s - 1);
+    // 主体
     ctx.fillStyle = col;
     ctx.fillRect(x + 1, y + 1, s - 2, s - 2);
+    // 白色描边
     ctx.strokeStyle = EDGE;
     ctx.lineWidth = Math.max(1, s * 0.06);
     ctx.strokeRect(x + 1.5, y + 1.5, s - 3, s - 3);
-    ctx.fillStyle = 'rgba(255,255,255,0.26)';
-    ctx.fillRect(x + 1, y + 1, s - 2, Math.max(2, s * 0.16));
-    ctx.fillStyle = 'rgba(0,0,0,0.22)';
+    // 顶部高光（更亮）
+    ctx.fillStyle = 'rgba(255,255,255,0.5)';
+    ctx.fillRect(x + 1, y + 1, s - 2, Math.max(2, s * 0.18));
+    // 底部阴影
+    ctx.fillStyle = 'rgba(80,90,120,0.14)';
     ctx.fillRect(x + 1, y + s - Math.max(2, s * 0.16) - 1, s - 2, Math.max(2, s * 0.16));
   }
   function draw() {
     if (!grid) return;
     var w = boardCanvas.clientWidth, h = boardCanvas.clientHeight;
     boardCtx.clearRect(0, 0, w, h);
-    // 网格线（暖调）
-    boardCtx.strokeStyle = 'rgba(255,190,120,0.08)';
+    // 网格线（柔和）
+    boardCtx.strokeStyle = 'rgba(110,130,160,0.12)';
     boardCtx.lineWidth = 1;
     var ox = (w - BLOCK * COLS) / 2, oy = (h - BLOCK * ROWS) / 2;
     for (var c = 1; c < COLS; c++) {
@@ -436,7 +444,7 @@
           if (!mat[r][c]) continue;
           var gy = ghost + r;
           if (gy < 0) continue;
-          boardCtx.fillStyle = 'rgba(255,205,150,0.14)';
+          boardCtx.fillStyle = 'rgba(120,140,175,0.18)';
           boardCtx.fillRect(ox + (cur.x + c) * BLOCK + 1, oy + gy * BLOCK + 1, BLOCK - 2, BLOCK - 2);
         }
       }
@@ -449,10 +457,10 @@
         }
       }
     }
-    // 消行闪光（暖白）
+    // 消行闪光（亮白）
     if (flashRows.length && performance.now() < flashUntil) {
-      var a = ((flashUntil - performance.now()) / 180) * 0.75;
-      boardCtx.fillStyle = 'rgba(255,240,215,' + a.toFixed(3) + ')';
+      var a = ((flashUntil - performance.now()) / 180) * 0.8;
+      boardCtx.fillStyle = 'rgba(255,255,255,' + a.toFixed(3) + ')';;
       for (var fi = 0; fi < flashRows.length; fi++) {
         var fr = Math.min(flashRows[fi], ROWS - 1);
         boardCtx.fillRect(ox, oy + fr * BLOCK, COLS * BLOCK, BLOCK);
