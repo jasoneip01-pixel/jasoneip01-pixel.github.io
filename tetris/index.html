@@ -6,120 +6,85 @@
 <title>Tetris 俄罗斯方块</title>
 <style>
   :root {
-    --bg: #f4f1ea;
-    --bg2: #e9edf2;
-    --panel: #ffffff;
-    --panel-edge: #e6dfd2;
-    --text: #3a4654;
-    --text-dim: #8a94a6;
-    --accent: #ff8a65;
-    --danger: #ff6b6b;
+    --bg: #0b0f1a;
+    --panel: #131a2b;
+    --panel-edge: #1f2a42;
+    --text: #dbe4ff;
+    --text-dim: #7c8ab5;
+    --accent: #4dd8ff;
+    --danger: #ff5d6c;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
   html, body {
     height: 100%;
-    height: 100dvh;
-    background: radial-gradient(130% 110% at 50% 0%, var(--bg) 0%, var(--bg2) 70%);
+    background: var(--bg);
     color: var(--text);
     font-family: -apple-system, "PingFang SC", "Segoe UI", "Microsoft YaHei", sans-serif;
     overflow: hidden;
-    overflow-y: auto;
     touch-action: none;
     user-select: none;
     -webkit-user-select: none;
   }
   #app {
     height: 100%;
-    height: 100dvh;
-    position: relative;
-    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 8px;
   }
   .topbar {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    right: 10px;
-    z-index: 3;
+    width: min(92vw, 400px);
     display: flex;
     justify-content: space-between;
     align-items: baseline;
   }
-  .title { font-size: 16px; font-weight: 800; letter-spacing: 0.1em; color: var(--accent); text-shadow: 0 1px 0 rgba(255,255,255,0.8); }
-  .scoreline { font-size: 14px; color: var(--text-dim); font-variant-numeric: tabular-nums; }
-  .scoreline b { color: var(--text); font-size: 16px; }
+  .title { font-size: 15px; font-weight: 700; letter-spacing: 0.08em; color: var(--accent); }
+  .scoreline { font-size: 13px; color: var(--text-dim); font-variant-numeric: tabular-nums; }
+  .scoreline b { color: var(--text); font-size: 15px; }
   .stage {
-    position: absolute;
-    inset: 0;
-    z-index: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 64px 10px 138px;
-  }
-  .board-wrap {
     position: relative;
-    height: 100%;
-    max-height: 100%;
-    aspect-ratio: 10 / 20;
-    background: #faf9f6;
-    border: 1px solid rgba(120,140,170,0.18);
-    border-radius: 8px;
-    box-shadow: 0 2px 6px rgba(90,110,140,.12), 0 12px 32px rgba(90,110,140,.16);
+    width: min(92vw, 400px);
+    aspect-ratio: 10 / 13.2;
+    background: var(--panel);
+    border: 1px solid var(--panel-edge);
+    border-radius: 10px;
     overflow: hidden;
+    box-shadow: 0 0 0 1px rgba(0,0,0,.4), 0 12px 40px rgba(0,0,0,.45);
   }
   canvas#board { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
   .side {
-    position: absolute;
-    top: 44px;
-    right: 10px;
-    z-index: 3;
-    width: 96px;
+    width: min(92vw, 400px);
     display: flex;
-    flex-direction: column;
     gap: 8px;
+    align-items: stretch;
   }
-  .mini {
-    background: #faf9f6;
-    border: 1px solid rgba(120,140,170,0.18);
-    border-radius: 10px;
-    padding: 6px;
-    font-size: 11px;
-    color: var(--text-dim);
-  }
-  .mini canvas { display: block; width: 100%; aspect-ratio: 1 / 1; margin-top: 4px; }
   .info {
-    background: #faf9f6;
-    border: 1px solid rgba(120,140,170,0.18);
+    flex: 1;
+    background: var(--panel);
+    border: 1px solid var(--panel-edge);
     border-radius: 10px;
-    padding: 8px;
-    font-size: 11px;
+    padding: 8px 10px;
+    font-size: 12px;
     color: var(--text-dim);
   }
-  .info .row { display: flex; justify-content: space-between; align-items: center; margin: 5px 0; }
-  .info .row b { color: var(--text); font-size: 13px; font-variant-numeric: tabular-nums; }
+  .info .row { display: flex; justify-content: space-between; align-items: center; margin: 2px 0; }
+  .info .row b { color: var(--text); font-size: 14px; font-variant-numeric: tabular-nums; }
+  .mini { flex: 1.2; background: var(--panel); border: 1px solid var(--panel-edge); border-radius: 10px; padding: 8px 10px; font-size: 12px; color: var(--text-dim); }
+  .mini canvas { display: block; width: 100%; aspect-ratio: 4 / 3; }
   .controls {
-    position: absolute;
-    bottom: calc(10px + env(safe-area-inset-bottom));
-    left: 10px;
-    right: 10px;
-    z-index: 3;
+    width: min(92vw, 400px);
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 8px;
-    padding: 10px;
-    background: rgba(255, 255, 255, 0.9);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    border: 1px solid var(--panel-edge);
-    border-radius: 16px;
-    box-shadow: 0 4px 20px rgba(90,110,140,.15);
   }
   .btn {
     background: var(--panel);
     border: 1px solid var(--panel-edge);
     color: var(--text);
-    border-radius: 12px;
-    height: 50px;
+    border-radius: 10px;
+    height: 52px;
     font-size: 15px;
     font-weight: 700;
     display: flex;
@@ -128,15 +93,14 @@
     cursor: pointer;
     transition: transform .06s, background .12s;
     touch-action: manipulation;
-    box-shadow: 0 2px 4px rgba(90,110,140,.12);
   }
-  .btn:active { transform: scale(0.94); background: #f2eee6; }
+  .btn:active { transform: scale(0.94); background: var(--panel-edge); }
   .btn:disabled { opacity: 0.35; pointer-events: none; }
   .btn.accent { color: var(--accent); }
   .overlay {
     position: absolute;
     inset: 0;
-    background: rgba(255, 253, 250, 0.92);
+    background: rgba(7, 10, 20, 0.82);
     backdrop-filter: blur(3px);
     display: flex;
     flex-direction: column;
@@ -144,7 +108,7 @@
     justify-content: center;
     gap: 14px;
     z-index: 5;
-    border-radius: 14px;
+    border-radius: 10px;
     text-align: center;
     padding: 12px;
   }
@@ -154,23 +118,13 @@
   .hidden { display: none !important; }
   @media (max-height: 640px) {
     .btn { height: 44px; font-size: 13px; }
-    .title { font-size: 14px; }
+    .info, .mini { padding: 5px 8px; font-size: 11px; }
+    .title { font-size: 13px; }
     .overlay h2 { font-size: 18px; }
-    .info, .mini { padding: 5px; font-size: 10px; }
   }
-  @media (max-width: 639px) {
-    .stage { padding: 56px 8px 128px; }
-    .side {
-      top: 40px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: auto;
-      flex-direction: row;
-      gap: 8px;
-    }
-    .mini { flex: 1.3; }
-    .mini canvas { aspect-ratio: 4 / 3; margin-top: 3px; }
-    .info { flex: 1; }
+  @media (min-width: 640px) {
+    #app { gap: 10px; }
+    .topbar, .stage, .side, .controls { width: min(88vw, 420px); }
   }
 </style>
 </head>
@@ -181,19 +135,20 @@
     <span class="scoreline">分数 <b id="score">0</b> · 等级 <b id="level">1</b> · 消行 <b id="lines">0</b></span>
   </div>
   <div class="stage">
-    <div class="board-wrap"><canvas id="board"></canvas></div>
-    <div class="side">
-      <div class="mini">下一个<canvas id="next"></canvas></div>
-      <div class="info">
-        <div class="row"><span>暂存</span><b id="holdLabel">空</b></div>
-        <div class="row"><span>速度</span><b id="speedLabel">x1</b></div>
-      </div>
-    </div>
+    <canvas id="board"></canvas>
     <div class="overlay" id="overlay">
       <h2 id="ovTitle">俄罗斯方块</h2>
       <p id="ovText">方向键移动旋转，空格硬降，P 暂停<br>触屏点按下方按钮</p>
       <div class="btn accent" id="ovBtn">开始</div>
     </div>
+  </div>
+  <div class="side">
+    <div class="info">
+      <div class="row"><span>下一个</span><b id="nextLabel"></b></div>
+      <div class="row"><span>暂存</span><b id="holdLabel">空</b></div>
+      <div class="row"><span>速度</span><b id="speedLabel">x1</b></div>
+    </div>
+    <div class="mini"><canvas id="next"></canvas></div>
   </div>
   <div class="controls">
     <div class="btn" id="btnLeft">◀</div>
@@ -201,7 +156,7 @@
     <div class="btn" id="btnRight">▶</div>
     <div class="btn accent" id="btnDrop">▼</div>
     <div class="btn" id="btnDown">下</div>
-    <div class="btn" id="btnHold">暂存</div>
+    <div class="btn accent" id="btnHold">暂存</div>
     <div class="btn" id="btnPause">暂停</div>
     <div class="btn" id="btnRestart">重开</div>
   </div>
@@ -209,10 +164,9 @@
 <script>
 (function () {
   'use strict';
-  // ── 常量（暖色系）──
+  // ── 常量 ──
   var COLS = 10, ROWS = 20, BLOCK = 24;
-  var COLORS = ['#4fc3f7', '#ffe066', '#b388ff', '#ff8a80', '#ffab91', '#69f0ae', '#ff80ab'];
-  var EDGE = 'rgba(255,255,255,0.95)';
+  var COLORS = ['#00d4e0', '#ffd23f', '#b26bff', '#4ade80', '#ff5d6c', '#ff9f43', '#4d8dff'];
   var SHAPES = [
     [[0,0,0,0],[1,1,1,1],[0,0,0,0],[0,0,0,0]],
     [[1,1,0,0],[1,1,0,0],[0,0,0,0],[0,0,0,0]],
@@ -236,13 +190,13 @@
   var scoreEl = document.getElementById('score');
   var levelEl = document.getElementById('level');
   var linesEl = document.getElementById('lines');
+  var nextLabel = document.getElementById('nextLabel');
   var holdLabel = document.getElementById('holdLabel');
   var speedLabel = document.getElementById('speedLabel');
 
   // ── 游戏状态 ──
   var grid, cur, next, hold, canHold, score, lines, level, over, paused, running;
   var tickMs, lastTick, rafId;
-  var flashRows = [], flashUntil = 0;
 
   function resize() {
     var dpr = window.devicePixelRatio || 1;
@@ -263,6 +217,7 @@
   function spawn() {
     cur = { type: next, x: 3, y: 0, m: 0 };
     next = randPiece();
+    nextLabel.textContent = '方块 ' + (next + 1);
     drawNext();
     if (collide(cur)) endGame();
   }
@@ -291,24 +246,15 @@
     clearLines();
   }
   function clearLines() {
-    // 顶→底收集满行
-    var rowsCleared = [];
-    for (var r = 0; r < ROWS; r++) {
+    var cleared = 0;
+    for (var r = ROWS - 1; r >= 0; r--) {
       var full = true;
       for (var c = 0; c < COLS; c++) { if (grid[r][c] === -1) { full = false; break; } }
-      if (full) rowsCleared.push(r);
+      if (full) { grid.splice(r, 1); grid.unshift(new Array(COLS).fill(-1)); r++; cleared++; }
     }
-    if (rowsCleared.length > 0) {
-      // 底→顶 splice 安全删除
-      for (var i = rowsCleared.length - 1; i >= 0; i--) {
-        grid.splice(rowsCleared[i], 1);
-        grid.unshift(new Array(COLS).fill(-1));
-      }
-      // 消行闪光
-      flashRows = rowsCleared.slice();
-      flashUntil = performance.now() + 180;
-      lines += rowsCleared.length;
-      score += LINE_SCORE[rowsCleared.length] * level;
+    if (cleared > 0) {
+      lines += cleared;
+      score += LINE_SCORE[cleared] * level;
       level = Math.floor(lines / 10) + 1;
       tickMs = LEVEL_MS[Math.min(level - 1, LEVEL_MS.length - 1)];
       updateHud();
@@ -408,29 +354,19 @@
   }
   function paintCell(ctx, x, y, s, type) {
     var col = COLORS[type];
-    // 柔和投影（糖果立体感）
-    ctx.fillStyle = 'rgba(90,110,140,0.22)';
-    ctx.fillRect(x + 2.5, y + 2.5, s - 1, s - 1);
-    // 主体
     ctx.fillStyle = col;
     ctx.fillRect(x + 1, y + 1, s - 2, s - 2);
-    // 白色描边
-    ctx.strokeStyle = EDGE;
-    ctx.lineWidth = Math.max(1, s * 0.06);
-    ctx.strokeRect(x + 1.5, y + 1.5, s - 3, s - 3);
-    // 顶部高光（更亮）
-    ctx.fillStyle = 'rgba(255,255,255,0.5)';
-    ctx.fillRect(x + 1, y + 1, s - 2, Math.max(2, s * 0.18));
-    // 底部阴影
-    ctx.fillStyle = 'rgba(80,90,120,0.14)';
+    ctx.fillStyle = 'rgba(255,255,255,0.28)';
+    ctx.fillRect(x + 1, y + 1, s - 2, Math.max(2, s * 0.16));
+    ctx.fillStyle = 'rgba(0,0,0,0.22)';
     ctx.fillRect(x + 1, y + s - Math.max(2, s * 0.16) - 1, s - 2, Math.max(2, s * 0.16));
   }
   function draw() {
     if (!grid) return;
     var w = boardCanvas.clientWidth, h = boardCanvas.clientHeight;
     boardCtx.clearRect(0, 0, w, h);
-    // 网格线（柔和）
-    boardCtx.strokeStyle = 'rgba(110,130,160,0.12)';
+    // 网格线
+    boardCtx.strokeStyle = 'rgba(120,140,200,0.10)';
     boardCtx.lineWidth = 1;
     var ox = (w - BLOCK * COLS) / 2, oy = (h - BLOCK * ROWS) / 2;
     for (var c = 1; c < COLS; c++) {
@@ -449,6 +385,7 @@
     // 当前方块 + 投影
     if (cur && !over) {
       var mat = rotateMat(cur.type, cur.m);
+      // 投影
       var ghost = cur.y;
       while (!collide({ type: cur.type, x: cur.x, y: ghost + 1, m: cur.m })) ghost++;
       for (var r = 0; r < 4; r++) {
@@ -456,7 +393,7 @@
           if (!mat[r][c]) continue;
           var gy = ghost + r;
           if (gy < 0) continue;
-          boardCtx.fillStyle = 'rgba(120,140,175,0.18)';
+          boardCtx.fillStyle = 'rgba(160,180,230,0.16)';
           boardCtx.fillRect(ox + (cur.x + c) * BLOCK + 1, oy + gy * BLOCK + 1, BLOCK - 2, BLOCK - 2);
         }
       }
@@ -468,17 +405,6 @@
           paintCell(boardCtx, ox + (cur.x + c) * BLOCK, oy + y * BLOCK, BLOCK, cur.type);
         }
       }
-    }
-    // 消行闪光（亮白）
-    if (flashRows.length && performance.now() < flashUntil) {
-      var a = ((flashUntil - performance.now()) / 180) * 0.8;
-      boardCtx.fillStyle = 'rgba(255,255,255,' + a.toFixed(3) + ')';;
-      for (var fi = 0; fi < flashRows.length; fi++) {
-        var fr = Math.min(flashRows[fi], ROWS - 1);
-        boardCtx.fillRect(ox, oy + fr * BLOCK, COLS * BLOCK, BLOCK);
-      }
-    } else if (flashRows.length) {
-      flashRows = [];
     }
   }
   function loop(ts) {
@@ -498,7 +424,6 @@
     document.getElementById('btnHold').disabled = false;
     over = false; paused = false; running = true;
     holdLabel.textContent = '空';
-    flashRows = [];
     next = randPiece();
     spawn();
     updateHud();
