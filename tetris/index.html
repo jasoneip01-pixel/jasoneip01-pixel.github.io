@@ -18,10 +18,12 @@
   * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
   html, body {
     height: 100%;
+    height: 100dvh;
     background: radial-gradient(130% 110% at 50% 0%, var(--bg) 0%, var(--bg2) 70%);
     color: var(--text);
     font-family: -apple-system, "PingFang SC", "Segoe UI", "Microsoft YaHei", sans-serif;
     overflow: hidden;
+    overflow-y: auto;
     touch-action: none;
     user-select: none;
     -webkit-user-select: none;
@@ -34,6 +36,7 @@
     justify-content: center;
     gap: 10px;
     padding: 12px 8px;
+    padding-bottom: calc(12px + env(safe-area-inset-bottom));
   }
   .topbar {
     width: min(94vw, 480px);
@@ -56,6 +59,7 @@
     border-radius: 14px;
     box-shadow: 0 2px 6px rgba(90,110,140,.10), 0 18px 48px rgba(90,110,140,.18);
     max-height: calc(100vh - 210px);
+    max-height: calc(100dvh - 210px);
   }
   .board-wrap {
     position: relative;
@@ -65,6 +69,7 @@
     border: 1px solid rgba(120,140,170,0.18);
     border-radius: 8px;
     max-height: calc(100vh - 232px);
+    max-height: calc(100dvh - 232px);
     overflow: hidden;
   }
   canvas#board { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
@@ -144,12 +149,14 @@
     .info, .mini { padding: 5px; font-size: 10px; }
   }
   @media (max-width: 639px) {
-    .stage { flex-direction: column; max-height: calc(100vh - 168px); gap: 8px; padding: 8px; }
+    .stage { flex-direction: column; max-height: calc(100vh - 168px); max-height: calc(100dvh - 168px); gap: 8px; padding: 8px; }
     .board-wrap {
       width: 100%;
       flex: none;
       height: calc(100vh - 282px);
+      height: calc(100dvh - 282px);
       max-height: calc(100vh - 244px);
+      max-height: calc(100dvh - 244px);
       aspect-ratio: auto;
     }
     .side { width: 100%; flex-direction: row; gap: 8px; }
